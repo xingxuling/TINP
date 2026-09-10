@@ -64,6 +64,7 @@
     "deployment": "NOT_DEPLOYED",
     "publicNetwork": "NOT_RUN",
     "candidateBranch": "codex/tinp-registry-v06",
+    "candidateCommit": "65b2784750d97980caae974e219e164fd51b81b5",
     "candidatePush": "Pending candidate branch packaging and push"
   },
   "limits": [

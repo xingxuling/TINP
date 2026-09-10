@@ -4,7 +4,7 @@
 
 ## 现实审计与 Owner
 
-从已核对的 alpha.5 / `a86623e93b18f783f402b12e9f93b198ff32ea6e` 继续，候选分支为 `codex/tinp-registry-v06`。本轮先复用 `identity.mjs`、AAF adapter、RCL recovery profile 和 alpha.5 recovery-anchor，再新增一层严格 authority registry provider。没有把本地 keyring、测试 issuer 或完整 RNCS world commit 伪装成生产 authority。
+从已核对的 alpha.5 / `a86623e93b18f783f402b12e9f93b198ff32ea6e` 继续，候选分支为 `codex/tinp-registry-v06`，候选实现提交为 `65b2784750d97980caae974e219e164fd51b81b5`。本轮先复用 `identity.mjs`、AAF adapter、RCL recovery profile 和 alpha.5 recovery-anchor，再新增一层严格 authority registry provider。没有把本地 keyring、测试 issuer 或完整 RNCS world commit 伪装成生产 authority。
 
 TINP host 只验证 registry policy、签名快照和成员公钥映射；独立 issuer child 持有签名私钥并只返回签名结果。registry 不写入成员/issuer 私钥或 coordinator checkpoint。AAF 仍拥有 operator approval 格式，RCL 仍拥有 recovery 与 pending-retirement 准入，RNCS/RFE 世界事实与提交权保持原 Owner。
 

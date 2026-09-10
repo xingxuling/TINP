@@ -2,7 +2,7 @@
 
 TINP v0.1.0-alpha.6：可选外部 AAF 操作员签章、外部恢复锚点与 authority registry 快照桥接的本机候选。
 
-从已核对远端的 alpha.5 / a86623e93b18f783f402b12e9f93b198ff32ea6e 继续，候选分支 codex/tinp-registry-v06。完整最终验收以 evidence/0.1.0-alpha.6/LOCAL_VERIFICATION.json 的源码哈希、退出码及运行见证为准。
+从已核对远端的 alpha.5 / a86623e93b18f783f402b12e9f93b198ff32ea6e 继续，候选分支 `codex/tinp-registry-v06`，当前候选提交 `65b2784750d97980caae974e219e164fd51b81b5`。完整最终验收以 evidence/0.1.0-alpha.6/LOCAL_VERIFICATION.json 的源码哈希、退出码及运行见证为准。
 
 operator-pin 明确固定独立签署方 ID 与 SPKI DER 指纹。启用后，confirmed 不能替代外部 AAF approval；请求/租约/会话/主体/世界/协调器/策略绑定、范围、签名、时间与调用方提供的当前 revoked 状态均检查。外部 keyring 不写 checkpoint，网络端不持有操作员私钥。旧版无 pin 本机夹具兼容，不能把兼容模式冒充外部认证。
 
