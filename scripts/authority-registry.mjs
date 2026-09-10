@@ -3,6 +3,8 @@ import { keyringFromAuthorityRegistry, verifyAuthorityRegistry } from '../src/au
 import { verifyAuthorityRegistryDistribution } from '../src/authority-registry-distribution.mjs';
 import { verifyAuthorityRegistryConvergence } from '../src/authority-registry-convergence.mjs';
 import { AuthorityRegistryConvergenceStore } from '../src/authority-registry-convergence-store.mjs';
+import { authorityRegistryConvergenceWitnessBodyForStore, validateAuthorityRegistryConvergenceWitness,
+  verifyAuthorityRegistryConvergenceWitness } from '../src/authority-registry-convergence-witness.mjs';
 import { requireThat } from '../src/identity.mjs';
 
 const [action, registryFile, ...args] = process.argv.slice(2);
@@ -13,6 +15,8 @@ const allowed = {
   'convergence-verify': ['policy', 'issuer-keyring', 'distribution-policy', 'mirror-keyring', 'now-ms'],
   'convergence-store-verify': ['policy', 'issuer-keyring', 'distribution-policy', 'mirror-keyring', 'now-ms'],
   'convergence-store-append': ['policy', 'issuer-keyring', 'distribution-policy', 'mirror-keyring', 'store', 'now-ms'],
+  'convergence-witness-request': ['policy', 'previous-witness', 'sequence', 'now-ms'],
+  'convergence-witness-verify': ['policy', 'witness-keyring', 'store', 'registry-policy', 'issuer-keyring', 'distribution-policy', 'mirror-keyring', 'saved-witness', 'now-ms'],
 };
 try {
   requireThat(Object.hasOwn(allowed, action) && registryFile, 'AUTHORITY_REGISTRY_COMMAND_INVALID');
@@ -27,14 +31,43 @@ try {
       options[flag] = args[++index];
     }
   }
-  requireThat(options.policy && options['issuer-keyring'], 'AUTHORITY_REGISTRY_COMMAND_INVALID');
+  requireThat(options.policy && (action === 'convergence-witness-request' || options['issuer-keyring']), 'AUTHORITY_REGISTRY_COMMAND_INVALID');
   if (action === 'keyring') requireThat(options['member-keyring'] && options.role, 'AUTHORITY_REGISTRY_COMMAND_INVALID');
   const readJson = file => JSON.parse(fs.readFileSync(file, 'utf8'));
   const nowMs = options['now-ms'] === undefined ? Date.now() : Number(options['now-ms']);
   requireThat(Number.isSafeInteger(nowMs) && nowMs >= 0 && (options['now-ms'] === undefined || /^[0-9]+$/.test(options['now-ms'])), 'AUTHORITY_REGISTRY_COMMAND_INVALID');
-  const policy = readJson(options.policy), registryInput = readJson(registryFile), issuerKeyring = readJson(options['issuer-keyring']);
+  const policy = readJson(options.policy), registryInput = readJson(registryFile), issuerKeyring = options['issuer-keyring'] ? readJson(options['issuer-keyring']) : undefined;
   const previousRegistry = options.previous ? readJson(options.previous) : undefined;
-  if (action === 'convergence-store-append') {
+  if (action === 'convergence-witness-request') {
+    const store = new AuthorityRegistryConvergenceStore(registryFile);
+    const state = store.load();
+    const sequence = options.sequence === undefined ? state.lastSequence : Number(options.sequence);
+    requireThat(Number.isSafeInteger(sequence) && sequence > 0
+      && (options.sequence === undefined || /^[0-9]+$/.test(options.sequence)), 'AUTHORITY_REGISTRY_COMMAND_INVALID');
+    const previousWitness = options['previous-witness'] ? readJson(options['previous-witness']) : null;
+    requireThat((sequence === 1 && previousWitness === null) || (sequence > 1 && previousWitness !== null),
+      'AUTHORITY_REGISTRY_COMMAND_INVALID');
+    if (previousWitness) validateAuthorityRegistryConvergenceWitness(previousWitness);
+    const body = authorityRegistryConvergenceWitnessBodyForStore({ policy, sequence,
+      previousWitnessRoot: previousWitness?.root, state, issuedAtMs: nowMs });
+    console.log(JSON.stringify({ status: 'request', body, storeFile: store.file,
+      signing: '将 body 交给独立 convergence witness；运行端不生成或保存见证私钥。',
+      boundary: '请求只读；外部签署仍是调用方流程，不构成在线透明日志或可信时间。' }, null, 2));
+    process.exitCode = 0;
+  } else if (action === 'convergence-witness-verify') {
+    requireThat(options['witness-keyring'] && options.store && options['registry-policy']
+      && options['distribution-policy'] && options['mirror-keyring'], 'AUTHORITY_REGISTRY_COMMAND_INVALID');
+    const store = new AuthorityRegistryConvergenceStore(options.store);
+    const verification = verifyAuthorityRegistryConvergenceWitness({ policy, witness: registryInput,
+      keyring: readJson(options['witness-keyring']), savedWitness: options['saved-witness'] ? readJson(options['saved-witness']) : null,
+      state: store.load(), distributionPolicy: readJson(options['distribution-policy']),
+      registryPolicy: readJson(options['registry-policy']), issuerKeyring,
+      mirrorKeyring: readJson(options['mirror-keyring']), nowMs });
+    console.log(JSON.stringify({ status: 'verified', verification, witnessFile: registryFile, storeFile: store.file,
+      timeSource: 'caller-supplied local nowMs; no trusted clock',
+      boundary: '外部签名只绑定本机提供的完整 store 状态；未连接在线透明日志、可信时钟或跨主机共识。' }, null, 2));
+    process.exitCode = 0;
+  } else if (action === 'convergence-store-append') {
     requireThat(options['distribution-policy'] && options['mirror-keyring'] && options.store, 'AUTHORITY_REGISTRY_COMMAND_INVALID');
     const distributionPolicy = readJson(options['distribution-policy']);
     const mirrorKeyring = readJson(options['mirror-keyring']);

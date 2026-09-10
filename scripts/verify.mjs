@@ -165,6 +165,26 @@ const authorityRegistryConvergenceStoreWitness={...authorityRegistryConvergenceS
   scope:'Actual local atomic store write/read with directory writer lease, full-history extension and deterministic rollback/prefix-rewrite rejection; no online transparency log, trusted clock or durable cross-host consensus.'};
 fs.writeFileSync(path.join(out,'authority-registry-convergence-store.json'),JSON.stringify(authorityRegistryConvergenceStoreWitness,null,2));
 authorityRegistryConvergenceStoreScenarios.push(authorityRegistryConvergenceStoreWitness);
+const authorityRegistryConvergenceWitnessScenarios=[];
+const authorityRegistryConvergenceWitnessDemo=await new Promise((resolve,reject)=>{
+  const child=spawn(process.execPath,['scripts/authority-registry-convergence-witness-demo.mjs'],{cwd:root,windowsHide:true,stdio:['ignore','pipe','pipe']});
+  let stdout='',stderr='';child.stdout.on('data',x=>stdout+=x.toString('utf8'));child.stderr.on('data',x=>stderr+=x.toString('utf8'));
+  child.once('error',reject);child.once('exit',code=>code===0?resolve(JSON.parse(stdout)):reject(new Error(`Authority registry convergence witness: ${stderr}`)));
+});
+if(authorityRegistryConvergenceWitnessDemo.status!=='VERIFIED_LOCAL_AUTHORITY_REGISTRY_CONVERGENCE_WITNESS'
+  || authorityRegistryConvergenceWitnessDemo.firstVerification!==true
+  || authorityRegistryConvergenceWitnessDemo.extensionVerification!==true
+  || authorityRegistryConvergenceWitnessDemo.firstSequence!==1
+  || authorityRegistryConvergenceWitnessDemo.lastSequence < 2
+  || authorityRegistryConvergenceWitnessDemo.storeWritten!==true
+  || authorityRegistryConvergenceWitnessDemo.replacementStoreDetected!==true
+  || authorityRegistryConvergenceWitnessDemo.replacementWitnessDetected!==true
+  || authorityRegistryConvergenceWitnessDemo.rollbackDetected!==true)
+  throw new Error('AUTHORITY_REGISTRY_CONVERGENCE_WITNESS_INVALID');
+const authorityRegistryConvergenceExternalWitness={...authorityRegistryConvergenceWitnessDemo,
+  scope:'Actual independent convergence-witness signer child binds exact local store state and contiguous witness sequence; witness retention remains caller supplied, with no online transparency log, trusted clock or durable cross-host consensus.'};
+fs.writeFileSync(path.join(out,'authority-registry-convergence-witness.json'),JSON.stringify(authorityRegistryConvergenceExternalWitness,null,2));
+authorityRegistryConvergenceWitnessScenarios.push(authorityRegistryConvergenceExternalWitness);
 const mismatches=tracked.filter(x=>sha(fs.readFileSync(x.path))!==x.sha256);
 if(mismatches.length)throw new Error('Source changed during verification: '+JSON.stringify(mismatches));
 const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CANDIDATE',startedAt,finishedAt:new Date().toISOString(),
@@ -172,12 +192,12 @@ const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CAND
   node:process.version,platform:process.platform,architecture:process.arch,
   tests:{command:result.command,exitCode:result.code,count:Number(result.stdout.match(/# tests (\d+)/)?.[1]),passed:Number(result.stdout.match(/# pass (\d+)/)?.[1]),failed:Number(result.stdout.match(/# fail (\d+)/)?.[1]),
     stdout:relative(path.join(out,'tests.tap')),stdoutSha256:sha(Buffer.from(result.stdout)),stderr:relative(path.join(out,'tests.stderr.txt'))},
-  scenarios,recoveryScenarios,pendingScenarios,operatorScenarios,recoveryAnchorScenarios,authorityRegistryScenarios,authorityRegistryDistributionScenarios,authorityRegistryConvergenceScenarios,authorityRegistryConvergenceStoreScenarios,sourceFiles:tracked,sourceTreeRoot:sha(Buffer.from(JSON.stringify(tracked))),
+  scenarios,recoveryScenarios,pendingScenarios,operatorScenarios,recoveryAnchorScenarios,authorityRegistryScenarios,authorityRegistryDistributionScenarios,authorityRegistryConvergenceScenarios,authorityRegistryConvergenceStoreScenarios,authorityRegistryConvergenceWitnessScenarios,sourceFiles:tracked,sourceTreeRoot:sha(Buffer.from(JSON.stringify(tracked))),
   k400Verdict:'NOT_ADJUDICATED',production:'NOT_DEPLOYED',publicNetwork:'NOT_RUN',
   boundaries:['Ephemeral local trust fixture; no production identity enrollment or TLS confidentiality',
     'Only bounded pure read-only code-point counting; not arbitrary actions or exactly-once external side effects',
     'Durable mode uses Windows current-user DPAPI and signed recovery evidence; external anchor is opt-in and only covers its last explicit ledger prefix',
-    'Authority registry, distribution bundle and convergence history/store are offline signed inputs with caller-supplied key material; quorum/fork/history/store checks do not provide online publication, trusted clock, transparency or durable cross-device convergence',
+    'Authority registry, distribution bundle, convergence history/store and external convergence witness are offline signed inputs with caller-supplied key material; quorum/fork/history/store/witness checks do not provide online publication, trusted clock, transparency or durable cross-device convergence',
     'No browser replacement, application-seed cross-platform runtime, VPN or entire P00-P15 completion']};
 fs.writeFileSync(path.join(out,'LOCAL_VERIFICATION.json'),JSON.stringify(summary,null,2));
 console.log(JSON.stringify({status:summary.status,tests:summary.tests.count,passed:summary.tests.passed,scenarios:scenarios.map(x=>({transport:x.transport,pids:x.pids,path:x.firstPath,performance:x.boundedPerformance}))},null,2));
