@@ -1,6 +1,6 @@
 {
   "format": "twni.protocol-registry.v0.1",
-  "version": "0.1.0-alpha.9",
+  "version": "0.1.0-alpha.10",
   "classification": "candidate-local-profile",
   "scope": "Three independent local processes; UDP/TCP loopback only",
   "statusVocabulary": [
@@ -181,6 +181,11 @@
           "status": "implemented",
           "behavior": "Opt-in local authority registry convergence store with atomic public-history append, exact-prefix extension, replay idempotence and rollback/prefix-rewrite rejection",
           "evidenceLevel": "Local filesystem, directory lease, CLI and positive/negative store tests; single-host durability only, not whole-file anti-replacement or cross-host convergence"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Opt-in external convergence witness binding an exact public store state with a retained contiguous witness sequence",
+          "evidenceLevel": "Local independent witness process, request/verify CLI and positive/negative store-replacement, witness-replacement and rollback tests; caller-retained witness only, not online authority or trusted time"
         }
       ],
       "notImplemented": [
@@ -235,6 +240,11 @@
           "status": "implemented",
           "behavior": "Local convergence store persists public history with atomic replacement and verifies latest-current versus aged historical receipts",
           "evidenceLevel": "Local store demo, CLI and strict append/reload/rollback tests; no trusted timestamp, transparency log or distributed durable agreement"
+        },
+        {
+          "status": "implemented",
+          "behavior": "External convergence witness signs policy, history and complete store-state roots and detects retained-root replacement or rollback",
+          "evidenceLevel": "Local independent witness signer, CLI, demo and strict signature/time/chain/state tests; no protection when store and witness history are replaced together"
         }
       ],
       "notImplemented": [

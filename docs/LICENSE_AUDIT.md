@@ -27,3 +27,5 @@ alpha.7 仅新增本仓库 JavaScript 的 authority registry distribution adapte
 alpha.8 仅新增本仓库 JavaScript 的 authority registry convergence adapter、CLI 分支、独立历史 demo、测试与文档；未复制第三方透明日志、共识或分发源码，也未引入新 npm/Python 依赖。convergence history、distribution policy、bundle、issuer/mirror/member key 文件是调用方配置，不随源码包发布。既有 donor 许可、内部使用限制和未公开发布结论继续适用。
 
 alpha.9 仅新增本仓库 JavaScript 的 authority registry convergence store adapter、CLI 分支、独立本机原子写入 demo、测试与文档；未复制第三方存储、透明日志或共识源码，也未引入新 npm/Python 依赖。store 文件只由运行时临时生成，issuer/mirror/member 私钥和 keyring 不随源码包发布。既有 donor 许可、内部使用限制和未公开发布结论继续适用。
+
+alpha.10 仅新增本仓库 JavaScript 的 authority registry convergence witness adapter、CLI 分支、独立测试 witness signer、demo、测试与文档；未复制第三方见证、透明日志或共识源码，也未引入新 npm/Python 依赖。witness policy、witness、store、issuer/mirror/member/witness keyring 文件是调用方配置或运行时临时生成，私钥不随源码包发布。既有 donor 许可、内部使用限制和未公开发布结论继续适用。
