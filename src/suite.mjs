@@ -14,6 +14,7 @@ import {negotiateOpp} from '../adapters/opp-bridge.mjs';
 import {evaluateSessionMigrationGuard} from '../adapters/rcl-guard.mjs';
 import {operatorChallenge,authorizeOperator} from './operator-authorization.mjs';
 import {makeOperatorPolicy} from '../adapters/aaf-operator.mjs';
+import {makeRecoveryAnchorPolicy,anchorBodyForState,verifyRecoveryAnchor} from './recovery-anchor.mjs';
 import {findPendingRetirement,verifyRetirementAcks} from './pending-management.mjs';
 import {evaluatePendingRetirementGuard} from '../adapters/rcl-pending-retirement.mjs';
 import {initializeRecovery,admitRecovery,checkpoint,publicRecoveryState} from './coordinator-state.mjs';
@@ -52,9 +53,10 @@ class NodeChild {
 /** Local trust fixture; optional Windows protected persistence. Private keys never enter evidence. */
 export class InternetSuite {
   static async start(options={}){const suite=new InternetSuite(options);try{await suite.start();return suite;}catch(e){await suite.close();throw e;}}
-  constructor({directory=path.resolve('.runs',id('run').replace(':','-')),transport='udp',timeoutMs=1500,durable=false,recoveryMode='strict',operatorKeyring}={}){
+  constructor({directory=path.resolve('.runs',id('run').replace(':','-')),transport='udp',timeoutMs=1500,durable=false,recoveryMode='strict',operatorKeyring,recoveryAnchorKeyring,recoveryAnchor}={}){
     requireThat(['strict','maintenance'].includes(recoveryMode)&& (recoveryMode!=='maintenance'||durable),'RECOVERY_MODE_INVALID');
     this.operatorPolicy=null;this.operatorKeyring=clone(operatorKeyring);
+    this.recoveryAnchorPolicy=null;this.recoveryAnchor=null;this.recoveryAnchorKeyring=clone(recoveryAnchorKeyring);this.recoveryAnchorInput=clone(recoveryAnchor);
     this.maintenance=recoveryMode==='maintenance';
     this.durable=durable;this.revocationEpoch=0;this.pending=null;this.nodeKeys={};
     this.directory=directory;fs.mkdirSync(directory,{recursive:true});this.kind=transport;this.timeoutMs=timeoutMs;
@@ -274,6 +276,33 @@ export class InternetSuite {
     this.operatorPolicy=policy;
     this.record('operator.policy-pinned',{policyRoot:policy.policyRoot,operatorBoundary:'explicit-local-bootstrap'});
     return clone(policy);
+  }
+  recoveryAnchorDraft(){
+    requireThat(this.durable&&this.recoveryAnchorPolicy,'RECOVERY_ANCHOR_POLICY_REQUIRED');
+    return {format:'twni.recovery-anchor-request.v1',policy:clone(this.recoveryAnchorPolicy),body:anchorBodyForState({
+      policy:this.recoveryAnchorPolicy,sequence:(this.recoveryAnchor?.body.sequence??0)+1,
+      previousAnchorRoot:this.recoveryAnchor?.root??'0'.repeat(64),state:this})};
+  }
+  pinRecoveryAnchor(options={}){const snapshot=clone(options);const p=this.queue.then(()=>this._pinRecoveryAnchor(snapshot));this.queue=p.catch(()=>{});return p;}
+  async _pinRecoveryAnchor({signerId,publicKeyPem,configurationRoot=null,confirmed}={}){
+    requireThat(this.durable&&this.maintenance,'MAINTENANCE_MODE_REQUIRED');requireThat(confirmed===true,'RECOVERY_ANCHOR_CONFIRMATION_REQUIRED');
+    const policy=makeRecoveryAnchorPolicy({signerId,publicKeyPem,configurationRoot});
+    if(this.recoveryAnchorPolicy){requireThat(policy.policyRoot===this.recoveryAnchorPolicy.policyRoot,'RECOVERY_ANCHOR_POLICY_IMMUTABLE');return clone(this.recoveryAnchorPolicy);}
+    requireThat(!this.ledger.events.some(e=>e.type==='recovery.anchor-adopted'),'RECOVERY_ANCHOR_PIN_AFTER_ADOPTION');
+    this.recoveryAnchorPolicy=policy;
+    this.record('recovery.anchor-policy-pinned',{policyRoot:policy.policyRoot,recoveryAnchorBoundary:'explicit-local-bootstrap'});
+    return clone(policy);
+  }
+  adoptRecoveryAnchor(anchor,options={}){const snapshot=clone(anchor),settings=clone(options);const p=this.queue.then(()=>this._adoptRecoveryAnchor(snapshot,settings));this.queue=p.catch(()=>{});return p;}
+  async _adoptRecoveryAnchor(anchor,{requireCurrent=true}={}){
+    requireThat(this.durable&&this.maintenance,'MAINTENANCE_MODE_REQUIRED');requireThat(this.recoveryAnchorPolicy,'RECOVERY_ANCHOR_POLICY_REQUIRED');
+    const previous=this.recoveryAnchor;
+    requireThat(anchor?.body?.sequence===(previous?.body.sequence??0)+1&&anchor?.body?.previousAnchorRoot===(previous?.root??'0'.repeat(64)),'RECOVERY_ANCHOR_SEQUENCE_INVALID');
+    const verification=verifyRecoveryAnchor({policy:this.recoveryAnchorPolicy,anchor,keyring:this.recoveryAnchorKeyring,local:this,savedAnchor:previous,requireCurrent});
+    this.recoveryAnchor=clone(anchor);this.recoveryAnchorVerification=verification;
+    this.record('recovery.anchor-adopted',{anchorRoot:anchor.root,sequence:anchor.body.sequence,ledgerRoot:anchor.body.ledgerRoot,ledgerLength:anchor.body.ledgerLength,
+      adoptionMode:requireCurrent?'current-state':'ledger-prefix',recoveryAnchorBoundary:'external-signed-monotonic-witness'});
+    return clone(verification);
   }
   retirePending(options={}){const snapshot=clone(options);const p=this.queue.then(()=>this._retirePending(snapshot));this.queue=p.catch(()=>{});return p;}
   async _retirePending({requestRoot,confirmed,approval}={}){

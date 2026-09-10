@@ -1,6 +1,6 @@
 # TaoWind 新互联网协议套件
 
-v0.1.0-alpha.4 是一个可运行的内部工程候选：普通用户输入一句能力请求，系统在三个独立本机进程之间自动发现、调用 OPP 协商契约、验证权限、建立会话、经 A→B→C 传输并返回带证据的执行结果。
+v0.1.0-alpha.5 是一个可运行的内部工程候选：普通用户输入一句能力请求，系统在三个独立本机进程之间自动发现、调用 OPP 协商契约、验证权限、建立会话、经 A→B→C 传输并返回带证据的执行结果。
 
 本版只有一个刻意收窄的能力：精确统计 Unicode 码点数量。它可以验证主体、权限、路由、迁移、退化和回执能否共同工作；它不代表整个新互联网已经实现。
 
@@ -25,7 +25,7 @@ npm run verify
 npm run recovery:demo
 ```
 
-`verify` 冻结源码哈希，按文件顺序运行全部测试，然后分别启动 UDP 和 TCP 三进程及持久恢复见证，保存签名回执、磁盘账本和有界计时到 `evidence/0.1.0-alpha.4/LOCAL_VERIFICATION.json`。重放并发测试内部仍使用真实并发。普通 `npm test` 可并行运行文件；发行证据用顺序执行避免故障注入互相干扰。
+`verify` 冻结源码哈希，按文件顺序运行全部测试，然后分别启动 UDP 和 TCP 三进程、持久恢复见证和外部恢复锚点整目录回放见证，保存签名回执、磁盘账本和有界计时到 `evidence/0.1.0-alpha.5/LOCAL_VERIFICATION.json`。重放并发测试内部仍使用真实并发。`npm test` 也按文件顺序运行，避免 Windows 临时目录清理竞态；发行证据使用同一顺序入口。
 
 ## 已实现的闭环
 
@@ -40,7 +40,7 @@ npm run recovery:demo
 
 ## 证据与边界
 
-阅读 `docs/REALITY_AUDIT.md`、`docs/CANONICAL_OWNERSHIP.md`、`docs/SPEC_DEVIATIONS.md`、`evidence/0.1.0-alpha.4/INTEGRATION_COURT.md` 和 `evidence/0.1.0-alpha.4/EVIDENCE_LEDGER.json`。原规范保留在 `constitution/`，未修改下载文件或同步项目参考文件。
+阅读 `docs/REALITY_AUDIT.md`、`docs/CANONICAL_OWNERSHIP.md`、`docs/SPEC_DEVIATIONS.md`、`evidence/0.1.0-alpha.5/INTEGRATION_COURT.md` 和 `evidence/0.1.0-alpha.5/EVIDENCE_LEDGER.json`。原规范保留在 `constitution/`，未修改下载文件或同步项目参考文件。
 
 当前是 **VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED**。没有公网、真实异机部署、军用安全认证、互联网规模收敛、生产密钥托管或第三方安全评估。签名提供当前夹具内的认证与完整性，传输没有 TLS 机密性，因此严格限制回环地址。
 
@@ -48,7 +48,7 @@ npm run recovery:demo
 
 SLA、成本、地域、能耗是受信本地配置与约束，非实测商业保证或结算。保留期零值指不留原始请求文本；回执和摘要为审计保存，尚无完整生命周期清理机制。P12 应用种子、P13 跨设备运行、P14 私网和 P15 全面旧网适配未在本版实现。RNCS/RFE 世界事实与提交权没有迁入本仓库。
 
-本轮新增恢复闭环与审查见 `docs/RECOVERY_OWNER.md`、`docs/PROTECTED_STORAGE.md`、`docs/RECOVERY_SECURITY_COURT.md`。原始待处理请求只保存在加密 checkpoint，恢复仅查找已存在回执；未找到时保留未决状态并拒绝继续，不自动重发。整目录一起回滚、跨设备密钥迁移和全网撤销收敛仍未解决。本版已补上本机查询与明确终止入口；独立防回滚锚点、生产操作员授权和两台真实设备加密承载仍待验证。详见 `docs/NEXT_GAP.md`。
+本轮新增恢复闭环、外部恢复锚点与审查见 `docs/RECOVERY_OWNER.md`、`docs/PROTECTED_STORAGE.md`、`docs/RECOVERY_SECURITY_COURT.md`、`docs/RECOVERY_ANCHOR_OWNER.md` 和 `docs/RECOVERY_ANCHOR_SECURITY_COURT.md`。原始待处理请求只保存在加密 checkpoint，恢复仅查找已存在回执；未找到时保留未决状态并拒绝继续，不自动重发。外部锚点能拒绝已知锚点之后的完整旧目录回放，但上次显式锚定之后的未锚定尾部、跨设备密钥迁移和全网撤销收敛仍未解决。详见 `docs/NEXT_GAP.md`。
 
 ## 许可
 
@@ -108,3 +108,28 @@ npm run pending -- status "C:\状态目录" --keyring "C:\独立配置\keyring.j
 外部批准只授权终止当前未决记录并停用原租约，绝不签发新租约、扩权或重发执行。初验后若批准到期或撤销，终止操作保留pending。已经认证落盘的历史终态按其原准入时刻复核；当前外部key仍须可用且未撤销，即使pending已清也会验证签章。
 
 此处“独立”指私钥不在网络协调器/节点或其checkpoint，尚无可信外部时钟、硬件托管、真实人类身份或整目录防回滚锚点。详细 Owner、来源和限制见 docs/AAF_OPERATOR_OWNER.md 与 docs/OPERATOR_SECURITY_COURT.md。
+
+## 外部恢复锚点
+
+alpha.5 增加了可选的外部单调恢复锚点。它把已认证账本前缀、主体/租约根、撤销水位和状态投影交给独立见证方签名；运行端只保存锚点和见证公钥指纹，不保存见证私钥。锚点不是自动生成的远程服务，必须由外部进程签署并显式导入。
+
+先在维护模式固定见证公钥：
+
+```powershell
+npm run recovery-anchor -- pin "C:\状态目录" --signer-id recovery:owner --public-key "C:\独立配置\witness-public.pem" --confirm-pin-anchor
+```
+
+导出待签请求（只读），将 `request.body` 交给独立见证方使用 TINP `seal` 签名，再保存完整 `{body,root,signature}`：
+
+```powershell
+npm run recovery-anchor -- request "C:\状态目录" --keyring "C:\独立配置\witness-keyring.json"
+npm run recovery-anchor -- accept "C:\状态目录" --keyring "C:\独立配置\witness-keyring.json" --anchor "C:\独立配置\anchor.json"
+```
+
+查看锚点状态：
+
+```powershell
+npm run recovery-anchor -- status "C:\状态目录" --keyring "C:\独立配置\witness-keyring.json"
+```
+
+`keyring` 只接受固定 signer 的公钥和明确的 `revoked:false`；它由调用方提供，当前不是在线撤销注册表。锚点序号必须单调，已知新锚点会使完整旧目录回放失败。上一次显式锚定之后的本地尾部仍需再次锚定；本机时钟、生产身份登记、硬件保管、两台真实设备和跨主机可信存储尚未实现。`npm run recovery-anchor:demo` 会用独立测试进程演示签署、重启和整目录回放拒绝。

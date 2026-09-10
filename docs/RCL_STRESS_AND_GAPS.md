@@ -23,7 +23,7 @@ K400 单元编号来自实际 RCL `campaignCellIdFor`，完整映射证据见 `a
 | --- | --- | --- | --- | --- | --- | --- |
 | 进程重启连续性 | 原 host 没有持久恢复准入 | 现有 RCL 编译器/runtime + recovery.rcl | RCL_INTEGRATION_GAP，非 Core 表达缺口 | 跨进程连续性与授权不扩张 | 固定候选 Profile；原根与实际账本前缀独立比较 | K110 K250 K257 |
 | 持久密钥与单写者 | 原存储明文/临时接口不满足恢复 | Windows DPAPI / 内核文件锁，Python ctypes/msvcrt | PLATFORM_PROVIDER_GAP | 平台专属实现 | 保持专业 Provider，不修改 RCL Core | K110 K250 |
-| 全目录防回滚 | 无独立外部可信锚点 | 当前明确拒绝声称此能力 | EXTERNAL_ANCHOR_GAP | 跨项目可信状态恢复 | NOT_IMPLEMENTED | K250 K257 |
+| 全目录防回滚 | 无独立外部可信锚点 | alpha.5 可选外部签名单调锚定账本前缀；仍无在线注册表 | EXTERNAL_ANCHOR_GAP + AUTHORITY_PROVIDER_INTEGRATION | 跨项目可信状态恢复 | 候选已实现；只覆盖最后显式锚定前缀 | K250 K257 |
 
 新增回归：真实 coordinator kill 后只查询已执行回执；发出前崩溃不重发；节点密钥与已消费证据锚点冷恢复；撤销不回退；部分缓存回滚、账本截断和伪签名拒绝；同目录协调器及节点写锁；恢复不扩 scope/expiry、不重发 lease；已过期状态可审计恢复但不可执行。参见实际 tests.tap 与独立恢复审查。
 
@@ -34,7 +34,7 @@ K400 单元编号来自实际 RCL `campaignCellIdFor`，完整映射证据见 `a
 - Task/missing capability：缺少未知执行结果的可审计处置入口；gap type = RCL_INTEGRATION_GAP，不是语言表达缺口。
 - Donor/workaround：复用既有 compiler/runtime、DPAPI、签名账本、撤销水位和内核写锁；Node 提供队列和 CLI，RCL 负责 exact root/操作员确认/已撤销/全部确认/存在pending 的准入。
 - Generality：执行未知与重新授权分离、单调关闭、先证据后清状态可复用；Candidate absorption 仅 pending-retirement.rcl 候选 Profile，不修改 Core。
-- Provider advantage：Node 的进程生命周期与 Windows 文件保护保持专业实现；无 silent bypass。外部操作员身份及 anti-rollback anchor gap 当前明确未实施。
+- Provider advantage：Node 的进程生命周期与 Windows 文件保护保持专业实现；无 silent bypass。alpha.5 外部锚点仍是可选 host provider，不冒充生产 authority。
 - Regression：maintenance 高/低层执行旁路、wrong root/未确认无写、缺节点ack、节点签章/epoch/watermark/事实根篡改、终止账本落盘前缀和suffix两个真实kill窗口、只读查询不泄露原文/密钥。
 - Affected K400 candidates：沿用 K057/K110/K117/K250/K257。九门均 NOT_ADJUDICATED，真实 lowered execution 不冒充 native VM 或生产人类认证。
 
@@ -45,3 +45,11 @@ Task/missing capability：原operatorAuthorized仅来自本机明确确认，无
 Generality：签名与权限分离、信任根不能由批准自带、提交前复验、历史证据不能重新授权均可跨项目复用。Candidate absorption：薄adapter和正负/崩溃回归，不复制AAF算法、不修改RCL Core。Affected K400 candidates沿用K057/K110/K117/K250/K257，九门仍NOT_ADJUDICATED。
 
 Regression：确认绕过、缺/替换/撤销key、错误签者/范围/挑战、过期、ack后撤销/过期、策略降级、外部签章/时刻被网络协调器伪造、真实kill后过期历史批准只终结不执行。Donor advantage是真实签章格式兼容；外部可信时间/恢复锚点/人类托管仍为EXTERNAL_AUTHORITY_ANCHOR_GAP，不以本机DPAPI绕过。
+
+## alpha.5 外部恢复锚点压力
+
+Task/missing capability：完整旧目录回放无法仅靠同一用户 DPAPI 识别；keyring 最新性和锚点序号需要外部 authority 输入。Workaround/donor：新增严格的 `twni.external-recovery-anchor.v1` adapter，固定 Ed25519 指纹，签署 ledger prefix/state projection，独立 signer child 只返回签名，主机验证并显式导入。
+
+Regression：策略/签名/root/公钥替换、撤销 key、低序号、缺失账本前缀和完整旧目录回放均 fail closed；有效新锚点可恢复同一主体/租约，checkpoint 不含 keyring 或私钥。`accept` 的维护启动尾部按已验证前缀接纳并记录 adoption mode，不生成新权限。
+
+Generality / gap：单调外部水位、配置根和恢复前缀可跨项目复用，但当前调用方提供的 keyring、时间、代码/配置版本与在线撤销仍未认证；上一次显式锚定后的尾部不在证明范围。没有修改 RCL Core，锚点只作为 host recovery observation。Affected K400 candidates 沿用 K110/K250/K257，九门仍 NOT_ADJUDICATED。

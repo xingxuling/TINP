@@ -1,0 +1,129 @@
+{
+  "format": "twni.delivery-evidence-ledger.v0.5",
+  "version": "0.1.0-alpha.5",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "tests": {
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-concurrency=1",
+      "--test-reporter=tap",
+      "tests/aaf-operator.test.mjs",
+      "tests/conformance.test.mjs",
+      "tests/operator-cli.test.mjs",
+      "tests/operator-security.test.mjs",
+      "tests/opp-bridge.test.mjs",
+      "tests/pending-cli.test.mjs",
+      "tests/pending-security.test.mjs",
+      "tests/profiles.test.mjs",
+      "tests/protected-store.test.mjs",
+      "tests/rcl-guard.test.mjs",
+      "tests/rcl-migration.test.mjs",
+      "tests/rcl-pending-retirement.test.mjs",
+      "tests/rcl-recovery.test.mjs",
+      "tests/rcl-route.test.mjs",
+      "tests/recovery-anchor-cli.test.mjs",
+      "tests/recovery-anchor.test.mjs",
+      "tests/recovery-gate-integration.test.mjs",
+      "tests/recovery-security.test.mjs",
+      "tests/security-review.test.mjs",
+      "tests/shared-ir.test.mjs",
+      "vendor/tinp/tests/tinp-v02.test.mjs",
+      "vendor/tinp/tests/tinp.test.mjs"
+    ],
+    "exitCode": 0,
+    "count": 140,
+    "passed": 140,
+    "failed": 0,
+    "stdout": "evidence/0.1.0-alpha.5/tests.tap",
+    "stdoutSha256": "12dba9e527cdfe5e4bc37f3b7588652318f7a040be661f119fe472ea3032fe74",
+    "stderr": "evidence/0.1.0-alpha.5/tests.stderr.txt"
+  },
+  "verificationFile": "evidence/0.1.0-alpha.5/LOCAL_VERIFICATION.json",
+  "verificationSha256": "5fa43b7a2e2df355d1356a753230e8381363cf2c7d0538b27b11c090c134e584",
+  "sourceTreeRoot": "a44166bcf6ffe5932c4988bb4114141f3d3ab334969494bd138936b882189dd1",
+  "sourceFileCount": 160,
+  "startedAt": "2026-09-10T04:29:08.534Z",
+  "finishedAt": "2026-09-10T04:37:38.547Z",
+  "baseline": {
+    "commit": "9e6e8bc7908226c73630876ff2fbdc17534bbbb8",
+    "ledger": "evidence/0.1.0-alpha.4/EVIDENCE_LEDGER.json",
+    "sha256": "b83eac20a0c4f2d64d06e1b38b23f1d0c9a9affaafb91af23197fa3e61059011"
+  },
+  "change": {
+    "owner": "TINP host adapter plus independent external witness",
+    "policyFormat": "twni.external-recovery-anchor-policy.v1",
+    "anchorFormat": "twni.external-recovery-anchor.v1",
+    "stateProjection": "twni.recovery-state-projection.v1",
+    "rclCoreChanged": false,
+    "privateKeyBoundary": "Signer private key remains in independent signer process memory; keyring is caller input and is not checkpointed"
+  },
+  "recoveryAnchorScenarios": [
+    {
+      "transport": "udp",
+      "status": "VERIFIED_LOCAL_EXTERNAL_RECOVERY_ANCHOR",
+      "firstSequence": 1,
+      "secondSequence": 2,
+      "firstAnchorRoot": "bad5c64fb30f4775a3848212334264db487268801a3f934ce2b1c9b1bfb503f4",
+      "secondAnchorRoot": "ea26fb81cf2116461d4c613548b1e1cbb8622e9ecf6146c715819e86ee249661",
+      "rollbackDetected": true,
+      "rollbackCode": "RECOVERY_ANCHOR_ROLLBACK",
+      "externalKeyringNotCheckpointed": true,
+      "leasePreserved": true,
+      "ledger": "evidence/0.1.0-alpha.5/recovery-anchor-udp.jsonl",
+      "ledgerSha256": "3a5fef471f4162b5c917bc054c462ec69c8e51845fd78f5265a8711bd7558709"
+    },
+    {
+      "transport": "tcp",
+      "status": "VERIFIED_LOCAL_EXTERNAL_RECOVERY_ANCHOR",
+      "firstSequence": 1,
+      "secondSequence": 2,
+      "firstAnchorRoot": "c0d4cd22a791840ad69636dba7e10234941b89dfc73f023a40a7747f99c2b29e",
+      "secondAnchorRoot": "0b1022018ba73ee87642e540e87e95a7bc0856e434ced506281051fa15a909aa",
+      "rollbackDetected": true,
+      "rollbackCode": "RECOVERY_ANCHOR_ROLLBACK",
+      "externalKeyringNotCheckpointed": true,
+      "leasePreserved": true,
+      "ledger": "evidence/0.1.0-alpha.5/recovery-anchor-tcp.jsonl",
+      "ledgerSha256": "5a03ccb64cfd1d65202cf62cba44acd9922bad9181908598c33b08de5c23b297"
+    }
+  ],
+  "profiles": {
+    "recovery": "Optional externally signed monotonic ledger-prefix anchor; complete older directory replay fails closed",
+    "operator": "Immutable external AAF policy remains available and is still checked independently before retirement",
+    "life": "Three local processes, UDP/TCP sockets, OPP negotiation, RCL gates, durable evidence and redacted pending maintenance"
+  },
+  "authorityBoundary": "Caller-provided public keyring and explicit anchor import; no human enrollment, production registry, trusted clock or hardware custody",
+  "rcl": {
+    "coreChanged": false,
+    "profilesReused": ["rcl/recovery.rcl", "rcl/pending-retirement.rcl"],
+    "integration": "Anchor verification is a host observation; existing RCL predicates remain canonical",
+    "candidateCells": ["K057", "K110", "K117", "K250", "K257"],
+    "gates": {
+      "EXPRESS": "NOT_ADJUDICATED",
+      "COMPILE": "NOT_ADJUDICATED",
+      "LOWER": "NOT_ADJUDICATED",
+      "EXECUTE": "NOT_ADJUDICATED",
+      "CORRECT": "NOT_ADJUDICATED",
+      "ROBUST": "NOT_ADJUDICATED",
+      "PERFORMANCE": "NOT_ADJUDICATED",
+      "AI_GENERATE": "NOT_ADJUDICATED",
+      "EVIDENCE": "NOT_ADJUDICATED"
+    }
+  },
+  "externalActions": {
+    "githubActions": "NOT_RUN",
+    "merge": "NOT_RUN",
+    "deployment": "NOT_DEPLOYED",
+    "publicNetwork": "NOT_RUN",
+    "candidatePush": "Pending candidate branch verification"
+  },
+  "limits": [
+    "The anchor covers only its last explicit signed ledger prefix; newer unanchored suffix writes remain outside proof",
+    "A caller-provided revoked:false keyring is not an authenticated online registry or revocation convergence",
+    "No trusted external time, hardware key custody, code/configuration rollback protection, malicious-witness resistance or cross-device encrypted anchor",
+    "No arbitrary side-effect transactions or complete RNCS world grant",
+    "Warm local timing samples exclude signing, DPAPI, startup, WAN, throughput and SLA"
+  ],
+  "nextGap": "Independent authority registry/key custody lifecycle, trusted time and cross-device anchor convergence"
+}

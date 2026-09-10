@@ -46,6 +46,8 @@ The network crash cases in this review use UDP over loopback on Windows. They do
 
 DPAPI authentication does not protect against the same Windows user deliberately decrypting and re-encrypting state; semantic cache validation still applies. Local partial snapshot rollback is detected against retained evidence, but replaying the complete old directory and every local checkpoint requires an independent monotonic authority to detect. No such global rollback-resistance claim is made.
 
+alpha.5 adds an opt-in external recovery anchor for that bounded case. The independent witness signs a ledger prefix and state projection with a pinned Ed25519 fingerprint; a caller-supplied keyring is required at recovery. Tests restore a complete directory copy from before sequence 2 and observe `RECOVERY_ANCHOR_ROLLBACK`. This does not authenticate the witness registry, time source, code/configuration release, or the unanchored suffix after the last explicit import.
+
 Historical `RECEIPT_LOOKUP` reconciles already executed evidence without renewing authority or dispatching a new intent. Unknown pending execution remains unresolved and fails closed. No RCL Core promotion, K400 PASS, production deployment, or remote push is authorized by this review document.
 
 ## Final-tree teardown regression

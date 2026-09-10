@@ -16,9 +16,17 @@ function temp() {
   const directory=fs.mkdtempSync(path.join(os.tmpdir(),'tinp-recovery-'));
   return directory;
 }
+async function removeDirectory(directory) {
+  let last;
+  for(let attempt=0;attempt<30;attempt++) {
+    try { fs.rmSync(directory,{recursive:true,force:true}); return; }
+    catch(error) { last=error; if(error.code!=='EPERM')throw error; await new Promise(resolve=>setTimeout(resolve,100)); }
+  }
+  throw last;
+}
 async function fixture(t) {
   const directory=temp(),suite=await InternetSuite.start({directory,durable:true,timeoutMs:3000});
-  t.after(async()=>{await suite.close();fs.rmSync(directory,{recursive:true,force:true});});
+  t.after(async()=>{await suite.close();await removeDirectory(directory);});
   return suite;
 }
 function coordinator(directory,mode='normal') {
@@ -73,7 +81,7 @@ test('durable recovery: actual service kill preserves identity, exact receipt an
 
 test('durable recovery: revocation survives service death and coordinator reopening',async t=>{
   const directory=temp();let suite=await InternetSuite.start({directory,durable:true,timeoutMs:3000});
-  t.after(async()=>{await suite.close();fs.rmSync(directory,{recursive:true,force:true});});
+  t.after(async()=>{await suite.close();await removeDirectory(directory);});
   const result=await suite.use('before revocation'),leaseRoot=suite.lease.root;
   await suite.revoke();
   await suite.nodes.get('C').kill();await suite.restartNode('C');
@@ -88,7 +96,7 @@ test('durable recovery: revocation survives service death and coordinator reopen
 
 test('durable recovery: independent second coordinator cannot acquire active state',async t=>{
   const directory=temp(),owner=coordinator(directory);
-  t.after(async()=>{await kill(owner.child);fs.rmSync(directory,{recursive:true,force:true});});
+  t.after(async()=>{await kill(owner.child);await removeDirectory(directory);});
   assert.equal((await owner.event).event,'ready');
   await assert.rejects(InternetSuite.start({directory,durable:true}),/LOCK|BUSY|OWNER|IN_USE/);
   // Failed acquisition must not release the first coordinator's ownership.
@@ -97,7 +105,7 @@ test('durable recovery: independent second coordinator cannot acquire active sta
 
 test('durable recovery: an existing node writer blocks coordinator recovery without changing its cache',async t=>{
   const directory=temp();let suite=await InternetSuite.start({directory,durable:true}),held;
-  t.after(async()=>{await held?.release();await suite.close();fs.rmSync(directory,{recursive:true,force:true});});
+  t.after(async()=>{await held?.release();await suite.close();await removeDirectory(directory);});
   await suite.use('exclusive node writer');await suite.close();
   const nodeDirectory=path.join(directory,'private','nodes','C');
   const file=path.join(nodeDirectory,'protected-state.dpapi'),before=fs.readFileSync(file);
@@ -111,7 +119,7 @@ test('durable recovery: an existing node writer blocks coordinator recovery with
 
 test('durable recovery: actual coordinator kill after execution reconciles one retained receipt',async t=>{
   const directory=temp(),owner=coordinator(directory,'crash-after-receipt');let recovered;
-  t.after(async()=>{await owner.dispose();if(recovered)await recovered.dispose();fs.rmSync(directory,{recursive:true,force:true});});
+  t.after(async()=>{await owner.dispose();if(recovered)await recovered.dispose();await removeDirectory(directory);});
   const before=await owner.event;
   assert.equal(before.event,'receipt-before-commit');
   assert.equal(before.receipt.body.executionCount,1);
@@ -132,7 +140,7 @@ test('durable recovery: actual coordinator kill after execution reconciles one r
 
 test('durable recovery: unresolved persisted request never becomes an automatic new execution',async t=>{
   const directory=temp(),owner=coordinator(directory,'crash-before-send');let recovered;
-  t.after(async()=>{await owner.dispose();if(recovered)await recovered.dispose();fs.rmSync(directory,{recursive:true,force:true});});
+  t.after(async()=>{await owner.dispose();if(recovered)await recovered.dispose();await removeDirectory(directory);});
   const before=await owner.event;
   assert.equal(before.event,'pending-before-send');await kill(owner.child);await waitForExit(before.pids);
   recovered=coordinator(directory);
@@ -146,7 +154,7 @@ test('durable recovery: unresolved persisted request never becomes an automatic 
 
 test('durable recovery: ciphertext corruption cannot silently create fresh authority',async t=>{
   const directory=temp(),suite=await InternetSuite.start({directory,durable:true});
-  t.after(async()=>{await suite.close();fs.rmSync(directory,{recursive:true,force:true});});
+  t.after(async()=>{await suite.close();await removeDirectory(directory);});
   await suite.use('encrypted state');await suite.close();
   const file=path.join(directory,'private','coordinator','protected-state.dpapi');
   const bytes=fs.readFileSync(file);bytes[Math.floor(bytes.length/2)]^=1;fs.writeFileSync(file,bytes);
@@ -155,7 +163,7 @@ test('durable recovery: ciphertext corruption cannot silently create fresh autho
 
 test('durable recovery: ledger truncated behind its committed checkpoint fails closed',async t=>{
   const directory=temp(),suite=await InternetSuite.start({directory,durable:true});
-  t.after(async()=>{await suite.close();fs.rmSync(directory,{recursive:true,force:true});});
+  t.after(async()=>{await suite.close();await removeDirectory(directory);});
   await suite.use('checkpoint truncation');await suite.close();
   const lines=fs.readFileSync(suite.ledger.file,'utf8').trimEnd().split('\n');
   assert.ok(lines.length>1);lines.pop();fs.writeFileSync(suite.ledger.file,lines.join('\n')+'\n');
@@ -164,7 +172,7 @@ test('durable recovery: ledger truncated behind its committed checkpoint fails c
 
 test('durable recovery: rehashed forged ledger suffix lacks authority signature',async t=>{
   const directory=temp(),suite=await InternetSuite.start({directory,durable:true});
-  t.after(async()=>{await suite.close();fs.rmSync(directory,{recursive:true,force:true});});
+  t.after(async()=>{await suite.close();await removeDirectory(directory);});
   await suite.use('signed evidence');await suite.close();
   const events=fs.readFileSync(suite.ledger.file,'utf8').trimEnd().split('\n').map(line=>JSON.parse(line));
   const last=events.at(-1);last.detail.attackerControlled=true;
@@ -175,7 +183,7 @@ test('durable recovery: rehashed forged ledger suffix lacks authority signature'
 
 test('durable recovery: an older valid service snapshot cannot erase committed execution evidence',async t=>{
   const directory=temp(),suite=await InternetSuite.start({directory,durable:true});
-  t.after(async()=>{await suite.close();fs.rmSync(directory,{recursive:true,force:true});});
+  t.after(async()=>{await suite.close();await removeDirectory(directory);});
   const file=path.join(directory,'private','nodes','C','protected-state.dpapi');
   const older=fs.readFileSync(file);
   await suite.use('must not execute twice');await suite.close();
@@ -202,7 +210,7 @@ test('durable recovery: cache signatures, request keys and consumed anchors are 
 
 test('durable recovery: authenticated storage does not excuse malformed cache records',async t=>{
   const directory=temp(),suite=await InternetSuite.start({directory,durable:true});
-  t.after(async()=>{await suite.close();fs.rmSync(directory,{recursive:true,force:true});});
+  t.after(async()=>{await suite.close();await removeDirectory(directory);});
   await suite.use('cache restart attacks');await suite.close();
   const store=new ProtectedStore(path.join(directory,'private','nodes','C'),{purpose:'twni.node-state.v1:C'});
   const original=store.load();

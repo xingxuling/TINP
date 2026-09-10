@@ -46,3 +46,7 @@ The independent `tests/profiles.test.mjs` run passed 10/10 on the source hashes 
 The strict bandwidth test isolates raw DISCOVER transport timing from Python OPP/RCL overhead. Its recorded run transferred 4,916 probe bytes at 16,000 B/s in about 357 ms, versus a nominal 307.25 ms; complete execution transferred 15,440 bytes. These are local measurements on the pinned run, not future performance promises.
 
 The full suite may have newer cumulative validation logs; consult its final ledger for totals. Partial local evidence never compensates for an untested K400 gate. K057/K110/K117/K250/K257 are reviewed stress candidates, not newly admitted cells.
+
+## alpha.5 external recovery witness
+
+The current candidate adds an opt-in `twni.external-recovery-anchor.v1` adapter. It was exercised with a separate signer process and a complete old-directory replay: sequence 2 was signed externally, the older copy failed closed with `RECOVERY_ANCHOR_ROLLBACK`, and the newer copy reopened with the original lease. The keyring and signer private key were not written to the protected coordinator state. This remains a local candidate; the keyring, witness registry, clock, code/configuration release, and post-anchor suffix are not independently authenticated.

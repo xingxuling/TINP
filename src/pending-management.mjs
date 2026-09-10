@@ -3,6 +3,7 @@ import path from 'node:path';
 import {operatorChallenge,verifyExternalRetirement} from './operator-authorization.mjs';
 import {ProtectedStore} from './protected-store.mjs';
 import {authentic,requireThat} from './identity.mjs';
+import {anchorBodyForState} from './recovery-anchor.mjs';
 import {evaluatePendingRetirementGuard} from '../adapters/rcl-pending-retirement.mjs';
 
 export function verifyRetirementAcks(s,watermark,acks){
@@ -33,19 +34,23 @@ export async function findPendingRetirement(s){
 }
 
 // This path never creates an identity, process, checkpoint or ledger event.
-export async function inspectPending(directory,{operatorKeyring}={}){
+export async function inspectPending(directory,{operatorKeyring,recoveryAnchorKeyring,recoveryAnchor}={}){
   const stateFile=path.join(directory,'private','coordinator','protected-state.dpapi'),ledgerFile=path.join(directory,'ledger.jsonl');
   requireThat(fs.existsSync(stateFile)&&fs.existsSync(ledgerFile),'RECOVERY_STATE_NOT_FOUND');
   const beforeState=fs.readFileSync(stateFile),beforeLedger=fs.readFileSync(ledgerFile);
-  const s={directory,operatorKeyring,store:new ProtectedStore(path.dirname(stateFile),{purpose:'twni.coordinator-state.v1'})};
+  const s={directory,operatorKeyring,recoveryAnchorKeyring,recoveryAnchorInput:recoveryAnchor,maintenance:true,store:new ProtectedStore(path.dirname(stateFile),{purpose:'twni.coordinator-state.v1'})};
   const {loadExistingRecovery}=await import('./coordinator-state.mjs');
   loadExistingRecovery(s);
   const terminal=await findPendingRetirement(s);
   requireThat(beforeState.equals(fs.readFileSync(stateFile))&&beforeLedger.equals(fs.readFileSync(ledgerFile)),'RECOVERY_SNAPSHOT_CHANGED_RETRY');
   const q=s.pending?.request;
+  const recoveryAnchorRequest=s.recoveryAnchorPolicy?{format:'twni.recovery-anchor-request.v1',policy:s.recoveryAnchorPolicy,body:anchorBodyForState({
+    policy:s.recoveryAnchorPolicy,sequence:(s.recoveryAnchor?.body.sequence??0)+1,previousAnchorRoot:s.recoveryAnchor?.root??'0'.repeat(64),state:s})}:null;
   return {format:'twni.pending-inspection.v1',status:terminal?'retired-awaiting-finalization':q?'pending':s.revoked?'lease-revoked':'no-pending-request',
     requestRoot:q?.root??null,requestId:q?.body.requestId??null,targetNodeId:q?.body.targetNodeId??null,
     operatorPolicy:s.operatorPolicy,operatorChallenge:s.operatorPolicy&&q?operatorChallenge(s):null,
+    recoveryAnchorPolicy:s.recoveryAnchorPolicy,recoveryAnchor:s.recoveryAnchor,recoveryAnchorVerification:s.recoveryAnchorVerification??null,
+    recoveryAnchorRequest,
     leaseRoot:s.lease.root,leaseRevoked:s.revoked,leaseExpiresAtMs:s.lease.body.expiresAtMs,revocationEpoch:s.revocationEpoch,
     evidenceRoot:s.ledger.root,checkpointAuthenticated:true,nodeCacheVerified:false,
     executionOutcome:q?'unknown':null,
