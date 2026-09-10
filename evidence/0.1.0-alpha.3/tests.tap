@@ -1,0 +1,700 @@
+TAP version 13
+# Subtest: authenticated network rejects mutated transaction facts before any provider execution
+ok 1 - authenticated network rejects mutated transaction facts before any provider execution
+  ---
+  duration_ms: 741.3893
+  type: 'test'
+  ...
+# Subtest: concurrent exact retry executes once; changed request content cannot replay
+ok 2 - concurrent exact retry executes once; changed request content cannot replay
+  ---
+  duration_ms: 571.5445
+  type: 'test'
+  ...
+# Subtest: receipt mutation and durable ledger tampering cannot become verified evidence
+ok 3 - receipt mutation and durable ledger tampering cannot become verified evidence
+  ---
+  duration_ms: 640.9415
+  type: 'test'
+  ...
+# Subtest: bounded path selection applies cost, region, latency and energy together
+ok 4 - bounded path selection applies cost, region, latency and energy together
+  ---
+  duration_ms: 1.947
+  type: 'test'
+  ...
+# Subtest: deterministic malformed wire corpus rejects framing errors
+ok 5 - deterministic malformed wire corpus rejects framing errors
+  ---
+  duration_ms: 1.6634
+  type: 'test'
+  ...
+# Subtest: integrated RCL migration rejects a changed subject before issuing a replacement
+ok 6 - integrated RCL migration rejects a changed subject before issuing a replacement
+  ---
+  duration_ms: 906.1293
+  type: 'test'
+  ...
+# Subtest: integrated RCL route gate enforces signed latency and energy budgets from trusted edges
+ok 7 - integrated RCL route gate enforces signed latency and energy budgets from trusted edges
+  ---
+  duration_ms: 618.964
+  type: 'test'
+  ...
+# Subtest: an ambiguous lost response reconciles the exact signed request without a second execution
+ok 8 - an ambiguous lost response reconciles the exact signed request without a second execution
+  ---
+  duration_ms: 680.8669
+  type: 'test'
+  ...
+# Subtest: real upstream OPP preserves Unicode and returns non-authoritative exact contract
+ok 9 - real upstream OPP preserves Unicode and returns non-authoritative exact contract
+  ---
+  duration_ms: 275.2615
+  type: 'test'
+  ...
+# Subtest: upstream rejects schema drift and intersects scopes without granting authority
+ok 10 - upstream rejects schema drift and intersects scopes without granting authority
+  ---
+  duration_ms: 281.122
+  type: 'test'
+  ...
+# Subtest: profile version mismatch fails before contract use
+ok 11 - profile version mismatch fails before contract use
+  ---
+  duration_ms: 254.7251
+  type: 'test'
+  ...
+# Subtest: missing required schema fails closed
+ok 12 - missing required schema fails closed
+  ---
+  duration_ms: 264.0352
+  type: 'test'
+  ...
+# Subtest: pending CLI: inspect then retire unsent pending without resending
+ok 13 - pending CLI: inspect then retire unsent pending without resending
+  ---
+  duration_ms: 8424.074
+  type: 'test'
+  ...
+# Subtest: pending CLI: retrieve executed receipt without resending
+ok 14 - pending CLI: retrieve executed receipt without resending
+  ---
+  duration_ms: 5616.6851
+  type: 'test'
+  ...
+# Subtest: pending inspector is offline, nonmutating, redacted and refuses missing state without creating it
+ok 15 - pending inspector is offline, nonmutating, redacted and refuses missing state without creating it
+  ---
+  duration_ms: 3717.8178
+  type: 'test'
+  ...
+# Subtest: maintenance denies direct execution and service restart cannot activate a provider
+ok 16 - maintenance denies direct execution and service restart cannot activate a provider
+  ---
+  duration_ms: 4258.3154
+  type: 'test'
+  ...
+# Subtest: retirement root and explicit confirmation fail before any durable mutation
+ok 17 - retirement root and explicit confirmation fail before any durable mutation
+  ---
+  duration_ms: 3268.2542
+  type: 'test'
+  ...
+# Subtest: authenticated pending state binds its public root, target and whole route even when the route root is unchanged
+ok 18 - authenticated pending state binds its public root, target and whole route even when the route root is unchanged
+  ---
+  duration_ms: 4279.4314
+  type: 'test'
+  ...
+# Subtest: retirement missing one live acknowledgement preserves pending and resumes only with full revocation evidence
+ok 19 - retirement missing one live acknowledgement preserves pending and resumes only with full revocation evidence
+  ---
+  duration_ms: 5582.1957
+  type: 'test'
+  ...
+# Subtest: actual coordinator death after retirement prefix commit recovers without execution or lease renewal
+ok 20 - actual coordinator death after retirement prefix commit recovers without execution or lease renewal
+  ---
+  duration_ms: 6644.3813
+  type: 'test'
+  ...
+# Subtest: actual coordinator death after retirement suffix commit recovers without execution or lease renewal
+ok 21 - actual coordinator death after retirement suffix commit recovers without execution or lease renewal
+  ---
+  duration_ms: 7349.268
+  type: 'test'
+  ...
+# Subtest: authority-signed terminal does not excuse missing node evidence, wrong epoch or fake RCL admission
+ok 22 - authority-signed terminal does not excuse missing node evidence, wrong epoch or fake RCL admission
+  ---
+  duration_ms: 12209.0309
+  type: 'test'
+  ...
+# Subtest: udp: Chinese life intent executes through three independent local processes and two socket hops
+ok 23 - udp: Chinese life intent executes through three independent local processes and two socket hops
+  ---
+  duration_ms: 538.57
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-Me4PHc
+# Subtest: tcp: Chinese life intent executes through three independent local processes and two socket hops
+ok 24 - tcp: Chinese life intent executes through three independent local processes and two socket hops
+  ---
+  duration_ms: 527.977
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-oNXuG3
+# Subtest: commercial: contract-identical provider replacement executes; semantic drift rolls back; missing provider migrates to B
+ok 25 - commercial: contract-identical provider replacement executes; semantic drift rolls back; missing provider migrates to B
+  ---
+  duration_ms: 1646.3581
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-09Dgir
+# Subtest: degraded: killing relay B causes authenticated direct A-C execution without authority or evidence loss
+ok 26 - degraded: killing relay B causes authenticated direct A-C execution without authority or evidence loss
+  ---
+  duration_ms: 1482.5236
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-c2EOlx
+# Subtest: partition: actual links blocked on both sides preserve local isolated capability without remote execution
+ok 27 - partition: actual links blocked on both sides preserve local isolated capability without remote execution
+  ---
+  duration_ms: 786.7661
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-gHUGXP
+# Subtest: degraded: a real link failure with B still alive reroutes socket traffic over A-C
+ok 28 - degraded: a real link failure with B still alive reroutes socket traffic over A-C
+  ---
+  duration_ms: 535.6499
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-EfN2UM
+# Subtest: survival: every provider disappears; no execution is fabricated and identity/session/durable prefix survive
+ok 29 - survival: every provider disappears; no execution is fabricated and identity/session/durable prefix survive
+  ---
+  duration_ms: 530.0576
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-MnvpNn
+# Subtest: commercial: source migration A to B preserves subject, session, authority and a verifiable durable evidence chain
+ok 30 - commercial: source migration A to B preserves subject, session, authority and a verifiable durable evidence chain
+  ---
+  duration_ms: 786.9474
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-gbCMDU
+# Subtest: commercial: protocol downgrade is negotiated and an unsupported provider version fails over without invoking it
+ok 31 - commercial: protocol downgrade is negotiated and an unsupported provider version fails over without invoking it
+  ---
+  duration_ms: 911.9456
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-cWuFTN
+# Subtest: degraded: actual socket send throttling delays bytes while the same guarded operation still executes
+ok 32 - degraded: actual socket send throttling delays bytes while the same guarded operation still executes
+  ---
+  duration_ms: 1938.5758
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-tJ431K
+# {"profile":"actual-throttled-local-udp","sentBytes":16054,"bytesPerSecond":16000,"elapsedMs":1370.8516,"nominalDelayMs":1003.375,"probeBytes":4916,"probeElapsedMs":353.14300000000094,"probeNominalMs":307.25}
+# Subtest: protected storage rejects missing purpose and unsupported platforms
+ok 33 - protected storage rejects missing purpose and unsupported platforms
+  ---
+  duration_ms: 0.9738
+  type: 'test'
+  ...
+# Subtest: actual current-user DPAPI roundtrip protects Ed25519 private keys on disk
+ok 34 - actual current-user DPAPI roundtrip protects Ed25519 private keys on disk
+  ---
+  duration_ms: 327.2817
+  type: 'test'
+  ...
+# Subtest: DPAPI purpose binding rejects a different state domain without changing ciphertext
+ok 35 - DPAPI purpose binding rejects a different state domain without changing ciphertext
+  ---
+  duration_ms: 490.0117
+  type: 'test'
+  ...
+# Subtest: corrupted header, ciphertext and truncation all fail closed
+ok 36 - corrupted header, ciphertext and truncation all fail closed
+  ---
+  duration_ms: 174.2698
+  type: 'test'
+  ...
+# Subtest: atomic snapshot overwrite retains latest state and leaves no temporary files
+ok 37 - atomic snapshot overwrite retains latest state and leaves no temporary files
+  ---
+  duration_ms: 590.2872
+  type: 'test'
+  ...
+# Subtest: DPAPI rejects modified protected content even when the outer checksum is recomputed
+ok 38 - DPAPI rejects modified protected content even when the outer checksum is recomputed
+  ---
+  duration_ms: 451.7343
+  type: 'test'
+  ...
+# Subtest: unavailable provider preserves last snapshot and never writes a plaintext fallback
+ok 39 - unavailable provider preserves last snapshot and never writes a plaintext fallback
+  ---
+  duration_ms: 438.3249
+  type: 'test'
+  ...
+# Subtest: a fresh Node process recovers the same protected private key and session
+ok 40 - a fresh Node process recovers the same protected private key and session
+  ---
+  duration_ms: 469.16
+  type: 'test'
+  ...
+# Subtest: invalid JSON payload inputs do not overwrite a healthy snapshot
+ok 41 - invalid JSON payload inputs do not overwrite a healthy snapshot
+  ---
+  duration_ms: 360.0049
+  type: 'test'
+  ...
+# Subtest: fixed RCL source compiles and admits authenticated matching observations
+ok 42 - fixed RCL source compiles and admits authenticated matching observations
+  ---
+  duration_ms: 19.094
+  type: 'test'
+  ...
+# Subtest: each semantic predicate independently denies in RCL
+ok 43 - each semantic predicate independently denies in RCL
+  ---
+  duration_ms: 19.4769
+  type: 'test'
+  ...
+# Subtest: missing, malformed, accessor and injection inputs fail closed without compilation
+ok 44 - missing, malformed, accessor and injection inputs fail closed without compilation
+  ---
+  duration_ms: 2.4327
+  type: 'test'
+  ...
+# Subtest: facts are snapshotted before asynchronous execution and requests stay isolated
+ok 45 - facts are snapshotted before asynchronous execution and requests stay isolated
+  ---
+  duration_ms: 15.8049
+  type: 'test'
+  ...
+# Subtest: RCL admits scope attenuation, equal expiry and scope order independence
+ok 46 - RCL admits scope attenuation, equal expiry and scope order independence
+  ---
+  duration_ms: 16.7202
+  type: 'test'
+  ...
+# Subtest: identity, continuity, world, expiry and scope expansion are independently denied in RCL
+ok 47 - identity, continuity, world, expiry and scope expansion are independently denied in RCL
+  ---
+  duration_ms: 5.4399
+  type: 'test'
+  ...
+# Subtest: missing fields, invalid timestamps and malformed scope sets fail closed
+ok 48 - missing fields, invalid timestamps and malformed scope sets fail closed
+  ---
+  duration_ms: 0.5309
+  type: 'test'
+  ...
+# Subtest: scope snapshots and concurrent migration decisions remain isolated
+ok 49 - scope snapshots and concurrent migration decisions remain isolated
+  ---
+  duration_ms: 5.826
+  type: 'test'
+  ...
+# Subtest: fixed RCL pending retirement compiles and records actual runtime admission
+ok 50 - fixed RCL pending retirement compiles and records actual runtime admission
+  ---
+  duration_ms: 14.2822
+  type: 'test'
+  ...
+# Subtest: RCL independently denies every false predicate and mismatched root in the complete truth table
+ok 51 - RCL independently denies every false predicate and mismatched root in the complete truth table
+  ---
+  duration_ms: 14.5599
+  type: 'test'
+  ...
+# Subtest: pending retirement observations reject missing, extra, inherited, accessor and malformed fields
+ok 52 - pending retirement observations reject missing, extra, inherited, accessor and malformed fields
+  ---
+  duration_ms: 1.6445
+  type: 'test'
+  ...
+# Subtest: request root binding is exact and does not silently normalize valid hexadecimal strings
+ok 53 - request root binding is exact and does not silently normalize valid hexadecimal strings
+  ---
+  duration_ms: 3.729
+  type: 'test'
+  ...
+# Subtest: pending retirement input snapshots remain isolated across mutations and concurrent calls
+ok 54 - pending retirement input snapshots remain isolated across mutations and concurrent calls
+  ---
+  duration_ms: 6.7844
+  type: 'test'
+  ...
+# Subtest: fixed RCL recovery program admits equality, shorter expiry and forward revocation epoch
+ok 55 - fixed RCL recovery program admits equality, shorter expiry and forward revocation epoch
+  ---
+  duration_ms: 22.2453
+  type: 'test'
+  ...
+# Subtest: each identity, lease, revocation, evidence and authentication predicate denies independently in RCL
+ok 56 - each identity, lease, revocation, evidence and authentication predicate denies independently in RCL
+  ---
+  duration_ms: 7.6349
+  type: 'test'
+  ...
+# Subtest: recovery observations reject missing, extra, inherited, accessor and malformed data
+ok 57 - recovery observations reject missing, extra, inherited, accessor and malformed data
+  ---
+  duration_ms: 1.1761
+  type: 'test'
+  ...
+# Subtest: recovery inputs remain data and concurrent snapshots stay isolated
+ok 58 - recovery inputs remain data and concurrent snapshots stay isolated
+  ---
+  duration_ms: 12.6353
+  type: 'test'
+  ...
+# Subtest: loading expired historical state does not admit expired execution
+ok 59 - loading expired historical state does not admit expired execution
+  ---
+  duration_ms: 8.9598
+  type: 'test'
+  ...
+# Subtest: RCL admits fractional metrics, inclusive budgets and zero local route
+ok 60 - RCL admits fractional metrics, inclusive budgets and zero local route
+  ---
+  duration_ms: 23.5264
+  type: 'test'
+  ...
+# Subtest: RCL independently rejects each budget, region, reachability and security failure
+ok 61 - RCL independently rejects each budget, region, reachability and security failure
+  ---
+  duration_ms: 12.1682
+  type: 'test'
+  ...
+# Subtest: missing fields, nonfinite/unsafe/negative metrics and coercion attempts fail closed
+ok 62 - missing fields, nonfinite/unsafe/negative metrics and coercion attempts fail closed
+  ---
+  duration_ms: 0.71
+  type: 'test'
+  ...
+# Subtest: metrics are snapshotted and concurrent route decisions remain isolated
+ok 63 - metrics are snapshotted and concurrent route decisions remain isolated
+  ---
+  duration_ms: 9.8045
+  type: 'test'
+  ...
+# Subtest: actual recovery caller witnesses admission and independently denies checkpoint root, epoch and lease expansion
+ok 64 - actual recovery caller witnesses admission and independently denies checkpoint root, epoch and lease expansion
+  ---
+  duration_ms: 529.5506
+  type: 'test'
+  ...
+# Subtest: actual recovery caller rejects correctly signed session scope, identity, world and expiry violations before RCL
+ok 65 - actual recovery caller rejects correctly signed session scope, identity, world and expiry violations before RCL
+  ---
+  duration_ms: 677.6884
+  type: 'test'
+  ...
+# Subtest: valid protected checkpoint with a wrong prefix root is rejected by the host before admission
+ok 66 - valid protected checkpoint with a wrong prefix root is rejected by the host before admission
+  ---
+  duration_ms: 1310.6485
+  type: 'test'
+  ...
+# Subtest: authenticated signed crash suffix cannot reissue the checkpoint lease during host recovery
+ok 67 - authenticated signed crash suffix cannot reissue the checkpoint lease during host recovery
+  ---
+  duration_ms: 1018.4443
+  type: 'test'
+  ...
+# Subtest: signed crash suffix cannot expand an attenuated saved session within its wider lease
+ok 68 - signed crash suffix cannot expand an attenuated saved session within its wider lease
+  ---
+  duration_ms: 1867.5922
+  type: 'test'
+  ...
+# Subtest: full process reopening records an actual RCL recovery witness but expired lease execution stays denied
+ok 69 - full process reopening records an actual RCL recovery witness but expired lease execution stays denied
+  ---
+  duration_ms: 3299.7346
+  type: 'test'
+  ...
+# Subtest: durable recovery: actual service kill preserves identity, exact receipt and consumed anchors
+ok 70 - durable recovery: actual service kill preserves identity, exact receipt and consumed anchors
+  ---
+  duration_ms: 3262.018
+  type: 'test'
+  ...
+# Subtest: durable recovery: revocation survives service death and coordinator reopening
+ok 71 - durable recovery: revocation survives service death and coordinator reopening
+  ---
+  duration_ms: 5876.78
+  type: 'test'
+  ...
+# Subtest: durable recovery: independent second coordinator cannot acquire active state
+ok 72 - durable recovery: independent second coordinator cannot acquire active state
+  ---
+  duration_ms: 1819.0122
+  type: 'test'
+  ...
+# Subtest: durable recovery: an existing node writer blocks coordinator recovery without changing its cache
+ok 73 - durable recovery: an existing node writer blocks coordinator recovery without changing its cache
+  ---
+  duration_ms: 5075.3849
+  type: 'test'
+  ...
+# Subtest: durable recovery: actual coordinator kill after execution reconciles one retained receipt
+ok 74 - durable recovery: actual coordinator kill after execution reconciles one retained receipt
+  ---
+  duration_ms: 3793.6639
+  type: 'test'
+  ...
+# Subtest: durable recovery: unresolved persisted request never becomes an automatic new execution
+ok 75 - durable recovery: unresolved persisted request never becomes an automatic new execution
+  ---
+  duration_ms: 3454.4657
+  type: 'test'
+  ...
+# Subtest: durable recovery: ciphertext corruption cannot silently create fresh authority
+ok 76 - durable recovery: ciphertext corruption cannot silently create fresh authority
+  ---
+  duration_ms: 3399.7877
+  type: 'test'
+  ...
+# Subtest: durable recovery: ledger truncated behind its committed checkpoint fails closed
+ok 77 - durable recovery: ledger truncated behind its committed checkpoint fails closed
+  ---
+  duration_ms: 3113.2108
+  type: 'test'
+  ...
+# Subtest: durable recovery: rehashed forged ledger suffix lacks authority signature
+ok 78 - durable recovery: rehashed forged ledger suffix lacks authority signature
+  ---
+  duration_ms: 3072.8748
+  type: 'test'
+  ...
+# Subtest: durable recovery: an older valid service snapshot cannot erase committed execution evidence
+ok 79 - durable recovery: an older valid service snapshot cannot erase committed execution evidence
+  ---
+  duration_ms: 3960.7904
+  type: 'test'
+  ...
+# Subtest: durable recovery: cache signatures, request keys and consumed anchors are independently bound
+ok 80 - durable recovery: cache signatures, request keys and consumed anchors are independently bound
+  ---
+  duration_ms: 2895.7856
+  type: 'test'
+  ...
+# Subtest: durable recovery: authenticated storage does not excuse malformed cache records
+ok 81 - durable recovery: authenticated storage does not excuse malformed cache records
+  ---
+  duration_ms: 5761.9672
+  type: 'test'
+  ...
+# Subtest: security: consumed session evidence anchor cannot authorize a second divergent request
+ok 82 - security: consumed session evidence anchor cannot authorize a second divergent request
+  ---
+  duration_ms: 544.7279
+  type: 'test'
+  ...
+# Subtest: security: subject cannot lower route cost below an authority budget by rewriting route metrics
+ok 83 - security: subject cannot lower route cost below an authority budget by rewriting route metrics
+  ---
+  duration_ms: 494.7622
+  type: 'test'
+  ...
+# Subtest: security: concurrent exact retries return one execution and identical receipt
+ok 84 - security: concurrent exact retries return one execution and identical receipt
+  ---
+  duration_ms: 519.3895
+  type: 'test'
+  ...
+# Subtest: security: trusted provider receipt cannot relabel world, capability or result status
+ok 85 - security: trusted provider receipt cannot relabel world, capability or result status
+  ---
+  duration_ms: 526.7625
+  type: 'test'
+  ...
+# Subtest: security: authority-issued source node binding cannot be replaced by the subject
+ok 86 - security: authority-issued source node binding cannot be replaced by the subject
+  ---
+  duration_ms: 469.0329
+  type: 'test'
+  ...
+# Subtest: security: signed slow requests have a hard concurrency bound and forged senders never invoke handlers
+ok 87 - security: signed slow requests have a hard concurrency bound and forged senders never invoke handlers
+  ---
+  duration_ms: 15.4786
+  type: 'test'
+  ...
+# Subtest: security: request timeout cancels a bandwidth-delayed UDP transmission
+ok 88 - security: request timeout cancels a bandwidth-delayed UDP transmission
+  ---
+  duration_ms: 80.47
+  type: 'test'
+  ...
+# Subtest: security: forwarding rejects skipped ingress hops, cycles, unknown edges and tampering
+ok 89 - security: forwarding rejects skipped ingress hops, cycles, unknown edges and tampering
+  ---
+  duration_ms: 222.5202
+  type: 'test'
+  ...
+# Subtest: all ten shared projections validate real signed runtime data with Python jsonschema and reject malformed fields
+ok 90 - all ten shared projections validate real signed runtime data with Python jsonschema and reject malformed fields
+  ---
+  duration_ms: 4536.115
+  type: 'test'
+  ...
+# {"engine":"python-jsonschema-Draft202012Validator","positiveRuntimeObjects":10,"malformedRejections":11,"directory":"C:\\\\Users\\\\User\\\\.codex\\\\.chatgpt-projects\\\\g-p-6a437af98cc08191af8185180f66b55e\\\\work\\\\TaoWind-Next-Internet\\\\.runs\\\\shared-ir\\\\run-4CW5JD"}
+# Subtest: protocol registry distinguishes bounded implemented behaviors from all sixteen roadmap domains
+ok 91 - protocol registry distinguishes bounded implemented behaviors from all sixteen roadmap domains
+  ---
+  duration_ms: 2.6942
+  type: 'test'
+  ...
+# Subtest: subject and capability addresses round-trip
+ok 92 - subject and capability addresses round-trip
+  ---
+  duration_ms: 1.8256
+  type: 'test'
+  ...
+# Subtest: node directory discovers compatible capability and expires stale nodes
+ok 93 - node directory discovers compatible capability and expires stale nodes
+  ---
+  duration_ms: 2.5713
+  type: 'test'
+  ...
+# Subtest: route graph selects lower-cost multi-hop path
+ok 94 - route graph selects lower-cost multi-hop path
+  ---
+  duration_ms: 1.2616
+  type: 'test'
+  ...
+# Subtest: forward envelope is fail-closed on wrong hop and decrements ttl
+ok 95 - forward envelope is fail-closed on wrong hop and decrements ttl
+  ---
+  duration_ms: 0.9486
+  type: 'test'
+  ...
+# Subtest: security provider registry rejects non-production-safe profile
+ok 96 - security provider registry rejects non-production-safe profile
+  ---
+  duration_ms: 0.3281
+  type: 'test'
+  ...
+# Subtest: transport provider registry selects by predicate
+ok 97 - transport provider registry selects by predicate
+  ---
+  duration_ms: 0.163
+  type: 'test'
+  ...
+# Subtest: session migration preserves subjects, authority and receipt continuity anchor
+ok 98 - session migration preserves subjects, authority and receipt continuity anchor
+  ---
+  duration_ms: 0.8552
+  type: 'test'
+  ...
+# Subtest: OPP CHP bridge emits schema-compatible offer shape and deterministic agreement
+ok 99 - OPP CHP bridge emits schema-compatible offer shape and deterministic agreement
+  ---
+  duration_ms: 0.4527
+  type: 'test'
+  ...
+# Subtest: three real UDP localhost nodes forward one TINP frame across two hops
+ok 100 - three real UDP localhost nodes forward one TINP frame across two hops
+  ---
+  duration_ms: 39.1656
+  type: 'test'
+  ...
+# Subtest: wire frame round-trips with fixed header
+ok 101 - wire frame round-trips with fixed header
+  ---
+  duration_ms: 2.2629
+  type: 'test'
+  ...
+# Subtest: wire corruption is fail-closed
+ok 102 - wire corruption is fail-closed
+  ---
+  duration_ms: 0.5258
+  type: 'test'
+  ...
+# Subtest: authority negotiation never expands beyond intersection
+ok 103 - authority negotiation never expands beyond intersection
+  ---
+  duration_ms: 1.9415
+  type: 'test'
+  ...
+# Subtest: capability router picks highest-priority compatible provider
+ok 104 - capability router picks highest-priority compatible provider
+  ---
+  duration_ms: 0.525
+  type: 'test'
+  ...
+# Subtest: unroutable capability fails closed
+ok 105 - unroutable capability fails closed
+  ---
+  duration_ms: 0.5629
+  type: 'test'
+  ...
+# Subtest: intent executes and creates evidence-chained receipt
+ok 106 - intent executes and creates evidence-chained receipt
+  ---
+  duration_ms: 1.4538
+  type: 'test'
+  ...
+# Subtest: payload cannot select executable/provider or grant authority
+ok 107 - payload cannot select executable/provider or grant authority
+  ---
+  duration_ms: 0.6234
+  type: 'test'
+  ...
+# Subtest: wrong subject cannot use session
+ok 108 - wrong subject cannot use session
+  ---
+  duration_ms: 0.5846
+  type: 'test'
+  ...
+# Subtest: revocation immediately invalidates session
+ok 109 - revocation immediately invalidates session
+  ---
+  duration_ms: 0.6591
+  type: 'test'
+  ...
+# Subtest: production session refuses none-test security profile
+ok 110 - production session refuses none-test security profile
+  ---
+  duration_ms: 0.3282
+  type: 'test'
+  ...
+# Subtest: OPP CHP projection preserves TINP capability and authority declarations without granting authority
+ok 111 - OPP CHP projection preserves TINP capability and authority declarations without granting authority
+  ---
+  duration_ms: 0.457
+  type: 'test'
+  ...
+# Subtest: RNR state packet can be carried as a named payload profile
+ok 112 - RNR state packet can be carried as a named payload profile
+  ---
+  duration_ms: 0.2504
+  type: 'test'
+  ...
+# Subtest: UDP reference transport performs real localhost wire round-trip
+ok 113 - UDP reference transport performs real localhost wire round-trip
+  ---
+  duration_ms: 48.1678
+  type: 'test'
+  ...
+1..113
+# tests 113
+# suites 0
+# pass 113
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 143714.8858

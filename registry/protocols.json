@@ -1,6 +1,6 @@
 {
   "format": "twni.protocol-registry.v0.1",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "classification": "candidate-local-profile",
   "scope": "Three independent local processes; UDP/TCP loopback only",
   "statusVocabulary": [
@@ -254,6 +254,11 @@
           "status": "implemented",
           "behavior": "Windows cold restart preserving keys/session/revocation and node receipts; unresolved pending intent fails closed without re-execution",
           "evidenceLevel": "local-runtime-tests-and-UDP/TCP-recovery-witnesses"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Offline redacted pending inspection, maintenance-only historical reconciliation, explicit whole-lease retirement after three signed durable revocation acknowledgements; no resend or lease renewal",
+          "evidenceLevel": "Windows local runtime and real coordinator crash tests"
         }
       ],
       "notImplemented": [

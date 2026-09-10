@@ -1,6 +1,6 @@
 # TaoWind 新互联网协议套件
 
-v0.1.0-alpha.2 是一个可运行的内部工程候选：普通用户输入一句能力请求，系统在三个独立本机进程之间自动发现、调用 OPP 协商契约、验证权限、建立会话、经 A→B→C 传输并返回带证据的执行结果。
+v0.1.0-alpha.3 是一个可运行的内部工程候选：普通用户输入一句能力请求，系统在三个独立本机进程之间自动发现、调用 OPP 协商契约、验证权限、建立会话、经 A→B→C 传输并返回带证据的执行结果。
 
 本版只有一个刻意收窄的能力：精确统计 Unicode 码点数量。它可以验证主体、权限、路由、迁移、退化和回执能否共同工作；它不代表整个新互联网已经实现。
 
@@ -25,7 +25,7 @@ npm run verify
 npm run recovery:demo
 ```
 
-`verify` 冻结源码哈希，按文件顺序运行全部测试，然后分别启动 UDP 和 TCP 三进程及持久恢复见证，保存签名回执、磁盘账本和有界计时到 `evidence/0.1.0-alpha.2/LOCAL_VERIFICATION.json`。重放并发测试内部仍使用真实并发。普通 `npm test` 可并行运行文件；发行证据用顺序执行避免故障注入互相干扰。
+`verify` 冻结源码哈希，按文件顺序运行全部测试，然后分别启动 UDP 和 TCP 三进程及持久恢复见证，保存签名回执、磁盘账本和有界计时到 `evidence/0.1.0-alpha.3/LOCAL_VERIFICATION.json`。重放并发测试内部仍使用真实并发。普通 `npm test` 可并行运行文件；发行证据用顺序执行避免故障注入互相干扰。
 
 ## 已实现的闭环
 
@@ -40,7 +40,7 @@ npm run recovery:demo
 
 ## 证据与边界
 
-阅读 `docs/REALITY_AUDIT.md`、`docs/CANONICAL_OWNERSHIP.md`、`docs/SPEC_DEVIATIONS.md`、`evidence/0.1.0-alpha.2/INTEGRATION_COURT.md` 和 `evidence/0.1.0-alpha.2/EVIDENCE_LEDGER.json`。原规范保留在 `constitution/`，未修改下载文件或同步项目参考文件。
+阅读 `docs/REALITY_AUDIT.md`、`docs/CANONICAL_OWNERSHIP.md`、`docs/SPEC_DEVIATIONS.md`、`evidence/0.1.0-alpha.3/INTEGRATION_COURT.md` 和 `evidence/0.1.0-alpha.3/EVIDENCE_LEDGER.json`。原规范保留在 `constitution/`，未修改下载文件或同步项目参考文件。
 
 当前是 **VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED**。没有公网、真实异机部署、军用安全认证、互联网规模收敛、生产密钥托管或第三方安全评估。签名提供当前夹具内的认证与完整性，传输没有 TLS 机密性，因此严格限制回环地址。
 
@@ -48,8 +48,29 @@ npm run recovery:demo
 
 SLA、成本、地域、能耗是受信本地配置与约束，非实测商业保证或结算。保留期零值指不留原始请求文本；回执和摘要为审计保存，尚无完整生命周期清理机制。P12 应用种子、P13 跨设备运行、P14 私网和 P15 全面旧网适配未在本版实现。RNCS/RFE 世界事实与提交权没有迁入本仓库。
 
-本轮新增恢复闭环与审查见 `docs/RECOVERY_OWNER.md`、`docs/PROTECTED_STORAGE.md`、`docs/RECOVERY_SECURITY_COURT.md`。原始待处理请求只保存在加密 checkpoint，恢复仅查找已存在回执；未找到时保留未决状态并拒绝继续，不自动重发。整目录一起回滚、跨设备密钥迁移和全网撤销收敛仍未解决。下一缺口是为未决请求提供可审计的查询/人工处置入口，以及独立防回滚锚点和两台真实设备的加密承载验证。详见 `docs/NEXT_GAP.md`。
+本轮新增恢复闭环与审查见 `docs/RECOVERY_OWNER.md`、`docs/PROTECTED_STORAGE.md`、`docs/RECOVERY_SECURITY_COURT.md`。原始待处理请求只保存在加密 checkpoint，恢复仅查找已存在回执；未找到时保留未决状态并拒绝继续，不自动重发。整目录一起回滚、跨设备密钥迁移和全网撤销收敛仍未解决。本版已补上本机查询与明确终止入口；独立防回滚锚点、生产操作员授权和两台真实设备加密承载仍待验证。详见 `docs/NEXT_GAP.md`。
 
 ## 许可
 
 这是用户拥有资产的内部源码候选包，未公开发布。RCL 附原 Apache-2.0 LICENSE；TINP 保留上游简短 Apache-2.0 声明。OPP 上游未声明许可证，`vendor/opp/LICENSE-NOT-DECLARED.md` 不赋予再分发权。请先完成许可裁决再考虑公开发布。详见 `docs/LICENSE_AUDIT.md`。
+
+## 未决请求维护
+
+`npm run pending:demo` 会创建全新演示状态，实际验证“保存但未发送 → 只读检查 → 三节点持久撤销 → 关闭记录 → 再次启动仍拒绝原租约”。它不会处置已有用户目录。真实再次杀进程的两个提交窗口另由测试验证。
+
+已有状态目录可按以下顺序操作（将示例目录替换为实际目录）：
+
+```powershell
+npm run pending -- status "C:\实际状态目录"
+npm run pending -- reconcile "C:\实际状态目录"
+```
+
+status 不启动节点、不改 checkpoint/账本，只输出摘要，不输出请求原文或密钥。在线写入恰好与读取冲突时可能要求重试。reconcile 仅查原回执；查不到时保留 pending，不重发。维护期间任何 INTENT 都被拦截。
+
+确实决定停用整个原租约并关闭未决记录时，复制 status 输出的完整 requestRoot，明确确认：
+
+```powershell
+npm run pending -- retire "C:\实际状态目录" --request-root 完整请求根 --confirm-retire-lease
+```
+
+该操作不会证明请求从未执行，也不会撤销已经发生的计算。缺任何一个节点持久撤销确认都会保留 pending；全部确认后记录 unknown 并停用原租约。没有自动换密钥、续租或清空目录。需要同一 Windows 用户的 DPAPI 访问能力；这不是生产独立操作员认证。详见 docs/PENDING_OWNER.md 和 docs/PENDING_SECURITY_COURT.md。

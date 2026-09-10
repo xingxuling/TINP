@@ -12,6 +12,8 @@ import {makeHello,TINP_PROTOCOL} from '../vendor/tinp/src/protocol.mjs';
 import {makeForwardEnvelope} from '../vendor/tinp/src/forwarding.mjs';
 import {negotiateOpp} from '../adapters/opp-bridge.mjs';
 import {evaluateSessionMigrationGuard} from '../adapters/rcl-guard.mjs';
+import {findPendingRetirement,verifyRetirementAcks} from './pending-management.mjs';
+import {evaluatePendingRetirementGuard} from '../adapters/rcl-pending-retirement.mjs';
 import {initializeRecovery,admitRecovery,checkpoint,publicRecoveryState} from './coordinator-state.mjs';
 
 class NodeChild {
@@ -45,10 +47,12 @@ class NodeChild {
   async kill(){if(this.child.exitCode!==null||this.child.signalCode!==null)return;await new Promise(resolve=>{this.child.once('exit',resolve);this.child.kill();});}
 }
 
-/** Local trust fixture and orchestration. Keys are ephemeral and never put in evidence. */
+/** Local trust fixture; optional Windows protected persistence. Private keys never enter evidence. */
 export class InternetSuite {
   static async start(options={}){const suite=new InternetSuite(options);try{await suite.start();return suite;}catch(e){await suite.close();throw e;}}
-  constructor({directory=path.resolve('.runs',id('run').replace(':','-')),transport='udp',timeoutMs=1500,durable=false}={}){
+  constructor({directory=path.resolve('.runs',id('run').replace(':','-')),transport='udp',timeoutMs=1500,durable=false,recoveryMode='strict'}={}){
+    requireThat(['strict','maintenance'].includes(recoveryMode)&& (recoveryMode!=='maintenance'||durable),'RECOVERY_MODE_INVALID');
+    this.maintenance=recoveryMode==='maintenance';
     this.durable=durable;this.revocationEpoch=0;this.pending=null;this.nodeKeys={};
     this.directory=directory;fs.mkdirSync(directory,{recursive:true});this.kind=transport;this.timeoutMs=timeoutMs;
     this.ledger=durable?null:new EvidenceLedger(path.join(directory,'ledger.jsonl'));
@@ -69,15 +73,15 @@ export class InternetSuite {
     const infos=await Promise.all([...this.nodes.values()].map(n=>n.ready));
     await this.configureNodes();
     const recoveryGuard=this.durable?await admitRecovery(this):null;
-    if(this.pending)await this.reconcilePending();
+    if(this.pending&&!this.maintenance)await this.reconcilePending();
     this.record(this.recovering?'fixture.recovered':'fixture.started',{transport:this.kind,nodes:infos.map(({nodeId,pid,endpoint,publicKey})=>({nodeId,pid,endpoint,publicKey})),
       subjectId:SUBJECT,continuityRoot:CONTINUITY,authorityPublicKey:this.authority.publicKey,recoveryGuard,
       boundary:this.durable?'Windows current-user protected state; local process recovery only.':'Three independent local processes, pinned ephemeral fixture keys, loopback only; no production enrollment.'});
-    if(this.durable)await Promise.all([...this.nodes.values()].map(n=>n.call('activate')));
+    if(this.durable&&!this.maintenance)await Promise.all([...this.nodes.values()].map(n=>n.call('activate')));
     this.recovering=false;return this;
   }
   makeNode(nodeId){return new NodeChild(nodeId,this.kind,this.durable?path.join(this.directory,'private','nodes',nodeId):null,!this.nodeKeys[nodeId]);}
-  revocationWatermark(){return seal({format:'twni.revocation-watermark.v1',epoch:this.revocationEpoch,leaseIds:this.revoked?[this.lease.body.leaseId]:[]},this.authority.privateKey);}
+  revocationWatermark(bindings={}){return seal({...bindings,format:'twni.revocation-watermark.v1',epoch:this.revocationEpoch,leaseIds:this.revoked?[this.lease.body.leaseId]:[]},this.authority.privateKey);}
   record(type,detail){
     if(this.durable)this.directoryLease.assertHeld();
     const event=this.ledger.append(type,this.durable?{...detail,recovery:publicRecoveryState(this)}:detail);checkpoint(this);return event;
@@ -90,7 +94,7 @@ export class InternetSuite {
     }
     const peers=Object.fromEntries(infos.map(x=>[x.nodeId,{publicKey:x.publicKey,endpoint:x.endpoint}]));
     await Promise.all([...this.nodes].filter(([,n])=>n.child.connected).map(([nodeId,node])=>node.call('configure',{
-      peers,authorityKey:this.authority.publicKey,subjectKeys:{[SUBJECT]:this.subjectIdentity.publicKey},
+      peers,maintenance:this.maintenance,authorityKey:this.authority.publicKey,subjectKeys:{[SUBJECT]:this.subjectIdentity.publicKey},
       neighbors:['A','B','C'].filter(x=>x!==nodeId),timeoutMs:this.timeoutMs,
       routePolicy:Object.fromEntries(this.routes.policy),
       cacheFile:path.join(this.directory,`${nodeId}-execution-cache.jsonl`),
@@ -100,6 +104,7 @@ export class InternetSuite {
     if(!this.recovering)checkpoint(this);
   }
   async wire(target,payloadType,payload,route){
+    requireThat(!this.maintenance||payloadType!=='INTENT','MAINTENANCE_EXECUTION_DISABLED');
     if(this.durable)this.directoryLease.assertHeld();
     route??=this.routes.plan(this.currentSource,target);
     const forward=makeForwardEnvelope({route,payloadType,payload,ttl:6});
@@ -164,6 +169,7 @@ export class InternetSuite {
     return r;
   }
   async executeSelection(text,selection){
+    requireThat(!this.maintenance,'MAINTENANCE_EXECUTION_DISABLED');
     requireThat(!this.pending,'PENDING_RECONCILIATION_REQUIRED');
     const request=await this.buildRequest(text,selection);
     if(this.durable){this.pending={request,selection};checkpoint(this);}
@@ -183,6 +189,7 @@ export class InternetSuite {
   setLevel(level,reason){if(this.level!==level){this.level=level;this.record('continuity.degraded',{level,reason,subjectId:SUBJECT,continuityRoot:CONTINUITY,authorityExpanded:false});}}
   use(text){const p=this.queue.then(()=>this._use(text));this.queue=p.catch(()=>{});return p;}
   async _use(text){
+    requireThat(!this.maintenance,'MAINTENANCE_EXECUTION_DISABLED');
     requireThat(typeof text==='string'&&[...text].length<=4096,'INPUT_INVALID');
     requireThat(!this.pending,'PENDING_RECONCILIATION_REQUIRED');
     if(this.revoked){this.record('request.denied',{code:'LEASE_REVOKED'});throw new ProtocolError('LEASE_REVOKED');}
@@ -240,8 +247,11 @@ export class InternetSuite {
     checkpoint(this);
     this.record('subject.body-migrated',{subjectId:SUBJECT,continuityRoot:CONTINUITY,previousNodeId:previous,newNodeId:nodeId,sessionId:this.session?.body.sessionId??null});
   }
-  async reconcilePending(){
+  reconcilePending(){const p=this.queue.then(()=>this._reconcilePending());this.queue=p.catch(()=>{});return p;}
+  async _reconcilePending(){
     if(!this.pending)return {status:'no-pending-request'};
+    const terminal=await findPendingRetirement(this);
+    if(terminal){this.pending=null;checkpoint(this);return {status:'retired',executionOutcome:'unknown',executionResent:false};}
     const {request,selection}=this.pending;
     const existing=this.ledger.events.find(e=>e.detail?.receipt?.body.requestRoot===request.root);
     const receipt=existing?.detail.receipt??await this.wire(selection.target,'RECEIPT_LOOKUP',request,selection.route);
@@ -249,6 +259,27 @@ export class InternetSuite {
     if(!existing)this.record('recovery.receipt-reconciled',{receipt,requestRoot:request.root,executionResent:false});
     this.pending=null;checkpoint(this);
     return {status:'reconciled',receipt,executionResent:false};
+  }
+  retirePending(options={}){const snapshot=clone(options);const p=this.queue.then(()=>this._retirePending(snapshot));this.queue=p.catch(()=>{});return p;}
+  async _retirePending({requestRoot,confirmed}={}){
+    requireThat(this.durable&&this.maintenance,'MAINTENANCE_MODE_REQUIRED');
+    requireThat(confirmed===true,'OPERATOR_CONFIRMATION_REQUIRED');
+    requireThat(this.pending,'PENDING_REQUIRED');
+    requireThat(requestRoot===this.pending.request.root,'PENDING_ROOT_MISMATCH');
+    if(await findPendingRetirement(this))return this._reconcilePending();
+    // A crash after this checkpoint preserves revoked+pending. Retrying never renews the lease.
+    if(!this.revoked){this.revoked=true;this.revocationEpoch++;checkpoint(this);}
+    const watermark=this.revocationWatermark({requestRoot,leaseRoot:this.lease.root});
+    const outcomes=await Promise.allSettled(['A','B','C'].map(async nodeId=>this.nodes.get(nodeId).call('revoke',watermark)));
+    requireThat(outcomes.every(x=>x.status==='fulfilled'),'PENDING_RETIREMENT_ACK_REQUIRED');
+    const acknowledgements=outcomes.map(x=>x.value);verifyRetirementAcks(this,watermark,acknowledgements);
+    const guard=await evaluatePendingRetirementGuard({expectedRequestRoot:requestRoot,actualRequestRoot:this.pending.request.root,
+      operatorAuthorized:confirmed===true,leaseRevoked:this.revoked,allNodesAcknowledged:true,pendingPresent:Boolean(this.pending)});
+    requireThat(guard.allowed,guard.code);
+    this.record('pending.retired',{requestRoot,leaseRoot:this.lease.root,revocationEpoch:this.revocationEpoch,watermark,acknowledgements,guard,
+      executionOutcome:'unknown',operatorBoundary:'explicit-local-windows-user'});
+    this.pending=null;checkpoint(this);
+    return {status:'retired',requestRoot,leaseRevoked:true,executionOutcome:'unknown',executionResent:false};
   }
   async restartNode(nodeId){
     requireThat(this.durable,'PERSISTENT_MODE_REQUIRED');this.directoryLease.assertHeld();
@@ -258,7 +289,7 @@ export class InternetSuite {
     await this.configureNodes();
     const recoveryGuard=await admitRecovery(this,baseline);
     this.record('node.recovered',{nodeId,pid:node.info.pid,publicKey:node.info.publicKey,recoveryGuard});
-    await Promise.all([...this.nodes.values()].filter(n=>n.child.connected).map(n=>n.call('activate')));
+    if(!this.maintenance)await Promise.all([...this.nodes.values()].filter(n=>n.child.connected).map(n=>n.call('activate')));
     return node.info;
   }
   async stats(){return Promise.all([...this.nodes.values()].filter(n=>n.child.connected).map(n=>n.call('stats')));}

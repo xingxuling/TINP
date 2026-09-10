@@ -1,11 +1,11 @@
 # 当前状态
 
-当前工程轮次：TINP v0.1.0-alpha.2，Windows 本机持久恢复候选。
+TINP v0.1.0-alpha.3：Windows 本机未决请求维护闭环候选。
 
-发行事实以 `evidence/0.1.0-alpha.2/LOCAL_VERIFICATION.json` 的实际退出码、源码哈希和进程见证为准。v0.1.0-alpha.1 的原始审计和证据保留不变。
+从远端已核对的 06d5f5de88a6e061e3c7a7a5ddbb2108d437fbdf 继续，独立候选分支 codex/tinp-pending-v03。旧版本规范、donor、审计和 evidence 保持原样。本轮实际验收以 evidence/0.1.0-alpha.3/LOCAL_VERIFICATION.json 的命令、退出码、源码哈希及进程证据为准。
 
-本轮增加当前用户 DPAPI 存储、协调器和节点独立写锁、签名账本 checkpoint、持久撤销与回执缓存、真实 RCL 恢复准入。恢复不续租、不扩大权限；已执行但未记账的请求只查询原回执，不重新执行；没有回执的未决请求保持拒绝服务状态等待处置。
+新增只读脱敏状态查询、禁止执行的维护模式、原回执查询、用户明确确认后停用整个原租约并关闭未决记录。关闭前必须得到 A/B/C 的签名持久撤销确认，再经实际 RCL 准入，先签名账本后清 pending。终止结果仍为 unknown，绝不声称从未执行、不重发、不创建新租约。
 
-RCL 拥有恢复不变量；Windows/Python 是加密及锁 Provider，Node 负责恢复装配。OPP 契约、RNCS/RFE 世界事实与提交归原 Owner。无 RCL Core 修改或 K400 晋升。
+RCL 拥有退休准入不变量；Windows 当前用户/DPAPI 是本机操作员边界，不是生产独立人类签章或公网授权。Node/Python 负责流程、签名和持久化，OPP/RNCS/RFE 保持原 Owner。无 Core 修改与 K400 晋升。
 
-运行边界：Windows 当前用户、同机 UDP/TCP 回环。无整目录防回滚外部锚点、跨设备密钥恢复或公网部署。候选分支 codex/tinp-recovery-v02；远端推送状态见本轮交付回执。未运行 GitHub Actions。
+完整性能及故障证据限本机；无公网、真实异机、独立防回滚锚点或全网撤销收敛。没有 GitHub Actions、默认分支合并或部署。远端与源码包回验见交付回执。

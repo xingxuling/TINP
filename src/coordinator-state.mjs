@@ -3,7 +3,7 @@ import path from 'node:path';
 import {ProtectedStore} from './protected-store.mjs';
 import {acquireDirectoryLease} from './directory-lease.mjs';
 import {EvidenceLedger,GENESIS} from './evidence.mjs';
-import {seal,authentic,requireThat,clone} from './identity.mjs';
+import {seal,authentic,requireThat,clone,rootHash} from './identity.mjs';
 import {SUBJECT,CONTINUITY,WORLD} from './contract.mjs';
 import {evaluateRecoveryGuard} from '../adapters/rcl-recovery-guard.mjs';
 
@@ -28,16 +28,30 @@ function verifyCore(s){
       q.continuityRoot===lease.continuityRoot&&q.worldId===lease.worldId&&Number.isSafeInteger(q.expiresAtMs)&&q.expiresAtMs<=lease.expiresAtMs&&
       Array.isArray(q.scopes)&&q.scopes.every(x=>lease.scopes.includes(x)),'RECOVERY_SESSION_INVALID');
   }
-  if(s.pending)requireThat(authentic(s.pending.request,s.subjectIdentity.publicKey)&&s.pending.request.body.sessionId===s.session?.body.sessionId,'RECOVERY_PENDING_INVALID');
+  if(s.pending){const q=s.pending.request?.body,selection=s.pending.selection;
+    requireThat(q&&authentic(s.pending.request,s.subjectIdentity.publicKey)&&q.sessionId===s.session?.body.sessionId&&
+      q.session?.root===s.session.root&&q.lease?.root===s.lease.root&&q.subjectId===SUBJECT&&q.worldId===WORLD&&
+      q.targetNodeId===selection?.target&&q.route&&selection?.route&&rootHash(q.route)===rootHash(selection.route)&&
+      q.previousEvidenceRoot===q.session.body.expectedEvidenceRoot,'RECOVERY_PENDING_INVALID');
+  }
 }
 export async function initializeRecovery(s){
   s.directoryLease=await acquireDirectoryLease(s.directory);
   s.store=new ProtectedStore(path.join(s.directory,'private','coordinator'),{purpose:'twni.coordinator-state.v1'});
   const exists=s.store.exists;
   if(exists){
+    loadExistingRecovery(s);
+  }else{
+    const ledger=path.join(s.directory,'ledger.jsonl');
+    requireThat(!fs.existsSync(ledger)||fs.statSync(ledger).size===0,'LEGACY_STATE_REQUIRES_MIGRATION');
+    s.ledger=new EvidenceLedger(ledger,{identity:s.authority});s.nodeKeys={};checkpoint(s);
+  }
+}
+export function loadExistingRecovery(s){
     const saved=s.store.load();s.savedRecovery=clone(saved);
     requireThat(saved.format==='twni.coordinator-state.v1'&&Number.isSafeInteger(saved.lastSeenMs)&&Date.now()>=saved.lastSeenMs,'RECOVERY_CLOCK_OR_FORMAT_INVALID');
     for(const k of ['authority','subjectIdentity','session','lease','currentSource','revoked','revocationEpoch','pending','nodeKeys'])s[k]=saved[k];
+    requireThat(saved.pendingRoot===(s.pending?.request.root??null),'RECOVERY_PENDING_INVALID');
     verifyCore(s);
     s.ledger=new EvidenceLedger(path.join(s.directory,'ledger.jsonl'),{identity:s.authority});
     requireThat(Number.isSafeInteger(saved.ledgerLength)&&saved.ledgerLength>=0&&saved.ledgerLength<=s.ledger.events.length,'RECOVERY_CHECKPOINT_TRUNCATED');
@@ -55,11 +69,6 @@ export async function initializeRecovery(s){
         s.session.body.scopes.every(x=>saved.session.body.scopes.includes(x)),'RECOVERY_SESSION_EXPANSION');
     }
     s.recovering=true;
-  }else{
-    const ledger=path.join(s.directory,'ledger.jsonl');
-    requireThat(!fs.existsSync(ledger)||fs.statSync(ledger).size===0,'LEGACY_STATE_REQUIRES_MIGRATION');
-    s.ledger=new EvidenceLedger(ledger,{identity:s.authority});s.nodeKeys={};checkpoint(s);
-  }
 }
 export async function admitRecovery(s,baseline=s.savedRecovery){
   if(!baseline)return null;

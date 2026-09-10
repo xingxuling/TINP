@@ -1,0 +1,229 @@
+{
+  "format": "twni.delivery-evidence-ledger.v0.3",
+  "version": "0.1.0-alpha.3",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "tests": {
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-concurrency=1",
+      "--test-reporter=tap",
+      "tests/conformance.test.mjs",
+      "tests/opp-bridge.test.mjs",
+      "tests/pending-cli.test.mjs",
+      "tests/pending-security.test.mjs",
+      "tests/profiles.test.mjs",
+      "tests/protected-store.test.mjs",
+      "tests/rcl-guard.test.mjs",
+      "tests/rcl-migration.test.mjs",
+      "tests/rcl-pending-retirement.test.mjs",
+      "tests/rcl-recovery.test.mjs",
+      "tests/rcl-route.test.mjs",
+      "tests/recovery-gate-integration.test.mjs",
+      "tests/recovery-security.test.mjs",
+      "tests/security-review.test.mjs",
+      "tests/shared-ir.test.mjs",
+      "vendor/tinp/tests/tinp-v02.test.mjs",
+      "vendor/tinp/tests/tinp.test.mjs"
+    ],
+    "exitCode": 0,
+    "count": 113,
+    "passed": 113,
+    "failed": 0,
+    "stdout": "evidence/0.1.0-alpha.3/tests.tap",
+    "stdoutSha256": "b0351b87a68cbeef4926635bc1a30954f2d0f6fa30bd6bf225a1c0f4caa7ea67",
+    "stderr": "evidence/0.1.0-alpha.3/tests.stderr.txt"
+  },
+  "verificationFile": "evidence/0.1.0-alpha.3/LOCAL_VERIFICATION.json",
+  "verificationSha256": "3c36a9469297debccbadeef9be891fb86b58de004ba0d8833d1aa2abddd94734",
+  "sourceTreeRoot": "390d8580bbf435f49b4fe3f65f99ca0ce7bde01db322f99d91d4d89ae7d3749f",
+  "sourceFileCount": 142,
+  "startedAt": "2026-09-10T02:25:08.558Z",
+  "finishedAt": "2026-09-10T02:28:05.366Z",
+  "baseline": {
+    "commit": "06d5f5de88a6e061e3c7a7a5ddbb2108d437fbdf",
+    "ledger": "evidence/0.1.0-alpha.2/EVIDENCE_LEDGER.json",
+    "ledgerSha256": "b7108b03ea7bf1bc8254987c8b97241d0c056386d5b4831c5b56d9f271494e12",
+    "donors": "UNCHANGED"
+  },
+  "pendingScenarios": [
+    {
+      "status": "VERIFIED_LOCAL_PENDING_RETIREMENT",
+      "transport": "udp",
+      "before": {
+        "format": "twni.pending-inspection.v1",
+        "status": "pending",
+        "requestRoot": "9ce0971e04c702e99efa11a5df31d9262782dde6cfb6b57b13913a1771328536",
+        "requestId": "intent:11137872-f4e2-4438-a183-4f311a31e188",
+        "targetNodeId": "C",
+        "leaseRoot": "bd0a0f303f79c7b5f2f2227220b60ab6039f635aca0985f857c6de55b3db5e9b",
+        "leaseRevoked": false,
+        "leaseExpiresAtMs": 1789007872434,
+        "revocationEpoch": 0,
+        "evidenceRoot": "938cd5496b7da7fe751cc9525a94005563bfa641ff9cdbc521daa00a7b3c9b8b",
+        "checkpointAuthenticated": true,
+        "nodeCacheVerified": false,
+        "executionOutcome": "unknown",
+        "lastRetirement": null,
+        "readOnly": true,
+        "authorityBoundary": "Windows current-user local fixture; no production operator identity"
+      },
+      "after": {
+        "format": "twni.pending-inspection.v1",
+        "status": "lease-revoked",
+        "requestRoot": null,
+        "requestId": null,
+        "targetNodeId": null,
+        "leaseRoot": "bd0a0f303f79c7b5f2f2227220b60ab6039f635aca0985f857c6de55b3db5e9b",
+        "leaseRevoked": true,
+        "leaseExpiresAtMs": 1789007872434,
+        "revocationEpoch": 1,
+        "evidenceRoot": "243db1f0101e92182d6a4fe95739a8240b5507f09fa2a99a35e03b568f808a8c",
+        "checkpointAuthenticated": true,
+        "nodeCacheVerified": false,
+        "executionOutcome": null,
+        "lastRetirement": {
+          "requestRoot": "9ce0971e04c702e99efa11a5df31d9262782dde6cfb6b57b13913a1771328536",
+          "executionOutcome": "unknown",
+          "eventRoot": "243db1f0101e92182d6a4fe95739a8240b5507f09fa2a99a35e03b568f808a8c"
+        },
+        "readOnly": true,
+        "authorityBoundary": "Windows current-user local fixture; no production operator identity"
+      },
+      "retired": {
+        "status": "retired",
+        "requestRoot": "9ce0971e04c702e99efa11a5df31d9262782dde6cfb6b57b13913a1771328536",
+        "leaseRevoked": true,
+        "executionOutcome": "unknown",
+        "executionResent": false
+      },
+      "pids": [
+        39452,
+        10480,
+        11748
+      ],
+      "zeroExecutions": true,
+      "leaseUnchanged": true,
+      "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAXGRhkY7lwLEi0/u0idBV6NPD8zzvnSQaOg4siIx6GgY=\n-----END PUBLIC KEY-----\n",
+      "evidenceRoot": "9d5ae4cf9bae2a33b0948f65310eaef40f51333fc2464291b1227e5b96aafd17",
+      "scope": "Staged unsent pending fixture, actual local node processes and durable revocation. Separate tests cover real coordinator kills.",
+      "ledger": "evidence/0.1.0-alpha.3/pending-udp.jsonl",
+      "ledgerSha256": "b14c3d658b63ed456ed8b99ee4ed06c7abfce8911072234b30d8cb9af343e450"
+    },
+    {
+      "status": "VERIFIED_LOCAL_PENDING_RETIREMENT",
+      "transport": "tcp",
+      "before": {
+        "format": "twni.pending-inspection.v1",
+        "status": "pending",
+        "requestRoot": "e52b5914b15c000c34d9c7ac0ff28b3d504cadb7af305e0b87e7dc7453b9ee0f",
+        "requestId": "intent:3b9b901c-d038-430b-b8cb-415603caedba",
+        "targetNodeId": "C",
+        "leaseRoot": "e1104dfd322a5c616d3c8686dcc77e2fc5b60b79b51c3da08d5becc7748a3e32",
+        "leaseRevoked": false,
+        "leaseExpiresAtMs": 1789007878645,
+        "revocationEpoch": 0,
+        "evidenceRoot": "6cee586fe96ce909b777a6c20b15df9f0f37ec8c10ac76a68e35a257ed546cea",
+        "checkpointAuthenticated": true,
+        "nodeCacheVerified": false,
+        "executionOutcome": "unknown",
+        "lastRetirement": null,
+        "readOnly": true,
+        "authorityBoundary": "Windows current-user local fixture; no production operator identity"
+      },
+      "after": {
+        "format": "twni.pending-inspection.v1",
+        "status": "lease-revoked",
+        "requestRoot": null,
+        "requestId": null,
+        "targetNodeId": null,
+        "leaseRoot": "e1104dfd322a5c616d3c8686dcc77e2fc5b60b79b51c3da08d5becc7748a3e32",
+        "leaseRevoked": true,
+        "leaseExpiresAtMs": 1789007878645,
+        "revocationEpoch": 1,
+        "evidenceRoot": "310d0906d4fbd0679b46e3c6f427f36e31569957e2fd860ed22e5c84374723d5",
+        "checkpointAuthenticated": true,
+        "nodeCacheVerified": false,
+        "executionOutcome": null,
+        "lastRetirement": {
+          "requestRoot": "e52b5914b15c000c34d9c7ac0ff28b3d504cadb7af305e0b87e7dc7453b9ee0f",
+          "executionOutcome": "unknown",
+          "eventRoot": "310d0906d4fbd0679b46e3c6f427f36e31569957e2fd860ed22e5c84374723d5"
+        },
+        "readOnly": true,
+        "authorityBoundary": "Windows current-user local fixture; no production operator identity"
+      },
+      "retired": {
+        "status": "retired",
+        "requestRoot": "e52b5914b15c000c34d9c7ac0ff28b3d504cadb7af305e0b87e7dc7453b9ee0f",
+        "leaseRevoked": true,
+        "executionOutcome": "unknown",
+        "executionResent": false
+      },
+      "pids": [
+        24632,
+        44328,
+        43172
+      ],
+      "zeroExecutions": true,
+      "leaseUnchanged": true,
+      "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAQV5UyccninvGAvMfqC4fNyqQt11TTAubxueuqCYlS5k=\n-----END PUBLIC KEY-----\n",
+      "evidenceRoot": "52627c25ccf75b0fb28ca5a0ba12e38f8a661cea10b63bca3c1a487df5907750",
+      "scope": "Staged unsent pending fixture, actual local node processes and durable revocation. Separate tests cover real coordinator kills.",
+      "ledger": "evidence/0.1.0-alpha.3/pending-tcp.jsonl",
+      "ledgerSha256": "bc2b2b865408c52063178132566e308bd5ff62c56540db1c7e9efb331a8d628a"
+    }
+  ],
+  "upgrade": {
+    "file": "evidence/0.1.0-alpha.3/UPGRADE_VERIFICATION.json",
+    "sha256": "704d02feb8e5ad6af2f8a91dd70793939170963caeba0cf281e67b3b213d043d",
+    "status": "VERIFIED_ALPHA2_TO_ALPHA3_STATE_UPGRADE"
+  },
+  "independentReview": {
+    "file": "docs/PENDING_SECURITY_COURT.md",
+    "sha256": "938b4471ae394648bbbc418a24e1fe320d3b240c328a088fc78dc5203b400bb1",
+    "finding": "Recorded RCL factsRoot initially not checked; mutation produced wrong terminal acceptance. Fixed code+factsRoot comparison; final 113-test run includes regression."
+  },
+  "profiles": {
+    "degradation": "Maintenance remains nonexecuting; missing node acknowledgement keeps pending; real coordinator kills at both terminal commit windows recover without resend",
+    "commercial": "Versioned source/evidence plus actual alpha2 state upgrade; three signed persistent revocation acknowledgements and witnessed RCL admission",
+    "life": "Redacted status/reconcile/retire commands, explicit full request root and whole-lease confirmation; no automatic identity replacement"
+  },
+  "authorityBoundary": "Explicit current-Windows-user CLI under same-user DPAPI trust; not independently authenticated production human authority",
+  "rcl": {
+    "coreChanged": false,
+    "profile": "rcl/pending-retirement.rcl",
+    "candidateCells": [
+      "K057",
+      "K110",
+      "K117",
+      "K250",
+      "K257"
+    ],
+    "gates": {
+      "EXPRESS": "NOT_ADJUDICATED",
+      "COMPILE": "NOT_ADJUDICATED",
+      "LOWER": "NOT_ADJUDICATED",
+      "EXECUTE": "NOT_ADJUDICATED",
+      "CORRECT": "NOT_ADJUDICATED",
+      "ROBUST": "NOT_ADJUDICATED",
+      "PERFORMANCE": "NOT_ADJUDICATED",
+      "AI_GENERATE": "NOT_ADJUDICATED",
+      "EVIDENCE": "NOT_ADJUDICATED"
+    }
+  },
+  "externalActions": {
+    "githubActions": "NOT_RUN",
+    "merge": "NOT_RUN",
+    "deployment": "NOT_DEPLOYED",
+    "publicNetwork": "NOT_RUN",
+    "candidatePush": "See external delivery receipt"
+  },
+  "limitations": [
+    "Retirement executionOutcome is unknown, never proof of non-execution or rollback of a past effect",
+    "No production operator identity, independent anti-rollback anchor or cross-device recovery",
+    "Local pure read-only provider only; no arbitrary side effects or Internet-scale consensus",
+    "Crash tests UDP; ordinary retirement scenarios UDP/TCP; not physical power-loss tests"
+  ],
+  "nextGap": "External authority owner/adapter and independent rollback anchor before real encrypted two-device deployment"
+}

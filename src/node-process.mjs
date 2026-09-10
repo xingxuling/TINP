@@ -157,7 +157,7 @@ process.on('message',async message=>{
       }
       if(config.revocations)applyRevocations(config.revocations);
       result={configured:true};
-    } else if(command==='activate'){requireThat(config,'NODE_NOT_CONFIGURED');serving=true;result={active:true};}
+    } else if(command==='activate'){requireThat(config,'NODE_NOT_CONFIGURED');requireThat(!config.maintenance,'MAINTENANCE_EXECUTION_DISABLED');serving=true;result={active:true};}
     else if(command==='send')result=await onOperation(value);
     else if(command==='provider'){
       providerEnabled=value.enabled??true;
@@ -166,8 +166,10 @@ process.on('message',async message=>{
       result={providerEnabled,provider,epoch};
     }else if(command==='version'){versions=value;persistNode();result=versions;}
     else if(command==='revoke'){
-      if(value?.body)applyRevocations(value);else {requireThat(!persistent,'REVOCATION_SIGNATURE_REQUIRED');revoked.add(value);}
-      result={revoked:[...revoked],revocationEpoch};
+      result=await serialize(async()=>{
+        if(value?.body)applyRevocations(value);else {requireThat(!persistent,'REVOCATION_SIGNATURE_REQUIRED');revoked.add(value);}
+        return persistent?seal({format:'twni.revocation-ack.v1',nodeId,epoch:revocationEpoch,leaseIds:[...revoked],watermarkRoot:value.root},identity.privateKey):{revoked:[...revoked],revocationEpoch};
+      });
     }
     else if(command==='fault'){transport.blocked=new Set(value.blocked??[]);transport.bandwidth=value.bandwidth??0;result={applied:true};}
     else if(command==='stats')result={nodeId,pid:process.pid,executions,metrics:transport.metrics,cacheEntries:cache.size,revocationEpoch,revoked:[...revoked],durable:Boolean(persistent)};

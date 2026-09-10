@@ -1,13 +1,17 @@
 {
   "name": "@taowind/tinp-suite",
-  "version": "0.1.0-alpha.2",
+  "version": "0.1.0-alpha.3",
   "private": true,
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs vendor/tinp/tests/*.test.mjs",
     "demo": "node scripts/demo.mjs",
     "verify": "node scripts/verify.mjs",
-    "recovery:demo": "node scripts/recovery-demo.mjs"
+    "recovery:demo": "node scripts/recovery-demo.mjs",
+    "pending": "node scripts/pending.mjs",
+    "pending:demo": "node scripts/pending-demo.mjs"
   },
-  "engines": {"node": ">=22"}
+  "engines": {
+    "node": ">=22"
+  }
 }

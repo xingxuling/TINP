@@ -1,0 +1,47 @@
+# Retirement terminates a pending record only after its entire original lease is revoked.
+# It establishes neither non-execution nor permission to resend, renew or reauthorize.
+reality NextInternetPendingRetirement {
+  facet facts.expectedRequestRoot : Text = ""
+  facet facts.actualRequestRoot : Text = ""
+  facet facts.operatorAuthorized : Truth = false
+  facet facts.leaseRevoked : Truth = false
+  facet facts.allNodesAcknowledged : Truth = false
+  facet facts.pendingPresent : Truth = false
+  facet retirement.loaded : Truth = false
+  facet retirement.allowed : Truth = false
+  subject kernel {
+    warrant observation.read on facts
+    warrant pending.retire on retirement
+  }
+  host observation {
+    offers expectedRequestRoot -> Text
+    offers actualRequestRoot -> Text
+    offers operatorAuthorized -> Truth
+    offers leaseRevoked -> Truth
+    offers allNodesAcknowledged -> Truth
+    offers pendingPresent -> Truth
+  }
+  emergence loadPendingRetirement {
+    cause kernel
+    when not retirement.loaded
+    needs observation.read on facts
+    call observation.expectedRequestRoot() -> facts.expectedRequestRoot
+    call observation.actualRequestRoot() -> facts.actualRequestRoot
+    call observation.operatorAuthorized() -> facts.operatorAuthorized
+    call observation.leaseRevoked() -> facts.leaseRevoked
+    call observation.allNodesAcknowledged() -> facts.allNodesAcknowledged
+    call observation.pendingPresent() -> facts.pendingPresent
+    alter retirement.loaded <- true
+    witness "next-internet:pending-retirement-observations"
+  }
+  emergence admitPendingRetirement {
+    cause kernel
+    when retirement.loaded and facts.expectedRequestRoot == facts.actualRequestRoot and facts.operatorAuthorized and facts.leaseRevoked and facts.allNodesAcknowledged and facts.pendingPresent
+    needs pending.retire on retirement
+    alter retirement.allowed <- true
+    preserve retirement.loaded
+    witness "next-internet:rcl-pending-retirement"
+  }
+  realize loadPendingRetirement
+  realize admitPendingRetirement
+}

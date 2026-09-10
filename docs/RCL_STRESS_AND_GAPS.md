@@ -28,3 +28,12 @@ K400 单元编号来自实际 RCL `campaignCellIdFor`，完整映射证据见 `a
 新增回归：真实 coordinator kill 后只查询已执行回执；发出前崩溃不重发；节点密钥与已消费证据锚点冷恢复；撤销不回退；部分缓存回滚、账本截断和伪签名拒绝；同目录协调器及节点写锁；恢复不扩 scope/expiry、不重发 lease；已过期状态可审计恢复但不可执行。参见实际 tests.tap 与独立恢复审查。
 
 九门仍分别 NOT_ADJUDICATED。本机真实执行提供 EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 的候选证据；现有有界性能数字不含 DPAPI 恢复开销，不代表其 SLA。AI_GENERATE 未评估。没有自动吸收、上游 Core 变更或晋升。
+
+## alpha.3 未决维护压力增量
+
+- Task/missing capability：缺少未知执行结果的可审计处置入口；gap type = RCL_INTEGRATION_GAP，不是语言表达缺口。
+- Donor/workaround：复用既有 compiler/runtime、DPAPI、签名账本、撤销水位和内核写锁；Node 提供队列和 CLI，RCL 负责 exact root/操作员确认/已撤销/全部确认/存在pending 的准入。
+- Generality：执行未知与重新授权分离、单调关闭、先证据后清状态可复用；Candidate absorption 仅 pending-retirement.rcl 候选 Profile，不修改 Core。
+- Provider advantage：Node 的进程生命周期与 Windows 文件保护保持专业实现；无 silent bypass。外部操作员身份及 anti-rollback anchor gap 当前明确未实施。
+- Regression：maintenance 高/低层执行旁路、wrong root/未确认无写、缺节点ack、节点签章/epoch/watermark/事实根篡改、终止账本落盘前缀和suffix两个真实kill窗口、只读查询不泄露原文/密钥。
+- Affected K400 candidates：沿用 K057/K110/K117/K250/K257。九门均 NOT_ADJUDICATED，真实 lowered execution 不冒充 native VM 或生产人类认证。

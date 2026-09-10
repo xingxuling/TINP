@@ -15,3 +15,5 @@
 当前结论：内部可复核源码候选已整理；对外许可与发行资格 **NOT_ADJUDICATED**。没有把 public GitHub 仓库等同于开放许可，也没有用本仓库许可证覆盖 donor 权利。
 
 alpha.2 未新增第三方代码副本或运行时依赖。DPAPI/文件锁适配由本仓库调用 Windows 与 Python 标准库；Microsoft 文档作为 API 参考，没有复制其示例实现。三个 donor 源码保持原样，原始来源清单继续适用。
+
+alpha.3 仅增加本仓库维护入口、固定 RCL Profile 和测试，未引入第三方源码或新依赖。既有许可边界继续适用。

@@ -1,0 +1,20 @@
+{
+  "status": "VERIFIED_ALPHA2_TO_ALPHA3_STATE_UPGRADE",
+  "leasePreserved": true,
+  "subjectKeyPreserved": true,
+  "requestRoot": "bf8a597964443f046a668b7563e5da4bc5400de99d74d2cdff641cc382843181",
+  "zeroExecutions": true,
+  "revocationRetained": true,
+  "pids": [
+    44608,
+    43344,
+    42236
+  ],
+  "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAfiTOXWDIBgd69fsgvJu5a/1yahTKJtTsNP5s4AE7evk=\n-----END PUBLIC KEY-----\n",
+  "evidenceRoot": "ef0616d88e504310738a16e2e09eccc935af39ccd18406647ebd7b595c25a294",
+  "oldArchiveSha256": "98599b0f4b23dee0effe5049f4e18ac9cee9b0ec22bee21b12c6fb28319dcfec",
+  "oldCommit": "06d5f5de88a6e061e3c7a7a5ddbb2108d437fbdf",
+  "ledger": "evidence/0.1.0-alpha.3/upgrade-alpha2.jsonl",
+  "ledgerSha256": "22bc9e4122f11bce3f28c6ce575ae96b8d50aff4e42842b0ff65327ca1d0edec",
+  "fixture": "Actual alpha.2 package creates protected unsent pending state; current alpha.3 reads/retires/reopens it. No execution dispatched."
+}
