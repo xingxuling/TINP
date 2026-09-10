@@ -78,3 +78,10 @@ alpha.2起可选Windows持久模式已保存网络密钥；alpha.4把操作员�
 `src/authority-registry-convergence.mjs` 只拥有 TINP 对调用方提交的离线 registry 历史进行收敛检查的适配。`twni.authority-registry-convergence.v1` 绑定 distribution policy root、registry ID、排序后的 distribution bundles 和 `historyRoot`；验证要求 Genesis/序号 1、连续序号、逐段 `previousRegistryRoot`、每段 mirror quorum、稳定 accepted mirror 集合，并拒绝同序号重复或不同 root 的有效签名分叉。它不会选择生产历史、发布快照、提供透明日志或跨调用持久状态，也不授予 RCL/RNCS/AAF 权限。
 
 历史容器和每段 bundle 都由调用方提供，`nowMs` 仍是本机输入；单个未与竞争历史同时提交的有效 issuer 签名分叉无法由本地适配器凭空发现。External authority Owner 仍负责在线发布、可信时间、撤销传播、透明日志、镜像生命周期、冲突处置、硬件托管和跨设备恢复。
+
+
+## alpha.9 authority registry convergence store boundary
+
+`src/authority-registry-convergence-store.mjs` 只拥有 TINP 对离线 convergence bundle 的本机持久化适配。它保存公开 bundles、`historyRoot`、policy/registry 标识和序号边界；append 在目录写者租约内复验既有与候选历史，要求候选完全包含既有 bundle 前缀，然后使用临时文件、fsync 和原子替换写入。相同历史返回 `unchanged`，回退、前缀改写、错误 policy、篡改 root 或私钥材料拒绝。
+
+该 store 的 owner 仍是调用方部署与外部 authority：TINP 不选择路径信任根、不防止整个文件被替换、不提供可信时间、在线透明日志、跨主机持久共识、全局撤销或 RNCS/AAF/RCL 权限。旧 receipt 的历史验证可允许过期，但最新快照的当前性仍由调用方 `nowMs` 约束。

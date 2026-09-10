@@ -1,8 +1,8 @@
-# Authority registry security court — alpha.8
+# Authority registry security court — alpha.9
 
 Decision: **VERIFIED_LOCAL_CANDIDATE / NOT_PRODUCTION_AUTHORITY**.
 
-The court reviews the bounded registry adapter, its explicit recovery bridge, the offline distribution bundle and the caller-supplied historical convergence bundle. It does not certify a registry operator, a human signer, an online service, or a K400 cell.
+The court reviews the bounded registry adapter, its explicit recovery bridge, the offline distribution bundle, the caller-supplied historical convergence bundle and the local atomic convergence store. It does not certify a registry operator, a human signer, an online service, or a K400 cell.
 
 ## Evidence exercised
 
@@ -16,14 +16,15 @@ The court reviews the bounded registry adapter, its explicit recovery bridge, th
 - The distribution CLI and strict bundle/policy/receipt validators were exercised. Mirror key replacement, revocation, private material, accessors, duplicate receipts, unsorted receipts, stale receipts and time-window violations fail closed.
 - A convergence demo signs two sequential registry snapshots and a quorum for each. Verification accepts the contiguous history with a stable three-mirror set, rejects a same-sequence alternate root, rejects a missing sequence or broken predecessor, and rejects mirror-set drift even when each individual bundle reaches threshold.
 - The convergence CLI and strict history/root validators were exercised. Duplicate snapshots, altered `historyRoot`, accessors/inherited fields and malformed child arrays fail closed; the history root binds the complete supplied bundle list.
+- The convergence-store demo and six focused store tests were exercised. The store writes only public convergence state, uses a directory writer lease plus temporary-file fsync/rename, extends only an exact existing prefix, returns `unchanged` for replay, and rejects rollback, old-prefix rewrite, changed policy, tampered roots and private material without changing durable bytes. Store verification allows aged historical receipts while requiring the latest snapshot to be current when requested.
 
 ## Negative cases
 
-The test profile covers forged signatures/roots, issuer replacement and revocation, sequence rollback, predecessor replacement, role escalation, authority/key epoch violations, resurrection, duplicate active keys, expired or not-yet-valid snapshots, malformed arrays/objects, getters/inherited keyring entries, missing members and mismatched fingerprints. Distribution cases additionally cover conflicting signed roots/sequences, insufficient quorum, duplicate or unsorted receipts, mirror replacement/revocation, stale receipts and private/accessor material. Convergence cases cover missing or duplicated sequence numbers, broken previous roots, same-sequence alternate roots, altered history roots, mirror-set drift and malformed/accessor histories. Each is expected to fail closed with a namespaced `AUTHORITY_REGISTRY_*` error.
+The test profile covers forged signatures/roots, issuer replacement and revocation, sequence rollback, predecessor replacement, role escalation, authority/key epoch violations, resurrection, duplicate active keys, expired or not-yet-valid snapshots, malformed arrays/objects, getters/inherited keyring entries, missing members and mismatched fingerprints. Distribution cases additionally cover conflicting signed roots/sequences, insufficient quorum, duplicate or unsorted receipts, mirror replacement/revocation, stale receipts and private/accessor material. Convergence cases cover missing or duplicated sequence numbers, broken previous roots, same-sequence alternate roots, altered history roots, mirror-set drift and malformed/accessor histories. Store cases additionally cover malformed state, tampered roots, policy mismatch, rollback, prefix rewrite, private material, atomic replacement and replay idempotence; all are expected to fail closed with namespaced `AUTHORITY_REGISTRY_*` errors.
 
 ## Boundary decision
 
-The adapter consumes offline files and a caller-provided local clock. The distribution bundle proves only that the supplied mirror signatures agree during this call; the convergence bundle additionally proves continuity and stable mirror membership within the supplied finite history. Neither publishes or reconciles snapshots, distributes revocations, proves issuer/mirror freshness outside the caller's history, protects private keys, provides a trusted timestamp, creates RNCS grants, or authorizes side effects. An old snapshot can be validly signed and still be stale if the caller supplies it; the local `nowMs` check is an input boundary, not an external time authority. Registry state after the supplied history, omitted competing forks, mirror history outside the bundle and code/configuration rollback are outside this proof.
+The adapter consumes offline files and a caller-provided local clock. The distribution bundle proves only that the supplied mirror signatures agree during this call; the convergence bundle additionally proves continuity and stable mirror membership within the supplied finite history; the store proves only local atomic persistence and exact-prefix extension under its directory lease. Neither publishes or reconciles snapshots, distributes revocations, proves issuer/mirror freshness outside the caller's history, protects private keys, provides a trusted timestamp, creates RNCS grants, or authorizes side effects. An old snapshot can be validly signed and still be stale if the caller supplies it; the local `nowMs` check is an input boundary, not an external time authority. Store whole-file replacement by an attacker, registry state after the supplied history, omitted competing forks, mirror history outside the bundle and code/configuration rollback are outside this proof.
 
 RCL remains the owner of recovery and transaction admission. AAF remains the owner of approval receipt format and signature semantics. RNCS/RFE remain world authority owners. The formal-gate pinned-key and revocation-registry implementation was a donor reference only; no Core change or promotion was made.
 
@@ -35,5 +36,5 @@ RCL remains the owner of recovery and transaction admission. AAF remains the own
 | CORRECT / ROBUST | CANDIDATE evidence | Positive lifecycle/quorum plus malformed, rollback, rotation, fork, stale and keyring negative cases |
 | PERFORMANCE | NOT_ADJUDICATED | No registry SLA or cross-device throughput claim |
 | AI_GENERATE | NOT_RUN | No independent generation evaluation |
-| EVIDENCE | CANDIDATE evidence | Alpha.8 verification JSON, tests TAP, source hashes and delivery receipt |
+| EVIDENCE | CANDIDATE evidence | Alpha.9 verification JSON, tests TAP, source hashes and delivery receipt |
 | K400 promotion | NOT_ADJUDICATED | No universal cell admission is implied |

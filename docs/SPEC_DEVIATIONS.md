@@ -73,3 +73,12 @@ This supplements the two input specifications without editing the original DOCX 
 - **New Decision:** Add an opt-in `twni.authority-registry-convergence.v1` bundle with a canonical `historyRoot`. Require Genesis/sequence 1, contiguous sequence and previous-root links, per-snapshot mirror quorum and one stable accepted mirror set; fail closed on duplicate or conflicting roots and mirror drift.
 - **Impact:** P05/P06 gain a bounded historical-consistency observation. The bundle does not create RCL authority, RNCS world commit, AAF approval, online publication/revocation, transparent history, trusted time or production identity enrollment.
 - **Rollback:** Remove the convergence adapter and retain the alpha.7 single-distribution bundle path; existing registry/distribution roots and owner boundaries remain unchanged.
+
+## 9. Local history persistence is not distributed durability
+
+- **Original Assumption:** A verified finite convergence history could be copied into a local file and then treated as durable authority state.
+- **Observed Evidence:** The candidate has no online publisher, transparent log, trusted clock, cross-host consensus or whole-file anti-replacement anchor. It can safely write a caller-selected public history on one host, serialize it with an atomic temp-file replacement, and reject shorter or altered old prefixes on later explicit appends.
+- **Reasoning:** Local durability removes accidental truncation and replay ambiguity, but a file path and host filesystem are not an independently authenticated authority root. Historical receipts may age out while the latest snapshot must still be current under the caller's clock.
+- **New Decision:** Add an opt-in `twni.authority-registry-convergence-store.v1` wrapper. Persist only the convergence bundle and derived public metadata; require exact existing-prefix extension, return `unchanged` for exact replay, and fail closed before changing bytes on rollback, prefix rewrite, policy mismatch, malformed state or private material.
+- **Impact:** P05/P06 gain a bounded local durability observation. The store does not create RCL authority, RNCS world commit, AAF approval, online publication/revocation, trusted time, transparent history, cross-host convergence or lost-key recovery.
+- **Rollback:** Remove the store adapter and retain the alpha.8 caller-supplied convergence verification path; existing registry/distribution/convergence roots and owner boundaries remain unchanged.

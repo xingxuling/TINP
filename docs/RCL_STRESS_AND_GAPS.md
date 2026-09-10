@@ -83,3 +83,13 @@ Generality：连续签名历史、显式缺口、前根断裂、同序号重复/
 Regression：缺失序号、错误 Genesis、错误 predecessor root、同序号不同 issuer root、重复快照、篡改 `historyRoot`、每段 quorum 达标但 accepted mirror 集合漂移、乱序/重复 child、accessor/inherited history 以及私钥输入均 fail closed。CLI、demo 和 verifier 只读取调用方历史，不发布、修复或持久化共识状态；单独提交的有效签名分叉超出透明日志能力边界。
 
 Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 仅有本机历史 profile 与负例证据；PERFORMANCE 只测本机验签和排序，不代表透明日志或镜像网络 SLA；AI_GENERATE 未评估；EVIDENCE 以 alpha.8 `LOCAL_VERIFICATION.json`、Court 和 delivery receipt 为准。九门仍 `NOT_ADJUDICATED`。
+
+## alpha.9 authority registry convergence store 压力
+
+Task/missing capability：alpha.8 的有限 convergence history 只在调用内验证，缺少一个能把公开历史安全落到本机、拒绝本地回退并保留完整前缀的最小持久化边界；gap type=AUTHORITY_PROVIDER_INTEGRATION + LOCAL_DURABILITY_GAP，不是 RCL Core 表达缺口。Workaround/donor：新增严格 `twni.authority-registry-convergence-store.v1` 文件适配，复用 convergence `historyRoot`、distribution 验签和既有目录 writer lease，使用临时文件 fsync/rename。
+
+Generality：原子公开状态写入、幂等 replay、精确前缀扩展、回退/旧前缀改写 fail-closed 和不落私钥可跨项目复用；candidate absorption 仍是 TINP host/profile，不增加 RCL primitive，不改变 RNCS/AAF owner。Provider advantage 是 Node 文件系统与现有本机租约；在线透明日志、跨主机共识、可信时间、整文件替换防护和外部撤销仍由 authority Owner 负责。
+
+Regression：首次 append、连续 extension、相同历史 replay、shorter rollback、旧 child/root rewrite、错误 policy、篡改 store root、malformed/accessor/private state、目录并发写和 latest-current 检查均有正负例；store 只在完整候选前缀通过后原子替换，失败不得改变 durable bytes。
+
+Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 仅有本机文件与进程证据；PERFORMANCE 未作 store SLA 或跨主机吞吐声明；AI_GENERATE 未评估；EVIDENCE 以 alpha.9 `LOCAL_VERIFICATION.json`、Court 和 delivery receipt 为准。九门仍 `NOT_ADJUDICATED`。
