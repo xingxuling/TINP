@@ -1,6 +1,6 @@
 # TaoWind 新互联网协议套件
 
-v0.1.0-alpha.11 是一个可运行的内部工程候选：普通用户输入一句能力请求，系统在三个独立本机进程之间自动发现、调用 OPP 协商契约、验证权限、建立会话、经 A→B→C 传输并返回带证据的执行结果。authority registry、多镜像分发、历史收敛、本机历史 store、外部收敛见证与跨进程 public-history replay 是可选的离线签名桥接和压力验证。
+v0.1.0-alpha.12 是一个可运行的内部工程候选：普通用户输入一句能力请求，系统在三个独立本机进程之间自动发现、调用 OPP 协商契约、验证权限、建立会话、经 A→B→C 传输并返回带证据的执行结果。authority registry、多镜像分发、历史收敛、本机历史 store、外部收敛见证、跨进程 public-history replay 与 TINP DATA loopback state transfer 是可选的离线签名桥接和压力验证。
 
 本版只有一个刻意收窄的能力：精确统计 Unicode 码点数量。它可以验证主体、权限、路由、迁移、退化和回执能否共同工作；它不代表整个新互联网已经实现。
 
@@ -25,7 +25,7 @@ npm run verify
 npm run recovery:demo
 ```
 
-`verify` 冻结源码哈希，按文件顺序运行全部测试，然后分别启动 UDP 和 TCP 三进程、持久恢复见证、外部恢复锚点整目录回放见证、独立 issuer 的 authority registry 轮换见证、独立多镜像分发见证、连续历史收敛见证、本机历史 store 扩展见证、独立外部收敛见证和两个独立本机进程的 public-history replay 见证，保存签名回执、磁盘账本和有界计时到 `evidence/0.1.0-alpha.11/LOCAL_VERIFICATION.json`。重放并发测试内部仍使用真实并发。`npm test` 也按文件顺序运行，避免 Windows 临时目录清理竞态；发行证据使用同一顺序入口。
+`verify` 冻结源码哈希，按文件顺序运行全部测试，然后分别启动 UDP 和 TCP 三进程、持久恢复见证、外部恢复锚点整目录回放见证、独立 issuer 的 authority registry 轮换见证、独立多镜像分发见证、连续历史收敛见证、本机历史 store 扩展见证、独立外部收敛见证、两个独立本机进程的 public-history replay 见证和两个独立本机 transport worker 的 TINP DATA loopback state-transfer 见证，保存签名回执、磁盘账本和有界计时到 `evidence/0.1.0-alpha.12/LOCAL_VERIFICATION.json`。重放并发测试内部仍使用真实并发。`npm test` 也按文件顺序运行，避免 Windows 临时目录清理竞态；发行证据使用同一顺序入口。
 
 ## 已实现的闭环
 
@@ -40,7 +40,7 @@ npm run recovery:demo
 
 ## 证据与边界
 
-阅读 `docs/REALITY_AUDIT.md`、`docs/CANONICAL_OWNERSHIP.md`、`docs/SPEC_DEVIATIONS.md`、`docs/AUTHORITY_PROVIDER_READINESS.md`、`evidence/0.1.0-alpha.11/INTEGRATION_COURT.md` 和 `evidence/0.1.0-alpha.11/EVIDENCE_LEDGER.json`。原规范保留在 `constitution/`，未修改下载文件或同步项目参考文件。
+阅读 `docs/REALITY_AUDIT.md`、`docs/CANONICAL_OWNERSHIP.md`、`docs/SPEC_DEVIATIONS.md`、`docs/AUTHORITY_PROVIDER_READINESS.md`、`evidence/0.1.0-alpha.12/INTEGRATION_COURT.md` 和 `evidence/0.1.0-alpha.12/EVIDENCE_LEDGER.json`。原规范保留在 `constitution/`，未修改下载文件或同步项目参考文件。
 
 当前是 **VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED**。没有公网、真实异机部署、军用安全认证、互联网规模收敛、生产密钥托管或第三方安全评估。签名提供当前夹具内的认证与完整性，传输没有 TLS 机密性，因此严格限制回环地址。
 
@@ -48,7 +48,7 @@ npm run recovery:demo
 
 SLA、成本、地域、能耗是受信本地配置与约束，非实测商业保证或结算。保留期零值指不留原始请求文本；回执和摘要为审计保存，尚无完整生命周期清理机制。P12 应用种子、P13 跨设备运行、P14 私网和 P15 全面旧网适配未在本版实现。RNCS/RFE 世界事实与提交权没有迁入本仓库。
 
-本轮新增恢复闭环、外部恢复锚点、authority registry、多镜像分发、历史收敛、本机历史 store、外部收敛见证和跨进程 public-history replay 桥接，审查见 `docs/RECOVERY_OWNER.md`、`docs/PROTECTED_STORAGE.md`、`docs/RECOVERY_SECURITY_COURT.md`、`docs/RECOVERY_ANCHOR_OWNER.md`、`docs/RECOVERY_ANCHOR_SECURITY_COURT.md`、`docs/AUTHORITY_REGISTRY_OWNER.md` 和 `docs/AUTHORITY_REGISTRY_SECURITY_COURT.md`。原始待处理请求只保存在加密 checkpoint，恢复仅查找已存在回执；未找到时保留未决状态并拒绝继续，不自动重发。外部锚点能拒绝已知新锚点之前的完整旧目录回放，registry 能验证独立 issuer 的签名快照并推导角色 keyring，多镜像 bundle 能要求同一 registry root 的签名阈值并拒绝分叉，历史 bundle 能检查连续序号、前根、重复/分叉快照和稳定镜像集合，本机 store 能在显式 append 时原子保存完整历史并拒绝回退或改写，外部收敛见证能把独立签名绑定到精确 store 状态并检测保留见证下的替换/回退，跨进程 replay 能在两个独立本机目录间复验公开状态并保留分叉/漂移/缺口冲突；但上次显式锚定之后的未锚定尾部、在线注册/撤销、可信时间、跨设备密钥迁移和全网持久收敛仍未解决。详见 `docs/NEXT_GAP.md`。
+本轮新增恢复闭环、外部恢复锚点、authority registry、多镜像分发、历史收敛、本机历史 store、外部收敛见证、跨进程 public-history replay 和 TINP DATA loopback state-transfer 桥接，审查见 `docs/RECOVERY_OWNER.md`、`docs/PROTECTED_STORAGE.md`、`docs/RECOVERY_SECURITY_COURT.md`、`docs/RECOVERY_ANCHOR_OWNER.md`、`docs/RECOVERY_ANCHOR_SECURITY_COURT.md`、`docs/AUTHORITY_REGISTRY_OWNER.md` 和 `docs/AUTHORITY_REGISTRY_SECURITY_COURT.md`。原始待处理请求只保存在加密 checkpoint，恢复仅查找已存在回执；未找到时保留未决状态并拒绝继续，不自动重发。外部锚点能拒绝已知新锚点之前的完整旧目录回放，registry 能验证独立 issuer 的签名快照并推导角色 keyring，多镜像 bundle 能要求同一 registry root 的签名阈值并拒绝分叉，历史 bundle 能检查连续序号、前根、重复/分叉快照和稳定镜像集合，本机 store 能在显式 append 时原子保存完整历史并拒绝回退或改写，外部收敛见证能把独立签名绑定到精确 store 状态并检测保留见证下的替换/回退，跨进程 replay 能在两个独立本机目录间复验公开状态并保留分叉/漂移/缺口冲突，loopback transfer 能在既有 TINP DATA framing 和 peer public-key admission 下复验公开状态并在篡改载荷后保持接收端 durable bytes；但上次显式锚定之后的未锚定尾部、在线注册/撤销、可信时间、跨设备密钥迁移和全网持久收敛仍未解决。详见 `docs/NEXT_GAP.md`。
 
 ## 许可
 
@@ -241,3 +241,11 @@ npm run authority-registry-cross-host-replay:demo
 ```
 
 这是真实本机进程/文件系统压力证据，不是两台物理设备、加密跨主机传输、可信时间、在线 authority 或生产冲突共识。完整结果见 `evidence/0.1.0-alpha.11/authority-registry-cross-host-replay.json`；外部 Owner 交接仍以 `docs/AUTHORITY_PROVIDER_READINESS.md` 为准。
+
+alpha.12 继续复用上述 store/convergence 语义，并接入现有 `src/transport.mjs` 的 `LocalTransport` 与 vendored TINP `DATA` framing。两个独立 Node transport worker 各自绑定 TCP `127.0.0.1` endpoint 和独立目录；节点 A 通过 peer public-key admission 把 seq1→seq2 public store 传给 B，B 导入、幂等 replay、扩展到 seq3，再反向传回 A。场景记录真实发送/接收帧和字节计数，接收端无无效帧；同长度签名分叉、镜像集合漂移、序号缺口以及篡改 `historyRoot` 的 transfer 都被拒绝，原 durable bytes 保持不变。
+
+```powershell
+npm run authority-registry-loopback-transfer:demo
+```
+
+这是真实本机 TCP socket/process/filesystem 压力证据，不是 TLS、两台物理设备、加密跨主机传输、可信时间、在线 authority 或生产冲突共识。完整结果见 `evidence/0.1.0-alpha.12/authority-registry-loopback-transfer.json`；外部 Owner 交接仍以 `docs/AUTHORITY_PROVIDER_READINESS.md` 为准。

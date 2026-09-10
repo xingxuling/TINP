@@ -9,11 +9,12 @@ counter, a transparency log, or a human identity system.
 ## Current reality
 
 The repository is `https://github.com/xingxuling/TINP.git`, on the candidate
-branch `codex/tinp-registry-v06`. The local alpha.11 profile can verify an
+branch `codex/tinp-registry-v06`. The local alpha.12 profile can verify an
 offline registry, mirror quorum, finite history, local append-only prefix, an
 independently signed store-state witness and a public-history replay between
-two independent local processes/directories. A same-call signature, local
-process separation and the local `nowMs` value are not external publication,
+two independent local processes/directories and a public-state transfer
+through the existing TINP DATA TCP loopback path. A same-call signature, local
+process separation, loopback socket and the local `nowMs` value are not external publication,
 trusted time, or durable physical-host convergence.
 
 On 2026-09-10, the public repositories under the GitHub owner `xingxuling`
@@ -71,8 +72,8 @@ processes on two hosts:
    traces, negative cases and human approval. K400 remains `NOT_ADJUDICATED`
    until its nine gates are separately reviewed.
 
-Until those inputs exist, the alpha.11 offline adapters and local replay
-harness remain the smallest
+Until those inputs exist, the alpha.12 offline adapters and local replay/loopback
+harnesses remain the smallest
 honest boundary. Adding a local publisher, synthetic trusted clock, guessed
 Owner, or test keyring would create a parallel authority and would not close
 this gap.

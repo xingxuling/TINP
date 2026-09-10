@@ -33,3 +33,5 @@ alpha.10 仅新增本仓库 JavaScript 的 authority registry convergence witnes
 alpha.10 后续 authority-provider readiness 记录仅新增本仓库维护文档与 GitHub/本地考古 JSON，没有复制第三方代码、声明外部服务许可或引入运行时依赖。其 `BLOCKED_EXTERNAL_OWNER` 结论不改变现有 donor 与内部候选边界。
 
 alpha.11 仅新增本仓库 JavaScript replay demo、test-only IPC worker、测试、协议登记与文档；未复制第三方跨主机/共识源码，也未引入新 npm/Python 依赖。传输的 registry/convergence/store/keyring 输入均为调用方公开材料，私钥不进入 worker 或源码包。既有 donor 许可、内部使用限制和未公开发布结论继续适用。
+
+alpha.12 仅新增本仓库 JavaScript 的 TINP loopback transfer demo、test-only transport worker、测试、协议登记、verify 分支与文档；复用既有 `LocalTransport`、vendored TINP `DATA` framing 和现有 convergence/store validators，未复制第三方传输/共识源码，也未引入新 npm/Python 依赖。transfer payload 与源码包不含 issuer、mirror、member、witness 或 transport 私钥。既有 donor 许可、内部使用限制和未公开发布结论继续适用。

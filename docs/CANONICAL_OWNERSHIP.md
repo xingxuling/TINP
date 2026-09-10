@@ -100,3 +100,21 @@ validator，Owner 仍是调用方部署与外部 authority；本轮没有新增 
 集合漂移和序号缺口由既有验证器拒绝，冲突状态保留为未决。这个 harness 是
 `P05/P06` 的本机压力证据，不是两台物理设备的 Owner、加密传输、可信时钟或
 生产共识。
+
+## alpha.12 TINP DATA loopback transfer boundary
+
+`src/transport.mjs` and the vendored TINP `DATA` framing remain the transport
+owners; the loopback harness does not introduce a parallel authority protocol.
+Two independent local workers bind separate TCP loopback endpoints, pin each
+other's public key and carry only a signed public convergence-store state. The
+receiver calls the existing store append/convergence validators, so exact
+replay returns `unchanged`, a longer valid prefix extends, and reverse transfer
+preserves the same history root.
+
+The transfer envelope and workers contain no issuer, mirror, member, witness
+or transport private key. Fork, mirror-set drift, sequence gap and state-root
+tamper are rejected before durable replacement. This boundary proves only
+TINP process/socket behavior on one host; external authority still owns TLS,
+physical-host enrollment, trusted time, publication, revocation, hardware
+custody and production conflict resolution. RCL Core, RNCS/RFE and AAF owners
+are unchanged.

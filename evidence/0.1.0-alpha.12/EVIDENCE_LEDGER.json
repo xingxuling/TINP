@@ -1,0 +1,322 @@
+{
+  "format": "twni.delivery-evidence-ledger.v0.12",
+  "version": "0.1.0-alpha.12",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "tests": {
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-concurrency=1",
+      "--test-reporter=tap",
+      "tests/aaf-operator.test.mjs",
+      "tests/authority-registry-cli.test.mjs",
+      "tests/authority-registry-convergence-cli.test.mjs",
+      "tests/authority-registry-convergence-store-cli.test.mjs",
+      "tests/authority-registry-convergence-store.test.mjs",
+      "tests/authority-registry-convergence-witness-cli.test.mjs",
+      "tests/authority-registry-convergence-witness.test.mjs",
+      "tests/authority-registry-convergence.test.mjs",
+      "tests/authority-registry-cross-host-replay.test.mjs",
+      "tests/authority-registry-distribution-cli.test.mjs",
+      "tests/authority-registry-distribution.test.mjs",
+      "tests/authority-registry-loopback-transfer.test.mjs",
+      "tests/authority-registry.test.mjs",
+      "tests/conformance.test.mjs",
+      "tests/operator-cli.test.mjs",
+      "tests/operator-security.test.mjs",
+      "tests/opp-bridge.test.mjs",
+      "tests/pending-cli.test.mjs",
+      "tests/pending-security.test.mjs",
+      "tests/profiles.test.mjs",
+      "tests/protected-store.test.mjs",
+      "tests/rcl-guard.test.mjs",
+      "tests/rcl-migration.test.mjs",
+      "tests/rcl-pending-retirement.test.mjs",
+      "tests/rcl-recovery.test.mjs",
+      "tests/rcl-route.test.mjs",
+      "tests/recovery-anchor-cli.test.mjs",
+      "tests/recovery-anchor.test.mjs",
+      "tests/recovery-gate-integration.test.mjs",
+      "tests/recovery-security.test.mjs",
+      "tests/security-review.test.mjs",
+      "tests/shared-ir.test.mjs",
+      "vendor/tinp/tests/tinp-v02.test.mjs",
+      "vendor/tinp/tests/tinp.test.mjs"
+    ],
+    "exitCode": 0,
+    "count": 172,
+    "passed": 172,
+    "failed": 0,
+    "stdout": "evidence/0.1.0-alpha.12/tests.tap",
+    "stdoutSha256": "de67ed6d44850e16c834468acb1d807dffbf7b7fc4970e3c6a1654db01187497",
+    "stderr": "evidence/0.1.0-alpha.12/tests.stderr.txt"
+  },
+  "verificationFile": "evidence/0.1.0-alpha.12/LOCAL_VERIFICATION.json",
+  "verificationSha256": "36f16f315914686e1a3f050fa97a4387868871f3e58f7e10b61e254c8eac2bfb",
+  "sourceTreeRoot": "dbca642a2f07aaa644bfdba87f03ac468a71e8e8c7d13ac61709bd826a7164e7",
+  "sourceFileCount": 191,
+  "startedAt": "2026-09-10T18:32:12.688Z",
+  "finishedAt": "2026-09-10T18:50:28.073Z",
+  "baseline": {
+    "commit": "0592aee6ebd4bce34d84e6b0fe63f66df522f317",
+    "ledger": "evidence/0.1.0-alpha.11/EVIDENCE_LEDGER.json",
+    "sha256": "ec33a87e8c689e79c407eff007df2190608ceba1bdb580ff9fdf9e0d4698e3f1"
+  },
+  "change": {
+    "owner": "TINP authority-registry host adapter plus offline multi-mirror distribution, finite historical convergence, local atomic convergence-store, external convergence-witness, local multi-process replay and authenticated TINP DATA loopback state-transfer harness",
+    "policyFormats": [
+      "twni.authority-registry-policy.v1",
+      "twni.authority-registry-distribution-policy.v1",
+      "twni.authority-registry-convergence-witness-policy.v1"
+    ],
+    "registryFormat": "twni.authority-registry.v1",
+    "distributionFormats": [
+      "twni.authority-registry-distribution-receipt.v1",
+      "twni.authority-registry-distribution.v1"
+    ],
+    "convergenceFormats": [
+      "twni.authority-registry-convergence.v1",
+      "twni.authority-registry-convergence-verification.v1"
+    ],
+    "storeFormat": "twni.authority-registry-convergence-store.v1",
+    "witnessFormats": [
+      "twni.authority-registry-convergence-witness.v1",
+      "twni.authority-registry-convergence-witness-verification.v1"
+    ],
+    "replayFormat": "twni.authority-registry-cross-host-replay-demo.v1",
+    "transferFormat": "twni.authority-registry-loopback-transfer-demo.v1",
+    "bridge": "Optional authority registry verification, recovery-anchor role keyring projection, per-snapshot mirror quorum, caller-supplied historical continuity observation, single-host atomic public-history append, independent exact store-state witness with retained chain, local multi-process replay, and authenticated TINP DATA loopback transfer through existing store append validators",
+    "rclCoreChanged": false,
+    "privateKeyBoundary": "Issuer, mirror, member, convergence-witness and local transport private keys remain outside registry/distribution/convergence/store/witness/replay/transfer payloads; workers receive public keys and signed public state only"
+  },
+  "authorityRegistry": {
+    "format": "twni.authority-registry-demo.v1",
+    "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_LIFECYCLE",
+    "issuerPid": 11964,
+    "firstRegistryRoot": "b60365178d4567509ba69c90004e885ab0cfe122da6de655a90931754025f0f4",
+    "secondRegistryRoot": "0a5fcec05ec9fe30e6046be7a136bc24d14d8e1a9dd8ebb7317ebf8dc28f218a",
+    "firstSequence": 1,
+    "secondSequence": 2,
+    "rotatedSigners": [
+      "operator:owner-v1 → operator:owner-v2",
+      "recovery:witness-v1 → recovery:witness-v2"
+    ],
+    "revokedSigners": [
+      "operator:owner-v1",
+      "recovery:witness-v1"
+    ],
+    "activeRecoverySigner": "recovery:witness-v2",
+    "activeOperatorSigner": "operator:owner-v2",
+    "oldKeyDenied": true,
+    "keyMaterialPersisted": false,
+    "scope": "Actual independent issuer child, signed offline snapshots, append-only key rotation/revocation and role keyring derivation; no online registry, trusted clock, hardware custody or cross-device convergence."
+  },
+  "authorityRegistryDistribution": {
+    "format": "twni.authority-registry-distribution-demo.v1",
+    "status": "VERIFIED_LOCAL_OFFLINE_DISTRIBUTION_QUORUM",
+    "issuerPid": 51720,
+    "mirrorPids": [
+      30164,
+      38784,
+      17644
+    ],
+    "registryRoot": "499f165112c902ab212d09c932fb7684bddf2ff0b9b4a18a82fc3ef72be3840d",
+    "sequence": 1,
+    "distributionPolicyRoot": "760b45636405444e6bc92a88c84347f55fae803364837650bb4df301ccce504b",
+    "threshold": 2,
+    "acceptedMirrors": [
+      "mirror:alpha",
+      "mirror:beta",
+      "mirror:gamma"
+    ],
+    "forkDetected": true,
+    "forkRejectionCode": "AUTHORITY_REGISTRY_DISTRIBUTION_FORK_DETECTED",
+    "insufficientQuorum": true,
+    "insufficientQuorumCode": "AUTHORITY_REGISTRY_DISTRIBUTION_QUORUM_INSUFFICIENT",
+    "keyMaterialPersisted": false,
+    "scope": "Actual independent issuer and mirror child processes, signed receipts over one registry root and deterministic fork/quorum rejection; no online publication, trusted clock, transparent log or cross-device convergence."
+  },
+  "authorityRegistryConvergence": {
+    "format": "twni.authority-registry-convergence-demo.v1",
+    "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_CONVERGENCE",
+    "issuerPid": 30008,
+    "mirrorPids": [
+      18044,
+      44168,
+      38388
+    ],
+    "firstSequence": 1,
+    "lastSequence": 2,
+    "registryRoots": [
+      "d77e923ef111172fad57686a42efe9ff50f1c68c7fb6d173aa97b2a458629800",
+      "aae34488777e89a937974fef895cd745d249d450c1e7e0646985ab23edb3b69f"
+    ],
+    "historyRoot": "5510213384e350cddc190eaf3f397680d0464e51d525d3d7fd1cf6e9a55a975a",
+    "stableMirrors": [
+      "mirror:alpha",
+      "mirror:beta",
+      "mirror:gamma"
+    ],
+    "forkDetected": true,
+    "forkRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_FORK_DETECTED",
+    "mirrorSetDrift": true,
+    "mirrorSetDriftCode": "AUTHORITY_REGISTRY_CONVERGENCE_MIRROR_SET_DRIFT",
+    "keyMaterialPersisted": false,
+    "scope": "Actual independent issuer and mirror child processes, contiguous signed registry history with per-snapshot quorum, stable mirror-set check and deterministic historical fork rejection; no online transparency log, trusted clock or durable cross-host convergence."
+  },
+  "authorityRegistryConvergenceStore": {
+    "format": "twni.authority-registry-convergence-store-demo.v1",
+    "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_CONVERGENCE_STORE",
+    "firstOperation": "appended",
+    "extensionOperation": "extended",
+    "replayOperation": "unchanged",
+    "firstSequence": 1,
+    "lastSequence": 2,
+    "historyRoot": "f4b34ba300934072c6b005a7868005f28673c8598353d3f2beba9b2027671f6a",
+    "stableMirrors": [
+      "mirror:alpha",
+      "mirror:beta",
+      "mirror:gamma"
+    ],
+    "storeWritten": true,
+    "storeBytes": 7491,
+    "rollbackDetected": true,
+    "rollbackRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_STORE_ROLLBACK",
+    "prefixRewriteDetected": true,
+    "prefixRewriteRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_STORE_PREFIX_MISMATCH",
+    "keyMaterialPersisted": false,
+    "scope": "Actual local atomic store write/read with directory writer lease, full-history extension and deterministic rollback/prefix-rewrite rejection; no online transparency log, trusted clock or durable cross-host consensus."
+  },
+  "authorityRegistryConvergenceWitness": {
+    "format": "twni.authority-registry-convergence-witness-demo.v1",
+    "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_CONVERGENCE_WITNESS",
+    "firstVerification": true,
+    "extensionVerification": true,
+    "firstSequence": 1,
+    "lastSequence": 2,
+    "historyRoot": "e1593be6694555896947dff8d0acec697972030eba379890b933af3eb62ed5a4",
+    "firstWitnessRoot": "6edbe654e6c670edd2930cb0b8ca79ea918b65149ca582d28b4823fa465a4112",
+    "secondWitnessRoot": "6e71074a23ebbb4e998a06029230b1827d435a073315b63c43436e3b72057d8e",
+    "replacementStoreDetected": true,
+    "replacementStoreRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_WITNESS_STORE_MISMATCH",
+    "replacementWitnessDetected": true,
+    "replacementWitnessRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_WITNESS_REPLACED",
+    "rollbackDetected": true,
+    "rollbackRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_WITNESS_SEQUENCE_ROLLBACK",
+    "storeWritten": true,
+    "storeBytes": 5754,
+    "keyMaterialPersisted": false,
+    "scope": "Actual independent convergence-witness signer child binds exact local store state and contiguous witness sequence; witness retention remains caller supplied, with no online transparency log, trusted clock or durable cross-host consensus."
+  },
+  "authorityRegistryCrossHostReplay": {
+    "format": "twni.authority-registry-cross-host-replay-demo.v1",
+    "status": "VERIFIED_LOCAL_MULTI_PROCESS_CROSS_HOST_REPLAY",
+    "independentProcesses": true,
+    "independentDirectories": true,
+    "hosts": [
+      {
+        "id": "host-a",
+        "pid": 2528
+      },
+      {
+        "id": "host-b",
+        "pid": 43252
+      }
+    ],
+    "firstOperation": "appended",
+    "extensionOperation": "extended",
+    "importedOnSecondHost": true,
+    "replayOperation": "unchanged",
+    "secondHostExtension": "extended",
+    "firstSequence": 1,
+    "lastSequence": 3,
+    "historyRoot": "f018b733b076df271cdaecf95255a10e87eb97cf3a541f77b786d75564e2454a",
+    "forkDetected": true,
+    "forkRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_STORE_PREFIX_MISMATCH",
+    "mirrorSetDriftDetected": true,
+    "mirrorSetDriftRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_MIRROR_SET_DRIFT",
+    "sequenceGapDetected": true,
+    "sequenceGapRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_CHAIN_GAP",
+    "rejectedStateRetained": true,
+    "privateMaterialTransferred": false,
+    "scope": "Actual independent local Node child processes and directories exchange public convergence-store state and replay signed histories; not two physical hosts, online authority, trusted time or cross-host production consensus."
+  },
+  "authorityRegistryLoopbackTransfer": {
+    "format": "twni.authority-registry-loopback-transfer-demo.v1",
+    "status": "VERIFIED_LOCAL_TINP_LOOPBACK_STATE_TRANSFER",
+    "transport": "tcp",
+    "frameType": "DATA",
+    "independentProcesses": true,
+    "independentDirectories": true,
+    "firstOperation": "appended",
+    "localExtensionOperation": "extended",
+    "networkTransferOperation": "appended",
+    "importedOnSecondNode": true,
+    "networkReplayOperation": "unchanged",
+    "secondNodeExtension": "extended",
+    "reverseNetworkTransferOperation": "extended",
+    "firstSequence": 1,
+    "lastSequence": 3,
+    "historyRoot": "433fb010f4ab29a3c6a4ab607b3632cb888cef10fb019eccb7f5da31d5b5f9eb",
+    "senderFrames": 3,
+    "receiverFrames": 3,
+    "senderBytes": 16706,
+    "receiverInvalidFrames": 0,
+    "peerAuthenticationConfigured": true,
+    "forkDetected": true,
+    "forkRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_STORE_PREFIX_MISMATCH",
+    "mirrorSetDriftDetected": true,
+    "mirrorSetDriftRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_MIRROR_SET_DRIFT",
+    "sequenceGapDetected": true,
+    "sequenceGapRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_CHAIN_GAP",
+    "tamperedTransferDetected": true,
+    "tamperedTransferRejectionCode": "AUTHORITY_REGISTRY_LOOPBACK_TRANSFER_INVALID",
+    "rejectedStateRetained": true,
+    "privateMaterialTransferred": false,
+    "scope": "Actual TINP DATA framing over TCP loopback between two independent local Node child processes and directories; public convergence-store state is imported through existing append validators; not two physical hosts, encrypted transport, trusted time, online authority or production conflict consensus."
+  },
+  "authorityBoundary": "Offline caller-selected registry/distribution/convergence/store/witness/replay/transfer policy and public keyring inputs; loopback adds TCP DATA framing and peer public-key admission only, not human enrollment, trusted time, online publication, transparent log, durable physical-host convergence or hardware custody",
+  "rcl": {
+    "coreChanged": false,
+    "profilesReused": [
+      "rcl/recovery.rcl",
+      "rcl/pending-retirement.rcl"
+    ],
+    "integration": "Registry, mirror, historical continuity, local store, external witness, replay and TINP DATA transfer verification are host observations; existing RCL predicates remain canonical",
+    "candidateCells": [
+      "K057",
+      "K110",
+      "K117",
+      "K250",
+      "K257"
+    ],
+    "gates": {
+      "EXPRESS": "NOT_ADJUDICATED",
+      "COMPILE": "NOT_ADJUDICATED",
+      "LOWER": "NOT_ADJUDICATED",
+      "EXECUTE": "NOT_ADJUDICATED",
+      "CORRECT": "NOT_ADJUDICATED",
+      "ROBUST": "NOT_ADJUDICATED",
+      "PERFORMANCE": "NOT_ADJUDICATED",
+      "AI_GENERATE": "NOT_ADJUDICATED",
+      "EVIDENCE": "NOT_ADJUDICATED"
+    }
+  },
+  "externalActions": {
+    "githubActions": "NOT_RUN",
+    "merge": "NOT_RUN",
+    "deployment": "NOT_DEPLOYED",
+    "publicNetwork": "NOT_RUN",
+    "candidateBranch": "codex/tinp-registry-v06",
+    "candidateCommit": "f2dddb3e1e6992c9643ddc52d0fb94808016e9e5",
+    "candidatePush": "PENDING final status pin and packaging"
+  },
+  "limits": [
+    "Registry, distribution, convergence, store, witness, replay and transfer inputs are caller-selected; a valid loopback transfer does not establish online freshness or human identity",
+    "Local nowMs is not a trusted timestamp; no publication, transparent log, global revocation or durable physical cross-host conflict convergence exists",
+    "Loopback transfer uses TCP on 127.0.0.1 with existing TINP DATA framing and peer public-key pins; it does not prove TLS confidentiality, physical-device recovery, WAN delivery or production consensus",
+    "No arbitrary side-effect transactions or complete RNCS world grant",
+    "Warm local timing samples exclude signing, DPAPI, startup, WAN, throughput and SLA"
+  ],
+  "nextGap": "Production authority registry publication, trusted time, transparent audit, lost-key recovery and durable cross-device convergence"
+}

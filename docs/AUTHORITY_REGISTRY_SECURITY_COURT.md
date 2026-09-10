@@ -1,4 +1,4 @@
-# Authority registry security court — alpha.10
+# Authority registry security court — alpha.12
 
 Decision: **VERIFIED_LOCAL_CANDIDATE / NOT_PRODUCTION_AUTHORITY**.
 
@@ -57,3 +57,25 @@ name describes the stress boundary; it does not certify two physical hosts,
 encrypted transport, trusted time, online publication, global revocation or
 distributed production consensus. The external Owner gate remains
 `BLOCKED_EXTERNAL_OWNER`, and all K400 cells remain `NOT_ADJUDICATED`.
+
+## Alpha.12 TINP DATA loopback addendum
+
+Alpha.12 extends the local stress boundary through the existing `LocalTransport`
+and vendored TINP `DATA` framing. Two independent Node transport workers bind
+separate TCP loopback endpoints and directories; each is configured with the
+other worker's public key. A public convergence-store state moves in a signed
+request, is accepted through the existing store append/convergence validators,
+replayed idempotently, extended to sequence 3 and transferred back.
+
+The scenario records three DATA frames, 16,706 transferred bytes and zero
+invalid received frames on the pinned run. A state-root tamper is rejected as
+`AUTHORITY_REGISTRY_LOOPBACK_TRANSFER_INVALID`; historical fork, mirror-set
+drift and sequence-gap submissions retain the prior store. This proves local
+socket/process behavior only. It does not certify TLS, physical-host
+transport, trusted time, online publication, hardware custody, lost-key
+recovery or production conflict consensus.
+
+Evidence: `evidence/0.1.0-alpha.12/authority-registry-loopback-transfer.json`,
+`LOCAL_VERIFICATION.json` and `EVIDENCE_LEDGER.json`. The final candidate has
+172/172 tests and 191 source files; all K400 gates remain
+`NOT_ADJUDICATED`.

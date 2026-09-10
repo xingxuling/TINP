@@ -62,3 +62,21 @@ transport or authority. The harness does not provide encrypted transfer,
 trusted time, host identity, online publication, global revocation or a
 distributed conflict winner. An external Owner must still satisfy the
 readiness contract before this profile can be connected to production.
+
+## alpha.12 TINP DATA loopback transfer boundary
+
+The alpha.12 harness reuses `LocalTransport` and vendored TINP `DATA` framing
+rather than defining another authority protocol. Two local transport workers
+bind separate TCP loopback endpoints and directories. Peer public keys are
+configured in each worker; a public convergence-store state is sent in a
+signed DATA request and accepted only through the existing store append and
+convergence validators. Exact replay is `unchanged`, a seq3 extension is
+accepted, and the extension can be transferred back to the first worker.
+
+The harness also sends a state-root tamper, a historical fork, mirror-set drift
+and a sequence gap. Each is rejected before durable replacement and the
+receiver retains its prior bytes. The worker and transfer payloads contain no
+issuer, mirror, member, witness or transport private key. This proves local
+socket/process behavior only; it does not make TINP an online authority,
+provide TLS or physical-host recovery, establish trusted time, or choose a
+production conflict winner.

@@ -117,3 +117,13 @@ Generality：公开状态导入、幂等 replay、完整前缀扩展、签名分
 Regression：两个独立子进程各自持有目录并完成 first append、public-state import、exact replay、seq3 extension；同长度替换历史、threshold-valid mirror-set drift、缺失 seq3 的 seq4 candidate 均在写入前拒绝，原 historyRoot 和文件字节保持不变，IPC 传输不含私钥。
 
 Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 仅有本机独立进程与文件证据；PERFORMANCE 未作物理跨主机 SLA 或加密传输吞吐声明；AI_GENERATE 未评估；EVIDENCE 以 alpha.11 `LOCAL_VERIFICATION.json`、Court 与 delivery receipt 固化。九门仍 `NOT_ADJUDICATED`。
+
+## alpha.12 authority registry TINP DATA loopback transfer 压力
+
+Task/missing capability：alpha.11 只通过 IPC/文件交换公开历史，缺少在既有 TINP transport framing 上验证 public-state transfer、peer admission、wire counters 与载荷篡改拒绝的证据；gap type=`AUTHORITY_PROVIDER_INTEGRATION + LOOPBACK_TRANSPORT_REPLAY_GAP`，不是 RCL Core 表达缺口。Workaround/donor：复用 `src/transport.mjs` 的 `LocalTransport`、vendored `vendor/tinp/src/protocol.mjs` 的 `DATA` framing、`identity.mjs` 的 signed envelope 和既有 convergence-store append/convergence validators，新增 test-only transport worker 与 loopback demo，不新增 authority 根或生产同步协议。
+
+Generality：认证 public-state transfer、幂等 replay、反向前缀扩展、peer public-key admission、帧/字节计数、篡改载荷 fail-closed 及拒绝后 durable bytes 保留可跨本机部署复用；candidate absorption 仍是 TINP/TWNI host profile，不改变 RCL、RNCS/RFE 或 external authority Owner。Provider advantage 是既有 Node TCP/TINP framing 与文件租约；TLS、物理跨主机、可信时间、在线发布和分布式冲突处置仍未实现。
+
+Regression：两个独立 transport worker 各自绑定 `127.0.0.1` TCP endpoint 与目录，完成 seq1→seq2 transfer、B 端 exact replay、seq3 extension、反向 transfer；同长度签名分叉、threshold-valid mirror-set drift、seq2→seq4 gap 和篡改 `historyRoot` 的 transfer 均在写入前拒绝，接收端无 invalid frame 且原 durable bytes 保持不变。transfer payload 不含 issuer/mirror/member/witness/transport private key。
+
+Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 仅有本机 TCP loopback、独立进程和文件证据；PERFORMANCE 只记录本次帧/字节计数，不作 TLS、WAN 或 authority SLA 声明；AI_GENERATE 未评估；EVIDENCE 以 alpha.12 `LOCAL_VERIFICATION.json`、Court 和 delivery receipt 固化。九门仍 `NOT_ADJUDICATED`。

@@ -116,3 +116,20 @@ does not establish two physical hosts, encrypted transport, an independent
 clock, online publication, global revocation, or production conflict
 consensus. The remaining external Owner prerequisites are unchanged and are
 listed in `docs/AUTHORITY_PROVIDER_READINESS.md`.
+
+## alpha.12 authority registry TINP DATA loopback transfer
+
+The candidate now exercises the existing `LocalTransport` and vendored TINP
+`DATA` framing around the public convergence-store state. Two independent Node
+transport workers bind separate TCP loopback endpoints and directories. Node A
+transfers a public seq1→seq2 state to B, B verifies and replays it idempotently,
+extends to seq3, and transfers the extension back to A. The witness records
+peer public-key admission, three DATA frames, byte counters and zero invalid
+frames. A fork, mirror-set drift, sequence gap and a `historyRoot`-tampered
+transfer are rejected by the existing store/convergence boundaries, and the
+receiving durable bytes remain unchanged.
+
+This is a local socket/process/filesystem stress case. It does not establish
+TLS confidentiality, two physical hosts, trusted time, online publication,
+global revocation, hardware custody, lost-key recovery or production conflict
+consensus. No RCL Core, RNCS world authority or AAF owner changed.
