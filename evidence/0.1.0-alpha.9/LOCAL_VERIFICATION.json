@@ -1,0 +1,2428 @@
+{
+  "format": "twni.local-verification.v0.1",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "startedAt": "2026-09-10T08:46:32.739Z",
+  "finishedAt": "2026-09-10T08:58:25.896Z",
+  "version": "0.1.0-alpha.9",
+  "node": "v24.15.0",
+  "platform": "win32",
+  "architecture": "x64",
+  "tests": {
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-concurrency=1",
+      "--test-reporter=tap",
+      "tests/aaf-operator.test.mjs",
+      "tests/authority-registry-cli.test.mjs",
+      "tests/authority-registry-convergence-cli.test.mjs",
+      "tests/authority-registry-convergence-store-cli.test.mjs",
+      "tests/authority-registry-convergence-store.test.mjs",
+      "tests/authority-registry-convergence.test.mjs",
+      "tests/authority-registry-distribution-cli.test.mjs",
+      "tests/authority-registry-distribution.test.mjs",
+      "tests/authority-registry.test.mjs",
+      "tests/conformance.test.mjs",
+      "tests/operator-cli.test.mjs",
+      "tests/operator-security.test.mjs",
+      "tests/opp-bridge.test.mjs",
+      "tests/pending-cli.test.mjs",
+      "tests/pending-security.test.mjs",
+      "tests/profiles.test.mjs",
+      "tests/protected-store.test.mjs",
+      "tests/rcl-guard.test.mjs",
+      "tests/rcl-migration.test.mjs",
+      "tests/rcl-pending-retirement.test.mjs",
+      "tests/rcl-recovery.test.mjs",
+      "tests/rcl-route.test.mjs",
+      "tests/recovery-anchor-cli.test.mjs",
+      "tests/recovery-anchor.test.mjs",
+      "tests/recovery-gate-integration.test.mjs",
+      "tests/recovery-security.test.mjs",
+      "tests/security-review.test.mjs",
+      "tests/shared-ir.test.mjs",
+      "vendor/tinp/tests/tinp-v02.test.mjs",
+      "vendor/tinp/tests/tinp.test.mjs"
+    ],
+    "exitCode": 0,
+    "count": 165,
+    "passed": 165,
+    "failed": 0,
+    "stdout": "evidence/0.1.0-alpha.9/tests.tap",
+    "stdoutSha256": "3491ee8ee4a5f46b61d50cbc2a02e5952e7572c73428d2846fffc244b350cb03",
+    "stderr": "evidence/0.1.0-alpha.9/tests.stderr.txt"
+  },
+  "scenarios": [
+    {
+      "transport": "udp",
+      "pids": [
+        51720,
+        61480,
+        63056
+      ],
+      "firstResult": {
+        "count": 8
+      },
+      "firstReceipt": {
+        "body": {
+          "format": "twni.execution-receipt.v0.1",
+          "status": "executed",
+          "classification": "observed-local",
+          "subjectId": "subject:local-user",
+          "continuityRoot": "b1a1ce5d3c98c2c4cd72055d1dcb2cbada67bf2b8f387b869a8394ebe4779516",
+          "worldId": "world:local-demonstration",
+          "nodeId": "C",
+          "providerId": "C:counter",
+          "capabilityId": "text.codepoint-count",
+          "capabilityVersion": "1.0.0",
+          "contractRoot": "085ea120830888c97a069a7aa4adf7e73a3282f6b5065e184a4f5c9ab16f9a57",
+          "sessionId": "session:f76131ad-18b2-4f6c-9c53-8b926960f792",
+          "requestId": "intent:0af0342c-896d-484f-bab2-595141793083",
+          "requestRoot": "00615910e17bfd5cb07009d95bdb9fd247205833d9f8cf7a8197fcba2a06489a",
+          "leaseRoot": "60d8804629b83a530b26ee4b6a0a19b30033c8ef5a20de21837223c95acaa8bb",
+          "previousEvidenceRoot": "71340300caa8c176d3fb82240fc50c8788c0b1238a0e3bf8b8ee2412c7288483",
+          "route": [
+            "A",
+            "B",
+            "C"
+          ],
+          "version": "0.1.1",
+          "inputRoot": "a0580e260d229e2bfe4e5c779d3655988f01f7534a0054a83cef17603e45be64",
+          "result": {
+            "count": 8
+          },
+          "resultRoot": "286ef99473842386e093b70e2cb43524734dcd35c826f5b736d6444f65ad4686",
+          "time": "2026-09-10T08:55:21.688Z",
+          "guard": {
+            "allowed": true,
+            "programRoot": "8dcbc82d98d32e19d9aee17f0de3a828bd61a5d08c8fa74d83258e818cde6765",
+            "stateRoot": "0d60f6b13fe70a0e0b6a96b066e13177f4061fbd49dff1ba091b5af42ba3c34a",
+            "sourceSha256": "4f98721eb2ab8f0ecdbfc0151541d8aed103d7fb7aaffb82d206621c2412bbf7"
+          },
+          "routeGuard": {
+            "allowed": true,
+            "programRoot": "da196b259032e91e3529097d3aa9aa058a514992df27beebcd2a389157d6d7b9",
+            "stateRoot": "3616be68ffe9f5dd458170f25feb578fa3483d2ecc12650f8870559d825d11b0",
+            "sourceSha256": "951c0003795fc137e3b68c82a47157e6b01b1905136350bcffa23636cb98a688"
+          },
+          "executionCount": 1,
+          "providerEpoch": 0
+        },
+        "root": "814a89c98a34bccc568136144a965dfd7ff58668e4720697e4373905300a74db",
+        "signature": "SNOISmZJimbs4Ndel4xzqKdWanydPMEgLimlYqVVZxCA6o5/do65WKsZ31Etk8tZyWEiWAQsuXQeZ2EU1f0MDw=="
+      },
+      "firstPath": [
+        "A",
+        "B",
+        "C"
+      ],
+      "stats": [
+        {
+          "nodeId": "A",
+          "pid": 51720,
+          "executions": 0,
+          "metrics": {
+            "sentFrames": 23,
+            "receivedFrames": 23,
+            "sentBytes": 76113,
+            "invalidFrames": 0,
+            "overloadRejected": 0
+          },
+          "cacheEntries": 0,
+          "revocationEpoch": 0,
+          "revoked": [],
+          "durable": false
+        },
+        {
+          "nodeId": "B",
+          "pid": 61480,
+          "executions": 0,
+          "metrics": {
+            "sentFrames": 46,
+            "receivedFrames": 46,
+            "sentBytes": 124687,
+            "invalidFrames": 0,
+            "overloadRejected": 0
+          },
+          "cacheEntries": 0,
+          "revocationEpoch": 0,
+          "revoked": [],
+          "durable": false
+        },
+        {
+          "nodeId": "C",
+          "pid": 63056,
+          "executions": 21,
+          "metrics": {
+            "sentFrames": 23,
+            "receivedFrames": 23,
+            "sentBytes": 48482,
+            "invalidFrames": 0,
+            "overloadRejected": 0
+          },
+          "cacheEntries": 21,
+          "revocationEpoch": 0,
+          "revoked": [],
+          "durable": false
+        }
+      ],
+      "evidenceRoot": "9825bb25cdd9f1abd50f9bb378ef79f46b9855cf504aad9d32217935f4080ab8",
+      "ledger": "evidence/0.1.0-alpha.9/udp-witness-A0aw4Y/ledger.jsonl",
+      "boundedPerformance": {
+        "samples": 20,
+        "medianMs": 17.927700000000186,
+        "p95Ms": 33.29379999998491,
+        "maxMs": 72.61019999999553,
+        "scope": "local signed transaction with negotiated capability; not discovery/OPP startup, WAN, throughput or SLA proof"
+      },
+      "memory": {
+        "rss": 33386496,
+        "heapTotal": 14249984,
+        "heapUsed": 9208712,
+        "external": 2456381,
+        "arrayBuffers": 68132
+      },
+      "memoryScope": "coordinator process only; does not include node/Python children"
+    },
+    {
+      "transport": "tcp",
+      "pids": [
+        54152,
+        59608,
+        41556
+      ],
+      "firstResult": {
+        "count": 8
+      },
+      "firstReceipt": {
+        "body": {
+          "format": "twni.execution-receipt.v0.1",
+          "status": "executed",
+          "classification": "observed-local",
+          "subjectId": "subject:local-user",
+          "continuityRoot": "b1a1ce5d3c98c2c4cd72055d1dcb2cbada67bf2b8f387b869a8394ebe4779516",
+          "worldId": "world:local-demonstration",
+          "nodeId": "C",
+          "providerId": "C:counter",
+          "capabilityId": "text.codepoint-count",
+          "capabilityVersion": "1.0.0",
+          "contractRoot": "085ea120830888c97a069a7aa4adf7e73a3282f6b5065e184a4f5c9ab16f9a57",
+          "sessionId": "session:465d0066-f348-4021-8d0d-00b3d69e7473",
+          "requestId": "intent:3fc0587f-c494-4a2b-9970-ae589d3c37b2",
+          "requestRoot": "0f1d60fefdee308d916f26732fddc7c4819509acfc2a05d85861e49bc614ec2a",
+          "leaseRoot": "6e7444667ebbbeb0122ffd3a84eb1898762b65f5ba34e890862c2c9feed7d707",
+          "previousEvidenceRoot": "e9aefe0a3a417bdb0c4480a5d03734c67f009f0b9a43024efd0ac8652e32a8ea",
+          "route": [
+            "A",
+            "B",
+            "C"
+          ],
+          "version": "0.1.1",
+          "inputRoot": "a0580e260d229e2bfe4e5c779d3655988f01f7534a0054a83cef17603e45be64",
+          "result": {
+            "count": 8
+          },
+          "resultRoot": "286ef99473842386e093b70e2cb43524734dcd35c826f5b736d6444f65ad4686",
+          "time": "2026-09-10T08:55:24.148Z",
+          "guard": {
+            "allowed": true,
+            "programRoot": "8dcbc82d98d32e19d9aee17f0de3a828bd61a5d08c8fa74d83258e818cde6765",
+            "stateRoot": "68cbd7b0222f2c37521b8b995c371110be05ca37fd52eb936d3377af3480fded",
+            "sourceSha256": "4f98721eb2ab8f0ecdbfc0151541d8aed103d7fb7aaffb82d206621c2412bbf7"
+          },
+          "routeGuard": {
+            "allowed": true,
+            "programRoot": "da196b259032e91e3529097d3aa9aa058a514992df27beebcd2a389157d6d7b9",
+            "stateRoot": "3616be68ffe9f5dd458170f25feb578fa3483d2ecc12650f8870559d825d11b0",
+            "sourceSha256": "951c0003795fc137e3b68c82a47157e6b01b1905136350bcffa23636cb98a688"
+          },
+          "executionCount": 1,
+          "providerEpoch": 0
+        },
+        "root": "0733d01f60cdd874eed73a9f1fb8a7bf3613a88ae3ff8cb67298b9459f254e7c",
+        "signature": "DYRV3//i+9R3Jqav+AJkBsYVzq+h8S0jwlvMBRz4YszdejkPmFMafI/xcjLHRlXTR7OdmG1slZBpO+up/5wYBA=="
+      },
+      "firstPath": [
+        "A",
+        "B",
+        "C"
+      ],
+      "stats": [
+        {
+          "nodeId": "A",
+          "pid": 54152,
+          "executions": 0,
+          "metrics": {
+            "sentFrames": 23,
+            "receivedFrames": 23,
+            "sentBytes": 76113,
+            "invalidFrames": 0,
+            "overloadRejected": 0
+          },
+          "cacheEntries": 0,
+          "revocationEpoch": 0,
+          "revoked": [],
+          "durable": false
+        },
+        {
+          "nodeId": "B",
+          "pid": 59608,
+          "executions": 0,
+          "metrics": {
+            "sentFrames": 46,
+            "receivedFrames": 46,
+            "sentBytes": 124687,
+            "invalidFrames": 0,
+            "overloadRejected": 0
+          },
+          "cacheEntries": 0,
+          "revocationEpoch": 0,
+          "revoked": [],
+          "durable": false
+        },
+        {
+          "nodeId": "C",
+          "pid": 41556,
+          "executions": 21,
+          "metrics": {
+            "sentFrames": 23,
+            "receivedFrames": 23,
+            "sentBytes": 48482,
+            "invalidFrames": 0,
+            "overloadRejected": 0
+          },
+          "cacheEntries": 21,
+          "revocationEpoch": 0,
+          "revoked": [],
+          "durable": false
+        }
+      ],
+      "evidenceRoot": "3ca9aa9a36196b08c16af23a441c9b63f46420000365759dbe0d158932bb136e",
+      "ledger": "evidence/0.1.0-alpha.9/tcp-witness-8BD0Zc/ledger.jsonl",
+      "boundedPerformance": {
+        "samples": 20,
+        "medianMs": 27.45669999998063,
+        "p95Ms": 33.29570000001695,
+        "maxMs": 52.87349999998696,
+        "scope": "local signed transaction with negotiated capability; not discovery/OPP startup, WAN, throughput or SLA proof"
+      },
+      "memory": {
+        "rss": 34299904,
+        "heapTotal": 14774272,
+        "heapUsed": 11599528,
+        "external": 2484966,
+        "arrayBuffers": 104850
+      },
+      "memoryScope": "coordinator process only; does not include node/Python children"
+    }
+  ],
+  "recoveryScenarios": [
+    {
+      "状态": "VERIFIED_LOCAL_RECOVERY_DEMO",
+      "transport": "udp",
+      "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAANxffxenYJxue0xbtc/w9wDhGsZlB7iQlADa7M9lYDs=\n-----END PUBLIC KEY-----\n",
+      "原结果": {
+        "count": 4
+      },
+      "恢复后结果": {
+        "count": 4
+      },
+      "目标节点旧进程": 58108,
+      "目标节点新进程": 63212,
+      "历史执行数保留": true,
+      "主体密钥保留": true,
+      "会话保留": true,
+      "未自动续租": true,
+      "撤销后重启仍拒绝": true,
+      "已验证证据根": "436c9672f576ff780c12a5697c391c47101fe1a21d70c2fd06c42fa5d329b693",
+      "范围": "Windows当前用户、本机真实进程；非公网、非整目录防回滚证明",
+      "ledger": "evidence/0.1.0-alpha.9/recovery-udp.jsonl",
+      "ledgerSha256": "5160ebfefd568cdb4a66bbe19cccc0400416e079dea7b68c7e7651c4b1155584",
+      "scope": "Actual node kill/restart and coordinator close/reopen on Windows; coordinator force-kill cases separately in tests, UDP only"
+    },
+    {
+      "状态": "VERIFIED_LOCAL_RECOVERY_DEMO",
+      "transport": "tcp",
+      "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAiecZm4DF1O/jrJAAxBc/2O5ylvIFIRQmNveEzTu3Xc8=\n-----END PUBLIC KEY-----\n",
+      "原结果": {
+        "count": 4
+      },
+      "恢复后结果": {
+        "count": 4
+      },
+      "目标节点旧进程": 56464,
+      "目标节点新进程": 49580,
+      "历史执行数保留": true,
+      "主体密钥保留": true,
+      "会话保留": true,
+      "未自动续租": true,
+      "撤销后重启仍拒绝": true,
+      "已验证证据根": "1edc151102dd3ee3590c5228fc6ad5ab017704bc6057bee8a98e7aae7d023c74",
+      "范围": "Windows当前用户、本机真实进程；非公网、非整目录防回滚证明",
+      "ledger": "evidence/0.1.0-alpha.9/recovery-tcp.jsonl",
+      "ledgerSha256": "45e0dde0c7a4fd2f51c758524150c7fdd3d8bf5684d0242588f9a98a3442842f",
+      "scope": "Actual node kill/restart and coordinator close/reopen on Windows; coordinator force-kill cases separately in tests, UDP only"
+    }
+  ],
+  "pendingScenarios": [
+    {
+      "status": "VERIFIED_LOCAL_PENDING_RETIREMENT",
+      "transport": "udp",
+      "before": {
+        "format": "twni.pending-inspection.v1",
+        "status": "pending",
+        "requestRoot": "af4a8e72cab82c84d8dbc77826f53acbfd4e71e9028c748906e0dd13440d0ab4",
+        "requestId": "intent:253e948b-4f99-4d0a-a491-0b27a674e677",
+        "targetNodeId": "C",
+        "operatorPolicy": null,
+        "operatorChallenge": null,
+        "recoveryAnchorPolicy": null,
+        "recoveryAnchor": null,
+        "recoveryAnchorVerification": null,
+        "recoveryAnchorRequest": null,
+        "leaseRoot": "a082254034541e3d97f82efd583aea055f09684ee9059b6c6eaa69ed35c3fe2d",
+        "leaseRevoked": false,
+        "leaseExpiresAtMs": 1789031166247,
+        "revocationEpoch": 0,
+        "evidenceRoot": "25c22cbdac4e22c0d0d7d9e60578474884b1181970ccb8a18c2d4d2daaf3ce58",
+        "checkpointAuthenticated": true,
+        "nodeCacheVerified": false,
+        "executionOutcome": "unknown",
+        "lastRetirement": null,
+        "readOnly": true,
+        "authorityBoundary": "Windows current-user local fixture; no production operator identity"
+      },
+      "after": {
+        "format": "twni.pending-inspection.v1",
+        "status": "lease-revoked",
+        "requestRoot": null,
+        "requestId": null,
+        "targetNodeId": null,
+        "operatorPolicy": null,
+        "operatorChallenge": null,
+        "recoveryAnchorPolicy": null,
+        "recoveryAnchor": null,
+        "recoveryAnchorVerification": null,
+        "recoveryAnchorRequest": null,
+        "leaseRoot": "a082254034541e3d97f82efd583aea055f09684ee9059b6c6eaa69ed35c3fe2d",
+        "leaseRevoked": true,
+        "leaseExpiresAtMs": 1789031166247,
+        "revocationEpoch": 1,
+        "evidenceRoot": "9ba4acf34367db6d9b95724fc21e12f1d7b1b6ee90fb25a3895a4ca75e464333",
+        "checkpointAuthenticated": true,
+        "nodeCacheVerified": false,
+        "executionOutcome": null,
+        "lastRetirement": {
+          "requestRoot": "af4a8e72cab82c84d8dbc77826f53acbfd4e71e9028c748906e0dd13440d0ab4",
+          "executionOutcome": "unknown",
+          "eventRoot": "9ba4acf34367db6d9b95724fc21e12f1d7b1b6ee90fb25a3895a4ca75e464333"
+        },
+        "readOnly": true,
+        "authorityBoundary": "Windows current-user local fixture; no production operator identity"
+      },
+      "retired": {
+        "status": "retired",
+        "requestRoot": "af4a8e72cab82c84d8dbc77826f53acbfd4e71e9028c748906e0dd13440d0ab4",
+        "leaseRevoked": true,
+        "executionOutcome": "unknown",
+        "executionResent": false
+      },
+      "pids": [
+        40912,
+        61492,
+        51800
+      ],
+      "zeroExecutions": true,
+      "leaseUnchanged": true,
+      "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA7AYyXwqXwjCLZXqCwqksmw6vciwu2LcQL+Bf0DPX4i4=\n-----END PUBLIC KEY-----\n",
+      "evidenceRoot": "a95d79439b0ad3cde9f9bd20ca081c7e3244ee2cc5f2fbc66f2ef74d90bc5637",
+      "scope": "Staged unsent pending fixture, actual local node processes and durable revocation. Separate tests cover real coordinator kills.",
+      "ledger": "evidence/0.1.0-alpha.9/pending-udp.jsonl",
+      "ledgerSha256": "2286193badb9130b0a68804d29b1ad86fb4bb565160cda4683292d6f1a1a5c44"
+    },
+    {
+      "status": "VERIFIED_LOCAL_PENDING_RETIREMENT",
+      "transport": "tcp",
+      "before": {
+        "format": "twni.pending-inspection.v1",
+        "status": "pending",
+        "requestRoot": "e4bcce0c00baebef305b90f597a187a1240588e00fe766185470871a701a01a2",
+        "requestId": "intent:7560e66d-4310-479a-8fb2-a50b1c76d145",
+        "targetNodeId": "C",
+        "operatorPolicy": null,
+        "operatorChallenge": null,
+        "recoveryAnchorPolicy": null,
+        "recoveryAnchor": null,
+        "recoveryAnchorVerification": null,
+        "recoveryAnchorRequest": null,
+        "leaseRoot": "6b9aa5c192e9dc71f90fd03e079b7002c64ef30c9b550f54d931a2c1d1275295",
+        "leaseRevoked": false,
+        "leaseExpiresAtMs": 1789031178012,
+        "revocationEpoch": 0,
+        "evidenceRoot": "880f63d7ad63c2ab2723f9db8c52c0393a6321efe30ca698cc8f56cda60f6b89",
+        "checkpointAuthenticated": true,
+        "nodeCacheVerified": false,
+        "executionOutcome": "unknown",
+        "lastRetirement": null,
+        "readOnly": true,
+        "authorityBoundary": "Windows current-user local fixture; no production operator identity"
+      },
+      "after": {
+        "format": "twni.pending-inspection.v1",
+        "status": "lease-revoked",
+        "requestRoot": null,
+        "requestId": null,
+        "targetNodeId": null,
+        "operatorPolicy": null,
+        "operatorChallenge": null,
+        "recoveryAnchorPolicy": null,
+        "recoveryAnchor": null,
+        "recoveryAnchorVerification": null,
+        "recoveryAnchorRequest": null,
+        "leaseRoot": "6b9aa5c192e9dc71f90fd03e079b7002c64ef30c9b550f54d931a2c1d1275295",
+        "leaseRevoked": true,
+        "leaseExpiresAtMs": 1789031178012,
+        "revocationEpoch": 1,
+        "evidenceRoot": "3fdc82315eca1194c0581e05534d41d8c28fd3e6589ebe7268c2b698ba25f244",
+        "checkpointAuthenticated": true,
+        "nodeCacheVerified": false,
+        "executionOutcome": null,
+        "lastRetirement": {
+          "requestRoot": "e4bcce0c00baebef305b90f597a187a1240588e00fe766185470871a701a01a2",
+          "executionOutcome": "unknown",
+          "eventRoot": "3fdc82315eca1194c0581e05534d41d8c28fd3e6589ebe7268c2b698ba25f244"
+        },
+        "readOnly": true,
+        "authorityBoundary": "Windows current-user local fixture; no production operator identity"
+      },
+      "retired": {
+        "status": "retired",
+        "requestRoot": "e4bcce0c00baebef305b90f597a187a1240588e00fe766185470871a701a01a2",
+        "leaseRevoked": true,
+        "executionOutcome": "unknown",
+        "executionResent": false
+      },
+      "pids": [
+        11992,
+        48400,
+        62044
+      ],
+      "zeroExecutions": true,
+      "leaseUnchanged": true,
+      "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEArAuVrx1Ixcqy9Cd/S69OImBKogpPXH5XgVaVlngbOc8=\n-----END PUBLIC KEY-----\n",
+      "evidenceRoot": "50334690d7a1b12bef495a6692507e532c36b4252c46a0d8c8a0be2aca84c0be",
+      "scope": "Staged unsent pending fixture, actual local node processes and durable revocation. Separate tests cover real coordinator kills.",
+      "ledger": "evidence/0.1.0-alpha.9/pending-tcp.jsonl",
+      "ledgerSha256": "59c1d52963f1086d650d88a588989977e708cdcfef279ba290ee9de43494c6f7"
+    }
+  ],
+  "operatorScenarios": [
+    {
+      "status": "VERIFIED_LOCAL_EXTERNAL_OPERATOR",
+      "transport": "udp",
+      "signerPid": 14376,
+      "nodePids": [
+        61848,
+        62044,
+        51356
+      ],
+      "externalKeyring": {
+        "operator:external-test": {
+          "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA6FpWqTvOIDPxevcvBmonwxLPJbztR/R3xu0py+s40L8=\n-----END PUBLIC KEY-----\n",
+          "revoked": false
+        }
+      },
+      "booleanConfirmationDenied": true,
+      "zeroExecutions": true,
+      "leasePreserved": true,
+      "externalKeyringNotCheckpointed": true,
+      "terminal": {
+        "format": "twni.evidence.v0.1",
+        "sequence": 5,
+        "previousRoot": "b6e190d0f59519fbbdbcf8d76688980806f7d9e41695c195dc0e13d423e40eab",
+        "type": "pending.retired",
+        "time": "2026-09-10T08:56:46.514Z",
+        "classification": "observed-local",
+        "detail": {
+          "requestRoot": "d1c49d24165e5ab95a30ed6618857009c48a7860aa3def0c5e2a0a9fbb5f3d74",
+          "leaseRoot": "1de460533642466b9b8deb35b2624b85f56182c8b616651b7f15bd52f75da109",
+          "revocationEpoch": 1,
+          "watermark": {
+            "body": {
+              "requestRoot": "d1c49d24165e5ab95a30ed6618857009c48a7860aa3def0c5e2a0a9fbb5f3d74",
+              "leaseRoot": "1de460533642466b9b8deb35b2624b85f56182c8b616651b7f15bd52f75da109",
+              "format": "twni.revocation-watermark.v1",
+              "epoch": 1,
+              "leaseIds": [
+                "lease:f652d879-2e15-474f-9320-e98fde6132ba"
+              ]
+            },
+            "root": "b03c24a6f679f4b4b71e47893955683d7a2ce83dcddb8ba8bbb36b1c2d06ef03",
+            "signature": "LcnoNbokMZWTDqzityyoDKaZUAdenhTmT0I38c1sVRH40g4tpGWL9DUeNKfUW9qfyVCBP17bcWlB/7WmRJdoCw=="
+          },
+          "acknowledgements": [
+            {
+              "body": {
+                "format": "twni.revocation-ack.v1",
+                "nodeId": "A",
+                "epoch": 1,
+                "leaseIds": [
+                  "lease:f652d879-2e15-474f-9320-e98fde6132ba"
+                ],
+                "watermarkRoot": "b03c24a6f679f4b4b71e47893955683d7a2ce83dcddb8ba8bbb36b1c2d06ef03"
+              },
+              "root": "ba4367375ef545878ad9ac4f644038c15689ada7ccf4c0f95114f542ac7e8a41",
+              "signature": "AROxGgrhgICDpP2XT7O6/jW3JYqh/vxF8jFdIrQXpcKHFgoLKAp61xcV6vN5uVIZPnIcmgSz4hwJ+eQzkpWsAw=="
+            },
+            {
+              "body": {
+                "format": "twni.revocation-ack.v1",
+                "nodeId": "B",
+                "epoch": 1,
+                "leaseIds": [
+                  "lease:f652d879-2e15-474f-9320-e98fde6132ba"
+                ],
+                "watermarkRoot": "b03c24a6f679f4b4b71e47893955683d7a2ce83dcddb8ba8bbb36b1c2d06ef03"
+              },
+              "root": "3163837555eb7db713c2d34303ae13aa0035f94357b12bccfa743ea605186dd7",
+              "signature": "c++Kx76MVGOql9b98utfwO7pqM1X6HSREb8xRYNdTnADYM53Oe4n+qEKT6JzZjQ77nNthrRZFDTY8yXFX+I8Dw=="
+            },
+            {
+              "body": {
+                "format": "twni.revocation-ack.v1",
+                "nodeId": "C",
+                "epoch": 1,
+                "leaseIds": [
+                  "lease:f652d879-2e15-474f-9320-e98fde6132ba"
+                ],
+                "watermarkRoot": "b03c24a6f679f4b4b71e47893955683d7a2ce83dcddb8ba8bbb36b1c2d06ef03"
+              },
+              "root": "11ce20a696a82bf2669fb56bf4edfda9979f7e47e5054bb2408e6254eb237ed5",
+              "signature": "fYqDqee8+txLlJrdwg2egZL03mZYmUNCkfq51uOqsGOhJUNMW9uheEbzowwFTfrgAh9oC5KN1Dz52waWpOZcAg=="
+            }
+          ],
+          "guard": {
+            "allowed": true,
+            "code": "RCL_PENDING_RETIREMENT_ALLOWED",
+            "history": [
+              {
+                "kind": "Transition",
+                "rule": "loadPendingRetirement",
+                "ruleKind": "Emergence",
+                "mode": "realize",
+                "status": "realized",
+                "actor": "kernel",
+                "from": null,
+                "into": null,
+                "beforeRoot": "6197f877327c9d5d1379c6307617dc899e82bba325f2bff8d8ee661fe91de402",
+                "afterRoot": "f85df37b7cc322344d4e0fd6ad2580e1656a40a641a4c74211bfcf3e67e82375",
+                "changes": [
+                  {
+                    "target": "retirement.loaded",
+                    "before": false,
+                    "after": true,
+                    "source": "alter"
+                  },
+                  {
+                    "target": "facts.expectedRequestRoot",
+                    "before": "",
+                    "after": "d1c49d24165e5ab95a30ed6618857009c48a7860aa3def0c5e2a0a9fbb5f3d74",
+                    "source": "host:observation.expectedRequestRoot"
+                  },
+                  {
+                    "target": "facts.actualRequestRoot",
+                    "before": "",
+                    "after": "d1c49d24165e5ab95a30ed6618857009c48a7860aa3def0c5e2a0a9fbb5f3d74",
+                    "source": "host:observation.actualRequestRoot"
+                  },
+                  {
+                    "target": "facts.operatorAuthorized",
+                    "before": false,
+                    "after": true,
+                    "source": "host:observation.operatorAuthorized"
+                  },
+                  {
+                    "target": "facts.leaseRevoked",
+                    "before": false,
+                    "after": true,
+                    "source": "host:observation.leaseRevoked"
+                  },
+                  {
+                    "target": "facts.allNodesAcknowledged",
+                    "before": false,
+                    "after": true,
+                    "source": "host:observation.allNodesAcknowledged"
+                  },
+                  {
+                    "target": "facts.pendingPresent",
+                    "before": false,
+                    "after": true,
+                    "source": "host:observation.pendingPresent"
+                  }
+                ],
+                "authority": {
+                  "needs": [
+                    {
+                      "capability": "observation.read",
+                      "target": "facts"
+                    }
+                  ],
+                  "activeWarrants": [
+                    {
+                      "subject": "kernel",
+                      "capability": "observation.read",
+                      "target": "facts"
+                    },
+                    {
+                      "subject": "kernel",
+                      "capability": "pending.retire",
+                      "target": "retirement"
+                    }
+                  ]
+                },
+                "witnesses": [
+                  "next-internet:pending-retirement-observations"
+                ],
+                "hostCalls": [
+                  {
+                    "host": "observation",
+                    "capability": "expectedRequestRoot",
+                    "fullCapability": "observation.expectedRequestRoot",
+                    "args": [],
+                    "rule": "loadPendingRetirement",
+                    "actor": "kernel",
+                    "authorityNeeds": [
+                      {
+                        "capability": "observation.read",
+                        "target": "facts"
+                      }
+                    ],
+                    "witnesses": [
+                      "next-internet:pending-retirement-observations"
+                    ],
+                    "mode": "realize",
+                    "state": {
+                      "retirement.allowed": false,
+                      "retirement.loaded": false,
+                      "facts.pendingPresent": false,
+                      "facts.allNodesAcknowledged": false,
+                      "facts.leaseRevoked": false,
+                      "facts.operatorAuthorized": false,
+                      "facts.actualRequestRoot": "",
+                      "facts.expectedRequestRoot": ""
+                    }
+                  },
+                  {
+                    "host": "observation",
+                    "capability": "actualRequestRoot",
+                    "fullCapability": "observation.actualRequestRoot",
+                    "args": [],
+                    "rule": "loadPendingRetirement",
+                    "actor": "kernel",
+                    "authorityNeeds": [
+                      {
+                        "capability": "observation.read",
+                        "target": "facts"
+                      }
+                    ],
+                    "witnesses": [
+                      "next-internet:pending-retirement-observations"
+                    ],
+                    "mode": "realize",
+                    "state": {
+                      "retirement.allowed": false,
+                      "retirement.loaded": false,
+                      "facts.pendingPresent": false,
+                      "facts.allNodesAcknowledged": false,
+                      "facts.leaseRevoked": false,
+                      "facts.operatorAuthorized": false,
+                      "facts.actualRequestRoot": "",
+                      "facts.expectedRequestRoot": ""
+                    }
+                  },
+                  {
+                    "host": "observation",
+                    "capability": "operatorAuthorized",
+                    "fullCapability": "observation.operatorAuthorized",
+                    "args": [],
+                    "rule": "loadPendingRetirement",
+                    "actor": "kernel",
+                    "authorityNeeds": [
+                      {
+                        "capability": "observation.read",
+                        "target": "facts"
+                      }
+                    ],
+                    "witnesses": [
+                      "next-internet:pending-retirement-observations"
+                    ],
+                    "mode": "realize",
+                    "state": {
+                      "retirement.allowed": false,
+                      "retirement.loaded": false,
+                      "facts.pendingPresent": false,
+                      "facts.allNodesAcknowledged": false,
+                      "facts.leaseRevoked": false,
+                      "facts.operatorAuthorized": false,
+                      "facts.actualRequestRoot": "",
+                      "facts.expectedRequestRoot": ""
+                    }
+                  },
+                  {
+                    "host": "observation",
+                    "capability": "leaseRevoked",
+                    "fullCapability": "observation.leaseRevoked",
+                    "args": [],
+                    "rule": "loadPendingRetirement",
+                    "actor": "kernel",
+                    "authorityNeeds": [
+                      {
+                        "capability": "observation.read",
+                        "target": "facts"
+                      }
+                    ],
+                    "witnesses": [
+                      "next-internet:pending-retirement-observations"
+                    ],
+                    "mode": "realize",
+                    "state": {
+                      "retirement.allowed": false,
+                      "retirement.loaded": false,
+                      "facts.pendingPresent": false,
+                      "facts.allNodesAcknowledged": false,
+                      "facts.leaseRevoked": false,
+                      "facts.operatorAuthorized": false,
+                      "facts.actualRequestRoot": "",
+                      "facts.expectedRequestRoot": ""
+                    }
+                  },
+                  {
+                    "host": "observation",
+                    "capability": "allNodesAcknowledged",
+                    "fullCapability": "observation.allNodesAcknowledged",
+                    "args": [],
+                    "rule": "loadPendingRetirement",
+                    "actor": "kernel",
+                    "authorityNeeds": [
+                      {
+                        "capability": "observation.read",
+                        "target": "facts"
+                      }
+                    ],
+                    "witnesses": [
+                      "next-internet:pending-retirement-observations"
+                    ],
+                    "mode": "realize",
+                    "state": {
+                      "retirement.allowed": false,
+                      "retirement.loaded": false,
+                      "facts.pendingPresent": false,
+                      "facts.allNodesAcknowledged": false,
+                      "facts.leaseRevoked": false,
+                      "facts.operatorAuthorized": false,
+                      "facts.actualRequestRoot": "",
+                      "facts.expectedRequestRoot": ""
+                    }
+                  },
+                  {
+                    "host": "observation",
+                    "capability": "pendingPresent",
+                    "fullCapability": "observation.pendingPresent",
+                    "args": [],
+                    "rule": "loadPendingRetirement",
+                    "actor": "kernel",
+                    "authorityNeeds": [
+                      {
+                        "capability": "observation.read",
+                        "target": "facts"
+                      }
+                    ],
+                    "witnesses": [
+                      "next-internet:pending-retirement-observations"
+                    ],
+                    "mode": "realize",
+                    "state": {
+                      "retirement.allowed": false,
+                      "retirement.loaded": false,
+                      "facts.pendingPresent": false,
+                      "facts.allNodesAcknowledged": false,
+                      "facts.leaseRevoked": false,
+                      "facts.operatorAuthorized": false,
+                      "facts.actualRequestRoot": "",
+                      "facts.expectedRequestRoot": ""
+                    }
+                  }
+                ]
+              },
+              {
+                "kind": "Transition",
+                "rule": "admitPendingRetirement",
+                "ruleKind": "Emergence",
+                "mode": "realize",
+                "status": "realized",
+                "actor": "kernel",
+                "from": null,
+                "into": null,
+                "beforeRoot": "f85df37b7cc322344d4e0fd6ad2580e1656a40a641a4c74211bfcf3e67e82375",
+                "afterRoot": "c3a24faebf2fa435e36f288c3ed2a24d45a94c41c54f3934f60d281075ef954e",
+                "changes": [
+                  {
+                    "target": "retirement.allowed",
+                    "before": false,
+                    "after": true,
+                    "source": "alter"
+                  }
+                ],
+                "authority": {
+                  "needs": [
+                    {
+                      "capability": "pending.retire",
+                      "target": "retirement"
+                    }
+                  ],
+                  "activeWarrants": [
+                    {
+                      "subject": "kernel",
+                      "capability": "observation.read",
+                      "target": "facts"
+                    },
+                    {
+                      "subject": "kernel",
+                      "capability": "pending.retire",
+                      "target": "retirement"
+                    }
+                  ]
+                },
+                "witnesses": [
+                  "next-internet:rcl-pending-retirement"
+                ],
+                "hostCalls": []
+              }
+            ],
+            "programRoot": "9e46bec0723a3352a377bab697c3114b5e443db15d508e6019ae53adf73aa845",
+            "stateRoot": "c3a24faebf2fa435e36f288c3ed2a24d45a94c41c54f3934f60d281075ef954e",
+            "sourceSha256": "d6507c7b979484d9195dbacb2078e9d8a1ff4eaf0adfe3e419d6479b8035e46c",
+            "factsRoot": "89b14079baab3167b2da3dd6fe14f63125de05398ac4b91f9adb48fe426d9d25",
+            "runtime": "RCL canonical compiler and JavaScript semantic runtime",
+            "coverage": "lowered-execution"
+          },
+          "executionOutcome": "unknown",
+          "operatorBoundary": "external-aaf-operator",
+          "operatorAuthorization": {
+            "challenge": {
+              "format": "twni.operator-challenge.v1",
+              "action": "retire-entire-lease",
+              "requestRoot": "d1c49d24165e5ab95a30ed6618857009c48a7860aa3def0c5e2a0a9fbb5f3d74",
+              "leaseRoot": "1de460533642466b9b8deb35b2624b85f56182c8b616651b7f15bd52f75da109",
+              "sessionRoot": "5a8d2055af552057041ad64645ff6046b17dd68082f1fdc4f5f54a1de5607166",
+              "subjectId": "subject:local-user",
+              "continuityRoot": "b1a1ce5d3c98c2c4cd72055d1dcb2cbada67bf2b8f387b869a8394ebe4779516",
+              "worldId": "world:local-demonstration",
+              "coordinatorKeySha256": "d63b8a31c690a9d081aa49c20cf45da828687fe2856019762a9b249084585cce",
+              "policyRoot": "feae94bdd806006d5394f917b236a5bb4206707c743fc2475f02b526b9c2c0da",
+              "challengeRoot": "3031a2a2e211d48b750b644c9e33f6fc51c8dac49f1d8cc5b762f1c5e159709f"
+            },
+            "approval": {
+              "format": "aaf.approval-receipt.v0.1",
+              "approval_id": "approval:isolated-demo",
+              "proposal_root": "3031a2a2e211d48b750b644c9e33f6fc51c8dac49f1d8cc5b762f1c5e159709f",
+              "approver_id": "operator:external-test",
+              "approver_roles": [
+                "tinp.operator"
+              ],
+              "decision": "approved",
+              "scopes": [
+                "tinp.pending.retire"
+              ],
+              "conditions": [],
+              "issued_at": "2026-09-10T08:56:41.130Z",
+              "expires_at": "2026-09-10T08:58:42.130Z",
+              "approval_root": "14bd941148545fcd798aebc1cc5f547bbeac6c8c86f1b8c310c3dadfcd4d4168",
+              "signature": {
+                "algorithm": "Ed25519",
+                "signer_id": "operator:external-test",
+                "value": "hIocc/Ng82E85k6+C2j8ZHMreKZVIRL4I7rfvVHCjxuUk0PWoBv+ugyRfU5hI/qPkz4EZCKGRuCLZ51FzIGYDQ=="
+              }
+            },
+            "verification": {
+              "format": "twni.external-operator-verification.v1",
+              "approvalRoot": "14bd941148545fcd798aebc1cc5f547bbeac6c8c86f1b8c310c3dadfcd4d4168",
+              "signerId": "operator:external-test",
+              "publicKeySha256": "d83155dabfebe6f4f2005bc2fc8bda088c4c713393fa72644bebd882f1f853d2",
+              "challengeRoot": "3031a2a2e211d48b750b644c9e33f6fc51c8dac49f1d8cc5b762f1c5e159709f",
+              "authorizedAtMs": 1789030606514
+            },
+            "firstVerifiedAtMs": 1789030605372
+          },
+          "recovery": {
+            "session": {
+              "body": {
+                "format": "twni.session.v0.1",
+                "sessionId": "session:18eca25f-b93e-40b8-a7f2-8a1b7bb96fb9",
+                "subjectId": "subject:local-user",
+                "continuityRoot": "b1a1ce5d3c98c2c4cd72055d1dcb2cbada67bf2b8f387b869a8394ebe4779516",
+                "worldId": "world:local-demonstration",
+                "sourceNodeId": "A",
+                "targetNodeId": "C",
+                "leaseRoot": "1de460533642466b9b8deb35b2624b85f56182c8b616651b7f15bd52f75da109",
+                "scopes": [
+                  "text.read"
+                ],
+                "expiresAtMs": 1789031190862,
+                "expectedEvidenceRoot": "ef1f1c789334aa7e4abdb5bfb0d3d76d2941a38f3a9d63fecbb2c5559ccc7e44",
+                "previousSessionRoot": null
+              },
+              "root": "5a8d2055af552057041ad64645ff6046b17dd68082f1fdc4f5f54a1de5607166",
+              "signature": "YuGt8fz+4oZArVjWuPhwbMkIRQycctd8DIvdlUJ1BDhLp6IDL8zvyZwhlIZvRB7Wyl1DRlV6trHpi/mqU6azCA=="
+            },
+            "lease": {
+              "body": {
+                "format": "twni.authority-lease.v0.1",
+                "leaseId": "lease:f652d879-2e15-474f-9320-e98fde6132ba",
+                "subjectId": "subject:local-user",
+                "continuityRoot": "b1a1ce5d3c98c2c4cd72055d1dcb2cbada67bf2b8f387b869a8394ebe4779516",
+                "worldId": "world:local-demonstration",
+                "capabilityId": "text.codepoint-count",
+                "scopes": [
+                  "text.read"
+                ],
+                "notBeforeMs": 1789030589862,
+                "expiresAtMs": 1789031190862,
+                "region": "local",
+                "maxRetentionSeconds": 0,
+                "maxCost": 20,
+                "maxLatencyMs": 1000,
+                "maxEnergy": 20,
+                "securityProfile": "ed25519-pinned-local.v1",
+                "delegable": false,
+                "purpose": "local read-only Unicode code point counting experiment"
+              },
+              "root": "1de460533642466b9b8deb35b2624b85f56182c8b616651b7f15bd52f75da109",
+              "signature": "DpKL+I8jWSdAIBB/kAU+yzdzDFw2l20p7hhbAz1nR8raYGG4F6Bxm0ercJZIY/gbM7bDvcyeC+2tIzMM9il1BA=="
+            },
+            "currentSource": "A",
+            "operatorPolicy": {
+              "format": "twni.external-operator-policy.v1",
+              "signerId": "operator:external-test",
+              "publicKeySha256": "d83155dabfebe6f4f2005bc2fc8bda088c4c713393fa72644bebd882f1f853d2",
+              "scope": "tinp.pending.retire",
+              "role": "tinp.operator",
+              "policyRoot": "feae94bdd806006d5394f917b236a5bb4206707c743fc2475f02b526b9c2c0da"
+            },
+            "revoked": true,
+            "revocationEpoch": 1,
+            "pendingRoot": "d1c49d24165e5ab95a30ed6618857009c48a7860aa3def0c5e2a0a9fbb5f3d74",
+            "recoveryAnchorPolicy": null,
+            "recoveryAnchorRoot": null,
+            "recoveryAnchorSequence": 0
+          }
+        },
+        "eventRoot": "f7b177c1ca622530c9b04b98f59ba1ee16159a4e14974ec290dc400b46681609",
+        "signature": "MmiGKVsoSI+lb0cS9AfCY54jHXSBza3tk3PAuhlOKsJnUYzqdUwl//AGVAvIhC3BlxvNR9AQB+3+d6kCJDVVBA=="
+      },
+      "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA7nUGPJ+uTGcIj9Z4J3uvEPRCxGoATfEs67i3rP27Njk=\n-----END PUBLIC KEY-----\n",
+      "evidenceRoot": "7d93c2470345c9d60686dbc75a7ff2d9a150e11bec82c7a0223ae5372238218f",
+      "scope": "Actual CLI and independent ephemeral test signer. No production human enrollment, external clock, hardware custody or anti-rollback anchor.",
+      "ledger": "evidence/0.1.0-alpha.9/operator-udp.jsonl",
+      "ledgerSha256": "59d739b4a406d7185fe97698d280966950e09afbd444a8786320f9e3655da6ea"
+    },
+    {
+      "status": "VERIFIED_LOCAL_EXTERNAL_OPERATOR",
+      "transport": "tcp",
+      "signerPid": 42100,
+      "nodePids": [
+        61820,
+        54776,
+        1304
+      ],
+      "externalKeyring": {
+        "operator:external-test": {
+          "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAV3Kefs1GpztjpPh2d7gbbPYT/9SFm2O0JDHJEtvvY1I=\n-----END PUBLIC KEY-----\n",
+          "revoked": false
+        }
+      },
+      "booleanConfirmationDenied": true,
+      "zeroExecutions": true,
+      "leasePreserved": true,
+      "externalKeyringNotCheckpointed": true,
+      "terminal": {
+        "format": "twni.evidence.v0.1",
+        "sequence": 5,
+        "previousRoot": "e80945df42e23977e7a354d7047f0acd6786e12e95590dc315df0eee594f1e42",
+        "type": "pending.retired",
+        "time": "2026-09-10T08:57:07.316Z",
+        "classification": "observed-local",
+        "detail": {
+          "requestRoot": "4fa721912488ef31913e3162babfbea75a1d40195f394ebd9bf93d4014caa05e",
+          "leaseRoot": "de728cd0131ad96e97f835249e0f33154f1eb827253abc90590175c4ebc07cfb",
+          "revocationEpoch": 1,
+          "watermark": {
+            "body": {
+              "requestRoot": "4fa721912488ef31913e3162babfbea75a1d40195f394ebd9bf93d4014caa05e",
+              "leaseRoot": "de728cd0131ad96e97f835249e0f33154f1eb827253abc90590175c4ebc07cfb",
+              "format": "twni.revocation-watermark.v1",
+              "epoch": 1,
+              "leaseIds": [
+                "lease:4ff7dc09-27c2-42de-9b0d-d508c8dc0a8e"
+              ]
+            },
+            "root": "7c221d4054706ea69a09770415b510d433bd8b494877c94f384bcf6b1751665a",
+            "signature": "8VWlwxLj/blpx6HJLKA/nToxedRWshUGHJqEnbY1Nhyz9VeJY2STMC8f61fDQg/ybXxVCE81MIdGnosRZeXHAA=="
+          },
+          "acknowledgements": [
+            {
+              "body": {
+                "format": "twni.revocation-ack.v1",
+                "nodeId": "A",
+                "epoch": 1,
+                "leaseIds": [
+                  "lease:4ff7dc09-27c2-42de-9b0d-d508c8dc0a8e"
+                ],
+                "watermarkRoot": "7c221d4054706ea69a09770415b510d433bd8b494877c94f384bcf6b1751665a"
+              },
+              "root": "a537cbbd2b7a0f2553cca0d0a1e8d8e85015189a31037ea5450d0383be6faead",
+              "signature": "y5NYXzu4GOoylGnvuu+v0hA07JSfVRpWpJePMhpCrZTcBeFd/mlwWlPSJhI82wbUrwPDL52b7cvDT8dl8jXgAg=="
+            },
+            {
+              "body": {
+                "format": "twni.revocation-ack.v1",
+                "nodeId": "B",
+                "epoch": 1,
+                "leaseIds": [
+                  "lease:4ff7dc09-27c2-42de-9b0d-d508c8dc0a8e"
+                ],
+                "watermarkRoot": "7c221d4054706ea69a09770415b510d433bd8b494877c94f384bcf6b1751665a"
+              },
+              "root": "3730288a7b182e2171e28ef180acfe05d95031787cf8a689e2053028379d49ff",
+              "signature": "MTxOzTL86ZwFjB1RlB3ydcYjf6I7D0OvnEB7DiUxgEKILfbCkCc/3nUdf3aR3VfUTo+AS446ylmUKlj0HIZiBQ=="
+            },
+            {
+              "body": {
+                "format": "twni.revocation-ack.v1",
+                "nodeId": "C",
+                "epoch": 1,
+                "leaseIds": [
+                  "lease:4ff7dc09-27c2-42de-9b0d-d508c8dc0a8e"
+                ],
+                "watermarkRoot": "7c221d4054706ea69a09770415b510d433bd8b494877c94f384bcf6b1751665a"
+              },
+              "root": "4f6d6b643c67aa8f7536de9f2e8b7948c300a2c36b1a7bd1b88f22b76c56341d",
+              "signature": "e+f+oesobtj5PeUHmaXG9XNpp/R7PpRIAd3reLjPk4gbvCCWdccYdkmiaZKV14oyMUeqasGwySl+5rz0/wZbCQ=="
+            }
+          ],
+          "guard": {
+            "allowed": true,
+            "code": "RCL_PENDING_RETIREMENT_ALLOWED",
+            "history": [
+              {
+                "kind": "Transition",
+                "rule": "loadPendingRetirement",
+                "ruleKind": "Emergence",
+                "mode": "realize",
+                "status": "realized",
+                "actor": "kernel",
+                "from": null,
+                "into": null,
+                "beforeRoot": "6197f877327c9d5d1379c6307617dc899e82bba325f2bff8d8ee661fe91de402",
+                "afterRoot": "e4b309ebc283411c4e55d4e34502977962cf48a4f13cfa1cfc216405adc6960d",
+                "changes": [
+                  {
+                    "target": "retirement.loaded",
+                    "before": false,
+                    "after": true,
+                    "source": "alter"
+                  },
+                  {
+                    "target": "facts.expectedRequestRoot",
+                    "before": "",
+                    "after": "4fa721912488ef31913e3162babfbea75a1d40195f394ebd9bf93d4014caa05e",
+                    "source": "host:observation.expectedRequestRoot"
+                  },
+                  {
+                    "target": "facts.actualRequestRoot",
+                    "before": "",
+                    "after": "4fa721912488ef31913e3162babfbea75a1d40195f394ebd9bf93d4014caa05e",
+                    "source": "host:observation.actualRequestRoot"
+                  },
+                  {
+                    "target": "facts.operatorAuthorized",
+                    "before": false,
+                    "after": true,
+                    "source": "host:observation.operatorAuthorized"
+                  },
+                  {
+                    "target": "facts.leaseRevoked",
+                    "before": false,
+                    "after": true,
+                    "source": "host:observation.leaseRevoked"
+                  },
+                  {
+                    "target": "facts.allNodesAcknowledged",
+                    "before": false,
+                    "after": true,
+                    "source": "host:observation.allNodesAcknowledged"
+                  },
+                  {
+                    "target": "facts.pendingPresent",
+                    "before": false,
+                    "after": true,
+                    "source": "host:observation.pendingPresent"
+                  }
+                ],
+                "authority": {
+                  "needs": [
+                    {
+                      "capability": "observation.read",
+                      "target": "facts"
+                    }
+                  ],
+                  "activeWarrants": [
+                    {
+                      "subject": "kernel",
+                      "capability": "observation.read",
+                      "target": "facts"
+                    },
+                    {
+                      "subject": "kernel",
+                      "capability": "pending.retire",
+                      "target": "retirement"
+                    }
+                  ]
+                },
+                "witnesses": [
+                  "next-internet:pending-retirement-observations"
+                ],
+                "hostCalls": [
+                  {
+                    "host": "observation",
+                    "capability": "expectedRequestRoot",
+                    "fullCapability": "observation.expectedRequestRoot",
+                    "args": [],
+                    "rule": "loadPendingRetirement",
+                    "actor": "kernel",
+                    "authorityNeeds": [
+                      {
+                        "capability": "observation.read",
+                        "target": "facts"
+                      }
+                    ],
+                    "witnesses": [
+                      "next-internet:pending-retirement-observations"
+                    ],
+                    "mode": "realize",
+                    "state": {
+                      "retirement.allowed": false,
+                      "retirement.loaded": false,
+                      "facts.pendingPresent": false,
+                      "facts.allNodesAcknowledged": false,
+                      "facts.leaseRevoked": false,
+                      "facts.operatorAuthorized": false,
+                      "facts.actualRequestRoot": "",
+                      "facts.expectedRequestRoot": ""
+                    }
+                  },
+                  {
+                    "host": "observation",
+                    "capability": "actualRequestRoot",
+                    "fullCapability": "observation.actualRequestRoot",
+                    "args": [],
+                    "rule": "loadPendingRetirement",
+                    "actor": "kernel",
+                    "authorityNeeds": [
+                      {
+                        "capability": "observation.read",
+                        "target": "facts"
+                      }
+                    ],
+                    "witnesses": [
+                      "next-internet:pending-retirement-observations"
+                    ],
+                    "mode": "realize",
+                    "state": {
+                      "retirement.allowed": false,
+                      "retirement.loaded": false,
+                      "facts.pendingPresent": false,
+                      "facts.allNodesAcknowledged": false,
+                      "facts.leaseRevoked": false,
+                      "facts.operatorAuthorized": false,
+                      "facts.actualRequestRoot": "",
+                      "facts.expectedRequestRoot": ""
+                    }
+                  },
+                  {
+                    "host": "observation",
+                    "capability": "operatorAuthorized",
+                    "fullCapability": "observation.operatorAuthorized",
+                    "args": [],
+                    "rule": "loadPendingRetirement",
+                    "actor": "kernel",
+                    "authorityNeeds": [
+                      {
+                        "capability": "observation.read",
+                        "target": "facts"
+                      }
+                    ],
+                    "witnesses": [
+                      "next-internet:pending-retirement-observations"
+                    ],
+                    "mode": "realize",
+                    "state": {
+                      "retirement.allowed": false,
+                      "retirement.loaded": false,
+                      "facts.pendingPresent": false,
+                      "facts.allNodesAcknowledged": false,
+                      "facts.leaseRevoked": false,
+                      "facts.operatorAuthorized": false,
+                      "facts.actualRequestRoot": "",
+                      "facts.expectedRequestRoot": ""
+                    }
+                  },
+                  {
+                    "host": "observation",
+                    "capability": "leaseRevoked",
+                    "fullCapability": "observation.leaseRevoked",
+                    "args": [],
+                    "rule": "loadPendingRetirement",
+                    "actor": "kernel",
+                    "authorityNeeds": [
+                      {
+                        "capability": "observation.read",
+                        "target": "facts"
+                      }
+                    ],
+                    "witnesses": [
+                      "next-internet:pending-retirement-observations"
+                    ],
+                    "mode": "realize",
+                    "state": {
+                      "retirement.allowed": false,
+                      "retirement.loaded": false,
+                      "facts.pendingPresent": false,
+                      "facts.allNodesAcknowledged": false,
+                      "facts.leaseRevoked": false,
+                      "facts.operatorAuthorized": false,
+                      "facts.actualRequestRoot": "",
+                      "facts.expectedRequestRoot": ""
+                    }
+                  },
+                  {
+                    "host": "observation",
+                    "capability": "allNodesAcknowledged",
+                    "fullCapability": "observation.allNodesAcknowledged",
+                    "args": [],
+                    "rule": "loadPendingRetirement",
+                    "actor": "kernel",
+                    "authorityNeeds": [
+                      {
+                        "capability": "observation.read",
+                        "target": "facts"
+                      }
+                    ],
+                    "witnesses": [
+                      "next-internet:pending-retirement-observations"
+                    ],
+                    "mode": "realize",
+                    "state": {
+                      "retirement.allowed": false,
+                      "retirement.loaded": false,
+                      "facts.pendingPresent": false,
+                      "facts.allNodesAcknowledged": false,
+                      "facts.leaseRevoked": false,
+                      "facts.operatorAuthorized": false,
+                      "facts.actualRequestRoot": "",
+                      "facts.expectedRequestRoot": ""
+                    }
+                  },
+                  {
+                    "host": "observation",
+                    "capability": "pendingPresent",
+                    "fullCapability": "observation.pendingPresent",
+                    "args": [],
+                    "rule": "loadPendingRetirement",
+                    "actor": "kernel",
+                    "authorityNeeds": [
+                      {
+                        "capability": "observation.read",
+                        "target": "facts"
+                      }
+                    ],
+                    "witnesses": [
+                      "next-internet:pending-retirement-observations"
+                    ],
+                    "mode": "realize",
+                    "state": {
+                      "retirement.allowed": false,
+                      "retirement.loaded": false,
+                      "facts.pendingPresent": false,
+                      "facts.allNodesAcknowledged": false,
+                      "facts.leaseRevoked": false,
+                      "facts.operatorAuthorized": false,
+                      "facts.actualRequestRoot": "",
+                      "facts.expectedRequestRoot": ""
+                    }
+                  }
+                ]
+              },
+              {
+                "kind": "Transition",
+                "rule": "admitPendingRetirement",
+                "ruleKind": "Emergence",
+                "mode": "realize",
+                "status": "realized",
+                "actor": "kernel",
+                "from": null,
+                "into": null,
+                "beforeRoot": "e4b309ebc283411c4e55d4e34502977962cf48a4f13cfa1cfc216405adc6960d",
+                "afterRoot": "d322150d90116db40b1eab0db72deb9a175ab3967c4b69de92ecff957dc9f152",
+                "changes": [
+                  {
+                    "target": "retirement.allowed",
+                    "before": false,
+                    "after": true,
+                    "source": "alter"
+                  }
+                ],
+                "authority": {
+                  "needs": [
+                    {
+                      "capability": "pending.retire",
+                      "target": "retirement"
+                    }
+                  ],
+                  "activeWarrants": [
+                    {
+                      "subject": "kernel",
+                      "capability": "observation.read",
+                      "target": "facts"
+                    },
+                    {
+                      "subject": "kernel",
+                      "capability": "pending.retire",
+                      "target": "retirement"
+                    }
+                  ]
+                },
+                "witnesses": [
+                  "next-internet:rcl-pending-retirement"
+                ],
+                "hostCalls": []
+              }
+            ],
+            "programRoot": "9e46bec0723a3352a377bab697c3114b5e443db15d508e6019ae53adf73aa845",
+            "stateRoot": "d322150d90116db40b1eab0db72deb9a175ab3967c4b69de92ecff957dc9f152",
+            "sourceSha256": "d6507c7b979484d9195dbacb2078e9d8a1ff4eaf0adfe3e419d6479b8035e46c",
+            "factsRoot": "3ebd2b2e995f9ed1ede3630251b472755c4e3d7ca280d748c6f5db911986819a",
+            "runtime": "RCL canonical compiler and JavaScript semantic runtime",
+            "coverage": "lowered-execution"
+          },
+          "executionOutcome": "unknown",
+          "operatorBoundary": "external-aaf-operator",
+          "operatorAuthorization": {
+            "challenge": {
+              "format": "twni.operator-challenge.v1",
+              "action": "retire-entire-lease",
+              "requestRoot": "4fa721912488ef31913e3162babfbea75a1d40195f394ebd9bf93d4014caa05e",
+              "leaseRoot": "de728cd0131ad96e97f835249e0f33154f1eb827253abc90590175c4ebc07cfb",
+              "sessionRoot": "76712bc1137a990de165c49d0e96b4d00c287fe99ec3375bbec6ef8cdc24b93c",
+              "subjectId": "subject:local-user",
+              "continuityRoot": "b1a1ce5d3c98c2c4cd72055d1dcb2cbada67bf2b8f387b869a8394ebe4779516",
+              "worldId": "world:local-demonstration",
+              "coordinatorKeySha256": "4bce8c8c492ec8cf1333b08ab835892501e72679e94f22572ebbbf9ec101fa3d",
+              "policyRoot": "216a9c6b788508ab5c83e6c5334687bcd19a13a14dc4481fea823560d27cb623",
+              "challengeRoot": "afb57af1035bb9d5854a8e478cb88fcd0491d4a4678e01307c5a7b19c2527568"
+            },
+            "approval": {
+              "format": "aaf.approval-receipt.v0.1",
+              "approval_id": "approval:isolated-demo",
+              "proposal_root": "afb57af1035bb9d5854a8e478cb88fcd0491d4a4678e01307c5a7b19c2527568",
+              "approver_id": "operator:external-test",
+              "approver_roles": [
+                "tinp.operator"
+              ],
+              "decision": "approved",
+              "scopes": [
+                "tinp.pending.retire"
+              ],
+              "conditions": [],
+              "issued_at": "2026-09-10T08:57:01.500Z",
+              "expires_at": "2026-09-10T08:59:02.500Z",
+              "approval_root": "0c82bc54ca0f1afa1d6639358bde67715afa29ddd795065fa2551f47f80bf4dc",
+              "signature": {
+                "algorithm": "Ed25519",
+                "signer_id": "operator:external-test",
+                "value": "dFKJcbeBdW7OmHmHGhjj7zqa2jlXmoSteHyQYc1J+J9VyVkH1/4sGlll4tpAuBUquXqNrSSahNx/OvCn6FiBDg=="
+              }
+            },
+            "verification": {
+              "format": "twni.external-operator-verification.v1",
+              "approvalRoot": "0c82bc54ca0f1afa1d6639358bde67715afa29ddd795065fa2551f47f80bf4dc",
+              "signerId": "operator:external-test",
+              "publicKeySha256": "7a0e592ad003b8bb82b2279e7ca626b83f918022c6d2889ea64a9d9e05bb71a4",
+              "challengeRoot": "afb57af1035bb9d5854a8e478cb88fcd0491d4a4678e01307c5a7b19c2527568",
+              "authorizedAtMs": 1789030627316
+            },
+            "firstVerifiedAtMs": 1789030626390
+          },
+          "recovery": {
+            "session": {
+              "body": {
+                "format": "twni.session.v0.1",
+                "sessionId": "session:df5af51f-f6ea-49e1-bf19-e840da3e3883",
+                "subjectId": "subject:local-user",
+                "continuityRoot": "b1a1ce5d3c98c2c4cd72055d1dcb2cbada67bf2b8f387b869a8394ebe4779516",
+                "worldId": "world:local-demonstration",
+                "sourceNodeId": "A",
+                "targetNodeId": "C",
+                "leaseRoot": "de728cd0131ad96e97f835249e0f33154f1eb827253abc90590175c4ebc07cfb",
+                "scopes": [
+                  "text.read"
+                ],
+                "expiresAtMs": 1789031212356,
+                "expectedEvidenceRoot": "bebcb902478c79f174073a3b829d7936d50860a121b104d91131babe056fd06c",
+                "previousSessionRoot": null
+              },
+              "root": "76712bc1137a990de165c49d0e96b4d00c287fe99ec3375bbec6ef8cdc24b93c",
+              "signature": "F9rgSkCGN2RV4NH+CQouh4CUUFk1OrEWyf2StL47M7aJRFZ0v63kAADDFnodJqwLPjUbJ7bu/ZYCesVeWquFAw=="
+            },
+            "lease": {
+              "body": {
+                "format": "twni.authority-lease.v0.1",
+                "leaseId": "lease:4ff7dc09-27c2-42de-9b0d-d508c8dc0a8e",
+                "subjectId": "subject:local-user",
+                "continuityRoot": "b1a1ce5d3c98c2c4cd72055d1dcb2cbada67bf2b8f387b869a8394ebe4779516",
+                "worldId": "world:local-demonstration",
+                "capabilityId": "text.codepoint-count",
+                "scopes": [
+                  "text.read"
+                ],
+                "notBeforeMs": 1789030611356,
+                "expiresAtMs": 1789031212356,
+                "region": "local",
+                "maxRetentionSeconds": 0,
+                "maxCost": 20,
+                "maxLatencyMs": 1000,
+                "maxEnergy": 20,
+                "securityProfile": "ed25519-pinned-local.v1",
+                "delegable": false,
+                "purpose": "local read-only Unicode code point counting experiment"
+              },
+              "root": "de728cd0131ad96e97f835249e0f33154f1eb827253abc90590175c4ebc07cfb",
+              "signature": "JoJ5Ixn74f0kVYWUoN2UdO7dOoVfpKpKDeg4VTVPE4HprIA+W2ScEI9m+xP/uzEIoONspU2r3Vg30EQlCQwBDA=="
+            },
+            "currentSource": "A",
+            "operatorPolicy": {
+              "format": "twni.external-operator-policy.v1",
+              "signerId": "operator:external-test",
+              "publicKeySha256": "7a0e592ad003b8bb82b2279e7ca626b83f918022c6d2889ea64a9d9e05bb71a4",
+              "scope": "tinp.pending.retire",
+              "role": "tinp.operator",
+              "policyRoot": "216a9c6b788508ab5c83e6c5334687bcd19a13a14dc4481fea823560d27cb623"
+            },
+            "revoked": true,
+            "revocationEpoch": 1,
+            "pendingRoot": "4fa721912488ef31913e3162babfbea75a1d40195f394ebd9bf93d4014caa05e",
+            "recoveryAnchorPolicy": null,
+            "recoveryAnchorRoot": null,
+            "recoveryAnchorSequence": 0
+          }
+        },
+        "eventRoot": "b7753d9c341b3f8ea457b6ee02494c3b281f69cafce21db0032f5762f0929482",
+        "signature": "WvnDtAUHg1z2Bo3ZpjuTnRwxZOenSb+za5ORtooZKua8wC9l5T0vv+b5p2JbxWN7Fx0JfM+krF6HU46yExUCCQ=="
+      },
+      "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAJ6xksFW3rc2h0+s9mG2kxMKxeMZ65SMCoMzX1QtBVQ0=\n-----END PUBLIC KEY-----\n",
+      "evidenceRoot": "804eb36a2ca45a41f822385578bd24385c69f126a278a991df6de38fa6592f0a",
+      "scope": "Actual CLI and independent ephemeral test signer. No production human enrollment, external clock, hardware custody or anti-rollback anchor.",
+      "ledger": "evidence/0.1.0-alpha.9/operator-tcp.jsonl",
+      "ledgerSha256": "9e0db3b6d2d099ca6df85f8da72630987d6dc86c1cf7eb49cf6f36fd877dfc49"
+    }
+  ],
+  "recoveryAnchorScenarios": [
+    {
+      "format": "twni.recovery-anchor-demo.v1",
+      "status": "VERIFIED_LOCAL_EXTERNAL_RECOVERY_ANCHOR",
+      "transport": "udp",
+      "signerPid": 42040,
+      "nodePids": [
+        58448,
+        56392,
+        34444
+      ],
+      "firstAnchorRoot": "a1433d7ae1c435cda35e817c1df903502be7980211341cc724633534ce3a1d5d",
+      "secondAnchorRoot": "9ed4b5b40a4b13576130958c3154e91e8f3286cae068fda41aea2d2fe06c5c89",
+      "firstSequence": 1,
+      "secondSequence": 2,
+      "rollbackDetected": true,
+      "rollbackCode": "RECOVERY_ANCHOR_ROLLBACK",
+      "externalKeyringNotCheckpointed": true,
+      "leasePreserved": true,
+      "evidenceRoot": "9cc4833e88976051cf57cc61d9157b8197abd32c45749210f175bc1f0483360d",
+      "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAf17UdHiHfvmevR9eVJ2iyBbTj9/Og1U8IOSYDUCA6Eg=\n-----END PUBLIC KEY-----\n",
+      "scope": "Actual independent signer process and complete local directory replay. No production registry, trusted clock, hardware custody or cross-device anchor.",
+      "ledger": "evidence/0.1.0-alpha.9/recovery-anchor-udp.jsonl",
+      "ledgerSha256": "5f97eab5ff285f8e1d570a1f5abdcb5e9a29ce8b7ea7b0aa75bd665e9c483363"
+    },
+    {
+      "format": "twni.recovery-anchor-demo.v1",
+      "status": "VERIFIED_LOCAL_EXTERNAL_RECOVERY_ANCHOR",
+      "transport": "tcp",
+      "signerPid": 59764,
+      "nodePids": [
+        3884,
+        52744,
+        63192
+      ],
+      "firstAnchorRoot": "673701fbb3f0bd71cabbe27a97df2ac6a37b3370d488a89b05499a7620e54a65",
+      "secondAnchorRoot": "97ec516d70dd05328ef282bdd26f4030c024e0685fb27cb9612cb889ad1e0b41",
+      "firstSequence": 1,
+      "secondSequence": 2,
+      "rollbackDetected": true,
+      "rollbackCode": "RECOVERY_ANCHOR_ROLLBACK",
+      "externalKeyringNotCheckpointed": true,
+      "leasePreserved": true,
+      "evidenceRoot": "585d87fa9998ab19d89da2983de46c239d0514285312d9205855bcdc91cf555f",
+      "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAPc/uC6Oyaa8N1SQ8bBVvOYzmZ2q8J3k9U7HxIDZJVIA=\n-----END PUBLIC KEY-----\n",
+      "scope": "Actual independent signer process and complete local directory replay. No production registry, trusted clock, hardware custody or cross-device anchor.",
+      "ledger": "evidence/0.1.0-alpha.9/recovery-anchor-tcp.jsonl",
+      "ledgerSha256": "ba3905317b71b7eafaf60d11966a53b17eec77f3e67170e5d7b7dc99e5c04136"
+    }
+  ],
+  "authorityRegistryScenarios": [
+    {
+      "format": "twni.authority-registry-demo.v1",
+      "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_LIFECYCLE",
+      "issuerPid": 10608,
+      "firstRegistryRoot": "81682fdcbec1b7835470997307d09e8c45756d0816566ead70e0d2c5bdb01cba",
+      "secondRegistryRoot": "57f3fb3b129ac7f77043de90a646711b23ea03d47da8e427c39d43f30ed993ac",
+      "firstSequence": 1,
+      "secondSequence": 2,
+      "rotatedSigners": [
+        "operator:owner-v1 → operator:owner-v2",
+        "recovery:witness-v1 → recovery:witness-v2"
+      ],
+      "revokedSigners": [
+        "operator:owner-v1",
+        "recovery:witness-v1"
+      ],
+      "activeRecoverySigner": "recovery:witness-v2",
+      "activeOperatorSigner": "operator:owner-v2",
+      "oldKeyDenied": true,
+      "keyMaterialPersisted": false,
+      "scope": "Actual independent issuer child, signed offline snapshots, append-only key rotation/revocation and role keyring derivation; no online registry, trusted clock, hardware custody or cross-device convergence."
+    }
+  ],
+  "authorityRegistryDistributionScenarios": [
+    {
+      "format": "twni.authority-registry-distribution-demo.v1",
+      "status": "VERIFIED_LOCAL_OFFLINE_DISTRIBUTION_QUORUM",
+      "issuerPid": 44504,
+      "mirrorPids": [
+        44648,
+        61024,
+        54192
+      ],
+      "registryRoot": "d530b9fc42d8516ed10ebbf938be70bd2e206c870e6e8c1ed037fde1e3ddbc18",
+      "sequence": 1,
+      "distributionPolicyRoot": "e486831a09e908c6b7f31aeb40c4f8635c9a25653b2233d7f1cccdbf4cf44540",
+      "threshold": 2,
+      "acceptedMirrors": [
+        "mirror:alpha",
+        "mirror:beta",
+        "mirror:gamma"
+      ],
+      "forkDetected": true,
+      "forkRejectionCode": "AUTHORITY_REGISTRY_DISTRIBUTION_FORK_DETECTED",
+      "insufficientQuorum": true,
+      "insufficientQuorumCode": "AUTHORITY_REGISTRY_DISTRIBUTION_QUORUM_INSUFFICIENT",
+      "keyMaterialPersisted": false,
+      "scope": "Actual independent issuer and mirror child processes, signed receipts over one registry root and deterministic fork/quorum rejection; no online publication, trusted clock, transparent log or cross-device convergence."
+    }
+  ],
+  "authorityRegistryConvergenceScenarios": [
+    {
+      "format": "twni.authority-registry-convergence-demo.v1",
+      "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_CONVERGENCE",
+      "issuerPid": 5032,
+      "mirrorPids": [
+        59344,
+        62336,
+        53432
+      ],
+      "firstSequence": 1,
+      "lastSequence": 2,
+      "registryRoots": [
+        "e485ab6fa32dba44fc4977ec46074c9f0c7f85b2252e57b66d986a3910e0ca80",
+        "1b91283ae8aead7479074f0f5957e1467cfdbb8ed47c23facef4e3778ab0a92c"
+      ],
+      "historyRoot": "1a1af93685a4c6d9297139559872175455a62e3d0fe2a24cf9b7c87d929b08ca",
+      "stableMirrors": [
+        "mirror:alpha",
+        "mirror:beta",
+        "mirror:gamma"
+      ],
+      "forkDetected": true,
+      "forkRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_FORK_DETECTED",
+      "mirrorSetDrift": true,
+      "mirrorSetDriftCode": "AUTHORITY_REGISTRY_CONVERGENCE_MIRROR_SET_DRIFT",
+      "keyMaterialPersisted": false,
+      "scope": "Actual independent issuer and mirror child processes, contiguous signed registry history with per-snapshot quorum, stable mirror-set check and deterministic historical fork rejection; no online transparency log, trusted clock or durable cross-host convergence."
+    }
+  ],
+  "authorityRegistryConvergenceStoreScenarios": [
+    {
+      "format": "twni.authority-registry-convergence-store-demo.v1",
+      "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_CONVERGENCE_STORE",
+      "firstOperation": "appended",
+      "extensionOperation": "extended",
+      "replayOperation": "unchanged",
+      "firstSequence": 1,
+      "lastSequence": 2,
+      "historyRoot": "e80c89be71b9e1a69af71e272d8c4ab024d5a23549bd7f37a3b8ad708510c19c",
+      "stableMirrors": [
+        "mirror:alpha",
+        "mirror:beta",
+        "mirror:gamma"
+      ],
+      "storeWritten": true,
+      "storeBytes": 7491,
+      "rollbackDetected": true,
+      "rollbackRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_STORE_ROLLBACK",
+      "prefixRewriteDetected": true,
+      "prefixRewriteRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_STORE_PREFIX_MISMATCH",
+      "keyMaterialPersisted": false,
+      "scope": "Actual local atomic store write/read with directory writer lease, full-history extension and deterministic rollback/prefix-rewrite rejection; no online transparency log, trusted clock or durable cross-host consensus."
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "src/authority-registry-convergence-store.mjs",
+      "sha256": "eac60dd557a29de6216f5d6c392546c5f42c112da6ce3e6abbf53f91bfcef8db"
+    },
+    {
+      "path": "src/authority-registry-convergence.mjs",
+      "sha256": "74d170e7033de92f35348ed7aa07268eb0619dd94b84df3360b6ff2a9ceacfe2"
+    },
+    {
+      "path": "src/authority-registry-distribution.mjs",
+      "sha256": "8310f38f33f619f7f0a957045f5d0dae10a89deeed1fd357598a5c67e04a717f"
+    },
+    {
+      "path": "src/authority-registry.mjs",
+      "sha256": "99c070f1c60269086fa6fa4ac88c6426e95e6dac00d546e9b6cc5d96de40ac0f"
+    },
+    {
+      "path": "src/contract.mjs",
+      "sha256": "f33e160e62383f1b01e8f6ca0c8236f852299b8a96c6fb8741c91ac8b6bad86f"
+    },
+    {
+      "path": "src/coordinator-state.mjs",
+      "sha256": "24149acc28b8e2d3e913fdb7f49ac46fdac80c721843a34259e714272b62f09c"
+    },
+    {
+      "path": "src/directory-lease.mjs",
+      "sha256": "07f4efcf9c00f246184a3422aac88547494306e3d151ffa5d5f86b28ea3539e7"
+    },
+    {
+      "path": "src/evidence.mjs",
+      "sha256": "221e516f5bc5b79a3b700b270c83313c1b7fb3d1612ee4d9729426536017a094"
+    },
+    {
+      "path": "src/identity.mjs",
+      "sha256": "1264a4747acd2e4825986e62f76500e3adac6b2143cca27fdd7ef6933d79b2c1"
+    },
+    {
+      "path": "src/node-process.mjs",
+      "sha256": "4c4feb83952cb37bf02cd5654056fe9008318328c1eb8d0341e24bf8fc44c203"
+    },
+    {
+      "path": "src/node-state.mjs",
+      "sha256": "d7f42a998064a5d38e3e41ab6a948712f4bddd9f1b6676c00851259b430ceb32"
+    },
+    {
+      "path": "src/operator-authorization.mjs",
+      "sha256": "13def4439ff12ce7cf7fdf84c2a094a4aeb9fba861ebf0c21c9899d5f7756a3c"
+    },
+    {
+      "path": "src/pending-management.mjs",
+      "sha256": "8981038e4bf42369167a0d89cdb9558c9cb5445ced18797f5b477523b8bd02b0"
+    },
+    {
+      "path": "src/protected-store.mjs",
+      "sha256": "a25330f392167ce24eddfd153e89cda79fc2f8dcf8d22744ca16e39ceafc499c"
+    },
+    {
+      "path": "src/recovery-anchor.mjs",
+      "sha256": "5bff42eb821a5e53a4aaf6de34ddd30f901f4f600d9175d190f00281366dd462"
+    },
+    {
+      "path": "src/routing.mjs",
+      "sha256": "eae0f915c6affee748c6df3b316ab2cfa4ea87aa119c1f936b53e0f3f3d321db"
+    },
+    {
+      "path": "src/suite.mjs",
+      "sha256": "f38b68dd67777b55328bc45b8f210480b4875784475ade6f81dc9f1502126390"
+    },
+    {
+      "path": "src/transport.mjs",
+      "sha256": "5dae7754403c8a247c241382629b0ab446a6f7b8288ca9d4e8574d067facd5aa"
+    },
+    {
+      "path": "adapters/aaf-operator.mjs",
+      "sha256": "3609e2f295c96acfdcc3f41346d4c007293a8b0f70af51e9eaa0090826962c1d"
+    },
+    {
+      "path": "adapters/directory-lock.py",
+      "sha256": "992727577e0fcb542775817dd8afc1f0fed916daf7e7a3d3c214aec4db4ecc04"
+    },
+    {
+      "path": "adapters/dpapi-store.py",
+      "sha256": "afb226e85f71c1665ea3bbdbbeac108504fd0b24ab87e836e4971c4422181d8f"
+    },
+    {
+      "path": "adapters/opp-bridge.mjs",
+      "sha256": "465bf342b88b9870fb6f4367f2b3bbdeae7176b7f640b74876359424af9663db"
+    },
+    {
+      "path": "adapters/opp-negotiate.py",
+      "sha256": "e7014b7ec261c2b85ded2e13bbd5ee77afa629a13e1bf3154edcda8710666323"
+    },
+    {
+      "path": "adapters/rcl-guard.mjs",
+      "sha256": "35ae41e8c928596d79fe9e3ae405b686ca056f392c07858bb5b6af6c8bac3077"
+    },
+    {
+      "path": "adapters/rcl-migration-guard.mjs",
+      "sha256": "562c5529444a74ef2b7150dbe29c7359fc94f4cedb98d9ae7ccf17cb712a42b3"
+    },
+    {
+      "path": "adapters/rcl-pending-retirement.mjs",
+      "sha256": "03fcf46e09d2ad0ecc1444bee04e5e7c1148e86c19a08fb93c28aa3701e5348a"
+    },
+    {
+      "path": "adapters/rcl-recovery-guard.mjs",
+      "sha256": "1e113e21ef7af36795d5a03ea72856e06469657cd9215a5f10493a7db8c0ac93"
+    },
+    {
+      "path": "adapters/rcl-route-guard.mjs",
+      "sha256": "1dd4059a940840d8e81aec6d69fae6dc746424d51487a2d98418aae526606413"
+    },
+    {
+      "path": "adapters/requirements.txt",
+      "sha256": "7826ed4f58b0dee7512c3f1700e0b6cac7b5c3852ce22968e15be769f8815ac4"
+    },
+    {
+      "path": "rcl/migration.rcl",
+      "sha256": "64ce26fdb43975687b7a2d82e3e7949aa56d46f332ceb3114f6692b960dd699d"
+    },
+    {
+      "path": "rcl/pending-retirement.rcl",
+      "sha256": "d6507c7b979484d9195dbacb2078e9d8a1ff4eaf0adfe3e419d6479b8035e46c"
+    },
+    {
+      "path": "rcl/recovery.rcl",
+      "sha256": "c5080c4abcc4fb19f802014572b3126c61cdb4ddd8a82c55dc1109356fea9720"
+    },
+    {
+      "path": "rcl/route.rcl",
+      "sha256": "951c0003795fc137e3b68c82a47157e6b01b1905136350bcffa23636cb98a688"
+    },
+    {
+      "path": "rcl/transaction.rcl",
+      "sha256": "4f98721eb2ab8f0ecdbfc0151541d8aed103d7fb7aaffb82d206621c2412bbf7"
+    },
+    {
+      "path": "tests/aaf-operator.test.mjs",
+      "sha256": "d1b1d4ead7e6e82551c2b2d731ceaddd55920dfb3f8bff0d0244bb9daff9a2ff"
+    },
+    {
+      "path": "tests/authority-registry-cli-fixture.mjs",
+      "sha256": "4355d140872d057ccd57b627461069ded77c0de76d67bc04a28986616d7fff96"
+    },
+    {
+      "path": "tests/authority-registry-cli.test.mjs",
+      "sha256": "683de1c483d2bcf5d7b362a9bfcac044fe1f31e780b6919883206665e057de58"
+    },
+    {
+      "path": "tests/authority-registry-convergence-cli.test.mjs",
+      "sha256": "708e65f4f491e0cc4f640a844549e967c18172bb68a974024ef3ad733bfb18a2"
+    },
+    {
+      "path": "tests/authority-registry-convergence-store-cli.test.mjs",
+      "sha256": "7a1143a5f7b2e079d1dec4d17d130520ef185f9d41b40003ab6b40dce8ab43dd"
+    },
+    {
+      "path": "tests/authority-registry-convergence-store.test.mjs",
+      "sha256": "b361a038a22548e3feedf5fb2f5b2c0cfa43f44f2567a9dd3b7122a501e88f25"
+    },
+    {
+      "path": "tests/authority-registry-convergence.test.mjs",
+      "sha256": "167c1ad43d63d78b7f2797ae2620404ccf1028cba08f4b919c7c5eab5d2ee55a"
+    },
+    {
+      "path": "tests/authority-registry-distribution-cli.test.mjs",
+      "sha256": "c3fdc1a0d0511db838043d0abb994afd48dc1082ff342b2d6d5ce24284f337f5"
+    },
+    {
+      "path": "tests/authority-registry-distribution-signer.mjs",
+      "sha256": "b5bdd42d349c7c9371d200eae1f1a62e33dab134367d7f7d0a8c1935c1da17ac"
+    },
+    {
+      "path": "tests/authority-registry-distribution.test.mjs",
+      "sha256": "52d23aa383018d70f2b1ccbf6ce9e54b5624e349d3bcda23b5e68c143f92ca44"
+    },
+    {
+      "path": "tests/authority-registry-signer.mjs",
+      "sha256": "e6f7a948879a67bb5cf340d69ca527c06dfb219bb7c4ee69026c9d0699251758"
+    },
+    {
+      "path": "tests/authority-registry.test.mjs",
+      "sha256": "1139234c91e686ee36aeb84141a86642e9985c12b47fd970095a40594d6564fc"
+    },
+    {
+      "path": "tests/conformance.test.mjs",
+      "sha256": "2e41824d45e62c7ff42644a7847ba6bb797aeb8989db312eeacde79779114aae"
+    },
+    {
+      "path": "tests/operator-cli.test.mjs",
+      "sha256": "851cfe18580001e024f46896966183ca230b990314f62d91a7def610ffbbcdfe"
+    },
+    {
+      "path": "tests/operator-coordinator.fixture.mjs",
+      "sha256": "65fcde9ffcafe69d61beb14dcca2e21fde52424868d38df6ea868539f490277d"
+    },
+    {
+      "path": "tests/operator-security.test.mjs",
+      "sha256": "d12f9390675a7cffdbdb00b6a305c71ada2a0b0d40f2542bb8f16ceb7b3bcb47"
+    },
+    {
+      "path": "tests/opp-bridge.test.mjs",
+      "sha256": "101be7a2d1257c2074aefa71342ea2572e6a34fb73f0fd35301a605f9e4dd1d2"
+    },
+    {
+      "path": "tests/pending-cli.test.mjs",
+      "sha256": "519c0e88d77805722395c50845f44298ba12768e77b97a631c6a8322e7fb837d"
+    },
+    {
+      "path": "tests/pending-coordinator.fixture.mjs",
+      "sha256": "738353d9e78116c11001970333fb21b1ad0a1edc36002f79975305dd9c386f39"
+    },
+    {
+      "path": "tests/pending-security.test.mjs",
+      "sha256": "19af2bb166fdf78e80dc73a3e6fc85dab737ff4033ce631856f9bb95733ad56f"
+    },
+    {
+      "path": "tests/profiles.test.mjs",
+      "sha256": "0a1c0cfaea088775b0defce3663e177ebd130d86daac5654f462d6b984246239"
+    },
+    {
+      "path": "tests/protected-store.test.mjs",
+      "sha256": "83fa2eb3ea162662e0abb0eb4e4b320cf4e0b8747619a41eb058960b9d0edea2"
+    },
+    {
+      "path": "tests/rcl-guard.test.mjs",
+      "sha256": "6ede7906f392137c04c0c4088a7f13a07738d13c331e790841d5889b1f2a1782"
+    },
+    {
+      "path": "tests/rcl-migration.test.mjs",
+      "sha256": "0510c97c199279c64e8a5e732f5a6ea0b113aff7882d62a0f8f9fc07ed602ae4"
+    },
+    {
+      "path": "tests/rcl-pending-retirement.test.mjs",
+      "sha256": "ac5fd611fff781fe22d95b148c5e47f9aa42e0c7ed46191987d974a72790725c"
+    },
+    {
+      "path": "tests/rcl-recovery.test.mjs",
+      "sha256": "ed9e0c2ee2facb1b5f1e801d3546bceadaf74fa6e1c51207fde69cc81df636ad"
+    },
+    {
+      "path": "tests/rcl-route.test.mjs",
+      "sha256": "317736d4afc2a620eb3666e4b6363ed4dc44b79f2d44c392ee5b26504d961d62"
+    },
+    {
+      "path": "tests/recovery-anchor-cli.test.mjs",
+      "sha256": "f094599ec3de9013255a1da98f27913d7cbca213de95d0869bf89962db4f027a"
+    },
+    {
+      "path": "tests/recovery-anchor-signer.mjs",
+      "sha256": "f6a5d00e42e3e64cc66c72b677396de602e18fc7db87739e5971e4291042e540"
+    },
+    {
+      "path": "tests/recovery-anchor.test.mjs",
+      "sha256": "13130159c4000148b1c5dff70df47f0c445c0d0656953713afeb065d45f89aff"
+    },
+    {
+      "path": "tests/recovery-coordinator.fixture.mjs",
+      "sha256": "788cc6a8a13e4e38376748ea57e834f8def37790803447cfcd39f0a8ecc753e2"
+    },
+    {
+      "path": "tests/recovery-gate-integration.test.mjs",
+      "sha256": "18f02a34669ee00dd1cc32a65f6ed8e402b7b17c73b9b1ca6daf5f50cba227f5"
+    },
+    {
+      "path": "tests/recovery-security.test.mjs",
+      "sha256": "62d11e2923ffaef98fdf5e93880b6b468d39099b0a7ff44c1f06a5a573a44333"
+    },
+    {
+      "path": "tests/security-review.test.mjs",
+      "sha256": "08a99e4ff8c4771940064b8ff0f7b8366e9f47f0c9a80e738c36777cb7e98a92"
+    },
+    {
+      "path": "tests/shared-ir.test.mjs",
+      "sha256": "c1d9eaef5c68981ad89ef13a9450a3f556d1a1ed211f290193cce5bff81a3af6"
+    },
+    {
+      "path": "vendor/aaf/LICENSE",
+      "sha256": "4037bd3dec2b7a4ad2e609290f0be9ee3d64738190db987950c73ee38aa6b5d3"
+    },
+    {
+      "path": "vendor/aaf/PROVENANCE.json",
+      "sha256": "3c35df1f0ac4e9d6a8c1b0a8fe010078a2c58f45e98dce856bb275f2c84459a7"
+    },
+    {
+      "path": "vendor/aaf/src/canonical.mjs",
+      "sha256": "139fe1a410d8c46422212057ada11b88938dacd990bdf44aa3a13bf85a87921e"
+    },
+    {
+      "path": "vendor/aaf/src/contracts.mjs",
+      "sha256": "5d610f649d4a6fbcc75c507f211890005978f3f89d131604a32698d5be2f55a2"
+    },
+    {
+      "path": "vendor/aaf/src/signatures.mjs",
+      "sha256": "4f940d7c2c46f59facda3ba4cab08093151446a37e893a00656318ef6e7b8cc7"
+    },
+    {
+      "path": "vendor/opp/LICENSE-NOT-DECLARED.md",
+      "sha256": "7e80e05826c39010403d861653a93d45b888b9264ea83054fb1e1065610acfb6"
+    },
+    {
+      "path": "vendor/opp/source-manifest.json",
+      "sha256": "bd6399c12fd532c7f86f2508d799cf1250b5a62114f0e667ef62c3ea1e901ef1"
+    },
+    {
+      "path": "vendor/opp/src/opp/bridge/compatibility.py",
+      "sha256": "71bc1a2f0821f0cbf81a1b725fcbdbd75cb9a000957d6f239f90452461abcf95"
+    },
+    {
+      "path": "vendor/opp/src/opp/bridge/compiler.py",
+      "sha256": "fb79df6c61823ffb43ed2276adabe30260ac80289d593f3dea16a5a66c8231fa"
+    },
+    {
+      "path": "vendor/opp/src/opp/bridge/extractors.py",
+      "sha256": "48dfcc74151e4fe716c508bdaaf2152f90e48ac278068a31adca185ca34c1d81"
+    },
+    {
+      "path": "vendor/opp/src/opp/bridge/mapper.py",
+      "sha256": "3196aa9cc7cc043e6479fd323e3685765020c2246edc324bbe6c291b0a762d78"
+    },
+    {
+      "path": "vendor/opp/src/opp/bridge/model.py",
+      "sha256": "64afb75adfa1da89957584a6aea81ac896d530efcf2a2a563fcd19b5fe2ceb72"
+    },
+    {
+      "path": "vendor/opp/src/opp/bridge/planner.py",
+      "sha256": "50e0fb822b9315b53a3f56ee9b1aabcf2b333235cdd08c059a61e597d4c41f0d"
+    },
+    {
+      "path": "vendor/opp/src/opp/bridge/profiles.py",
+      "sha256": "53cc7f4a81cb4ac9a547b0e1c1e65b3916f5fb8aa06b30a9e9e34a11850b0884"
+    },
+    {
+      "path": "vendor/opp/src/opp/bridge/scanner.py",
+      "sha256": "b532a17524ab56686260792a8a5a85b3bc9a9d141900934ec8b738bb35e574fe"
+    },
+    {
+      "path": "vendor/opp/src/opp/bridge/semantic_extractors.py",
+      "sha256": "cc90431673e4cdd2deaba56ba0ebdff851f9a045ff0882e65c1ee974ae9d16f3"
+    },
+    {
+      "path": "vendor/opp/src/opp/bridge/semantic_model.py",
+      "sha256": "937e7a341d24609b8741cbeff1cfb038dc987478b224303316e2e86cf1ff9264"
+    },
+    {
+      "path": "vendor/opp/src/opp/bridge/synthesize.py",
+      "sha256": "f08207ddb60f126aaaf74e793db3e1a76d7f2a2bf7d8d19c875ce59408b77002"
+    },
+    {
+      "path": "vendor/opp/src/opp/bridge/transform.py",
+      "sha256": "87c9286e03eebdc9779cb4258799dbf4058b0915b3a4df7e9cd7c951b913457b"
+    },
+    {
+      "path": "vendor/opp/src/opp/bridge/verifier.py",
+      "sha256": "a37ac18eaefb677fcea00a4cfcb0e58732edd3b265923fa023b486ee1ac701f3"
+    },
+    {
+      "path": "vendor/opp/src/opp/bridge/__init__.py",
+      "sha256": "051d5d390f737e18d7a78a99a753a0dba7483e98115da1decb907c8d8f32f947"
+    },
+    {
+      "path": "vendor/opp/src/opp/capability.py",
+      "sha256": "5fa0838c8f4979f6260b2a305b452778c78efea22e87795f1a1d8d64c7ac0086"
+    },
+    {
+      "path": "vendor/opp/src/opp/cli.py",
+      "sha256": "b42645c45bfb5685098f4e810b1f158a7f073d96715c30a45c7706a33e391bae"
+    },
+    {
+      "path": "vendor/opp/src/opp/handshake.py",
+      "sha256": "21ed9fe47a8b40eb145962d70c84f62e441b695fb606a991ef297512956a353b"
+    },
+    {
+      "path": "vendor/opp/src/opp/integrity.py",
+      "sha256": "1396974bc77bfe4c41bbfc1027a01e2a3523734654c0aa95b890b79687f31445"
+    },
+    {
+      "path": "vendor/opp/src/opp/registry.py",
+      "sha256": "efb8654b071d32f5700ef9d84ed0a3bb6c6e9d09fe205bf617c0adf5be80e608"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/registry/protocols.json",
+      "sha256": "6618872b74f7a82aedf642a151b17d5f8fe20ff1122e0406e6e9537516ebca96"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/auto-bridge-plan.schema.json",
+      "sha256": "f2b562930ca197aeeafca8e2c1890c8ea875c427a5fe1b5d60ad1db5762685bb"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/auto-connect-report.schema.json",
+      "sha256": "a2a1751a93c8528e0875e33ca99f32245dae197defbba7671728396aeec1081d"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/bridge-compatibility.schema.json",
+      "sha256": "d84f51f57f87919138fd6aa4cf544e2e2c9b13889d3118dc2bd08d7676d36027"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/chp.schema.json",
+      "sha256": "69108016f3aa73bcfb9dc222231ebb4ef0fefadf3bb1182202f17f1892d78f8d"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/interop-receipt.schema.json",
+      "sha256": "261a2b0413b3d8c561ac4ed59666fe9f9ee383e17ab816a71ba8624672599730"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/interop-run.schema.json",
+      "sha256": "d078039ffdb223e0805776c9a4adf150e7c2fbcf2ffeaedaadf26a47e84da794"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/invocation-receipt.schema.json",
+      "sha256": "4280d51271f3023330889a21ef12335642bbfeaef07a2ac18c163d17be635fc4"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/invocation-spec.schema.json",
+      "sha256": "f48f789e82d86af2ebbc085ca8dfdb304dc82188d6517995ed9730d2c0ac9eeb"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/rap.schema.json",
+      "sha256": "c0916013903f0cadbf6cbbfc3511559d606672245b80b11565d207df968c2d74"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/rcp.schema.json",
+      "sha256": "3bc78fdba28401067ba186bbacac233f8d95f31955ed094ece976e255e5f6503"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/reality-envelope.schema.json",
+      "sha256": "b4acf8b7e5feff48db435a74ab2d8cd6b9f698f5cae4943bac401f5b9bf855f6"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/rep.schema.json",
+      "sha256": "4c37e3318a11f76ce24f8ef00c7be3b00092c606ca4b95142b5f939f765d8551"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/rsp.schema.json",
+      "sha256": "1c77300a2f1030941ada2aee81d85b2d6c38182265cb53e5b66e9c75f8556768"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/rxp.schema.json",
+      "sha256": "489b2022cf7e9e78e1e89cac8e0e8995f3dbdf64fbb530208826c4e1f93a4915"
+    },
+    {
+      "path": "vendor/opp/src/opp/resources/schemas/semantic-verification.schema.json",
+      "sha256": "6ddcacabfebdd218888dc5f49a16b5483fe4ce76f5bbab95b325be3d0c86756a"
+    },
+    {
+      "path": "vendor/opp/src/opp/runtime/child_python.py",
+      "sha256": "0a92636f9af15fee0f591859d96e933c38e23cec300729f2836dfa2d06558af6"
+    },
+    {
+      "path": "vendor/opp/src/opp/runtime/interop.py",
+      "sha256": "0b8e9c53ccc8486297ea99e26d3f645461cc361916aee9e413369aa0e7d0c659"
+    },
+    {
+      "path": "vendor/opp/src/opp/runtime/invoke.py",
+      "sha256": "a3f23b9f583aee6483ff9cd22191df298eb6d1a83611caf40880d8ac6b272e77"
+    },
+    {
+      "path": "vendor/opp/src/opp/runtime/model.py",
+      "sha256": "fa8a18e4a23540f69efee070660254f38dc80dc7d4fad7d996ce7aca644f6279"
+    },
+    {
+      "path": "vendor/opp/src/opp/runtime/__init__.py",
+      "sha256": "c9a0253504dcadde0aad1300b03208b56f6b8c33626aa01d8a8b89ce1c0a98d4"
+    },
+    {
+      "path": "vendor/opp/src/opp/validation.py",
+      "sha256": "e2ed70f1c33b5a91f3380cadd761e013b1ab7e8e79094f602a9d2dcf40f7a040"
+    },
+    {
+      "path": "vendor/opp/src/opp/__init__.py",
+      "sha256": "6350f5efb9358e082179d58d990628bb7556f900757fc56560548ea7a2706f4f"
+    },
+    {
+      "path": "vendor/opp/src/opp/__main__.py",
+      "sha256": "8134dc71036ab6fef7cb605ec59b400b2864890fc00526f9763c447e2937e295"
+    },
+    {
+      "path": "vendor/rcl/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "vendor/rcl/PROVENANCE.json",
+      "sha256": "0f53678643c4619cffe799f8e4b755ad035313091f3e0ff92dd9d3a2b95248d9"
+    },
+    {
+      "path": "vendor/rcl/src/canonical.mjs",
+      "sha256": "559d48b6c58da664faf88d88ed6a474d0a86e206ee607ba7cf5b527bf9f986fa"
+    },
+    {
+      "path": "vendor/rcl/src/cognition.mjs",
+      "sha256": "1a514ef49a72f58760205c085fc36034707264ab8af09cfba44ddfcc2734d2b8"
+    },
+    {
+      "path": "vendor/rcl/src/compiler-primitives.mjs",
+      "sha256": "31f0c8f9bf2a556e5110cd7ad2f522e3e37d77cbca50f4bf51c5569d17dae273"
+    },
+    {
+      "path": "vendor/rcl/src/compiler.mjs",
+      "sha256": "4beeb668104e6901bbde8e256950293233cab74bbb4970cf3ba250c011a10a6d"
+    },
+    {
+      "path": "vendor/rcl/src/errors.mjs",
+      "sha256": "bd6664dd61f209543f6039222529372c60964941e34295bc3fb7f528320d051f"
+    },
+    {
+      "path": "vendor/rcl/src/final-foundation.mjs",
+      "sha256": "fcbe2c4facfd8c523242bf055086864cabd2fa5f88f1ae95a2cc69b3d1023159"
+    },
+    {
+      "path": "vendor/rcl/src/foundation-contract.mjs",
+      "sha256": "d93d469069308a21ca15e46a9bc3899b845775d84f8aa6e4b67f8a1e9411367e"
+    },
+    {
+      "path": "vendor/rcl/src/foundation.mjs",
+      "sha256": "7a975d2ae6daa278992fa7b0b7bc31b782dc61e0bd7c2bbca376f2a65a3db8d1"
+    },
+    {
+      "path": "vendor/rcl/src/knowledge.mjs",
+      "sha256": "bee1220e9c8a97cb00acebb1bd3eb9cb9e01164e15dd5b0e158bb4ddb3ab7eb0"
+    },
+    {
+      "path": "vendor/rcl/src/lexer.mjs",
+      "sha256": "c513ba3662f729ca6bba13f765b86cb515c3107ac67992d3f64eb71e16667941"
+    },
+    {
+      "path": "vendor/rcl/src/meta-planes.mjs",
+      "sha256": "98bac4d150e3e46d81cd14736e51aa2fc667a1a6b3219313cccdf75375d918ce"
+    },
+    {
+      "path": "vendor/rcl/src/parser.mjs",
+      "sha256": "781934d647e6318e08ecc9dace6f7e651105abb2f886869ddc7f592f2aecf241"
+    },
+    {
+      "path": "vendor/rcl/src/planes.mjs",
+      "sha256": "cf753f76aa8d30bb29f94720bcd0c05ac7d8ac9c09fd36b5f5c9e5c6c83fbce6"
+    },
+    {
+      "path": "vendor/rcl/src/quantity.mjs",
+      "sha256": "b09dd853fe361dbe4c48fb54e9f687cb9db6c44db6419303606b9482f245111d"
+    },
+    {
+      "path": "vendor/rcl/src/runtime.mjs",
+      "sha256": "5e70ac2f1b2833cd9bb56c8f7cf6e2d521cdc162e1b851db58f94cb92e9ba310"
+    },
+    {
+      "path": "vendor/rcl/src/type-module-kernel.mjs",
+      "sha256": "a7a21e12415833a172037818bb99095e5a08f240550fdd83c72263b878bdd161"
+    },
+    {
+      "path": "vendor/rcl/src/type-system.mjs",
+      "sha256": "f0e7d52ef073ba56d4a9c34acf464dec1fe9304b2e3576dbf5a33983e65d4d60"
+    },
+    {
+      "path": "vendor/rcl/src/ui/ui-compiler.mjs",
+      "sha256": "51cc6da3bb0ace531ed66e78f3982536772c9b2acd92c381b5d168149444c384"
+    },
+    {
+      "path": "vendor/rcl/src/ui/ui-ir.mjs",
+      "sha256": "a163aef79596ec9171cb1afa6c895a9d34e03e1745fd29e02f85dd279f7aedae"
+    },
+    {
+      "path": "vendor/rcl/src/ui/ui-layout.mjs",
+      "sha256": "6cf043a56e5fe3f76e9816a600b9eed292fb66055651669eaa78807a0aab9015"
+    },
+    {
+      "path": "vendor/rcl/src/ui/ui-lifecycle.mjs",
+      "sha256": "3e98f713eec30af53f2bba7635cf15faff454491d2b5d9b5763c286ecd5ea6f0"
+    },
+    {
+      "path": "vendor/rcl/src/ui/ui-reactive.mjs",
+      "sha256": "b08b793e157c2d12bc5fce3475c255ee1b689fe423befcf00af230dd0cff0b10"
+    },
+    {
+      "path": "vendor/rcl/src/ui/ui-schema.mjs",
+      "sha256": "32ee89c0733fb247a7e69f2f02312f2123a58cf44d39d549fa111a1bb9032ced"
+    },
+    {
+      "path": "vendor/rcl/src/ui/ui-style.mjs",
+      "sha256": "99cfc2e7891ebf526058185aaf2e4960f42d135125d10b65b894068eaf034f31"
+    },
+    {
+      "path": "vendor/rcl/src/ui/ui-validator.mjs",
+      "sha256": "4718bac1cd7d2ab981021558e1969ff8b2718c1059a8eb6a28a88e9557f02c5a"
+    },
+    {
+      "path": "vendor/tinp/LICENSE",
+      "sha256": "9bbdfeace91bd982b20f9fbd8505f82e7caa2281e02ab496a81d1558a3da3cb3"
+    },
+    {
+      "path": "vendor/tinp/PROVENANCE.json",
+      "sha256": "987c3c0704fc0c720546623acedfa458cd58eca720e4ac198645527f95f129bd"
+    },
+    {
+      "path": "vendor/tinp/src/addressing.mjs",
+      "sha256": "773b1a91898d35d4eb106566002e1c63bc25f0607f854a58e30a7958a31ecde7"
+    },
+    {
+      "path": "vendor/tinp/src/canonical.mjs",
+      "sha256": "0ab8286ac8d0f7edc82a149cbc7b558ba10e2f7d590315a8391419530185a8fc"
+    },
+    {
+      "path": "vendor/tinp/src/discovery.mjs",
+      "sha256": "aca9765498c2be9e5edfce5f80604b5d6b116a4c315e2c5d0a80ed5769126535"
+    },
+    {
+      "path": "vendor/tinp/src/forwarding.mjs",
+      "sha256": "dea3f077c4eb5a3018bc060c4698b8bba17d47ab1c06a188ce3a3cae1be4e2a7"
+    },
+    {
+      "path": "vendor/tinp/src/index.mjs",
+      "sha256": "0658ae395d5ba05b90285561c0aa252ada99a2674dc255d4e0091e9fb75ba603"
+    },
+    {
+      "path": "vendor/tinp/src/opp-profile.mjs",
+      "sha256": "36829a451fe047dc3bd633ebaa04f96c5e2be20c2067ad9ee851de3fd1452ec7"
+    },
+    {
+      "path": "vendor/tinp/src/protocol.mjs",
+      "sha256": "a4b0da75177bb53514f25b0e5466162fb58338cc05fbab24ece2f89c8f8b6cd1"
+    },
+    {
+      "path": "vendor/tinp/src/providers.mjs",
+      "sha256": "23b1152b07b873acc30e79dce7d72a185cc5086618f1a8858e27f752a4b9a59b"
+    },
+    {
+      "path": "vendor/tinp/src/rnr-profile.mjs",
+      "sha256": "da61aa8f2fccb85d9576b21c13984a42ae2db505337e32aaa70a529c9cc01599"
+    },
+    {
+      "path": "vendor/tinp/src/route-graph.mjs",
+      "sha256": "8554f36c3984169c1b7d4ffec03eac3cd695829a76f2b8ce2b070463f46c5882"
+    },
+    {
+      "path": "vendor/tinp/src/router.mjs",
+      "sha256": "3bf09c6c1dcd535f63cd3b3f99514e660a47648d758a00a5b0db778508314ed2"
+    },
+    {
+      "path": "vendor/tinp/src/runtime.mjs",
+      "sha256": "f32d166d53e1b26a6b7012e8154f6c54af2ca94352d39bb4b1988144af742ec3"
+    },
+    {
+      "path": "vendor/tinp/src/transport-loopback.mjs",
+      "sha256": "661c2b518f4378dee875fa63d1fedb9f79e1e3fd7adbdc0fcd04159d81c0bf49"
+    },
+    {
+      "path": "vendor/tinp/src/transport-udp.mjs",
+      "sha256": "56017eb45644d02fcaefc9b7cc1e9c09428e8bf8e90bdab935868e756da57764"
+    },
+    {
+      "path": "vendor/tinp/tests/tinp-v02.test.mjs",
+      "sha256": "d66bf1e8916cb29f0202dd33e801e46d58438fa99b018b50af25632b9f3e2b30"
+    },
+    {
+      "path": "vendor/tinp/tests/tinp.test.mjs",
+      "sha256": "2326e34a96aa8dee53cec65ddfb800b603b4551e02c12af30068e28a0408b03a"
+    },
+    {
+      "path": "shared-ir/shared.schema.json",
+      "sha256": "99f5e464d8135dcfa46a6e3c8817c7a357586de2deeca43e48e512c4cc498d02"
+    },
+    {
+      "path": "registry/protocols.json",
+      "sha256": "868ffd37b2f4336dd2eeb86f7558da7996d641c51a406020e33196df4c0a8bea"
+    },
+    {
+      "path": "scripts/authority-registry-convergence-demo.mjs",
+      "sha256": "0ec989d2b9483307f0028e23df945329d5d30df0dddbd8afb5c440df11113b47"
+    },
+    {
+      "path": "scripts/authority-registry-convergence-store-demo.mjs",
+      "sha256": "b57482884f57bc92b087fe394be646a102cbf4e35877ae1fa6f79332e86bdeb9"
+    },
+    {
+      "path": "scripts/authority-registry-demo.mjs",
+      "sha256": "9ba38f3d0eba2847d17fba3dec28c929fdc230580ab686b5ae178bbc6446e872"
+    },
+    {
+      "path": "scripts/authority-registry-distribution-demo.mjs",
+      "sha256": "92bb615fefe04b4f0e30a7010c184e39cb7729b2e212374a8a72f915df6aaf4a"
+    },
+    {
+      "path": "scripts/authority-registry.mjs",
+      "sha256": "70fee09e2b3be60b74fc2057165d8a362601c1c51606407bd0853fa3b09fa892"
+    },
+    {
+      "path": "scripts/demo.mjs",
+      "sha256": "71eacc90ac4192079fb6b5a22e54e3a42f4cb7bce978c643a36b1575f54460aa"
+    },
+    {
+      "path": "scripts/operator-demo.mjs",
+      "sha256": "2ce2c4b1245552e33ccfcbaea4b5882062d36871b629643bf4118f550a46fbac"
+    },
+    {
+      "path": "scripts/package.py",
+      "sha256": "aa2e317058d4f5e767fa579aa5197a7e642880bde33c044197fa6fef4e56a69c"
+    },
+    {
+      "path": "scripts/pending-demo.mjs",
+      "sha256": "f6512eb5bf1806e2fe5bfefb8f2f42b5a332676e4e9ce2c5711b9069a1b07dc5"
+    },
+    {
+      "path": "scripts/pending.mjs",
+      "sha256": "c024fa78646b96005f5d265d955cfad64be1cad1e52a74ce888e3e41511c90b3"
+    },
+    {
+      "path": "scripts/recovery-anchor-demo.mjs",
+      "sha256": "1053db1aee0b7c3961fc3dfac5ea7ef17c11799edaa573742a488eb6ebe2d73c"
+    },
+    {
+      "path": "scripts/recovery-anchor.mjs",
+      "sha256": "d70f441f3e39a505cdae4b0db28192d58817a8c2bd1d6bb86d8a05c6215f624a"
+    },
+    {
+      "path": "scripts/recovery-demo.mjs",
+      "sha256": "d3a690e3b54aceab23f49d0d96f3d4bae7b28cf89b11133d0badda5257c988e6"
+    },
+    {
+      "path": "scripts/verify.mjs",
+      "sha256": "d1b7607780ee8a85a1a0ad884d0cf74d4355db83323870945cf0285047929ce4"
+    }
+  ],
+  "sourceTreeRoot": "4fa6034a26368c4113ccc9cab2eddc1308b6d1c5bef9b3743d4cf17fad7bc9cc",
+  "k400Verdict": "NOT_ADJUDICATED",
+  "production": "NOT_DEPLOYED",
+  "publicNetwork": "NOT_RUN",
+  "boundaries": [
+    "Ephemeral local trust fixture; no production identity enrollment or TLS confidentiality",
+    "Only bounded pure read-only code-point counting; not arbitrary actions or exactly-once external side effects",
+    "Durable mode uses Windows current-user DPAPI and signed recovery evidence; external anchor is opt-in and only covers its last explicit ledger prefix",
+    "Authority registry, distribution bundle and convergence history/store are offline signed inputs with caller-supplied key material; quorum/fork/history/store checks do not provide online publication, trusted clock, transparency or durable cross-device convergence",
+    "No browser replacement, application-seed cross-platform runtime, VPN or entire P00-P15 completion"
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "format": "twni.delivery-evidence-ledger.v0.9",
+  "version": "0.1.0-alpha.9",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "tests": {
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-concurrency=1",
+      "--test-reporter=tap",
+      "tests/aaf-operator.test.mjs",
+      "tests/authority-registry-cli.test.mjs",
+      "tests/authority-registry-convergence-cli.test.mjs",
+      "tests/authority-registry-convergence-store-cli.test.mjs",
+      "tests/authority-registry-convergence-store.test.mjs",
+      "tests/authority-registry-convergence.test.mjs",
+      "tests/authority-registry-distribution-cli.test.mjs",
+      "tests/authority-registry-distribution.test.mjs",
+      "tests/authority-registry.test.mjs",
+      "tests/conformance.test.mjs",
+      "tests/operator-cli.test.mjs",
+      "tests/operator-security.test.mjs",
+      "tests/opp-bridge.test.mjs",
+      "tests/pending-cli.test.mjs",
+      "tests/pending-security.test.mjs",
+      "tests/profiles.test.mjs",
+      "tests/protected-store.test.mjs",
+      "tests/rcl-guard.test.mjs",
+      "tests/rcl-migration.test.mjs",
+      "tests/rcl-pending-retirement.test.mjs",
+      "tests/rcl-recovery.test.mjs",
+      "tests/rcl-route.test.mjs",
+      "tests/recovery-anchor-cli.test.mjs",
+      "tests/recovery-anchor.test.mjs",
+      "tests/recovery-gate-integration.test.mjs",
+      "tests/recovery-security.test.mjs",
+      "tests/security-review.test.mjs",
+      "tests/shared-ir.test.mjs",
+      "vendor/tinp/tests/tinp-v02.test.mjs",
+      "vendor/tinp/tests/tinp.test.mjs"
+    ],
+    "exitCode": 0,
+    "count": 165,
+    "passed": 165,
+    "failed": 0,
+    "stdout": "evidence/0.1.0-alpha.9/tests.tap",
+    "stdoutSha256": "3491ee8ee4a5f46b61d50cbc2a02e5952e7572c73428d2846fffc244b350cb03",
+    "stderr": "evidence/0.1.0-alpha.9/tests.stderr.txt"
+  },
+  "verificationFile": "evidence/0.1.0-alpha.9/LOCAL_VERIFICATION.json",
+  "verificationSha256": "aa424459a5dce466852b97dcbc1601c83243152fe1a2c0ac96c16dba4aa25554",
+  "sourceTreeRoot": "4fa6034a26368c4113ccc9cab2eddc1308b6d1c5bef9b3743d4cf17fad7bc9cc",
+  "sourceFileCount": 180,
+  "startedAt": "2026-09-10T08:46:32.739Z",
+  "finishedAt": "2026-09-10T08:58:25.896Z",
+  "baseline": {
+    "commit": "e03e25eaf9ce6a0b772f8cb9a019731d6a0187d8",
+    "ledger": "evidence/0.1.0-alpha.8/EVIDENCE_LEDGER.json",
+    "sha256": "a1fe5e5041563aada0c4267f45aa172cbcc78bc054e5e0253409aafb577cadef"
+  },
+  "change": {
+    "owner": "TINP authority-registry host adapter plus offline multi-mirror distribution, finite historical convergence and local atomic convergence-store adapters",
+    "policyFormats": [
+      "twni.authority-registry-policy.v1",
+      "twni.authority-registry-distribution-policy.v1"
+    ],
+    "registryFormat": "twni.authority-registry.v1",
+    "distributionFormats": [
+      "twni.authority-registry-distribution-receipt.v1",
+      "twni.authority-registry-distribution.v1"
+    ],
+    "convergenceFormats": [
+      "twni.authority-registry-convergence.v1",
+      "twni.authority-registry-convergence-verification.v1"
+    ],
+    "storeFormat": "twni.authority-registry-convergence-store.v1",
+    "bridge": "Optional authority registry verification, recovery-anchor role keyring projection, per-snapshot mirror quorum, caller-supplied historical continuity observation and single-host atomic public-history append",
+    "rclCoreChanged": false,
+    "privateKeyBoundary": "Issuer, mirror and member private keys remain outside registry/distribution/convergence/store bundle/checkpoint; test children return public keys and signatures only"
+  },
+  "authorityRegistry": {
+    "format": "twni.authority-registry-demo.v1",
+    "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_LIFECYCLE",
+    "issuerPid": 10608,
+    "firstRegistryRoot": "81682fdcbec1b7835470997307d09e8c45756d0816566ead70e0d2c5bdb01cba",
+    "secondRegistryRoot": "57f3fb3b129ac7f77043de90a646711b23ea03d47da8e427c39d43f30ed993ac",
+    "firstSequence": 1,
+    "secondSequence": 2,
+    "rotatedSigners": [
+      "operator:owner-v1 → operator:owner-v2",
+      "recovery:witness-v1 → recovery:witness-v2"
+    ],
+    "revokedSigners": [
+      "operator:owner-v1",
+      "recovery:witness-v1"
+    ],
+    "activeRecoverySigner": "recovery:witness-v2",
+    "activeOperatorSigner": "operator:owner-v2",
+    "oldKeyDenied": true,
+    "keyMaterialPersisted": false,
+    "scope": "Actual independent issuer child, signed offline snapshots, append-only key rotation/revocation and role keyring derivation; no online registry, trusted clock, hardware custody or cross-device convergence.",
+    "witness": "evidence/0.1.0-alpha.9/authority-registry.json"
+  },
+  "authorityRegistryDistribution": {
+    "format": "twni.authority-registry-distribution-demo.v1",
+    "status": "VERIFIED_LOCAL_OFFLINE_DISTRIBUTION_QUORUM",
+    "issuerPid": 44504,
+    "mirrorPids": [
+      44648,
+      61024,
+      54192
+    ],
+    "registryRoot": "d530b9fc42d8516ed10ebbf938be70bd2e206c870e6e8c1ed037fde1e3ddbc18",
+    "sequence": 1,
+    "distributionPolicyRoot": "e486831a09e908c6b7f31aeb40c4f8635c9a25653b2233d7f1cccdbf4cf44540",
+    "threshold": 2,
+    "acceptedMirrors": [
+      "mirror:alpha",
+      "mirror:beta",
+      "mirror:gamma"
+    ],
+    "forkDetected": true,
+    "forkRejectionCode": "AUTHORITY_REGISTRY_DISTRIBUTION_FORK_DETECTED",
+    "insufficientQuorum": true,
+    "insufficientQuorumCode": "AUTHORITY_REGISTRY_DISTRIBUTION_QUORUM_INSUFFICIENT",
+    "keyMaterialPersisted": false,
+    "scope": "Actual independent issuer and mirror child processes, signed receipts over one registry root and deterministic fork/quorum rejection; no online publication, trusted clock, transparent log or cross-device convergence.",
+    "witness": "evidence/0.1.0-alpha.9/authority-registry-distribution.json"
+  },
+  "authorityRegistryConvergence": {
+    "format": "twni.authority-registry-convergence-demo.v1",
+    "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_CONVERGENCE",
+    "issuerPid": 5032,
+    "mirrorPids": [
+      59344,
+      62336,
+      53432
+    ],
+    "firstSequence": 1,
+    "lastSequence": 2,
+    "registryRoots": [
+      "e485ab6fa32dba44fc4977ec46074c9f0c7f85b2252e57b66d986a3910e0ca80",
+      "1b91283ae8aead7479074f0f5957e1467cfdbb8ed47c23facef4e3778ab0a92c"
+    ],
+    "historyRoot": "1a1af93685a4c6d9297139559872175455a62e3d0fe2a24cf9b7c87d929b08ca",
+    "stableMirrors": [
+      "mirror:alpha",
+      "mirror:beta",
+      "mirror:gamma"
+    ],
+    "forkDetected": true,
+    "forkRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_FORK_DETECTED",
+    "mirrorSetDrift": true,
+    "mirrorSetDriftCode": "AUTHORITY_REGISTRY_CONVERGENCE_MIRROR_SET_DRIFT",
+    "keyMaterialPersisted": false,
+    "scope": "Actual independent issuer and mirror child processes, contiguous signed registry history with per-snapshot quorum, stable mirror-set check and deterministic historical fork rejection; no online transparency log, trusted clock or durable cross-host convergence.",
+    "witness": "evidence/0.1.0-alpha.9/authority-registry-convergence.json"
+  },
+  "authorityRegistryConvergenceStore": {
+    "format": "twni.authority-registry-convergence-store-demo.v1",
+    "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_CONVERGENCE_STORE",
+    "firstOperation": "appended",
+    "extensionOperation": "extended",
+    "replayOperation": "unchanged",
+    "firstSequence": 1,
+    "lastSequence": 2,
+    "historyRoot": "e80c89be71b9e1a69af71e272d8c4ab024d5a23549bd7f37a3b8ad708510c19c",
+    "stableMirrors": [
+      "mirror:alpha",
+      "mirror:beta",
+      "mirror:gamma"
+    ],
+    "storeWritten": true,
+    "storeBytes": 7491,
+    "rollbackDetected": true,
+    "rollbackRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_STORE_ROLLBACK",
+    "prefixRewriteDetected": true,
+    "prefixRewriteRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_STORE_PREFIX_MISMATCH",
+    "keyMaterialPersisted": false,
+    "scope": "Actual local atomic store write/read with directory writer lease, full-history extension and deterministic rollback/prefix-rewrite rejection; no online transparency log, trusted clock or durable cross-host consensus.",
+    "witness": "evidence/0.1.0-alpha.9/authority-registry-convergence-store.json"
+  },
+  "authorityBoundary": "Offline caller-selected registry/distribution/convergence/store/policy/issuer/mirror/member files and local nowMs; no human enrollment, trusted clock, online publication, transparent log, durable cross-host conflict history, whole-file anti-replacement anchor or hardware custody",
+  "rcl": {
+    "coreChanged": false,
+    "profilesReused": [
+      "rcl/recovery.rcl",
+      "rcl/pending-retirement.rcl"
+    ],
+    "integration": "Registry, mirror, historical continuity and local store verification are host observations; existing RCL predicates remain canonical",
+    "candidateCells": [
+      "K057",
+      "K110",
+      "K117",
+      "K250",
+      "K257"
+    ],
+    "gates": {
+      "EXPRESS": "NOT_ADJUDICATED",
+      "COMPILE": "NOT_ADJUDICATED",
+      "LOWER": "NOT_ADJUDICATED",
+      "EXECUTE": "NOT_ADJUDICATED",
+      "CORRECT": "NOT_ADJUDICATED",
+      "ROBUST": "NOT_ADJUDICATED",
+      "PERFORMANCE": "NOT_ADJUDICATED",
+      "AI_GENERATE": "NOT_ADJUDICATED",
+      "EVIDENCE": "NOT_ADJUDICATED"
+    }
+  },
+  "externalActions": {
+    "githubActions": "NOT_RUN",
+    "merge": "NOT_RUN",
+    "deployment": "NOT_DEPLOYED",
+    "publicNetwork": "NOT_RUN",
+    "candidateBranch": "codex/tinp-registry-v06",
+    "candidateCommit": "4539f56a8214fd915b7c80a5a9a9c5f7e3c2145e",
+    "candidatePush": "Pending alpha.9 candidate packaging and push"
+  },
+  "limits": [
+    "Registry, distribution, convergence and store policy/keyrings are offline inputs; a valid quorum/history/store does not establish online freshness or human identity",
+    "Local nowMs is not a trusted timestamp; no publication, transparent log, global revocation or durable cross-host conflict convergence exists",
+    "The store protects normal local append bytes with a directory lease and atomic replacement but does not protect against whole-file replacement, lost-key recovery, cross-device encrypted anchors, post-history suffix changes or code/configuration rollback",
+    "No arbitrary side-effect transactions or complete RNCS world grant",
+    "Warm local timing samples exclude signing, DPAPI, startup, WAN, throughput and SLA"
+  ],
+  "nextGap": "Production authority registry publication, trusted time, transparent audit, lost-key recovery and durable cross-device convergence"
+}
