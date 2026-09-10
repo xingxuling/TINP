@@ -2,7 +2,7 @@
 
 TINP v0.1.0-alpha.9：可选外部 AAF 操作员签章、外部恢复锚点、authority registry 快照、多镜像分发 quorum、历史收敛桥接与本机历史 store 的本机候选。
 
-从已核对远端的 alpha.8 / `e03e25eaf9ce6a0b772f8cb9a019731d6a0187d8` 继续，候选分支 `codex/tinp-registry-v06`。本轮增加 `twni.authority-registry-convergence-store.v1`，完整最终验收以 `evidence/0.1.0-alpha.9/LOCAL_VERIFICATION.json` 的源码哈希、退出码及运行见证为准。
+从已核对远端的 alpha.8 / `e03e25eaf9ce6a0b772f8cb9a019731d6a0187d8` 继续，候选分支 `codex/tinp-registry-v06`；alpha.9 实现与文档提交为 `4539f56a8214fd915b7c80a5a9a9c5f7e3c2145e`，本机证据提交为 `34f5b98440980ebaa413e6022798238fbebfc89e`。本轮增加 `twni.authority-registry-convergence-store.v1`，完整最终验收以 `evidence/0.1.0-alpha.9/LOCAL_VERIFICATION.json` 的源码哈希、退出码及运行见证为准。
 
 operator-pin 明确固定独立签署方 ID 与 SPKI DER 指纹。启用后，confirmed 不能替代外部 AAF approval；请求/租约/会话/主体/世界/协调器/策略绑定、范围、签名、时间与调用方提供的当前 revoked 状态均检查。外部 keyring 不写 checkpoint，网络端不持有操作员私钥。旧版无 pin 本机夹具兼容，不能把兼容模式冒充外部认证。
 
