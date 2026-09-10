@@ -1,8 +1,8 @@
 {
   "format": "twni.protocol-registry.v0.1",
-  "version": "0.1.0-alpha.11",
+  "version": "0.1.0-alpha.12",
   "classification": "candidate-local-profile",
-  "scope": "Three independent local network processes; UDP/TCP loopback plus a two-process public-history replay harness",
+  "scope": "Three independent local network processes; UDP/TCP loopback plus two-process public-history replay and TINP DATA state-transfer harnesses",
   "statusVocabulary": [
     "implemented",
     "partial",
@@ -191,6 +191,11 @@
           "status": "implemented",
           "behavior": "Local multi-process public-history replay with explicit fork, mirror-set drift and sequence-gap rejection",
           "evidenceLevel": "Two independent local Node child processes and directories replay public state and preserve rejected durable bytes; not physical-host convergence or production consensus"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Public convergence-store state transfer through authenticated TINP DATA over TCP loopback with replay and fail-closed tamper handling",
+          "evidenceLevel": "Two independent local Node child processes use existing LocalTransport peer keys and store append validators; not encrypted physical-host transport or production authority"
         }
       ],
       "notImplemented": [
@@ -255,6 +260,11 @@
           "status": "implemented",
           "behavior": "Cross-process replay evidence transfers public convergence state and retains a verified prefix after conflict rejection",
           "evidenceLevel": "Local two-process replay demo/test with separate directories; no encrypted cross-host transport, trusted time or durable distributed agreement"
+        },
+        {
+          "status": "implemented",
+          "behavior": "TINP DATA loopback state-transfer evidence binds public state roots and retains the receiving store after replay, fork, gap or tamper rejection",
+          "evidenceLevel": "Local TCP socket worker/demo with peer authentication counters and existing store validators; no encrypted cross-host transport, trusted time or durable distributed agreement"
         }
       ],
       "notImplemented": [
@@ -356,6 +366,11 @@
           "status": "implemented",
           "behavior": "Actual send-rate throttling",
           "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Authenticated TINP DATA TCP loopback transfer of public authority state",
+          "evidenceLevel": "Two independent local Node workers with real framed bytes and peer public-key pins; not TLS, physical-host delivery or public enrollment"
         }
       ],
       "notImplemented": [

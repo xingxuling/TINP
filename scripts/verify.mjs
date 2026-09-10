@@ -207,6 +207,38 @@ const authorityRegistryCrossHostReplayWitness={...authorityRegistryCrossHostRepl
   scope:'Actual independent local Node child processes and directories exchange public convergence-store state and replay signed histories; not two physical hosts, online authority, trusted time or cross-host production consensus.'};
 fs.writeFileSync(path.join(out,'authority-registry-cross-host-replay.json'),JSON.stringify(authorityRegistryCrossHostReplayWitness,null,2));
 authorityRegistryCrossHostReplayScenarios.push(authorityRegistryCrossHostReplayWitness);
+const authorityRegistryLoopbackTransferScenarios=[];
+const authorityRegistryLoopbackTransferDemo=await new Promise((resolve,reject)=>{
+  const child=spawn(process.execPath,['scripts/authority-registry-loopback-transfer-demo.mjs'],{cwd:root,windowsHide:true,stdio:['ignore','pipe','pipe']});
+  let stdout='',stderr='';child.stdout.on('data',x=>stdout+=x.toString('utf8'));child.stderr.on('data',x=>stderr+=x.toString('utf8'));
+  child.once('error',reject);child.once('exit',code=>code===0?resolve(JSON.parse(stdout)):reject(new Error(`Authority registry loopback transfer: ${stderr}`)));
+});
+if(authorityRegistryLoopbackTransferDemo.status!=='VERIFIED_LOCAL_TINP_LOOPBACK_STATE_TRANSFER'
+  || authorityRegistryLoopbackTransferDemo.transport!=='tcp'
+  || authorityRegistryLoopbackTransferDemo.frameType!=='DATA'
+  || authorityRegistryLoopbackTransferDemo.independentProcesses!==true
+  || authorityRegistryLoopbackTransferDemo.independentDirectories!==true
+  || authorityRegistryLoopbackTransferDemo.networkTransferOperation!=='appended'
+  || authorityRegistryLoopbackTransferDemo.importedOnSecondNode!==true
+  || authorityRegistryLoopbackTransferDemo.networkReplayOperation!=='unchanged'
+  || authorityRegistryLoopbackTransferDemo.secondNodeExtension!=='extended'
+  || authorityRegistryLoopbackTransferDemo.reverseNetworkTransferOperation!=='extended'
+  || authorityRegistryLoopbackTransferDemo.lastSequence < 3
+  || authorityRegistryLoopbackTransferDemo.senderFrames < 2
+  || authorityRegistryLoopbackTransferDemo.receiverFrames < 2
+  || authorityRegistryLoopbackTransferDemo.receiverInvalidFrames!==0
+  || authorityRegistryLoopbackTransferDemo.peerAuthenticationConfigured!==true
+  || authorityRegistryLoopbackTransferDemo.forkDetected!==true
+  || authorityRegistryLoopbackTransferDemo.mirrorSetDriftDetected!==true
+  || authorityRegistryLoopbackTransferDemo.sequenceGapDetected!==true
+  || authorityRegistryLoopbackTransferDemo.tamperedTransferDetected!==true
+  || authorityRegistryLoopbackTransferDemo.rejectedStateRetained!==true
+  || authorityRegistryLoopbackTransferDemo.privateMaterialTransferred!==false)
+  throw new Error('AUTHORITY_REGISTRY_LOOPBACK_TRANSFER_INVALID');
+const authorityRegistryLoopbackTransferWitness={...authorityRegistryLoopbackTransferDemo,
+  scope:'Actual TINP DATA framing over TCP loopback between two independent local Node child processes and directories; public convergence-store state is imported through existing append validators; not two physical hosts, encrypted transport, trusted time, online authority or production conflict consensus.'};
+fs.writeFileSync(path.join(out,'authority-registry-loopback-transfer.json'),JSON.stringify(authorityRegistryLoopbackTransferWitness,null,2));
+authorityRegistryLoopbackTransferScenarios.push(authorityRegistryLoopbackTransferWitness);
 const mismatches=tracked.filter(x=>sha(fs.readFileSync(x.path))!==x.sha256);
 if(mismatches.length)throw new Error('Source changed during verification: '+JSON.stringify(mismatches));
 const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CANDIDATE',startedAt,finishedAt:new Date().toISOString(),
@@ -214,13 +246,14 @@ const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CAND
   node:process.version,platform:process.platform,architecture:process.arch,
   tests:{command:result.command,exitCode:result.code,count:Number(result.stdout.match(/# tests (\d+)/)?.[1]),passed:Number(result.stdout.match(/# pass (\d+)/)?.[1]),failed:Number(result.stdout.match(/# fail (\d+)/)?.[1]),
     stdout:relative(path.join(out,'tests.tap')),stdoutSha256:sha(Buffer.from(result.stdout)),stderr:relative(path.join(out,'tests.stderr.txt'))},
-  scenarios,recoveryScenarios,pendingScenarios,operatorScenarios,recoveryAnchorScenarios,authorityRegistryScenarios,authorityRegistryDistributionScenarios,authorityRegistryConvergenceScenarios,authorityRegistryConvergenceStoreScenarios,authorityRegistryConvergenceWitnessScenarios,authorityRegistryCrossHostReplayScenarios,sourceFiles:tracked,sourceTreeRoot:sha(Buffer.from(JSON.stringify(tracked))),
+  scenarios,recoveryScenarios,pendingScenarios,operatorScenarios,recoveryAnchorScenarios,authorityRegistryScenarios,authorityRegistryDistributionScenarios,authorityRegistryConvergenceScenarios,authorityRegistryConvergenceStoreScenarios,authorityRegistryConvergenceWitnessScenarios,authorityRegistryCrossHostReplayScenarios,authorityRegistryLoopbackTransferScenarios,sourceFiles:tracked,sourceTreeRoot:sha(Buffer.from(JSON.stringify(tracked))),
   k400Verdict:'NOT_ADJUDICATED',production:'NOT_DEPLOYED',publicNetwork:'NOT_RUN',
   boundaries:['Ephemeral local trust fixture; no production identity enrollment or TLS confidentiality',
     'Only bounded pure read-only code-point counting; not arbitrary actions or exactly-once external side effects',
     'Durable mode uses Windows current-user DPAPI and signed recovery evidence; external anchor is opt-in and only covers its last explicit ledger prefix',
     'Authority registry, distribution bundle, convergence history/store and external convergence witness are offline signed inputs with caller-supplied key material; quorum/fork/history/store/witness checks do not provide online publication, trusted clock, transparency or durable cross-device convergence',
     'Cross-host replay evidence uses independent local Node processes and directories only; it does not prove two physical hosts, encrypted transport, trusted time or production conflict consensus',
+    'Loopback transfer evidence uses existing TINP DATA framing over one TCP loopback interface and existing convergence-store append validators; it does not prove physical cross-host delivery, encrypted transport, trusted time or production conflict consensus',
     'No browser replacement, application-seed cross-platform runtime, VPN or entire P00-P15 completion']};
 fs.writeFileSync(path.join(out,'LOCAL_VERIFICATION.json'),JSON.stringify(summary,null,2));
 console.log(JSON.stringify({status:summary.status,tests:summary.tests.count,passed:summary.tests.passed,scenarios:scenarios.map(x=>({transport:x.transport,pids:x.pids,path:x.firstPath,performance:x.boundedPerformance}))},null,2));
