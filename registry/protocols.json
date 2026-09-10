@@ -1,6 +1,6 @@
 {
   "format": "twni.protocol-registry.v0.1",
-  "version": "0.1.0-alpha.1",
+  "version": "0.1.0-alpha.2",
   "classification": "candidate-local-profile",
   "scope": "Three independent local processes; UDP/TCP loopback only",
   "statusVocabulary": [
@@ -25,7 +25,7 @@
         },
         {
           "status": "implemented",
-          "behavior": "RCL transaction/migration/route predicates",
+          "behavior": "RCL transaction/migration/route/recovery predicates",
           "evidenceLevel": "local-runtime-or-schema-as-described"
         }
       ],
@@ -49,12 +49,12 @@
         },
         {
           "status": "implemented",
-          "behavior": "Pinned ephemeral Ed25519 identity fixture",
+          "behavior": "Pinned Ed25519 local identity, optional Windows current-user DPAPI cold recovery",
           "evidenceLevel": "local-runtime-or-schema-as-described"
         }
       ],
       "notImplemented": [
-        "Public enrollment, identity recovery, credential lifecycle, delegated representation"
+        "Public enrollment, cross-device identity recovery, credential rotation lifecycle, delegated representation"
       ],
       "ownerBoundary": [
         "TWNI local identity profile"
@@ -154,7 +154,7 @@
         },
         {
           "status": "implemented",
-          "behavior": "Online fixture revocation and expiry",
+          "behavior": "Signed monotonic local revocation watermark, durable recovery synchronization and expiry",
           "evidenceLevel": "local-runtime-or-schema-as-described"
         }
       ],
@@ -181,7 +181,7 @@
         },
         {
           "status": "implemented",
-          "behavior": "Durable hash-linked event log and replay cache",
+          "behavior": "Optional authority-signed event log with DPAPI checkpoints and protected replay cache; partial rollback rejection",
           "evidenceLevel": "local-runtime-or-schema-as-described"
         },
         {
@@ -249,10 +249,15 @@
           "status": "implemented",
           "behavior": "Identity/authority/evidence continuity under tested faults",
           "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Windows cold restart preserving keys/session/revocation and node receipts; unresolved pending intent fails closed without re-execution",
+          "evidenceLevel": "local-runtime-tests-and-UDP/TCP-recovery-witnesses"
         }
       ],
       "notImplemented": [
-        "Cold restart/re-enrollment recovery, cross-device transfer, side-effect transactions"
+        "Cross-device re-enrollment/transfer, whole-directory anti-rollback without external anchor, side-effect transactions"
       ],
       "ownerBoundary": [
         "TWNI network session profile",

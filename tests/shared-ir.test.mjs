@@ -52,7 +52,7 @@ test('all ten shared projections validate real signed runtime data with Python j
   const root=fileURLToPath(new URL('../.runs/shared-ir/',import.meta.url));
   fs.mkdirSync(root,{recursive:true});
   const directory=fs.mkdtempSync(path.join(root,'run-'));
-  const suite=await InternetSuite.start({directory});
+  const suite=await InternetSuite.start({directory,durable:true});
   t.after(async()=>{await suite.close();});
   const intent=parseLifeIntent('我要使用字符计数能力完成：世界🌏');
   await suite.use(intent.text);

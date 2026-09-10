@@ -1,0 +1,71 @@
+# Recovery admits authenticated historical state, including an expired lease.
+# It grants neither execution nor lease renewal; the transaction profile still gates dispatch.
+reality NextInternetRecovery {
+  facet facts.oldSubjectId : Text = ""
+  facet facts.newSubjectId : Text = ""
+  facet facts.oldContinuityRoot : Text = ""
+  facet facts.newContinuityRoot : Text = ""
+  facet facts.oldWorldId : Text = ""
+  facet facts.newWorldId : Text = ""
+  facet facts.oldExpiresAtMs : Number = 0
+  facet facts.newExpiresAtMs : Number = 0
+  facet facts.persistedRevocationEpoch : Number = 0
+  facet facts.currentRevocationEpoch : Number = 0
+  facet facts.persistedEvidenceRoot : Text = ""
+  facet facts.recoveredEvidenceRoot : Text = ""
+  facet facts.stateAuthenticated : Truth = false
+  facet facts.cacheVerified : Truth = false
+  facet recovery.loaded : Truth = false
+  facet recovery.allowed : Truth = false
+  subject kernel {
+    warrant observation.read on facts
+    warrant state.recover on recovery
+  }
+  host observation {
+    offers oldSubjectId -> Text
+    offers newSubjectId -> Text
+    offers oldContinuityRoot -> Text
+    offers newContinuityRoot -> Text
+    offers oldWorldId -> Text
+    offers newWorldId -> Text
+    offers oldExpiresAtMs -> Number
+    offers newExpiresAtMs -> Number
+    offers persistedRevocationEpoch -> Number
+    offers currentRevocationEpoch -> Number
+    offers persistedEvidenceRoot -> Text
+    offers recoveredEvidenceRoot -> Text
+    offers stateAuthenticated -> Truth
+    offers cacheVerified -> Truth
+  }
+  emergence loadRecovery {
+    cause kernel
+    when not recovery.loaded
+    needs observation.read on facts
+    call observation.oldSubjectId() -> facts.oldSubjectId
+    call observation.newSubjectId() -> facts.newSubjectId
+    call observation.oldContinuityRoot() -> facts.oldContinuityRoot
+    call observation.newContinuityRoot() -> facts.newContinuityRoot
+    call observation.oldWorldId() -> facts.oldWorldId
+    call observation.newWorldId() -> facts.newWorldId
+    call observation.oldExpiresAtMs() -> facts.oldExpiresAtMs
+    call observation.newExpiresAtMs() -> facts.newExpiresAtMs
+    call observation.persistedRevocationEpoch() -> facts.persistedRevocationEpoch
+    call observation.currentRevocationEpoch() -> facts.currentRevocationEpoch
+    call observation.persistedEvidenceRoot() -> facts.persistedEvidenceRoot
+    call observation.recoveredEvidenceRoot() -> facts.recoveredEvidenceRoot
+    call observation.stateAuthenticated() -> facts.stateAuthenticated
+    call observation.cacheVerified() -> facts.cacheVerified
+    alter recovery.loaded <- true
+    witness "next-internet:recovery-observations"
+  }
+  emergence admitRecovery {
+    cause kernel
+    when recovery.loaded and facts.oldSubjectId == facts.newSubjectId and facts.oldContinuityRoot == facts.newContinuityRoot and facts.oldWorldId == facts.newWorldId and facts.newExpiresAtMs <= facts.oldExpiresAtMs and facts.currentRevocationEpoch >= facts.persistedRevocationEpoch and facts.persistedEvidenceRoot == facts.recoveredEvidenceRoot and facts.stateAuthenticated and facts.cacheVerified
+    needs state.recover on recovery
+    alter recovery.allowed <- true
+    preserve recovery.loaded
+    witness "next-internet:rcl-state-recovery"
+  }
+  realize loadRecovery
+  realize admitRecovery
+}

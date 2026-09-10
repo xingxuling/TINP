@@ -251,6 +251,10 @@
         "eventRoot": {
           "type": "string",
           "pattern": "^[a-f0-9]{64}$"
+        },
+        "signature": {
+          "type": "string",
+          "minLength": 1
         }
       },
       "required": [
@@ -264,7 +268,7 @@
         "eventRoot"
       ],
       "additionalProperties": false,
-      "description": "Existing local ledger event; detail retains domain-owned signed envelopes without redeclaring them.",
+      "description": "Existing local ledger event; detail retains domain-owned signed envelopes without redeclaring them. Durable mode adds an authority signature; cryptographic verification remains mandatory in the host.",
       "x-runtimeProjection": "suite.ledger.events[index]"
     },
     "WorldRef": {

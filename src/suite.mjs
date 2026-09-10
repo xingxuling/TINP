@@ -12,11 +12,12 @@ import {makeHello,TINP_PROTOCOL} from '../vendor/tinp/src/protocol.mjs';
 import {makeForwardEnvelope} from '../vendor/tinp/src/forwarding.mjs';
 import {negotiateOpp} from '../adapters/opp-bridge.mjs';
 import {evaluateSessionMigrationGuard} from '../adapters/rcl-guard.mjs';
+import {initializeRecovery,admitRecovery,checkpoint,publicRecoveryState} from './coordinator-state.mjs';
 
 class NodeChild {
-  constructor(nodeId,kind){
+  constructor(nodeId,kind,privateDirectory,allowCreate=false){
     this.nodeId=nodeId;this.pending=new Map();this.logs='';
-    this.child=fork(fileURLToPath(new URL('./node-process.mjs',import.meta.url)),[nodeId,kind],{
+    this.child=fork(fileURLToPath(new URL('./node-process.mjs',import.meta.url)),[nodeId,kind,...(privateDirectory?[privateDirectory,allowCreate?'create':'restore']:[])],{
       stdio:['ignore','pipe','pipe','ipc'],execArgv:[],windowsHide:true,
     });
     for(const stream of [this.child.stdout,this.child.stderr])stream.on('data',x=>{this.logs=(this.logs+x.toString('utf8')).slice(-16000);});
@@ -41,15 +42,16 @@ class NodeChild {
     });
   }
   async stop(){if(this.child.connected)await this.call('close').catch(()=>{});if(this.child.exitCode===null)this.child.kill();}
-  async kill(){if(this.child.exitCode!==null)return;await new Promise(resolve=>{this.child.once('exit',resolve);this.child.kill();});}
+  async kill(){if(this.child.exitCode!==null||this.child.signalCode!==null)return;await new Promise(resolve=>{this.child.once('exit',resolve);this.child.kill();});}
 }
 
 /** Local trust fixture and orchestration. Keys are ephemeral and never put in evidence. */
 export class InternetSuite {
   static async start(options={}){const suite=new InternetSuite(options);try{await suite.start();return suite;}catch(e){await suite.close();throw e;}}
-  constructor({directory=path.resolve('.runs',id('run').replace(':','-')),transport='udp',timeoutMs=1500}={}){
+  constructor({directory=path.resolve('.runs',id('run').replace(':','-')),transport='udp',timeoutMs=1500,durable=false}={}){
+    this.durable=durable;this.revocationEpoch=0;this.pending=null;this.nodeKeys={};
     this.directory=directory;fs.mkdirSync(directory,{recursive:true});this.kind=transport;this.timeoutMs=timeoutMs;
-    this.ledger=new EvidenceLedger(path.join(directory,'ledger.jsonl'));
+    this.ledger=durable?null:new EvidenceLedger(path.join(directory,'ledger.jsonl'));
     this.authority=newIdentity();this.subjectIdentity=newIdentity();this.nodes=new Map();this.session=null;
     this.directoryService=new NodeDirectory();this.advertisements=new Map();
     this.routes=new ConstrainedRoutes().connect('A','B').connect('B','C').connect('A','C',{cost:5});
@@ -62,21 +64,43 @@ export class InternetSuite {
     this.revoked=false;
   }
   async start(){
-    for(const nodeId of ['A','B','C'])this.nodes.set(nodeId,new NodeChild(nodeId,this.kind));
+    if(this.durable)await initializeRecovery(this);
+    for(const nodeId of ['A','B','C'])this.nodes.set(nodeId,this.makeNode(nodeId));
     const infos=await Promise.all([...this.nodes.values()].map(n=>n.ready));
+    await this.configureNodes();
+    const recoveryGuard=this.durable?await admitRecovery(this):null;
+    if(this.pending)await this.reconcilePending();
+    this.record(this.recovering?'fixture.recovered':'fixture.started',{transport:this.kind,nodes:infos.map(({nodeId,pid,endpoint,publicKey})=>({nodeId,pid,endpoint,publicKey})),
+      subjectId:SUBJECT,continuityRoot:CONTINUITY,authorityPublicKey:this.authority.publicKey,recoveryGuard,
+      boundary:this.durable?'Windows current-user protected state; local process recovery only.':'Three independent local processes, pinned ephemeral fixture keys, loopback only; no production enrollment.'});
+    if(this.durable)await Promise.all([...this.nodes.values()].map(n=>n.call('activate')));
+    this.recovering=false;return this;
+  }
+  makeNode(nodeId){return new NodeChild(nodeId,this.kind,this.durable?path.join(this.directory,'private','nodes',nodeId):null,!this.nodeKeys[nodeId]);}
+  revocationWatermark(){return seal({format:'twni.revocation-watermark.v1',epoch:this.revocationEpoch,leaseIds:this.revoked?[this.lease.body.leaseId]:[]},this.authority.privateKey);}
+  record(type,detail){
+    if(this.durable)this.directoryLease.assertHeld();
+    const event=this.ledger.append(type,this.durable?{...detail,recovery:publicRecoveryState(this)}:detail);checkpoint(this);return event;
+  }
+  async configureNodes(){
+    const infos=[...this.nodes.values()].filter(n=>n.child.connected).map(n=>n.info);
+    for(const info of infos){
+      if(this.nodeKeys[info.nodeId])requireThat(this.nodeKeys[info.nodeId]===info.publicKey,'RECOVERY_NODE_KEY_CHANGED');
+      else this.nodeKeys[info.nodeId]=info.publicKey;
+    }
     const peers=Object.fromEntries(infos.map(x=>[x.nodeId,{publicKey:x.publicKey,endpoint:x.endpoint}]));
-    await Promise.all([...this.nodes].map(([nodeId,node])=>node.call('configure',{
+    await Promise.all([...this.nodes].filter(([,n])=>n.child.connected).map(([nodeId,node])=>node.call('configure',{
       peers,authorityKey:this.authority.publicKey,subjectKeys:{[SUBJECT]:this.subjectIdentity.publicKey},
       neighbors:['A','B','C'].filter(x=>x!==nodeId),timeoutMs:this.timeoutMs,
       routePolicy:Object.fromEntries(this.routes.policy),
       cacheFile:path.join(this.directory,`${nodeId}-execution-cache.jsonl`),
+      revocations:this.durable?this.revocationWatermark():null,
+      expectedReceipts:this.durable?this.ledger.events.filter(e=>e.detail?.receipt?.body.nodeId===nodeId).map(e=>e.detail.receipt):[],
     })));
-    this.ledger.append('fixture.started',{transport:this.kind,nodes:infos.map(({nodeId,pid,endpoint,publicKey})=>({nodeId,pid,endpoint,publicKey})),
-      subjectId:SUBJECT,continuityRoot:CONTINUITY,authorityPublicKey:this.authority.publicKey,
-      boundary:'Three independent local processes, pinned ephemeral fixture keys, loopback only; no production enrollment.'});
-    return this;
+    if(!this.recovering)checkpoint(this);
   }
   async wire(target,payloadType,payload,route){
+    if(this.durable)this.directoryLease.assertHeld();
     route??=this.routes.plan(this.currentSource,target);
     const forward=makeForwardEnvelope({route,payloadType,payload,ttl:6});
     return this.nodes.get(this.currentSource).call('send',{forward},this.timeoutMs*3+5000);
@@ -100,7 +124,7 @@ export class InternetSuite {
     this.directoryService.advertise({...a.hello,endpoints:[this.nodes.get(target).info.endpoint],ttlMs:a.expiresAtMs-Date.now(),metadata:{advertisementRoot:advertisement.root}});
     this.advertisements.set(target,advertisement);
     const capabilityAddress=makeCapabilityAddress({capability:CAPABILITY.capabilityId,authorityScope:'text.read',payloadProfile:'application/json'});
-    this.ledger.append('capability.negotiated',{target,capabilityAddress,route,advertisement,agreement,version:supported.at(-1),authorityGrantedByNegotiation:false});
+    this.record('capability.negotiated',{target,capabilityAddress,route,advertisement,agreement,version:supported.at(-1),authorityGrantedByNegotiation:false});
     return {target,route,advertisement,agreement,version:supported.at(-1)};
   }
   async bindSession(target){
@@ -116,7 +140,7 @@ export class InternetSuite {
         oldExpiresAtMs:old.body.expiresAtMs,newExpiresAtMs:body.expiresAtMs,oldScopes:old.body.scopes,newScopes:body.scopes});
       requireThat(guard.allowed,guard.code);body.migrationGuard={programRoot:guard.programRoot,stateRoot:guard.stateRoot,sourceSha256:guard.sourceSha256};
     }
-    this.session=seal(body,this.authority.privateKey);return this.session;
+    this.session=seal(body,this.authority.privateKey);checkpoint(this);return this.session;
   }
   async buildRequest(text,selection,{requestId=id('intent'),overrides={}}={}){
     const session=await this.bindSession(selection.target);
@@ -140,7 +164,9 @@ export class InternetSuite {
     return r;
   }
   async executeSelection(text,selection){
+    requireThat(!this.pending,'PENDING_RECONCILIATION_REQUIRED');
     const request=await this.buildRequest(text,selection);
+    if(this.durable){this.pending={request,selection};checkpoint(this);}
     let receipt,retries=0;
     try{receipt=await this.wire(selection.target,'INTENT',request,selection.route);}
     catch(error){
@@ -150,14 +176,16 @@ export class InternetSuite {
       retries=1;receipt=await this.wire(selection.target,'INTENT',request,selection.route);
     }
     const verified=this.verifyReceipt(receipt,request);
-    this.ledger.append('execution.verified',{receipt,requestRoot:request.root,level:this.level,exactRequestRetries:retries});
+    this.record('execution.verified',{receipt,requestRoot:request.root,level:this.level,exactRequestRetries:retries});
+    if(this.durable){this.pending=null;checkpoint(this);}
     return {status:'executed',level:this.level,result:verified.result,receipt,request};
   }
-  setLevel(level,reason){if(this.level!==level){this.level=level;this.ledger.append('continuity.degraded',{level,reason,subjectId:SUBJECT,continuityRoot:CONTINUITY,authorityExpanded:false});}}
+  setLevel(level,reason){if(this.level!==level){this.level=level;this.record('continuity.degraded',{level,reason,subjectId:SUBJECT,continuityRoot:CONTINUITY,authorityExpanded:false});}}
   use(text){const p=this.queue.then(()=>this._use(text));this.queue=p.catch(()=>{});return p;}
   async _use(text){
     requireThat(typeof text==='string'&&[...text].length<=4096,'INPUT_INVALID');
-    if(this.revoked){this.ledger.append('request.denied',{code:'LEASE_REVOKED'});throw new ProtocolError('LEASE_REVOKED');}
+    requireThat(!this.pending,'PENDING_RECONCILIATION_REQUIRED');
+    if(this.revoked){this.record('request.denied',{code:'LEASE_REVOKED'});throw new ProtocolError('LEASE_REVOKED');}
     const targets=['C','B',this.currentSource].filter((v,i,a)=>a.indexOf(v)===i);
     let failures=[];
     for(const target of targets){
@@ -167,12 +195,13 @@ export class InternetSuite {
         else if(target!=='C')this.setLevel('Essential','Use the alternate contract-identical provider');
         else if(selection.route.path.length===2||selection.route.bandwidth<100000)this.setLevel('Reduced','Backup path or reduced link bandwidth');
         else this.setLevel('Full','Preferred route and provider available');
-        if(this.session && this.session.body.targetNodeId!==target)this.ledger.append('session.migrating',{
+        if(this.session && this.session.body.targetNodeId!==target)this.record('session.migrating',{
           sessionId:this.session.body.sessionId,from:this.session.body.targetNodeId,to:target,subjectId:SUBJECT,continuityRoot:CONTINUITY,
           previousSessionRoot:this.session.root,previousEvidenceRoot:this.ledger.root});
         return await this.executeSelection(text,selection);
       }catch(error){
-        failures.push({target,code:error.code??error.message});this.ledger.append('attempt.failed',failures.at(-1));
+        failures.push({target,code:error.code??error.message});this.record('attempt.failed',failures.at(-1));
+        if(this.pending)throw new ProtocolError('PENDING_RECONCILIATION_REQUIRED');
         if(['TRANSPORT_TIMEOUT','LINK_UNAVAILABLE','NODE_OFFLINE','NODE_EXIT','NO_ELIGIBLE_PATH','TCP_TIMEOUT','ECONNREFUSED'].includes(error.code)){
           // A timeout during execution is ambiguous. Pure read-only operation permits retry; not a side-effect transaction protocol.
           if(target!==this.currentSource && this.routes.policy.has(`${this.currentSource}|${target}`))this.routes.set(this.currentSource,target,{up:false});
@@ -188,9 +217,9 @@ export class InternetSuite {
     return {status:'deferred',level:this.level,reason:'NO_AUTHORIZED_PROVIDER',failures,subjectId:SUBJECT,continuityRoot:CONTINUITY,evidenceRoot:this.ledger.root};
   }
   async revoke(){
-    this.revoked=true;
-    const outcomes=await Promise.allSettled([...this.nodes.values()].map(n=>n.call('revoke',this.lease.body.leaseId)));
-    this.ledger.append('authority.revoked',{leaseId:this.lease.body.leaseId,outcomes:outcomes.map(x=>x.status),offlineRevocationBoundary:'A disconnected node cannot learn a new revocation; short lease expiry remains the floor.'});
+    this.revoked=true;this.revocationEpoch++;checkpoint(this);
+    const outcomes=await Promise.allSettled([...this.nodes.values()].map(n=>n.call('revoke',this.durable?this.revocationWatermark():this.lease.body.leaseId)));
+    this.record('authority.revoked',{leaseId:this.lease.body.leaseId,revocationEpoch:this.revocationEpoch,outcomes:outcomes.map(x=>x.status),offlineRevocationBoundary:'A disconnected node cannot learn a new revocation; reconnect loads signed watermark before execution.'});
   }
   async replaceProvider(nodeId,manifest){
     const old=this.advertisements.get(nodeId)?.body.provider;
@@ -199,19 +228,41 @@ export class InternetSuite {
       requireThat(manifest.contractRoot===rootHash(manifest.capability)&&manifest.contractRoot===CONTRACT_ROOT,'PROVIDER_SEMANTIC_MISMATCH');
       await this.nodes.get(nodeId).call('provider',{manifest});
       await this.discover(nodeId);
-      this.ledger.append('provider.replaced',{nodeId,oldProvider:old.providerId,newProvider:manifest.providerId,contractRoot:CONTRACT_ROOT});
+      this.record('provider.replaced',{nodeId,oldProvider:old.providerId,newProvider:manifest.providerId,contractRoot:CONTRACT_ROOT});
     }catch(error){
       await this.nodes.get(nodeId).call('provider',{manifest:old});
-      this.ledger.append('provider.rollback',{nodeId,restored:old.providerId,code:error.code??error.message});throw error;
+      this.record('provider.rollback',{nodeId,restored:old.providerId,code:error.code??error.message});throw error;
     }
   }
   async migrateSource(nodeId){
     requireThat(this.nodes.has(nodeId)&&this.nodes.get(nodeId).child.connected,'SOURCE_NODE_UNAVAILABLE');
     const previous=this.currentSource;this.currentSource=nodeId;
-    this.ledger.append('subject.body-migrated',{subjectId:SUBJECT,continuityRoot:CONTINUITY,previousNodeId:previous,newNodeId:nodeId,sessionId:this.session?.body.sessionId??null});
+    checkpoint(this);
+    this.record('subject.body-migrated',{subjectId:SUBJECT,continuityRoot:CONTINUITY,previousNodeId:previous,newNodeId:nodeId,sessionId:this.session?.body.sessionId??null});
+  }
+  async reconcilePending(){
+    if(!this.pending)return {status:'no-pending-request'};
+    const {request,selection}=this.pending;
+    const existing=this.ledger.events.find(e=>e.detail?.receipt?.body.requestRoot===request.root);
+    const receipt=existing?.detail.receipt??await this.wire(selection.target,'RECEIPT_LOOKUP',request,selection.route);
+    this.verifyReceipt(receipt,request);
+    if(!existing)this.record('recovery.receipt-reconciled',{receipt,requestRoot:request.root,executionResent:false});
+    this.pending=null;checkpoint(this);
+    return {status:'reconciled',receipt,executionResent:false};
+  }
+  async restartNode(nodeId){
+    requireThat(this.durable,'PERSISTENT_MODE_REQUIRED');this.directoryLease.assertHeld();
+    const baseline={lease:clone(this.lease),revocationEpoch:this.revocationEpoch,ledgerLength:this.ledger.events.length,ledgerRoot:this.ledger.root};
+    await this.nodes.get(nodeId).stop();
+    const node=this.makeNode(nodeId);this.nodes.set(nodeId,node);await node.ready;
+    await this.configureNodes();
+    const recoveryGuard=await admitRecovery(this,baseline);
+    this.record('node.recovered',{nodeId,pid:node.info.pid,publicKey:node.info.publicKey,recoveryGuard});
+    await Promise.all([...this.nodes.values()].filter(n=>n.child.connected).map(n=>n.call('activate')));
+    return node.info;
   }
   async stats(){return Promise.all([...this.nodes.values()].filter(n=>n.child.connected).map(n=>n.call('stats')));}
-  async close(){await Promise.all([...this.nodes.values()].map(n=>n.stop()));}
+  async close(){await Promise.all([...this.nodes.values()].map(n=>n.stop()));await this.directoryLease?.release();}
 }
 
 export function parseLifeIntent(text){

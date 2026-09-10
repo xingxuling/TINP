@@ -5,10 +5,11 @@ import hashlib,json,zipfile,sys,subprocess
 root=Path(__file__).resolve().parents[1]
 destination=Path(sys.argv[1]).resolve() if len(sys.argv)>1 else root.parent.parent/'deliverables'
 destination.mkdir(parents=True,exist_ok=True)
-name='TaoWind-Next-Internet_v0.1.0-alpha.1'
-excluded={'.git','.runs','__pycache__','.venv','node_modules'}
-files=sorted(p for p in root.rglob('*') if p.is_file() and not any(x in excluded for x in p.relative_to(root).parts) and p.suffix!='.pyc' and p.name!='SOURCE_MANIFEST.json')
-manifest={'format':'twni.internal-source-package.v0.1','version':'0.1.0-alpha.1','public_release':False,
+version=json.loads((root/'package.json').read_text(encoding='utf-8'))['version']
+name='TINP-Next-Internet_v'+version
+excluded={'.git','.runs','__pycache__','.venv','node_modules','private'}
+files=sorted(p for p in root.rglob('*') if p.is_file() and not any(x in excluded for x in p.relative_to(root).parts) and p.suffix not in {'.pyc','.dpapi'} and p.name not in {'SOURCE_MANIFEST.json','coordinator.lock'} and not p.name.startswith('.protected-state.'))
+manifest={'format':'twni.internal-source-package.v0.1','version':version,'public_release':False,
  'files':[{'path':p.relative_to(root).as_posix(),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in files]}
 result=subprocess.run(['git','rev-parse','HEAD'],cwd=root,capture_output=True,text=True)
 manifest['localCommit']=result.stdout.strip() if result.returncode==0 else None

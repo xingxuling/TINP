@@ -16,3 +16,15 @@ K400 单元编号来自实际 RCL `campaignCellIdFor`，完整映射证据见 `a
 九个门分别记录：EXPRESS、COMPILE、LOWER、EXECUTE 有这三个 RCL Profile 的当前本机证据；CORRECT/ROBUST 只有有界正负例、故障与攻击回归；PERFORMANCE 只有本机限定计时；AI_GENERATE 未做独立生成能力评估；EVIDENCE 有源码哈希、命令、回执和账本。所有门均未提交独立 K400 Court，因此总体 `NOT_ADJUDICATED`，不能互相补偿。
 
 可复用 Regression Cases：同一证据锚点分叉、主体自报路由费用、源节点偷换、签名正确但标签错误的回执、Windows 子进程中文编码、响应丢失后的精确请求对账、未发送的限速消息被取消。它们已经影响源代码与测试，没有把联邦角色当装饰。
+
+## alpha.2 恢复压力增量
+
+| task | missing capability | workaround / donor | gap type | generality | candidate absorption | affected K400 cells |
+| --- | --- | --- | --- | --- | --- | --- |
+| 进程重启连续性 | 原 host 没有持久恢复准入 | 现有 RCL 编译器/runtime + recovery.rcl | RCL_INTEGRATION_GAP，非 Core 表达缺口 | 跨进程连续性与授权不扩张 | 固定候选 Profile；原根与实际账本前缀独立比较 | K110 K250 K257 |
+| 持久密钥与单写者 | 原存储明文/临时接口不满足恢复 | Windows DPAPI / 内核文件锁，Python ctypes/msvcrt | PLATFORM_PROVIDER_GAP | 平台专属实现 | 保持专业 Provider，不修改 RCL Core | K110 K250 |
+| 全目录防回滚 | 无独立外部可信锚点 | 当前明确拒绝声称此能力 | EXTERNAL_ANCHOR_GAP | 跨项目可信状态恢复 | NOT_IMPLEMENTED | K250 K257 |
+
+新增回归：真实 coordinator kill 后只查询已执行回执；发出前崩溃不重发；节点密钥与已消费证据锚点冷恢复；撤销不回退；部分缓存回滚、账本截断和伪签名拒绝；同目录协调器及节点写锁；恢复不扩 scope/expiry、不重发 lease；已过期状态可审计恢复但不可执行。参见实际 tests.tap 与独立恢复审查。
+
+九门仍分别 NOT_ADJUDICATED。本机真实执行提供 EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 的候选证据；现有有界性能数字不含 DPAPI 恢复开销，不代表其 SLA。AI_GENERATE 未评估。没有自动吸收、上游 Core 变更或晋升。

@@ -1,12 +1,13 @@
 {
-  "name": "@taowind/next-internet",
-  "version": "0.1.0-alpha.1",
+  "name": "@taowind/tinp-suite",
+  "version": "0.1.0-alpha.2",
   "private": true,
   "type": "module",
   "scripts": {
     "test": "node --test tests/*.test.mjs vendor/tinp/tests/*.test.mjs",
     "demo": "node scripts/demo.mjs",
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "recovery:demo": "node scripts/recovery-demo.mjs"
   },
   "engines": {"node": ">=22"}
 }

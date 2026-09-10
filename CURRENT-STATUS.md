@@ -1,9 +1,11 @@
 # 当前状态
 
-当前工程轮次：独立新互联网仓库 v0.1.0-alpha.1，本机三节点可执行候选。
+当前工程轮次：TINP v0.1.0-alpha.2，Windows 本机持久恢复候选。
 
-事实依据：`evidence/LOCAL_VERIFICATION.json` 绑定本次源码哈希、实际测试命令、时间及 UDP/TCP 运行见证。仅在其测试 exitCode=0 且 sourceFiles 哈希匹配时成立，不能依据本文件单独判定完成。
+发行事实以 `evidence/0.1.0-alpha.2/LOCAL_VERIFICATION.json` 的实际退出码、源码哈希和进程见证为准。v0.1.0-alpha.1 的原始审计和证据保留不变。
 
-OPP 是独立协议 Owner；RCL 是规则语义 Owner；RNCS/RFE 保留世界事实与提交。新仓库拥有跨协议装配及 bounded local Internet profile。没有上游主分支写入、公开推送、云 CI 或部署。
+本轮增加当前用户 DPAPI 存储、协调器和节点独立写锁、签名账本 checkpoint、持久撤销与回执缓存、真实 RCL 恢复准入。恢复不续租、不扩大权限；已执行但未记账的请求只查询原回执，不重新执行；没有回执的未决请求保持拒绝服务状态等待处置。
 
-最短后续缺口：持久密钥/会话/撤销与重启恢复，见 `docs/NEXT_GAP.md`。当前 profile 可恢复路由/Provider，不能声称整个进程生命周期已经持久化。
+RCL 拥有恢复不变量；Windows/Python 是加密及锁 Provider，Node 负责恢复装配。OPP 契约、RNCS/RFE 世界事实与提交归原 Owner。无 RCL Core 修改或 K400 晋升。
+
+运行边界：Windows 当前用户、同机 UDP/TCP 回环。无整目录防回滚外部锚点、跨设备密钥恢复或公网部署。候选分支 codex/tinp-recovery-v02；远端推送状态见本轮交付回执。未运行 GitHub Actions。

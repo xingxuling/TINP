@@ -6,13 +6,34 @@ import {makeHello,TINP_PROTOCOL} from '../vendor/tinp/src/protocol.mjs';
 import {forwardNext} from '../vendor/tinp/src/forwarding.mjs';
 import {evaluateTransactionGuard} from '../adapters/rcl-guard.mjs';
 import {evaluateRouteAdmissionGuard} from '../adapters/rcl-route-guard.mjs';
+import {openNodeState,validateCacheEntries} from './node-state.mjs';
+import {acquireDirectoryLease} from './directory-lease.mjs';
 
 const nodeId=process.argv[2],kind=process.argv[3];
-const identity=newIdentity();
+const nodeLease=process.argv[4]?await acquireDirectoryLease(process.argv[4]):null;
+const persistent=process.argv[4]?openNodeState(process.argv[4],nodeId,process.argv[5]==='create'):null;
+const identity=persistent?.state.identity??newIdentity();
 const transport=await new LocalTransport({nodeId,identity,kind}).bind();
 let config,provider=providerManifest(nodeId),providerEnabled=true,versions=[...SUITE_VERSIONS];
 let executions=0,epoch=0;
 const revoked=new Set(),cache=new Map(),consumedAnchors=new Set();
+let revocationEpoch=0;
+let serving=!persistent;
+if(persistent){
+  const s=persistent.state;provider=s.provider;providerEnabled=s.providerEnabled;versions=s.versions;epoch=s.providerEpoch;executions=s.executions;revocationEpoch=s.revocationEpoch;
+  for(const leaseId of s.revoked)revoked.add(leaseId);
+  for(const entry of s.entries){cache.set(entry.key,entry);consumedAnchors.add(entry.anchorKey);}
+}
+function persistNode(){if(persistent){nodeLease.assertHeld();persistent.store.save({format:'twni.node-state.v1',nodeId,identity,
+  entries:[...cache.values()],executions,revoked:[...revoked],revocationEpoch,provider,providerEnabled,versions,providerEpoch:epoch});}}
+function applyRevocations(watermark){
+  requireThat(authentic(watermark,config.authorityKey),'REVOCATION_SIGNATURE_INVALID');
+  const w=watermark.body;
+  requireThat(w.format==='twni.revocation-watermark.v1'&&Number.isSafeInteger(w.epoch)&&w.epoch>=revocationEpoch&&Array.isArray(w.leaseIds)&&w.leaseIds.every(x=>typeof x==='string'),'REVOCATION_ROLLBACK');
+  requireThat([...revoked].every(x=>w.leaseIds.includes(x)),'REVOCATION_SET_SHRINK');
+  if(w.epoch===revocationEpoch)requireThat(w.leaseIds.every(x=>revoked.has(x)),'REVOCATION_EQUIVOCATION');
+  for(const leaseId of w.leaseIds)revoked.add(leaseId);revocationEpoch=w.epoch;persistNode();
+}
 // Serialize the service admission/execute/cache sequence, including concurrent duplicates.
 let executionQueue=Promise.resolve();
 function serialize(fn){const p=executionQueue.then(fn);executionQueue=p.catch(()=>{});return p;}
@@ -21,6 +42,7 @@ function hello(){return makeHello({nodeId,subjectId:`subject:service-${nodeId}`,
   capabilities:providerEnabled?[provider.capability.capabilityId]:[],authorityScopes:['text.read'],securityProfiles:[SECURITY_PROFILE]});}
 
 async function execute(signedRequest,networkPath){
+  nodeLease?.assertHeld();
   const req=signedRequest?.body;
   requireThat(req && req.format==='twni.execute.v0.1','REQUEST_FORMAT_INVALID');
   const subjectKey=config.subjectKeys[req.subjectId];
@@ -71,6 +93,7 @@ async function execute(signedRequest,networkPath){
   }
   const anchorKey=`${req.sessionId}|${req.previousEvidenceRoot}`;
   requireThat(!consumedAnchors.has(anchorKey),'EVIDENCE_ANCHOR_CONSUMED');
+  requireThat(cache.size<10000,'RECOVERY_CACHE_CAPACITY');
   const result={count:[...req.payload.text].length};executions++;
   const receipt=seal({format:'twni.execution-receipt.v0.1',status:'executed',classification:'observed-local',
     subjectId:req.subjectId,continuityRoot:session.continuityRoot,worldId:req.worldId,nodeId,providerId:provider.providerId,
@@ -83,8 +106,10 @@ async function execute(signedRequest,networkPath){
     executionCount:executions,providerEpoch:epoch},identity.privateKey);
   const entry={key,anchorKey,requestRoot:signedRequest.root,receipt};
   // Pure computation only. Persist before acknowledgement; no general exactly-once side-effect claim.
-  const fd=fs.openSync(config.cacheFile,'a');try{fs.writeSync(fd,JSON.stringify(entry)+'\n');fs.fsyncSync(fd);}finally{fs.closeSync(fd);}
-  cache.set(key,entry);consumedAnchors.add(anchorKey);return receipt;
+  if(!persistent){const fd=fs.openSync(config.cacheFile,'a');try{fs.writeSync(fd,JSON.stringify(entry)+'\n');fs.fsyncSync(fd);}finally{fs.closeSync(fd);}}
+  cache.set(key,entry);consumedAnchors.add(anchorKey);
+  try{persistNode();}catch(error){cache.delete(key);consumedAnchors.delete(anchorKey);executions--;throw error;}
+  return receipt;
 }
 
 async function onOperation(operation,previousNode=null){
@@ -102,7 +127,14 @@ async function onOperation(operation,previousNode=null){
   }
   if(env.payloadType==='DISCOVER')return seal({format:'twni.discovery.v0.1',nodeId,hello:hello(),provider:providerEnabled?provider:null,
     versions,expiresAtMs:Date.now()+5000,epoch},identity.privateKey);
-  if(env.payloadType==='INTENT')return serialize(()=>execute(env.payload,env.path));
+  if(env.payloadType==='INTENT'){requireThat(serving,'NODE_RECOVERY_REQUIRED');return serialize(()=>execute(env.payload,env.path));}
+  if(env.payloadType==='RECEIPT_LOOKUP'){
+    const q=env.payload?.body;
+    requireThat(q&&authentic(env.payload,config.subjectKeys[q.subjectId]),'HISTORICAL_LOOKUP_UNAUTHENTICATED');
+    const entry=cache.get(`${q.sessionId}|${q.requestId}`);
+    requireThat(entry,'RECEIPT_NOT_FOUND');requireThat(entry.requestRoot===env.payload.root,'REPLAY_CONFLICT');
+    return entry.receipt;
+  }
   throw new ProtocolError('OPERATION_UNSUPPORTED');
 }
 transport.handler=onOperation;
@@ -112,24 +144,37 @@ process.on('message',async message=>{
   try{
     let result;
     if(command==='configure'){
+      serving=!persistent;
       config=value;transport.peers=value.peers;
-      if(fs.existsSync(config.cacheFile))for(const line of fs.readFileSync(config.cacheFile,'utf8').trimEnd().split('\n').filter(Boolean)){
+      if(!persistent&&fs.existsSync(config.cacheFile))for(const line of fs.readFileSync(config.cacheFile,'utf8').trimEnd().split('\n').filter(Boolean)){
         const entry=JSON.parse(line);cache.set(entry.key,entry);if(entry.anchorKey)consumedAnchors.add(entry.anchorKey);
       }
+      validateCacheEntries([...cache.values()],identity,nodeId);
+      for(const receipt of value.expectedReceipts??[]){
+        requireThat(authentic(receipt,identity.publicKey),'RECOVERY_EXPECTED_RECEIPT_INVALID');
+        const r=receipt.body,entry=cache.get(`${r.sessionId}|${r.requestId}`);
+        requireThat(entry?.receipt.root===receipt.root,'RECOVERY_CACHE_ROLLBACK');
+      }
+      if(config.revocations)applyRevocations(config.revocations);
       result={configured:true};
-    } else if(command==='send')result=await onOperation(value);
+    } else if(command==='activate'){requireThat(config,'NODE_NOT_CONFIGURED');serving=true;result={active:true};}
+    else if(command==='send')result=await onOperation(value);
     else if(command==='provider'){
       providerEnabled=value.enabled??true;
       if(value.manifest){provider=value.manifest;epoch++;}
+      persistNode();
       result={providerEnabled,provider,epoch};
-    }else if(command==='version'){versions=value;result=versions;}
-    else if(command==='revoke'){revoked.add(value);result={revoked:value};}
+    }else if(command==='version'){versions=value;persistNode();result=versions;}
+    else if(command==='revoke'){
+      if(value?.body)applyRevocations(value);else {requireThat(!persistent,'REVOCATION_SIGNATURE_REQUIRED');revoked.add(value);}
+      result={revoked:[...revoked],revocationEpoch};
+    }
     else if(command==='fault'){transport.blocked=new Set(value.blocked??[]);transport.bandwidth=value.bandwidth??0;result={applied:true};}
-    else if(command==='stats')result={nodeId,pid:process.pid,executions,metrics:transport.metrics,cacheEntries:cache.size};
-    else if(command==='close'){await transport.close();process.send({callId,ok:true,result:{closed:true}},()=>process.exit(0));return;}
+    else if(command==='stats')result={nodeId,pid:process.pid,executions,metrics:transport.metrics,cacheEntries:cache.size,revocationEpoch,revoked:[...revoked],durable:Boolean(persistent)};
+    else if(command==='close'){await transport.close();await nodeLease?.release();process.send({callId,ok:true,result:{closed:true}},()=>process.exit(0));return;}
     else throw new ProtocolError('CONTROL_COMMAND_UNKNOWN');
     process.send({callId,ok:true,result});
   }catch(error){process.send({callId,ok:false,error:error.code??error.message});}
 });
-process.on('disconnect',()=>{transport.close().finally(()=>process.exit(0));});
+process.on('disconnect',()=>{transport.close().finally(async()=>{await nodeLease?.release();process.exit(0);});});
 process.send({ready:true,nodeId,pid:process.pid,endpoint:transport.endpoint(),publicKey:identity.publicKey});

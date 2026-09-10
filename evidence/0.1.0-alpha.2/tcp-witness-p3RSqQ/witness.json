@@ -1,0 +1,131 @@
+{
+  "transport": "tcp",
+  "pids": [
+    9928,
+    36224,
+    35324
+  ],
+  "firstResult": {
+    "count": 8
+  },
+  "firstReceipt": {
+    "body": {
+      "format": "twni.execution-receipt.v0.1",
+      "status": "executed",
+      "classification": "observed-local",
+      "subjectId": "subject:local-user",
+      "continuityRoot": "b1a1ce5d3c98c2c4cd72055d1dcb2cbada67bf2b8f387b869a8394ebe4779516",
+      "worldId": "world:local-demonstration",
+      "nodeId": "C",
+      "providerId": "C:counter",
+      "capabilityId": "text.codepoint-count",
+      "capabilityVersion": "1.0.0",
+      "contractRoot": "085ea120830888c97a069a7aa4adf7e73a3282f6b5065e184a4f5c9ab16f9a57",
+      "sessionId": "session:c4686a28-fc8b-45e4-8a66-dc2730f8f0f5",
+      "requestId": "intent:3ad5bcb9-df73-4534-8117-218f4f3f0121",
+      "requestRoot": "b0eb7c0d130257f4468b985f40ec6813f140c36032aa407b160d6633fe1f9128",
+      "leaseRoot": "b8d5226e6e3fae52eadf6d240e2a9426a31b582bf1a3fba111c31ff3c020a7fd",
+      "previousEvidenceRoot": "0a27211ad7356d2d299bd043d38c6be68c17e8d73c906a2bd4c8d2e8f8c0fd02",
+      "route": [
+        "A",
+        "B",
+        "C"
+      ],
+      "version": "0.1.1",
+      "inputRoot": "a0580e260d229e2bfe4e5c779d3655988f01f7534a0054a83cef17603e45be64",
+      "result": {
+        "count": 8
+      },
+      "resultRoot": "286ef99473842386e093b70e2cb43524734dcd35c826f5b736d6444f65ad4686",
+      "time": "2026-09-10T01:36:11.686Z",
+      "guard": {
+        "allowed": true,
+        "programRoot": "8dcbc82d98d32e19d9aee17f0de3a828bd61a5d08c8fa74d83258e818cde6765",
+        "stateRoot": "e876cb1217fb79f38516646ba18f97c7c9bb6ad0ec756a5b41ce10501f7c9008",
+        "sourceSha256": "4f98721eb2ab8f0ecdbfc0151541d8aed103d7fb7aaffb82d206621c2412bbf7"
+      },
+      "routeGuard": {
+        "allowed": true,
+        "programRoot": "da196b259032e91e3529097d3aa9aa058a514992df27beebcd2a389157d6d7b9",
+        "stateRoot": "3616be68ffe9f5dd458170f25feb578fa3483d2ecc12650f8870559d825d11b0",
+        "sourceSha256": "951c0003795fc137e3b68c82a47157e6b01b1905136350bcffa23636cb98a688"
+      },
+      "executionCount": 1,
+      "providerEpoch": 0
+    },
+    "root": "cab6e4cbdc7135e2b99c9b8599d7ca068b18b9d117d07f6e543674c1ecae02ae",
+    "signature": "mM3PphruEDJcomggcGz7n42AKYa/aDX2xBxah+b9h/aBlsHSCqTHnYMcsTZi3AhK2mT/H6YqsNVT08qWq5s1Dw=="
+  },
+  "firstPath": [
+    "A",
+    "B",
+    "C"
+  ],
+  "stats": [
+    {
+      "nodeId": "A",
+      "pid": 9928,
+      "executions": 0,
+      "metrics": {
+        "sentFrames": 23,
+        "receivedFrames": 23,
+        "sentBytes": 76113,
+        "invalidFrames": 0,
+        "overloadRejected": 0
+      },
+      "cacheEntries": 0,
+      "revocationEpoch": 0,
+      "revoked": [],
+      "durable": false
+    },
+    {
+      "nodeId": "B",
+      "pid": 36224,
+      "executions": 0,
+      "metrics": {
+        "sentFrames": 46,
+        "receivedFrames": 46,
+        "sentBytes": 124687,
+        "invalidFrames": 0,
+        "overloadRejected": 0
+      },
+      "cacheEntries": 0,
+      "revocationEpoch": 0,
+      "revoked": [],
+      "durable": false
+    },
+    {
+      "nodeId": "C",
+      "pid": 35324,
+      "executions": 21,
+      "metrics": {
+        "sentFrames": 23,
+        "receivedFrames": 23,
+        "sentBytes": 48482,
+        "invalidFrames": 0,
+        "overloadRejected": 0
+      },
+      "cacheEntries": 21,
+      "revocationEpoch": 0,
+      "revoked": [],
+      "durable": false
+    }
+  ],
+  "evidenceRoot": "810f5dd63b42e9920eaeaecc8af8fe4456b6b869189857321cb98950f89d9c39",
+  "ledger": "evidence/0.1.0-alpha.2/tcp-witness-p3RSqQ/ledger.jsonl",
+  "boundedPerformance": {
+    "samples": 20,
+    "medianMs": 15.992799999992712,
+    "p95Ms": 18.502599999992526,
+    "maxMs": 19.06470000000263,
+    "scope": "local signed transaction with negotiated capability; not discovery/OPP startup, WAN, throughput or SLA proof"
+  },
+  "memory": {
+    "rss": 60534784,
+    "heapTotal": 14774272,
+    "heapUsed": 9955288,
+    "external": 2460034,
+    "arrayBuffers": 92861
+  },
+  "memoryScope": "coordinator process only; does not include node/Python children"
+}

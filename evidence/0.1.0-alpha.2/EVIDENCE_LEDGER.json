@@ -1,0 +1,149 @@
+{
+  "format": "twni.delivery-evidence-ledger.v0.2",
+  "version": "0.1.0-alpha.2",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "verificationFile": "evidence/0.1.0-alpha.2/LOCAL_VERIFICATION.json",
+  "verificationSha256": "5f50710148966cb2b216d9bbbda04207f7625a73979d4eced4d554aa8e1bf39b",
+  "tests": {
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-concurrency=1",
+      "--test-reporter=tap",
+      "tests/conformance.test.mjs",
+      "tests/opp-bridge.test.mjs",
+      "tests/profiles.test.mjs",
+      "tests/protected-store.test.mjs",
+      "tests/rcl-guard.test.mjs",
+      "tests/rcl-migration.test.mjs",
+      "tests/rcl-recovery.test.mjs",
+      "tests/rcl-route.test.mjs",
+      "tests/recovery-gate-integration.test.mjs",
+      "tests/recovery-security.test.mjs",
+      "tests/security-review.test.mjs",
+      "tests/shared-ir.test.mjs",
+      "vendor/tinp/tests/tinp-v02.test.mjs",
+      "vendor/tinp/tests/tinp.test.mjs"
+    ],
+    "exitCode": 0,
+    "count": 98,
+    "passed": 98,
+    "failed": 0,
+    "stdout": "evidence/0.1.0-alpha.2/tests.tap",
+    "stdoutSha256": "c8a4369ecd26362b32dd12453be42f3279f8336d808bd088a8c4e963c5213794",
+    "stderr": "evidence/0.1.0-alpha.2/tests.stderr.txt"
+  },
+  "sourceTreeRoot": "987e2a8d3eb8f783b1e576715dcf1e39a4eee4f2f94fd20b4a8b53dd6b8ad8b0",
+  "sourceFileCount": 133,
+  "verificationStarted": "2026-09-10T01:34:48.820Z",
+  "verificationFinished": "2026-09-10T01:36:29.136Z",
+  "baseline": {
+    "commit": "b6916b6ce836bbf2b1e57fcfb7cd4ff7939380ff",
+    "ledger": "evidence/EVIDENCE_LEDGER.json",
+    "sha256": "8cf8e9f3ab3eccbb4fbea217d9f109ca72997d29553c648c8f5f328b659b92d3",
+    "donorSources": "UNCHANGED; baseline pins/licenses retained"
+  },
+  "recoveryScenarios": [
+    {
+      "状态": "VERIFIED_LOCAL_RECOVERY_DEMO",
+      "transport": "udp",
+      "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAyTXm2xpAaqS7zlXZCEvtKNG+YtD5XEMdtwV0Yi+BSTo=\n-----END PUBLIC KEY-----\n",
+      "原结果": {
+        "count": 4
+      },
+      "恢复后结果": {
+        "count": 4
+      },
+      "目标节点旧进程": 4888,
+      "目标节点新进程": 37608,
+      "历史执行数保留": true,
+      "主体密钥保留": true,
+      "会话保留": true,
+      "未自动续租": true,
+      "撤销后重启仍拒绝": true,
+      "已验证证据根": "93487109523758a2a7931c9dbd918c5c8b052ccf2256cf77cd73d2c6fbc2815d",
+      "范围": "Windows当前用户、本机真实进程；非公网、非整目录防回滚证明",
+      "ledger": "evidence/0.1.0-alpha.2/recovery-udp.jsonl",
+      "ledgerSha256": "60f3a0d1e7cb13a6175a9c38a3ce71c29a7eec41fe8943a53363b0ff1e9c2b27",
+      "scope": "Actual node kill/restart and coordinator close/reopen on Windows; coordinator force-kill cases separately in tests, UDP only"
+    },
+    {
+      "状态": "VERIFIED_LOCAL_RECOVERY_DEMO",
+      "transport": "tcp",
+      "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAYWOUF0Lm86Wxq7BWFOpek/VPrkIraxdy88SgFNp7e3g=\n-----END PUBLIC KEY-----\n",
+      "原结果": {
+        "count": 4
+      },
+      "恢复后结果": {
+        "count": 4
+      },
+      "目标节点旧进程": 2088,
+      "目标节点新进程": 26372,
+      "历史执行数保留": true,
+      "主体密钥保留": true,
+      "会话保留": true,
+      "未自动续租": true,
+      "撤销后重启仍拒绝": true,
+      "已验证证据根": "aec88496423fb19fb9318cf7732dce52c85cf33f2fb4b282a24a44e65bca1263",
+      "范围": "Windows当前用户、本机真实进程；非公网、非整目录防回滚证明",
+      "ledger": "evidence/0.1.0-alpha.2/recovery-tcp.jsonl",
+      "ledgerSha256": "2cbf2d49d7863a514cb5603b78ad00d1f07234a4057a08d9b928bb5a33534921",
+      "scope": "Actual node kill/restart and coordinator close/reopen on Windows; coordinator force-kill cases separately in tests, UDP only"
+    }
+  ],
+  "firstFullAttempt": {
+    "tests": 98,
+    "passed": 97,
+    "failed": 1,
+    "failure": "Test teardown EPERM: child node still owned OS lock; fixed fixture to await owned node PIDs before removing temporary directory",
+    "file": "evidence/0.1.0-alpha.2/first-attempt-tests.tap",
+    "sha256": "5420238e20f6833299d804324047cc2d0b8a6a47f74d74cd9eba829206634f38",
+    "productAssertions": "passed in failed case; teardown failure retained, not hidden"
+  },
+  "profiles": {
+    "degradation": "Real node kill and UDP coordinator kill, no blind pending resend, fail-closed cache/ledger/lock checks",
+    "commercial": "Windows protected keys/session/revocation, signed checkpoint reconciliation, exclusive writers, restore preserves original lease",
+    "life": "Original fixed Chinese intent retained; recovery demo runnable; unresolved pending resolution UI still missing"
+  },
+  "rcl": {
+    "owner": "RCL recovery invariants; Node orchestration and Windows/Python storage/locks are Providers",
+    "profile": "rcl/recovery.rcl",
+    "coreChanged": false,
+    "candidateCells": [
+      "K057",
+      "K110",
+      "K117",
+      "K250",
+      "K257"
+    ],
+    "verdict": "NOT_ADJUDICATED",
+    "gates": {
+      "EXPRESS": "NOT_ADJUDICATED",
+      "COMPILE": "NOT_ADJUDICATED",
+      "LOWER": "NOT_ADJUDICATED",
+      "EXECUTE": "NOT_ADJUDICATED",
+      "CORRECT": "NOT_ADJUDICATED",
+      "ROBUST": "NOT_ADJUDICATED",
+      "PERFORMANCE": "NOT_ADJUDICATED",
+      "AI_GENERATE": "NOT_ADJUDICATED",
+      "EVIDENCE": "NOT_ADJUDICATED"
+    }
+  },
+  "limits": [
+    "Ephemeral local trust fixture; no production identity enrollment or TLS confidentiality",
+    "Only bounded pure read-only code-point counting; not arbitrary actions or exactly-once external side effects",
+    "Durable mode uses Windows current-user DPAPI and signed recovery evidence; no independent anti-rollback anchor or global revocation convergence",
+    "No browser replacement, application-seed cross-platform runtime, VPN or entire P00-P15 completion",
+    "UDP only for coordinator force-kill tests; UDP/TCP for node kill and coordinator close/reopen",
+    "No whole-directory rollback protection, external trusted clock, cross-device identity recovery or global revocation convergence",
+    "Receipt-cache capacity 10000 and whole-snapshot storage; no long-term retention/compaction performance guarantee"
+  ],
+  "externalActions": {
+    "githubActions": "NOT_RUN",
+    "deployment": "NOT_DEPLOYED",
+    "publicNetwork": "NOT_RUN",
+    "merge": "NOT_RUN",
+    "candidatePush": "See external delivery receipt; not implied by verification"
+  },
+  "nextGap": "Auditable pending-request inspection/resolution, independent rollback anchor, then encrypted two-device deployment"
+}
