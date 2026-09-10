@@ -73,7 +73,7 @@
     "deployment": "NOT_DEPLOYED",
     "publicNetwork": "NOT_RUN",
     "candidateBranch": "codex/tinp-registry-v06",
-    "candidateCommit": "PENDING_ALPHA7_COMMIT",
+    "candidateCommit": "23268f94fb7854facbf2798f90f8d6289f87fc75",
     "candidatePush": "Pending alpha.7 candidate packaging and push"
   },
   "limits": [
