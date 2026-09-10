@@ -2,7 +2,7 @@
 
 TINP v0.1.0-alpha.11：可选外部 AAF 操作员签章、外部恢复锚点、authority registry 快照、多镜像分发 quorum、历史收敛桥接、本机历史 store、外部收敛见证与跨进程 public-history replay 的本机候选。
 
-从已核对远端的 alpha.10 / `07e966fd5e8fd6819dec2328084d6ababd27ee8c` 继续，候选分支 `codex/tinp-registry-v06`；alpha.11 新增跨进程 public-history replay harness、独立 host worker、测试与证据入口，完整最终验收以 `evidence/0.1.0-alpha.11/LOCAL_VERIFICATION.json` 的源码哈希、退出码及运行见证为准。
+从已核对远端的 alpha.10 / `07e966fd5e8fd6819dec2328084d6ababd27ee8c` 继续，候选分支 `codex/tinp-registry-v06`；alpha.11 实现提交为 `7617e1dccc152843842f2e614afb24ee5e8a8ad5`，本机证据提交为 `f3c019851fdd2955f706dd69ba12e988291eebe6`，新增跨进程 public-history replay harness、独立 host worker、测试与证据入口，完整最终验收以 `evidence/0.1.0-alpha.11/LOCAL_VERIFICATION.json` 的源码哈希、退出码及运行见证为准。
 
 operator-pin 明确固定独立签署方 ID 与 SPKI DER 指纹。启用后，confirmed 不能替代外部 AAF approval；请求/租约/会话/主体/世界/协调器/策略绑定、范围、签名、时间与调用方提供的当前 revoked 状态均检查。外部 keyring 不写 checkpoint，网络端不持有操作员私钥。旧版无 pin 本机夹具兼容，不能把兼容模式冒充外部认证。
 
@@ -14,4 +14,4 @@ AAF 格式与签章 Owner 保持原项目，RCL 继续拥有固定退休准入�
 
 边界：独立测试签署进程不等于真实人类注册或硬件密钥托管；本机时间不是可信外部时间戳；registry、distribution/convergence/store/witness policy/bundle、issuer/mirror/member/witness keyring、当前 revoked 和最新锚点仍是调用方提供的离线输入，不是在线注册/撤销服务。convergence 只检查调用方提交的有限历史；store 只提供本机单文件原子写入、完整历史前缀检查和本机目录租约；external witness 只有在上一份见证根被独立保留时才能检测结构有效替换，不等于透明日志、跨主机持久收敛或全局冲突处置。alpha.11 的 replay harness 只使用两个独立本机 Node 进程与目录，验证公开状态转移、幂等 replay、扩展以及分叉/镜像漂移/序号缺口拒绝，不能证明两台物理设备、加密传输、可信时间或生产共识。上次显式锚定后的尾部、代码/配置回滚、真实异机/公网仍未实现。alpha.11 全量验证为 171/171，通过 `VERIFIED_LOCAL_CANDIDATE`；候选分支已推送，源码归档与最终交付回执已生成，回执记录最终状态提交、远端指针、归档和解包 smoke 证据。
 
-2026-09-10 的 GitHub 与本地 authority-provider 考古未找到可复用的在线 Owner 服务；交接所需的发布、撤销、可信时间、透明日志、跨主机恢复、密钥托管和 staging 证据已整理到 `docs/AUTHORITY_PROVIDER_READINESS.md` 与 `audit/authority-provider-search-2026-09-10.json`。alpha.11 的 replay harness 是本机压力证据，不解除 `BLOCKED_EXTERNAL_OWNER`，也未改变 RCL Core 或 K400 裁决。alpha.11 verify 已完成 `171/171`，源码清单 `188` 个文件，`sourceTreeRoot=1e485d84c8dce54ca6b68062b5ebfff2a6d37e2121d1cde794157335bd6c1e67`，tests TAP SHA-256=`a0fba949b2bc242fa5e42d2102884124f6ed70f188916f4360196b1149f4242a`。
+2026-09-10 的 GitHub 与本地 authority-provider 考古未找到可复用的在线 Owner 服务；交接所需的发布、撤销、可信时间、透明日志、跨主机恢复、密钥托管和 staging 证据已整理到 `docs/AUTHORITY_PROVIDER_READINESS.md` 与 `audit/authority-provider-search-2026-09-10.json`。alpha.11 的 replay harness 是本机压力证据，不解除 `BLOCKED_EXTERNAL_OWNER`，也未改变 RCL Core 或 K400 裁决。alpha.11 verify 已完成 `171/171`，源码清单 `188` 个文件，`sourceTreeRoot=1e485d84c8dce54ca6b68062b5ebfff2a6d37e2121d1cde794157335bd6c1e67`，tests TAP SHA-256=`a0fba949b2bc242fa5e42d2102884124f6ed70f188916f4360196b1149f4242a`，LOCAL_VERIFICATION SHA-256=`57c9e63a6caa154fbef004058a9657c31a782a0f2a53b1128775caba22967818`，EVIDENCE_LEDGER SHA-256=`ec33a87e8c689e79c407eff007df2190608ceba1bdb580ff9fdf9e0d4698e3f1`。
