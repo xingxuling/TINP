@@ -1,8 +1,8 @@
 # 下一最短真实缺口
 
-alpha.5 在 alpha.4 的外部 AAF approval 之上接入了可选外部单调恢复锚点：固定 Ed25519 公钥指纹、签署账本前缀和状态投影、显式导入、序号链及整目录回放负例。独立测试签署进程不向网络运行端提供私钥。此实现仍不等于完整 RNCS world grant、真实人类身份注册或生产反回滚服务。
+alpha.6 在 alpha.5 的外部恢复锚点之上接入了可选 authority registry：独立 issuer 进程签署 registry policy 和 seq1→seq2 快照，快照保存 issuer/成员公钥指纹、append-only predecessor、epoch、角色子集和 revoked 状态；恢复锚点 CLI 可显式验证快照后按 recovery-witness 导出调用方 keyring。独立测试 issuer 不向网络运行端提供私钥，成员私钥也不进入 registry 或 checkpoint。此实现仍不等于完整 RNCS world grant、真实人类身份注册或生产反回滚服务。
 
-下一缺口是把当前调用方提供的 keyring 和锚点文件接入已有 authority Owner 的独立可信注册表/保管：当前 `revoked:false`、最新锚点和配置根没有在线认证的发布、撤销、轮换、恢复或跨主机收敛。上一次显式锚定后的本地尾部也没有被外部见证覆盖；历史时间仍来自本机时钟。需要先固定注册表格式、密钥轮换和丢失恢复责任，再验证断网、旧配置、代码/配置回滚和两台真实设备的加密承载。
+下一缺口是把离线 registry 快照接到真实 authority Owner 的发布、撤销、丢失恢复和跨主机收敛：当前 registry 文件、issuer keyring、成员 keyring、时间和锚点仍由调用方选择，未有在线认证发布/撤销服务、可信时钟、硬件保管、透明日志或两台真实设备的加密恢复。快照后的本地尾部、代码/配置回滚也不在外部见证范围。需要先确定生产 Owner、密钥生命周期和冲突/分叉处置，再验证断网、旧配置、issuer 撤销、成员轮换和跨设备恢复。
 
 不能以测试生成的身份冒充用户真实凭据，也不能自动为用户指定生产 Owner。没有相应外部服务、真实设备和人工密钥托管证据前，状态保持候选。
 

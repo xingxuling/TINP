@@ -1,6 +1,6 @@
 {
   "name": "@taowind/tinp-suite",
-  "version": "0.1.0-alpha.5",
+  "version": "0.1.0-alpha.6",
   "private": true,
   "type": "module",
   "scripts": {
@@ -12,7 +12,9 @@
     "pending:demo": "node scripts/pending-demo.mjs",
     "operator:demo": "node scripts/operator-demo.mjs",
     "recovery-anchor": "node scripts/recovery-anchor.mjs",
-    "recovery-anchor:demo": "node scripts/recovery-anchor-demo.mjs"
+    "recovery-anchor:demo": "node scripts/recovery-anchor-demo.mjs",
+    "authority-registry": "node scripts/authority-registry.mjs",
+    "authority-registry:demo": "node scripts/authority-registry-demo.mjs"
   },
   "engines": {
     "node": ">=22"

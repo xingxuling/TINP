@@ -1,0 +1,77 @@
+{
+  "format": "twni.delivery-evidence-ledger.v0.6",
+  "version": "0.1.0-alpha.6",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "tests": {
+    "command": ["C:\\Program Files\\nodejs\\node.exe", "--test", "--test-concurrency=1", "--test-reporter=tap", "tests/aaf-operator.test.mjs", "tests/authority-registry-cli.test.mjs", "tests/authority-registry.test.mjs", "tests/conformance.test.mjs", "tests/operator-cli.test.mjs", "tests/operator-security.test.mjs", "tests/opp-bridge.test.mjs", "tests/pending-cli.test.mjs", "tests/pending-security.test.mjs", "tests/profiles.test.mjs", "tests/protected-store.test.mjs", "tests/rcl-guard.test.mjs", "tests/rcl-migration.test.mjs", "tests/rcl-pending-retirement.test.mjs", "tests/rcl-recovery.test.mjs", "tests/rcl-route.test.mjs", "tests/recovery-anchor-cli.test.mjs", "tests/recovery-anchor.test.mjs", "tests/recovery-gate-integration.test.mjs", "tests/recovery-security.test.mjs", "tests/security-review.test.mjs", "tests/shared-ir.test.mjs", "vendor/tinp/tests/tinp-v02.test.mjs", "vendor/tinp/tests/tinp.test.mjs"],
+    "exitCode": 0,
+    "count": 147,
+    "passed": 147,
+    "failed": 0,
+    "stdout": "evidence/0.1.0-alpha.6/tests.tap",
+    "stdoutSha256": "6b256892c0196bf2273ef18e172e89d76bee72cd44555ddf13fc3babce1c7feb",
+    "stderr": "evidence/0.1.0-alpha.6/tests.stderr.txt"
+  },
+  "verificationFile": "evidence/0.1.0-alpha.6/LOCAL_VERIFICATION.json",
+  "verificationSha256": "644097afb877c124a4881d507826c7c27777a6a940e4419b94ef9d975c72a9aa",
+  "sourceTreeRoot": "05bc57c45e7a9e5c859cab76dc2aa93496e2300e05fd53d7099723a205d387d2",
+  "sourceFileCount": 167,
+  "startedAt": "2026-09-10T05:19:17.381Z",
+  "finishedAt": "2026-09-10T05:26:58.889Z",
+  "baseline": {
+    "commit": "a86623e93b18f783f402b12e9f93b198ff32ea6e",
+    "ledger": "evidence/0.1.0-alpha.5/EVIDENCE_LEDGER.json",
+    "sha256": "dda7104629996e4a5a8059a49faafba8debf1753b8badba6206b6cc00c8451bb"
+  },
+  "change": {
+    "owner": "TINP authority-registry host adapter plus independent issuer",
+    "policyFormat": "twni.authority-registry-policy.v1",
+    "registryFormat": "twni.authority-registry.v1",
+    "bridge": "Optional authority registry verification and recovery-anchor role keyring projection",
+    "rclCoreChanged": false,
+    "privateKeyBoundary": "Issuer and member private keys remain outside registry/checkpoint; test issuer returns public key and signatures only"
+  },
+  "authorityRegistry": {
+    "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_LIFECYCLE",
+    "firstSequence": 1,
+    "secondSequence": 2,
+    "firstRegistryRoot": "7cff20416f607201d8679a65dacad9c1dc0e990e41df33656dd096dcee3d0efd",
+    "secondRegistryRoot": "3a5c13d7eda2348345ad802ccdec55c641e8b4cab3fc584ac14431a6823c4985",
+    "rotatedSigners": ["operator:owner-v1 → operator:owner-v2", "recovery:witness-v1 → recovery:witness-v2"],
+    "revokedSigners": ["operator:owner-v1", "recovery:witness-v1"],
+    "activeSigners": ["operator:owner-v2", "recovery:witness-v2"],
+    "oldKeyDenied": true,
+    "keyMaterialPersisted": false,
+    "witness": "evidence/0.1.0-alpha.6/authority-registry.json"
+  },
+  "profiles": {
+    "recovery": "Optional externally signed monotonic ledger-prefix anchor; complete older directory replay fails closed",
+    "operator": "Immutable external AAF policy remains available and is still checked independently before retirement",
+    "life": "Three local processes, UDP/TCP sockets, OPP negotiation, RCL gates, durable evidence and redacted pending maintenance",
+    "authorityRegistry": "Independent issuer signed snapshots, append-only key rotation/revocation and caller-supplied role keyring mapping"
+  },
+  "authorityBoundary": "Offline caller-selected registry/policy/issuer/member files and local nowMs; no human enrollment, trusted clock, online publication or hardware custody",
+  "rcl": {
+    "coreChanged": false,
+    "profilesReused": ["rcl/recovery.rcl", "rcl/pending-retirement.rcl"],
+    "integration": "Registry verification and keyring projection are host observations; existing RCL predicates remain canonical",
+    "candidateCells": ["K057", "K110", "K117", "K250", "K257"],
+    "gates": {"EXPRESS": "NOT_ADJUDICATED", "COMPILE": "NOT_ADJUDICATED", "LOWER": "NOT_ADJUDICATED", "EXECUTE": "NOT_ADJUDICATED", "CORRECT": "NOT_ADJUDICATED", "ROBUST": "NOT_ADJUDICATED", "PERFORMANCE": "NOT_ADJUDICATED", "AI_GENERATE": "NOT_ADJUDICATED", "EVIDENCE": "NOT_ADJUDICATED"}
+  },
+  "externalActions": {
+    "githubActions": "NOT_RUN",
+    "merge": "NOT_RUN",
+    "deployment": "NOT_DEPLOYED",
+    "publicNetwork": "NOT_RUN",
+    "candidateBranch": "codex/tinp-registry-v06",
+    "candidatePush": "Pending candidate branch packaging and push"
+  },
+  "limits": [
+    "Registry files and caller keyrings are offline inputs; a valid signature does not establish online freshness or human identity",
+    "Local nowMs is not a trusted timestamp; no publication, transparent log, global revocation or conflict convergence exists",
+    "No hardware custody, lost-key recovery, cross-device encrypted anchor, post-snapshot suffix protection or code/configuration rollback protection",
+    "No arbitrary side-effect transactions or complete RNCS world grant",
+    "Warm local timing samples exclude signing, DPAPI, startup, WAN, throughput and SLA"
+  ],
+  "nextGap": "Production authority registry publication, trusted time, lost-key recovery and cross-device convergence"
+}

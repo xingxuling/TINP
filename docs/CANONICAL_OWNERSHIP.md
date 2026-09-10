@@ -53,10 +53,16 @@ The local authority key and subject keys are ephemeral fixture roots distributed
 
 新增复用 AAF 的 approval receipt、canonical seal 和签章验证三个原始模块。TINP adapter 检查固定SPKI指纹、challenge root、精确role/scope、canonical时间窗和外部撤销输入，不导入默认可免签的完整AAF evaluator，不构造虚假RNCS formal requirements。网络退休challenge作为本profile的AAF proposal_root，不代表RNCS世界proposal或commit。原RCL退休Profile继续裁决已认证操作员与撤销确认事实，无Core变更。
 
-alpha.2起可选Windows持久模式已保存网络密钥；alpha.4把操作员公钥指纹写入checkpoint，alpha.5增加显式外部单调恢复锚点。外部公钥keyring、操作员/见证签署私钥与网络运行端保持分离，已启用pin状态不得通过确认参数降级。初次本机pin不是生产身份注册；在线撤销、可信时间、代码/配置发布和锚点后的尾部仍需独立 authority。
+alpha.2起可选Windows持久模式已保存网络密钥；alpha.4把操作员公钥指纹写入checkpoint，alpha.5增加显式外部单调恢复锚点，alpha.6增加独立 issuer 签署的 authority registry 快照和角色 keyring 桥接。外部公钥keyring、操作员/见证签署私钥与网络运行端保持分离，已启用pin状态不得通过确认参数降级。初次本机pin不是生产身份注册；在线撤销、可信时间、代码/配置发布和锚点后的尾部仍需独立 authority。
 
 ## alpha.5 外部恢复锚点边界
 
 外部恢复见证的签署格式与密钥由本候选的 recovery-anchor adapter 约束，独立见证方拥有签署权，调用方拥有当前公钥/revocation 输入；TINP 主机只验证签名、单调序号、账本前缀和状态投影。锚点私钥不进入 coordinator、node 或 checkpoint，且不自动替代 RNCS authority、AAF operator 或人类身份 Owner。显式 pin 是本机信任 bootstrap；`request` 只读，`accept` 记录前缀接纳。
 
 外部锚点只能证明已知锚点之前的本地目录前缀没有被完整回放。上次锚定之后的尾部、代码/配置发布、在线撤销、可信时间、跨设备加密和硬件托管继续由外部 authority/部署 Owner 负责。RCL recovery 仍拥有状态准入，锚点结果只是 host observation，没有新的 Core primitive 或 K400 晋升。
+
+## alpha.6 authority registry boundary
+
+`src/authority-registry.mjs` 是 TINP host/profile 的 authority-provider adapter，不接管 AAF approval 格式、RCL admission 或 RNCS world authority。registry policy 只固定 registry/issuer 标识、issuer SPKI 指纹和 policy root；签名快照固定 sequence/previous root、成员公钥指纹、authority、roles、keyEpoch、predecessor 和 revoked 状态。新成员必须由上一快照的 active 成员轮换而来，沿用 authority 和角色子集；旧成员不能复活。独立 issuer child 只签名 body，主机只验证签名和链。
+
+调用方仍显式提供 issuer keyring、成员公钥和本机 `nowMs`。`keyringFromAuthorityRegistry` 生成的是本次调用的兼容 keyring，未写入 checkpoint，且不构成身份注册、在线撤销收敛、可信时钟、硬件托管或跨设备恢复。`recovery-anchor` CLI 的 registry 参数是 opt-in bridge；RCL recovery 仍拥有恢复准入，registry 结果只是外部 authority observation。Formal-gate donor 的 pin/fingerprint 与 revocation-registry 经验已记录为 donor advantage，没有复制其 owner 或修改 RCL Core。

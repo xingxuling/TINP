@@ -1,6 +1,6 @@
 {
   "format": "twni.protocol-registry.v0.1",
-  "version": "0.1.0-alpha.4",
+  "version": "0.1.0-alpha.6",
   "classification": "candidate-local-profile",
   "scope": "Three independent local processes; UDP/TCP loopback only",
   "statusVocabulary": [
@@ -161,12 +161,18 @@
           "status": "implemented",
           "behavior": "Opt-in external AAF operator approval for whole-lease pending retirement; pinned SPKI fingerprint, exact challenge and scope, bounded time and current caller-supplied revocation metadata",
           "evidenceLevel": "Local independent signer process, CLI and real crash tests; not production human enrollment"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Opt-in authority registry policy and signed append-only member key rotation/revocation with role-specific keyring projection",
+          "evidenceLevel": "Local independent issuer process, CLI and positive/negative lifecycle tests; offline caller-supplied files, not production registry custody"
         }
       ],
       "notImplemented": [
         "Production key custody/global revocation",
         "RNCS authority lease import",
-        "General delegation and high-impact actions"
+        "General delegation and high-impact actions",
+        "Online registry publication, trusted time, cross-device convergence and lost-key recovery"
       ],
       "ownerBoundary": [
         "RCL admission",
@@ -194,6 +200,11 @@
           "status": "implemented",
           "behavior": "Request/result/authority/route root binding",
           "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Signed authority registry sequence/previous-root provenance and immutable member fingerprint mapping",
+          "evidenceLevel": "Local independent issuer lifecycle and strict keyring mapping tests; no trusted timestamp or distributed agreement"
         }
       ],
       "notImplemented": [

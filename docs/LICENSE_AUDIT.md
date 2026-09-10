@@ -19,3 +19,5 @@ alpha.2 未新增第三方代码副本或运行时依赖。DPAPI/文件锁适配
 alpha.3 仅增加本仓库维护入口、固定 RCL Profile 和测试，未引入第三方源码或新依赖。既有许可边界继续适用。
 
 alpha.4 新增最小AAF来源：RNCS-Unified-Platform- 的 d345ecb9d8801a911f37534f40d7b9fdf5badb16，仅3个src文件及原LICENSE。复制固定git blob原始字节，未复制dirty工作树或未跟踪formal guard。原LICENSE只有一行Apache License 2.0声明，原样保留，不冒称其具有完整正文。逐文件blob与checkout换行差异见vendor/aaf/PROVENANCE.json。无新npm/Python依赖，仍仅内部第一方候选。
+
+alpha.6 仅新增本仓库 JavaScript 的 authority registry adapter、CLI、独立测试 issuer 和文档；未复制 formal-gate 或 AAF registry 源码，也未引入新 npm/Python 依赖。formal-gate 的 pinned key/fingerprint 与 AAF revocation-registry 只作为设计审计 donor reference，既有 vendor 许可和来源边界继续适用。registry/issuer/member key 文件是调用方配置，不随源码包发布。

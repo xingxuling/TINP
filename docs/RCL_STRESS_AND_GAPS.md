@@ -46,6 +46,16 @@ Generality：签名与权限分离、信任根不能由批准自带、提交前�
 
 Regression：确认绕过、缺/替换/撤销key、错误签者/范围/挑战、过期、ack后撤销/过期、策略降级、外部签章/时刻被网络协调器伪造、真实kill后过期历史批准只终结不执行。Donor advantage是真实签章格式兼容；外部可信时间/恢复锚点/人类托管仍为EXTERNAL_AUTHORITY_ANCHOR_GAP，不以本机DPAPI绕过。
 
+## alpha.6 authority registry 压力
+
+Task/missing capability：调用方 keyring 仍没有独立 authority Owner 的发布、撤销、轮换和跨主机收敛；gap type=AUTHORITY_PROVIDER_INTEGRATION + EXTERNAL_REGISTRY_GAP，不是 RCL Core 表达缺口。Workaround/donor：新增严格 `twni.authority-registry.v1` adapter，复用 `identity.mjs` 的 canonical seal，参考 formal-gate 的 pinned signer/fingerprint 与 AAF 的撤销注册表边界；issuer 在独立 child 进程签名，主机验证 sequence/previous root、append-only key epoch、predecessor、角色子集和成员公钥映射。
+
+Generality：签名 registry root、不可复活的 key lifecycle、角色不升级和调用时 keyring 投影可跨项目复用；candidate absorption 仅为 TINP host/profile，未增加 RCL primitive、未改变 RNCS/AAF owner。Provider advantage 是 Node crypto/IPC/JSON CLI 的本机适配；成员 key material、issuer custody、time 和 publication 仍是外部 authority 责任。
+
+Regression：伪造 issuer、issuer key 替换/撤销、policy/root/sequence/previous root 篡改、旧成员复活、authority 或 roles 升级、错误 predecessor/epoch、重复 active key、getter/inherited keyring、缺失或指纹不符成员 key、expired/not-yet-valid snapshot 都 fail closed。CLI 与 `recovery-anchor` opt-in bridge 均只读 registry，不写 checkpoint 或自动发布。
+
+Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 仅有本机 profile 与负例证据；PERFORMANCE 只测本机 CLI/crypto，不代表 registry SLA；AI_GENERATE 未评估；EVIDENCE 等待 alpha.6 `LOCAL_VERIFICATION.json`、Court 和 delivery receipt。九门仍 `NOT_ADJUDICATED`。
+
 ## alpha.5 外部恢复锚点压力
 
 Task/missing capability：完整旧目录回放无法仅靠同一用户 DPAPI 识别；keyring 最新性和锚点序号需要外部 authority 输入。Workaround/donor：新增严格的 `twni.external-recovery-anchor.v1` adapter，固定 Ed25519 指纹，签署 ledger prefix/state projection，独立 signer child 只返回签名，主机验证并显式导入。
