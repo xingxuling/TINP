@@ -1,8 +1,8 @@
 {
   "format": "twni.protocol-registry.v0.1",
-  "version": "0.1.0-alpha.10",
+  "version": "0.1.0-alpha.11",
   "classification": "candidate-local-profile",
-  "scope": "Three independent local processes; UDP/TCP loopback only",
+  "scope": "Three independent local network processes; UDP/TCP loopback plus a two-process public-history replay harness",
   "statusVocabulary": [
     "implemented",
     "partial",
@@ -186,6 +186,11 @@
           "status": "implemented",
           "behavior": "Opt-in external convergence witness binding an exact public store state with a retained contiguous witness sequence",
           "evidenceLevel": "Local independent witness process, request/verify CLI and positive/negative store-replacement, witness-replacement and rollback tests; caller-retained witness only, not online authority or trusted time"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Local multi-process public-history replay with explicit fork, mirror-set drift and sequence-gap rejection",
+          "evidenceLevel": "Two independent local Node child processes and directories replay public state and preserve rejected durable bytes; not physical-host convergence or production consensus"
         }
       ],
       "notImplemented": [
@@ -245,6 +250,11 @@
           "status": "implemented",
           "behavior": "External convergence witness signs policy, history and complete store-state roots and detects retained-root replacement or rollback",
           "evidenceLevel": "Local independent witness signer, CLI, demo and strict signature/time/chain/state tests; no protection when store and witness history are replaced together"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Cross-process replay evidence transfers public convergence state and retains a verified prefix after conflict rejection",
+          "evidenceLevel": "Local two-process replay demo/test with separate directories; no encrypted cross-host transport, trusted time or durable distributed agreement"
         }
       ],
       "notImplemented": [

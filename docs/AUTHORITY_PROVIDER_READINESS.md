@@ -9,11 +9,12 @@ counter, a transparency log, or a human identity system.
 ## Current reality
 
 The repository is `https://github.com/xingxuling/TINP.git`, on the candidate
-branch `codex/tinp-registry-v06`. The local alpha.10 profile can verify an
-offline registry, mirror quorum, finite history, local append-only prefix and
-an independently signed store-state witness. A same-call signature and the
-local `nowMs` value are not external publication, trusted time, or durable
-cross-host convergence.
+branch `codex/tinp-registry-v06`. The local alpha.11 profile can verify an
+offline registry, mirror quorum, finite history, local append-only prefix, an
+independently signed store-state witness and a public-history replay between
+two independent local processes/directories. A same-call signature, local
+process separation and the local `nowMs` value are not external publication,
+trusted time, or durable physical-host convergence.
 
 On 2026-09-10, the public repositories under the GitHub owner `xingxuling`
 were inspected. `OPP`, `RNCS-Unified-Platform-` and `RCL` are useful semantic
@@ -74,4 +75,3 @@ Until those inputs exist, the alpha.10 offline adapters remain the smallest
 honest boundary. Adding a local publisher, synthetic trusted clock, guessed
 Owner, or test keyring would create a parallel authority and would not close
 this gap.
-

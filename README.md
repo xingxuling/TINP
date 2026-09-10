@@ -1,6 +1,6 @@
 # TaoWind 新互联网协议套件
 
-v0.1.0-alpha.10 是一个可运行的内部工程候选：普通用户输入一句能力请求，系统在三个独立本机进程之间自动发现、调用 OPP 协商契约、验证权限、建立会话、经 A→B→C 传输并返回带证据的执行结果。authority registry、多镜像分发、历史收敛、本机历史 store 与外部收敛见证是可选的离线签名桥接。
+v0.1.0-alpha.11 是一个可运行的内部工程候选：普通用户输入一句能力请求，系统在三个独立本机进程之间自动发现、调用 OPP 协商契约、验证权限、建立会话、经 A→B→C 传输并返回带证据的执行结果。authority registry、多镜像分发、历史收敛、本机历史 store、外部收敛见证与跨进程 public-history replay 是可选的离线签名桥接和压力验证。
 
 本版只有一个刻意收窄的能力：精确统计 Unicode 码点数量。它可以验证主体、权限、路由、迁移、退化和回执能否共同工作；它不代表整个新互联网已经实现。
 
@@ -25,7 +25,7 @@ npm run verify
 npm run recovery:demo
 ```
 
-`verify` 冻结源码哈希，按文件顺序运行全部测试，然后分别启动 UDP 和 TCP 三进程、持久恢复见证、外部恢复锚点整目录回放见证、独立 issuer 的 authority registry 轮换见证、独立多镜像分发见证、连续历史收敛见证、本机历史 store 扩展见证和独立外部收敛见证，保存签名回执、磁盘账本和有界计时到 `evidence/0.1.0-alpha.10/LOCAL_VERIFICATION.json`。重放并发测试内部仍使用真实并发。`npm test` 也按文件顺序运行，避免 Windows 临时目录清理竞态；发行证据使用同一顺序入口。
+`verify` 冻结源码哈希，按文件顺序运行全部测试，然后分别启动 UDP 和 TCP 三进程、持久恢复见证、外部恢复锚点整目录回放见证、独立 issuer 的 authority registry 轮换见证、独立多镜像分发见证、连续历史收敛见证、本机历史 store 扩展见证、独立外部收敛见证和两个独立本机进程的 public-history replay 见证，保存签名回执、磁盘账本和有界计时到 `evidence/0.1.0-alpha.11/LOCAL_VERIFICATION.json`。重放并发测试内部仍使用真实并发。`npm test` 也按文件顺序运行，避免 Windows 临时目录清理竞态；发行证据使用同一顺序入口。
 
 ## 已实现的闭环
 
@@ -40,7 +40,7 @@ npm run recovery:demo
 
 ## 证据与边界
 
-阅读 `docs/REALITY_AUDIT.md`、`docs/CANONICAL_OWNERSHIP.md`、`docs/SPEC_DEVIATIONS.md`、`docs/AUTHORITY_PROVIDER_READINESS.md`、`evidence/0.1.0-alpha.10/INTEGRATION_COURT.md` 和 `evidence/0.1.0-alpha.10/EVIDENCE_LEDGER.json`。原规范保留在 `constitution/`，未修改下载文件或同步项目参考文件。
+阅读 `docs/REALITY_AUDIT.md`、`docs/CANONICAL_OWNERSHIP.md`、`docs/SPEC_DEVIATIONS.md`、`docs/AUTHORITY_PROVIDER_READINESS.md`、`evidence/0.1.0-alpha.11/INTEGRATION_COURT.md` 和 `evidence/0.1.0-alpha.11/EVIDENCE_LEDGER.json`。原规范保留在 `constitution/`，未修改下载文件或同步项目参考文件。
 
 当前是 **VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED**。没有公网、真实异机部署、军用安全认证、互联网规模收敛、生产密钥托管或第三方安全评估。签名提供当前夹具内的认证与完整性，传输没有 TLS 机密性，因此严格限制回环地址。
 
@@ -231,3 +231,13 @@ npm run authority-registry -- convergence-witness-verify "C:\配置\witness.json
 ```
 
 外部见证只绑定调用方提供的精确本机 store；上一份见证必须由调用方另行保留，替换 store 与同序号见证才可在该保留根上被发现。它不提供在线发布/撤销、透明日志、可信时钟、见证文件自身的独立持久保护、跨主机共识、硬件托管或生产身份服务。详见 `docs/AUTHORITY_REGISTRY_OWNER.md` 与 `docs/AUTHORITY_REGISTRY_SECURITY_COURT.md`。
+
+## Authority registry 跨进程 public-history replay
+
+alpha.11 增加一个只复用现有 convergence-store 语义的压力 harness。两个独立 Node 子进程各自拥有单独目录，通过 IPC 传递仅含公开 key、签名和 store 状态的序列化数据；第二个进程完成导入、幂等 replay 和 seq3 扩展。随后对同长度签名分叉、镜像集合漂移和序号缺口提交候选，验证器拒绝并保持原有 durable bytes。
+
+```powershell
+npm run authority-registry-cross-host-replay:demo
+```
+
+这是真实本机进程/文件系统压力证据，不是两台物理设备、加密跨主机传输、可信时间、在线 authority 或生产冲突共识。完整结果见 `evidence/0.1.0-alpha.11/authority-registry-cross-host-replay.json`；外部 Owner 交接仍以 `docs/AUTHORITY_PROVIDER_READINESS.md` 为准。

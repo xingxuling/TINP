@@ -47,3 +47,18 @@ the minimum publication, revocation, trusted-time, transparency, cross-host
 recovery, custody and staging evidence required before TINP can consume a
 read-only production provider. The current search found no such provider;
 until an Owner supplies it, this profile remains `BLOCKED_EXTERNAL_OWNER`.
+
+## alpha.11 cross-process replay boundary
+
+The alpha.11 replay harness reuses the store and convergence validators above.
+Two local Node child processes own separate directories and exchange only a
+serialized public store state. The second process verifies the imported
+prefix, returns `unchanged` for an exact replay and extends it. A signed
+same-length alternate history, mirror-set drift and a sequence gap are then
+rejected without changing the durable state.
+
+This is a local process/filesystem stress case, not a production cross-host
+transport or authority. The harness does not provide encrypted transfer,
+trusted time, host identity, online publication, global revocation or a
+distributed conflict winner. An external Owner must still satisfy the
+readiness contract before this profile can be connected to production.

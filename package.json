@@ -1,6 +1,6 @@
 {
   "name": "@taowind/tinp-suite",
-  "version": "0.1.0-alpha.10",
+  "version": "0.1.0-alpha.11",
   "private": true,
   "type": "module",
   "scripts": {
@@ -18,7 +18,8 @@
     "authority-registry-distribution:demo": "node scripts/authority-registry-distribution-demo.mjs",
     "authority-registry-convergence:demo": "node scripts/authority-registry-convergence-demo.mjs",
     "authority-registry-convergence-store:demo": "node scripts/authority-registry-convergence-store-demo.mjs",
-    "authority-registry-convergence-witness:demo": "node scripts/authority-registry-convergence-witness-demo.mjs"
+    "authority-registry-convergence-witness:demo": "node scripts/authority-registry-convergence-witness-demo.mjs",
+    "authority-registry-cross-host-replay:demo": "node scripts/authority-registry-cross-host-replay-demo.mjs"
   },
   "engines": {
     "node": ">=22"

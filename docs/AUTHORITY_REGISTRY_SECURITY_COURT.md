@@ -39,3 +39,21 @@ RCL remains the owner of recovery and transaction admission. AAF remains the own
 | AI_GENERATE | NOT_RUN | No independent generation evaluation |
 | EVIDENCE | CANDIDATE evidence | Alpha.10 verification JSON, tests TAP, source hashes and delivery receipt |
 | K400 promotion | NOT_ADJUDICATED | No universal cell admission is implied |
+
+## Alpha.11 replay addendum
+
+Alpha.11 adds a process/filesystem stress harness around the existing store
+adapter. Two independent Node child processes with separate directories
+exchange a public convergence state; the second process verifies, replays and
+extends the history. A valid same-length signed fork is rejected by the store
+prefix check, mirror-set drift is rejected by convergence verification, and a
+missing sequence is rejected before the store changes. The harness asserts
+that the rejected state root and bytes remain unchanged, and that no private
+key material is transferred.
+
+The result is `VERIFIED_LOCAL_MULTI_PROCESS_CROSS_HOST_REPLAY` in
+`evidence/0.1.0-alpha.11/authority-registry-cross-host-replay.json`. The
+name describes the stress boundary; it does not certify two physical hosts,
+encrypted transport, trusted time, online publication, global revocation or
+distributed production consensus. The external Owner gate remains
+`BLOCKED_EXTERNAL_OWNER`, and all K400 cells remain `NOT_ADJUDICATED`.

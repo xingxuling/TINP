@@ -91,3 +91,12 @@ alpha.2起可选Windows持久模式已保存网络密钥；alpha.4把操作员�
 `src/authority-registry-convergence-witness.mjs` 只拥有 TINP 对本机 convergence store 状态的外部签名绑定适配。`twni.authority-registry-convergence-witness-policy.v1` 固定独立 witness signer 的 SPKI 指纹、scope 与 store format；`twni.authority-registry-convergence-witness.v1` 绑定 policy root、外部 witness sequence/previous root、distribution/registry 标识、`historyRoot`、store 序号边界、完整 `storeStateRoot` 与调用方时间。验证器先验签见证，再复验精确 store 和底层 registry/distribution/convergence 输入；调用方提供上一份已验签见证时，序号必须连续、前一见证根必须一致，同序号不同根和回退均拒绝。
 
 见证签署方的私钥、见证文件保留、发布/撤销、可信时间和事故处置由 external authority Owner 持有。TINP 的 request 只读导出 body，verify 只消费调用方提供的 witness policy/keyring/store/registry 输入；此层不改变 RCL Core、RNCS/RFE world authority、AAF approval 或 TINP 网络/存储 Owner。见证能在独立保留上一根时发现结构有效的 store 或 witness 替换，但不能在 store 与 witness 文件同时被替换时建立外部历史，也不提供在线透明日志、跨主机共识、硬件托管或生产身份认证。
+
+## alpha.11 cross-process replay boundary
+
+跨进程 public-history replay 继续复用 TINP convergence-store 与 convergence
+validator，Owner 仍是调用方部署与外部 authority；本轮没有新增 authority
+语义。两个独立本机 Node 进程各持有一个目录，IPC 只搬运公开状态；分叉、镜像
+集合漂移和序号缺口由既有验证器拒绝，冲突状态保留为未决。这个 harness 是
+`P05/P06` 的本机压力证据，不是两台物理设备的 Owner、加密传输、可信时钟或
+生产共识。

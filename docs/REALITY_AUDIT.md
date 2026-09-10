@@ -98,3 +98,21 @@ This proves local atomic write/read and exact-prefix behavior under one director
 The current candidate adds an opt-in `twni.authority-registry-convergence-witness-policy.v1` and `twni.authority-registry-convergence-witness.v1` adapter. A separate witness child signs a body that binds the caller's complete public convergence-store state, `historyRoot`, policy identifiers, store sequence bounds and a caller-supplied local timestamp. Verification accepts the first witness and a contiguous extension, verifies the underlying registry/distribution/convergence inputs, rejects a structurally valid replacement store, rejects a same-sequence replacement witness when its prior root is retained, rejects witness sequence rollback and rejects a retained predecessor with an invalid signature. The request and verify CLIs were exercised; request is read-only and does not expose private key material.
 
 This is a local external-signature binding, not online publication or an independent global counter. Witness files and prior roots remain caller-retained inputs; replacing both the store and witness history together, omitted registry history, trusted time, hardware custody, cross-host convergence, online revocation and production identity enrollment remain unproved. No RCL Core, RNCS world authority or AAF owner changed.
+
+## alpha.11 authority registry cross-process public-history replay
+
+The candidate now runs a bounded replay harness over the existing convergence
+store, rather than adding another authority implementation. Two independent
+Node child processes own separate local directories. One exports public store
+state; the other imports it, verifies the same history, replays it idempotently
+and extends it with sequence 3. The harness then submits a validly signed
+same-length fork, a threshold-valid bundle with mirror-set drift and a history
+with a missing sequence. Each is rejected and the receiving store remains at
+the previously verified root. The focused test and full verification invoke
+the real child processes; no private key crosses IPC.
+
+This is evidence for process and filesystem isolation on one Windows host. It
+does not establish two physical hosts, encrypted transport, an independent
+clock, online publication, global revocation, or production conflict
+consensus. The remaining external Owner prerequisites are unchanged and are
+listed in `docs/AUTHORITY_PROVIDER_READINESS.md`.

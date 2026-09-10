@@ -107,3 +107,13 @@ Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOW
 ## alpha.10 后续 external authority handoff 审计
 
 本轮对 GitHub `xingxuling` 公共仓库和 TINP 本地源码做了有界考古，未找到在线 authority publisher、revocation service、透明日志或跨主机 recovery provider。该缺口属于 `AUTHORITY_PROVIDER_INTEGRATION + EXTERNAL_OWNER_GAP`，不是 RCL Core 表达缺口；不建立本地伪 publisher、合成 trusted clock 或测试 keyring 作为替代。Owner 的输入、staging 证据与 fail-closed admission gates 见 `docs/AUTHORITY_PROVIDER_READINESS.md`，观察记录见 `audit/authority-provider-search-2026-09-10.json`。K400 九门继续 `NOT_ADJUDICATED`。
+
+## alpha.11 authority registry cross-process replay 压力
+
+Task/missing capability：alpha.10 的 store 与 external witness 只在一个本机目录和调用进程中验证，缺少两个独立运行体交换公开历史后的 replay、冲突保留和序号缺口证据；gap type=`AUTHORITY_PROVIDER_INTEGRATION + LOCAL_MULTI_PROCESS_REPLAY_GAP`，不是 RCL Core 表达缺口。Workaround/donor：复用现有 `authority-registry-convergence-store.mjs`、`authority-registry-convergence.mjs` 和独立 signer children，新增 test-only host worker 与 replay demo，不新增 authority 根。
+
+Generality：公开状态导入、幂等 replay、完整前缀扩展、签名分叉/镜像漂移/序号缺口 fail-closed 及拒绝后 durable bytes 保留可跨本机部署复用；candidate absorption 仍是 TINP host/profile，不改变 RCL、RNCS/RFE 或 external authority Owner。Provider advantage 是 Node IPC、文件系统和现有 canonical validators；物理跨主机加密、可信时间、在线发布和分布式冲突处置仍未实现。
+
+Regression：两个独立子进程各自持有目录并完成 first append、public-state import、exact replay、seq3 extension；同长度替换历史、threshold-valid mirror-set drift、缺失 seq3 的 seq4 candidate 均在写入前拒绝，原 historyRoot 和文件字节保持不变，IPC 传输不含私钥。
+
+Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 仅有本机独立进程与文件证据；PERFORMANCE 未作物理跨主机 SLA 或加密传输吞吐声明；AI_GENERATE 未评估；EVIDENCE 以 alpha.11 `LOCAL_VERIFICATION.json`、Court 与 delivery receipt 固化。九门仍 `NOT_ADJUDICATED`。
