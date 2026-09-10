@@ -71,7 +71,8 @@ processes on two hosts:
    traces, negative cases and human approval. K400 remains `NOT_ADJUDICATED`
    until its nine gates are separately reviewed.
 
-Until those inputs exist, the alpha.10 offline adapters remain the smallest
+Until those inputs exist, the alpha.11 offline adapters and local replay
+harness remain the smallest
 honest boundary. Adding a local publisher, synthetic trusted clock, guessed
 Owner, or test keyring would create a parallel authority and would not close
 this gap.

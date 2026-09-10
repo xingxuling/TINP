@@ -48,7 +48,7 @@ npm run recovery:demo
 
 SLA、成本、地域、能耗是受信本地配置与约束，非实测商业保证或结算。保留期零值指不留原始请求文本；回执和摘要为审计保存，尚无完整生命周期清理机制。P12 应用种子、P13 跨设备运行、P14 私网和 P15 全面旧网适配未在本版实现。RNCS/RFE 世界事实与提交权没有迁入本仓库。
 
-本轮新增恢复闭环、外部恢复锚点、authority registry、多镜像分发、历史收敛、本机历史 store 和外部收敛见证桥接，审查见 `docs/RECOVERY_OWNER.md`、`docs/PROTECTED_STORAGE.md`、`docs/RECOVERY_SECURITY_COURT.md`、`docs/RECOVERY_ANCHOR_OWNER.md`、`docs/RECOVERY_ANCHOR_SECURITY_COURT.md`、`docs/AUTHORITY_REGISTRY_OWNER.md` 和 `docs/AUTHORITY_REGISTRY_SECURITY_COURT.md`。原始待处理请求只保存在加密 checkpoint，恢复仅查找已存在回执；未找到时保留未决状态并拒绝继续，不自动重发。外部锚点能拒绝已知新锚点之前的完整旧目录回放，registry 能验证独立 issuer 的签名快照并推导角色 keyring，多镜像 bundle 能要求同一 registry root 的签名阈值并拒绝分叉，历史 bundle 能检查连续序号、前根、重复/分叉快照和稳定镜像集合，本机 store 能在显式 append 时原子保存完整历史并拒绝回退或改写，外部收敛见证能把独立签名绑定到精确 store 状态并检测保留见证下的替换/回退；但上次显式锚定之后的未锚定尾部、在线注册/撤销、可信时间、跨设备密钥迁移和全网持久收敛仍未解决。详见 `docs/NEXT_GAP.md`。
+本轮新增恢复闭环、外部恢复锚点、authority registry、多镜像分发、历史收敛、本机历史 store、外部收敛见证和跨进程 public-history replay 桥接，审查见 `docs/RECOVERY_OWNER.md`、`docs/PROTECTED_STORAGE.md`、`docs/RECOVERY_SECURITY_COURT.md`、`docs/RECOVERY_ANCHOR_OWNER.md`、`docs/RECOVERY_ANCHOR_SECURITY_COURT.md`、`docs/AUTHORITY_REGISTRY_OWNER.md` 和 `docs/AUTHORITY_REGISTRY_SECURITY_COURT.md`。原始待处理请求只保存在加密 checkpoint，恢复仅查找已存在回执；未找到时保留未决状态并拒绝继续，不自动重发。外部锚点能拒绝已知新锚点之前的完整旧目录回放，registry 能验证独立 issuer 的签名快照并推导角色 keyring，多镜像 bundle 能要求同一 registry root 的签名阈值并拒绝分叉，历史 bundle 能检查连续序号、前根、重复/分叉快照和稳定镜像集合，本机 store 能在显式 append 时原子保存完整历史并拒绝回退或改写，外部收敛见证能把独立签名绑定到精确 store 状态并检测保留见证下的替换/回退，跨进程 replay 能在两个独立本机目录间复验公开状态并保留分叉/漂移/缺口冲突；但上次显式锚定之后的未锚定尾部、在线注册/撤销、可信时间、跨设备密钥迁移和全网持久收敛仍未解决。详见 `docs/NEXT_GAP.md`。
 
 ## 许可
 
