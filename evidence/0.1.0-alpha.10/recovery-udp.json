@@ -1,0 +1,23 @@
+{
+  "状态": "VERIFIED_LOCAL_RECOVERY_DEMO",
+  "transport": "udp",
+  "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAfWGzBsNWzc38BF6Bx41+V1yUqDmbyE3QIC3m4QrSkrQ=\n-----END PUBLIC KEY-----\n",
+  "原结果": {
+    "count": 4
+  },
+  "恢复后结果": {
+    "count": 4
+  },
+  "目标节点旧进程": 47924,
+  "目标节点新进程": 62984,
+  "历史执行数保留": true,
+  "主体密钥保留": true,
+  "会话保留": true,
+  "未自动续租": true,
+  "撤销后重启仍拒绝": true,
+  "已验证证据根": "2cc031da514d46062758dc17cb287797648b8dbc7d5999ec647128ddd8ed7fc3",
+  "范围": "Windows当前用户、本机真实进程；非公网、非整目录防回滚证明",
+  "ledger": "evidence/0.1.0-alpha.10/recovery-udp.jsonl",
+  "ledgerSha256": "06a4fb201596ea12102a30f4786166465ceee58a86071ee80e4fdba4cd9cf123",
+  "scope": "Actual node kill/restart and coordinator close/reopen on Windows; coordinator force-kill cases separately in tests, UDP only"
+}

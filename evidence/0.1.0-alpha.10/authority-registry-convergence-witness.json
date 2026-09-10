@@ -1,0 +1,21 @@
+{
+  "format": "twni.authority-registry-convergence-witness-demo.v1",
+  "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_CONVERGENCE_WITNESS",
+  "firstVerification": true,
+  "extensionVerification": true,
+  "firstSequence": 1,
+  "lastSequence": 2,
+  "historyRoot": "21bd043411c81eff90e4334a4f1cb03903bfb770eb2f93ca960a731909f5bf50",
+  "firstWitnessRoot": "16fee1a9dd7aa66b23c0c2844e7ebf0a9e84bde1f5cc09cc0a639502098103c6",
+  "secondWitnessRoot": "3065d0976b6fa7fa2806d1c18e26c1d6f57c6cc672a99b3ad13604605de078a4",
+  "replacementStoreDetected": true,
+  "replacementStoreRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_WITNESS_STORE_MISMATCH",
+  "replacementWitnessDetected": true,
+  "replacementWitnessRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_WITNESS_REPLACED",
+  "rollbackDetected": true,
+  "rollbackRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_WITNESS_SEQUENCE_ROLLBACK",
+  "storeWritten": true,
+  "storeBytes": 5754,
+  "keyMaterialPersisted": false,
+  "scope": "Actual independent convergence-witness signer child binds exact local store state and contiguous witness sequence; witness retention remains caller supplied, with no online transparency log, trusted clock or durable cross-host consensus."
+}
