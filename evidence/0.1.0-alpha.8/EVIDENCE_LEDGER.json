@@ -1,0 +1,102 @@
+{
+  "format": "twni.delivery-evidence-ledger.v0.8",
+  "version": "0.1.0-alpha.8",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "tests": {
+    "command": ["C:\\Program Files\\nodejs\\node.exe", "--test", "--test-concurrency=1", "--test-reporter=tap", "tests/aaf-operator.test.mjs", "tests/authority-registry-cli.test.mjs", "tests/authority-registry-convergence-cli.test.mjs", "tests/authority-registry-convergence.test.mjs", "tests/authority-registry-distribution-cli.test.mjs", "tests/authority-registry-distribution.test.mjs", "tests/authority-registry.test.mjs", "tests/conformance.test.mjs", "tests/operator-cli.test.mjs", "tests/operator-security.test.mjs", "tests/opp-bridge.test.mjs", "tests/pending-cli.test.mjs", "tests/pending-security.test.mjs", "tests/profiles.test.mjs", "tests/protected-store.test.mjs", "tests/rcl-guard.test.mjs", "tests/rcl-migration.test.mjs", "tests/rcl-pending-retirement.test.mjs", "tests/rcl-recovery.test.mjs", "tests/rcl-route.test.mjs", "tests/recovery-anchor-cli.test.mjs", "tests/recovery-anchor.test.mjs", "tests/recovery-gate-integration.test.mjs", "tests/recovery-security.test.mjs", "tests/security-review.test.mjs", "tests/shared-ir.test.mjs", "vendor/tinp/tests/tinp-v02.test.mjs", "vendor/tinp/tests/tinp.test.mjs"],
+    "exitCode": 0,
+    "count": 159,
+    "passed": 159,
+    "failed": 0,
+    "stdout": "evidence/0.1.0-alpha.8/tests.tap",
+    "stdoutSha256": "a82ffa525ac5887c339c1a863fa94eef8807bb17c2591b1296f64270b687575a",
+    "stderr": "evidence/0.1.0-alpha.8/tests.stderr.txt"
+  },
+  "verificationFile": "evidence/0.1.0-alpha.8/LOCAL_VERIFICATION.json",
+  "verificationSha256": "2fe3aa14ffe77f3849ce015724f62381bceb0f611d0c862fd6f00fd5b6819ef7",
+  "sourceTreeRoot": "b55f1d8cb190f64a19284d9b00be169a59f8cbb2ab60dfad589aa3210243116b",
+  "sourceFileCount": 176,
+  "startedAt": "2026-09-10T06:38:31.676Z",
+  "finishedAt": "2026-09-10T06:47:57.933Z",
+  "baseline": {
+    "commit": "ea77fd013eefeb062847b2c239fd46ed613aee0f",
+    "ledger": "evidence/0.1.0-alpha.7/EVIDENCE_LEDGER.json",
+    "sha256": "cf1050d996d866318ac8eba5dd5db4a5763987bfd2232e7d989a275bedc316c"
+  },
+  "change": {
+    "owner": "TINP authority-registry host adapter plus offline multi-mirror distribution and finite historical convergence adapters",
+    "policyFormats": ["twni.authority-registry-policy.v1", "twni.authority-registry-distribution-policy.v1"],
+    "registryFormat": "twni.authority-registry.v1",
+    "distributionFormats": ["twni.authority-registry-distribution-receipt.v1", "twni.authority-registry-distribution.v1"],
+    "convergenceFormats": ["twni.authority-registry-convergence.v1", "twni.authority-registry-convergence-verification.v1"],
+    "bridge": "Optional authority registry verification, recovery-anchor role keyring projection, per-snapshot mirror quorum and caller-supplied historical continuity observation",
+    "rclCoreChanged": false,
+    "privateKeyBoundary": "Issuer, mirror and member private keys remain outside registry/distribution/convergence bundle/checkpoint; test children return public keys and signatures only"
+  },
+  "authorityRegistry": {
+    "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_LIFECYCLE",
+    "firstSequence": 1,
+    "secondSequence": 2,
+    "firstRegistryRoot": "35348f545908deb724f7a8fb4ff610d9982dd1a98b7b20764ae608b318fe84f8",
+    "secondRegistryRoot": "1896993b2c1615fcda203bc9cdbc961e1ace61ffcbc7ef5520d872986d801f91",
+    "rotatedSigners": ["operator:owner-v1 → operator:owner-v2", "recovery:witness-v1 → recovery:witness-v2"],
+    "revokedSigners": ["operator:owner-v1", "recovery:witness-v1"],
+    "activeSigners": ["operator:owner-v2", "recovery:witness-v2"],
+    "oldKeyDenied": true,
+    "keyMaterialPersisted": false,
+    "witness": "evidence/0.1.0-alpha.8/authority-registry.json"
+  },
+  "authorityRegistryDistribution": {
+    "status": "VERIFIED_LOCAL_OFFLINE_DISTRIBUTION_QUORUM",
+    "sequence": 1,
+    "registryRoot": "61e9b4ef703a48974630036a87e477c36fd3a4bf67c4ace96039b51c1e694bca",
+    "distributionPolicyRoot": "e6cf182e237c6894fe7fc419d3ea8d90da88371b2d98a1ac011a56e010a4b6c1",
+    "threshold": 2,
+    "acceptedMirrors": ["mirror:alpha", "mirror:beta", "mirror:gamma"],
+    "forkDetected": true,
+    "forkRejectionCode": "AUTHORITY_REGISTRY_DISTRIBUTION_FORK_DETECTED",
+    "insufficientQuorum": true,
+    "insufficientQuorumCode": "AUTHORITY_REGISTRY_DISTRIBUTION_QUORUM_INSUFFICIENT",
+    "keyMaterialPersisted": false,
+    "witness": "evidence/0.1.0-alpha.8/authority-registry-distribution.json"
+  },
+  "authorityRegistryConvergence": {
+    "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_CONVERGENCE",
+    "firstSequence": 1,
+    "lastSequence": 2,
+    "registryRoots": ["8a2573d38764793ec28c124303874e16e60ca18ec1a2da58779f0400132529c0", "8e0241ec369e6ce6b4e937027dc5f83ac5e7e1cc6375be86d501342fbfdc3834"],
+    "historyRoot": "bca8a5e35b41cee0567e1f4b36573b7d3770c589933bbee6f2131f4268205a7b",
+    "stableMirrors": ["mirror:alpha", "mirror:beta", "mirror:gamma"],
+    "forkDetected": true,
+    "forkRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_FORK_DETECTED",
+    "mirrorSetDrift": true,
+    "mirrorSetDriftCode": "AUTHORITY_REGISTRY_CONVERGENCE_MIRROR_SET_DRIFT",
+    "keyMaterialPersisted": false,
+    "witness": "evidence/0.1.0-alpha.8/authority-registry-convergence.json"
+  },
+  "authorityBoundary": "Offline caller-selected registry/distribution/convergence/policy/issuer/mirror/member files and local nowMs; no human enrollment, trusted clock, online publication, transparent log, durable conflict history or hardware custody",
+  "rcl": {
+    "coreChanged": false,
+    "profilesReused": ["rcl/recovery.rcl", "rcl/pending-retirement.rcl"],
+    "integration": "Registry, mirror and historical continuity verification are host observations; existing RCL predicates remain canonical",
+    "candidateCells": ["K057", "K110", "K117", "K250", "K257"],
+    "gates": {"EXPRESS": "NOT_ADJUDICATED", "COMPILE": "NOT_ADJUDICATED", "LOWER": "NOT_ADJUDICATED", "EXECUTE": "NOT_ADJUDICATED", "CORRECT": "NOT_ADJUDICATED", "ROBUST": "NOT_ADJUDICATED", "PERFORMANCE": "NOT_ADJUDICATED", "AI_GENERATE": "NOT_ADJUDICATED", "EVIDENCE": "NOT_ADJUDICATED"}
+  },
+  "externalActions": {
+    "githubActions": "NOT_RUN",
+    "merge": "NOT_RUN",
+    "deployment": "NOT_DEPLOYED",
+    "publicNetwork": "NOT_RUN",
+    "candidateBranch": "codex/tinp-registry-v06",
+    "candidateCommit": "f57021024b14dd3e2165b5c9c7b56b7f35821646",
+    "candidatePush": "Pending alpha.8 candidate packaging and push"
+  },
+  "limits": [
+    "Registry, distribution and convergence policy/keyrings are offline inputs; a valid quorum/history does not establish online freshness or human identity",
+    "Local nowMs is not a trusted timestamp; no publication, transparent log, global revocation or durable cross-host conflict convergence exists",
+    "No hardware custody, lost-key recovery, cross-device encrypted anchor, post-history suffix protection or code/configuration rollback protection",
+    "No arbitrary side-effect transactions or complete RNCS world grant",
+    "Warm local timing samples exclude signing, DPAPI, startup, WAN, throughput and SLA"
+  ],
+  "nextGap": "Production authority registry publication, trusted time, transparent audit, lost-key recovery and durable cross-device convergence"
+}
