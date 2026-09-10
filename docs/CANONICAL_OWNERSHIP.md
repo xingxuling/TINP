@@ -48,3 +48,9 @@ TINP `makeSubjectAddress` requires both `subjectId` and `nodeId` and produces `t
 RCL executes transaction, migration and final route admission predicates. Candidate path enumeration and metric aggregation remain specialized JavaScript providers. The route-policy integration gap identified during audit was addressed by `rcl/route.rcl`, invoked on the execution node using trusted route observations and signed lease limits before provider execution; this is not a new RCL primitive. Mature socket/crypto/frame implementations remain auxiliary providers.
 
 The local authority key and subject keys are ephemeral fixture roots distributed through trusted local process control. Node-signed receipts attest this experiment. They do not establish public enrollment, production key custody, global revocation or RNCS commit authority. OPP acceptance intersects declarations and grants no execution authority.
+
+## alpha.4 外部操作员边界
+
+新增复用 AAF 的 approval receipt、canonical seal 和签章验证三个原始模块。TINP adapter 检查固定SPKI指纹、challenge root、精确role/scope、canonical时间窗和外部撤销输入，不导入默认可免签的完整AAF evaluator，不构造虚假RNCS formal requirements。网络退休challenge作为本profile的AAF proposal_root，不代表RNCS世界proposal或commit。原RCL退休Profile继续裁决已认证操作员与撤销确认事实，无Core变更。
+
+alpha.2起可选Windows持久模式已保存网络密钥；alpha.4仅把操作员公钥指纹写入该checkpoint。外部公钥keyring与签署私钥保持分离，已启用pin状态不得通过确认参数降级。初次本机pin不是生产身份注册；完整目录回滚和受信外部时间仍需独立锚点。

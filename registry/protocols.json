@@ -1,6 +1,6 @@
 {
   "format": "twni.protocol-registry.v0.1",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "classification": "candidate-local-profile",
   "scope": "Three independent local processes; UDP/TCP loopback only",
   "statusVocabulary": [
@@ -156,6 +156,11 @@
           "status": "implemented",
           "behavior": "Signed monotonic local revocation watermark, durable recovery synchronization and expiry",
           "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Opt-in external AAF operator approval for whole-lease pending retirement; pinned SPKI fingerprint, exact challenge and scope, bounded time and current caller-supplied revocation metadata",
+          "evidenceLevel": "Local independent signer process, CLI and real crash tests; not production human enrollment"
         }
       ],
       "notImplemented": [
@@ -166,7 +171,8 @@
       "ownerBoundary": [
         "RCL admission",
         "TWNI local lease profile",
-        "RNCS world authority retained"
+        "RNCS world authority retained",
+        "AAF approval format/signature retained; TINP narrow adapter only"
       ]
     },
     {

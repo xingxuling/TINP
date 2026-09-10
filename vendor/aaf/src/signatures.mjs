@@ -1,0 +1,6 @@
+import crypto from 'node:crypto';
+import {canonicalJson,clone,AAFError} from './canonical.mjs';
+export function generateEd25519Keypair(){const {publicKey,privateKey}=crypto.generateKeyPairSync('ed25519');return{public_key_pem:publicKey.export({type:'spki',format:'pem'}).toString(),private_key_pem:privateKey.export({type:'pkcs8',format:'pem'}).toString()};}
+export function signObject(value,privateKeyPem,signerId){const payload=clone(value);delete payload.signature;const sig=crypto.sign(null,Buffer.from(canonicalJson(payload)),privateKeyPem).toString('base64');return{...payload,signature:{algorithm:'Ed25519',signer_id:String(signerId),value:sig}};}
+export function verifySignedObject(value,publicKeyPem){if(value?.signature?.algorithm!=='Ed25519')return false;const payload=clone(value);const sig=payload.signature;delete payload.signature;try{return crypto.verify(null,Buffer.from(canonicalJson(payload)),publicKeyPem,Buffer.from(sig.value,'base64'));}catch{return false;}}
+export function requireValidSignature(value,keyring){const signer=value?.signature?.signer_id; if(!signer)throw new AAFError('SIGNATURE_REQUIRED');const key=keyring?.[signer];if(!key)throw new AAFError('SIGNER_KEY_NOT_FOUND',signer);if(!verifySignedObject(value,key))throw new AAFError('SIGNATURE_INVALID',signer);return true;}

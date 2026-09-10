@@ -21,9 +21,9 @@ export class EvidenceLedger {
     verifyLedger(this.events,{publicKey:identity?.publicKey});
   }
   get root(){return this.events.at(-1)?.eventRoot??GENESIS;}
-  append(type,detail) {
+  append(type,detail,{timeMs=Date.now()}={}) {
     const body={format:'twni.evidence.v0.1',sequence:this.events.length,previousRoot:this.root,
-      type,time:new Date().toISOString(),classification:'observed-local',detail:clone(detail)};
+      type,time:new Date(timeMs).toISOString(),classification:'observed-local',detail:clone(detail)};
     const event={...body,eventRoot:rootHash(body)};
     if(this.identity)event.signature=seal(body,this.identity.privateKey).signature;
     const fd=fs.openSync(this.file,'a');

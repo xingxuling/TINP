@@ -1,0 +1,28 @@
+{
+  "status": "VERIFIED_ALPHA3_TO_ALPHA4_EXTERNAL_OPERATOR_UPGRADE",
+  "leasePreserved": true,
+  "subjectKeyPreserved": true,
+  "externalPolicyEnabled": true,
+  "confirmationAloneDenied": true,
+  "zeroExecutions": true,
+  "revocationRetained": true,
+  "signerPid": 47468,
+  "nodePids": [
+    40432,
+    40624,
+    28896
+  ],
+  "externalKeyring": {
+    "operator:external-test": {
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAQfPoOF6G+V6BGCaheSLY+L+k6w/5Cyu4P8ER/MvZBQU=\n-----END PUBLIC KEY-----\n",
+      "revoked": false
+    }
+  },
+  "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAwb3UZcK/wbzSmthBcA8YiwHQe4UwMSw1/5dDIZG7sL0=\n-----END PUBLIC KEY-----\n",
+  "evidenceRoot": "1797b8b88e4ab1e26ec5022b235c0824c341e4f46edfb6b4ab873c41c600e51d",
+  "oldArchiveSha256": "78e5b698dc91b193e72d9615a6f11b80b41f47adb24d4975d3b49aab393d7e3c",
+  "oldCommit": "51225b7048ccc3b1eb9d2c8122c6012525486cb4",
+  "ledger": "evidence/0.1.0-alpha.4/upgrade-alpha3.jsonl",
+  "ledgerSha256": "49370b85ec2a00d6cf968bc96ad1ab4d5251b3dbef29922e9d30c831ef13ef1e",
+  "fixture": "Actual alpha.3 archive creates protected unsent pending; alpha.4 pins an independent signer and retires through AAF approval without changing lease or subject."
+}

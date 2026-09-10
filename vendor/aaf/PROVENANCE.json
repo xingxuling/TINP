@@ -1,0 +1,39 @@
+{
+  "source": "RNCS Agent Authority Fabric",
+  "remote": "https://github.com/xingxuling/RNCS-Unified-Platform-.git",
+  "commit": "d345ecb9d8801a911f37534f40d7b9fdf5badb16",
+  "sourceDirectory": "C:\\Users\\User\\Documents\\RCL\\_worktrees\\rncs-rcl-formal-gate-v01",
+  "selection": "Three clean tracked AAF source files and original LICENSE; copied from git show HEAD bytes. Donor worktree has unrelated changes and an untracked formal guard, neither copied.",
+  "licenseDeclaration": "Original LICENSE consists only of Apache License 2.0; preserved verbatim.",
+  "modified": false,
+  "files": [
+    {
+      "path": "src/canonical.mjs",
+      "sha256": "139fe1a410d8c46422212057ada11b88938dacd990bdf44aa3a13bf85a87921e",
+      "workingTreeSha256": "b965a8137ed2800f9356df2098daad9cd258af52eaa626bfb09a062f331ae481",
+      "workingTreeBytesEqualHead": false,
+      "sourceBlob": "9fa197406ddc1075c339d356a671d86323721e20"
+    },
+    {
+      "path": "src/signatures.mjs",
+      "sha256": "4f940d7c2c46f59facda3ba4cab08093151446a37e893a00656318ef6e7b8cc7",
+      "workingTreeSha256": "ef44ba4bcd1918bc3428c9596bdbec1f30c006141bd22d589c11e04cc9b8e593",
+      "workingTreeBytesEqualHead": false,
+      "sourceBlob": "74653e69986abc6246f583ddbdb0807b242d607f"
+    },
+    {
+      "path": "src/contracts.mjs",
+      "sha256": "5d610f649d4a6fbcc75c507f211890005978f3f89d131604a32698d5be2f55a2",
+      "workingTreeSha256": "19ddcbeae50ee9e22ecd2aa061265f8a7a5b6608f38992ba2fb68e7d5d62bb54",
+      "workingTreeBytesEqualHead": false,
+      "sourceBlob": "bdb352b671911eff001a6a5b72de0e93430457ef"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "4037bd3dec2b7a4ad2e609290f0be9ee3d64738190db987950c73ee38aa6b5d3",
+      "workingTreeSha256": "4333d36b7728c36193ce72823c0fee0e0749ec0125a705c66e2fdee11f6a53f4",
+      "workingTreeBytesEqualHead": false,
+      "sourceBlob": "3d74f227e1720c98f9a187dd4360cc77d6f7aec3"
+    }
+  ]
+}

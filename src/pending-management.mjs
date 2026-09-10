@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {operatorChallenge,verifyExternalRetirement} from './operator-authorization.mjs';
 import {ProtectedStore} from './protected-store.mjs';
 import {authentic,requireThat} from './identity.mjs';
 import {evaluatePendingRetirementGuard} from '../adapters/rcl-pending-retirement.mjs';
@@ -17,12 +18,13 @@ export function verifyRetirementAcks(s,watermark,acks){
   }
 }
 export async function findPendingRetirement(s){
+  if(s.operatorPolicy)for(const event of s.ledger.events.filter(e=>e.type==='pending.retired'))verifyExternalRetirement(s,event);
   if(!s.pending)return null;
   const found=s.ledger.events.filter(e=>e.type==='pending.retired'&&e.detail?.requestRoot===s.pending.request.root);
   requireThat(found.length<=1,'PENDING_RETIREMENT_INVALID');if(!found.length)return null;
   const d=found[0].detail;
   requireThat(d.leaseRoot===s.lease.root&&d.revocationEpoch===s.revocationEpoch&&d.executionOutcome==='unknown'&&
-    d.operatorBoundary==='explicit-local-windows-user'&&d.recovery?.pendingRoot===s.pending.request.root,'PENDING_RETIREMENT_INVALID');
+    d.operatorBoundary===(s.operatorPolicy?'external-aaf-operator':'explicit-local-windows-user')&&d.recovery?.pendingRoot===s.pending.request.root,'PENDING_RETIREMENT_INVALID');
   verifyRetirementAcks(s,d.watermark,d.acknowledgements);
   const guard=await evaluatePendingRetirementGuard({expectedRequestRoot:d.requestRoot,actualRequestRoot:s.pending.request.root,
     operatorAuthorized:true,leaseRevoked:s.revoked,allNodesAcknowledged:true,pendingPresent:true});
@@ -31,11 +33,11 @@ export async function findPendingRetirement(s){
 }
 
 // This path never creates an identity, process, checkpoint or ledger event.
-export async function inspectPending(directory){
+export async function inspectPending(directory,{operatorKeyring}={}){
   const stateFile=path.join(directory,'private','coordinator','protected-state.dpapi'),ledgerFile=path.join(directory,'ledger.jsonl');
   requireThat(fs.existsSync(stateFile)&&fs.existsSync(ledgerFile),'RECOVERY_STATE_NOT_FOUND');
   const beforeState=fs.readFileSync(stateFile),beforeLedger=fs.readFileSync(ledgerFile);
-  const s={directory,store:new ProtectedStore(path.dirname(stateFile),{purpose:'twni.coordinator-state.v1'})};
+  const s={directory,operatorKeyring,store:new ProtectedStore(path.dirname(stateFile),{purpose:'twni.coordinator-state.v1'})};
   const {loadExistingRecovery}=await import('./coordinator-state.mjs');
   loadExistingRecovery(s);
   const terminal=await findPendingRetirement(s);
@@ -43,6 +45,7 @@ export async function inspectPending(directory){
   const q=s.pending?.request;
   return {format:'twni.pending-inspection.v1',status:terminal?'retired-awaiting-finalization':q?'pending':s.revoked?'lease-revoked':'no-pending-request',
     requestRoot:q?.root??null,requestId:q?.body.requestId??null,targetNodeId:q?.body.targetNodeId??null,
+    operatorPolicy:s.operatorPolicy,operatorChallenge:s.operatorPolicy&&q?operatorChallenge(s):null,
     leaseRoot:s.lease.root,leaseRevoked:s.revoked,leaseExpiresAtMs:s.lease.body.expiresAtMs,revocationEpoch:s.revocationEpoch,
     evidenceRoot:s.ledger.root,checkpointAuthenticated:true,nodeCacheVerified:false,
     executionOutcome:q?'unknown':null,

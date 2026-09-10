@@ -37,3 +37,11 @@ K400 单元编号来自实际 RCL `campaignCellIdFor`，完整映射证据见 `a
 - Provider advantage：Node 的进程生命周期与 Windows 文件保护保持专业实现；无 silent bypass。外部操作员身份及 anti-rollback anchor gap 当前明确未实施。
 - Regression：maintenance 高/低层执行旁路、wrong root/未确认无写、缺节点ack、节点签章/epoch/watermark/事实根篡改、终止账本落盘前缀和suffix两个真实kill窗口、只读查询不泄露原文/密钥。
 - Affected K400 candidates：沿用 K057/K110/K117/K250/K257。九门均 NOT_ADJUDICATED，真实 lowered execution 不冒充 native VM 或生产人类认证。
+
+## alpha.4 AAF 操作员接入压力
+
+Task/missing capability：原operatorAuthorized仅来自本机明确确认，无法验证外部签章；gap type=RCL_INTEGRATION_GAP + AUTHORITY_PROVIDER_INTEGRATION，不是Core缺原语。Workaround/donor：固定HEAD原AAF canonical/contracts/signatures、Node Ed25519 SPKI指纹及时间/范围适配，原RCL退休规则接收真实验签观测。
+
+Generality：签名与权限分离、信任根不能由批准自带、提交前复验、历史证据不能重新授权均可跨项目复用。Candidate absorption：薄adapter和正负/崩溃回归，不复制AAF算法、不修改RCL Core。Affected K400 candidates沿用K057/K110/K117/K250/K257，九门仍NOT_ADJUDICATED。
+
+Regression：确认绕过、缺/替换/撤销key、错误签者/范围/挑战、过期、ack后撤销/过期、策略降级、外部签章/时刻被网络协调器伪造、真实kill后过期历史批准只终结不执行。Donor advantage是真实签章格式兼容；外部可信时间/恢复锚点/人类托管仍为EXTERNAL_AUTHORITY_ANCHOR_GAP，不以本机DPAPI绕过。

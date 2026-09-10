@@ -77,6 +77,20 @@ for(const transport of ['udp','tcp']){
   const witness={...publicDemo,ledger:relative(ledgerFile),ledgerSha256:sha(ledger)};
   fs.writeFileSync(path.join(out,`pending-${transport}.json`),JSON.stringify(witness,null,2));pendingScenarios.push(witness);
 }
+const operatorScenarios=[];
+for(const transport of ['udp','tcp']){
+  const demo=await new Promise((resolve,reject)=>{
+    const child=spawn(process.execPath,['scripts/operator-demo.mjs',transport],{cwd:root,windowsHide:true,stdio:['ignore','pipe','pipe']});
+    let stdout='',stderr='';child.stdout.on('data',x=>stdout+=x.toString('utf8'));child.stderr.on('data',x=>stderr+=x.toString('utf8'));
+    child.once('error',reject);child.once('exit',code=>code===0?resolve(JSON.parse(stdout)):reject(new Error(`Operator ${transport}: ${stderr}`)));
+  });
+  const ledger=fs.readFileSync(demo.ledgerFile),events=ledger.toString('utf8').trim().split('\n').map(x=>JSON.parse(x));
+  if(verifyLedger(events,{publicKey:demo.authorityPublicKey})!==demo.evidenceRoot)throw new Error('OPERATOR_WITNESS_ROOT_MISMATCH');
+  const ledgerFile=path.join(out,`operator-${transport}.jsonl`);fs.writeFileSync(ledgerFile,ledger);
+  const {ledgerFile:originalLedger,...publicDemo}=demo;
+  const witness={...publicDemo,ledger:relative(ledgerFile),ledgerSha256:sha(ledger)};
+  fs.writeFileSync(path.join(out,`operator-${transport}.json`),JSON.stringify(witness,null,2));operatorScenarios.push(witness);
+}
 const mismatches=tracked.filter(x=>sha(fs.readFileSync(x.path))!==x.sha256);
 if(mismatches.length)throw new Error('Source changed during verification: '+JSON.stringify(mismatches));
 const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CANDIDATE',startedAt,finishedAt:new Date().toISOString(),
@@ -84,7 +98,7 @@ const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CAND
   node:process.version,platform:process.platform,architecture:process.arch,
   tests:{command:result.command,exitCode:result.code,count:Number(result.stdout.match(/# tests (\d+)/)?.[1]),passed:Number(result.stdout.match(/# pass (\d+)/)?.[1]),failed:Number(result.stdout.match(/# fail (\d+)/)?.[1]),
     stdout:relative(path.join(out,'tests.tap')),stdoutSha256:sha(Buffer.from(result.stdout)),stderr:relative(path.join(out,'tests.stderr.txt'))},
-  scenarios,recoveryScenarios,pendingScenarios,sourceFiles:tracked,sourceTreeRoot:sha(Buffer.from(JSON.stringify(tracked))),
+  scenarios,recoveryScenarios,pendingScenarios,operatorScenarios,sourceFiles:tracked,sourceTreeRoot:sha(Buffer.from(JSON.stringify(tracked))),
   k400Verdict:'NOT_ADJUDICATED',production:'NOT_DEPLOYED',publicNetwork:'NOT_RUN',
   boundaries:['Ephemeral local trust fixture; no production identity enrollment or TLS confidentiality',
     'Only bounded pure read-only code-point counting; not arbitrary actions or exactly-once external side effects',

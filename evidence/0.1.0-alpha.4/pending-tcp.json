@@ -1,0 +1,67 @@
+{
+  "status": "VERIFIED_LOCAL_PENDING_RETIREMENT",
+  "transport": "tcp",
+  "before": {
+    "format": "twni.pending-inspection.v1",
+    "status": "pending",
+    "requestRoot": "45b1010d13e69df00e84f3877415bee0049851e2bf460e9678761efcfa32b4a1",
+    "requestId": "intent:28a40519-7797-45dc-91c1-88bd45b22bec",
+    "targetNodeId": "C",
+    "operatorPolicy": null,
+    "operatorChallenge": null,
+    "leaseRoot": "38bc28017ccb97fce1ae22cdbf39e4e9f68b0b56b12603c07799c36aa31adf05",
+    "leaseRevoked": false,
+    "leaseExpiresAtMs": 1789009255517,
+    "revocationEpoch": 0,
+    "evidenceRoot": "eb45459cc3bd8be4948f718d3a65b04b94ff9203417f9f04324762d1511c4a18",
+    "checkpointAuthenticated": true,
+    "nodeCacheVerified": false,
+    "executionOutcome": "unknown",
+    "lastRetirement": null,
+    "readOnly": true,
+    "authorityBoundary": "Windows current-user local fixture; no production operator identity"
+  },
+  "after": {
+    "format": "twni.pending-inspection.v1",
+    "status": "lease-revoked",
+    "requestRoot": null,
+    "requestId": null,
+    "targetNodeId": null,
+    "operatorPolicy": null,
+    "operatorChallenge": null,
+    "leaseRoot": "38bc28017ccb97fce1ae22cdbf39e4e9f68b0b56b12603c07799c36aa31adf05",
+    "leaseRevoked": true,
+    "leaseExpiresAtMs": 1789009255517,
+    "revocationEpoch": 1,
+    "evidenceRoot": "543c2110d6b1e3f62f6356e6a0feb52bc0f688a2cd325ef6b67e37d9c0d9b6a0",
+    "checkpointAuthenticated": true,
+    "nodeCacheVerified": false,
+    "executionOutcome": null,
+    "lastRetirement": {
+      "requestRoot": "45b1010d13e69df00e84f3877415bee0049851e2bf460e9678761efcfa32b4a1",
+      "executionOutcome": "unknown",
+      "eventRoot": "543c2110d6b1e3f62f6356e6a0feb52bc0f688a2cd325ef6b67e37d9c0d9b6a0"
+    },
+    "readOnly": true,
+    "authorityBoundary": "Windows current-user local fixture; no production operator identity"
+  },
+  "retired": {
+    "status": "retired",
+    "requestRoot": "45b1010d13e69df00e84f3877415bee0049851e2bf460e9678761efcfa32b4a1",
+    "leaseRevoked": true,
+    "executionOutcome": "unknown",
+    "executionResent": false
+  },
+  "pids": [
+    46712,
+    42072,
+    48076
+  ],
+  "zeroExecutions": true,
+  "leaseUnchanged": true,
+  "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEABWXh59l+vX+lZOicM5iAflvfnKlTgK7SSDkbobuZjxY=\n-----END PUBLIC KEY-----\n",
+  "evidenceRoot": "7c3581e9eb13660ed26d98d4dd85919d2a48c3fcc52134507f8454f29d65844c",
+  "scope": "Staged unsent pending fixture, actual local node processes and durable revocation. Separate tests cover real coordinator kills.",
+  "ledger": "evidence/0.1.0-alpha.4/pending-tcp.jsonl",
+  "ledgerSha256": "8270b885c09ba90cff3a86e876fbff33c3966a5f1b66c1a2806e035c4f0a0192"
+}

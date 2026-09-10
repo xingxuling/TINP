@@ -1,6 +1,6 @@
 # TaoWind 新互联网协议套件
 
-v0.1.0-alpha.3 是一个可运行的内部工程候选：普通用户输入一句能力请求，系统在三个独立本机进程之间自动发现、调用 OPP 协商契约、验证权限、建立会话、经 A→B→C 传输并返回带证据的执行结果。
+v0.1.0-alpha.4 是一个可运行的内部工程候选：普通用户输入一句能力请求，系统在三个独立本机进程之间自动发现、调用 OPP 协商契约、验证权限、建立会话、经 A→B→C 传输并返回带证据的执行结果。
 
 本版只有一个刻意收窄的能力：精确统计 Unicode 码点数量。它可以验证主体、权限、路由、迁移、退化和回执能否共同工作；它不代表整个新互联网已经实现。
 
@@ -25,7 +25,7 @@ npm run verify
 npm run recovery:demo
 ```
 
-`verify` 冻结源码哈希，按文件顺序运行全部测试，然后分别启动 UDP 和 TCP 三进程及持久恢复见证，保存签名回执、磁盘账本和有界计时到 `evidence/0.1.0-alpha.3/LOCAL_VERIFICATION.json`。重放并发测试内部仍使用真实并发。普通 `npm test` 可并行运行文件；发行证据用顺序执行避免故障注入互相干扰。
+`verify` 冻结源码哈希，按文件顺序运行全部测试，然后分别启动 UDP 和 TCP 三进程及持久恢复见证，保存签名回执、磁盘账本和有界计时到 `evidence/0.1.0-alpha.4/LOCAL_VERIFICATION.json`。重放并发测试内部仍使用真实并发。普通 `npm test` 可并行运行文件；发行证据用顺序执行避免故障注入互相干扰。
 
 ## 已实现的闭环
 
@@ -40,7 +40,7 @@ npm run recovery:demo
 
 ## 证据与边界
 
-阅读 `docs/REALITY_AUDIT.md`、`docs/CANONICAL_OWNERSHIP.md`、`docs/SPEC_DEVIATIONS.md`、`evidence/0.1.0-alpha.3/INTEGRATION_COURT.md` 和 `evidence/0.1.0-alpha.3/EVIDENCE_LEDGER.json`。原规范保留在 `constitution/`，未修改下载文件或同步项目参考文件。
+阅读 `docs/REALITY_AUDIT.md`、`docs/CANONICAL_OWNERSHIP.md`、`docs/SPEC_DEVIATIONS.md`、`evidence/0.1.0-alpha.4/INTEGRATION_COURT.md` 和 `evidence/0.1.0-alpha.4/EVIDENCE_LEDGER.json`。原规范保留在 `constitution/`，未修改下载文件或同步项目参考文件。
 
 当前是 **VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED**。没有公网、真实异机部署、军用安全认证、互联网规模收敛、生产密钥托管或第三方安全评估。签名提供当前夹具内的认证与完整性，传输没有 TLS 机密性，因此严格限制回环地址。
 
@@ -74,3 +74,37 @@ npm run pending -- retire "C:\实际状态目录" --request-root 完整请求根
 ```
 
 该操作不会证明请求从未执行，也不会撤销已经发生的计算。缺任何一个节点持久撤销确认都会保留 pending；全部确认后记录 unknown 并停用原租约。没有自动换密钥、续租或清空目录。需要同一 Windows 用户的 DPAPI 访问能力；这不是生产独立操作员认证。详见 docs/PENDING_OWNER.md 和 docs/PENDING_SECURITY_COURT.md。
+
+## 可选外部操作员签章
+
+本版新增 AAF approval 薄适配，原 AAF canonical/root/signature 实现保持不变。`npm run operator:demo` 使用独立测试进程生成仅在该进程内存中的测试私钥，实际跑 CLI 固定公钥、导出挑战、外部签署、拒绝纯确认绕过、导入批准并恢复。它不接触已有用户状态，也不代表真实操作员注册。
+
+为已有状态启用外部签章（示例路径需替换）：
+
+```powershell
+npm run pending -- operator-pin "C:\状态目录" --signer-id operator:owner --public-key "C:\独立配置\operator-public.pem" --confirm-pin-operator
+npm run pending -- operator-request "C:\状态目录"
+```
+
+pin 是明确的本机信任引导，一旦写入不得通过本版 API 删除或替换。保留完整历史与 checkpoint 交叉核验；无 pin 的旧状态仍是本机确认夹具。要改变受信操作员须另行设计受控轮换，不能自动换钥。
+
+独立签署方用原 AAF `sealApproval` 与 `signObject` 对导出的 challengeRoot 批准。精确角色为 `tinp.operator`，范围为 `tinp.pending.retire`，decision=approved，conditions为空；issued_at/expires_at须规范ISO时间，窗口最长10分钟。网络CLI没有签发私钥入口。
+
+公钥文件之外，当前外部 keyring 使用以下结构，公钥须与固定指纹一致：
+
+```json
+{"operator:owner":{"publicKeyPem":"这里填写真实公钥PEM","revoked":false}}
+```
+
+导入批准：
+
+```powershell
+npm run pending -- retire "C:\状态目录" --request-root 完整请求根 --confirm-retire-lease --keyring "C:\独立配置\keyring.json" --approval "C:\独立配置\approval.json"
+npm run pending -- status "C:\状态目录" --keyring "C:\独立配置\keyring.json"
+```
+
+维护命令可用 `--transport tcp` 指定TCP，默认UDP；当前仍限定回环。外部keyring每次由调用方提供，不持久化到网络checkpoint。其 revoked 状态必须来自受信配置，当前没有联网撤销分发服务。
+
+外部批准只授权终止当前未决记录并停用原租约，绝不签发新租约、扩权或重发执行。初验后若批准到期或撤销，终止操作保留pending。已经认证落盘的历史终态按其原准入时刻复核；当前外部key仍须可用且未撤销，即使pending已清也会验证签章。
+
+此处“独立”指私钥不在网络协调器/节点或其checkpoint，尚无可信外部时钟、硬件托管、真实人类身份或整目录防回滚锚点。详细 Owner、来源和限制见 docs/AAF_OPERATOR_OWNER.md 与 docs/OPERATOR_SECURITY_COURT.md。

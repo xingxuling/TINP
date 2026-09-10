@@ -5,10 +5,11 @@ import {acquireDirectoryLease} from './directory-lease.mjs';
 import {EvidenceLedger,GENESIS} from './evidence.mjs';
 import {seal,authentic,requireThat,clone,rootHash} from './identity.mjs';
 import {SUBJECT,CONTINUITY,WORLD} from './contract.mjs';
+import {validateOperatorHistory} from './operator-authorization.mjs';
 import {evaluateRecoveryGuard} from '../adapters/rcl-recovery-guard.mjs';
 
 export function publicRecoveryState(s){return {session:s.session,lease:s.lease,currentSource:s.currentSource,
-  revoked:s.revoked,revocationEpoch:s.revocationEpoch,pendingRoot:s.pending?.request.root??null};}
+  operatorPolicy:s.operatorPolicy??null,revoked:s.revoked,revocationEpoch:s.revocationEpoch,pendingRoot:s.pending?.request.root??null};}
 export function checkpoint(s){
   if(!s.durable||!s.store)return;
   s.directoryLease.assertHeld();
@@ -51,6 +52,7 @@ export function loadExistingRecovery(s){
     const saved=s.store.load();s.savedRecovery=clone(saved);
     requireThat(saved.format==='twni.coordinator-state.v1'&&Number.isSafeInteger(saved.lastSeenMs)&&Date.now()>=saved.lastSeenMs,'RECOVERY_CLOCK_OR_FORMAT_INVALID');
     for(const k of ['authority','subjectIdentity','session','lease','currentSource','revoked','revocationEpoch','pending','nodeKeys'])s[k]=saved[k];
+    s.operatorPolicy=saved.operatorPolicy??null;
     requireThat(saved.pendingRoot===(s.pending?.request.root??null),'RECOVERY_PENDING_INVALID');
     verifyCore(s);
     s.ledger=new EvidenceLedger(path.join(s.directory,'ledger.jsonl'),{identity:s.authority});
@@ -61,6 +63,7 @@ export function loadExistingRecovery(s){
       requireThat(recovery&&recovery.pendingRoot===(s.pending?.request.root??null),'RECOVERY_SUFFIX_UNRESOLVED');
       requireThat(recovery.revocationEpoch>=s.revocationEpoch&&(!s.revoked||recovery.revoked),'RECOVERY_REVOCATION_ROLLBACK');
       for(const k of ['session','lease','currentSource','revoked','revocationEpoch'])s[k]=recovery[k];
+      s.operatorPolicy=recovery.operatorPolicy??null;
       verifyCore(s);
     }
     requireThat(s.lease.root===saved.lease.root,'RECOVERY_LEASE_REISSUED');
@@ -68,6 +71,7 @@ export function loadExistingRecovery(s){
       requireThat(s.session.body.sessionId===saved.session.body.sessionId&&s.session.body.expiresAtMs<=saved.session.body.expiresAtMs&&
         s.session.body.scopes.every(x=>saved.session.body.scopes.includes(x)),'RECOVERY_SESSION_EXPANSION');
     }
+    validateOperatorHistory(s);
     s.recovering=true;
 }
 export async function admitRecovery(s,baseline=s.savedRecovery){
