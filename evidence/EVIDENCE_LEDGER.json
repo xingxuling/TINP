@@ -1,0 +1,185 @@
+{
+  "format": "twni.delivery-evidence-ledger.v0.1",
+  "version": "0.1.0-alpha.1",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "verificationStarted": "2026-09-10T00:59:51.718Z",
+  "verificationFinished": "2026-09-10T01:00:15.417Z",
+  "tests": {
+    "command": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--test",
+      "--test-concurrency=1",
+      "--test-reporter=tap",
+      "tests/conformance.test.mjs",
+      "tests/opp-bridge.test.mjs",
+      "tests/profiles.test.mjs",
+      "tests/rcl-guard.test.mjs",
+      "tests/rcl-migration.test.mjs",
+      "tests/rcl-route.test.mjs",
+      "tests/security-review.test.mjs",
+      "tests/shared-ir.test.mjs",
+      "vendor/tinp/tests/tinp-v02.test.mjs",
+      "vendor/tinp/tests/tinp.test.mjs"
+    ],
+    "exitCode": 0,
+    "count": 66,
+    "passed": 66,
+    "failed": 0,
+    "stdout": "evidence/tests.tap",
+    "stdoutSha256": "6639dfc395c5927e9a16c9c1994c7910513f319d79605f1b9373258c5aeef7a2",
+    "stderr": "evidence/tests.stderr.txt"
+  },
+  "sourceTreeRoot": "c4ae632898c5c49810bf8b15562d7a8acb5d68bf99ead32ca81f570a1f6cb2cb",
+  "verificationFile": "evidence/LOCAL_VERIFICATION.json",
+  "verificationSha256": "ea25dc75700a2ab8dd060bbf804de0b50d2d6a9b81a5332fa6d41b0b2f3e7cce",
+  "assets": [
+    {
+      "asset": "OPP",
+      "verdict": "REUSE_PINNED_ADAPTER",
+      "commit": "f7b76582a720d9d18af5153affa0fc2d78bc0410",
+      "tests": "41/41 UTF-8; baseline locale failures retained",
+      "evidence": "audit/upstream/opp-tests-utf8.txt",
+      "evidenceSha256": "f1b848fbb11d71ee8c05f3c3187c26ad50817d89db23fb49d7cca4102ebe7dc6"
+    },
+    {
+      "asset": "DHSC",
+      "verdict": "KEEP_SEPARATE",
+      "tests": "41/43 unpatched; 43/43 existing isolated overlay",
+      "evidence": "audit/upstream/dhsc-tests-overlay.txt",
+      "evidenceSha256": "08f2f9bacb054afa51ddfdfe64fb2b04323d813a5d2ed05205b91a29fc7e250e"
+    },
+    {
+      "asset": "TINP",
+      "verdict": "REUSE_UNCHANGED",
+      "tests": "22/22 included in current 66",
+      "evidence": "vendor/tinp/PROVENANCE.json",
+      "evidenceSha256": "987c3c0704fc0c720546623acedfa458cd58eca720e4ac198645527f95f129bd"
+    },
+    {
+      "asset": "RCL",
+      "verdict": "REUSE_COMPILER_RUNTIME_CANDIDATE_PROFILES",
+      "tests": "12 independent guard tests plus integrated negatives",
+      "evidence": "vendor/rcl/PROVENANCE.json",
+      "evidenceSha256": "0f53678643c4619cffe799f8e4b755ad035313091f3e0ff92dd9d3a2b95248d9"
+    },
+    {
+      "asset": "RNCS/RFE",
+      "verdict": "KEEP_SEPARATE_WORLD_OWNER; ADAPTER_NOT_IMPLEMENTED",
+      "evidence": "audit/upstream/rcl-semantics.md",
+      "evidenceSha256": "ad81e90696b7bab472c765c8a68f90472ca23db021af0d733e3720ed778788e5"
+    },
+    {
+      "asset": "Reality Network Runtime",
+      "verdict": "KEEP_SEPARATE_DOMAIN_ORGAN",
+      "tests": "20/20 local deterministic loopback",
+      "evidence": "audit/raw/reality-network-loopback-tests.stdout.txt",
+      "evidenceSha256": "d0db10c5890f250e5955c48c1674b1a2d7cf69a500d304ba98219fa4891cdcf3"
+    },
+    {
+      "asset": "Memory World Tree",
+      "verdict": "REGRESSION_DONOR",
+      "tests": "25/25 finite model",
+      "evidence": "audit/raw/worldtree-finite-model-tests.stdout.txt",
+      "evidenceSha256": "d3270cc7e16fd44592d676a517adaaec7a133637c9927f8b4fdc46833ca8c2af"
+    },
+    {
+      "asset": "BIGS-OS",
+      "verdict": "DOCUMENT_BASELINE",
+      "evidence": "audit/upstream/archaeology-federation.md",
+      "evidenceSha256": "c8fb03aa7e9621b10bed129934309f4ebf78a78f7729620180c26470f8276d1b"
+    },
+    {
+      "asset": "UPDIA supplied lab",
+      "verdict": "KEEP_SEPARATE; CANONICAL_RUNTIME_UNKNOWN",
+      "evidence": "audit/upstream/archaeology-federation.md",
+      "evidenceSha256": "c8fb03aa7e9621b10bed129934309f4ebf78a78f7729620180c26470f8276d1b"
+    },
+    {
+      "asset": "Asset archaeology",
+      "verdict": "EXECUTED_REGISTRATION_NOT_UNDERSTANDING",
+      "records": 165,
+      "errors": 0,
+      "evidence": "audit/raw/archaeology-federation-summary.json",
+      "evidenceSha256": "255b6431afe6e6b43135dbc330128ab7ed14b30b9cdd014c6eaca15dcc46835a"
+    },
+    {
+      "asset": "USCE",
+      "verdict": "UNRESOLVED_NATIVE_CAPABILITY_GAP",
+      "evidence": "audit/raw/usce-native-architecture.stdout.txt",
+      "evidenceSha256": "b02bdfb521bd4f62830d95a61c1d4b3c3aaaaa2c10ab0254f6111aee633e2751"
+    },
+    {
+      "asset": "USCE-DWAC mount",
+      "verdict": "ADAPTER_HANDSHAKE_MISMATCH",
+      "evidence": "audit/raw/usce-native-with-dwac.stderr.txt",
+      "evidenceSha256": "a954e72cfc8d80df25710efebaa41fd2e7341a0cf2bf7af784db1b3507cd61d9"
+    },
+    {
+      "asset": "DWAC classification",
+      "verdict": "REPRESENTABLE_PROVIDER_GAP",
+      "evidence": "audit/raw/dwac-native-classification.stdout.txt",
+      "evidenceSha256": "4a163fc340a4c68e61ccf3465bd35da3e8293ad1ecc0933cb8aa629813525a22"
+    }
+  ],
+  "profiles": {
+    "degradation": "node death, real link fault, partition, actual byte throttle, missing provider, Full/Reduced/Essential/Survival/Isolated",
+    "commercial": "provider substitution/rollback, version compatibility, source and provider migration, durable evidence",
+    "life": "fixed Chinese intent; no user endpoint/provider/transport fields"
+  },
+  "k400": {
+    "candidateCells": [
+      "K057",
+      "K110",
+      "K117",
+      "K250",
+      "K257"
+    ],
+    "verdict": "NOT_ADJUDICATED",
+    "gates": {
+      "EXPRESS": {
+        "verdict": "NOT_ADJUDICATED",
+        "localEvidence": "See bounded local verification; no compensating gates"
+      },
+      "COMPILE": {
+        "verdict": "NOT_ADJUDICATED",
+        "localEvidence": "See bounded local verification; no compensating gates"
+      },
+      "LOWER": {
+        "verdict": "NOT_ADJUDICATED",
+        "localEvidence": "See bounded local verification; no compensating gates"
+      },
+      "EXECUTE": {
+        "verdict": "NOT_ADJUDICATED",
+        "localEvidence": "See bounded local verification; no compensating gates"
+      },
+      "CORRECT": {
+        "verdict": "NOT_ADJUDICATED",
+        "localEvidence": "See bounded local verification; no compensating gates"
+      },
+      "ROBUST": {
+        "verdict": "NOT_ADJUDICATED",
+        "localEvidence": "See bounded local verification; no compensating gates"
+      },
+      "PERFORMANCE": {
+        "verdict": "NOT_ADJUDICATED",
+        "localEvidence": "See bounded local verification; no compensating gates"
+      },
+      "AI_GENERATE": {
+        "verdict": "NOT_ADJUDICATED",
+        "localEvidence": "NOT_RUN"
+      },
+      "EVIDENCE": {
+        "verdict": "NOT_ADJUDICATED",
+        "localEvidence": "See bounded local verification; no compensating gates"
+      }
+    }
+  },
+  "externalActions": {
+    "githubActions": "NOT_RUN",
+    "push": "NOT_RUN",
+    "merge": "NOT_APPLICABLE_NEW_LOCAL_CANDIDATE",
+    "deployment": "NOT_DEPLOYED",
+    "publicNetwork": "NOT_RUN"
+  },
+  "nextGap": "Persistent key/session/revocation and process restart recovery; then isolated revocation reconciliation and real two-device encrypted transport"
+}

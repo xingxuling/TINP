@@ -1,0 +1,14 @@
+[
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/README.md",
+    "sha256": "1221dc03a57de59645a19ae383c7ae515c0fc35c8ce1a14464082fa0fc73bba3"
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/packages/worldtree-formal-theory/README.md",
+    "sha256": "7690d791fd73d97015934704ce16f85646f80467897c1e686329a653d3857da4"
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/packages/worldtree-formal-theory/package.json",
+    "sha256": "32e54d202cf8b1a287d429efbc1960e0baebdc2ee555a6dcbbacbdbf3ae9aa76"
+  }
+]

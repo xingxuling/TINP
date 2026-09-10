@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://taowind.company/opp/schemas/invocation-receipt.v0.1.schema.json",
+  "title":"OPP Invocation Receipt（OPP 调用回执）",
+  "type":"object","additionalProperties":false,
+  "required":["format","version","specId","adapterKind","entrypoint","status","requestRoot","resultRoot","exitCode","timedOut","stdoutBytes","stderrBytes","targetStdout","targetStderr","error","authority","executionBoundary","boundary","durationMs","receiptRoot"],
+  "properties":{
+    "format":{"const":"taowind.opp.invocation-receipt.v0.1"},"version":{"type":"string"},"specId":{"type":"string"},"adapterKind":{"type":"string"},"entrypoint":{"type":"string"},"status":{"enum":["PASS","FAIL"]},
+    "requestRoot":{"type":"string","pattern":"^[0-9a-f]{64}$"},"resultRoot":{"type":["string","null"],"pattern":"^[0-9a-f]{64}$"},"exitCode":{"type":["integer","null"]},"timedOut":{"type":"boolean"},
+    "stdoutBytes":{"type":"integer","minimum":0},"stderrBytes":{"type":"integer","minimum":0},"targetStdout":{"type":"string"},"targetStderr":{"type":"string"},"error":{"type":["string","null"]},
+    "authority":{"type":"object","required":["required","inheritedFromEnvironment","promotionPerformed"],"properties":{"required":{"type":"array","items":{"type":"string"}},"inheritedFromEnvironment":{"const":false},"promotionPerformed":{"const":false}}},
+    "executionBoundary":{"type":"object","required":["explicitConsentRequired","shellUsed","environmentPolicy","cwdPolicy","strongOsSandboxClaimed"],"properties":{"explicitConsentRequired":{"const":true},"shellUsed":{"const":false},"environmentPolicy":{"const":"sanitized"},"cwdPolicy":{"const":"ephemeral"},"strongOsSandboxClaimed":{"const":false}}},
+    "boundary":{"type":"string"},"durationMs":{"type":"number","minimum":0},"receiptRoot":{"type":"string","pattern":"^[0-9a-f]{64}$"}
+  }
+}

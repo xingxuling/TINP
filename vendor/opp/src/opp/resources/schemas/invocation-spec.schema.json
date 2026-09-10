@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://taowind.company/opp/schemas/invocation-spec.v0.1.schema.json",
+  "title":"OPP Invocation Spec（OPP 调用规范）",
+  "type":"object","additionalProperties":false,
+  "required":["format","version","specId","adapterKind","sourceRoot","entrypoint","callingConvention","timeoutMs","maxOutputBytes","cwdPolicy","environmentPolicy","authorityRequired","status"],
+  "properties":{
+    "format":{"const":"taowind.opp.invocation-spec.v0.1"},"version":{"type":"string"},"specId":{"type":"string","minLength":1},
+    "adapterKind":{"const":"python-function"},"sourceRoot":{"type":"string","minLength":1},"entrypoint":{"type":"string","pattern":"^[^:]+\\.py:[A-Za-z_][A-Za-z0-9_]*$"},
+    "callingConvention":{"enum":["kwargs","single"]},"timeoutMs":{"type":"integer","minimum":1,"maximum":120000},"maxOutputBytes":{"type":"integer","minimum":1024,"maximum":16777216},
+    "cwdPolicy":{"const":"ephemeral"},"environmentPolicy":{"const":"sanitized"},"authorityRequired":{"type":"array","items":{"type":"string"},"uniqueItems":true},"status":{"const":"candidate"}
+  }
+}

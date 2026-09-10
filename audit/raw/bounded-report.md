@@ -1,0 +1,19 @@
+# Archaeology Registry Report
+
+- Sources: **165**
+- Historical-evidence eligible: **165**
+- Conversation events: **0**
+
+## Container Provenance
+- `ARCHIVE_MEMBER`: 50
+- `BUNDLED_SNAPSHOT`: 1
+- `LOOSE_DOC`: 114
+
+## Semantic Provenance
+- `UNKNOWN`: 165
+
+## Conversation Event Types
+
+## Guard
+
+> `ARCHAEOLOGY_GENERATED` sources and `EXTERNAL_PROVIDER_REFERENCE` excerpt records are excluded from independent historical-evidence counts. External excerpt hashes are not original-file hashes.

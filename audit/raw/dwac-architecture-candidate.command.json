@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-m",
+    "dwac_structural.cli",
+    "--goal",
+    "Assess the architecture and reuse classification of a next internet protocol suite. TINP owns subject addressing, discovery, routing, session migration and transport; OPP owns protocol interoperability; RCL owns authority and evidence semantics. Should they merge or keep independent owners with adapters? Preserve UNKNOWN where evidence is missing.",
+    "--kind",
+    "project",
+    "--target-units",
+    "3",
+    "--out",
+    "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\raw\\dwac-architecture-candidate.json"
+  ],
+  "exit_code": 0
+}

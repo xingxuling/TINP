@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taowind.company/opp/schemas/auto-connect-report.v0.1.schema.json",
+  "title": "OPP Auto Connect Report（OPP 自动连接报告）",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "version",
+    "producer",
+    "consumer",
+    "pairsCompared",
+    "prefilterSkipped",
+    "pairLimitReached",
+    "acceptedPlanCount",
+    "plans",
+    "rejected",
+    "policy",
+    "boundary",
+    "reportRoot"
+  ],
+  "properties": {
+    "format": {
+      "const": "taowind.opp.auto-connect-report.v0.1"
+    },
+    "version": {
+      "type": "string"
+    },
+    "producer": {
+      "type": "object",
+      "required": [
+        "sourceId",
+        "profile",
+        "interfaceCount"
+      ]
+    },
+    "consumer": {
+      "type": "object",
+      "required": [
+        "sourceId",
+        "profile",
+        "interfaceCount"
+      ]
+    },
+    "pairsCompared": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "acceptedPlanCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "plans": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "rejected": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "policy": {
+      "type": "object",
+      "required": [
+        "allowLossy",
+        "maxPlans",
+        "maxPairs",
+        "authorityPromotion",
+        "sourceCodeExecution"
+      ],
+      "properties": {
+        "allowLossy": {
+          "type": "boolean"
+        },
+        "maxPlans": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "authorityPromotion": {
+          "const": false
+        },
+        "sourceCodeExecution": {
+          "const": false
+        },
+        "maxPairs": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "boundary": {
+      "type": "string"
+    },
+    "reportRoot": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "prefilterSkipped": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "pairLimitReached": {
+      "type": "boolean"
+    }
+  }
+}

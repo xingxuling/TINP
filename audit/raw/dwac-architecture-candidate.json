@@ -1,0 +1,128 @@
+{
+  "artifact_id": "goal_bootstrap",
+  "kind": "project",
+  "goal": "Assess the architecture and reuse classification of a next internet protocol suite. TINP owns subject addressing, discovery, routing, session migration and transport; OPP owns protocol interoperability; RCL owns authority and evidence semantics. Should they merge or keep independent owners with adapters? Preserve UNKNOWN where evidence is missing.",
+  "results": [
+    {
+      "unit_id": "segment_001",
+      "output_type": "mixed",
+      "content": "## Segment 1\nSWU: segment_001\nGoal: Assess the architecture and reuse classification of a next internet protocol suite. TINP owns subject addressing, discovery, routing, session migration and transport; OPP owns protocol interoperability; RCL owns authority and evidence semantics. Should they merge or keep independent owners with adapters? Preserve UNKNOWN where evidence is missing. :: semantic segment 1/3\nDependencies: none\nOutput type: mixed\nStatus: CANDIDATE / REFERENCE_WORKER",
+      "status": "CANDIDATE",
+      "worker_id": "reference.semantic.worker.v0.1",
+      "content_hash": "66b9bca652caf30e83a48820c4b2d8a5f3f4f7a6b67583108d98e80ed0022792",
+      "acceptance": {
+        "non_empty": true,
+        "contract_preserved": true
+      },
+      "evidence": [
+        {
+          "kind": "worker_receipt",
+          "worker": "reference.semantic.worker.v0.1",
+          "packet_root": "c947d702961fd8c70865fb5f1a48a20431c8a352f5d8c384bc7ef8b490af0664",
+          "execution_input_root": "00dee2bbe5060d659a04acfb2373fb1b3abcee78588000bbc32a91d963a4724c",
+          "dependency_result_roots": {},
+          "required_capabilities": [
+            "semantic"
+          ],
+          "worker_capabilities": [
+            "*"
+          ],
+          "required_authority_scope": [],
+          "worker_authority_scope": [
+            "*"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_id": "segment_002",
+      "output_type": "mixed",
+      "content": "## Segment 2\nSWU: segment_002\nGoal: Assess the architecture and reuse classification of a next internet protocol suite. TINP owns subject addressing, discovery, routing, session migration and transport; OPP owns protocol interoperability; RCL owns authority and evidence semantics. Should they merge or keep independent owners with adapters? Preserve UNKNOWN where evidence is missing. :: semantic segment 2/3\nDependencies: segment_001\nOutput type: mixed\nStatus: CANDIDATE / REFERENCE_WORKER",
+      "status": "CANDIDATE",
+      "worker_id": "reference.semantic.worker.v0.1",
+      "content_hash": "b398abff65dfa117fab3a2b5d590c01aa4bbfe1097bd8bc2a7f530ec3e6aeade",
+      "acceptance": {
+        "non_empty": true,
+        "contract_preserved": true
+      },
+      "evidence": [
+        {
+          "kind": "worker_receipt",
+          "worker": "reference.semantic.worker.v0.1",
+          "packet_root": "585dbebd6fe4259129f35c6ed9b7cd111cd5611d8f9d947c6bc341de8548e4bc",
+          "execution_input_root": "d2f398974c45bad3efe173534bb8691a0e86344f0f26362257607045db8864da",
+          "dependency_result_roots": {
+            "segment_001": "66b9bca652caf30e83a48820c4b2d8a5f3f4f7a6b67583108d98e80ed0022792"
+          },
+          "required_capabilities": [
+            "semantic"
+          ],
+          "worker_capabilities": [
+            "*"
+          ],
+          "required_authority_scope": [],
+          "worker_authority_scope": [
+            "*"
+          ]
+        }
+      ]
+    },
+    {
+      "unit_id": "segment_003",
+      "output_type": "mixed",
+      "content": "## Segment 3\nSWU: segment_003\nGoal: Assess the architecture and reuse classification of a next internet protocol suite. TINP owns subject addressing, discovery, routing, session migration and transport; OPP owns protocol interoperability; RCL owns authority and evidence semantics. Should they merge or keep independent owners with adapters? Preserve UNKNOWN where evidence is missing. :: semantic segment 3/3\nDependencies: segment_002\nOutput type: mixed\nStatus: CANDIDATE / REFERENCE_WORKER",
+      "status": "CANDIDATE",
+      "worker_id": "reference.semantic.worker.v0.1",
+      "content_hash": "9ef11d783e4fd5dc065d28714bcdca91bee27eda797fe54d294a812e1d967dcf",
+      "acceptance": {
+        "non_empty": true,
+        "contract_preserved": true
+      },
+      "evidence": [
+        {
+          "kind": "worker_receipt",
+          "worker": "reference.semantic.worker.v0.1",
+          "packet_root": "8d5e125286ce5c2a021cfa0fd28a7c90fd83d58f49f4aa8a9f454b4797aaa0ca",
+          "execution_input_root": "dfbedbface2d9bf24f3303a38d8d4d050c3132aae5e20d444738a40a8967b8ba",
+          "dependency_result_roots": {
+            "segment_002": "b398abff65dfa117fab3a2b5d590c01aa4bbfe1097bd8bc2a7f530ec3e6aeade"
+          },
+          "required_capabilities": [
+            "semantic"
+          ],
+          "worker_capabilities": [
+            "*"
+          ],
+          "required_authority_scope": [],
+          "worker_authority_scope": [
+            "*"
+          ]
+        }
+      ]
+    }
+  ],
+  "consistency": {
+    "all_units_present": true,
+    "all_acceptance_pass": true,
+    "canonical_promotion_performed": false,
+    "statuses": {
+      "segment_001": "CANDIDATE",
+      "segment_002": "CANDIDATE",
+      "segment_003": "CANDIDATE"
+    }
+  },
+  "stats": {
+    "semantic_units": 3,
+    "waves": 3,
+    "critical_path_depth": 3,
+    "wall_seconds": 0.00233,
+    "generation_unit": "SEMANTIC_WORK_UNIT",
+    "token_is_planning_unit": false,
+    "worker_pool_size": 1,
+    "worker_assignments": {
+      "segment_001": "reference.semantic.worker.v0.1",
+      "segment_002": "reference.semantic.worker.v0.1",
+      "segment_003": "reference.semantic.worker.v0.1"
+    }
+  }
+}

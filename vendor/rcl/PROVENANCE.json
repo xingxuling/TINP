@@ -1,0 +1,135 @@
+{
+  "repository": "https://github.com/xingxuling/RCL",
+  "commit": "a7d6f7b0844323df50c91fd807ad3ee76e24f90d",
+  "branch": "main",
+  "license": "Apache-2.0",
+  "copiedAt": "2026-09-10T00:41:10.395Z",
+  "strategy": "Unmodified recursive static dependency closure of src/compiler.mjs and src/runtime.mjs; no native VM or all-language selfhost claim.",
+  "files": [
+    {
+      "path": "src/canonical.mjs",
+      "bytes": 775,
+      "sha256": "559d48b6c58da664faf88d88ed6a474d0a86e206ee607ba7cf5b527bf9f986fa"
+    },
+    {
+      "path": "src/cognition.mjs",
+      "bytes": 8504,
+      "sha256": "1a514ef49a72f58760205c085fc36034707264ab8af09cfba44ddfcc2734d2b8"
+    },
+    {
+      "path": "src/compiler-primitives.mjs",
+      "bytes": 4035,
+      "sha256": "31f0c8f9bf2a556e5110cd7ad2f522e3e37d77cbca50f4bf51c5569d17dae273"
+    },
+    {
+      "path": "src/compiler.mjs",
+      "bytes": 32750,
+      "sha256": "4beeb668104e6901bbde8e256950293233cab74bbb4970cf3ba250c011a10a6d"
+    },
+    {
+      "path": "src/errors.mjs",
+      "bytes": 856,
+      "sha256": "bd6664dd61f209543f6039222529372c60964941e34295bc3fb7f528320d051f"
+    },
+    {
+      "path": "src/final-foundation.mjs",
+      "bytes": 4374,
+      "sha256": "fcbe2c4facfd8c523242bf055086864cabd2fa5f88f1ae95a2cc69b3d1023159"
+    },
+    {
+      "path": "src/foundation-contract.mjs",
+      "bytes": 15858,
+      "sha256": "d93d469069308a21ca15e46a9bc3899b845775d84f8aa6e4b67f8a1e9411367e"
+    },
+    {
+      "path": "src/foundation.mjs",
+      "bytes": 7949,
+      "sha256": "7a975d2ae6daa278992fa7b0b7bc31b782dc61e0bd7c2bbca376f2a65a3db8d1"
+    },
+    {
+      "path": "src/knowledge.mjs",
+      "bytes": 4443,
+      "sha256": "bee1220e9c8a97cb00acebb1bd3eb9cb9e01164e15dd5b0e158bb4ddb3ab7eb0"
+    },
+    {
+      "path": "src/lexer.mjs",
+      "bytes": 2883,
+      "sha256": "c513ba3662f729ca6bba13f765b86cb515c3107ac67992d3f64eb71e16667941"
+    },
+    {
+      "path": "src/meta-planes.mjs",
+      "bytes": 7319,
+      "sha256": "98bac4d150e3e46d81cd14736e51aa2fc667a1a6b3219313cccdf75375d918ce"
+    },
+    {
+      "path": "src/parser.mjs",
+      "bytes": 74918,
+      "sha256": "781934d647e6318e08ecc9dace6f7e651105abb2f886869ddc7f592f2aecf241"
+    },
+    {
+      "path": "src/planes.mjs",
+      "bytes": 5307,
+      "sha256": "cf753f76aa8d30bb29f94720bcd0c05ac7d8ac9c09fd36b5f5c9e5c6c83fbce6"
+    },
+    {
+      "path": "src/quantity.mjs",
+      "bytes": 11109,
+      "sha256": "b09dd853fe361dbe4c48fb54e9f687cb9db6c44db6419303606b9482f245111d"
+    },
+    {
+      "path": "src/runtime.mjs",
+      "bytes": 94327,
+      "sha256": "5e70ac2f1b2833cd9bb56c8f7cf6e2d521cdc162e1b851db58f94cb92e9ba310"
+    },
+    {
+      "path": "src/type-module-kernel.mjs",
+      "bytes": 27739,
+      "sha256": "a7a21e12415833a172037818bb99095e5a08f240550fdd83c72263b878bdd161"
+    },
+    {
+      "path": "src/type-system.mjs",
+      "bytes": 96516,
+      "sha256": "f0e7d52ef073ba56d4a9c34acf464dec1fe9304b2e3576dbf5a33983e65d4d60"
+    },
+    {
+      "path": "src/ui/ui-compiler.mjs",
+      "bytes": 16929,
+      "sha256": "51cc6da3bb0ace531ed66e78f3982536772c9b2acd92c381b5d168149444c384"
+    },
+    {
+      "path": "src/ui/ui-ir.mjs",
+      "bytes": 4739,
+      "sha256": "a163aef79596ec9171cb1afa6c895a9d34e03e1745fd29e02f85dd279f7aedae"
+    },
+    {
+      "path": "src/ui/ui-layout.mjs",
+      "bytes": 2310,
+      "sha256": "6cf043a56e5fe3f76e9816a600b9eed292fb66055651669eaa78807a0aab9015"
+    },
+    {
+      "path": "src/ui/ui-lifecycle.mjs",
+      "bytes": 544,
+      "sha256": "3e98f713eec30af53f2bba7635cf15faff454491d2b5d9b5763c286ecd5ea6f0"
+    },
+    {
+      "path": "src/ui/ui-reactive.mjs",
+      "bytes": 6136,
+      "sha256": "b08b793e157c2d12bc5fce3475c255ee1b689fe423befcf00af230dd0cff0b10"
+    },
+    {
+      "path": "src/ui/ui-schema.mjs",
+      "bytes": 2970,
+      "sha256": "32ee89c0733fb247a7e69f2f02312f2123a58cf44d39d549fa111a1bb9032ced"
+    },
+    {
+      "path": "src/ui/ui-style.mjs",
+      "bytes": 4231,
+      "sha256": "99cfc2e7891ebf526058185aaf2e4960f42d135125d10b65b894068eaf034f31"
+    },
+    {
+      "path": "src/ui/ui-validator.mjs",
+      "bytes": 9272,
+      "sha256": "4718bac1cd7d2ab981021558e1969ff8b2718c1059a8eb6a28a88e9557f02c5a"
+    }
+  ]
+}

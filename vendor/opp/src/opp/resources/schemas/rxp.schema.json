@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taowind.company/opp/schemas/rxp.v0.1.schema.json",
+  "title": "RXP Payload（现实交换协议负载）",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["semanticClass", "content"],
+  "properties": {
+    "semanticClass": {"enum": ["fact", "state", "intent", "capability", "constraint", "evidence", "action", "artifact", "event", "message", "mixed"]},
+    "content": {},
+    "intent": {"type": ["object", "null"]},
+    "actions": {"type": "array", "items": {"type": "object"}},
+    "rollback": {"type": ["object", "null"]},
+    "authority": {"type": "array", "items": {"type": "string"}},
+    "claimBoundary": {"type": "string"}
+  }
+}

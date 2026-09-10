@@ -1,0 +1,10 @@
+{
+  "argv": [
+    "git",
+    "-C",
+    "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\DWAC",
+    "status",
+    "--short"
+  ],
+  "exit_code": 0
+}

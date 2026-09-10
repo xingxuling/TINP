@@ -1,0 +1,2266 @@
+[
+  {
+    "path": "packages/control/agent-authority-fabric/LICENSE",
+    "sha256": "4037bd3dec2b7a4ad2e609290f0be9ee3d64738190db987950c73ee38aa6b5d3"
+  },
+  {
+    "path": "packages/control/agent-authority-fabric/README.md",
+    "sha256": "2cb57497d2190ac33a7180cd1357b61c6abfd0bb26d31b1b500f05235533dc26"
+  },
+  {
+    "path": "packages/control/agent-authority-fabric/package.json",
+    "sha256": "f5f1f9437444d1a6897708a168d12c0421b2045a3334dbc68886773e4feafbea"
+  },
+  {
+    "path": "packages/control/agent-authority-fabric/pyproject.toml",
+    "sha256": "3f4d5649171f7945f12ea950af24bf6224340318c5916f328f9a54436239bc49"
+  },
+  {
+    "path": "packages/control/agent-authority-fabric/src/adapters.mjs",
+    "sha256": "7710fe82dea044b461ae9ff9cbe088b514736ab0e47d6cffb3796d68b2c7ca4c"
+  },
+  {
+    "path": "packages/control/agent-authority-fabric/src/canonical.mjs",
+    "sha256": "139fe1a410d8c46422212057ada11b88938dacd990bdf44aa3a13bf85a87921e"
+  },
+  {
+    "path": "packages/control/agent-authority-fabric/src/cli.mjs",
+    "sha256": "1a179099da315f49a4923946c5e5343d89c44826b99617f8cdb4c8de5d55dfac"
+  },
+  {
+    "path": "packages/control/agent-authority-fabric/src/contracts.mjs",
+    "sha256": "5d610f649d4a6fbcc75c507f211890005978f3f89d131604a32698d5be2f55a2"
+  },
+  {
+    "path": "packages/control/agent-authority-fabric/src/evaluator.mjs",
+    "sha256": "bcaf611eaee52abdf0fc4814334ea61b34bbb69571d1224a4171888bb96d8917"
+  },
+  {
+    "path": "packages/control/agent-authority-fabric/src/index.mjs",
+    "sha256": "6451102ebb984cb528ce7d566bc30c326bfcd531d1a22a941f4214bce35dbe43"
+  },
+  {
+    "path": "packages/control/agent-authority-fabric/src/rncs.mjs",
+    "sha256": "70c356a1a1f15bc29959243eed4584afc4a294e9547d30fef910e3fb0673574a"
+  },
+  {
+    "path": "packages/control/agent-authority-fabric/src/signatures.mjs",
+    "sha256": "4f940d7c2c46f59facda3ba4cab08093151446a37e893a00656318ef6e7b8cc7"
+  },
+  {
+    "path": "packages/control/agent-authority-fabric/tests/authority.test.mjs",
+    "sha256": "033edd00b2f4207cb120bf7b0dcdffe5e72cf338d2138e60cb5e6a27299754c4"
+  },
+  {
+    "path": "packages/control/agent-authority-fabric/tests/test_python.py",
+    "sha256": "5a91ae990cd1fe3ec8718411c14708ad02a80193f1a1144e4dc84ac29d1dd0bf"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/LICENSE",
+    "sha256": "9bbdfeace91bd982b20f9fbd8505f82e7caa2281e02ab496a81d1558a3da3cb3"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/README.md",
+    "sha256": "bed1006b9811a6b1f268cd6bfc0f3e5b8cd3794fc5ab66a10d80ac41977fe71c"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/package.json",
+    "sha256": "3266a8fc18f9c5f7a58fad8758de58e80aa910de1dad6d80a459738c7b852af8"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/pyproject.toml",
+    "sha256": "2338e97464f05c40650572b2a79d475f62fddfde4aca6c4a1f39be70864acbcc"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/src/adapters.mjs",
+    "sha256": "00278f65b6f8b1aace5f2ac4b827cabab5e7e534c0d6d751e937ad4c21ff3edd"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/src/canonical.mjs",
+    "sha256": "9e0df4bc68a08ce94309ee1106d00fca02d6c1bd5efa8c405df09ea21a72dded"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/src/cli.mjs",
+    "sha256": "eef795574d8597cd8d6ec7449ebf693e8b109b0a2c397776b8d73c450d80a9be"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/src/contracts.mjs",
+    "sha256": "675d092445a383228330efa60854b165d476d5ad80d292691449f4dc22c3cb54"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/src/index.mjs",
+    "sha256": "cb9c989d8701452a7ae6a2761486f30e91b12e9274c1e5904a139c3844f75191"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/src/negotiator.mjs",
+    "sha256": "fae66667a9f4acfab89d88e2c0a86b9874bae440f8c712330dc29ab3062754e8"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/src/provider-stdio.mjs",
+    "sha256": "6470d4525ef7b1fa83ad55103ed01a829cf472d511f5054fdf51c0afc1593ee6"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/src/registry.mjs",
+    "sha256": "3356bddd5457bef2fae1fa54a385510d0c81bb38a6e1b8996bc267db4ba10eee"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/src/semver.mjs",
+    "sha256": "74db16539ab9068612aedf6d0ff81ac1556893a07c20444e14588b3c1a6d9867"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/tests/protocol.test.mjs",
+    "sha256": "e551596e480c1c2ad30b2aebeee616ab43963e161bc8a0610147255292e3a86d"
+  },
+  {
+    "path": "packages/control/capability-negotiation-protocol/tests/test_python.py",
+    "sha256": "5e592b56d22a73feb6fcd6605f72129e3b226d1aa0f1c80c4f05a23640cb7512"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/LICENSE",
+    "sha256": "4037bd3dec2b7a4ad2e609290f0be9ee3d64738190db987950c73ee38aa6b5d3"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/README.md",
+    "sha256": "8a2c5e82cb79fcdccc8f3cd82020fb3c4c53d73f73efb1590bcfa673cdc0a875"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/package.json",
+    "sha256": "a8b15bc09acb233d43ab682c63b7ce9ae32a397d0065724449210900eba76124"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/src/authority.mjs",
+    "sha256": "9815cd3db216e671f8a7c5c34b04cd71361ac8768cbce34d5ffd769b39b0b241"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/src/canonical.mjs",
+    "sha256": "eb252cb2ef6fae91aab455212972083a84bb1631b34853d4097b82cdaafe438c"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/src/capabilities.mjs",
+    "sha256": "eda9b4bc5a3f7f29fa1d082d7fd97bbc49be4ea35df61d708bb2c4449fc5a494"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/src/cli.mjs",
+    "sha256": "4804fe18ef2ad059d66bf88ba12612288be47b389e14d9dee1668b89d659b3b4"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/src/hnac.mjs",
+    "sha256": "803fe9162cf46f77ea50c2b28b3f0d2752438566cadecd5e4f528257449efd45"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/src/intent.mjs",
+    "sha256": "fa371ae43b3260a8dfe73acec1dc7b8af58e7dfc5d0f35cd443388f8e1e46945"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/src/laf-runtime.mjs",
+    "sha256": "cf6d4c13a32453c142a37bf4d14db6efbe87645d2b1cce59b2069a28f0c6cc24"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/src/planner.mjs",
+    "sha256": "6ec2eb8349d2df0400094e287a13a27378434425503474ab863a70693bc65d86"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/src/projector.mjs",
+    "sha256": "a50dfe367d76ec399c981030321e63f01fbbb473cb1876258b5751affc985d37"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/src/runtime.mjs",
+    "sha256": "c72f6c01c40455f1db049904f5b6d3e708e7c12c3f8e290d483c3a23d02ed6d8"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/src/session-store.mjs",
+    "sha256": "479d134b32d2d9f6f31f802fde53a96def8d72e406d91dbc66520d5ac956a3d5"
+  },
+  {
+    "path": "packages/control/icar-native-envelope-runtime/tests/runtime.test.mjs",
+    "sha256": "5eaf026ad4d3a6c5cba33fa0f7ec210ea293a5841ea265e4384bf2b7caf7f09a"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/README.md",
+    "sha256": "346d59e5078a7b600a91a560ce34259c0bdcc2285ddc66bf040742e5d38d46c4"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/integrations/reality-studio-v0.7/README.md",
+    "sha256": "511a531f7d3a9dfc4be7eec1cac6def1c3b4928afcb4c19c7c5f2ba8d680fd67"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/integrations/rsr-v0.4/README.md",
+    "sha256": "e4046c40ff9a639bbad1c28688cc69643e2b1636eb705f88480bf68f348b2ead"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/integrations/vsr-v0.2/README.md",
+    "sha256": "fdea9063b19d2be091635f4315f704fcc92c1e90d426e592d078ec32b37b935c"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/package.json",
+    "sha256": "0adb643aba0e3b6e54c917833815653842ee3400374167cfefa7e4b5a8d2b5c2"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/src/adapters.mjs",
+    "sha256": "b36ba98f40c932700f27a4db67834191bc3f76121870c89edd367b26d2136fab"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/src/authority.mjs",
+    "sha256": "a61b2979021630d704e1006a473e805cb4bc83ff10aeba034ef9ae0771fd78ff"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/src/behavior-tree.mjs",
+    "sha256": "44ab01ed22e259b3cc7d17e75785c488a115599a33d87d58511cbe4f899a5f3e"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/src/canonical.mjs",
+    "sha256": "ea09a09c57826e38dd3c322a4ec1aaeeda712d67ff3feb5f70944b8f078a1821"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/src/cli.mjs",
+    "sha256": "8c91c61809bb38a0771e50f5b9a8253f6b28a8bc3ce9c421dabc3c6d5e4b8abe"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/src/contracts.mjs",
+    "sha256": "487c8209fb97641f9b76a66fd0fe6a730ca0de8a1056a5f7d4803b0bbd6d7cd5"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/src/event-bus.mjs",
+    "sha256": "c3d8098a913872748d86ded273912928e73385810f7d99baebdaf545eed0efba"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/src/expression.mjs",
+    "sha256": "e357e2fed062bce24d18b7497535fe866277293e5e1bc95f7c8dc2c08bf9fb2d"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/src/index.mjs",
+    "sha256": "964e24bba7f305a2b5b07a33d8f901cbf9fff33fc892529300b9dee2e0b64bb5"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/src/render.mjs",
+    "sha256": "e2eabf829ecb184bfb16ecd73e586804742980f0854456613e7dc9742eebb594"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/src/rules.mjs",
+    "sha256": "39900ad161b6a87c2f8232342d66a2add2fba22e39c36fb41b7d460faf511ae0"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/src/runtime.mjs",
+    "sha256": "bad84368a9722436f6ec5d77e9eb33205ad97c7a2233458a003e190d7ce2f18f"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/src/state-machine.mjs",
+    "sha256": "148357a01f62ea128f5af24392a9e34be37810de86c31a12b1d8401a357b754b"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/tests/authority-hot-reload.test.mjs",
+    "sha256": "7d21db3f5f64ce91f45efc2dcfd1ae7131100ddd0c963d586daacb16cebe0eb9"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/tests/contracts.test.mjs",
+    "sha256": "d64955b9e14f2601d2e302d02de63c21e44989d7019ec1edd101074e00707ab7"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/tests/expression.test.mjs",
+    "sha256": "dc53657a9e3069f110062d428b18e4512d0533f6ded3a79506bb8287683bee26"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/tests/helpers.mjs",
+    "sha256": "595c2c85d2b334b32a0a6ed82b0b2ca90334160d1af317bcaf77927e0e97e79a"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/tests/integration.test.mjs",
+    "sha256": "ae2681d8529aa51c8bc83a61c7162a6ed5952bd6399c52ab01a3c62f53b58b4a"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/tests/runtime.test.mjs",
+    "sha256": "b4ec0567c9d84bb708873b47709d83a92c30d8b79ee3b624046f5f62e5e1aca7"
+  },
+  {
+    "path": "packages/control/reality-behavior-fabric/tests/state-tree-rules.test.mjs",
+    "sha256": "35bdfc32db81a279c4e706d8c8afe3c74cc24df4e6c50643f946ab367cfe7e1d"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/LICENSE",
+    "sha256": "9bbdfeace91bd982b20f9fbd8505f82e7caa2281e02ab496a81d1558a3da3cb3"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/README.md",
+    "sha256": "ff432c29e42b3b88ad00e6a8e49c2ab2d58d77a9d0348f622c5db09e6a8f31ff"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/package.json",
+    "sha256": "0cdeb35b479d21a37ed91d2b3ea5b4fa961f0c732796d81ce1e08a15aa806235"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/src/adapters.mjs",
+    "sha256": "417e2d4c1aed732e6975c2c5981802a300c69e7f6888f6bf0a81a5ff503fa3c6"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/src/authority.mjs",
+    "sha256": "3d68baf499fe46a9cedad69054e58e22883dd941883d2ec120ffb4a9d66f3dd9"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/src/branching.mjs",
+    "sha256": "bf784d8c3b2a19bbc36551f3ab55bc4f31f14d5eeab57b1edf57f8646e85ce8e"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/src/canonical.mjs",
+    "sha256": "f03cab0a980cf5b4883bc25a87e059eedbec77b55ac50fffd82480d933b3b158"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/src/cli.mjs",
+    "sha256": "02e917cecd3cf4dc17b7b237f11efec7053089fee747d38a219392e83e04ba96"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/src/comparison.mjs",
+    "sha256": "78fc53ea8469115c47e9ac5316d2ae2327390d34aae7af2c5fb79d1125d37088"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/src/execution.mjs",
+    "sha256": "d91c5da2771a1fb7d4433c47e0504d07eeb7c2df5aad8c9c07c3dc982aee6601"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/src/index.mjs",
+    "sha256": "32db6de298277dcce95f48230e5b672142b4746f8e7b85809844e6f3aaa8cb7d"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/src/operations.mjs",
+    "sha256": "d5384b549cb8c263f7579ecedef014773e69ea9b549ea880615379993cd7bf63"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/src/server.mjs",
+    "sha256": "fca223fa73821d63e29630b8eae0c023d2e8e31c84f2b21986986163413bba45"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/src/simulation.mjs",
+    "sha256": "cf1d5a04943947e4257691bae5ba4330c6abdc83a9add2a5d87dac1c02819af5"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/tests/branching.test.mjs",
+    "sha256": "f9d0d2e5a85a7e13f9b3a4948eae1ff0f0d5aa00a0381ecaad56dd54fb8c8db6"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/tests/canonical-operations.test.mjs",
+    "sha256": "d2537af3c29f7152a8482b20db0e80c00fb62bab7b65149c34aa26f59b927cc3"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/tests/execution-authority.test.mjs",
+    "sha256": "456cc18cc2261dd624c6dd4631d710cdf321fbec84ed6d629fdd37def105720d"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/tests/fixture.mjs",
+    "sha256": "76ff9af5d4f33dc0ec44bba41d2007e86c0b7cc1b07a24d97e68a7659e9b828c"
+  },
+  {
+    "path": "packages/control/reality-branch-fabric/tests/simulation-comparison.test.mjs",
+    "sha256": "05d5bc53a5946265df4372d809ef43d933eade095f06d9c4a0863d2e920a2743"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/LICENSE",
+    "sha256": "ced8c5a280a36ebaf3398532d820513d68949fbd8edfbde5087c90df2451e17f"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/README.md",
+    "sha256": "874d218565a526f0986d59b98ce286fc52548ea98cc4f15c3af9aae16fa39056"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/package.json",
+    "sha256": "15b19985c6031944fda9da93b85d9df052676991d11c71597496d9b4e889027d"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/bridges/aaf.bridge.mjs",
+    "sha256": "0488e4d4b1be7aae3b97e9850ed217a92a5a99e8913fcb846e0897f7cb8d8447"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/bridges/behavior.bridge.mjs",
+    "sha256": "1b84a5218130dc6fba73e40f6c883ab9f9f9dcb84362e8541a911865577cbd2d"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/bridges/cnp.bridge.mjs",
+    "sha256": "74e6a332848e125600d98820df10473ec52c2be910ca04b7f7d0db671598acaa"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/bridges/dml-core.bridge.mjs",
+    "sha256": "3fd48de7e566773e80e0bd7c1e5c75a747fe0d3dee4ae4bc8a00ee1321f47914"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/bridges/icar.bridge.mjs",
+    "sha256": "d9a5f49b3d444027d75cef51b16f234c9379242359d126c9b434c696275c02e5"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/bridges/laf.bridge.mjs",
+    "sha256": "f978d8a979e43540b4e832e1eec3ef150bbb471e981cf72ffc5486348b771cc3"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/bridges/ragf.bridge.mjs",
+    "sha256": "bb8917bfa46929c6e139a46a99afd4e57a51d3886af6721bb0895b7402a83000"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/bridges/rbf.bridge.mjs",
+    "sha256": "df9ef0118f2a9208e1becf5f5b9962a3f2528f10d0fe4ba04ce05c0ddf15dd9a"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/bridges/rfe.bridge.mjs",
+    "sha256": "8fc60c030716670bde4f957c73cd0fe44399841561304da6411d4e9d6726049b"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/bridges/rncs-core.bridge.mjs",
+    "sha256": "dbc2b7dc7519586e5dbf3117226bc35afef0f3df84c7b47ffd24cc6c9cfc8aee"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/bridges/rsr.bridge.mjs",
+    "sha256": "ebb2f5aff5de4e32ecca08cffe938be61c7100a2b8c2d4af8f5f1899516e5aa1"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/bridges/vsr.bridge.mjs",
+    "sha256": "49bc76b7758edc77803c0004569c80a0875609c7fba3354f6ce4829ca0752c2e"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/bridges/network.bridge.mjs",
+    "sha256": "9aacbed0fef88462043e8c40c9b904602cbc71f5665d84a1c4be05c8139f6d69"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/canonical.mjs",
+    "sha256": "5d6aa9634a116b0e2fc25599c3920e34be7d5a1ac3ed93f6ea2f8220e1c29b7f"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/cli.mjs",
+    "sha256": "1a407bf1b4be790264549d1ab1333a9c4b78b29d53c18bc014658af5f86615a6"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/config.mjs",
+    "sha256": "a601df73e2967e4e035fa778a6cae86bac3afd7796f978ceab837ec8df37542c"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/discovery.mjs",
+    "sha256": "d26605afb5d37272282ae9764a60f520f73689b3e48125d548d18e1d0ac81343"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/gateway.mjs",
+    "sha256": "3dc0fb98ae8fbc1e9ec2c669140b053fd6807aea2e6dac7cf663287f09196526"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/index.mjs",
+    "sha256": "756fce3c2f23343017875e87f1f1f8531a1b5a87aeaa6ed58715f866eb7be724"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/loader.mjs",
+    "sha256": "10c2fc2db8d656ac4fc46cb53452b1b40fdcaf4446a90aedf55fc66392480e68"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/manifest.mjs",
+    "sha256": "5688a9ccbbf02d532a5db45d07fb912ca3694eb6094c4d4128448e03267f94fc"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/pipeline.mjs",
+    "sha256": "f93cde0d52126f67fa0ed9fec9b713f57cd023278858cd2f3d3a8dea8b0222bf"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/semver.mjs",
+    "sha256": "dc39f9149ce6c03796be2faaf03e109728347427729f692972cc8a44ac3d3e5d"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/server.mjs",
+    "sha256": "9d7e0539815acf6926b3f09508194e0afe97d36d44963d76eb97cd9d428e22a5"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/src/transport.mjs",
+    "sha256": "1b7c22b584c0b81aecef2c162f745810c9c23a8ca778a694efb1c3fafa142a86"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/tests/gateway.test.mjs",
+    "sha256": "b0fe37223ae2df3a47b40d7ec127cc79e5fe00de3b1f60928733e4c78eb0ef0d"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/tests/mock-stdio.mjs",
+    "sha256": "59a958ae3500858ecc641b10ebf14635c2aaa3c6fa5fb81172f842d0256cedc4"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/tests/pipeline.test.mjs",
+    "sha256": "f8920db75e3c5c9544eadb87783a3ef1f4fb37ef916abe180fc4bc02f5988584"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/tests/server.test.mjs",
+    "sha256": "bec70ff0d7591aaa6872ccaf48e2399382bc609c594a6de76eaa9a7fd18afddd"
+  },
+  {
+    "path": "packages/control/reality-one-gateway/tests/stdio.test.mjs",
+    "sha256": "9c3dedc52f1bf424a53747ae5aaea4ce9c98a953f55f8e725d0e83e99f6e1268"
+  },
+  {
+    "path": "packages/kernel/living-artifact-format/LICENSE",
+    "sha256": "ced8c5a280a36ebaf3398532d820513d68949fbd8edfbde5087c90df2451e17f"
+  },
+  {
+    "path": "packages/kernel/living-artifact-format/README.md",
+    "sha256": "5d68ccf5a993410b0b824697c8b2216184e7d3981ee0af8cf893cda3c7d56270"
+  },
+  {
+    "path": "packages/kernel/living-artifact-format/package.json",
+    "sha256": "59943aa557b08f2675563297c825104572266bebf52907ae4e11661bc75c1bc8"
+  },
+  {
+    "path": "packages/kernel/living-artifact-format/pyproject.toml",
+    "sha256": "2f081188bb1a14f4f55885a51395837480a3e237fd6bf8e7e1adddbdd16ab957"
+  },
+  {
+    "path": "packages/kernel/living-artifact-format/src/cli.mjs",
+    "sha256": "503014e4189f61f3c7023ce6f43f56307ac6562cde0044ec24a86119fa04b60b"
+  },
+  {
+    "path": "packages/kernel/living-artifact-format/src/index.mjs",
+    "sha256": "84cb015841c2ee88bb46eb15a4b03db99791010e18bb53160dff05f0055dd60b"
+  },
+  {
+    "path": "packages/kernel/living-artifact-format/tests/browser_test.py",
+    "sha256": "a144c457439ffe8612ff47c086b5a51d6cd127ef539ffd5aa533a052e9b43a95"
+  },
+  {
+    "path": "packages/kernel/living-artifact-format/tests/run.mjs",
+    "sha256": "19bc9534a07fc80f94d9e18724583320a4dfbdcb69d52bc59749be6ae2b35a9f"
+  },
+  {
+    "path": "packages/kernel/living-artifact-format/tests/test_laf.py",
+    "sha256": "d5afd31dccd90044624b5d290fec1ccaf51a16ae4aea8eb20c693a7aa354499c"
+  },
+  {
+    "path": "packages/kernel/rfe-core-sdk/LICENSE",
+    "sha256": "4037bd3dec2b7a4ad2e609290f0be9ee3d64738190db987950c73ee38aa6b5d3"
+  },
+  {
+    "path": "packages/kernel/rfe-core-sdk/README.md",
+    "sha256": "9128d17b889ba094079e4623cd0beb7104839de11a9ce1f06964a507aaacc813"
+  },
+  {
+    "path": "packages/kernel/rfe-core-sdk/package.json",
+    "sha256": "15e53da8e4290de69aef99a842de785057058260db6ca940ec7c4dd9469d8e40"
+  },
+  {
+    "path": "packages/kernel/rfe-core-sdk/pyproject.toml",
+    "sha256": "afbebc0846c5e02e92bb91b18bea83552d9b5cfa56493b10dc553f1edf4e9e98"
+  },
+  {
+    "path": "packages/kernel/rfe-core-sdk/src/cli.mjs",
+    "sha256": "1630d7e032d5f7c714c5c43809bc0b5bd56b425614de149a53fc0662793a4b8d"
+  },
+  {
+    "path": "packages/kernel/rfe-core-sdk/src/index.mjs",
+    "sha256": "907f39884cf7f6ced7a0722bccbe059d274277e62bc6d5b9af515a6705add019"
+  },
+  {
+    "path": "packages/kernel/rfe-core-sdk/tests/run.mjs",
+    "sha256": "135eb3e07a13094ec2f442f31ddc7d436a3149d2c626b26dd2b7599c799a6186"
+  },
+  {
+    "path": "packages/kernel/rfe-core-sdk/tests/test_core.py",
+    "sha256": "598b14daf3350f579d82a4c1eb80e1ba55a837eda24c21dc4593ab91dbb9e2b3"
+  },
+  {
+    "path": "packages/kernel/rfe-core-sdk/tests/test_rncs_integration.py",
+    "sha256": "b40def2c80ffba6433269527a3ac911cd45170d00c75c6f4cf9c94bd2bbc89a1"
+  },
+  {
+    "path": "packages/kernel/rncs-core-contract/LICENSE",
+    "sha256": "9bbdfeace91bd982b20f9fbd8505f82e7caa2281e02ab496a81d1558a3da3cb3"
+  },
+  {
+    "path": "packages/kernel/rncs-core-contract/README.md",
+    "sha256": "9499869d5aaaedcf4b0a370243c9f2182ef8fcf44900900b62bab6644deb7cd6"
+  },
+  {
+    "path": "packages/kernel/rncs-core-contract/package.json",
+    "sha256": "afba1dda89c1a3e19b72900a0da6041f34d0583d22de4b1d373a0790ec4ab331"
+  },
+  {
+    "path": "packages/kernel/rncs-core-contract/pyproject.toml",
+    "sha256": "9578856a4ba5c712e7cfdbdb4a380422ad056dc526a326e471d0005b38e8f495"
+  },
+  {
+    "path": "packages/kernel/rncs-core-contract/src/cli.mjs",
+    "sha256": "59cdfb85133e8996e2a036b2f8e9afe686b061bd5137ae466ecf6d3783c123c5"
+  },
+  {
+    "path": "packages/kernel/rncs-core-contract/src/index.mjs",
+    "sha256": "a2e723095adc276e813f53331888bdb9970a032411f3d30f7896944d46beb30f"
+  },
+  {
+    "path": "packages/kernel/rncs-core-contract/tests/run.mjs",
+    "sha256": "aef80df5f469234cfc08ba8eb844a430b97dcc0c7a41b2ae469a2e9b55951e9b"
+  },
+  {
+    "path": "packages/kernel/rncs-core-contract/tests/test_contract.py",
+    "sha256": "5114f766d178c3e8bcc7d758e5c51baa504373ee6e575601f74186b243b2837f"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/LICENSE",
+    "sha256": "46b16480f245830debfd77ad6d2f3a8ce0beaad5d34e5480784bb377a023b2b2"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/README.md",
+    "sha256": "4498dbcaadbf0912c011d221fe6fa2975347582981b7d57da383e68163afc30b"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/package.json",
+    "sha256": "cef8d28e7beb11a8ea73c8dddf42b259f4b7cc1fac09cf4fe75d787d4ee1cb60"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/adapters.mjs",
+    "sha256": "0a8cb28628e5a339b3702d0e35a7d0c65c5c1e91221c4361290482e7cb6d0dda"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/canonical.mjs",
+    "sha256": "a5067ee0746dfa5bade80ba1b99b011e0bb572d1838569d21d0511755dd6f85b"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/cli.mjs",
+    "sha256": "56f42e7f7b266212338ef519c1c9dcb6ed4f1308c6866db6d2d4ea09d2aaf71a"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/continuity.mjs",
+    "sha256": "1aebbe87c432f7d62667f5d38e96c689abf0977a2071eaf18a0b5d0815c0b230"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/contracts.mjs",
+    "sha256": "93ae7e45ac3a22fb01ae7efda548e7404ed119489c8963e4e289b3309558db2c"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/generators/adapters3d.mjs",
+    "sha256": "146048366087508dfc54f533e8e5272416787aeb4cb66f8fd336a1ff246d4cab"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/generators/collision.mjs",
+    "sha256": "848cdd7097b9c513350d9b40513dad515af1ebec91e51a1e1dd0d9cc15c8f9fc"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/generators/family.mjs",
+    "sha256": "0b54f1e86117c600bbfbc5bac2e181024b72eaf85a82bad73eede6ab13af2440"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/generators/index.mjs",
+    "sha256": "233e89ab27019398a92fc9e2db72818e382559e983721d5a8f4eddc238c4ae63"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/generators/mesh3d.mjs",
+    "sha256": "c15b84fb2ff9a75ed4f7c19e91ed5d319d34772612cd6cc5c631ff18126c17be"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/generators/particle.mjs",
+    "sha256": "4e27b6201538e7cb26052dd46c5d2c686788073ef70f4ad28b1b5eef11bd6493"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/generators/pbr.mjs",
+    "sha256": "b72f2684550e1748969ea59b3820622e3e02bf6c09cd039776836d720c3d0292"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/generators/rig.mjs",
+    "sha256": "b0690a1314314393c26f35a4b64fb23b12b7a4147b4fccd8ef98d00545e43b83"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/generators/sfx.mjs",
+    "sha256": "7a987ead056c0fd3ae852475506c77553878706fe20ccbb9fb66ad2e9cef01ec"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/generators/sprite-sheet.mjs",
+    "sha256": "4eb3a9b827468a650965d7b10ebe4a9126a861dd995ccf6705c1aeb9c69dc780"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/generators/vector-concept.mjs",
+    "sha256": "f02f078e969160bf6bcc4c6daa8ead770c770cad2bf31500c670914bb071d882"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/gltf.mjs",
+    "sha256": "e3543faf2bbb1f7c427ed1624a7a7abcf44b09f77365fb70f209678c64d8bbbd"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/index.mjs",
+    "sha256": "9a606caa40c81cfcd89e7067e45e5a94160d80205f51c2a20cbe4aa456af85fa"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/lineage.mjs",
+    "sha256": "dd7914dbba58b8785221f9d73267541c7460558936ea8cfd64c8928188662c2a"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/planner.mjs",
+    "sha256": "351fd762e0b3a78dcb85089e142cd0613cf0b23b6ac366211df56fb1a0ab22e9"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/png.mjs",
+    "sha256": "a9e770104c9425a8ca065b544366c607a2256557773a58ee9070fca35076a332"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/providers.mjs",
+    "sha256": "5e1368d03bcdf6e3d590133e9012eebe3e98bf16b051ef014c28f480c6378154"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/registry.mjs",
+    "sha256": "4c1272305b52e16d10364e7e028220dfc1c83abeb08739b485c924707cf60c12"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/runtime.mjs",
+    "sha256": "577889337d6a9651458bc1730db5c02aadab768ae03888837d5686660588dc84"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/server.mjs",
+    "sha256": "8c666aaa51542521b53e108a0c6beb5729c1ef88667615de6bdc4731f66058e7"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/src/validation.mjs",
+    "sha256": "9e8ae8efe85c4c52f67245f933214e699cb559c4bd5908b26c3403ef772017b3"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/tests/contracts.test.mjs",
+    "sha256": "e599ec6a1aa330940a715837c20f3bd7083c143d3648f5f4d973cf48dba003c8"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/tests/family.test.mjs",
+    "sha256": "5043276bf365993a75a7c4ea85734c13c79d37bbe7110cb887c1184f42c69f2a"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/tests/generators.test.mjs",
+    "sha256": "1695e7bc990ff0d51b8d9baeb25507b242925de94633b5617368976c8eaf5964"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/tests/gltf.test.mjs",
+    "sha256": "26750c94846a87416ca792911cc0a86f4b423c5c3248f1669d801c0df7857c34"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/tests/production3d.test.mjs",
+    "sha256": "44781ce326eadf2f4feaaecaa38a21b5528bc2b8c7081868b722cd1d9dc6e57c"
+  },
+  {
+    "path": "packages/world/reality-asset-genesis-fabric/tests/runtime.test.mjs",
+    "sha256": "c17bb825485803a1cdcd8318330a5dbe72d9cca2b67899c3066803f6826dfaa5"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/LICENSE",
+    "sha256": "d40514fb11ab902d4db0389de5d50a8b688ce6c67c01e81bf6e70470aba8bbff"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/README.md",
+    "sha256": "6e82bbf99f7e11232c0ecca6009632456e47b677133eb22c0c93f1a45d28ac4d"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/package.json",
+    "sha256": "c1d3859e0eef416f73917366edaea3886bcfb3e9d7eacd72320af52fa03475c4"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/adapter-reality-one/README.md",
+    "sha256": "caec467f445625f46f767018ecd7d9eae126939c3c42189e08c5795c8589b647"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/adapter-reality-one/src/index.ts",
+    "sha256": "7cb87d6e1a94ae3989cc32526f79658027cdccf8a39e1366941e5a4ed9907d49"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/adapter-rfe/README.md",
+    "sha256": "c7631256f46dd0999dc157e3a4ff7bc9a00ee052829b743947396847ff0bc0d2"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/adapter-rfe/src/index.ts",
+    "sha256": "f9ebafd02a3ed60d92419edac31d206a770d9c2a5a2b05940122391d5e3b4675"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/agent-protocol/README.md",
+    "sha256": "822e8c49fbd5ad9a6ea5f572e6482aca321c3068704c08a24499d7bd0efec704"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/agent-protocol/src/index.ts",
+    "sha256": "0e65177a7c2ea540a4de107d833c05cbf99b5abda19bd51c442bd78be40cb817"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/backend-canvas/README.md",
+    "sha256": "604123dc1569d28e2cd9468b188d0781fab164b0a57373052fc2067a6de5bc16"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/backend-canvas/src/browser.ts",
+    "sha256": "f88efdbff68cf81be5462db43f3f8fb0f099331d626f8d95052a86e48211f4c3"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/backend-canvas/src/index.ts",
+    "sha256": "2523c7837462ec2f3ebc570ae8d9bf980286906ae49e16d9a95b2e70b39002f8"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/backend-null/README.md",
+    "sha256": "eeda8ff65b667a2b32798f70522e792b5d8d6eb77372793878588619cde1fb37"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/backend-null/src/index.ts",
+    "sha256": "eb60956d519c385f1de9ef6846f9907a46654088d7f988b6b02d5b82387b2656"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/build-pipeline/src/index.ts",
+    "sha256": "3d58d25a88e33d02843beb3337fbeb5d9ce7177c6fb8fdb84fd7c83a63bfb44b"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/cli/README.md",
+    "sha256": "c0cb88c98660c3fa2bb6c2bc2489303d65a1f79c4bb83ee8ccf6c497ae573504"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/cli/src/cli.ts",
+    "sha256": "f8b2fc31f5039acb23e4d59dd897fac1134ee03925e8de2003969a5cf3ead636"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/constraint-physics/src/index.ts",
+    "sha256": "746ebea903976e1ac8332a63aad8122025f5f9fe7c073b66eca69801f423d08a"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/constraint-physics-cli/src/cli.ts",
+    "sha256": "1643d283f4e1229567d52a2f4da7a9c7f19d6e3b27c4b3a370a57dd2adaae894"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/constraint-physics-vsr/src/index.ts",
+    "sha256": "0a339c5460845d97b53ff59836f741172dea2ae162b554397d61920e3c898d25"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/core/README.md",
+    "sha256": "ed477214295d4ed7c5af1e4fba2843a66b7147de7b641ec57de134e9f76e506a"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/core/src/index.ts",
+    "sha256": "618ef1551a098b65a7c316f797c602568f9e274aefb77097b2e81ee54d6f7815"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/embodied-dynamics/src/index.ts",
+    "sha256": "1d8a22c850ac39efe120923356fab3c10f18ef569a5f0ffe2858f38835342ea8"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/embodied-dynamics-cli/src/cli.ts",
+    "sha256": "a13ccfcc7ef87c85c5f7d1fb68746af298766732da0a1a6ad098ec77e02af960"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/embodied-dynamics-vsr/src/index.ts",
+    "sha256": "044c95bc421fb7431ed6e45a36771fb631bca0c60642b19ac935927a965de5c3"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/experience-fabric/src/index.ts",
+    "sha256": "95e1c4ec122866fae606d77612e3a7ace8e22ccca1d275902ba5a5c75e1fced6"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/experience-fabric-audio/src/index.ts",
+    "sha256": "5e12553fe598518df70e0c1e12e4cbbb2d30e570b26548644af4adc377b2b87b"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/experience-fabric-cli/src/cli.ts",
+    "sha256": "134c7f36ac4a0b79951ae17bfd5a6d5c80d615e1dab2cb6801908f994142ab42"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/experience-fabric-vsr/src/index.ts",
+    "sha256": "c4f16c36bb8f15dc827f57945e03cb8e3db883b438cfc6f34d5fad4b5e8c6036"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/expression/README.md",
+    "sha256": "fca4a1f0644a6a8cdd2f9ab1d7f2a0d01b2a49f3904b0dc262e44f2f322ca8be"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/expression/src/index.ts",
+    "sha256": "59b4cc751590a7ea13b5895b81aed49383f6497d7bbd226e86f529b2c30235c8"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/observer-projection/README.md",
+    "sha256": "536e2243baabc339ef63b30fa0e2a766a790cca04a8f50b8e669a54c707ee0db"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/observer-projection/src/index.ts",
+    "sha256": "3715a910681b72e8d1df7be1c950be7343239380289c1b6a1cd1d2245433c310"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/renderer/src/index.ts",
+    "sha256": "b8039e1fe28ac68cf56089be6d07fd2cb2aaa30addac3a4be08ee29aa2485a80"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/simulation-cli/src/cli.ts",
+    "sha256": "9f9c938c34d0e1cf45a08b66a91aa1602ed69aa69ab24ab4f6f821043ad3b841"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/simulation-core/src/index.ts",
+    "sha256": "542ef987f68bc33c15c114e7d248450cf1e2050ccbb396140ad08241660e9373"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/simulation-vsr/src/index.ts",
+    "sha256": "614b592e3a236db88665167b9e052942d84d7fbc9dcf5a341998455f611f5336"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/spatial-embodiment/src/index.ts",
+    "sha256": "6dbf59de6e9bdefe5969bee6917206ee4f74f1c5fe9b6aef9421f10fd69eea64"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/spatial-embodiment-cli/src/cli.ts",
+    "sha256": "1898a5ab0d71498c9c474a8a869c98c7a951c0c2b657348e1612d9d9cd54d1ae"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/spatial-embodiment-vsr/src/index.ts",
+    "sha256": "402b2bfd4581b89728e99491b7f159fa15b54ad60076c587a8a99dd96504850b"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/spatial-embodiment-vsr/src/vsr-spatial-v04.ts",
+    "sha256": "0828e5cb19ee5e2ecc8f17c26d84afc31dad381e0ad3f932ba9fedb8adece647"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/spec/README.md",
+    "sha256": "bcc0f769bc764ee0b8d0d889ad9c786110c0387a7caa782a85b46201cca20114"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/packages/spec/src/index.ts",
+    "sha256": "a4a4fcaaae291c24095c7b49edc1683aa7b8b7249f0d50aff490a514c09d34cc"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/src/unified-index.mjs",
+    "sha256": "e8f93675757725fd92c9c1c0bf543093436d04e166217bab2b2a95e654e3cae5"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/tests/constraint-physics.ts",
+    "sha256": "5c15f7bfebea3358e96dc7fc275c5a8371576f00d4393d4c533c8e7c9fd89e2e"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/tests/embodied-dynamics.ts",
+    "sha256": "a5d4e9a4e001ca87bea6602e3fc60788c4a98fa72e514f48d62e8107255b69c7"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/tests/experience-fabric.ts",
+    "sha256": "b20ecd3287487f9d4a2de3278c383da7fcd804045e9483d5b5446cd9a34480d9"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/tests/run.ts",
+    "sha256": "d6380cc26d00de3c560ebfb3da2cac54f8792a5b0869b24a43f60c7482e30e77"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/tests/simulation.ts",
+    "sha256": "b44397f5865361325c29b43fd742326ba5e3fa7f3c50e16ca26d0c440e612610"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/tests/spatial-embodiment.ts",
+    "sha256": "b54c5ebe4aa523c43b1acdf3001dd4bf846dc56d32a9431e830f81723ba3044a"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/adapter-reality-one/src/index.d.ts",
+    "sha256": "b6d03c0780386c1a7d8e5a51f6725e3e12314e0e3544e376a5f4df14f46cebb0"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/adapter-reality-one/src/index.js",
+    "sha256": "3e3dea66489d26965a2b95d7c79f8ee5b4db18842245f797b1bf63761751dd6e"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/adapter-reality-one/src/index.js.map",
+    "sha256": "733d800b110666d34f0958c8511ef437ed32cfc905d32f0ebb6b1f6dd077223d"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/adapter-rfe/src/index.d.ts",
+    "sha256": "0fde0b3c45d37b1196ce42076ff3be7a10ee98ad1d5ae639d1b7acc91428dd11"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/adapter-rfe/src/index.js",
+    "sha256": "b117eb58c6b9784246cd9bba27c35c0f2196b0322d9428266a3e9cf22e30e430"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/adapter-rfe/src/index.js.map",
+    "sha256": "e02467c735d5eafeb3b01cfa86c62113632a76d6efd387cca14edc4b3f58599f"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/agent-protocol/src/index.d.ts",
+    "sha256": "e3231d47767db559173edfe947caa6540fa535c87e75fc1895cdff9397abc243"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/agent-protocol/src/index.js",
+    "sha256": "d93964d6ef8a653ca1677a381b44e5b5864c9ec429a37a3f6766992d58a0b279"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/agent-protocol/src/index.js.map",
+    "sha256": "4357f62e9b729b3389aaf7840865e927f7fbc3e358b1e27310e69f49de5f6729"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/backend-canvas/src/browser.d.ts",
+    "sha256": "9f188b8af2dd2619460366326b3056ba958c02f9d4cb2f17c0283dde7a81102f"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/backend-canvas/src/browser.js",
+    "sha256": "ec1879f7bc64ad6d3d5e5f627da9912802c3964cc344811eee38e3dab3b7dd92"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/backend-canvas/src/browser.js.map",
+    "sha256": "4bacebdcb391603a82a1747e277b57ca810f7c60f11bdf65b239e6a00c24b522"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/backend-canvas/src/index.d.ts",
+    "sha256": "cff384db586eef11b0c4592821d9cb80cb098ad37164bbb8c5161d220d1e9578"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/backend-canvas/src/index.js",
+    "sha256": "9354f1a43f08dd3eb8d37614de0ad4241c26919191d66397b6db65b98ae0d819"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/backend-canvas/src/index.js.map",
+    "sha256": "365031ae7fb0f1c95ff6cef2f736ea26745028c728d01e1f557c0f17fe9e0ce1"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/backend-null/src/index.d.ts",
+    "sha256": "c5b3325a1dbf845c13d01bf2e4310520d1abe30d72dbe021b4cb2ec6f23a01fb"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/backend-null/src/index.js",
+    "sha256": "f79a73a4344ab2a9a76a829765ab93a54993138989e584ad2071de6794441893"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/backend-null/src/index.js.map",
+    "sha256": "3a62f93f44bb864b7705f2d4cc901ad8689e2eb242f174332481de21c3e6fc76"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/build-pipeline/src/index.d.ts",
+    "sha256": "d5b4a5575f47171c1cc96e73c0d4aeae7d544710228ae7c7bec644ddc500214e"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/build-pipeline/src/index.js",
+    "sha256": "66d94501da4133d960039bf15a3f284a78a8549332e61bfca4480d296615e932"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/build-pipeline/src/index.js.map",
+    "sha256": "ef756ced41dc589a2a64d07c20234cde4fec0eca30560627fd75854567de8968"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/cli/src/cli.d.ts",
+    "sha256": "43e818adf60173644896298637f47b01d5819b17eda46eaa32d0c7d64724d012"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/cli/src/cli.js",
+    "sha256": "ffd52abcb24a90768b6d4eaa940c50652be3c0af8035ef2068a85b0d05083e09"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/cli/src/cli.js.map",
+    "sha256": "834f72e2d6f337bbe6f41a91629740a54b02fbec21081ff426c86cbc1ce81127"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/constraint-physics/src/index.d.ts",
+    "sha256": "3d51ca8961705374fb4be5fcf2a3549b192d1fcff5d80304c671de47cffe48ea"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/constraint-physics/src/index.js",
+    "sha256": "1f7b2c2eb7ea09f9feea47825c28820290ef27d9239badd851224241dd6bd5eb"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/constraint-physics/src/index.js.map",
+    "sha256": "059eb587a237cca7b3044eef6fc0c7e6d57a3798024b0aae57d1b731fb9388fb"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/constraint-physics-cli/src/cli.d.ts",
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/constraint-physics-cli/src/cli.js",
+    "sha256": "470cfaaadcf1e247f6cb10a869eef287e922df90257e66f82ee8c66447ef4052"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/constraint-physics-cli/src/cli.js.map",
+    "sha256": "ca1a090f09fe24d06630e90bf987330d6d5d6b34ed8f6d2e9be621ae06e34fd2"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/constraint-physics-vsr/src/index.d.ts",
+    "sha256": "7f3e0da4821e13f6072cc64d100bfeba1eb0002cd883b0888a9d011cec71bb59"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/constraint-physics-vsr/src/index.js",
+    "sha256": "300449081807156a0fa33ca04a19ddc60e498d3a4733a4dc5cd55c4e43a24a80"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/constraint-physics-vsr/src/index.js.map",
+    "sha256": "bc1dd00a5db89ffbd4ecb5ac2a5bafbb8eb060445dca89db4070c1aca135b739"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/core/src/index.d.ts",
+    "sha256": "1e81220fbc7d0c7a2c0da1efec2bda3effdd1c3a37f544d4efb2e69f75ae81e4"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/core/src/index.js",
+    "sha256": "73f7ec4deed8f9971ed13d44f4d3055ea8695c0d74b61bfbf46252374be073cd"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/core/src/index.js.map",
+    "sha256": "3dfa97b81fd45c390af603fe806e80da00b9498d6592893586d553c64706d8eb"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/embodied-dynamics/src/index.d.ts",
+    "sha256": "7e288d6dea54e86ee6ef0d5459deeb979916893c004ece23b75ca1cf63e44e08"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/embodied-dynamics/src/index.js",
+    "sha256": "46031892ee3675f9fd14fb2a4f66c0505a81251eeabe60559ba64cf431c8eea3"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/embodied-dynamics/src/index.js.map",
+    "sha256": "bc22104dbcf4e942f2314b73acc3fe6728e2af70436b674f587e96f019561a0e"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/embodied-dynamics-cli/src/cli.d.ts",
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/embodied-dynamics-cli/src/cli.js",
+    "sha256": "6f82bad9064ee48e6cefb178da2f5ec6ddc3cdb366ddd3c831d17c5ef3c6eb4a"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/embodied-dynamics-cli/src/cli.js.map",
+    "sha256": "477f6da9b23d66bb9e02c77d274d120310da52c0fcb969d51ce3bdb1562c14cf"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/embodied-dynamics-vsr/src/index.d.ts",
+    "sha256": "cfac262413b2733519bf1ea8809f9cc7f0d4dbe4614742b6311d360b11e2b8a7"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/embodied-dynamics-vsr/src/index.js",
+    "sha256": "75b431e4412524651d85ab8d458ed3effe4dab9be1c37f229e9db4d94ce9e410"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/embodied-dynamics-vsr/src/index.js.map",
+    "sha256": "64aa22c6c7d4a526304392a4fe7b4c3f6dca7bc35ef6d988b7c6c00f1403b594"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/experience-fabric/src/index.d.ts",
+    "sha256": "3bf40c67d5882e1f2ccb15175314b84d1137f1fa8f29f4782e454ab92b01d478"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/experience-fabric/src/index.js",
+    "sha256": "24c3cfa0505e1bded7bf2027104048762473806698ec673a7bafef4458514316"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/experience-fabric/src/index.js.map",
+    "sha256": "5ce6fa1577bdff6ba5e98464a1e2c9d6fa45173d4f236661a16c180b6f550c1b"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/experience-fabric-audio/src/index.d.ts",
+    "sha256": "284716beb532d57832a7869b0513700f8fd99e70b02358727d52d23052f6bbd8"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/experience-fabric-audio/src/index.js",
+    "sha256": "de21e383fbb92a46383e826e5e4c36679b744f090a313d51d6614a4041ff9203"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/experience-fabric-audio/src/index.js.map",
+    "sha256": "f83fc62bf52ac038fb73376fb5374af5404ae2508ef0f695ddce8c8de5cee345"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/experience-fabric-cli/src/cli.d.ts",
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/experience-fabric-cli/src/cli.js",
+    "sha256": "56cff916205c3e2a6fbbb0b57c2c70ee78697d93784438a200f23ce12c2ec226"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/experience-fabric-cli/src/cli.js.map",
+    "sha256": "48e2bc9b7c9d56479782a9435555b7988783f015ba0326d136d72f824dc2dbf1"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/experience-fabric-vsr/src/index.d.ts",
+    "sha256": "b8551a3cba3a681b6d3fe94725c2c84b3f7c26762e3e73363eb408e83a93cc39"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/experience-fabric-vsr/src/index.js",
+    "sha256": "3d42225a4cdaf5b40b1ca107fff2bc07719f2bdbe19688316d123736ee8df9de"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/experience-fabric-vsr/src/index.js.map",
+    "sha256": "bfd1124f72f4f469ed5e257b9dd06e16b1cdc79bc018fa33cdd7d8b27fc5e959"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/expression/src/index.d.ts",
+    "sha256": "fadf8e9898578d8017baec40cee6f123600c40354c07aaa73bf038d31b1a01d1"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/expression/src/index.js",
+    "sha256": "034f22453613006c847ef76c8152193e6041f9a39e56d165e1155926193f5f65"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/expression/src/index.js.map",
+    "sha256": "efdc17c64d003c851fe7cffc54d5a3ecf2197d5dc3d323e6fab22d0bb29dfd93"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/observer-projection/src/index.d.ts",
+    "sha256": "a2f452554ed88c993cf2bf00d5bf9cc9afcb7c0ef6d766e015217ac0b5265598"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/observer-projection/src/index.js",
+    "sha256": "a4dfc0fa08f4267136c73bd4032218403e84dc3b813c24e1e7ac079310477de1"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/observer-projection/src/index.js.map",
+    "sha256": "a8e6ba56f710c400ce56d27eb50dc93135fb232a05d316b58fa843711b29c20f"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/renderer/src/index.d.ts",
+    "sha256": "42e53b52267f101f40c401e481d461487926e73c92b3ef38d20e87d6755f47b7"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/renderer/src/index.js",
+    "sha256": "b2a792e466db6c5993093be0743851024605edcec1b29671b5138d97c41045ea"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/renderer/src/index.js.map",
+    "sha256": "beae507c4123ead1b083439236379da9d594c4b0d33401be05129cd89f33b54e"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/simulation-cli/src/cli.d.ts",
+    "sha256": "43e818adf60173644896298637f47b01d5819b17eda46eaa32d0c7d64724d012"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/simulation-cli/src/cli.js",
+    "sha256": "4b12f61fefc486e32f5d55ec9163d0274f688cee3e3b4d102d4ea2469a2421e4"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/simulation-cli/src/cli.js.map",
+    "sha256": "504d7f80cf5a4c4fbfea5e4bd03b29825046f664fc12fe8e0140583b8bb89e51"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/simulation-core/src/index.d.ts",
+    "sha256": "b970097dd2a4b4b17f3d190aec560d40563357589bae9cb7e4f8bf6a44ca2ce8"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/simulation-core/src/index.js",
+    "sha256": "864caaf9ab6610646ff523a639a64384b27d0e3363b480ed94f312d48af07320"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/simulation-core/src/index.js.map",
+    "sha256": "6e12290bed80a5e48031576115103d4cf83c81adc88a35e2feca5c9e29851d16"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/simulation-vsr/src/index.d.ts",
+    "sha256": "d5443d27bb33bd30b4fda0a36d250264c36ef07d80b3f82624536004870dc061"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/simulation-vsr/src/index.js",
+    "sha256": "967dcc2a9b818c6ade60748190f60897edf2f9db230cc5161fcfb8a2a1f891a2"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/simulation-vsr/src/index.js.map",
+    "sha256": "33f16a502f5c1a949841892d4396f4f2771955c8628c01aa933b73ac84372701"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spatial-embodiment/src/index.d.ts",
+    "sha256": "40ab723ed356df68a41ae1fb8dd1d4a9737e71d75ebfe8f2a5a9a6a7f37cbac8"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spatial-embodiment/src/index.js",
+    "sha256": "619192efe68b1167910761438d73f833c2ef06e3c8af8d522f3778657da4eece"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spatial-embodiment/src/index.js.map",
+    "sha256": "78e1956d91533b8b59a572b68753ae61d11c0bc8a0bf9a9c8ab3361a7d806768"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spatial-embodiment-cli/src/cli.d.ts",
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spatial-embodiment-cli/src/cli.js",
+    "sha256": "c9865feeb62ce22ec7ed6d4478f8b2092f6c1af29b83202a16eb8cce3f04c4f2"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spatial-embodiment-cli/src/cli.js.map",
+    "sha256": "91160ea29ea07e044cef8033801f63e1df19c1448b4e1d360a862fcc349531b2"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spatial-embodiment-vsr/src/index.d.ts",
+    "sha256": "1a4cbaa5cf71d98568ff17786a19ff8b022969f46fd1d4da1663e6fcb8edc598"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spatial-embodiment-vsr/src/index.js",
+    "sha256": "c44ad72f23735517d26f2b2e775af8fdd02146f40da9d99ee4eb1083f2f26ae1"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spatial-embodiment-vsr/src/index.js.map",
+    "sha256": "825635f6bc5362bf2316e8823cedf227e5be8a7abf60ac235e5540cdba2f3335"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spatial-embodiment-vsr/src/vsr-spatial-v04.d.ts",
+    "sha256": "a67f648eb28c934ba30082d6ac16bcab75d5f329b5a13927df6552cc8a0a5d59"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spatial-embodiment-vsr/src/vsr-spatial-v04.js",
+    "sha256": "a1186a4b308aea0b3b90ff8c3800024ada83b0bc1a25e0c4fbab0252139e90fe"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spatial-embodiment-vsr/src/vsr-spatial-v04.js.map",
+    "sha256": "c6d1e2e5d0b1a52d36a93dd1b7faf41c7253df1a32b424dba91df9c7ff2718b2"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spec/src/index.d.ts",
+    "sha256": "d0fcecf4bd910dc053cef264eaf8aea67fd33c961ca1f01a1f6781f0a244d146"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spec/src/index.js",
+    "sha256": "4a35f29b820b7e8bc568d1910964126b936726d19b1d4a7717c090d9b72a02a1"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/packages/spec/src/index.js.map",
+    "sha256": "ca5707f21c8c359fe6fb6ddec8c530982b1ef34ffac6314f2b5a8394e2001ab0"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/constraint-physics.d.ts",
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/constraint-physics.js",
+    "sha256": "00a20afb2c9491c44d077c00ebc0d8cd2b31ac03613d90ac2e8f4fa55f65edfd"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/constraint-physics.js.map",
+    "sha256": "8dfa787ad12ca9f8cd11c56b6552dd927cd9b00f67e315bad37926d3deda6892"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/embodied-dynamics.d.ts",
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/embodied-dynamics.js",
+    "sha256": "1eb262b7a0b26235d078fc192c5db88a7d9c1200f75dcee32dedd62814c2a64c"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/embodied-dynamics.js.map",
+    "sha256": "e4d2c84ccd3603c22ab233fd88f9c7c324762632fc7a578ef4b77d84e32647b0"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/experience-fabric.d.ts",
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/experience-fabric.js",
+    "sha256": "d6df975e758acb7d137bc333603028e53373adae5d7cfaf3f5693007dca58e05"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/experience-fabric.js.map",
+    "sha256": "b379ec5ae951a78efdf3c3748a028815f9ce268a3d809fc383d6f2b8f424b81e"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/run.d.ts",
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/run.js",
+    "sha256": "8fa79f92c4e360a307161d735ffd13cb33f7f40a24eca656fa70cbf8158de91b"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/run.js.map",
+    "sha256": "61cabb7167a688e411bcde4ae1c5af72a86ea2aded18425f5e6038f0b3a65e32"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/simulation.d.ts",
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/simulation.js",
+    "sha256": "f420a43a5b9c25fb9ec61c30facc833f21ae0a8dfa01149d8bbfb6269090580f"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/simulation.js.map",
+    "sha256": "f5ccada5f830666b27704178916adad08c843f93a8a0268a9700c336e3f48afb"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/spatial-embodiment.d.ts",
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/spatial-embodiment.js",
+    "sha256": "21b7f0fa4dc81b94bdaaf02eb69d8eb2753ceb9592af275afa8934850615ad77"
+  },
+  {
+    "path": "packages/world/reality-simulation-runtime/dist/tests/spatial-embodiment.js.map",
+    "sha256": "f5ab0da16a5936afd58ec9029eefdc7890369538e2e5bd0419de0cdf110693c9"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/LICENSE",
+    "sha256": "d40514fb11ab902d4db0389de5d50a8b688ce6c67c01e81bf6e70470aba8bbff"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/README.md",
+    "sha256": "3b03c267f04023a68e87d1f550adf0cc6c35caca3b55d8badcc336b3f43dde0e"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/package.json",
+    "sha256": "04a4477b5d56820f781a87196e959a68d3f92e17bc2e13ca1d4024c6ea70a234"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/adapter-hnac-state/README.md",
+    "sha256": "8fa4489e34a9f2e4704e1b709dff092a70b210b6172ef4a8dafd6e19413dc865"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/adapter-hnac-state/src/index.ts",
+    "sha256": "3affcc70f87db8b58d955c68b581e399dce518ac539df3c50d9d070b2f89e880"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/adapter-reality-one/README.md",
+    "sha256": "d7f3a3729d148be682ce44773fda58898de7bf6d074211ee65b547ac6b961c59"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/adapter-reality-one/src/index.ts",
+    "sha256": "a7854c07de0f71396376d496afcef5894bd4831b21abb9745c017cf36c8d7f06"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/adapter-reality-products/README.md",
+    "sha256": "9c69988f2ccdf59f0a790b2ffa937c86629204b5205eb574cacebf89ef9f620b"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/adapter-reality-products/src/index.ts",
+    "sha256": "abfe55fef6e58ca229176bd077f1431076384e2156f84f030cc702176101bdff"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/adapter-reality-studio/README.md",
+    "sha256": "5ab37994057f27cad895b4db12ee4ab8788a6143cfeb050be75ded1a9412fbc2"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/adapter-reality-studio/src/index.ts",
+    "sha256": "5ac2803b4d419ac3e64bbc6d0af70577c294d369026a0ae34f9b34a83d609cc9"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/adapter-rfe/README.md",
+    "sha256": "16cbd71b24f2d4cecf2f6878f3dd0a6c1693769476f4f7f27e8a032fbc1c5f17"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/adapter-rfe/src/index.ts",
+    "sha256": "b9e8d883d0b850c5a98f5e1d3b130a3f34f081e11ce048955beb8dd6d2c7bb95"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/adapter-rsr/README.md",
+    "sha256": "e8b671bc6fac425e671465d7af1720d8cbd8e8e97a97a1a04343d78876b8ba4c"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/adapter-rsr/src/index.ts",
+    "sha256": "b23f35dd495bade167d0b5e725ee5782de3c70680a76aac30a7ff5321849309b"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/agent-protocol/README.md",
+    "sha256": "822e8c49fbd5ad9a6ea5f572e6482aca321c3068704c08a24499d7bd0efec704"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/agent-protocol/src/index.ts",
+    "sha256": "0e65177a7c2ea540a4de107d833c05cbf99b5abda19bd51c442bd78be40cb817"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/backend-canvas/README.md",
+    "sha256": "604123dc1569d28e2cd9468b188d0781fab164b0a57373052fc2067a6de5bc16"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/backend-canvas/src/browser.ts",
+    "sha256": "f88efdbff68cf81be5462db43f3f8fb0f099331d626f8d95052a86e48211f4c3"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/backend-canvas/src/index.ts",
+    "sha256": "bb49f8e61d07c7f28394712310efda8e938773d7b5dd76192a1acef62211a8f5"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/backend-hybrid/README.md",
+    "sha256": "c5188958fb19789e4ac02db9c4e4fedc1de673fed8bb46881975e00fd047ed15"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/backend-hybrid/src/index.ts",
+    "sha256": "6eccdd373b1a71f7d480118446d2890c2437fa8505a866dea8f0eee7a0bb2aab"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/backend-null/README.md",
+    "sha256": "eeda8ff65b667a2b32798f70522e792b5d8d6eb77372793878588619cde1fb37"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/backend-null/src/index.ts",
+    "sha256": "90c20ac8ade16c68065fc37892cb7f2e8fce62401a85f2ae48a4cbd2afdb9e69"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/backend-webgpu/README.md",
+    "sha256": "d8bad9e6b107112192068a02b86f8bef9dfb835f07d63137c0c65595b092c391"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/backend-webgpu/src/index.ts",
+    "sha256": "2c828c77fde2d7bba6ac010ba22ebf2a5947b191ab0c8fbfdc3c483ac4c63060"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/build-pipeline/src/index.ts",
+    "sha256": "3d58d25a88e33d02843beb3337fbeb5d9ce7177c6fb8fdb84fd7c83a63bfb44b"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/cli/README.md",
+    "sha256": "025ca07a68a4bf323262b3941053d2a3167dcfde59672835f30524153422ad11"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/cli/src/cli.ts",
+    "sha256": "3050678177c7074f697ec5aefa3f6f40aa6101ee1b847d83b9147070bf7ff09d"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/core/README.md",
+    "sha256": "ed477214295d4ed7c5af1e4fba2843a66b7147de7b641ec57de134e9f76e506a"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/core/src/index.ts",
+    "sha256": "1e5dc6db0129dc51f52b0fa53b822e3c572d914245ae129ee9f2973370cfddc8"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/device-projection/README.md",
+    "sha256": "b37da25dad4c435e7af65862ec5f7d22b1f94f5b55ff415b7a0603f398aeda75"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/device-projection/src/index.ts",
+    "sha256": "74ab26eadf087e9d6f348098b758c2a4302f41785a60c23df9fce0f37dc00550"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/expression/README.md",
+    "sha256": "fca4a1f0644a6a8cdd2f9ab1d7f2a0d01b2a49f3904b0dc262e44f2f322ca8be"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/expression/src/index.ts",
+    "sha256": "59b4cc751590a7ea13b5895b81aed49383f6497d7bbd226e86f529b2c30235c8"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/font-freeze/README.md",
+    "sha256": "47cc0d1906624f352e466269ec19b76aa8e2c38559afd2810404948eee8784b9"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/font-freeze/src/index.ts",
+    "sha256": "c05b004c89b369c21d6f9e67f7fd88574dcb731db86350ebef736c165a7d7f4c"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/interaction-runtime/README.md",
+    "sha256": "d95747e66a2366b9ead797d464837ec93e4fecd6998798dfdd8dff98db9f5d23"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/interaction-runtime/src/index.ts",
+    "sha256": "da7892a0864b91452faf5ead970d57caccf0ac2a2764d47df90215b70225cdf9"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/observer-projection/README.md",
+    "sha256": "536e2243baabc339ef63b30fa0e2a766a790cca04a8f50b8e669a54c707ee0db"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/observer-projection/src/index.ts",
+    "sha256": "3715a910681b72e8d1df7be1c950be7343239380289c1b6a1cd1d2245433c310"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/path-tessellation/README.md",
+    "sha256": "207a3653822d145e7147cfe975e04b5b465174430694aac3c61409071499226e"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/path-tessellation/src/index.ts",
+    "sha256": "d565c30e97f778261479bc49d537080f3c415ad052849db432419dcb19a996a6"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/realtime-webgpu/README.md",
+    "sha256": "9d398edf6c527525a152a90f6463bb7529c582980871a7cc86f8e66ed4fd72a2"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/realtime-webgpu/src/index.ts",
+    "sha256": "65b53939f6dc95ed38906d36a8aa4cb541c2436ef2dec88b083a1d538f45e634"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/renderer/src/index.ts",
+    "sha256": "b8039e1fe28ac68cf56089be6d07fd2cb2aaa30addac3a4be08ee29aa2485a80"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/shared-coordination/README.md",
+    "sha256": "e614cacbec80c4f349c89643b154f946364f4b7e97f99bd2ef5eeb464f29a3af"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/shared-coordination/src/http.ts",
+    "sha256": "1a5ff091b62bb0fa2abb4babe638c9f6df8ff2e06d3dcbd6a55f79c2334a6e8e"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/shared-coordination/src/index.ts",
+    "sha256": "ab5a581f1f7db4cbbac31a50e7df99e7d070b3d1f05470b38f6f9e08df6f894f"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/simulation-branch/README.md",
+    "sha256": "55719dcc97b92d6b4256cee6f561e60665f08a95b329081de51868826308f727"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/simulation-branch/src/index.ts",
+    "sha256": "8e498e5d072be2f0049af76e35152a8cb3beaa260ebdadc9ec44851eba92f7a9"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/simulation-branch-vsr/README.md",
+    "sha256": "5916c7d141aa40e10f0b7237be07efb5e3a42eeadd15b8c96e5a35bf0edfde01"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/simulation-branch-vsr/src/index.ts",
+    "sha256": "b540cd447133f16ff12cc74e94f710b054aea003193a4c63f073025c682c2c41"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/simulation-core/src/index.ts",
+    "sha256": "637be448d14e68cb1ac0b4541570ede38989f1374e3d1c30340ee3c1be94b1ef"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/simulation-vsr/src/index.ts",
+    "sha256": "119f42d193e75a7c39013de6bd801e2a27b1849ec34fa949caf7e247e1dfc892"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/spatial-reality-3d/README.md",
+    "sha256": "3bfe086c3a7de8c1de157839d31448aa9193238bde42ae414d394c965a127881"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/spatial-reality-3d/src/index.ts",
+    "sha256": "9c2c5aea2c5ba77d18176076f0658f4b0e8c110c3472d0f390a1565139ac615d"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/spatial-reality-3d-cli/src/cli.ts",
+    "sha256": "87b031bee869c22bea72a8bdd0be88b85059124de257eed460acfdc58a1e5ddf"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/spec/README.md",
+    "sha256": "bcc0f769bc764ee0b8d0d889ad9c786110c0387a7caa782a85b46201cca20114"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/spec/src/index.ts",
+    "sha256": "0122f74002437802954383672362ddfbc2430269bb8c825c2c17cfcaf185081a"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/visual-reality-compiler/README.md",
+    "sha256": "666f30d5fe61cdc071036c246cf3931130f7b312af2d5473527afa2cb2ac6e65"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/packages/visual-reality-compiler/src/index.ts",
+    "sha256": "c5d418ddefa59b27f60d00ad4334d6bafe64beef67dee0d1b4721dd2bab3a8ff"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/src/unified-index.mjs",
+    "sha256": "de2007c684209f809b3e817e8b2e4c82f0d39a7792e067bf0a540bb85b35a309"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/tests/run.ts",
+    "sha256": "07b5c324932809491ec6442a3d781a5aff9b563746b8f7e92e1a48c610e9cdaa"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/tests/spatial-reality-3d.ts",
+    "sha256": "c2d660ec0274868a224e9b1f970a8f8c1877c9983de457f2aaf70cc61259cf24"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-hnac-state/src/index.d.ts",
+    "sha256": "6fbf3661e409cfaebdf0f53a28153908641b12f4627d2eb9f58778e5e57dd242"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-hnac-state/src/index.js",
+    "sha256": "d1e841bdc9cd1143a20d23b31fa6724c066c78a46c32835853b579fe742835a0"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-hnac-state/src/index.js.map",
+    "sha256": "f3a6184f017beab5cd8ded84744b7f3608ee575c2b77490022e4378daa17a923"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-reality-one/src/index.d.ts",
+    "sha256": "1b6a7d45f95a10a69d34cfa8cce6d67212179454c759c358be33b1208410daa1"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-reality-one/src/index.js",
+    "sha256": "f9558b5c0e15b50a9b65b6761047997905c99c7e616f2818b0ddcbd483c66125"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-reality-one/src/index.js.map",
+    "sha256": "16b47cfa617415f21706a533e9065197476c5ef8e58b04d61af77fc620522bed"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-reality-products/src/index.d.ts",
+    "sha256": "fd529cf43d1c41fa8a1529110245045967abac6dc3b2b21019f5a51f70cc5505"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-reality-products/src/index.js",
+    "sha256": "7f751b469ef1f25534496a553415487c499e066d9149a5126666f3e2c20a6ad0"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-reality-products/src/index.js.map",
+    "sha256": "407aff9f77ac7b58f77a68e3ae202b555f64fa3ec2c6a63f1822f438a1b9a2fb"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-reality-studio/src/index.d.ts",
+    "sha256": "b1a67ce16a1ebd67fdc32a09b7f492c4b01c55b908f3a74a169b5b592a823af1"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-reality-studio/src/index.js",
+    "sha256": "1cf3d77ab351ae71d3650996a0d7be791d66cb40b45b34741ecf957348ed2803"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-reality-studio/src/index.js.map",
+    "sha256": "19a8d6538a5867c61705b8cd96a2fb8a63e0a492dde8ffb5e45e4577cd488911"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-rfe/src/index.d.ts",
+    "sha256": "383f7526710e9a0ee5df9c507ec25f03677fa475c81e4d1e945ee8e7964562aa"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-rfe/src/index.js",
+    "sha256": "98ddc6cde2db9802bb8c934cdba8c3b5d371d82739f47697de6f17e028c45630"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-rfe/src/index.js.map",
+    "sha256": "8a0a9dbc5f59a48fb0aa406396c86b14913f658b0bcf6e38cb09b98790a61b7b"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-rsr/src/index.d.ts",
+    "sha256": "6d241636b936d6991a3352edf824983f5c721a8aaf09dd53d22f5b3f8f2d079b"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-rsr/src/index.js",
+    "sha256": "869d557d5b3cf9e508b1c6dfe6133d790356ba9eed0302e93467d546a2f89654"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/adapter-rsr/src/index.js.map",
+    "sha256": "72797b8d46aec218dc081674d374421b19211768ffb4df34b2dc0ab541508242"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/agent-protocol/src/index.d.ts",
+    "sha256": "e3231d47767db559173edfe947caa6540fa535c87e75fc1895cdff9397abc243"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/agent-protocol/src/index.js",
+    "sha256": "d93964d6ef8a653ca1677a381b44e5b5864c9ec429a37a3f6766992d58a0b279"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/agent-protocol/src/index.js.map",
+    "sha256": "4357f62e9b729b3389aaf7840865e927f7fbc3e358b1e27310e69f49de5f6729"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-canvas/src/browser.d.ts",
+    "sha256": "9f188b8af2dd2619460366326b3056ba958c02f9d4cb2f17c0283dde7a81102f"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-canvas/src/browser.js",
+    "sha256": "ec1879f7bc64ad6d3d5e5f627da9912802c3964cc344811eee38e3dab3b7dd92"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-canvas/src/browser.js.map",
+    "sha256": "4bacebdcb391603a82a1747e277b57ca810f7c60f11bdf65b239e6a00c24b522"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-canvas/src/index.d.ts",
+    "sha256": "fb8abe734f0e4e5c044c884436500ffb4649a5f4e5acf4e61af74c2ca18b11e4"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-canvas/src/index.js",
+    "sha256": "9435086cbf26b5b221ccc913349c606c488182ed2efdadd7133b9b774b276838"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-canvas/src/index.js.map",
+    "sha256": "e7edc1181e9a7f7cf07996f4cad82053f48d1976f3ab5b80b5c534dcf8087042"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-hybrid/src/index.d.ts",
+    "sha256": "83c87210ce5b4b6daff97cefd5971f29975d2ccd90ae624e14fe43a9e482f27b"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-hybrid/src/index.js",
+    "sha256": "1305662658d2ff264a0c390769da745e837a7e656f93c6c169d1da8682e137fb"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-hybrid/src/index.js.map",
+    "sha256": "1c9d561c41b1f1f5ba7d040d87f1c5fcf277c73ecf8227f7bf27b614a56a986b"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-null/src/index.d.ts",
+    "sha256": "3ef966d02bac55fa4d0fc8cbf34757bdf4444f0c98591057f86ed369a2cc2fe4"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-null/src/index.js",
+    "sha256": "bb2f7f632a03f678e6d9aa27055b4cb4523d930d47324d41f3f81488961f846f"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-null/src/index.js.map",
+    "sha256": "e1707d7baf054cf582fecc122b9bab5abb816cade4802f1d68877b2b740d0854"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-webgpu/src/index.d.ts",
+    "sha256": "e4f921f1169ade8dc3d5928281d2636790294911b0de0e6f528978a22dc614c6"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-webgpu/src/index.js",
+    "sha256": "e346de06d6e10aee89fcf9ccdcad7ce9ea39a45f20da360c6549e104fd17eacb"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/backend-webgpu/src/index.js.map",
+    "sha256": "43c42f3a8c45d113c7e20693cf663bb6bb0d7131973d3ab3e1473f79ff83be7f"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/build-pipeline/src/index.d.ts",
+    "sha256": "d5b4a5575f47171c1cc96e73c0d4aeae7d544710228ae7c7bec644ddc500214e"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/build-pipeline/src/index.js",
+    "sha256": "66d94501da4133d960039bf15a3f284a78a8549332e61bfca4480d296615e932"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/build-pipeline/src/index.js.map",
+    "sha256": "ef756ced41dc589a2a64d07c20234cde4fec0eca30560627fd75854567de8968"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/cli/src/cli.d.ts",
+    "sha256": "43e818adf60173644896298637f47b01d5819b17eda46eaa32d0c7d64724d012"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/cli/src/cli.js",
+    "sha256": "db094c28f47dac4ab9e395fe666453c62486edaf961daa492f29e56c3a161e91"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/cli/src/cli.js.map",
+    "sha256": "037e80b4218e48a35b0e35c340a7b1fde5d25e1e26379b8e0b454d97df814963"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/core/src/index.d.ts",
+    "sha256": "6b6a5c21c8ed16ea2ca7a3ca6a1a2e2ab1f7a04ffffd41678bcd87aab56bcc34"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/core/src/index.js",
+    "sha256": "97780f95e07ce9090531d45f46a290d047c79f26a0ab240847b035f9f3a5b6f1"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/core/src/index.js.map",
+    "sha256": "de6604d8e036ff34f79aa4533215bb41f27f7d2665dc150d9a4522bf49e80e2f"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/device-projection/src/index.d.ts",
+    "sha256": "7edbaf4b11ff277389050e7c5078a221baa0f4b8da4f0adf7fbc9257cf5dc1ef"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/device-projection/src/index.js",
+    "sha256": "25b3204edbbae6b5304fc2b86a71d249d9d674c486817488e33790bd9d6d2204"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/device-projection/src/index.js.map",
+    "sha256": "e2ff3934ffe2109bf5fabfb9354361f4c3cd04895398794f9c8eabf01ddacc7a"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/expression/src/index.d.ts",
+    "sha256": "fadf8e9898578d8017baec40cee6f123600c40354c07aaa73bf038d31b1a01d1"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/expression/src/index.js",
+    "sha256": "034f22453613006c847ef76c8152193e6041f9a39e56d165e1155926193f5f65"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/expression/src/index.js.map",
+    "sha256": "efdc17c64d003c851fe7cffc54d5a3ecf2197d5dc3d323e6fab22d0bb29dfd93"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/font-freeze/src/index.d.ts",
+    "sha256": "6984e0067f6d1d4845831c85d647e15e0373cada27639033fc55f104f81749e6"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/font-freeze/src/index.js",
+    "sha256": "417c23e12b521a5a4ce22d2efd582077642099e3e72c405e0cba62f030fe3bab"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/font-freeze/src/index.js.map",
+    "sha256": "9b9295d42e1d7ea216fb53fe5f8ce175f4b39af1789fdf3424ace18dfa94e676"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/interaction-runtime/src/index.d.ts",
+    "sha256": "6816ec3d43a4e87c3e80269b5557fcc79585089431c68069182d1c7d92420293"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/interaction-runtime/src/index.js",
+    "sha256": "b75f7cb781ad29ad3819d04c56aff8862a8ef1689bda60153a6ff82ab8b7454f"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/interaction-runtime/src/index.js.map",
+    "sha256": "b154e63b9ba21e2d671a1fd8672d99dec5bab57cf834baf27738df11b9816627"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/observer-projection/src/index.d.ts",
+    "sha256": "a2f452554ed88c993cf2bf00d5bf9cc9afcb7c0ef6d766e015217ac0b5265598"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/observer-projection/src/index.js",
+    "sha256": "a4dfc0fa08f4267136c73bd4032218403e84dc3b813c24e1e7ac079310477de1"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/observer-projection/src/index.js.map",
+    "sha256": "a8e6ba56f710c400ce56d27eb50dc93135fb232a05d316b58fa843711b29c20f"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/path-tessellation/src/index.d.ts",
+    "sha256": "46139119630675ad30fa5989e598b33ea545f525b3bb8ce34900a22b9c86fdee"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/path-tessellation/src/index.js",
+    "sha256": "a3a01388005e4ea1d3198d6794df8951e61d995e56a33bc9c751e4cdc1e7608d"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/path-tessellation/src/index.js.map",
+    "sha256": "5ccb0d79c38726258ad3e2572b245adfbe64f3400a11afba8f87bc65ca40c031"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/realtime-webgpu/src/index.d.ts",
+    "sha256": "c3d1c35d29121d6daeba7455f5d2ca61de922d1517d4d634e5ef4169deac5352"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/realtime-webgpu/src/index.js",
+    "sha256": "9d2ce2b8874488b4277f680502d105b5e3ec8c3fc600d91bfad5e63361b358c5"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/realtime-webgpu/src/index.js.map",
+    "sha256": "3ef16b6d102e71c4529bba68e69219a06b36bbb494d8ec13058e6188cc9c73c8"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/renderer/src/index.d.ts",
+    "sha256": "42e53b52267f101f40c401e481d461487926e73c92b3ef38d20e87d6755f47b7"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/renderer/src/index.js",
+    "sha256": "b2a792e466db6c5993093be0743851024605edcec1b29671b5138d97c41045ea"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/renderer/src/index.js.map",
+    "sha256": "beae507c4123ead1b083439236379da9d594c4b0d33401be05129cd89f33b54e"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/shared-coordination/src/http.d.ts",
+    "sha256": "445dc92c16f30a70670209df12f1296d7ab9bf9e0e36bfb8b3b234545cd07858"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/shared-coordination/src/http.js",
+    "sha256": "d3d3693ee8bfbb1f1b9d1a88921ea82851f150d8ada2b3cf9e96e6514957b63b"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/shared-coordination/src/http.js.map",
+    "sha256": "409427bba83687a276e1471091c1e8e2dd4982d3bd84d2feb6ceaff1fdc35c67"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/shared-coordination/src/index.d.ts",
+    "sha256": "34f3e49f103c537f69b3ac8552bfd80f35490013ba899fa483268b81bed6aa19"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/shared-coordination/src/index.js",
+    "sha256": "01a89d42dff902ec27f09832b8b8ff7cacd5061b6d74e599a1ad1f96dbcf56bf"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/shared-coordination/src/index.js.map",
+    "sha256": "653528500a46dcd90b245cb74f73dd3ad27a5158c35feb992ebb203f13d3468e"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/simulation-branch/src/index.d.ts",
+    "sha256": "b49f2232536afb0a17f7518d68ff6093ce120518e120fe855bc5fba5eb6f00d0"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/simulation-branch/src/index.js",
+    "sha256": "5444b1448627f76d93b3055edea7045e12b5fb79c0125ad170c8f06317c43e29"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/simulation-branch/src/index.js.map",
+    "sha256": "04938f5707792e9e188c479a8e47f2883a8f62809a714831e4d8f869977c1bb0"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/simulation-branch-vsr/src/index.d.ts",
+    "sha256": "7d4ffbe751aa69257246bee5499f4150aba9e655a8b10b12f4935362c582e22d"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/simulation-branch-vsr/src/index.js",
+    "sha256": "c79f3e2d12d93eb95d056ab7490ba81cb750e94978d235f0e01bbb55d2e95e1c"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/simulation-branch-vsr/src/index.js.map",
+    "sha256": "6c914249d843cc1647550d86655f1717073a75a11443ccae7b73baa84006df29"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/simulation-core/src/index.d.ts",
+    "sha256": "157043f46ab6394a355f41612611e380978d64227c475337d25caeddfdcd8bb9"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/simulation-core/src/index.js",
+    "sha256": "a45545f75eddf73e22de7f305d67b6fdf4c4e1acb2dbb21027a7295088797480"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/simulation-core/src/index.js.map",
+    "sha256": "7ba1c24000b074fe7e4140887907601df7eddd3679fa52a8c31f77c9cfe4644a"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/simulation-vsr/src/index.d.ts",
+    "sha256": "d5443d27bb33bd30b4fda0a36d250264c36ef07d80b3f82624536004870dc061"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/simulation-vsr/src/index.js",
+    "sha256": "56198522294ead40c5845b1b644288be33d86468d2af839f1678f8f4a887d988"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/simulation-vsr/src/index.js.map",
+    "sha256": "fa991017e4bca87034bebe41df5384bed178a5160c629badc12333794cd08b6a"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/spatial-reality-3d/src/index.d.ts",
+    "sha256": "4ef37738b89d19c9201df81efa127561caa069ec7b63f1b98c6fba5618d88c5d"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/spatial-reality-3d/src/index.js",
+    "sha256": "785edb1812c2bc769283c03fec1a26aa29414b368ddb6935cdade6349d6ed9b8"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/spatial-reality-3d/src/index.js.map",
+    "sha256": "908ae5e6e57afafc4c03fdf71f784c0b7912cd2353ef631907b8a1094b976258"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/spatial-reality-3d-cli/src/cli.d.ts",
+    "sha256": "43e818adf60173644896298637f47b01d5819b17eda46eaa32d0c7d64724d012"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/spatial-reality-3d-cli/src/cli.js",
+    "sha256": "e1ba4990308f9f2a681f538dfd019d0562a4bcc570ecb8ec28ab73caaf88939c"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/spatial-reality-3d-cli/src/cli.js.map",
+    "sha256": "e6f2589492649f2861876aee11d212e6f0194ff7ca7ad8ad7ea7528842b7a2e7"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/spec/src/index.d.ts",
+    "sha256": "9306bbe742b9f683d73faf827cff2e4afc99f3f80cd4cb00f8c765aab3083ebb"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/spec/src/index.js",
+    "sha256": "91dfaf5692072497f5efa0b6cfd274b02bb61e221a4a1318dea0e406649d720a"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/spec/src/index.js.map",
+    "sha256": "4da69f1be0c5232545c161c871266ac527a931ec979d99456b29b4d3b9c79e5a"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/visual-reality-compiler/src/index.d.ts",
+    "sha256": "e23657e812dc9c43f5a4d9e96c696f0fc161611728951c54ebda34275d7b446e"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/visual-reality-compiler/src/index.js",
+    "sha256": "9398a66ccf30b4fb3ee16997304124cd63a89674e40418194fa6a56c1f720181"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/packages/visual-reality-compiler/src/index.js.map",
+    "sha256": "463f08322b8971da7bcd8def36be908a588070619dac07d3bcbf26779daebc9e"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/tests/run.d.ts",
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/tests/run.js",
+    "sha256": "b0dfaf1d9eb4122dcfb54fd182ec6aa7daeeef37d00c78d34ef95c2c78771a2c"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/tests/run.js.map",
+    "sha256": "0b3eead61412fa177b90f8cc0334cd3d051f38c9d40783f41f5e492ec0e61d49"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/tests/spatial-reality-3d.d.ts",
+    "sha256": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/tests/spatial-reality-3d.js",
+    "sha256": "c439185cb8f6f2438d6234211ddda8f89e7fbc7ca48b8b6e27640498fb9d6002"
+  },
+  {
+    "path": "packages/world/visual-state-runtime/dist/tests/spatial-reality-3d.js.map",
+    "sha256": "f3b19d744b46dc2aed1a06b22eda4299c0ca9d5da37ce3184b55c929fdde4610"
+  },
+  {
+    "path": "packages/network/reality-network-runtime/src/protocol.mjs",
+    "sha256": "41c6bcfdbde4326700375a85edd50c3cb13443fdd7b3f007ef03e148f4df06e6"
+  },
+  {
+    "path": "packages/network/reality-network-runtime/src/authority.mjs",
+    "sha256": "1766c577063c08db2e64f158e15b046cd3a7babcdb974b587e475c137d09702b"
+  },
+  {
+    "path": "packages/network/reality-network-runtime/src/world-fixture.mjs",
+    "sha256": "16123bc0dccfc2db3b69560c45c90f497cbe704b9626cbda7a71beebd78519cd"
+  },
+  {
+    "path": "packages/network/reality-network-runtime/src/transport.mjs",
+    "sha256": "43810e1c440531df5a36595ce689498f98febcb0c79e3cf033a4290dc19d1000"
+  },
+  {
+    "path": "packages/network/reality-network-runtime/src/interpolation.mjs",
+    "sha256": "72c082bf7947dfa38f3fb2352e9eab7a077f3eac781fe7e6c9208d82543e619f"
+  },
+  {
+    "path": "packages/network/reality-network-runtime/src/server.mjs",
+    "sha256": "bd0768dbe2c6b1420e2315fd3b604adaf4223ddb7b5530cb0cd1d2a77b04a692"
+  },
+  {
+    "path": "packages/network/reality-network-runtime/src/client.mjs",
+    "sha256": "7641c790ff6893e7d0f787fe1c118a310c8804e8fb5110ba5ee9e9a5954a5490"
+  },
+  {
+    "path": "packages/network/reality-network-runtime/src/runtime.mjs",
+    "sha256": "39a3005799fbb079b4c01e6c869f7d115d9d3e7a436683a0911ed79d2743d0e4"
+  },
+  {
+    "path": "packages/network/reality-network-runtime/src/index.mjs",
+    "sha256": "85f0a21161e5f747232b7ffd8390751cd88a458dcab5e40534df758228bd8068"
+  },
+  {
+    "path": "packages/network/reality-network-runtime/tests/network-runtime.test.mjs",
+    "sha256": "1e4c66d18fcdb255270eb8b2b1caed4e649191b1a62ce4bf4f49c8bb372103a8"
+  },
+  {
+    "path": "packages/network/reality-network-runtime/package.json",
+    "sha256": "5a3f028fa09ae98aaca52e14e6833d3cbfaf098989ece84189e0812d4013e5bf"
+  },
+  {
+    "path": "packages/network/reality-network-runtime/README.md",
+    "sha256": "966047c789a6058e3eee50bfbcf3f85e9713906cb05c426fd5e27b00c11b6c80"
+  },
+  {
+    "path": "apps/digital-blue-sky/LICENSE",
+    "sha256": "5e42b77b06afceb3556a89e0f5bd7303e69bba06e0cb3bd7ab04b7ef8409c465"
+  },
+  {
+    "path": "apps/digital-blue-sky/README.md",
+    "sha256": "818d2246fa91becb32c41d8927c7c251c5dda5d53e130d188160ae3f34744686"
+  },
+  {
+    "path": "apps/digital-blue-sky/package.json",
+    "sha256": "ac386924d8ed2405c00dbdadc52b2825bc5692bcdb5d61d60acba796ee0af8d1"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/authority.mjs",
+    "sha256": "5ae262c63cb161ab0edb747e8f08b4770eea415b6344e25e5c994fd07f35ad26"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/branch-engine.mjs",
+    "sha256": "853742c79d83a55bb8ce4561501b1e0ba4c02db2ad44c3fbf5c59d4f16c340f6"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/canonical.mjs",
+    "sha256": "6ae44497dc53bc42af1907328d90a36a9a83a9296f8cc2aebdfc070d2ece607b"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/capabilities.mjs",
+    "sha256": "2ca724f759f213da023038b5cb3787ac7044505ba6b3dede3035892d3b886a5a"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/capability-closure.mjs",
+    "sha256": "281ec48907fa245b5359415ea0a7a5b0b05df0fbab758b728ea6e43200cf6ff0"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/cli.mjs",
+    "sha256": "f72d4d0349061e25974382176e3b1db382de4411ce76d634f4283bc1b6413522"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/cognitive-loop.mjs",
+    "sha256": "53bc2151fa670f802f6d77a1b997935ac9f08263f0257f8405a3b93327545300"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/cognitive-memory.mjs",
+    "sha256": "0d84a79071e7b2074cd85aa5dffb1d534016e50e199bfb3ce7d141b026177636"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/cognitive-provider.mjs",
+    "sha256": "1c26b7ee446ce216acecfea8e980a94ed04d8b6a6608fd914709ba938c187cfb"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/cognitive-runtime-wrapper.mjs",
+    "sha256": "e511130dd01266ca689d20316780da36b3934eaf44098f22da1bb9701611fccc"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/cognitive-tools.mjs",
+    "sha256": "0aa2e270dda05b82a163d4d0e057d77b8c9344c5600317fa4652ad747ec9cff1"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/compiler.mjs",
+    "sha256": "5bff50126e672feeed43d9a7e9490e53b368efee5e9e6053f6554c9319d1e4a6"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/contracts.mjs",
+    "sha256": "1405f697b2a29839d17078e14881d29c04a4c3ac93914f1c1f589d8f76562833"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/development-loop.mjs",
+    "sha256": "680e2fe562a12e87787315e5c59f3b8f7e12403131f68596218778abc6447a9f"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/experiment-runner.mjs",
+    "sha256": "daae5e852350e800b124785212ecac0134803bb78d20fa64f6adb6d36b11a2ad"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/gateway-bridge.mjs",
+    "sha256": "30b02119e2e26adb2a8672acc7bae10c4cb0e8f38b485e6a9a9785d0ce8ce12e"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/index.mjs",
+    "sha256": "353143abd22ee225464a1628f7dfe182911928d8f70663974ec45c4139be0286"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/learning-model.mjs",
+    "sha256": "a2ad463ef61df0a9de974b30e452b3f54a8069a5b73247da4b1f67ed2af20233"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/model-agent-provider.mjs",
+    "sha256": "50f825384b2df4adfc8e9f71296c637d68b4449419eee1b3602eb07511de6212"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/project-provider.mjs",
+    "sha256": "c5e8aaae70cb80428d9e50e6c1b8f6099eb38e1d70d239bb733fc9fdee528620"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/projection.mjs",
+    "sha256": "0c054916667cb0f6db7d242dcf625b3cdf2255f56f6993ee51450d99afe18df1"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/runtime.mjs",
+    "sha256": "20e311e8f44f99c1a3c6df4530405bbac15ccfddfbda0772f29fa8629eba53bc"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/source-ingestor.mjs",
+    "sha256": "dd4ed64a1518d4716a99e7dc6c68b5a9b30255ffdafe3ad20cdf6da91723521f"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/stdio-runtime.mjs",
+    "sha256": "5139f0336a0c21c819f4db117cbd48a05a40127455643db31fe1f753ea76d92c"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/store.mjs",
+    "sha256": "8837e248fde71fe9322413e037c22c5b40768901cf65077bef2c29649e88ff78"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/task-contract.mjs",
+    "sha256": "7039858563f603fc7d6433a1f076dcf65d2ab9d71e9b4deeb6eb90d5442824b2"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/task-executor.mjs",
+    "sha256": "95e53105f25af496768b911fe686636c86300e8db97c260a631465d49628371a"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/task-planner.mjs",
+    "sha256": "fd6e0532b9b3be5af06b3f9fb933f9f1d4aa8de551877e7942fb43e8c852ed48"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/tongpin-server.mjs",
+    "sha256": "fa4a679f9220c7079416589e24269221a75a5fcb0b2be90f6df86249c0fba942"
+  },
+  {
+    "path": "apps/digital-blue-sky/src/web-host.mjs",
+    "sha256": "9a0c26e55c4d189c389dd6dc81c666c998183755734989ea51f08f43c78f9af9"
+  },
+  {
+    "path": "apps/digital-blue-sky/tests/aip.test.mjs",
+    "sha256": "8af30d1a686d004c090d15de53150d8935e8ef96b677be0d1c8c3f0b38a92bdd"
+  },
+  {
+    "path": "apps/digital-blue-sky/tests/capability-closure.test.mjs",
+    "sha256": "7df70a81c198e72fccb9f4dc1a459b232076ba6b85ddea70db346d5297a9cd8d"
+  },
+  {
+    "path": "apps/digital-blue-sky/tests/cognitive-runtime.test.mjs",
+    "sha256": "c53370ba0c1b7ce8ed0dff3dc0474e9e7aa26ab205cf403d9d2c00e49bccbe2f"
+  },
+  {
+    "path": "apps/digital-blue-sky/tests/runtime.test.mjs",
+    "sha256": "ceaf0a1d6db1cf75fcd8bcdd29b713697e7922cf26ca27c4663fc5ed37df31cd"
+  },
+  {
+    "path": "apps/digital-blue-sky/tests/stdio.test.mjs",
+    "sha256": "39c3a9115b74b2ff600085f2bb7eb9fa9d370e59459dae66bd28fc83d0cf211f"
+  },
+  {
+    "path": "apps/digital-blue-sky/tests/task-execution.test.mjs",
+    "sha256": "8c0459bac66fb89188c38836b33fdc5f63066a3748195584f5b1e9d7bcbac882"
+  },
+  {
+    "path": "apps/digital-blue-sky/tests/task-progress-hotfix.test.mjs",
+    "sha256": "f9f899660837af6fdd9f769196b78895de3c84c610b6e9275e6080c344041933"
+  },
+  {
+    "path": "apps/digital-blue-sky/tests/task-watchdog-hotfix.test.mjs",
+    "sha256": "b48fc2c0665b9e918d2e0bc35d12a7306f48b4d30a2e75575d449eafce3e537f"
+  },
+  {
+    "path": "examples/two-player-loopback/README.md",
+    "sha256": "99b3186d20b513b60d0182606caf707aea0e62b000a9fe8077b2f2e7f638a5f7"
+  },
+  {
+    "path": "package.json",
+    "sha256": "1a29a98443915e8594457cc82246a2c1ff2ea766f2847f639fd4a908cfcae2cf"
+  },
+  {
+    "path": "README.md",
+    "sha256": "e45e20e9e803f4e20c47ed55d87f8e4783ad39cb0e112305882a62b2b4cab645"
+  }
+]

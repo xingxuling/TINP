@@ -1,0 +1,25 @@
+{
+  "format": "taowind.opp.registry.v0.1",
+  "version": "0.1.0-candidate.1",
+  "status": "candidate",
+  "primitiveKinds": [
+    "protocol",
+    "contract",
+    "interface",
+    "schema",
+    "capability",
+    "evidence",
+    "receipt",
+    "ledger",
+    "bridge"
+  ],
+  "protocols": [
+    {"id":"opp.rxp.v0.1","short":"RXP","name":"Reality Exchange Protocol","nameZh":"现实交换协议","kind":"protocol","payloadSchema":"schemas/rxp.schema.json","status":"candidate","compatibility":"exact-protocol-id"},
+    {"id":"opp.rcp.v0.1","short":"RCP","name":"Reality Capability Protocol","nameZh":"现实能力协议","kind":"capability","payloadSchema":"schemas/rcp.schema.json","status":"candidate","compatibility":"exact-protocol-id"},
+    {"id":"opp.rap.v0.1","short":"RAP","name":"Reality Artifact Protocol","nameZh":"现实工件协议","kind":"protocol","payloadSchema":"schemas/rap.schema.json","status":"candidate","compatibility":"exact-protocol-id"},
+    {"id":"opp.rep.v0.1","short":"REP","name":"Reality Evidence Protocol","nameZh":"现实证据协议","kind":"evidence","payloadSchema":"schemas/rep.schema.json","status":"candidate","compatibility":"exact-protocol-id"},
+    {"id":"opp.rsp.v0.1","short":"RSP","name":"Reality State Protocol","nameZh":"现实状态协议","kind":"protocol","payloadSchema":"schemas/rsp.schema.json","status":"candidate","compatibility":"exact-protocol-id"},
+    {"id":"opp.chp.v0.1","short":"CHP","name":"Civilization Handshake Protocol","nameZh":"文明握手协议","kind":"protocol","payloadSchema":"schemas/chp.schema.json","status":"candidate","compatibility":"exact-protocol-id"}
+  ],
+  "baseEnvelopeSchema": "schemas/reality-envelope.schema.json"
+}

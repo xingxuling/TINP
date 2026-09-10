@@ -1,0 +1,10 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://taowind.company/opp/schemas/interop-run.v0.1.schema.json",
+  "title":"OPP Interop Run Spec（OPP 互操作运行规范）",
+  "type":"object","additionalProperties":false,
+  "required":["format","version","runId","producer","bridgePlan","consumer","status"],
+  "properties":{
+    "format":{"const":"taowind.opp.interop-run.v0.1"},"version":{"type":"string"},"runId":{"type":"string","minLength":1},"producer":{"type":"object"},"bridgePlan":{"type":"object"},"consumer":{"type":"object"},"status":{"const":"candidate"}
+  }
+}

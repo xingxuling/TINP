@@ -1,0 +1,418 @@
+TAP version 13
+# Subtest: authenticated network rejects mutated transaction facts before any provider execution
+ok 1 - authenticated network rejects mutated transaction facts before any provider execution
+  ---
+  duration_ms: 703.9304
+  type: 'test'
+  ...
+# Subtest: concurrent exact retry executes once; changed request content cannot replay
+ok 2 - concurrent exact retry executes once; changed request content cannot replay
+  ---
+  duration_ms: 615.5353
+  type: 'test'
+  ...
+# Subtest: receipt mutation and durable ledger tampering cannot become verified evidence
+ok 3 - receipt mutation and durable ledger tampering cannot become verified evidence
+  ---
+  duration_ms: 547.1577
+  type: 'test'
+  ...
+# Subtest: bounded path selection applies cost, region, latency and energy together
+ok 4 - bounded path selection applies cost, region, latency and energy together
+  ---
+  duration_ms: 1.1888
+  type: 'test'
+  ...
+# Subtest: deterministic malformed wire corpus rejects framing errors
+ok 5 - deterministic malformed wire corpus rejects framing errors
+  ---
+  duration_ms: 1.237
+  type: 'test'
+  ...
+# Subtest: integrated RCL migration rejects a changed subject before issuing a replacement
+ok 6 - integrated RCL migration rejects a changed subject before issuing a replacement
+  ---
+  duration_ms: 910.4041
+  type: 'test'
+  ...
+# Subtest: integrated RCL route gate enforces signed latency and energy budgets from trusted edges
+ok 7 - integrated RCL route gate enforces signed latency and energy budgets from trusted edges
+  ---
+  duration_ms: 582.2173
+  type: 'test'
+  ...
+# Subtest: an ambiguous lost response reconciles the exact signed request without a second execution
+ok 8 - an ambiguous lost response reconciles the exact signed request without a second execution
+  ---
+  duration_ms: 581.7202
+  type: 'test'
+  ...
+# Subtest: real upstream OPP preserves Unicode and returns non-authoritative exact contract
+ok 9 - real upstream OPP preserves Unicode and returns non-authoritative exact contract
+  ---
+  duration_ms: 309.7259
+  type: 'test'
+  ...
+# Subtest: upstream rejects schema drift and intersects scopes without granting authority
+ok 10 - upstream rejects schema drift and intersects scopes without granting authority
+  ---
+  duration_ms: 307.6993
+  type: 'test'
+  ...
+# Subtest: profile version mismatch fails before contract use
+ok 11 - profile version mismatch fails before contract use
+  ---
+  duration_ms: 292.6489
+  type: 'test'
+  ...
+# Subtest: missing required schema fails closed
+ok 12 - missing required schema fails closed
+  ---
+  duration_ms: 285.3241
+  type: 'test'
+  ...
+# Subtest: udp: Chinese life intent executes through three independent local processes and two socket hops
+ok 13 - udp: Chinese life intent executes through three independent local processes and two socket hops
+  ---
+  duration_ms: 548.4707
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-82eWTT
+# Subtest: tcp: Chinese life intent executes through three independent local processes and two socket hops
+ok 14 - tcp: Chinese life intent executes through three independent local processes and two socket hops
+  ---
+  duration_ms: 545.9875
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-eFWGmp
+# Subtest: commercial: contract-identical provider replacement executes; semantic drift rolls back; missing provider migrates to B
+ok 15 - commercial: contract-identical provider replacement executes; semantic drift rolls back; missing provider migrates to B
+  ---
+  duration_ms: 1855.0132
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-7kq91I
+# Subtest: degraded: killing relay B causes authenticated direct A-C execution without authority or evidence loss
+ok 16 - degraded: killing relay B causes authenticated direct A-C execution without authority or evidence loss
+  ---
+  duration_ms: 1652.2069
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-KZ2N6x
+# Subtest: partition: actual links blocked on both sides preserve local isolated capability without remote execution
+ok 17 - partition: actual links blocked on both sides preserve local isolated capability without remote execution
+  ---
+  duration_ms: 893.7678
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-t806w7
+# Subtest: degraded: a real link failure with B still alive reroutes socket traffic over A-C
+ok 18 - degraded: a real link failure with B still alive reroutes socket traffic over A-C
+  ---
+  duration_ms: 530.2778
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-f06Igj
+# Subtest: survival: every provider disappears; no execution is fabricated and identity/session/durable prefix survive
+ok 19 - survival: every provider disappears; no execution is fabricated and identity/session/durable prefix survive
+  ---
+  duration_ms: 570.4648
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-nM73Jn
+# Subtest: commercial: source migration A to B preserves subject, session, authority and a verifiable durable evidence chain
+ok 20 - commercial: source migration A to B preserves subject, session, authority and a verifiable durable evidence chain
+  ---
+  duration_ms: 900.553
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-eAv0us
+# Subtest: commercial: protocol downgrade is negotiated and an unsupported provider version fails over without invoking it
+ok 21 - commercial: protocol downgrade is negotiated and an unsupported provider version fails over without invoking it
+  ---
+  duration_ms: 923.3685
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-fQ8j3m
+# Subtest: degraded: actual socket send throttling delays bytes while the same guarded operation still executes
+ok 22 - degraded: actual socket send throttling delays bytes while the same guarded operation still executes
+  ---
+  duration_ms: 1980.2285
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-EZESIi
+# {"profile":"actual-throttled-local-udp","sentBytes":16054,"bytesPerSecond":16000,"elapsedMs":1388.8927999999996,"nominalDelayMs":1003.375,"probeBytes":4916,"probeElapsedMs":364.3045000000002,"probeNominalMs":307.25}
+# Subtest: fixed RCL source compiles and admits authenticated matching observations
+ok 23 - fixed RCL source compiles and admits authenticated matching observations
+  ---
+  duration_ms: 14.1594
+  type: 'test'
+  ...
+# Subtest: each semantic predicate independently denies in RCL
+ok 24 - each semantic predicate independently denies in RCL
+  ---
+  duration_ms: 17.3147
+  type: 'test'
+  ...
+# Subtest: missing, malformed, accessor and injection inputs fail closed without compilation
+ok 25 - missing, malformed, accessor and injection inputs fail closed without compilation
+  ---
+  duration_ms: 1.3834
+  type: 'test'
+  ...
+# Subtest: facts are snapshotted before asynchronous execution and requests stay isolated
+ok 26 - facts are snapshotted before asynchronous execution and requests stay isolated
+  ---
+  duration_ms: 14.6623
+  type: 'test'
+  ...
+# Subtest: RCL admits scope attenuation, equal expiry and scope order independence
+ok 27 - RCL admits scope attenuation, equal expiry and scope order independence
+  ---
+  duration_ms: 15.7452
+  type: 'test'
+  ...
+# Subtest: identity, continuity, world, expiry and scope expansion are independently denied in RCL
+ok 28 - identity, continuity, world, expiry and scope expansion are independently denied in RCL
+  ---
+  duration_ms: 3.7714
+  type: 'test'
+  ...
+# Subtest: missing fields, invalid timestamps and malformed scope sets fail closed
+ok 29 - missing fields, invalid timestamps and malformed scope sets fail closed
+  ---
+  duration_ms: 0.3921
+  type: 'test'
+  ...
+# Subtest: scope snapshots and concurrent migration decisions remain isolated
+ok 30 - scope snapshots and concurrent migration decisions remain isolated
+  ---
+  duration_ms: 6.1911
+  type: 'test'
+  ...
+# Subtest: RCL admits fractional metrics, inclusive budgets and zero local route
+ok 31 - RCL admits fractional metrics, inclusive budgets and zero local route
+  ---
+  duration_ms: 16.3854
+  type: 'test'
+  ...
+# Subtest: RCL independently rejects each budget, region, reachability and security failure
+ok 32 - RCL independently rejects each budget, region, reachability and security failure
+  ---
+  duration_ms: 8.6571
+  type: 'test'
+  ...
+# Subtest: missing fields, nonfinite/unsafe/negative metrics and coercion attempts fail closed
+ok 33 - missing fields, nonfinite/unsafe/negative metrics and coercion attempts fail closed
+  ---
+  duration_ms: 0.5651
+  type: 'test'
+  ...
+# Subtest: metrics are snapshotted and concurrent route decisions remain isolated
+ok 34 - metrics are snapshotted and concurrent route decisions remain isolated
+  ---
+  duration_ms: 7.3963
+  type: 'test'
+  ...
+# Subtest: security: consumed session evidence anchor cannot authorize a second divergent request
+ok 35 - security: consumed session evidence anchor cannot authorize a second divergent request
+  ---
+  duration_ms: 563.5547
+  type: 'test'
+  ...
+# Subtest: security: subject cannot lower route cost below an authority budget by rewriting route metrics
+ok 36 - security: subject cannot lower route cost below an authority budget by rewriting route metrics
+  ---
+  duration_ms: 524.6664
+  type: 'test'
+  ...
+# Subtest: security: concurrent exact retries return one execution and identical receipt
+ok 37 - security: concurrent exact retries return one execution and identical receipt
+  ---
+  duration_ms: 534.9222
+  type: 'test'
+  ...
+# Subtest: security: trusted provider receipt cannot relabel world, capability or result status
+ok 38 - security: trusted provider receipt cannot relabel world, capability or result status
+  ---
+  duration_ms: 544.5209
+  type: 'test'
+  ...
+# Subtest: security: authority-issued source node binding cannot be replaced by the subject
+ok 39 - security: authority-issued source node binding cannot be replaced by the subject
+  ---
+  duration_ms: 537.0725
+  type: 'test'
+  ...
+# Subtest: security: signed slow requests have a hard concurrency bound and forged senders never invoke handlers
+ok 40 - security: signed slow requests have a hard concurrency bound and forged senders never invoke handlers
+  ---
+  duration_ms: 16.1148
+  type: 'test'
+  ...
+# Subtest: security: request timeout cancels a bandwidth-delayed UDP transmission
+ok 41 - security: request timeout cancels a bandwidth-delayed UDP transmission
+  ---
+  duration_ms: 95.0141
+  type: 'test'
+  ...
+# Subtest: security: forwarding rejects skipped ingress hops, cycles, unknown edges and tampering
+ok 42 - security: forwarding rejects skipped ingress hops, cycles, unknown edges and tampering
+  ---
+  duration_ms: 223.0887
+  type: 'test'
+  ...
+# Subtest: all ten shared projections validate real signed runtime data with Python jsonschema and reject malformed fields
+ok 43 - all ten shared projections validate real signed runtime data with Python jsonschema and reject malformed fields
+  ---
+  duration_ms: 1225.254
+  type: 'test'
+  ...
+# {"engine":"python-jsonschema-Draft202012Validator","positiveRuntimeObjects":10,"malformedRejections":11,"directory":"C:\\\\Users\\\\User\\\\.codex\\\\.chatgpt-projects\\\\g-p-6a437af98cc08191af8185180f66b55e\\\\work\\\\TaoWind-Next-Internet\\\\.runs\\\\shared-ir\\\\run-orqRtZ"}
+# Subtest: protocol registry distinguishes bounded implemented behaviors from all sixteen roadmap domains
+ok 44 - protocol registry distinguishes bounded implemented behaviors from all sixteen roadmap domains
+  ---
+  duration_ms: 1.0257
+  type: 'test'
+  ...
+# Subtest: subject and capability addresses round-trip
+ok 45 - subject and capability addresses round-trip
+  ---
+  duration_ms: 1.3661
+  type: 'test'
+  ...
+# Subtest: node directory discovers compatible capability and expires stale nodes
+ok 46 - node directory discovers compatible capability and expires stale nodes
+  ---
+  duration_ms: 1.4145
+  type: 'test'
+  ...
+# Subtest: route graph selects lower-cost multi-hop path
+ok 47 - route graph selects lower-cost multi-hop path
+  ---
+  duration_ms: 1.0365
+  type: 'test'
+  ...
+# Subtest: forward envelope is fail-closed on wrong hop and decrements ttl
+ok 48 - forward envelope is fail-closed on wrong hop and decrements ttl
+  ---
+  duration_ms: 0.7797
+  type: 'test'
+  ...
+# Subtest: security provider registry rejects non-production-safe profile
+ok 49 - security provider registry rejects non-production-safe profile
+  ---
+  duration_ms: 0.2748
+  type: 'test'
+  ...
+# Subtest: transport provider registry selects by predicate
+ok 50 - transport provider registry selects by predicate
+  ---
+  duration_ms: 0.1415
+  type: 'test'
+  ...
+# Subtest: session migration preserves subjects, authority and receipt continuity anchor
+ok 51 - session migration preserves subjects, authority and receipt continuity anchor
+  ---
+  duration_ms: 1.1051
+  type: 'test'
+  ...
+# Subtest: OPP CHP bridge emits schema-compatible offer shape and deterministic agreement
+ok 52 - OPP CHP bridge emits schema-compatible offer shape and deterministic agreement
+  ---
+  duration_ms: 0.5344
+  type: 'test'
+  ...
+# Subtest: three real UDP localhost nodes forward one TINP frame across two hops
+ok 53 - three real UDP localhost nodes forward one TINP frame across two hops
+  ---
+  duration_ms: 29.7608
+  type: 'test'
+  ...
+# Subtest: wire frame round-trips with fixed header
+ok 54 - wire frame round-trips with fixed header
+  ---
+  duration_ms: 1.9484
+  type: 'test'
+  ...
+# Subtest: wire corruption is fail-closed
+ok 55 - wire corruption is fail-closed
+  ---
+  duration_ms: 0.4712
+  type: 'test'
+  ...
+# Subtest: authority negotiation never expands beyond intersection
+ok 56 - authority negotiation never expands beyond intersection
+  ---
+  duration_ms: 1.9598
+  type: 'test'
+  ...
+# Subtest: capability router picks highest-priority compatible provider
+ok 57 - capability router picks highest-priority compatible provider
+  ---
+  duration_ms: 0.3202
+  type: 'test'
+  ...
+# Subtest: unroutable capability fails closed
+ok 58 - unroutable capability fails closed
+  ---
+  duration_ms: 0.1768
+  type: 'test'
+  ...
+# Subtest: intent executes and creates evidence-chained receipt
+ok 59 - intent executes and creates evidence-chained receipt
+  ---
+  duration_ms: 0.558
+  type: 'test'
+  ...
+# Subtest: payload cannot select executable/provider or grant authority
+ok 60 - payload cannot select executable/provider or grant authority
+  ---
+  duration_ms: 0.3328
+  type: 'test'
+  ...
+# Subtest: wrong subject cannot use session
+ok 61 - wrong subject cannot use session
+  ---
+  duration_ms: 0.1966
+  type: 'test'
+  ...
+# Subtest: revocation immediately invalidates session
+ok 62 - revocation immediately invalidates session
+  ---
+  duration_ms: 0.2633
+  type: 'test'
+  ...
+# Subtest: production session refuses none-test security profile
+ok 63 - production session refuses none-test security profile
+  ---
+  duration_ms: 0.2234
+  type: 'test'
+  ...
+# Subtest: OPP CHP projection preserves TINP capability and authority declarations without granting authority
+ok 64 - OPP CHP projection preserves TINP capability and authority declarations without granting authority
+  ---
+  duration_ms: 0.2716
+  type: 'test'
+  ...
+# Subtest: RNR state packet can be carried as a named payload profile
+ok 65 - RNR state packet can be carried as a named payload profile
+  ---
+  duration_ms: 0.1388
+  type: 'test'
+  ...
+# Subtest: UDP reference transport performs real localhost wire round-trip
+ok 66 - UDP reference transport performs real localhost wire round-trip
+  ---
+  duration_ms: 30.8453
+  type: 'test'
+  ...
+1..66
+# tests 66
+# suites 0
+# pass 66
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 21208.4086

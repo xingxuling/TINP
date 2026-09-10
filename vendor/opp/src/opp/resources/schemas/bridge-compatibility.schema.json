@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://taowind.company/opp/schemas/bridge-compatibility.v0.1.schema.json",
+  "title":"OPP Bridge Compatibility（OPP 桥兼容性报告）",
+  "type":"object","additionalProperties":false,
+  "required":["format","classification","producerPort","consumerPort","typeCompatible","semanticCompatible","confidence","reasons","operations","missingInformation","authorityGap","boundary"],
+  "properties":{
+    "format":{"const":"taowind.opp.bridge-compatibility.v0.1"},"classification":{"enum":["exact","structural","lossy","incompatible","unknown"]},
+    "producerPort":{"type":"string"},"consumerPort":{"type":"string"},"typeCompatible":{"type":["boolean","null"]},"semanticCompatible":{"type":["boolean","null"]},
+    "confidence":{"type":"number","minimum":0,"maximum":1},"reasons":{"type":"array","items":{"type":"string"}},"operations":{"type":"array","items":{"type":"object"}},
+    "missingInformation":{"type":"array","items":{"type":"string"}},"authorityGap":{"type":"array","items":{"type":"string"}},"boundary":{"type":"string"}
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taowind.company/opp/schemas/rep.v0.1.schema.json",
+  "title": "REP Payload（现实证据协议负载）",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["bundleId", "claims", "sources", "method", "confidence", "independence", "negativeEvidence", "reproduction", "boundary"],
+  "properties": {
+    "bundleId": {"type": "string", "minLength": 1},
+    "claims": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["claimId", "statement", "status"], "properties": {"claimId": {"type": "string"}, "statement": {"type": "string"}, "status": {"enum": ["supported", "partially-supported", "unsupported", "contradicted", "unknown"]}, "sourceRefs": {"type": "array", "items": {"type": "string"}}}}},
+    "sources": {"type": "array", "items": {"type": "object", "required": ["sourceId", "sourceType"], "properties": {"sourceId": {"type": "string"}, "sourceType": {"enum": ["test", "file", "database", "sensor", "human", "model", "web", "runtime", "simulation", "other"]}, "locator": {"type": "string"}, "digest": {"type": "string"}}}},
+    "method": {"type": "string", "minLength": 1},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "independence": {"enum": ["independent", "partially-independent", "derived", "unknown"]},
+    "negativeEvidence": {"type": "array", "items": {"type": "string"}},
+    "reproduction": {"type": "object", "required": ["available"], "properties": {"available": {"type": "boolean"}, "instructions": {"type": "array", "items": {"type": "string"}}, "environment": {"type": "string"}}},
+    "boundary": {"type": "string", "minLength": 1},
+    "authority": {"type": "string"}
+  }
+}

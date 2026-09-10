@@ -1,0 +1,23 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://taowind.company/opp/schemas/semantic-verification.v0.1.schema.json",
+  "title":"OPP Semantic Verification Report（OPP 语义验证报告）",
+  "type":"object","additionalProperties":false,
+  "required":["format","sourceId","root","profile","primitiveFindingCount","interfaceCount","interfaces","warnings","authority","boundary"],
+  "properties":{
+    "format":{"const":"taowind.opp.semantic-verification.v0.1"},
+    "sourceId":{"type":"string"},"root":{"type":"string"},"profile":{"type":"string"},
+    "primitiveFindingCount":{"type":"integer","minimum":0},"interfaceCount":{"type":"integer","minimum":0},
+    "interfaces":{"type":"array","items":{"type":"object","required":["interfaceId","name","interfaceKind","operation","inputs","outputs","sideEffects","authorityRequired","source","confidence","evidence","runtimeSupport"],"properties":{
+      "interfaceId":{"type":"string"},"name":{"type":"string"},"interfaceKind":{"enum":["callable","schema","endpoint","unknown"]},"operation":{"type":"string"},
+      "inputs":{"type":"array","items":{"$ref":"#/$defs/port"}},"outputs":{"type":"array","items":{"$ref":"#/$defs/port"}},
+      "sideEffects":{"type":"array","items":{"type":"string"}},"authorityRequired":{"type":"array","items":{"type":"string"}},
+      "source":{"type":"object","required":["path","digest","extractor"],"properties":{"path":{"type":"string"},"digest":{"type":"string","pattern":"^[0-9a-f]{64}$"},"line":{"type":["integer","null"]},"extractor":{"type":"string"}}},
+      "confidence":{"type":"number","minimum":0,"maximum":1},"evidence":{"type":"array","items":{"type":"string"}},"runtimeSupport":{"type":"string"}
+    }}},
+    "warnings":{"type":"array","items":{"type":"string"}},
+    "authority":{"type":"object","required":["sourceAuthorityInherited","canonicalPromotionPerformed"],"properties":{"sourceAuthorityInherited":{"const":false},"canonicalPromotionPerformed":{"const":false}}},
+    "boundary":{"type":"string"}
+  },
+  "$defs":{"port":{"type":"object","required":["port_id","name","direction","shape","modality","semantic_tags","required","confidence"],"properties":{"port_id":{"type":"string"},"name":{"type":"string"},"direction":{"enum":["input","output"]},"shape":{"type":"object"},"modality":{"type":"string"},"semantic_tags":{"type":"array","items":{"type":"string"}},"required":{"type":"boolean"},"default":{},"confidence":{"type":"number","minimum":0,"maximum":1}}}}
+}

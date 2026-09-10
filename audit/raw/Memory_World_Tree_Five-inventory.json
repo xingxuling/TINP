@@ -1,0 +1,70 @@
+[
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/README.md",
+    "size": 1833
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/packages/worldtree-formal-theory/README.md",
+    "size": 2191
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/packages/worldtree-formal-theory/package.json",
+    "size": 530
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/packages/worldtree-formal-theory/schemas/worldtree-state.schema.json",
+    "size": 1509
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/packages/worldtree-formal-theory/schemas/memory-forest-state.schema.json",
+    "size": 1043
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/packages/worldtree-formal-theory/schemas/proof-receipt.schema.json",
+    "size": 796
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/packages/worldtree-formal-theory/src/index.mjs",
+    "size": 40935
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/packages/worldtree-formal-theory/scripts/verify.mjs",
+    "size": 3678
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/packages/worldtree-formal-theory/examples/level5-forest-closure.mjs",
+    "size": 8661
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/packages/worldtree-formal-theory/tests/theorems.test.mjs",
+    "size": 24659
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/docs/Memory_World_Tree_Five_Level_Mathematical_Theorem_System_v0.1.md",
+    "size": 27156
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/MULTICIVILIZATION_EXECUTION_REPORT.md",
+    "size": 3220
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/evidence/level5-demo.json",
+    "size": 1467
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/evidence/verification-summary.json",
+    "size": 6155
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/evidence/theorem-catalogue.json",
+    "size": 2584
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/evidence/test-output.tap",
+    "size": 5767
+  },
+  {
+    "path": "Memory_World_Tree_Five_Level_Formal_Theory_v0.1.0-alpha.1/SHA256SUMS.txt",
+    "size": 1846
+  }
+]

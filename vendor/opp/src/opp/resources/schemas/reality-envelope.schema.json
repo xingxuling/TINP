@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taowind.company/opp/schemas/reality-envelope.v0.1.schema.json",
+  "title": "OPP Reality Envelope v0.1（OPP 现实信封 v0.1）",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "protocol", "version", "kind", "id", "status", "issuedAt", "issuer", "payload"],
+  "properties": {
+    "format": {"const": "taowind.opp.reality-envelope.v0.1"},
+    "protocol": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:-[A-Za-z0-9.-]+)?$"},
+    "kind": {"enum": ["protocol", "contract", "interface", "schema", "capability", "evidence", "receipt", "ledger", "bridge"]},
+    "id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["experimental", "candidate", "stable", "deprecated", "rejected"]},
+    "issuedAt": {"type": "string", "format": "date-time"},
+    "issuer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "type": {"enum": ["human", "agent", "service", "runtime", "organization", "device", "world", "unknown"]},
+        "displayName": {"type": "string"}
+      }
+    },
+    "payload": {"type": "object"},
+    "constraints": {"type": "array", "items": {"type": "string"}, "default": []},
+    "evidenceRefs": {"type": "array", "items": {"type": "string"}, "default": []},
+    "extensions": {"type": "object", "default": {}},
+    "integrity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "contentRoot"],
+      "properties": {
+        "algorithm": {"const": "sha256"},
+        "contentRoot": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

@@ -1,0 +1,2297 @@
+{
+  "format": "next-internet.rcl-source-audit.v0.1",
+  "at": "2026-09-10T00:43:35.913Z",
+  "node": "v24.15.0",
+  "platform": "win32",
+  "rclCommit": "a7d6f7b0844323df50c91fd807ad3ee76e24f90d",
+  "filesVerified": true,
+  "files": [
+    {
+      "path": "src/canonical.mjs",
+      "bytes": 775,
+      "sha256": "559d48b6c58da664faf88d88ed6a474d0a86e206ee607ba7cf5b527bf9f986fa",
+      "verified": true
+    },
+    {
+      "path": "src/cognition.mjs",
+      "bytes": 8504,
+      "sha256": "1a514ef49a72f58760205c085fc36034707264ab8af09cfba44ddfcc2734d2b8",
+      "verified": true
+    },
+    {
+      "path": "src/compiler-primitives.mjs",
+      "bytes": 4035,
+      "sha256": "31f0c8f9bf2a556e5110cd7ad2f522e3e37d77cbca50f4bf51c5569d17dae273",
+      "verified": true
+    },
+    {
+      "path": "src/compiler.mjs",
+      "bytes": 32750,
+      "sha256": "4beeb668104e6901bbde8e256950293233cab74bbb4970cf3ba250c011a10a6d",
+      "verified": true
+    },
+    {
+      "path": "src/errors.mjs",
+      "bytes": 856,
+      "sha256": "bd6664dd61f209543f6039222529372c60964941e34295bc3fb7f528320d051f",
+      "verified": true
+    },
+    {
+      "path": "src/final-foundation.mjs",
+      "bytes": 4374,
+      "sha256": "fcbe2c4facfd8c523242bf055086864cabd2fa5f88f1ae95a2cc69b3d1023159",
+      "verified": true
+    },
+    {
+      "path": "src/foundation-contract.mjs",
+      "bytes": 15858,
+      "sha256": "d93d469069308a21ca15e46a9bc3899b845775d84f8aa6e4b67f8a1e9411367e",
+      "verified": true
+    },
+    {
+      "path": "src/foundation.mjs",
+      "bytes": 7949,
+      "sha256": "7a975d2ae6daa278992fa7b0b7bc31b782dc61e0bd7c2bbca376f2a65a3db8d1",
+      "verified": true
+    },
+    {
+      "path": "src/knowledge.mjs",
+      "bytes": 4443,
+      "sha256": "bee1220e9c8a97cb00acebb1bd3eb9cb9e01164e15dd5b0e158bb4ddb3ab7eb0",
+      "verified": true
+    },
+    {
+      "path": "src/lexer.mjs",
+      "bytes": 2883,
+      "sha256": "c513ba3662f729ca6bba13f765b86cb515c3107ac67992d3f64eb71e16667941",
+      "verified": true
+    },
+    {
+      "path": "src/meta-planes.mjs",
+      "bytes": 7319,
+      "sha256": "98bac4d150e3e46d81cd14736e51aa2fc667a1a6b3219313cccdf75375d918ce",
+      "verified": true
+    },
+    {
+      "path": "src/parser.mjs",
+      "bytes": 74918,
+      "sha256": "781934d647e6318e08ecc9dace6f7e651105abb2f886869ddc7f592f2aecf241",
+      "verified": true
+    },
+    {
+      "path": "src/planes.mjs",
+      "bytes": 5307,
+      "sha256": "cf753f76aa8d30bb29f94720bcd0c05ac7d8ac9c09fd36b5f5c9e5c6c83fbce6",
+      "verified": true
+    },
+    {
+      "path": "src/quantity.mjs",
+      "bytes": 11109,
+      "sha256": "b09dd853fe361dbe4c48fb54e9f687cb9db6c44db6419303606b9482f245111d",
+      "verified": true
+    },
+    {
+      "path": "src/runtime.mjs",
+      "bytes": 94327,
+      "sha256": "5e70ac2f1b2833cd9bb56c8f7cf6e2d521cdc162e1b851db58f94cb92e9ba310",
+      "verified": true
+    },
+    {
+      "path": "src/type-module-kernel.mjs",
+      "bytes": 27739,
+      "sha256": "a7a21e12415833a172037818bb99095e5a08f240550fdd83c72263b878bdd161",
+      "verified": true
+    },
+    {
+      "path": "src/type-system.mjs",
+      "bytes": 96516,
+      "sha256": "f0e7d52ef073ba56d4a9c34acf464dec1fe9304b2e3576dbf5a33983e65d4d60",
+      "verified": true
+    },
+    {
+      "path": "src/ui/ui-compiler.mjs",
+      "bytes": 16929,
+      "sha256": "51cc6da3bb0ace531ed66e78f3982536772c9b2acd92c381b5d168149444c384",
+      "verified": true
+    },
+    {
+      "path": "src/ui/ui-ir.mjs",
+      "bytes": 4739,
+      "sha256": "a163aef79596ec9171cb1afa6c895a9d34e03e1745fd29e02f85dd279f7aedae",
+      "verified": true
+    },
+    {
+      "path": "src/ui/ui-layout.mjs",
+      "bytes": 2310,
+      "sha256": "6cf043a56e5fe3f76e9816a600b9eed292fb66055651669eaa78807a0aab9015",
+      "verified": true
+    },
+    {
+      "path": "src/ui/ui-lifecycle.mjs",
+      "bytes": 544,
+      "sha256": "3e98f713eec30af53f2bba7635cf15faff454491d2b5d9b5763c286ecd5ea6f0",
+      "verified": true
+    },
+    {
+      "path": "src/ui/ui-reactive.mjs",
+      "bytes": 6136,
+      "sha256": "b08b793e157c2d12bc5fce3475c255ee1b689fe423befcf00af230dd0cff0b10",
+      "verified": true
+    },
+    {
+      "path": "src/ui/ui-schema.mjs",
+      "bytes": 2970,
+      "sha256": "32ee89c0733fb247a7e69f2f02312f2123a58cf44d39d549fa111a1bb9032ced",
+      "verified": true
+    },
+    {
+      "path": "src/ui/ui-style.mjs",
+      "bytes": 4231,
+      "sha256": "99cfc2e7891ebf526058185aaf2e4960f42d135125d10b65b894068eaf034f31",
+      "verified": true
+    },
+    {
+      "path": "src/ui/ui-validator.mjs",
+      "bytes": 9272,
+      "sha256": "4718bac1cd7d2ab981021558e1969ff8b2718c1059a8eb6a28a88e9557f02c5a",
+      "verified": true
+    }
+  ],
+  "tests": [
+    {
+      "name": "provider-runtime-v2",
+      "exitCode": 0,
+      "log": "provider-runtime-v2.test.log"
+    },
+    {
+      "name": "transaction-guard",
+      "exitCode": 0,
+      "log": "transaction-guard.test.log"
+    }
+  ],
+  "positive": {
+    "allowed": true,
+    "code": "RCL_GUARD_ALLOWED",
+    "history": [
+      {
+        "kind": "Transition",
+        "rule": "loadFacts",
+        "ruleKind": "Emergence",
+        "mode": "realize",
+        "status": "realized",
+        "actor": "kernel",
+        "from": null,
+        "into": null,
+        "beforeRoot": "b0b1d2859f02551784ebdd496aa7ca9d807da44bd7ded2a34c9eb1f65e74e300",
+        "afterRoot": "9db0a97182f246a748c2d32a6342bfa374e8e5b8bebc3673cc5baa379bb50681",
+        "changes": [
+          {
+            "target": "gate.loaded",
+            "before": false,
+            "after": true,
+            "source": "alter"
+          },
+          {
+            "target": "facts.subjectId",
+            "before": "",
+            "after": "subject:alice",
+            "source": "host:observation.subjectId"
+          },
+          {
+            "target": "facts.sessionSubjectId",
+            "before": "",
+            "after": "subject:alice",
+            "source": "host:observation.sessionSubjectId"
+          },
+          {
+            "target": "facts.leaseSubjectId",
+            "before": "",
+            "after": "subject:alice",
+            "source": "host:observation.leaseSubjectId"
+          },
+          {
+            "target": "facts.worldId",
+            "before": "",
+            "after": "world:private",
+            "source": "host:observation.worldId"
+          },
+          {
+            "target": "facts.leaseWorldId",
+            "before": "",
+            "after": "world:private",
+            "source": "host:observation.leaseWorldId"
+          },
+          {
+            "target": "facts.capabilityId",
+            "before": "",
+            "after": "echo",
+            "source": "host:observation.capabilityId"
+          },
+          {
+            "target": "facts.leaseCapabilityId",
+            "before": "",
+            "after": "echo",
+            "source": "host:observation.leaseCapabilityId"
+          },
+          {
+            "target": "facts.capabilityVersion",
+            "before": "",
+            "after": "1.0",
+            "source": "host:observation.capabilityVersion"
+          },
+          {
+            "target": "facts.providerCapabilityVersion",
+            "before": "",
+            "after": "1.0",
+            "source": "host:observation.providerCapabilityVersion"
+          },
+          {
+            "target": "facts.contractRoot",
+            "before": "",
+            "after": "abc",
+            "source": "host:observation.contractRoot"
+          },
+          {
+            "target": "facts.providerContractRoot",
+            "before": "",
+            "after": "abc",
+            "source": "host:observation.providerContractRoot"
+          },
+          {
+            "target": "facts.nowMs",
+            "before": 0,
+            "after": 100,
+            "source": "host:observation.nowMs"
+          },
+          {
+            "target": "facts.notBeforeMs",
+            "before": 0,
+            "after": 100,
+            "source": "host:observation.notBeforeMs"
+          },
+          {
+            "target": "facts.expiresAtMs",
+            "before": 0,
+            "after": 200,
+            "source": "host:observation.expiresAtMs"
+          },
+          {
+            "target": "facts.signatureVerified",
+            "before": false,
+            "after": true,
+            "source": "host:observation.signatureVerified"
+          },
+          {
+            "target": "facts.sessionVerified",
+            "before": false,
+            "after": true,
+            "source": "host:observation.sessionVerified"
+          },
+          {
+            "target": "facts.revoked",
+            "before": false,
+            "after": false,
+            "source": "host:observation.revoked"
+          },
+          {
+            "target": "facts.scopeAllowed",
+            "before": false,
+            "after": true,
+            "source": "host:observation.scopeAllowed"
+          },
+          {
+            "target": "facts.securityFloorMet",
+            "before": false,
+            "after": true,
+            "source": "host:observation.securityFloorMet"
+          },
+          {
+            "target": "facts.evidenceContinuous",
+            "before": false,
+            "after": true,
+            "source": "host:observation.evidenceContinuous"
+          }
+        ],
+        "authority": {
+          "needs": [
+            {
+              "capability": "observation.read",
+              "target": "facts"
+            }
+          ],
+          "activeWarrants": [
+            {
+              "subject": "kernel",
+              "capability": "observation.read",
+              "target": "facts"
+            },
+            {
+              "subject": "kernel",
+              "capability": "transaction.admit",
+              "target": "gate"
+            }
+          ]
+        },
+        "witnesses": [
+          "next-internet:observed-facts"
+        ],
+        "hostCalls": [
+          {
+            "host": "observation",
+            "capability": "subjectId",
+            "fullCapability": "observation.subjectId",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "sessionSubjectId",
+            "fullCapability": "observation.sessionSubjectId",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "leaseSubjectId",
+            "fullCapability": "observation.leaseSubjectId",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "worldId",
+            "fullCapability": "observation.worldId",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "leaseWorldId",
+            "fullCapability": "observation.leaseWorldId",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "capabilityId",
+            "fullCapability": "observation.capabilityId",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "leaseCapabilityId",
+            "fullCapability": "observation.leaseCapabilityId",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "capabilityVersion",
+            "fullCapability": "observation.capabilityVersion",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "providerCapabilityVersion",
+            "fullCapability": "observation.providerCapabilityVersion",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "contractRoot",
+            "fullCapability": "observation.contractRoot",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "providerContractRoot",
+            "fullCapability": "observation.providerContractRoot",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "nowMs",
+            "fullCapability": "observation.nowMs",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "notBeforeMs",
+            "fullCapability": "observation.notBeforeMs",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "expiresAtMs",
+            "fullCapability": "observation.expiresAtMs",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "signatureVerified",
+            "fullCapability": "observation.signatureVerified",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "sessionVerified",
+            "fullCapability": "observation.sessionVerified",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "revoked",
+            "fullCapability": "observation.revoked",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "scopeAllowed",
+            "fullCapability": "observation.scopeAllowed",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "securityFloorMet",
+            "fullCapability": "observation.securityFloorMet",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "evidenceContinuous",
+            "fullCapability": "observation.evidenceContinuous",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          }
+        ]
+      },
+      {
+        "kind": "Transition",
+        "rule": "admit",
+        "ruleKind": "Emergence",
+        "mode": "realize",
+        "status": "realized",
+        "actor": "kernel",
+        "from": null,
+        "into": null,
+        "beforeRoot": "9db0a97182f246a748c2d32a6342bfa374e8e5b8bebc3673cc5baa379bb50681",
+        "afterRoot": "db0f1108ba2e13f1f3969943db98f594958a3bcd52c18ed5d03b69415f5098b0",
+        "changes": [
+          {
+            "target": "gate.allowed",
+            "before": false,
+            "after": true,
+            "source": "alter"
+          }
+        ],
+        "authority": {
+          "needs": [
+            {
+              "capability": "transaction.admit",
+              "target": "gate"
+            }
+          ],
+          "activeWarrants": [
+            {
+              "subject": "kernel",
+              "capability": "observation.read",
+              "target": "facts"
+            },
+            {
+              "subject": "kernel",
+              "capability": "transaction.admit",
+              "target": "gate"
+            }
+          ]
+        },
+        "witnesses": [
+          "next-internet:rcl-admission"
+        ],
+        "hostCalls": []
+      }
+    ],
+    "programRoot": "8dcbc82d98d32e19d9aee17f0de3a828bd61a5d08c8fa74d83258e818cde6765",
+    "stateRoot": "db0f1108ba2e13f1f3969943db98f594958a3bcd52c18ed5d03b69415f5098b0",
+    "sourceSha256": "4f98721eb2ab8f0ecdbfc0151541d8aed103d7fb7aaffb82d206621c2412bbf7",
+    "factsRoot": "0165e7550c287acc233c39479350c8af163d98dc95c6ef8ab6b45ac48a50a52a",
+    "runtime": "RCL canonical compiler and JavaScript semantic runtime",
+    "coverage": "lowered-execution"
+  },
+  "negative": {
+    "allowed": false,
+    "code": "RCL_GUARD_DENIED",
+    "history": [
+      {
+        "kind": "Transition",
+        "rule": "loadFacts",
+        "ruleKind": "Emergence",
+        "mode": "realize",
+        "status": "realized",
+        "actor": "kernel",
+        "from": null,
+        "into": null,
+        "beforeRoot": "b0b1d2859f02551784ebdd496aa7ca9d807da44bd7ded2a34c9eb1f65e74e300",
+        "afterRoot": "d7a2d6dbbc8e6fbd50d41a0ffd9164da0d0ae2b9f09d1658ca6a56cebab8b8f1",
+        "changes": [
+          {
+            "target": "gate.loaded",
+            "before": false,
+            "after": true,
+            "source": "alter"
+          },
+          {
+            "target": "facts.subjectId",
+            "before": "",
+            "after": "subject:alice",
+            "source": "host:observation.subjectId"
+          },
+          {
+            "target": "facts.sessionSubjectId",
+            "before": "",
+            "after": "subject:alice",
+            "source": "host:observation.sessionSubjectId"
+          },
+          {
+            "target": "facts.leaseSubjectId",
+            "before": "",
+            "after": "subject:intruder",
+            "source": "host:observation.leaseSubjectId"
+          },
+          {
+            "target": "facts.worldId",
+            "before": "",
+            "after": "world:private",
+            "source": "host:observation.worldId"
+          },
+          {
+            "target": "facts.leaseWorldId",
+            "before": "",
+            "after": "world:private",
+            "source": "host:observation.leaseWorldId"
+          },
+          {
+            "target": "facts.capabilityId",
+            "before": "",
+            "after": "echo",
+            "source": "host:observation.capabilityId"
+          },
+          {
+            "target": "facts.leaseCapabilityId",
+            "before": "",
+            "after": "echo",
+            "source": "host:observation.leaseCapabilityId"
+          },
+          {
+            "target": "facts.capabilityVersion",
+            "before": "",
+            "after": "1.0",
+            "source": "host:observation.capabilityVersion"
+          },
+          {
+            "target": "facts.providerCapabilityVersion",
+            "before": "",
+            "after": "1.0",
+            "source": "host:observation.providerCapabilityVersion"
+          },
+          {
+            "target": "facts.contractRoot",
+            "before": "",
+            "after": "abc",
+            "source": "host:observation.contractRoot"
+          },
+          {
+            "target": "facts.providerContractRoot",
+            "before": "",
+            "after": "abc",
+            "source": "host:observation.providerContractRoot"
+          },
+          {
+            "target": "facts.nowMs",
+            "before": 0,
+            "after": 100,
+            "source": "host:observation.nowMs"
+          },
+          {
+            "target": "facts.notBeforeMs",
+            "before": 0,
+            "after": 100,
+            "source": "host:observation.notBeforeMs"
+          },
+          {
+            "target": "facts.expiresAtMs",
+            "before": 0,
+            "after": 200,
+            "source": "host:observation.expiresAtMs"
+          },
+          {
+            "target": "facts.signatureVerified",
+            "before": false,
+            "after": true,
+            "source": "host:observation.signatureVerified"
+          },
+          {
+            "target": "facts.sessionVerified",
+            "before": false,
+            "after": true,
+            "source": "host:observation.sessionVerified"
+          },
+          {
+            "target": "facts.revoked",
+            "before": false,
+            "after": false,
+            "source": "host:observation.revoked"
+          },
+          {
+            "target": "facts.scopeAllowed",
+            "before": false,
+            "after": true,
+            "source": "host:observation.scopeAllowed"
+          },
+          {
+            "target": "facts.securityFloorMet",
+            "before": false,
+            "after": true,
+            "source": "host:observation.securityFloorMet"
+          },
+          {
+            "target": "facts.evidenceContinuous",
+            "before": false,
+            "after": true,
+            "source": "host:observation.evidenceContinuous"
+          }
+        ],
+        "authority": {
+          "needs": [
+            {
+              "capability": "observation.read",
+              "target": "facts"
+            }
+          ],
+          "activeWarrants": [
+            {
+              "subject": "kernel",
+              "capability": "observation.read",
+              "target": "facts"
+            },
+            {
+              "subject": "kernel",
+              "capability": "transaction.admit",
+              "target": "gate"
+            }
+          ]
+        },
+        "witnesses": [
+          "next-internet:observed-facts"
+        ],
+        "hostCalls": [
+          {
+            "host": "observation",
+            "capability": "subjectId",
+            "fullCapability": "observation.subjectId",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "sessionSubjectId",
+            "fullCapability": "observation.sessionSubjectId",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "leaseSubjectId",
+            "fullCapability": "observation.leaseSubjectId",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "worldId",
+            "fullCapability": "observation.worldId",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "leaseWorldId",
+            "fullCapability": "observation.leaseWorldId",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "capabilityId",
+            "fullCapability": "observation.capabilityId",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "leaseCapabilityId",
+            "fullCapability": "observation.leaseCapabilityId",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "capabilityVersion",
+            "fullCapability": "observation.capabilityVersion",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "providerCapabilityVersion",
+            "fullCapability": "observation.providerCapabilityVersion",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "contractRoot",
+            "fullCapability": "observation.contractRoot",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "providerContractRoot",
+            "fullCapability": "observation.providerContractRoot",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "nowMs",
+            "fullCapability": "observation.nowMs",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "notBeforeMs",
+            "fullCapability": "observation.notBeforeMs",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "expiresAtMs",
+            "fullCapability": "observation.expiresAtMs",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "signatureVerified",
+            "fullCapability": "observation.signatureVerified",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "sessionVerified",
+            "fullCapability": "observation.sessionVerified",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "revoked",
+            "fullCapability": "observation.revoked",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "scopeAllowed",
+            "fullCapability": "observation.scopeAllowed",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "securityFloorMet",
+            "fullCapability": "observation.securityFloorMet",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          },
+          {
+            "host": "observation",
+            "capability": "evidenceContinuous",
+            "fullCapability": "observation.evidenceContinuous",
+            "args": [],
+            "rule": "loadFacts",
+            "actor": "kernel",
+            "authorityNeeds": [
+              {
+                "capability": "observation.read",
+                "target": "facts"
+              }
+            ],
+            "witnesses": [
+              "next-internet:observed-facts"
+            ],
+            "mode": "realize",
+            "state": {
+              "gate.allowed": false,
+              "gate.loaded": false,
+              "facts.evidenceContinuous": false,
+              "facts.securityFloorMet": false,
+              "facts.scopeAllowed": false,
+              "facts.revoked": false,
+              "facts.sessionVerified": false,
+              "facts.signatureVerified": false,
+              "facts.expiresAtMs": 0,
+              "facts.notBeforeMs": 0,
+              "facts.nowMs": 0,
+              "facts.providerContractRoot": "",
+              "facts.contractRoot": "",
+              "facts.providerCapabilityVersion": "",
+              "facts.capabilityVersion": "",
+              "facts.leaseCapabilityId": "",
+              "facts.capabilityId": "",
+              "facts.leaseWorldId": "",
+              "facts.worldId": "",
+              "facts.leaseSubjectId": "",
+              "facts.sessionSubjectId": "",
+              "facts.subjectId": ""
+            }
+          }
+        ]
+      }
+    ],
+    "programRoot": "8dcbc82d98d32e19d9aee17f0de3a828bd61a5d08c8fa74d83258e818cde6765",
+    "stateRoot": "d7a2d6dbbc8e6fbd50d41a0ffd9164da0d0ae2b9f09d1658ca6a56cebab8b8f1",
+    "sourceSha256": "4f98721eb2ab8f0ecdbfc0151541d8aed103d7fb7aaffb82d206621c2412bbf7",
+    "factsRoot": "35ec99d3bdeff359da372786a20d8753d44de72c8264a3c47fa725b18b3fce7a",
+    "runtime": "RCL canonical compiler and JavaScript semantic runtime",
+    "coverage": "lowered-execution"
+  },
+  "performance": {
+    "rounds": 50,
+    "medianMs": 0.8145000000000664,
+    "p95Ms": 1.449200000000019,
+    "maxMs": 1.459699999999998,
+    "scope": "Warm in-process guard only; no transport, cryptography, production or native VM claim."
+  },
+  "cells": [
+    {
+      "environment": "windows",
+      "programFamily": "security-sensitive",
+      "cellId": "K057",
+      "verdict": "NOT_ADMITTED"
+    },
+    {
+      "environment": "server",
+      "programFamily": "distributed",
+      "cellId": "K110",
+      "verdict": "NOT_ADMITTED"
+    },
+    {
+      "environment": "server",
+      "programFamily": "security-sensitive",
+      "cellId": "K117",
+      "verdict": "NOT_ADMITTED"
+    },
+    {
+      "environment": "distributed-runtime",
+      "programFamily": "distributed",
+      "cellId": "K250",
+      "verdict": "NOT_ADMITTED"
+    },
+    {
+      "environment": "distributed-runtime",
+      "programFamily": "security-sensitive",
+      "cellId": "K257",
+      "verdict": "NOT_ADMITTED"
+    }
+  ],
+  "boundary": {
+    "coverage": "lowered-execution",
+    "nativeVMExecuted": false,
+    "fullRclRegressionRun": false,
+    "hostedCiRun": false,
+    "k400Admission": false,
+    "rncsRuntimeExecuted": false
+  }
+}

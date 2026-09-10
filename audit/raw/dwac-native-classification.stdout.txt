@@ -1,0 +1,810 @@
+{
+  "status": "REPRESENTABLE_PROVIDER_GAP",
+  "representable": true,
+  "intent": {
+    "action": "create",
+    "subject": "Assess next internet protocol suite reuse and canonical ownership. Keep TINP subject address discovery routing sessions and transport independent from OPP interop and RCL authority evidence; identify unsupported judgments.",
+    "desired_capabilities": [],
+    "artifact_families": [],
+    "target_environments": [],
+    "interfaces": [],
+    "state_model": {},
+    "persistence": {},
+    "network_model": {},
+    "concurrency_model": {},
+    "data_model": {},
+    "interaction_model": {},
+    "intelligence_model": {},
+    "media_model": {},
+    "physical_interfaces": [],
+    "security_requirements": {},
+    "deployment_requirements": {},
+    "lifecycle_requirements": {},
+    "quality_requirements": {},
+    "evidence_requirements": {},
+    "artifact_type_refs": [
+      {
+        "namespace": "custom",
+        "family": "future",
+        "kind": "unknown-artifact",
+        "version": "v0.1"
+      }
+    ],
+    "metadata": {
+      "classification": "generic"
+    }
+  },
+  "artifact_graph": {
+    "artifact_id": "generic-51b59dacd3c9113b",
+    "artifact_type": {
+      "namespace": "custom",
+      "family": "future",
+      "kind": "unknown-artifact",
+      "version": "v0.1",
+      "identifier": "custom.future/unknown-artifact"
+    },
+    "intent": {
+      "action": "create",
+      "subject": "Assess next internet protocol suite reuse and canonical ownership. Keep TINP subject address discovery routing sessions and transport independent from OPP interop and RCL authority evidence; identify unsupported judgments.",
+      "desired_capabilities": [],
+      "artifact_families": [],
+      "target_environments": [],
+      "interfaces": [],
+      "state_model": {},
+      "persistence": {},
+      "network_model": {},
+      "concurrency_model": {},
+      "data_model": {},
+      "interaction_model": {},
+      "intelligence_model": {},
+      "media_model": {},
+      "physical_interfaces": [],
+      "security_requirements": {},
+      "deployment_requirements": {},
+      "lifecycle_requirements": {},
+      "quality_requirements": {},
+      "evidence_requirements": {},
+      "artifact_type_refs": [
+        {
+          "namespace": "custom",
+          "family": "future",
+          "kind": "unknown-artifact",
+          "version": "v0.1"
+        }
+      ],
+      "metadata": {
+        "classification": "generic"
+      }
+    },
+    "nodes": [
+      {
+        "node_id": "generic-51b59dacd3c9113b.node.001.mixed",
+        "node_type": {
+          "name": "mixed",
+          "namespace": "taowind",
+          "version": "v0.1",
+          "identifier": "taowind/mixed",
+          "builtin": true
+        },
+        "role": "artifact_component",
+        "dependencies": [
+          "generic-51b59dacd3c9113b.root"
+        ],
+        "required_capabilities": [
+          "artifact.intent.semantic-classification"
+        ],
+        "canonical_owners": [
+          "dwac"
+        ],
+        "acceptance_refs": [
+          "artifact.node.type.v0.1"
+        ],
+        "payload": {
+          "intent_subject": "Assess next internet protocol suite reuse and canonical ownership. Keep TINP subject address discovery routing sessions and transport independent from OPP interop and RCL authority evidence; identify unsupported judgments."
+        },
+        "metadata": {
+          "ordinal": 1
+        }
+      },
+      {
+        "node_id": "generic-51b59dacd3c9113b.node.002.documentation",
+        "node_type": {
+          "name": "documentation",
+          "namespace": "taowind",
+          "version": "v0.1",
+          "identifier": "taowind/documentation",
+          "builtin": true
+        },
+        "role": "artifact_component",
+        "dependencies": [
+          "generic-51b59dacd3c9113b.node.001.mixed"
+        ],
+        "required_capabilities": [
+          "artifact.intent.semantic-classification"
+        ],
+        "canonical_owners": [
+          "dwac"
+        ],
+        "acceptance_refs": [
+          "artifact.node.type.v0.1"
+        ],
+        "payload": {
+          "intent_subject": "Assess next internet protocol suite reuse and canonical ownership. Keep TINP subject address discovery routing sessions and transport independent from OPP interop and RCL authority evidence; identify unsupported judgments."
+        },
+        "metadata": {
+          "ordinal": 2
+        }
+      },
+      {
+        "node_id": "generic-51b59dacd3c9113b.node.003.evidence",
+        "node_type": {
+          "name": "evidence",
+          "namespace": "taowind",
+          "version": "v0.1",
+          "identifier": "taowind/evidence",
+          "builtin": true
+        },
+        "role": "artifact_component",
+        "dependencies": [
+          "generic-51b59dacd3c9113b.node.002.documentation"
+        ],
+        "required_capabilities": [
+          "artifact.intent.semantic-classification"
+        ],
+        "canonical_owners": [
+          "dwac"
+        ],
+        "acceptance_refs": [
+          "artifact.node.type.v0.1"
+        ],
+        "payload": {
+          "intent_subject": "Assess next internet protocol suite reuse and canonical ownership. Keep TINP subject address discovery routing sessions and transport independent from OPP interop and RCL authority evidence; identify unsupported judgments."
+        },
+        "metadata": {
+          "ordinal": 3
+        }
+      },
+      {
+        "node_id": "generic-51b59dacd3c9113b.root",
+        "node_type": {
+          "name": "mixed",
+          "namespace": "taowind",
+          "version": "v0.1",
+          "identifier": "taowind/mixed",
+          "builtin": true
+        },
+        "role": "universal_artifact",
+        "dependencies": [],
+        "required_capabilities": [
+          "artifact.intent.semantic-classification"
+        ],
+        "canonical_owners": [
+          "dwac"
+        ],
+        "acceptance_refs": [
+          "artifact.graph.express.v0.1"
+        ],
+        "payload": {
+          "action": "create",
+          "subject": "Assess next internet protocol suite reuse and canonical ownership. Keep TINP subject address discovery routing sessions and transport independent from OPP interop and RCL authority evidence; identify unsupported judgments."
+        },
+        "metadata": {
+          "generic_intent": true
+        }
+      }
+    ],
+    "required_capabilities": [
+      "artifact.intent.semantic-classification"
+    ],
+    "metadata": {}
+  },
+  "lifecycle": {
+    "artifact_id": "generic-51b59dacd3c9113b",
+    "artifact_kind": "unknown-artifact",
+    "nodes": [
+      {
+        "node_id": "build",
+        "operation": "build",
+        "description": "",
+        "required_capabilities": [
+          "artifact.build"
+        ],
+        "produces": [
+          "build.result"
+        ],
+        "condition": null,
+        "metadata": {}
+      },
+      {
+        "node_id": "deploy",
+        "operation": "deploy",
+        "description": "",
+        "required_capabilities": [
+          "artifact.deploy"
+        ],
+        "produces": [
+          "deploy.result"
+        ],
+        "condition": null,
+        "metadata": {}
+      },
+      {
+        "node_id": "migration",
+        "operation": "migration",
+        "description": "",
+        "required_capabilities": [
+          "artifact.migration"
+        ],
+        "produces": [
+          "migration.result"
+        ],
+        "condition": null,
+        "metadata": {}
+      },
+      {
+        "node_id": "observe",
+        "operation": "observation",
+        "description": "",
+        "required_capabilities": [
+          "artifact.observe"
+        ],
+        "produces": [
+          "observation.result"
+        ],
+        "condition": null,
+        "metadata": {}
+      },
+      {
+        "node_id": "package",
+        "operation": "package",
+        "description": "",
+        "required_capabilities": [
+          "artifact.package"
+        ],
+        "produces": [
+          "package.result"
+        ],
+        "condition": null,
+        "metadata": {}
+      },
+      {
+        "node_id": "repair",
+        "operation": "repair",
+        "description": "",
+        "required_capabilities": [
+          "artifact.repair"
+        ],
+        "produces": [
+          "repair.result"
+        ],
+        "condition": null,
+        "metadata": {}
+      },
+      {
+        "node_id": "rollback",
+        "operation": "rollback",
+        "description": "",
+        "required_capabilities": [
+          "artifact.rollback"
+        ],
+        "produces": [
+          "rollback.result"
+        ],
+        "condition": null,
+        "metadata": {}
+      },
+      {
+        "node_id": "run",
+        "operation": "run",
+        "description": "",
+        "required_capabilities": [
+          "artifact.run"
+        ],
+        "produces": [
+          "run.result"
+        ],
+        "condition": null,
+        "metadata": {}
+      },
+      {
+        "node_id": "test",
+        "operation": "test",
+        "description": "",
+        "required_capabilities": [
+          "artifact.test"
+        ],
+        "produces": [
+          "test.result"
+        ],
+        "condition": null,
+        "metadata": {}
+      },
+      {
+        "node_id": "upgrade",
+        "operation": "upgrade",
+        "description": "",
+        "required_capabilities": [
+          "artifact.upgrade"
+        ],
+        "produces": [
+          "upgrade.result"
+        ],
+        "condition": null,
+        "metadata": {}
+      }
+    ],
+    "edges": [
+      {
+        "source": "build",
+        "target": "test",
+        "kind": "sequence",
+        "condition": null
+      },
+      {
+        "source": "test",
+        "target": "package",
+        "kind": "success",
+        "condition": null
+      },
+      {
+        "source": "test",
+        "target": "repair",
+        "kind": "feedback",
+        "condition": null
+      },
+      {
+        "source": "repair",
+        "target": "test",
+        "kind": "retry",
+        "condition": null
+      },
+      {
+        "source": "package",
+        "target": "migration",
+        "kind": "migration",
+        "condition": null
+      },
+      {
+        "source": "migration",
+        "target": "upgrade",
+        "kind": "upgrade",
+        "condition": null
+      },
+      {
+        "source": "upgrade",
+        "target": "deploy",
+        "kind": "sequence",
+        "condition": null
+      },
+      {
+        "source": "deploy",
+        "target": "run",
+        "kind": "sequence",
+        "condition": null
+      },
+      {
+        "source": "run",
+        "target": "observe",
+        "kind": "sequence",
+        "condition": null
+      },
+      {
+        "source": "observe",
+        "target": "repair",
+        "kind": "feedback",
+        "condition": null
+      },
+      {
+        "source": "observe",
+        "target": "rollback",
+        "kind": "rollback",
+        "condition": null
+      },
+      {
+        "source": "rollback",
+        "target": "build",
+        "kind": "rollback",
+        "condition": null
+      }
+    ],
+    "allows_cycles": true
+  },
+  "capability_needs": [
+    {
+      "capability_id": "artifact.intent.semantic-classification",
+      "why_required": "an unclassified goal needs an explicit semantic route before domain execution",
+      "canonical_owner": "usce",
+      "desired_signature": {
+        "capability_id": "artifact.intent.semantic-classification",
+        "canonical_owner": "usce",
+        "version": "v0.1",
+        "accepted_inputs": [
+          "NaturalLanguageGoal"
+        ],
+        "emitted_outputs": [
+          "UniversalArtifactIntent"
+        ],
+        "supported_artifact_types": [],
+        "supported_environments": [],
+        "semantic_effects": [
+          "classify-explicitly-or-retain-generic"
+        ],
+        "side_effects": [],
+        "authority_scope": [],
+        "evidence_class": "UNVERIFIED",
+        "deterministic": false,
+        "idempotent": false,
+        "stateful": false,
+        "resource_requirements": {},
+        "isolation_requirements": {},
+        "quality_claims": {},
+        "known_limits": [
+          "must not silently default to software or web"
+        ]
+      },
+      "required_by": [
+        "generic-51b59dacd3c9113b"
+      ]
+    }
+  ],
+  "capability_gaps": [
+    {
+      "gap_id": "gap.provider.artifact-intent-semantic-classification",
+      "required_capability": "artifact.intent.semantic-classification",
+      "why_required": "an unclassified goal needs an explicit semantic route before domain execution",
+      "canonical_owner": "usce",
+      "desired_signature": {
+        "capability_id": "artifact.intent.semantic-classification",
+        "canonical_owner": "usce",
+        "version": "v0.1",
+        "accepted_inputs": [
+          "NaturalLanguageGoal"
+        ],
+        "emitted_outputs": [
+          "UniversalArtifactIntent"
+        ],
+        "supported_artifact_types": [],
+        "supported_environments": [],
+        "semantic_effects": [
+          "classify-explicitly-or-retain-generic"
+        ],
+        "side_effects": [],
+        "authority_scope": [],
+        "evidence_class": "UNVERIFIED",
+        "deterministic": false,
+        "idempotent": false,
+        "stateful": false,
+        "resource_requirements": {},
+        "isolation_requirements": {},
+        "quality_claims": {},
+        "known_limits": [
+          "must not silently default to software or web"
+        ]
+      },
+      "current_candidates": [],
+      "missing": [
+        "knowledge",
+        "provider"
+      ],
+      "closure_routes": [
+        {
+          "stage": "asset_archaeology",
+          "action": "search_existing_contracts"
+        },
+        {
+          "stage": "capability_absorption",
+          "action": "bind_verified_provider"
+        },
+        {
+          "stage": "gds_research",
+          "action": "research_missing_mechanism"
+        }
+      ],
+      "stop_rule": "STOP_BEFORE_UNVERIFIED_EXECUTION",
+      "evidence_refs": [],
+      "status": "OPEN"
+    }
+  ],
+  "contracts": {
+    "build": {
+      "toolchain": "provider",
+      "commands": [],
+      "dependencies": [],
+      "environment": {},
+      "authority_scope": [],
+      "acceptance_refs": [],
+      "evidence_refs": []
+    },
+    "run": {
+      "runtime": "provider",
+      "entrypoint": "unknown-artifact:main",
+      "environment": {},
+      "ports": [],
+      "health_checks": [],
+      "authority_scope": [],
+      "evidence_refs": []
+    },
+    "package": {
+      "format": "unknown-artifact-package",
+      "artifacts": [],
+      "dependencies": [],
+      "metadata": {}
+    },
+    "deployment": {
+      "target": "provider",
+      "strategy": "provider",
+      "configuration": {},
+      "authority_scope": [],
+      "rollback": {},
+      "evidence_refs": []
+    },
+    "concurrency": {
+      "processes": [],
+      "threads": [],
+      "async_tasks": [],
+      "actors": [],
+      "queues": [],
+      "streams": [],
+      "events": [],
+      "ordering": "unspecified",
+      "idempotency": "unspecified",
+      "backpressure": "unspecified",
+      "failure_domains": []
+    },
+    "network": {
+      "protocol": "declared-or-provider",
+      "ports": [],
+      "routes": [],
+      "authentication": {},
+      "authorization": {},
+      "rate_limits": [],
+      "events": [],
+      "webhooks": []
+    },
+    "distribution": {
+      "partitions": [],
+      "replication": {},
+      "consistency": "unspecified",
+      "ordering": "unspecified",
+      "leader": {},
+      "leases": [],
+      "retry": {},
+      "idempotency": "unspecified",
+      "backpressure": "unspecified",
+      "failure_domains": []
+    },
+    "database": [],
+    "services": [],
+    "interfaces": [],
+    "media_assets": [],
+    "binaries": [],
+    "intelligence": [],
+    "security": {
+      "identity": {},
+      "authentication": {},
+      "authorization": {},
+      "secret_boundary": {},
+      "network_boundary": {},
+      "filesystem_boundary": {},
+      "data_classification": {},
+      "sandbox": {
+        "required": true
+      },
+      "supply_chain": {},
+      "dependency_policy": {},
+      "audit": {
+        "required": true
+      },
+      "rollback": {},
+      "kill_switch": {
+        "required": true
+      }
+    }
+  },
+  "provider_needs": [
+    "artifact.intent.semantic-classification"
+  ],
+  "acceptance": {
+    "contract_id": "acceptance.generic-51b59dacd3c9113b",
+    "non_compensatory": true,
+    "checks": [
+      {
+        "check_id": "acceptance.generic-51b59dacd3c9113b.express",
+        "kind": "schema",
+        "gate": "EXPRESS",
+        "required": true,
+        "status": "UNTESTED",
+        "evidence_refs": [],
+        "details": {
+          "source": "universal-artifact-plan",
+          "execution_required": true
+        }
+      },
+      {
+        "check_id": "acceptance.generic-51b59dacd3c9113b.compile",
+        "kind": "compile",
+        "gate": "COMPILE",
+        "required": true,
+        "status": "UNTESTED",
+        "evidence_refs": [],
+        "details": {
+          "source": "universal-artifact-plan",
+          "execution_required": true
+        }
+      },
+      {
+        "check_id": "acceptance.generic-51b59dacd3c9113b.lower",
+        "kind": "compile",
+        "gate": "LOWER",
+        "required": true,
+        "status": "UNTESTED",
+        "evidence_refs": [],
+        "details": {
+          "source": "universal-artifact-plan",
+          "execution_required": true
+        }
+      },
+      {
+        "check_id": "acceptance.generic-51b59dacd3c9113b.execute",
+        "kind": "runtime_health",
+        "gate": "EXECUTE",
+        "required": true,
+        "status": "UNTESTED",
+        "evidence_refs": [],
+        "details": {
+          "source": "universal-artifact-plan",
+          "execution_required": true
+        }
+      },
+      {
+        "check_id": "acceptance.generic-51b59dacd3c9113b.correct",
+        "kind": "integration_test",
+        "gate": "CORRECT",
+        "required": true,
+        "status": "UNTESTED",
+        "evidence_refs": [],
+        "details": {
+          "source": "universal-artifact-plan",
+          "execution_required": true
+        }
+      },
+      {
+        "check_id": "acceptance.generic-51b59dacd3c9113b.robust",
+        "kind": "property",
+        "gate": "ROBUST",
+        "required": true,
+        "status": "UNTESTED",
+        "evidence_refs": [],
+        "details": {
+          "source": "universal-artifact-plan",
+          "execution_required": true
+        }
+      },
+      {
+        "check_id": "acceptance.generic-51b59dacd3c9113b.performance",
+        "kind": "performance",
+        "gate": "PERFORMANCE",
+        "required": true,
+        "status": "UNTESTED",
+        "evidence_refs": [],
+        "details": {
+          "source": "universal-artifact-plan",
+          "execution_required": true
+        }
+      },
+      {
+        "check_id": "acceptance.generic-51b59dacd3c9113b.ai_generate",
+        "kind": "compile",
+        "gate": "AI_GENERATE",
+        "required": true,
+        "status": "UNTESTED",
+        "evidence_refs": [],
+        "details": {
+          "source": "universal-artifact-plan",
+          "execution_required": true
+        }
+      },
+      {
+        "check_id": "acceptance.generic-51b59dacd3c9113b.evidence",
+        "kind": "evidence",
+        "gate": "EVIDENCE",
+        "required": true,
+        "status": "UNTESTED",
+        "evidence_refs": [],
+        "details": {
+          "source": "universal-artifact-plan",
+          "execution_required": true
+        }
+      }
+    ],
+    "evaluation": {
+      "status": "UNTESTED",
+      "passed": false,
+      "non_compensatory": true,
+      "failed_checks": [],
+      "pending_checks": [
+        "acceptance.generic-51b59dacd3c9113b.express",
+        "acceptance.generic-51b59dacd3c9113b.compile",
+        "acceptance.generic-51b59dacd3c9113b.lower",
+        "acceptance.generic-51b59dacd3c9113b.execute",
+        "acceptance.generic-51b59dacd3c9113b.correct",
+        "acceptance.generic-51b59dacd3c9113b.robust",
+        "acceptance.generic-51b59dacd3c9113b.performance",
+        "acceptance.generic-51b59dacd3c9113b.ai_generate",
+        "acceptance.generic-51b59dacd3c9113b.evidence"
+      ],
+      "rcl_gates": {
+        "EXPRESS": {
+          "status": "UNTESTED",
+          "check_ids": [
+            "acceptance.generic-51b59dacd3c9113b.express"
+          ],
+          "evidence_refs": []
+        },
+        "COMPILE": {
+          "status": "UNTESTED",
+          "check_ids": [
+            "acceptance.generic-51b59dacd3c9113b.compile"
+          ],
+          "evidence_refs": []
+        },
+        "LOWER": {
+          "status": "UNTESTED",
+          "check_ids": [
+            "acceptance.generic-51b59dacd3c9113b.lower"
+          ],
+          "evidence_refs": []
+        },
+        "EXECUTE": {
+          "status": "UNTESTED",
+          "check_ids": [
+            "acceptance.generic-51b59dacd3c9113b.execute"
+          ],
+          "evidence_refs": []
+        },
+        "CORRECT": {
+          "status": "UNTESTED",
+          "check_ids": [
+            "acceptance.generic-51b59dacd3c9113b.correct"
+          ],
+          "evidence_refs": []
+        },
+        "ROBUST": {
+          "status": "UNTESTED",
+          "check_ids": [
+            "acceptance.generic-51b59dacd3c9113b.robust"
+          ],
+          "evidence_refs": []
+        },
+        "PERFORMANCE": {
+          "status": "UNTESTED",
+          "check_ids": [
+            "acceptance.generic-51b59dacd3c9113b.performance"
+          ],
+          "evidence_refs": []
+        },
+        "AI_GENERATE": {
+          "status": "UNTESTED",
+          "check_ids": [
+            "acceptance.generic-51b59dacd3c9113b.ai_generate"
+          ],
+          "evidence_refs": []
+        },
+        "EVIDENCE": {
+          "status": "UNTESTED",
+          "check_ids": [
+            "acceptance.generic-51b59dacd3c9113b.evidence"
+          ],
+          "evidence_refs": []
+        }
+      }
+    },
+    "metadata": {}
+  },
+  "metadata": {
+    "generic_goal": true,
+    "classification_assumption": null,
+    "default_application_class_used": false,
+    "canonical_promotion_performed": false
+  }
+}

@@ -1,0 +1,46 @@
+test_cli_bundle (test_bridge_compiler.BridgeCompilerTests.test_cli_bundle) ... ok
+test_compile_emits_valid_opp_envelopes (test_bridge_compiler.BridgeCompilerTests.test_compile_emits_valid_opp_envelopes) ... ok
+test_deterministic_same_source (test_bridge_compiler.BridgeCompilerTests.test_deterministic_same_source) ... ok
+test_does_not_execute_python (test_bridge_compiler.BridgeCompilerTests.test_does_not_execute_python) ... ok
+test_manifest_and_scan_schemas (test_bridge_compiler.BridgeCompilerTests.test_manifest_and_scan_schemas) ... ok
+test_profiles_and_discovery (test_bridge_compiler.BridgeCompilerTests.test_profiles_and_discovery) ... ok
+test_symlink_is_not_followed (test_bridge_compiler.BridgeCompilerTests.test_symlink_is_not_followed) ... ok
+test_unknown_plain_repo_stays_generic (test_bridge_compiler.BridgeCompilerTests.test_unknown_plain_repo_stays_generic) ... ok
+test_cli_interop_requires_gate_and_passes_with_gate (test_native_interop.NativeInteropTests.test_cli_interop_requires_gate_and_passes_with_gate) ... ok
+test_deterministic_receipt_root_excludes_timing_noise (test_native_interop.NativeInteropTests.test_deterministic_receipt_root_excludes_timing_noise) ... ok
+test_end_to_end_structural_interop (test_native_interop.NativeInteropTests.test_end_to_end_structural_interop) ... ok
+test_invocation_requires_explicit_consent (test_native_interop.NativeInteropTests.test_invocation_requires_explicit_consent) ... ok
+test_invocation_spec_format_fails_closed (test_native_interop.NativeInteropTests.test_invocation_spec_format_fails_closed) ... ok
+test_invocation_spec_id_required (test_native_interop.NativeInteropTests.test_invocation_spec_id_required) ... ok
+test_non_json_result_fails (test_native_interop.NativeInteropTests.test_non_json_result_fails) ... ok
+test_output_overflow_fails_closed (test_native_interop.NativeInteropTests.test_output_overflow_fails_closed) ... ok
+test_path_escape_rejected (test_native_interop.NativeInteropTests.test_path_escape_rejected) ... ok
+test_python_invocation_pass_and_receipt_schema (test_native_interop.NativeInteropTests.test_python_invocation_pass_and_receipt_schema) ... ok
+test_rejected_bridge_not_executed (test_native_interop.NativeInteropTests.test_rejected_bridge_not_executed) ... ok
+test_shell_adapter_rejected (test_native_interop.NativeInteropTests.test_shell_adapter_rejected) ... ok
+test_symlink_entrypoint_rejected (test_native_interop.NativeInteropTests.test_symlink_entrypoint_rejected) ... ok
+test_timeout_fails_closed (test_native_interop.NativeInteropTests.test_timeout_fails_closed) ... ok
+test_all_examples_validate (test_protocols.OPPTests.test_all_examples_validate) ... ok
+test_capability_contract_negotiation_is_exact_and_non_authoritative (test_protocols.OPPTests.test_capability_contract_negotiation_is_exact_and_non_authoritative) ... ok
+test_capability_contract_negotiation_rejects_schema_drift (test_protocols.OPPTests.test_capability_contract_negotiation_rejects_schema_drift) ... ok
+test_handshake_intersection_does_not_create_authority (test_protocols.OPPTests.test_handshake_intersection_does_not_create_authority) ... ok
+test_integrity_detects_tamper (test_protocols.OPPTests.test_integrity_detects_tamper) ... ok
+test_registry_has_six_core_protocols (test_protocols.OPPTests.test_registry_has_six_core_protocols) ... ok
+test_seal_is_deterministic_for_same_content (test_protocols.OPPTests.test_seal_is_deterministic_for_same_content) ... ok
+test_unknown_protocol_fails_closed (test_protocols.OPPTests.test_unknown_protocol_fails_closed) ... ok
+test_authority_invention_refuses (test_semantic_bridge.SemanticBridgeTests.test_authority_invention_refuses) ... ok
+test_auto_connect_between_project_shapes (test_semantic_bridge.SemanticBridgeTests.test_auto_connect_between_project_shapes) ... ok
+test_bridge_compile_projects_semantic_capabilities (test_semantic_bridge.SemanticBridgeTests.test_bridge_compile_projects_semantic_capabilities) ... ok
+test_cli_auto_connect (test_semantic_bridge.SemanticBridgeTests.test_cli_auto_connect) ... ok
+test_cli_semantic_verify (test_semantic_bridge.SemanticBridgeTests.test_cli_semantic_verify) ... ok
+test_missing_information_refuses (test_semantic_bridge.SemanticBridgeTests.test_missing_information_refuses) ... ok
+test_normalized_rename_default_and_projection (test_semantic_bridge.SemanticBridgeTests.test_normalized_rename_default_and_projection) ... ok
+test_plan_deterministic_and_schema_valid (test_semantic_bridge.SemanticBridgeTests.test_plan_deterministic_and_schema_valid) ... ok
+test_semantic_report_schema (test_semantic_bridge.SemanticBridgeTests.test_semantic_report_schema) ... ok
+test_static_python_and_ts_semantics (test_semantic_bridge.SemanticBridgeTests.test_static_python_and_ts_semantics) ... ok
+test_transform_runtime_rejects_arbitrary_code (test_semantic_bridge.SemanticBridgeTests.test_transform_runtime_rejects_arbitrary_code) ... ok
+
+----------------------------------------------------------------------
+Ran 41 tests in 2.968s
+
+OK

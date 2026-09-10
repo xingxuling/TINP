@@ -1,0 +1,28 @@
+✔ two players keep one authoritative State Root after 60 ticks (585.177ms)
+✔ client prediction converges after server acknowledgement (14.8643ms)
+✔ 20% packet loss eventually converges (737.706ms)
+✔ out-of-order packets never roll back authoritative tick (16.9539ms)
+✔ duplicate input sequence executes once (7.4932ms)
+✔ player A cannot control player B (6.0319ms)
+✔ expired authorization is rejected (4.0089ms)
+✔ late join receives a complete snapshot (26.9745ms)
+✔ disconnect and reconnect preserves unacknowledged inputs (50.4788ms)
+✔ wrong prediction triggers snapshot restore and input replay (13.1993ms)
+✔ interpolation never modifies authoritative state (3.1637ms)
+✔ severe desync creates isolated RBF recovery candidate (16.7734ms)
+✔ network receipts replay deterministically (1029.3969ms)
+✔ same inputs and network seed produce same final root (1449.5623ms)
+✔ Gateway discovers and invokes network runtime (15.7336ms)
+✔ server rejects direct client position submission (7.3162ms)
+✔ input beyond tick window is rejected (7.4436ms)
+✔ burst loss recovery does not double execute inputs (1247.165ms)
+✔ closed session invalidates old authorization (9.615ms)
+✔ network module never creates a second authoritative RSR state (22.6491ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5427.596

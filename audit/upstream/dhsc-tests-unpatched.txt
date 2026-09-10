@@ -1,0 +1,64 @@
+test_ambiguous_route_rejected (test_control.ControlGateTests.test_ambiguous_route_rejected) ... ok
+test_binding_function_substitution_rejected (test_control.ControlGateTests.test_binding_function_substitution_rejected) ... ok
+test_binding_hash_tamper_rejected (test_control.ControlGateTests.test_binding_hash_tamper_rejected) ... ok
+test_binding_path_escape_rejected (test_control.ControlGateTests.test_binding_path_escape_rejected) ... ok
+test_catalog_candidate_boundary (test_control.ControlGateTests.test_catalog_candidate_boundary) ... ok
+test_catalog_rejects_invalid_payload (test_control.ControlGateTests.test_catalog_rejects_invalid_payload) ... ok
+test_cycle_rejected (test_control.ControlGateTests.test_cycle_rejected) ... ok
+test_duplicate_owner_rejected (test_control.ControlGateTests.test_duplicate_owner_rejected) ... ok
+test_execution_denies_missing_shared_read_scope (test_control.ControlGateTests.test_execution_denies_missing_shared_read_scope) ... ok
+test_four_graphs_deterministic_and_no_authority_grants (test_control.ControlGateTests.test_four_graphs_deterministic_and_no_authority_grants) ... ok
+test_post_validation_registry_mutation_rejected (test_control.ControlGateTests.test_post_validation_registry_mutation_rejected) ... ok
+test_targeted_plan_and_handshake (test_control.ControlGateTests.test_targeted_plan_and_handshake) ... ok
+test_unknown_dependency_rejected (test_control.ControlGateTests.test_unknown_dependency_rejected) ... ok
+test_unknown_handshake_is_rejected (test_control.ControlGateTests.test_unknown_handshake_is_rejected) ... ok
+test_unknown_source_is_rejected (test_control.ControlGateTests.test_unknown_source_is_rejected) ... ok
+test_unknown_target_is_rejected (test_control.ControlGateTests.test_unknown_target_is_rejected) ... ok
+test_missing_source_never_calls_github (test_github_source_audit.GithubSourceAuditTests.test_missing_source_never_calls_github) ... ok
+test_pinned_content_hash_mismatch_fails_closed (test_github_source_audit.GithubSourceAuditTests.test_pinned_content_hash_mismatch_fails_closed) ... ok
+test_pinned_content_hash_passes_and_path_is_pinned (test_github_source_audit.GithubSourceAuditTests.test_pinned_content_hash_passes_and_path_is_pinned) ... ok
+test_registry_root_is_deterministic (test_github_source_audit.GithubSourceAuditTests.test_registry_root_is_deterministic) ... ok
+test_all_seed_bytes_and_event_nodes (test_integration.NativeInteropTests.test_all_seed_bytes_and_event_nodes) ... ok
+test_bad_payload_fails_actual_invocation (test_integration.NativeInteropTests.test_bad_payload_fails_actual_invocation) ... ok
+test_capability_handshakes_become_route_plans_without_authority (test_integration.NativeInteropTests.test_capability_handshakes_become_route_plans_without_authority) ... ok
+test_cli_capability_handshakes_is_complete (test_integration.NativeInteropTests.test_cli_capability_handshakes_is_complete) ... ok
+test_cli_handshake_matrix_is_json_and_complete (test_integration.NativeInteropTests.test_cli_handshake_matrix_is_json_and_complete) ... ok
+test_cli_utf8_real_execution (test_integration.NativeInteropTests.test_cli_utf8_real_execution) ... FAIL
+test_discovery_keeps_exact_requested_federations_missing (test_integration.NativeInteropTests.test_discovery_keeps_exact_requested_federations_missing) ... ok
+test_github_federation_donors_are_source_bound_but_not_routeable (test_integration.NativeInteropTests.test_github_federation_donors_are_source_bound_but_not_routeable) ... ok
+test_handshake_matrix_covers_all_routable_project_model_service_pairs (test_integration.NativeInteropTests.test_handshake_matrix_covers_all_routable_project_model_service_pairs) ... ok
+test_missing_federations_fail_closed (test_integration.NativeInteropTests.test_missing_federations_fail_closed) ... ok
+test_model_route_plan_is_not_model_execution (test_integration.NativeInteropTests.test_model_route_plan_is_not_model_execution) ... ok
+test_owner_core_repository_coverage_is_registered (test_integration.NativeInteropTests.test_owner_core_repository_coverage_is_registered) ... ok
+test_real_opp_unicode_query_and_result (test_integration.NativeInteropTests.test_real_opp_unicode_query_and_result) ... FAIL
+test_binary_receipt_requires_uri_and_content_digest (test_model_federation.ModelFederationTests.test_binary_receipt_requires_uri_and_content_digest) ... ok
+test_capability_handshake_delegates_contract_ownership_to_opp (test_model_federation.ModelFederationTests.test_capability_handshake_delegates_contract_ownership_to_opp) ... ok
+test_capability_handshake_has_schema_roots (test_model_federation.ModelFederationTests.test_capability_handshake_has_schema_roots) ... ok
+test_cli_image_execution_reports_unconfigured_provider (test_model_federation.ModelFederationTests.test_cli_image_execution_reports_unconfigured_provider) ... ok
+test_execution_requires_consent_and_validates_each_output (test_model_federation.ModelFederationTests.test_execution_requires_consent_and_validates_each_output) ... ok
+test_four_stages_cover_all_modalities (test_model_federation.ModelFederationTests.test_four_stages_cover_all_modalities) ... ok
+test_input_schema_rejects_undeclared_fields (test_model_federation.ModelFederationTests.test_input_schema_rejects_undeclared_fields) ... ok
+test_model_profile_emits_valid_opp_rcp_offer (test_model_federation.ModelFederationTests.test_model_profile_emits_valid_opp_rcp_offer) ... ok
+test_openai_image_adapter_uses_image_generation_contract (test_model_federation.ModelFederationTests.test_openai_image_adapter_uses_image_generation_contract) ... ok
+test_unconfigured_route_stays_blocked (test_model_federation.ModelFederationTests.test_unconfigured_route_stays_blocked) ... ok
+
+======================================================================
+FAIL: test_cli_utf8_real_execution (test_integration.NativeInteropTests.test_cli_utf8_real_execution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\User\.codex\.chatgpt-projects\g-p-6a437af98cc08191af8185180f66b55e\work\next-internet-audit\deps\DHSC\tests\test_integration.py", line 112, in test_cli_utf8_real_execution
+    self.assertEqual(result.returncode, 0, result.stderr)
+AssertionError: 1 != 0 : b''
+
+======================================================================
+FAIL: test_real_opp_unicode_query_and_result (test_integration.NativeInteropTests.test_real_opp_unicode_query_and_result)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\User\.codex\.chatgpt-projects\g-p-6a437af98cc08191af8185180f66b55e\work\next-internet-audit\deps\DHSC\tests\test_integration.py", line 21, in test_real_opp_unicode_query_and_result
+    self.assertEqual(result['matched'], 1)
+AssertionError: 0 != 1
+
+----------------------------------------------------------------------
+Ran 43 tests in 23.654s
+
+FAILED (failures=2)

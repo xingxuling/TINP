@@ -1,0 +1,12 @@
+✔ RCL admits scope attenuation, equal expiry and scope order independence (13.9186ms)
+✔ identity, continuity, world, expiry and scope expansion are independently denied in RCL (3.7508ms)
+✔ missing fields, invalid timestamps and malformed scope sets fail closed (0.41ms)
+✔ scope snapshots and concurrent migration decisions remain isolated (5.7844ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 117.4969

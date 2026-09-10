@@ -1,0 +1,62 @@
+# Trusted graph search and metric aggregation remain provider observations.
+# Final route policy admission is this fixed RCL program's responsibility.
+reality NextInternetRouteAdmission {
+  facet facts.routeCost : Number = 0
+  facet facts.providerCost : Number = 0
+  facet facts.maxCost : Number = 0
+  facet facts.routeLatencyMs : Number = 0
+  facet facts.maxLatencyMs : Number = 0
+  facet facts.routeEnergy : Number = 0
+  facet facts.maxEnergy : Number = 0
+  facet facts.routeRegion : Text = ""
+  facet facts.leaseRegion : Text = ""
+  facet facts.routeReachable : Truth = false
+  facet facts.securityFloorMet : Truth = false
+  facet route.loaded : Truth = false
+  facet route.allowed : Truth = false
+  subject kernel {
+    warrant observation.read on facts
+    warrant route.admit on route
+  }
+  host observation {
+    offers routeCost -> Number
+    offers providerCost -> Number
+    offers maxCost -> Number
+    offers routeLatencyMs -> Number
+    offers maxLatencyMs -> Number
+    offers routeEnergy -> Number
+    offers maxEnergy -> Number
+    offers routeRegion -> Text
+    offers leaseRegion -> Text
+    offers routeReachable -> Truth
+    offers securityFloorMet -> Truth
+  }
+  emergence loadRoute {
+    cause kernel
+    when not route.loaded
+    needs observation.read on facts
+    call observation.routeCost() -> facts.routeCost
+    call observation.providerCost() -> facts.providerCost
+    call observation.maxCost() -> facts.maxCost
+    call observation.routeLatencyMs() -> facts.routeLatencyMs
+    call observation.maxLatencyMs() -> facts.maxLatencyMs
+    call observation.routeEnergy() -> facts.routeEnergy
+    call observation.maxEnergy() -> facts.maxEnergy
+    call observation.routeRegion() -> facts.routeRegion
+    call observation.leaseRegion() -> facts.leaseRegion
+    call observation.routeReachable() -> facts.routeReachable
+    call observation.securityFloorMet() -> facts.securityFloorMet
+    alter route.loaded <- true
+    witness "next-internet:trusted-route-observations"
+  }
+  emergence admitRoute {
+    cause kernel
+    when route.loaded and facts.routeCost + facts.providerCost <= facts.maxCost and facts.routeLatencyMs <= facts.maxLatencyMs and facts.routeEnergy <= facts.maxEnergy and facts.routeRegion == facts.leaseRegion and facts.routeReachable and facts.securityFloorMet
+    needs route.admit on route
+    alter route.allowed <- true
+    preserve route.loaded
+    witness "next-internet:rcl-route-admission"
+  }
+  realize loadRoute
+  realize admitRoute
+}

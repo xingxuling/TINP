@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\User\.codex\.chatgpt-projects\g-p-6a437af98cc08191af8185180f66b55e\work\next-internet-audit\deps\TaoWind-USCE\usce\cli.py", line 203, in <module>
+    main()
+  File "C:\Users\User\.codex\.chatgpt-projects\g-p-6a437af98cc08191af8185180f66b55e\work\next-internet-audit\deps\TaoWind-USCE\usce\cli.py", line 133, in main
+    rt = UnifiedSubjectRuntime.from_path(args.manifest, adapters)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\.codex\.chatgpt-projects\g-p-6a437af98cc08191af8185180f66b55e\work\next-internet-audit\deps\TaoWind-USCE\usce\core.py", line 801, in from_path
+    return cls(FederationManifest.load(path), adapters)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\.codex\.chatgpt-projects\g-p-6a437af98cc08191af8185180f66b55e\work\next-internet-audit\deps\TaoWind-USCE\usce\core.py", line 793, in __init__
+    self.mount_adapter(adapter)
+  File "C:\Users\User\.codex\.chatgpt-projects\g-p-6a437af98cc08191af8185180f66b55e\work\next-internet-audit\deps\TaoWind-USCE\usce\core.py", line 1225, in mount_adapter
+    handshake, _attestation = self._verify_adapter_state(adapter, organ, expected)
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\.codex\.chatgpt-projects\g-p-6a437af98cc08191af8185180f66b55e\work\next-internet-audit\deps\TaoWind-USCE\usce\core.py", line 1212, in _verify_adapter_state
+    self._verify_handshake(organ, handshake, expected)
+  File "C:\Users\User\.codex\.chatgpt-projects\g-p-6a437af98cc08191af8185180f66b55e\work\next-internet-audit\deps\TaoWind-USCE\usce\core.py", line 935, in _verify_handshake
+    raise RegistryError(
+usce.core.RegistryError: ADAPTER_HANDSHAKE_MISMATCH:dwac:contract_schema,commit,tree,contract,release_receipt,parent_release_receipt,verified_manifest,verified_manifest_file_count,capabilities,declared_capabilities

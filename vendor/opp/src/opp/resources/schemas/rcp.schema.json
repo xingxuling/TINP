@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taowind.company/opp/schemas/rcp.v0.1.schema.json",
+  "title": "RCP Payload（现实能力协议负载）",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["capabilityId", "name", "domain", "operation", "inputModalities", "outputModalities", "determinism", "statefulness", "authorityRequired", "sideEffects", "reversibility", "availability", "evidence"],
+  "properties": {
+    "capabilityId": {"type": "string", "minLength": 1},
+    "name": {"type": "string", "minLength": 1},
+    "domain": {"type": "string", "minLength": 1},
+    "operation": {"type": "string", "minLength": 1},
+    "inputModalities": {"type": "array", "items": {"type": "string"}},
+    "outputModalities": {"type": "array", "items": {"type": "string"}},
+    "inputSchema": {"type": ["object", "null"]},
+    "outputSchema": {"type": ["object", "null"]},
+    "determinism": {"enum": ["deterministic", "seeded", "stochastic", "unknown"]},
+    "statefulness": {"enum": ["stateless", "session", "persistent", "unknown"]},
+    "streaming": {"type": "boolean"},
+    "authorityRequired": {"type": "array", "items": {"type": "string"}},
+    "sideEffects": {"type": "array", "items": {"type": "string"}},
+    "reversibility": {"enum": ["reversible", "compensatable", "irreversible", "unknown"]},
+    "availability": {"enum": ["available", "degraded", "offline", "unknown", "candidate-only"]},
+    "costProfile": {"type": "object"},
+    "latencyProfile": {"type": "object"},
+    "rights": {"type": "object"},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "claimBoundary": {"type": "string"}
+  }
+}

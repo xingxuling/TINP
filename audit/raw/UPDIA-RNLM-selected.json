@@ -1,0 +1,14 @@
+[
+  {
+    "path": "UPDIA-RNLM-Developmental-Lab-codex-r8c-active-structural-diagnosis-v0.5/LICENSE",
+    "sha256": "0d9e7a58df34775f2392572436415c75eeef938aeb5852be6e61f35e295add19"
+  },
+  {
+    "path": "UPDIA-RNLM-Developmental-Lab-codex-r8c-active-structural-diagnosis-v0.5/README.md",
+    "sha256": "429ddd6b4e75b10e2a74e2e01995bbe6be0b31e0a08c01a4c94303b1d96b9ffd"
+  },
+  {
+    "path": "UPDIA-RNLM-Developmental-Lab-codex-r8c-active-structural-diagnosis-v0.5/pyproject.toml",
+    "sha256": "cc3c241d5dc79de0930387d70e9e6a345358c79cd29b6fa9debb8c663a71eb4f"
+  }
+]

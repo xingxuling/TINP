@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-m",
+    "usce.cli",
+    "--manifest",
+    "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\TaoWind-USCE\\federation\\usce.federation.json",
+    "--dwac-repo",
+    "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\DWAC",
+    "--query-mode",
+    "usce",
+    "query",
+    "Assess next internet protocol suite reuse and canonical ownership. Keep TINP subject address discovery routing sessions and transport independent from OPP interop and RCL authority evidence; identify unsupported judgments."
+  ],
+  "exit_code": 1
+}

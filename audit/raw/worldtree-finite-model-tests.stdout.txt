@@ -1,0 +1,33 @@
+✔ WT-T1.0 canonical semantic root is independent of object key order (7.9096ms)
+✔ WT-T1.1 human subject, world tree, tree spirit and forest remain distinct entities (3.3364ms)
+✔ WT-T1.2 world tree root and owner binding verify (1.5871ms)
+✔ WT-T1.3 trunk memory is a model about the subject, not the subject itself (1.1309ms)
+✔ WT-T2.1 contact with an input does not promote it to belief (1.4373ms)
+✔ WT-T2.2 one episodic source may have multiple navigation entrances (1.076ms)
+✔ WT-T2.3 sap subjective time is stored separately from objective observation time (0.7183ms)
+✔ WT-T2.4 ring history is append-only and preserves past subject-knowledge-environment snapshots (1.3799ms)
+✔ WT-T3.1 a branch becomes a world only when at least three world criteria are met (0.8069ms)
+✔ WT-T3.2 the active canopy is a leaf working set, not the entire long-term tree (1.2022ms)
+✔ WT-T3.3 a flower cannot become a fruit without evidence and external reality validation (1.3877ms)
+✔ WT-T3.4 a portable seed is usable only when declared dependencies are available (0.5023ms)
+✔ WT-T3.5 pruning archives ordinary world nodes and preserves previous roots (2.1935ms)
+✔ WT-T3.6 grafting requires compatibility and both subjects while preserving separate owners (1.4569ms)
+✔ WT-T4.1 authority leases are actor, object, purpose, action, time and revocation bound (1.6358ms)
+✔ WT-T4.2 tree spirit cannot self-authorize a trunk rewrite (1.172ms)
+✔ WT-T4.2 subject-approved tree spirit execution remains management, not subject definition (0.8949ms)
+✔ WT-T4.3 bark persona projection can be explicitly revoked by the human subject (1.1342ms)
+✔ WT-T4.4 every tree spirit action leaves a purpose, permit and effect receipt (0.8847ms)
+✔ WT-T5.1 a forest preserves independent trees and has no subject identity root (2.0257ms)
+✔ WT-T5.2 delegated forest permission cannot exceed issuer permission (0.2033ms)
+✔ WT-T5.3 private root houses, trunk memories and rings cannot be shared through the forest (1.0304ms)
+✔ WT-T5.3 sharing a seed creates a scoped link without changing source private memory (2.612ms)
+✔ WT-T5.4 collaborative fruit requires complete contributor attribution summing to one (0.4837ms)
+✔ WT-T5.5 and WT-T5.6 forest closure requires all lower-level witnesses, fruit and seed (1.6301ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 133.8569

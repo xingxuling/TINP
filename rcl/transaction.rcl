@@ -1,0 +1,89 @@
+# Candidate profile: fixed RCL program owns admission predicates and transition.
+# Observation adapter supplies facts only; it cannot supply gate.allowed.
+reality NextInternetTransaction {
+  facet facts.subjectId : Text = ""
+  facet facts.sessionSubjectId : Text = ""
+  facet facts.leaseSubjectId : Text = ""
+  facet facts.worldId : Text = ""
+  facet facts.leaseWorldId : Text = ""
+  facet facts.capabilityId : Text = ""
+  facet facts.leaseCapabilityId : Text = ""
+  facet facts.capabilityVersion : Text = ""
+  facet facts.providerCapabilityVersion : Text = ""
+  facet facts.contractRoot : Text = ""
+  facet facts.providerContractRoot : Text = ""
+  facet facts.nowMs : Number = 0
+  facet facts.notBeforeMs : Number = 0
+  facet facts.expiresAtMs : Number = 0
+  facet facts.signatureVerified : Truth = false
+  facet facts.sessionVerified : Truth = false
+  facet facts.revoked : Truth = false
+  facet facts.scopeAllowed : Truth = false
+  facet facts.securityFloorMet : Truth = false
+  facet facts.evidenceContinuous : Truth = false
+  facet gate.loaded : Truth = false
+  facet gate.allowed : Truth = false
+  subject kernel {
+    warrant observation.read on facts
+    warrant transaction.admit on gate
+  }
+  host observation {
+    offers subjectId -> Text
+    offers sessionSubjectId -> Text
+    offers leaseSubjectId -> Text
+    offers worldId -> Text
+    offers leaseWorldId -> Text
+    offers capabilityId -> Text
+    offers leaseCapabilityId -> Text
+    offers capabilityVersion -> Text
+    offers providerCapabilityVersion -> Text
+    offers contractRoot -> Text
+    offers providerContractRoot -> Text
+    offers nowMs -> Number
+    offers notBeforeMs -> Number
+    offers expiresAtMs -> Number
+    offers signatureVerified -> Truth
+    offers sessionVerified -> Truth
+    offers revoked -> Truth
+    offers scopeAllowed -> Truth
+    offers securityFloorMet -> Truth
+    offers evidenceContinuous -> Truth
+  }
+  emergence loadFacts {
+    cause kernel
+    when not gate.loaded
+    needs observation.read on facts
+    call observation.subjectId() -> facts.subjectId
+    call observation.sessionSubjectId() -> facts.sessionSubjectId
+    call observation.leaseSubjectId() -> facts.leaseSubjectId
+    call observation.worldId() -> facts.worldId
+    call observation.leaseWorldId() -> facts.leaseWorldId
+    call observation.capabilityId() -> facts.capabilityId
+    call observation.leaseCapabilityId() -> facts.leaseCapabilityId
+    call observation.capabilityVersion() -> facts.capabilityVersion
+    call observation.providerCapabilityVersion() -> facts.providerCapabilityVersion
+    call observation.contractRoot() -> facts.contractRoot
+    call observation.providerContractRoot() -> facts.providerContractRoot
+    call observation.nowMs() -> facts.nowMs
+    call observation.notBeforeMs() -> facts.notBeforeMs
+    call observation.expiresAtMs() -> facts.expiresAtMs
+    call observation.signatureVerified() -> facts.signatureVerified
+    call observation.sessionVerified() -> facts.sessionVerified
+    call observation.revoked() -> facts.revoked
+    call observation.scopeAllowed() -> facts.scopeAllowed
+    call observation.securityFloorMet() -> facts.securityFloorMet
+    call observation.evidenceContinuous() -> facts.evidenceContinuous
+    alter gate.loaded <- true
+    witness "next-internet:observed-facts"
+  }
+  emergence admit {
+    cause kernel
+    when gate.loaded and facts.subjectId == facts.sessionSubjectId and facts.subjectId == facts.leaseSubjectId and facts.worldId == facts.leaseWorldId and facts.capabilityId == facts.leaseCapabilityId and facts.capabilityVersion == facts.providerCapabilityVersion and facts.contractRoot == facts.providerContractRoot and facts.notBeforeMs <= facts.nowMs and facts.nowMs < facts.expiresAtMs and facts.signatureVerified and facts.sessionVerified and not facts.revoked and facts.scopeAllowed and facts.securityFloorMet and facts.evidenceContinuous
+    needs transaction.admit on gate
+    alter gate.allowed <- true
+    preserve gate.loaded
+    witness "next-internet:rcl-admission"
+  }
+  realize loadFacts
+  realize admit
+}

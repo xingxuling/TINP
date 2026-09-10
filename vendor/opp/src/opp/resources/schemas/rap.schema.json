@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taowind.company/opp/schemas/rap.v0.1.schema.json",
+  "title": "RAP Payload（现实工件协议负载）",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["artifactId", "artifactType", "purpose", "version", "dependencies", "provenance", "constraints", "acceptance", "lifecycle"],
+  "properties": {
+    "artifactId": {"type": "string", "minLength": 1},
+    "artifactType": {"type": "string", "minLength": 1},
+    "purpose": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "minLength": 1},
+    "contentRef": {"type": ["string", "null"]},
+    "contentRoot": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "dependencies": {"type": "array", "items": {"type": "string"}},
+    "provenance": {"type": "array", "items": {"type": "object", "required": ["source"], "properties": {"source": {"type": "string"}, "relation": {"type": "string"}, "digest": {"type": "string"}}}},
+    "constraints": {"type": "array", "items": {"type": "string"}},
+    "acceptance": {"type": "array", "items": {"type": "object", "required": ["gate", "status"], "properties": {"gate": {"type": "string"}, "status": {"enum": ["unverified", "pass", "fail", "blocked", "not-applicable"]}, "evidenceRef": {"type": "string"}}}},
+    "lifecycle": {"enum": ["draft", "candidate", "verified-candidate", "released", "deprecated", "rejected"]},
+    "executableSemantics": {"type": ["object", "null"]},
+    "interfaces": {"type": "array", "items": {"type": "string"}},
+    "evidenceRefs": {"type": "array", "items": {"type": "string"}}
+  }
+}

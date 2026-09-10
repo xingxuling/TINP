@@ -1,0 +1,81 @@
+TAP version 13
+# Subtest: udp: Chinese life intent executes through three independent local processes and two socket hops
+ok 1 - udp: Chinese life intent executes through three independent local processes and two socket hops
+  ---
+  duration_ms: 559.2267
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-t2zfTg
+# Subtest: tcp: Chinese life intent executes through three independent local processes and two socket hops
+ok 2 - tcp: Chinese life intent executes through three independent local processes and two socket hops
+  ---
+  duration_ms: 520.7503
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-5wlEkr
+# Subtest: commercial: contract-identical provider replacement executes; semantic drift rolls back; missing provider migrates to B
+ok 3 - commercial: contract-identical provider replacement executes; semantic drift rolls back; missing provider migrates to B
+  ---
+  duration_ms: 1549.5399
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-d9BHIu
+# Subtest: degraded: killing relay B causes authenticated direct A-C execution without authority or evidence loss
+ok 4 - degraded: killing relay B causes authenticated direct A-C execution without authority or evidence loss
+  ---
+  duration_ms: 1471.8166
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-s7gFvl
+# Subtest: partition: actual links blocked on both sides preserve local isolated capability without remote execution
+ok 5 - partition: actual links blocked on both sides preserve local isolated capability without remote execution
+  ---
+  duration_ms: 730.9286
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-Eml4p7
+# Subtest: degraded: a real link failure with B still alive reroutes socket traffic over A-C
+ok 6 - degraded: a real link failure with B still alive reroutes socket traffic over A-C
+  ---
+  duration_ms: 443.1153
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-SDi8cH
+# Subtest: survival: every provider disappears; no execution is fabricated and identity/session/durable prefix survive
+ok 7 - survival: every provider disappears; no execution is fabricated and identity/session/durable prefix survive
+  ---
+  duration_ms: 484.7355
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-ctr506
+# Subtest: commercial: source migration A to B preserves subject, session, authority and a verifiable durable evidence chain
+ok 8 - commercial: source migration A to B preserves subject, session, authority and a verifiable durable evidence chain
+  ---
+  duration_ms: 854.0834
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-XuAl72
+# Subtest: commercial: protocol downgrade is negotiated and an unsupported provider version fails over without invoking it
+ok 9 - commercial: protocol downgrade is negotiated and an unsupported provider version fails over without invoking it
+  ---
+  duration_ms: 1170.2879
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-0AnfNm
+# Subtest: degraded: actual socket send throttling delays bytes while the same guarded operation still executes
+ok 10 - degraded: actual socket send throttling delays bytes while the same guarded operation still executes
+  ---
+  duration_ms: 1899.5645
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-pbLcv1
+# {"profile":"actual-throttled-local-udp","sentBytes":15440,"bytesPerSecond":16000,"elapsedMs":1340.7654000000002,"nominalDelayMs":965,"probeBytes":4916,"probeElapsedMs":356.97670000000016,"probeNominalMs":307.25}
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9861.6757

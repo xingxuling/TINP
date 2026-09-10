@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-m",
+    "taowind_archaeology.cli",
+    "report",
+    "--db",
+    "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\raw\\bounded-archaeology.sqlite",
+    "--out",
+    "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\raw\\bounded-report.md"
+  ],
+  "exit_code": 0
+}

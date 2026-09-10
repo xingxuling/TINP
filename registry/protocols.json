@@ -1,0 +1,402 @@
+{
+  "format": "twni.protocol-registry.v0.1",
+  "version": "0.1.0-alpha.1",
+  "classification": "candidate-local-profile",
+  "scope": "Three independent local processes; UDP/TCP loopback only",
+  "statusVocabulary": [
+    "implemented",
+    "partial",
+    "not_implemented"
+  ],
+  "statusMeaning": "Domain status is roadmap completeness. implemented entries below are bounded behaviors, not whole-domain certification.",
+  "canonicalPromotionPerformed": false,
+  "rclCellsAdmitted": [],
+  "sharedSchema": "../shared-ir/shared.schema.json",
+  "domains": [
+    {
+      "id": "P00",
+      "name": "Shared Semantic Core",
+      "status": "partial",
+      "implemented": [
+        {
+          "status": "implemented",
+          "behavior": "Ten runtime-shaped object projections",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "RCL transaction/migration/route predicates",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        }
+      ],
+      "notImplemented": [
+        "Universal cross-protocol ABI and governed evolution"
+      ],
+      "ownerBoundary": [
+        "TWNI profile composition",
+        "RCL semantic execution"
+      ]
+    },
+    {
+      "id": "P01",
+      "name": "Subject and Identity",
+      "status": "partial",
+      "implemented": [
+        {
+          "status": "implemented",
+          "behavior": "Stable subjectId and continuityRoot across local node migration",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Pinned ephemeral Ed25519 identity fixture",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        }
+      ],
+      "notImplemented": [
+        "Public enrollment, identity recovery, credential lifecycle, delegated representation"
+      ],
+      "ownerBoundary": [
+        "TWNI local identity profile"
+      ]
+    },
+    {
+      "id": "P02",
+      "name": "Naming and Addressing",
+      "status": "partial",
+      "implemented": [
+        {
+          "status": "implemented",
+          "behavior": "TINP capability address",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Stable subject reference separated from legacy node-bound URI",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        }
+      ],
+      "notImplemented": [
+        "Global stable naming, authority resolver, node-independent public discovery"
+      ],
+      "ownerBoundary": [
+        "TINP address syntax",
+        "TWNI subject-reference projection"
+      ]
+    },
+    {
+      "id": "P03",
+      "name": "Discovery and Presence",
+      "status": "partial",
+      "implemented": [
+        {
+          "status": "implemented",
+          "behavior": "Signed discovery responses across real hops",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "TINP directory TTL and callable provider checks",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        }
+      ],
+      "notImplemented": [
+        "Dynamic enrollment, Internet presence distribution, adversarial-scale discovery"
+      ],
+      "ownerBoundary": [
+        "TINP directory",
+        "TWNI signed local discovery"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "Intent and Capability Negotiation",
+      "status": "partial",
+      "implemented": [
+        {
+          "status": "implemented",
+          "behavior": "Real upstream CHP and RCP via bounded Python process",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Exact profile version and contract matching",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "One Chinese intent grammar",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        }
+      ],
+      "notImplemented": [
+        "General intent understanding and ecosystem-wide capability composition"
+      ],
+      "ownerBoundary": [
+        "OPP agreement protocols",
+        "TWNI bounded intent parser"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "Authority and Sovereignty",
+      "status": "partial",
+      "implemented": [
+        {
+          "status": "implemented",
+          "behavior": "Signed scoped read-only lease",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "RCL transaction and migration guards",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Online fixture revocation and expiry",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        }
+      ],
+      "notImplemented": [
+        "Production key custody/global revocation",
+        "RNCS authority lease import",
+        "General delegation and high-impact actions"
+      ],
+      "ownerBoundary": [
+        "RCL admission",
+        "TWNI local lease profile",
+        "RNCS world authority retained"
+      ]
+    },
+    {
+      "id": "P06",
+      "name": "Trust Evidence and Provenance",
+      "status": "partial",
+      "implemented": [
+        {
+          "status": "implemented",
+          "behavior": "Node-signed execution receipts",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Durable hash-linked event log and replay cache",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Request/result/authority/route root binding",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        }
+      ],
+      "notImplemented": [
+        "Distributed durable agreement, trusted timestamping, production retention controls"
+      ],
+      "ownerBoundary": [
+        "TWNI network evidence ordering",
+        "OPP exchange evidence retained",
+        "RCL witnesses",
+        "RFE world facts retained"
+      ]
+    },
+    {
+      "id": "P07",
+      "name": "Routing and Path Selection",
+      "status": "partial",
+      "implemented": [
+        {
+          "status": "implemented",
+          "behavior": "TINP graph multi-hop and alternate path",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Conjunctive cost/latency/energy/region/bandwidth search",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "RCL final route admission using trusted observations",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        }
+      ],
+      "notImplemented": [
+        "Distributed routing convergence, production metrics, global routing governance"
+      ],
+      "ownerBoundary": [
+        "TINP topology",
+        "RCL route admission",
+        "JS route search provider"
+      ]
+    },
+    {
+      "id": "P08",
+      "name": "Session and Continuity",
+      "status": "partial",
+      "implemented": [
+        {
+          "status": "implemented",
+          "behavior": "Signed local session",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Provider/source migration with RCL preservation",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Identity/authority/evidence continuity under tested faults",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        }
+      ],
+      "notImplemented": [
+        "Cold restart/re-enrollment recovery, cross-device transfer, side-effect transactions"
+      ],
+      "ownerBoundary": [
+        "TWNI network session profile",
+        "RCL invariants",
+        "RNCS domain session retained"
+      ]
+    },
+    {
+      "id": "P09",
+      "name": "Transport Adaptation",
+      "status": "partial",
+      "implemented": [
+        {
+          "status": "implemented",
+          "behavior": "Real UDP and TCP loopback providers",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Bounded framed messages and fault controls",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Actual send-rate throttling",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        }
+      ],
+      "notImplemented": [
+        "QUIC, TLS, WebSocket, NAT traversal, authenticated public transport enrollment"
+      ],
+      "ownerBoundary": [
+        "TINP framing/UDP",
+        "Node TCP/crypto providers",
+        "TWNI local transport adapter"
+      ]
+    },
+    {
+      "id": "P10",
+      "name": "Resource SLA and Value",
+      "status": "partial",
+      "implemented": [
+        {
+          "status": "implemented",
+          "behavior": "Signed cost/latency/energy/region/retention budget fields",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "RCL route limits",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Provider SLA declaration marked guaranteed=false",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        }
+      ],
+      "notImplemented": [
+        "Metered billing, quota federation, guaranteed SLA, settlement"
+      ],
+      "ownerBoundary": [
+        "TWNI budget profile",
+        "RCL constraints"
+      ]
+    },
+    {
+      "id": "P11",
+      "name": "World and Data Context",
+      "status": "partial",
+      "implemented": [
+        {
+          "status": "implemented",
+          "behavior": "worldId binding and no-authoritative-action policy",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        }
+      ],
+      "notImplemented": [
+        "RNCS/RFE runtime adapter, world sync, data lifecycle and privacy enforcement"
+      ],
+      "ownerBoundary": [
+        "RNCS/RFE canonical world state",
+        "TWNI world reference only"
+      ]
+    },
+    {
+      "id": "P12",
+      "name": "Application Seed",
+      "status": "not_implemented",
+      "implemented": [],
+      "notImplemented": [
+        "Application seed format, cross-platform installation/distribution and seed verification"
+      ],
+      "ownerBoundary": [
+        "UNDECIDED: reuse existing seed owner after audit"
+      ]
+    },
+    {
+      "id": "P13",
+      "name": "Runtime Capability and Lowering",
+      "status": "partial",
+      "implemented": [
+        {
+          "status": "implemented",
+          "behavior": "Fixed RCL programs execute through canonical compiler and JS runtime",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        },
+        {
+          "status": "implemented",
+          "behavior": "One pure provider executes in node processes",
+          "evidenceLevel": "local-runtime-or-schema-as-described"
+        }
+      ],
+      "notImplemented": [
+        "Device-runtime negotiation, application lowering and general hardware capability adaptation"
+      ],
+      "ownerBoundary": [
+        "RCL language",
+        "Specialized Node/Python providers"
+      ]
+    },
+    {
+      "id": "P14",
+      "name": "Private Network and Isolation",
+      "status": "not_implemented",
+      "implemented": [],
+      "notImplemented": [
+        "VPN/tunnels, subject/world-level private network enforcement; test link blocking is not this protocol"
+      ],
+      "ownerBoundary": [
+        "UNDECIDED: future explicit isolation/security provider"
+      ]
+    },
+    {
+      "id": "P15",
+      "name": "Legacy Interoperability",
+      "status": "not_implemented",
+      "implemented": [],
+      "notImplemented": [
+        "DNS/HTTP/TLS/browser/application compatibility adapters; using UDP/TCP does not implement migration protocol"
+      ],
+      "ownerBoundary": [
+        "Existing Internet protocols retained; future adapter boundary"
+      ]
+    }
+  ]
+}

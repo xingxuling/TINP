@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taowind.company/opp/schemas/rsp.v0.1.schema.json",
+  "title": "RSP Payload（现实状态协议负载）",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["worldId", "revision", "baseRoot", "stateRoot", "assertions", "relations"],
+  "properties": {
+    "worldId": {"type": "string", "minLength": 1},
+    "revision": {"type": "integer", "minimum": 0},
+    "baseRoot": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+    "stateRoot": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "assertions": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["subject", "predicate", "value", "assertionClass"], "properties": {"subject": {"type": "string"}, "predicate": {"type": "string"}, "value": {}, "assertionClass": {"enum": ["observed", "derived", "predicted", "hypothetical", "declared", "simulated"]}, "confidence": {"type": "number", "minimum": 0, "maximum": 1}, "evidenceRefs": {"type": "array", "items": {"type": "string"}}, "validAt": {"type": "string", "format": "date-time"}}}},
+    "relations": {"type": "array", "items": {"type": "object", "required": ["from", "type", "to"], "properties": {"from": {"type": "string"}, "type": {"type": "string"}, "to": {"type": "string"}, "assertionClass": {"enum": ["observed", "derived", "predicted", "hypothetical", "declared", "simulated"]}}}},
+    "branch": {"type": ["object", "null"]},
+    "authorityRoot": {"type": ["string", "null"]},
+    "claimBoundary": {"type": "string"}
+  }
+}

@@ -1,0 +1,12 @@
+✔ RCL admits fractional metrics, inclusive budgets and zero local route (31.6801ms)
+✔ RCL independently rejects each budget, region, reachability and security failure (13.2097ms)
+✔ missing fields, nonfinite/unsafe/negative metrics and coercion attempts fail closed (0.7535ms)
+✔ metrics are snapshotted and concurrent route decisions remain isolated (10.0545ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 242.0466

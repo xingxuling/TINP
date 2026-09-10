@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://taowind.company/opp/schemas/chp.v0.1.schema.json",
+  "title": "CHP Payload（文明握手协议负载）",
+  "oneOf": [
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["phase", "identity", "supportedProtocols", "capabilities", "authorityScopes", "evidencePolicy"],
+      "properties": {
+        "phase": {"const": "offer"},
+        "identity": {"type": "object", "required": ["id", "civilizationType"], "properties": {"id": {"type": "string"}, "civilizationType": {"enum": ["agent", "runtime", "organization", "service", "device", "world", "human", "federation", "unknown"]}, "displayName": {"type": "string"}}},
+        "supportedProtocols": {"type": "array", "items": {"type": "string"}},
+        "capabilities": {"type": "array", "items": {"type": "string"}},
+        "authorityScopes": {"type": "array", "items": {"type": "string"}},
+        "evidencePolicy": {"type": "object", "required": ["minimumConfidence", "acceptDerivedEvidence"], "properties": {"minimumConfidence": {"type": "number", "minimum": 0, "maximum": 1}, "acceptDerivedEvidence": {"type": "boolean"}, "requiredProtocols": {"type": "array", "items": {"type": "string"}}}},
+        "extensions": {"type": "object"}
+      }
+    },
+    {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["phase", "participants", "status", "agreedProtocols", "sharedCapabilities", "authorityScopes", "evidencePolicy"],
+      "properties": {
+        "phase": {"enum": ["agreement", "reject"]},
+        "participants": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "string"}},
+        "status": {"enum": ["accepted", "rejected"]},
+        "agreedProtocols": {"type": "array", "items": {"type": "string"}},
+        "sharedCapabilities": {"type": "array", "items": {"type": "string"}},
+        "authorityScopes": {"type": "array", "items": {"type": "string"}},
+        "evidencePolicy": {"type": "object"},
+        "reasons": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  ]
+}

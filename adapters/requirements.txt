@@ -1,0 +1,2 @@
+# OPP is retained as an exact internal first-party source snapshot under vendor/opp.
+jsonschema>=4.23

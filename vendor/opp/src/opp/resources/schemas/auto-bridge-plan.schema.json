@@ -1,0 +1,14 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://taowind.company/opp/schemas/auto-bridge-plan.v0.1.schema.json",
+  "title":"OPP Automatic Bridge Plan（OPP 自动桥计划）",
+  "type":"object","additionalProperties":false,
+  "required":["format","version","bridgeId","status","producerPort","consumerPort","compatibility","operations","executionModel","authority","safety","boundary","planRoot"],
+  "properties":{
+    "format":{"const":"taowind.opp.auto-bridge-plan.v0.1"},"version":{"type":"string"},"bridgeId":{"type":"string"},"status":{"enum":["candidate","rejected"]},
+    "producerPort":{"type":"string"},"consumerPort":{"type":"string"},"compatibility":{"type":"object"},"operations":{"type":"array","items":{"type":"object"}},"executionModel":{"type":"string"},
+    "authority":{"type":"object","required":["required","available","promotionPerformed"],"properties":{"required":{"type":"array","items":{"type":"string"}},"available":{"type":"array","items":{"type":"string"}},"promotionPerformed":{"const":false}}},
+    "safety":{"type":"object","required":["sourceCodeExecution","arbitraryCodeGeneration","informationInvention","authorityInvention","lossyAllowed"],"properties":{"sourceCodeExecution":{"const":false},"arbitraryCodeGeneration":{"const":false},"informationInvention":{"const":false},"authorityInvention":{"const":false},"lossyAllowed":{"type":"boolean"}}},
+    "boundary":{"type":"string"},"planRoot":{"type":"string","pattern":"^[0-9a-f]{64}$"}
+  }
+}

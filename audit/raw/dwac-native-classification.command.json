@@ -1,0 +1,8 @@
+{
+  "argv": [
+    "C:\\Users\\User\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "-c",
+    "from dwac_structural import TheoreticalCoverageCompiler; import json; print(json.dumps(TheoreticalCoverageCompiler().compile_goal('Assess next internet protocol suite reuse and canonical ownership. Keep TINP subject address discovery routing sessions and transport independent from OPP interop and RCL authority evidence; identify unsupported judgments.').to_dict(),ensure_ascii=False,indent=2))"
+  ],
+  "exit_code": 0
+}

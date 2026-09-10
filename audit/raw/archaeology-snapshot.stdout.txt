@@ -1,0 +1,1493 @@
+{
+  "archaeology_epoch": "next-internet-audit-2026-09-10",
+  "created_at": "2026-09-10T00:38:56.966553+00:00",
+  "source_count": 165,
+  "historical_evidence_count": 165,
+  "sources": [
+    {
+      "source_id": "SRC-5fa5a0d61264fe111e8b",
+      "sha256": "cf5d61d328daecd83a97e221675dd2e74b19c0d73bacbf199349ad1d65d97efd",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\.gitignore",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-51c28a55852dded752c9",
+      "sha256": "38412cae21e95ee70d5843dcfd404fab7367da4eef58a688af57c8ae9b7348a7",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\README.md",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-b9ac748cfc9c412a0f31",
+      "sha256": "331955607eda6fa528497c5583b865fb8a247444aaa924e75e520c812283b555",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\STATUS.md",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-33887aa72e7c2a9b3af0",
+      "sha256": "d0b411d51522525c0687d1c4d8a23f728ce36c11eb9f86abc5bc92b196320717",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\docs\\ARCHAEOLOGY.md",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-916a6d3723a2b077ffd1",
+      "sha256": "391e2a9f2ab12bd1a50c747585bd8572677944628281db8e9bb0c776706172ed",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\docs\\AUTO_CONNECT.md",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-7486f1e33215a98ba415",
+      "sha256": "5f7c132fe1d0a42a09cfffef00ac9c83852f064ae194391bf8fca4407612d225",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\docs\\BRIDGE_COMPILER.md",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-8932252c3665a8b313f0",
+      "sha256": "e5213cf14671930a730439423feb4df81295d8e8b276f2ee20490debb20ee484",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\docs\\GOVERNANCE.md",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-83dbca350c075ef4bc20",
+      "sha256": "308aae814e7f8d4655730ac371af5e041260043ccf26adae0c08c8eecd24ac54",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\docs\\NATIVE_INTEROP.md",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-efe2072ee2a6773f8d10",
+      "sha256": "820a7abfb4e41d99f681d3e7e0e47733f5a616647f80ed2a3f4c3f44b370dbba",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\docs\\PRIMITIVES.md",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-72c85b3dd62075f0330c",
+      "sha256": "7f338a11bbda6acd30db0d87b3dc0ae891b08fc236752ce4f7e2d7abb1c373bd",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\docs\\SEMANTIC_BRIDGE.md",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-b77fb2cda6db71cd6eb8",
+      "sha256": "4ac8dd7d8a4c99a4984616f8e7e7521c62341dfb1cc78fbb8ead6e95f7b9a4d0",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\docs\\SPECIFICATION.md",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-e439e62899e9471aee44",
+      "sha256": "21eca4c68ba50f9ad11551e7cb27c7ed2a925d6e7a7f02b7a4bc71502bc3686c",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\evidence\\BRIDGE_COMPILER_DWAC_RECEIPT.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-4c0c667454eb21938aa1",
+      "sha256": "af0316d4230cccdd20d45e8222b5f2857a5ca6ba362dd5ce58b201e332fe1150",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\evidence\\DWAC_COLLABORATION_RECEIPT.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-0b0074c3da40230a1f54",
+      "sha256": "684dfd636ea531422213f608401df55ffe6dd1c583fcf473b0e5e92d58389581",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\evidence\\DWAC_MANIFEST.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-1f559e6556d7c6a0d66d",
+      "sha256": "8bd530e5e6f780bfdb9c6e1ea7d5e06b1a18070cfafed7bed962d74df2b67476",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\evidence\\NATIVE_INTEROP_DWAC_RECEIPT_v0.3.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-e0fcc587ef8ca90829c1",
+      "sha256": "2857186d50296ab437a47b75c78a09b10de32ea1cee87d644a16d85c345830b4",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\evidence\\OPP_BRIDGE_COMPILER_v0.1.dpal",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-3072f750abfef63bc771",
+      "sha256": "f7552a98f4b41c3d9b2f5cee02374c58b2ded88988164410118bccae95d58ce2",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\evidence\\OPP_NATIVE_INTEROP_v0.3.dpal",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-29fedcc811f5828528af",
+      "sha256": "97aea45abbf3238eafc86836a8a065ecafad4289b5ab9ad802592f75d66152dd",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\evidence\\OPP_SEMANTIC_BRIDGE_v0.2.dpal",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-6df4beb705683ea0f6bc",
+      "sha256": "b06dc1441db1ca718700e49ce1bbafd634556ad36c5149f78d4f3f66d81e29e7",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\evidence\\SEMANTIC_BRIDGE_DWAC_RECEIPT_v0.2.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-d66e19985f2870cfe9b3",
+      "sha256": "0a428c4160792a9b289acd9fcc5ecb21d9fd36922fa58bb5df140043f417841e",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\artifact.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-f0194c6412b16aa9078c",
+      "sha256": "a33b8a23039441af1afd0da23edffbc9980ee5e5579b4a1804d3dd1c8db144f1",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\bridge-fixtures\\dwac\\WORKER_PROTOCOL.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-797c6ee8b6711467f464",
+      "sha256": "701c3069bcbd304cabecb437ca4d016604f4f97a2a3bfcc7b40a8d8db75708e4",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\bridge-fixtures\\dwac\\evil.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-acbabfebe92f963d6494",
+      "sha256": "0dcd80263bca82a77aafbd9f4a34ad2347369dfb98fc3a68fc9e6675e4a1c6b6",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\bridge-fixtures\\rcl\\protocol.mjs",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-9ddb9806496af6c0bfa7",
+      "sha256": "ea25c1117bfeeb100ae7e3bcab3935b05cbbd5ec121b69424ee25393a0b2e363",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\bridge-fixtures\\rncs\\README.md",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-2cde6140327f11f7ca22",
+      "sha256": "c500b0f6f202c9938b3c218763f7b0a92ad7075f0259164a3793fc47bd887790",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\capability.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-a343bd48be020049fe6e",
+      "sha256": "91aabbb352cecc9e88b2d02759df0c8b6e4abd914cff7cdcacc1d98153fc5151",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\evidence.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-ee0df6d17e5cebb22660",
+      "sha256": "67282d6ea5ee1f5d9e7b932515031f841b499127314913eb605988f195e4a29d",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\exchange.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-d7af77c053b40e89f244",
+      "sha256": "aecd4823d83b51450a633263efd3c4b83a039b931d7f2dffb5e94c8483dfd7a4",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\handshake-dwac.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-3b2c89fbf141fc258315",
+      "sha256": "2a6668141467c9cd9dceabacd6fd13cd5e715529e56f55e179b8a514a1a2cfc8",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\handshake-rncs.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-a6a86d2a7666ef2dc9cb",
+      "sha256": "c893c327d59384d60df1e4b3ca9da5eda9c2942c58438d15beb35fe952ac42c5",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\interop-input.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-9091b4f670813214ff1c",
+      "sha256": "4cc95185568eeb2b8f39dd4ed7459896c8b5cfadc78fe904b44410cb8881a9e4",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\interop-run.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-84e930b99d4babb8b37f",
+      "sha256": "4346b2f231c3ab41b4037f212165538e5cb0b2b38a98af3b9eef586fdd4d4a50",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\invocation-consumer.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-20d31735620888c33b94",
+      "sha256": "81f26b91adfbb263f73ca4b7f59c48dfa529a38641cd873d864dfa94d7885123",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\invocation-producer.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-b2cde4131e0ff4e57916",
+      "sha256": "16109a15a7df008712b900b56a8527c2af71c53673352574b4283759c86af763",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\native-fixtures\\consumer.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-8b3b07fe489c93d66b54",
+      "sha256": "8739f8a7b6c576d04479081205a1b748838b4b892a861e86e2150b71318c0bb0",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\native-fixtures\\loud.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-f462dbe23e78683babbb",
+      "sha256": "d974585c7671f831a83edd01ab0dce7b8c5aeb75132c9819778f1fd15690f2a9",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\native-fixtures\\nonjson.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-c95ec2020259d4e4220d",
+      "sha256": "df16e7f583aa5d1d5903dbfa76a551abcefa823e1e5a7dab3989810906cdef4d",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\native-fixtures\\producer.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-5c9f87a0096a297ef88f",
+      "sha256": "1a6daf5b009f5c8458e2b53d26c4d7940025e6005f58f3414657586e29b08115",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\native-fixtures\\sleepy.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-a01ef0baa865e38497f6",
+      "sha256": "a4caeeadad4e9983f2c56daa55698c644890dc760b8d28d5679ad1606b912702",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\semantic-fixtures\\consumer.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-00ed7601cb304a0858ab",
+      "sha256": "f3908942eb295365d1543f3d686e92273dd01cf1dad8e75abaded451e05946ac",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\semantic-fixtures\\producer.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-32d3ae63525dd168e9ff",
+      "sha256": "a9f2df78368aca024f61508453bc7e30de63aae8d16d8b4b7f62102f7b07067e",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\semantic-fixtures\\typed.ts",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-1a94173f3ece5b5a2fbf",
+      "sha256": "ad80cb78cf63327c4f22f60451034ccd3e56a08470164be738b8ed18d136f5b3",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\semantic-fixtures\\user-output.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-187616c72a323bc5a006",
+      "sha256": "5b09c8bb527041d31faf80d2af84f81854ad4193855dd00a1a77f829ab7e856b",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\examples\\state.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-61fa9e33a1b9e66d0076",
+      "sha256": "82d2f897d0f36f6e571971caefe1234ead1a01adee9fc55c5eb0bd153b14c738",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\pyproject.toml",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-b9e7fed7975df0af7c8a",
+      "sha256": "0f20425dc8fb65417902da4004d2dcca419b9ae605a34ef174514a472486dda7",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\rcl\\README.md",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-728d142b98ff806aaaaa",
+      "sha256": "0f3929c1a7e2ee96a8f9cb5058a1e13b971b05c905ef54832aa52b3f354d0734",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\rcl\\README_NATIVE_INTEROP_v0.3.md",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-07596666ff9d7bfb04ac",
+      "sha256": "ef22e2875287a4a4181e8ce67385ee47daa9321c604cc8efb659fbce85e2a4d4",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\rcl\\opp_native_interop_v0.3.rcl",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-1852314e078d92b29c66",
+      "sha256": "88818f4864b5fb38c4f678262f1686860f10b79eb0859e4ac519f13b9b7f3f6f",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\rcl\\opp_protocol_suite.rcl",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-1df1a7dcc094c5eea65e",
+      "sha256": "6618872b74f7a82aedf642a151b17d5f8fe20ff1122e0406e6e9537516ebca96",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\registry\\protocols.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-38fbfe6e6342da0d4ed2",
+      "sha256": "f2b562930ca197aeeafca8e2c1890c8ea875c427a5fe1b5d60ad1db5762685bb",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\auto-bridge-plan.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-4442455643bb10f27d4b",
+      "sha256": "a2a1751a93c8528e0875e33ca99f32245dae197defbba7671728396aeec1081d",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\auto-connect-report.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-0b93f4adc667d18f0db7",
+      "sha256": "d84f51f57f87919138fd6aa4cf544e2e2c9b13889d3118dc2bd08d7676d36027",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\bridge-compatibility.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-6935e3dd3c1dc9f3c732",
+      "sha256": "ecd218deed7d09536f7dfe39e1e56d6b1060f28ca93046e6023f1346713acc34",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\bridge-manifest.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-6a455ae20a9cb9c77bef",
+      "sha256": "9bbb894b9ee6a61165f896bfcafb74c42b95408644d76049b95ac7dbb0cb61a3",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\bridge-scan.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-230a5082856576774074",
+      "sha256": "69108016f3aa73bcfb9dc222231ebb4ef0fefadf3bb1182202f17f1892d78f8d",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\chp.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-8884c485f5ebb1c45fa2",
+      "sha256": "261a2b0413b3d8c561ac4ed59666fe9f9ee383e17ab816a71ba8624672599730",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\interop-receipt.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-5098030b93a515b0733b",
+      "sha256": "d078039ffdb223e0805776c9a4adf150e7c2fbcf2ffeaedaadf26a47e84da794",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\interop-run.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-441545cbe3e635e43a72",
+      "sha256": "4280d51271f3023330889a21ef12335642bbfeaef07a2ac18c163d17be635fc4",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\invocation-receipt.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-da5064157b61d62849f3",
+      "sha256": "f48f789e82d86af2ebbc085ca8dfdb304dc82188d6517995ed9730d2c0ac9eeb",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\invocation-spec.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-c45f86b36619065b3cf2",
+      "sha256": "c0916013903f0cadbf6cbbfc3511559d606672245b80b11565d207df968c2d74",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\rap.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-c098555e2c9edf3efcb6",
+      "sha256": "3bc78fdba28401067ba186bbacac233f8d95f31955ed094ece976e255e5f6503",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\rcp.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-83c213999bbe5c774dec",
+      "sha256": "b4acf8b7e5feff48db435a74ab2d8cd6b9f698f5cae4943bac401f5b9bf855f6",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\reality-envelope.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-7d48d3abfd74cf14d499",
+      "sha256": "4c37e3318a11f76ce24f8ef00c7be3b00092c606ca4b95142b5f939f765d8551",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\rep.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-761e6610e1ca5a3e5dd5",
+      "sha256": "1c77300a2f1030941ada2aee81d85b2d6c38182265cb53e5b66e9c75f8556768",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\rsp.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-c5c41b1bed26a7d8d6c0",
+      "sha256": "489b2022cf7e9e78e1e89cac8e0e8995f3dbdf64fbb530208826c4e1f93a4915",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\rxp.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-cf5fc7ab98744736f1cc",
+      "sha256": "6ddcacabfebdd218888dc5f49a16b5483fe4ce76f5bbab95b325be3d0c86756a",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\schemas\\semantic-verification.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-cdae17550cb3c9b17bce",
+      "sha256": "6350f5efb9358e082179d58d990628bb7556f900757fc56560548ea7a2706f4f",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\__init__.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-9194a8527033e5653edd",
+      "sha256": "8134dc71036ab6fef7cb605ec59b400b2864890fc00526f9763c447e2937e295",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\__main__.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-b315269ad35ad934fadf",
+      "sha256": "051d5d390f737e18d7a78a99a753a0dba7483e98115da1decb907c8d8f32f947",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\bridge\\__init__.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-f724aaea552a2e48d3af",
+      "sha256": "71bc1a2f0821f0cbf81a1b725fcbdbd75cb9a000957d6f239f90452461abcf95",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\bridge\\compatibility.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-7609b0110c037da4a1cf",
+      "sha256": "fb79df6c61823ffb43ed2276adabe30260ac80289d593f3dea16a5a66c8231fa",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\bridge\\compiler.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-9d2cbc149615bff76198",
+      "sha256": "48dfcc74151e4fe716c508bdaaf2152f90e48ac278068a31adca185ca34c1d81",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\bridge\\extractors.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-56b38a8f10b7161bcd50",
+      "sha256": "3196aa9cc7cc043e6479fd323e3685765020c2246edc324bbe6c291b0a762d78",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\bridge\\mapper.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-24d345ad284f4245dcc8",
+      "sha256": "64afb75adfa1da89957584a6aea81ac896d530efcf2a2a563fcd19b5fe2ceb72",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\bridge\\model.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-b67a6b7a83d442729962",
+      "sha256": "50e0fb822b9315b53a3f56ee9b1aabcf2b333235cdd08c059a61e597d4c41f0d",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\bridge\\planner.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-e0a32941cb9dbcddd63b",
+      "sha256": "53cc7f4a81cb4ac9a547b0e1c1e65b3916f5fb8aa06b30a9e9e34a11850b0884",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\bridge\\profiles.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-87a7fb0cde5c61079e82",
+      "sha256": "b532a17524ab56686260792a8a5a85b3bc9a9d141900934ec8b738bb35e574fe",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\bridge\\scanner.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-2d2f34006bd9855bbc94",
+      "sha256": "cc90431673e4cdd2deaba56ba0ebdff851f9a045ff0882e65c1ee974ae9d16f3",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\bridge\\semantic_extractors.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-1896dc87eb93d16291e0",
+      "sha256": "937e7a341d24609b8741cbeff1cfb038dc987478b224303316e2e86cf1ff9264",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\bridge\\semantic_model.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-a02dbf73ee6a9a2aa6ea",
+      "sha256": "f08207ddb60f126aaaf74e793db3e1a76d7f2a2bf7d8d19c875ce59408b77002",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\bridge\\synthesize.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-8e69ab90f34c79cfdfd9",
+      "sha256": "87c9286e03eebdc9779cb4258799dbf4058b0915b3a4df7e9cd7c951b913457b",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\bridge\\transform.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-3dc2e79fc181d3214f66",
+      "sha256": "a37ac18eaefb677fcea00a4cfcb0e58732edd3b265923fa023b486ee1ac701f3",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\bridge\\verifier.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-248fc07de05867612b95",
+      "sha256": "5fa0838c8f4979f6260b2a305b452778c78efea22e87795f1a1d8d64c7ac0086",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\capability.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-164976b620690d1b456f",
+      "sha256": "b42645c45bfb5685098f4e810b1f158a7f073d96715c30a45c7706a33e391bae",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\cli.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-7bb3f6ee5c2611eda118",
+      "sha256": "21ed9fe47a8b40eb145962d70c84f62e441b695fb606a991ef297512956a353b",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\handshake.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-feb3b76264663e85eff4",
+      "sha256": "1396974bc77bfe4c41bbfc1027a01e2a3523734654c0aa95b890b79687f31445",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\integrity.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-9ea6f269daac19daad9b",
+      "sha256": "efb8654b071d32f5700ef9d84ed0a3bb6c6e9d09fe205bf617c0adf5be80e608",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\registry.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-de2443e8c52bfd952520",
+      "sha256": "6618872b74f7a82aedf642a151b17d5f8fe20ff1122e0406e6e9537516ebca96",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\registry\\protocols.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-066b65822350c3e9f570",
+      "sha256": "f2b562930ca197aeeafca8e2c1890c8ea875c427a5fe1b5d60ad1db5762685bb",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\auto-bridge-plan.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-401ad639c25b9389cc18",
+      "sha256": "a2a1751a93c8528e0875e33ca99f32245dae197defbba7671728396aeec1081d",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\auto-connect-report.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-9a2589bcba007a3c00d1",
+      "sha256": "d84f51f57f87919138fd6aa4cf544e2e2c9b13889d3118dc2bd08d7676d36027",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\bridge-compatibility.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-4cb82bc0af1e60e5533c",
+      "sha256": "69108016f3aa73bcfb9dc222231ebb4ef0fefadf3bb1182202f17f1892d78f8d",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\chp.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-e0035ff8bbb084b838cf",
+      "sha256": "261a2b0413b3d8c561ac4ed59666fe9f9ee383e17ab816a71ba8624672599730",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\interop-receipt.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-e782e40e527223670f8a",
+      "sha256": "d078039ffdb223e0805776c9a4adf150e7c2fbcf2ffeaedaadf26a47e84da794",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\interop-run.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-bcb52380e76ecdae1e73",
+      "sha256": "4280d51271f3023330889a21ef12335642bbfeaef07a2ac18c163d17be635fc4",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\invocation-receipt.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-cf0991e79f7837079311",
+      "sha256": "f48f789e82d86af2ebbc085ca8dfdb304dc82188d6517995ed9730d2c0ac9eeb",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\invocation-spec.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-389433ee3c21d130b9b2",
+      "sha256": "c0916013903f0cadbf6cbbfc3511559d606672245b80b11565d207df968c2d74",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\rap.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-0d7efbece20d05b5e6d1",
+      "sha256": "3bc78fdba28401067ba186bbacac233f8d95f31955ed094ece976e255e5f6503",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\rcp.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-540edece682a05ee3b3f",
+      "sha256": "b4acf8b7e5feff48db435a74ab2d8cd6b9f698f5cae4943bac401f5b9bf855f6",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\reality-envelope.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-2e724f92cdd4738c5106",
+      "sha256": "4c37e3318a11f76ce24f8ef00c7be3b00092c606ca4b95142b5f939f765d8551",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\rep.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-e79460e31a7e7e97f7de",
+      "sha256": "1c77300a2f1030941ada2aee81d85b2d6c38182265cb53e5b66e9c75f8556768",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\rsp.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-64483800a810dc03747f",
+      "sha256": "489b2022cf7e9e78e1e89cac8e0e8995f3dbdf64fbb530208826c4e1f93a4915",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\rxp.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-cae4fc1e83027640a872",
+      "sha256": "6ddcacabfebdd218888dc5f49a16b5483fe4ce76f5bbab95b325be3d0c86756a",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\resources\\schemas\\semantic-verification.schema.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-8d42929f08479daec263",
+      "sha256": "c9a0253504dcadde0aad1300b03208b56f6b8c33626aa01d8a8b89ce1c0a98d4",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\runtime\\__init__.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-2fba3361ef27df2ad573",
+      "sha256": "0a92636f9af15fee0f591859d96e933c38e23cec300729f2836dfa2d06558af6",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\runtime\\child_python.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-6631daa5f0aaff879cf2",
+      "sha256": "0b8e9c53ccc8486297ea99e26d3f645461cc361916aee9e413369aa0e7d0c659",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\runtime\\interop.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-e368e3777917a8d4d040",
+      "sha256": "a3f23b9f583aee6483ff9cd22191df298eb6d1a83611caf40880d8ac6b272e77",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\runtime\\invoke.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-344adc5632ca9ed9b377",
+      "sha256": "fa8a18e4a23540f69efee070660254f38dc80dc7d4fad7d996ce7aca644f6279",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\runtime\\model.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-3be0985d8088d674c277",
+      "sha256": "e2ed70f1c33b5a91f3380cadd761e013b1ab7e8e79094f602a9d2dcf40f7a040",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\src\\opp\\validation.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-564e8350e382588fca9e",
+      "sha256": "da2802cc5ea3cc1e828eddad8ed6d3a350572e432b120c4f2868823da7ead582",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\tests\\test_bridge_compiler.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-68078ea27b3055847d92",
+      "sha256": "42153e19636f3372bcbbd7d7e78cbdb481596939cb3b0bcc6436d273a44cbbd5",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\tests\\test_native_interop.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-2edf77d158b22b2b8c44",
+      "sha256": "45cd0e1f5bfd546e255dcbf7d31ed80059dac6a15f28f51bafc1d6ccef312cc9",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\tests\\test_protocols.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-647626a5e7e062f61492",
+      "sha256": "c509995ef5fa47b9798fd0e93044330bbeaff5639ae8213d027f6ba5c2622169",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\deps\\OPP\\tests\\test_semantic_bridge.py",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "SRC-7befaaeb3fab64a18cc5",
+      "sha256": "bcb6e84982028562dc0ccc99969653abf8e01d6161a65e31fd5d39b75b879db6",
+      "path": "C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\next-internet-audit\\raw\\project-source-inventory.json",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "LOOSE_DOC",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "ARC-694b3b49f3ae6add3973",
+      "sha256": "5f823b3449390ed4602a7914f4e48ecc08a14bf02d8449b966b45d189f678f25",
+      "path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "container_path": null,
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "BUNDLED_SNAPSHOT",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-e8e59186eb749195ef6e",
+      "sha256": "9bbdfeace91bd982b20f9fbd8505f82e7caa2281e02ab496a81d1558a3da3cb3",
+      "path": "TINP_v0.2.0-alpha.1/LICENSE",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-2951f6d34d41c2a0fede",
+      "sha256": "5e783777f9c6b494c772f1a26c6f45bea7388014d8591c05f1619d824096cf01",
+      "path": "TINP_v0.2.0-alpha.1/README.md",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-8074a49fca2a887ff0b3",
+      "sha256": "143a2361a6050765602865464f883e5f8bd5f0b72844d263da97b90f2a98887d",
+      "path": "TINP_v0.2.0-alpha.1/docs/ARCHITECTURE.md",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-300d644eb4fcd301f2fc",
+      "sha256": "f70243aab6a83ad2ba4c41ba635c72d6f7cb8ed503ae5321ac085750bb90be70",
+      "path": "TINP_v0.2.0-alpha.1/docs/FEDERATION_RULING.md",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-75f08981aca1506d57c8",
+      "sha256": "192ed7fcc75238701e4cf7d15bb816b9a20fd65c42f6af5bbf8d712a4f313aaf",
+      "path": "TINP_v0.2.0-alpha.1/evidence/ASSET_ARCHAEOLOGY_REPORT.md",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-8e27376f0a4a2075a0b7",
+      "sha256": "6553bfca6a86b2afc3aecba94e0cb622d02a643beab0ee4a298cf749d2127e78",
+      "path": "TINP_v0.2.0-alpha.1/evidence/DWAC_GOAL_COMPILE.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-8e570e542f8cad618079",
+      "sha256": "bd5e6ddd7eb7a0e6b65897bf8e588bf075b56dc9ccddd776863153b153627210",
+      "path": "TINP_v0.2.0-alpha.1/evidence/DWAC_RUN_ONCE.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-303ac746985e8a8be495",
+      "sha256": "5f471d65dc9d58885ccab13a50891ade94639c6e3b819610e0cd6e7476f5a3d6",
+      "path": "TINP_v0.2.0-alpha.1/evidence/DWAC_SUBMIT.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-8038ffe80846d29ec299",
+      "sha256": "73b1e2a690ecb1bc4a3a15ee6586082a9dbb558640ca66e467f477776a413a00",
+      "path": "TINP_v0.2.0-alpha.1/evidence/EVIDENCE_LEDGER.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-d57a0565b5def58af1ed",
+      "sha256": "f4c79e608e81b2065dea08ed6627ae7be047b06d6fa7fe1f3bcc515edecffb6c",
+      "path": "TINP_v0.2.0-alpha.1/evidence/EVIDENCE_LEDGER_v0.2.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-94f719f2039332a57a4a",
+      "sha256": "c900c2c8900358110c345eb1c9c2e673af81d6b98c987ae065d9198f60fb7e24",
+      "path": "TINP_v0.2.0-alpha.1/evidence/INTEGRATION_COURT_v0.2.md",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-0a50f974670acce607a8",
+      "sha256": "cb3f2cab53fa73ebd0869b8fa7a5e1e7ec0e2bdbb769c4023fb48603af0772c5",
+      "path": "TINP_v0.2.0-alpha.1/evidence/OPP_CHP_FIXTURES.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-39f80b302d1f0e5c73f7",
+      "sha256": "dbc5061d1a2869369ab9dd7835cf652b071cca8ec595a082122c86b6ae8d448a",
+      "path": "TINP_v0.2.0-alpha.1/evidence/OPP_CHP_SCHEMA_VALIDATION.txt",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-692a5ed37c420bb1a69f",
+      "sha256": "cfbebd23eef258193a4f9d718935b0d25e27b9c5a2a426aedef1b9d7b38d247f",
+      "path": "TINP_v0.2.0-alpha.1/evidence/RCL_BYTECODE.txt",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-27363e1f793dcb10ba76",
+      "sha256": "1c991e151d2a05fb8cda946894de80f45bd3307dd89c6ae3b323ffacb284ad84",
+      "path": "TINP_v0.2.0-alpha.1/evidence/RCL_NATIVE_RUN.txt",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-002403462a948fa3ad22",
+      "sha256": "aaf2f4194807c3f2d54638c815006eb8482f159069b5a6d79c45dd2b016722e1",
+      "path": "TINP_v0.2.0-alpha.1/evidence/SHA256SUMS.txt",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-48e1959aa732a690eb8f",
+      "sha256": "5272e9437e1fd2be8129748ee63cedc889272980906f63cd14c0ba87b8805b49",
+      "path": "TINP_v0.2.0-alpha.1/evidence/SHA256SUMS_v0.2.txt",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-1342e634f5c1a743c5bd",
+      "sha256": "9f95b08361988c0262a6ec43fdec989daca80418bbc36c529db87a4a5bb7e24f",
+      "path": "TINP_v0.2.0-alpha.1/evidence/TINP_DEMO.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-f25a704c3e4ca1b8b1a8",
+      "sha256": "e2bc32b515d6f388d6461ea41aba2514e3a94bdb3c38609a437279dd6bcc1a0c",
+      "path": "TINP_v0.2.0-alpha.1/evidence/TINP_TESTS.txt",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-3644d91bbdd660b625f5",
+      "sha256": "c2edb18a611623b02279b9b9472c16a65063be0879be665576cef54dd0b27b5d",
+      "path": "TINP_v0.2.0-alpha.1/evidence/TINP_TESTS_v0.2.txt",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-33a66734382ff1d785f1",
+      "sha256": "9e07f405bd127518260982ddb274e33a7b7c591d39d3e482b194df9b52b87198",
+      "path": "TINP_v0.2.0-alpha.1/evidence/UPSTREAM_RNR_TESTS.txt",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-d0afee741fcbf5942ec3",
+      "sha256": "3c871649d8ef4a621381d16d7283cfc68bbe0e4233be4ba9dd3ae27802ffe5d0",
+      "path": "TINP_v0.2.0-alpha.1/evidence/tinp-kernel-runtime.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-db3b98d987f436a62690",
+      "sha256": "a44fff8441ec258c6973eb4010413ddb37e10ae42d9b476c2563219cb0e2a1d6",
+      "path": "TINP_v0.2.0-alpha.1/evidence/tinp-kernel-v0.2.rbc",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-d57009696f5a6055fed2",
+      "sha256": "ffcb43a02f90380d0e1796eb79c08334caa8d667298e8fa1edd06a0890353f09",
+      "path": "TINP_v0.2.0-alpha.1/evidence/tinp-kernel.rbc",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-bf92c52724ecc95a2d3f",
+      "sha256": "8c694cfe96f7ed53ee1740e9e257447b605a81246dc29e8adf75fc4087acdde3",
+      "path": "TINP_v0.2.0-alpha.1/examples/demo.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-fccf4c1bdb8ca2d00f56",
+      "sha256": "dc7235b3cfac485b5d01a0716b4954728fc122c8c5f9ec683fa45f0984cd815b",
+      "path": "TINP_v0.2.0-alpha.1/package.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-41b19d5469fbe5e3b630",
+      "sha256": "de639793c17ee1ee25be51fc0b0af7233f789da98e00d5356ae38dfe3132870b",
+      "path": "TINP_v0.2.0-alpha.1/rcl/tinp-kernel.rcl",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-d49799de4de4b51020db",
+      "sha256": "c4921d12f8212ca15d3a3b1afe46a72f325e800756ec67aa9b8b3c90f7403661",
+      "path": "TINP_v0.2.0-alpha.1/schemas/tinp.hello.v0.1.schema.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-d1e3afa5b126f40fc5e8",
+      "sha256": "87ac8044ad7f96e4426a8872621b3c6f45a76c64bfc327a81ee286fcc1d44744",
+      "path": "TINP_v0.2.0-alpha.1/schemas/tinp.intent.v0.1.schema.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-a9d4de1201472d60e735",
+      "sha256": "34a75f4eaf68e31d7cde793bcf7206f79fbf6d3705d7ea68ca24a9ce02f3922a",
+      "path": "TINP_v0.2.0-alpha.1/schemas/tinp.offer.v0.1.schema.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-7721289d1f8a3fbcbf0f",
+      "sha256": "a2e4994ef4ee94744d7d00a7e18d885a74d60c248dfcadbb01ffdf0742416248",
+      "path": "TINP_v0.2.0-alpha.1/schemas/tinp.receipt.v0.1.schema.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-ac8e0d428643b27e13f5",
+      "sha256": "967f159d03d4cd1ab721e6b945ae6342b92f6b1b59b956214626fbd54218147e",
+      "path": "TINP_v0.2.0-alpha.1/schemas/tinp.revoke.v0.1.schema.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-8d3c53352240e5ebff0d",
+      "sha256": "4a97280c40c7e1e66c33a4f4362fc83b1b4d9a435451dd7c7b6afbabaf494820",
+      "path": "TINP_v0.2.0-alpha.1/schemas/tinp.session-grant.v0.1.schema.json",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-805976fe6952f9968f02",
+      "sha256": "773b1a91898d35d4eb106566002e1c63bc25f0607f854a58e30a7958a31ecde7",
+      "path": "TINP_v0.2.0-alpha.1/src/addressing.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-0919ec4445af6c0da2ef",
+      "sha256": "0ab8286ac8d0f7edc82a149cbc7b558ba10e2f7d590315a8391419530185a8fc",
+      "path": "TINP_v0.2.0-alpha.1/src/canonical.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-c5f1c5d90129e36a779a",
+      "sha256": "aca9765498c2be9e5edfce5f80604b5d6b116a4c315e2c5d0a80ed5769126535",
+      "path": "TINP_v0.2.0-alpha.1/src/discovery.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-81bb92a64425fe48d2d7",
+      "sha256": "dea3f077c4eb5a3018bc060c4698b8bba17d47ab1c06a188ce3a3cae1be4e2a7",
+      "path": "TINP_v0.2.0-alpha.1/src/forwarding.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-8e44ce950b7570f463e1",
+      "sha256": "0658ae395d5ba05b90285561c0aa252ada99a2674dc255d4e0091e9fb75ba603",
+      "path": "TINP_v0.2.0-alpha.1/src/index.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-763c2260e44300a2bfb5",
+      "sha256": "36829a451fe047dc3bd633ebaa04f96c5e2be20c2067ad9ee851de3fd1452ec7",
+      "path": "TINP_v0.2.0-alpha.1/src/opp-profile.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-4dad4c0a1fa70598df73",
+      "sha256": "a4b0da75177bb53514f25b0e5466162fb58338cc05fbab24ece2f89c8f8b6cd1",
+      "path": "TINP_v0.2.0-alpha.1/src/protocol.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-8bd3799a2fe00ed73ade",
+      "sha256": "23b1152b07b873acc30e79dce7d72a185cc5086618f1a8858e27f752a4b9a59b",
+      "path": "TINP_v0.2.0-alpha.1/src/providers.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-ee28595dcd87f6c137d5",
+      "sha256": "da61aa8f2fccb85d9576b21c13984a42ae2db505337e32aaa70a529c9cc01599",
+      "path": "TINP_v0.2.0-alpha.1/src/rnr-profile.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-a24024e9b4dbe96a4939",
+      "sha256": "8554f36c3984169c1b7d4ffec03eac3cd695829a76f2b8ce2b070463f46c5882",
+      "path": "TINP_v0.2.0-alpha.1/src/route-graph.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-80d3df2faed950ab2800",
+      "sha256": "3bf09c6c1dcd535f63cd3b3f99514e660a47648d758a00a5b0db778508314ed2",
+      "path": "TINP_v0.2.0-alpha.1/src/router.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-8bd492cf943ab0a95ba5",
+      "sha256": "f32d166d53e1b26a6b7012e8154f6c54af2ca94352d39bb4b1988144af742ec3",
+      "path": "TINP_v0.2.0-alpha.1/src/runtime.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-8eb90a15308ee64c24e3",
+      "sha256": "661c2b518f4378dee875fa63d1fedb9f79e1e3fd7adbdc0fcd04159d81c0bf49",
+      "path": "TINP_v0.2.0-alpha.1/src/transport-loopback.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-b682720e2ed8b76ed115",
+      "sha256": "56017eb45644d02fcaefc9b7cc1e9c09428e8bf8e90bdab935868e756da57764",
+      "path": "TINP_v0.2.0-alpha.1/src/transport-udp.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-f69ee5aeb386dda12818",
+      "sha256": "53136313d2a9320f97511902976c403a60a4fd70cb35d8303f3a8939df5eaa88",
+      "path": "TINP_v0.2.0-alpha.1/taowind-project.yaml",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-b9aa083b10ac37c0e847",
+      "sha256": "d66bf1e8916cb29f0202dd33e801e46d58438fa99b018b50af25632b9f3e2b30",
+      "path": "TINP_v0.2.0-alpha.1/tests/tinp-v02.test.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    },
+    {
+      "source_id": "MEM-48598c7cfe5fc021d875",
+      "sha256": "2326e34a96aa8dee53cec65ddfb800b603b4551e02c12af30068e28a0408b03a",
+      "path": "TINP_v0.2.0-alpha.1/tests/tinp.test.mjs",
+      "container_path": "C:\\Users\\User\\Downloads\\TINP_v0.2.0-alpha.1.zip",
+      "semantic_provenance": "UNKNOWN",
+      "container_provenance": "ARCHIVE_MEMBER",
+      "archaeology_generated": false
+    }
+  ]
+}

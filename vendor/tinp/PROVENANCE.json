@@ -1,0 +1,76 @@
+{
+  "source": "user-supplied TINP_v0.2.0-alpha.1.zip",
+  "remote": "https://github.com/xingxuling/TINP",
+  "remoteObservation": "git ls-remote returned no refs on 2026-09-10",
+  "modified": false,
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256": "9bbdfeace91bd982b20f9fbd8505f82e7caa2281e02ab496a81d1558a3da3cb3"
+    },
+    {
+      "path": "src/addressing.mjs",
+      "sha256": "773b1a91898d35d4eb106566002e1c63bc25f0607f854a58e30a7958a31ecde7"
+    },
+    {
+      "path": "src/canonical.mjs",
+      "sha256": "0ab8286ac8d0f7edc82a149cbc7b558ba10e2f7d590315a8391419530185a8fc"
+    },
+    {
+      "path": "src/discovery.mjs",
+      "sha256": "aca9765498c2be9e5edfce5f80604b5d6b116a4c315e2c5d0a80ed5769126535"
+    },
+    {
+      "path": "src/forwarding.mjs",
+      "sha256": "dea3f077c4eb5a3018bc060c4698b8bba17d47ab1c06a188ce3a3cae1be4e2a7"
+    },
+    {
+      "path": "src/index.mjs",
+      "sha256": "0658ae395d5ba05b90285561c0aa252ada99a2674dc255d4e0091e9fb75ba603"
+    },
+    {
+      "path": "src/opp-profile.mjs",
+      "sha256": "36829a451fe047dc3bd633ebaa04f96c5e2be20c2067ad9ee851de3fd1452ec7"
+    },
+    {
+      "path": "src/protocol.mjs",
+      "sha256": "a4b0da75177bb53514f25b0e5466162fb58338cc05fbab24ece2f89c8f8b6cd1"
+    },
+    {
+      "path": "src/providers.mjs",
+      "sha256": "23b1152b07b873acc30e79dce7d72a185cc5086618f1a8858e27f752a4b9a59b"
+    },
+    {
+      "path": "src/rnr-profile.mjs",
+      "sha256": "da61aa8f2fccb85d9576b21c13984a42ae2db505337e32aaa70a529c9cc01599"
+    },
+    {
+      "path": "src/route-graph.mjs",
+      "sha256": "8554f36c3984169c1b7d4ffec03eac3cd695829a76f2b8ce2b070463f46c5882"
+    },
+    {
+      "path": "src/router.mjs",
+      "sha256": "3bf09c6c1dcd535f63cd3b3f99514e660a47648d758a00a5b0db778508314ed2"
+    },
+    {
+      "path": "src/runtime.mjs",
+      "sha256": "f32d166d53e1b26a6b7012e8154f6c54af2ca94352d39bb4b1988144af742ec3"
+    },
+    {
+      "path": "src/transport-loopback.mjs",
+      "sha256": "661c2b518f4378dee875fa63d1fedb9f79e1e3fd7adbdc0fcd04159d81c0bf49"
+    },
+    {
+      "path": "src/transport-udp.mjs",
+      "sha256": "56017eb45644d02fcaefc9b7cc1e9c09428e8bf8e90bdab935868e756da57764"
+    },
+    {
+      "path": "tests/tinp-v02.test.mjs",
+      "sha256": "d66bf1e8916cb29f0202dd33e801e46d58438fa99b018b50af25632b9f3e2b30"
+    },
+    {
+      "path": "tests/tinp.test.mjs",
+      "sha256": "2326e34a96aa8dee53cec65ddfb800b603b4551e02c12af30068e28a0408b03a"
+    }
+  ]
+}

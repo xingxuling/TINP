@@ -1,0 +1,78 @@
+{
+  "status": "UNRESOLVED",
+  "route": "USCE_NATIVE_CAPABILITY_GAP",
+  "answer": {
+    "message": "USCE has no currently reachable internal route that can answer this request at the requested fidelity. External query-provider delegation is forbidden by mode=usce.",
+    "gap": {
+      "kind": "GENERAL_TASK_ANSWER_GAP",
+      "needed": "matching internal cognitive organ or explicit provider permission"
+    },
+    "reachable_capabilities": [
+      "federation.capability.closure.v1",
+      "federation.composite.expand.v1",
+      "federation.projection.list.v1",
+      "federation.subject.status.v1"
+    ],
+    "external_provider_used": false
+  },
+  "native": true,
+  "provider_used": false,
+  "candidate_only": true,
+  "world_fact_promoted": false,
+  "rcl_evidence_commit_performed": false,
+  "trace": [
+    {
+      "stage": "mode_constraint",
+      "requested_mode": "usce",
+      "external_provider_allowed": false
+    },
+    {
+      "stage": "semantic_parsing",
+      "parser_profile": "usce.bootstrap.compositional-frame-parser.v0.1",
+      "route_class": "CONVERSATION",
+      "confidence": 0.68
+    },
+    {
+      "stage": "problem_representation",
+      "action": "CONVERSE",
+      "target": "OPEN_DOMAIN",
+      "actor": "REQUESTER_DELEGATED",
+      "maturity": "UNSPECIFIED"
+    },
+    {
+      "stage": "skill_requirement_decomposition",
+      "canonical_owner": "dncs",
+      "provider": "usce.bootstrap.dncs-requirement-profile.v0.1",
+      "claim": "CANDIDATE_PROFILE_NOT_DNCS_NATIVE",
+      "required_skills": [
+        "conversation"
+      ]
+    },
+    {
+      "stage": "capability_reachability",
+      "solver_owner": "ugis",
+      "solver_provider": "usce.bootstrap.federation-closure-bridge.v0.1",
+      "available_skills": [],
+      "missing_skills": [
+        "conversation"
+      ],
+      "reachability": "BLOCKED"
+    },
+    {
+      "stage": "capability_composition",
+      "selected_organs": [],
+      "stop_rule": "DEFER_TO_SOCIAL_HANDLER",
+      "authority_escalation_performed": false
+    },
+    {
+      "stage": "semantic_intent",
+      "intent": "CONVERSE_REQUESTER_DELEGATED_OPEN_DOMAIN",
+      "legacy_intent": "GENERAL_TASK",
+      "historical_context_required": false
+    },
+    {
+      "stage": "subject_gap",
+      "decision": "STOP_EXTERNAL_DELEGATION_FORBIDDEN_BY_USER_MODE"
+    }
+  ]
+}

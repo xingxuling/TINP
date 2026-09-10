@@ -1,0 +1,15 @@
+✔ Provider Runtime v2 permits async calls only when provider offer and actor policy both match (3.2108ms)
+✔ Provider Runtime v2 host adapter integrates with RCL host calls and records receipts (8.9017ms)
+✔ Provider Runtime v2 blocks RCL host calls when the runtime policy omits the rule need (1.2655ms)
+✔ Provider Runtime v2 foreseeing uses simulator receipts instead of real invocations (2.4685ms)
+✔ Provider Runtime v2 converts timeouts and byte budgets into rejected receipts (31.0671ms)
+✔ Provider Runtime v2 queues concurrent calls through capability-local semaphores (79.0152ms)
+✔ Provider Runtime v2 CLI demo emits success and denied receipts (182.5559ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 550.8716

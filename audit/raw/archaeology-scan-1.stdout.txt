@@ -1,0 +1,9 @@
+{
+  "loose": 0,
+  "archives": 1,
+  "members": 50,
+  "skipped": 0,
+  "errors": 0,
+  "archive_members_over_budget": 0,
+  "archive_bytes_over_budget": 0
+}

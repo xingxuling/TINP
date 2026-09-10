@@ -1,0 +1,71 @@
+{
+  "format": "twni.independent-profiles-review.v0.1",
+  "timestamp": "2026-09-10T00:50:17.343477+00:00",
+  "argv": [
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "tests/profiles.test.mjs"
+  ],
+  "exitCode": 0,
+  "testCount": 10,
+  "status": "PASS_LOCAL_3_PROCESS_PROFILES",
+  "runtimeBoundary": "Three real independent processes, UDP and TCP loopback sockets; not public network/multi-host/production/military certification",
+  "checks": [
+    "Chinese life intent",
+    "UDP three processes real two-hop frames",
+    "TCP three processes real two-hop frames",
+    "provider same-contract replacement",
+    "semantic drift rollback",
+    "missing provider alternative",
+    "kill relay B direct A-C",
+    "live relay link failure direct A-C",
+    "actual blocked partition local execution",
+    "all providers missing survival without fabricated result",
+    "source migration subject/session/authority/evidence continuity",
+    "protocol downgrade and incompatibility fallback",
+    "actual byte-rate throttling measured using wire-only DISCOVER and full execution"
+  ],
+  "reviewNotes": [
+    "PASS refers only to the listed local automated assertions.",
+    "Network fault controls are test fixture operations; not deployment governance.",
+    "Low-bandwidth wire-only timing excludes OPP/Python and RCL execution overhead.",
+    "Evidence/cache files in .runs/profiles preserve test-specific raw receipts."
+  ],
+  "sourceHashes": [
+    {
+      "path": "src/contract.mjs",
+      "sha256": "f33e160e62383f1b01e8f6ca0c8236f852299b8a96c6fb8741c91ac8b6bad86f"
+    },
+    {
+      "path": "src/evidence.mjs",
+      "sha256": "32b40873a0a70daf03651af6d28900dba5f1c115cd3aa520efd2b6e498da9aa3"
+    },
+    {
+      "path": "src/identity.mjs",
+      "sha256": "1264a4747acd2e4825986e62f76500e3adac6b2143cca27fdd7ef6933d79b2c1"
+    },
+    {
+      "path": "src/node-process.mjs",
+      "sha256": "3f2cfc032ac302f822db47f8b9fd130c3b03db674cd0b3a041faa3a739157977"
+    },
+    {
+      "path": "src/routing.mjs",
+      "sha256": "eae0f915c6affee748c6df3b316ab2cfa4ea87aa119c1f936b53e0f3f3d321db"
+    },
+    {
+      "path": "src/suite.mjs",
+      "sha256": "74fe0a1ce05896d5d87f88b6bba558d6d55e75283b171ec88f01642fa05bfaf9"
+    },
+    {
+      "path": "src/transport.mjs",
+      "sha256": "5dae7754403c8a247c241382629b0ab446a6f7b8288ca9d4e8574d067facd5aa"
+    },
+    {
+      "path": "tests/profiles.test.mjs",
+      "sha256": "0a1c0cfaea088775b0defce3663e177ebd130d86daac5654f462d6b984246239"
+    }
+  ],
+  "stdoutSha256": "b1e8380d5da46bcee64bf99a5bd06d479bd0cce18faa73f76dbe9700f9e571ca",
+  "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

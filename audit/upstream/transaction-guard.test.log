@@ -1,0 +1,12 @@
+✔ fixed RCL source compiles and admits authenticated matching observations (14.7639ms)
+✔ each semantic predicate independently denies in RCL (16.3845ms)
+✔ missing, malformed, accessor and injection inputs fail closed without compilation (1.4625ms)
+✔ facts are snapshotted before asynchronous execution and requests stay isolated (13.423ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 154.5849

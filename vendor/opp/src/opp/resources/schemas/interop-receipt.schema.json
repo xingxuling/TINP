@@ -1,0 +1,15 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://taowind.company/opp/schemas/interop-receipt.v0.1.schema.json",
+  "title":"OPP Interop Receipt（OPP 互操作回执）",
+  "type":"object","additionalProperties":false,
+  "required":["format","version","runId","status","producerRequestRoot","producerReceiptRoot","bridgePlanRoot","transformedRoot","consumerReceiptRoot","finalResultRoot","error","authority","executionBoundary","boundary","receiptRoot"],
+  "properties":{
+    "format":{"const":"taowind.opp.interop-receipt.v0.1"},"version":{"type":"string"},"runId":{"type":"string"},"status":{"enum":["PASS","FAIL"]},
+    "producerRequestRoot":{"type":"string","pattern":"^[0-9a-f]{64}$"},"producerReceiptRoot":{"type":["string","null"],"pattern":"^[0-9a-f]{64}$"},"bridgePlanRoot":{"type":["string","null"],"pattern":"^[0-9a-f]{64}$"},
+    "transformedRoot":{"type":["string","null"],"pattern":"^[0-9a-f]{64}$"},"consumerReceiptRoot":{"type":["string","null"],"pattern":"^[0-9a-f]{64}$"},"finalResultRoot":{"type":["string","null"],"pattern":"^[0-9a-f]{64}$"},"error":{"type":["string","null"]},
+    "authority":{"type":"object","required":["promotionPerformed","environmentAuthorityInherited"],"properties":{"promotionPerformed":{"const":false},"environmentAuthorityInherited":{"const":false}}},
+    "executionBoundary":{"type":"object","required":["explicitConsentRequired","strongOsSandboxClaimed","hiddenRetries"],"properties":{"explicitConsentRequired":{"const":true},"strongOsSandboxClaimed":{"const":false},"hiddenRetries":{"const":false}}},
+    "boundary":{"type":"string"},"receiptRoot":{"type":"string","pattern":"^[0-9a-f]{64}$"}
+  }
+}

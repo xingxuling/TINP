@@ -1,0 +1,56 @@
+# Candidate network session migration profile. Input source must be authenticated.
+# Host set-subset observation supplies a relation; RCL owns admission.
+reality NextInternetSessionMigration {
+  facet facts.oldSubjectId : Text = ""
+  facet facts.newSubjectId : Text = ""
+  facet facts.oldContinuityRoot : Text = ""
+  facet facts.newContinuityRoot : Text = ""
+  facet facts.oldWorldId : Text = ""
+  facet facts.newWorldId : Text = ""
+  facet facts.oldExpiresAtMs : Number = 0
+  facet facts.newExpiresAtMs : Number = 0
+  facet facts.scopeSubset : Truth = false
+  facet migration.loaded : Truth = false
+  facet migration.allowed : Truth = false
+  subject kernel {
+    warrant observation.read on facts
+    warrant session.migrate on migration
+  }
+  host observation {
+    offers oldSubjectId -> Text
+    offers newSubjectId -> Text
+    offers oldContinuityRoot -> Text
+    offers newContinuityRoot -> Text
+    offers oldWorldId -> Text
+    offers newWorldId -> Text
+    offers oldExpiresAtMs -> Number
+    offers newExpiresAtMs -> Number
+    offers scopeSubset -> Truth
+  }
+  emergence loadMigration {
+    cause kernel
+    when not migration.loaded
+    needs observation.read on facts
+    call observation.oldSubjectId() -> facts.oldSubjectId
+    call observation.newSubjectId() -> facts.newSubjectId
+    call observation.oldContinuityRoot() -> facts.oldContinuityRoot
+    call observation.newContinuityRoot() -> facts.newContinuityRoot
+    call observation.oldWorldId() -> facts.oldWorldId
+    call observation.newWorldId() -> facts.newWorldId
+    call observation.oldExpiresAtMs() -> facts.oldExpiresAtMs
+    call observation.newExpiresAtMs() -> facts.newExpiresAtMs
+    call observation.scopeSubset() -> facts.scopeSubset
+    alter migration.loaded <- true
+    witness "next-internet:migration-observations"
+  }
+  emergence admitMigration {
+    cause kernel
+    when migration.loaded and facts.oldSubjectId == facts.newSubjectId and facts.oldContinuityRoot == facts.newContinuityRoot and facts.oldWorldId == facts.newWorldId and facts.newExpiresAtMs <= facts.oldExpiresAtMs and facts.scopeSubset
+    needs session.migrate on migration
+    alter migration.allowed <- true
+    preserve migration.loaded
+    witness "next-internet:rcl-session-migration"
+  }
+  realize loadMigration
+  realize admitMigration
+}
