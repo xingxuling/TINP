@@ -1,0 +1,22 @@
+{
+  "format": "twni.authority-registry-demo.v1",
+  "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_LIFECYCLE",
+  "issuerPid": 52144,
+  "firstRegistryRoot": "af1ccbf65036a8d04b346e075a67b1b1faa4aca28906df23caa3dd9081889617",
+  "secondRegistryRoot": "395c62aabc1aec3575be69a5f6cb903e1749c10df1720b2546e5bb472e74ef22",
+  "firstSequence": 1,
+  "secondSequence": 2,
+  "rotatedSigners": [
+    "operator:owner-v1 → operator:owner-v2",
+    "recovery:witness-v1 → recovery:witness-v2"
+  ],
+  "revokedSigners": [
+    "operator:owner-v1",
+    "recovery:witness-v1"
+  ],
+  "activeRecoverySigner": "recovery:witness-v2",
+  "activeOperatorSigner": "operator:owner-v2",
+  "oldKeyDenied": true,
+  "keyMaterialPersisted": false,
+  "scope": "Actual independent issuer child, signed offline snapshots, append-only key rotation/revocation and role keyring derivation; no online registry, trusted clock, hardware custody or cross-device convergence."
+}

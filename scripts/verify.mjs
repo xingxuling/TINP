@@ -117,6 +117,20 @@ if(authorityRegistryDemo.status!=='VERIFIED_LOCAL_AUTHORITY_REGISTRY_LIFECYCLE'|
   throw new Error('AUTHORITY_REGISTRY_WITNESS_INVALID');
 const authorityRegistryWitness={...authorityRegistryDemo,scope:'Actual independent issuer child, signed offline snapshots, append-only key rotation/revocation and role keyring derivation; no online registry, trusted clock, hardware custody or cross-device convergence.'};
 fs.writeFileSync(path.join(out,'authority-registry.json'),JSON.stringify(authorityRegistryWitness,null,2));authorityRegistryScenarios.push(authorityRegistryWitness);
+const authorityRegistryDistributionScenarios=[];
+const authorityRegistryDistributionDemo=await new Promise((resolve,reject)=>{
+  const child=spawn(process.execPath,['scripts/authority-registry-distribution-demo.mjs'],{cwd:root,windowsHide:true,stdio:['ignore','pipe','pipe']});
+  let stdout='',stderr='';child.stdout.on('data',x=>stdout+=x.toString('utf8'));child.stderr.on('data',x=>stderr+=x.toString('utf8'));
+  child.once('error',reject);child.once('exit',code=>code===0?resolve(JSON.parse(stdout)):reject(new Error(`Authority registry distribution: ${stderr}`)));
+});
+if(authorityRegistryDistributionDemo.status!=='VERIFIED_LOCAL_OFFLINE_DISTRIBUTION_QUORUM'
+  || authorityRegistryDistributionDemo.forkDetected!==true || authorityRegistryDistributionDemo.insufficientQuorum!==true
+  || authorityRegistryDistributionDemo.acceptedMirrors.length < authorityRegistryDistributionDemo.threshold)
+  throw new Error('AUTHORITY_REGISTRY_DISTRIBUTION_WITNESS_INVALID');
+const authorityRegistryDistributionWitness={...authorityRegistryDistributionDemo,
+  scope:'Actual independent issuer and mirror child processes, signed receipts over one registry root and deterministic fork/quorum rejection; no online publication, trusted clock, transparent log or cross-device convergence.'};
+fs.writeFileSync(path.join(out,'authority-registry-distribution.json'),JSON.stringify(authorityRegistryDistributionWitness,null,2));
+authorityRegistryDistributionScenarios.push(authorityRegistryDistributionWitness);
 const mismatches=tracked.filter(x=>sha(fs.readFileSync(x.path))!==x.sha256);
 if(mismatches.length)throw new Error('Source changed during verification: '+JSON.stringify(mismatches));
 const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CANDIDATE',startedAt,finishedAt:new Date().toISOString(),
@@ -124,12 +138,12 @@ const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CAND
   node:process.version,platform:process.platform,architecture:process.arch,
   tests:{command:result.command,exitCode:result.code,count:Number(result.stdout.match(/# tests (\d+)/)?.[1]),passed:Number(result.stdout.match(/# pass (\d+)/)?.[1]),failed:Number(result.stdout.match(/# fail (\d+)/)?.[1]),
     stdout:relative(path.join(out,'tests.tap')),stdoutSha256:sha(Buffer.from(result.stdout)),stderr:relative(path.join(out,'tests.stderr.txt'))},
-  scenarios,recoveryScenarios,pendingScenarios,operatorScenarios,recoveryAnchorScenarios,authorityRegistryScenarios,sourceFiles:tracked,sourceTreeRoot:sha(Buffer.from(JSON.stringify(tracked))),
+  scenarios,recoveryScenarios,pendingScenarios,operatorScenarios,recoveryAnchorScenarios,authorityRegistryScenarios,authorityRegistryDistributionScenarios,sourceFiles:tracked,sourceTreeRoot:sha(Buffer.from(JSON.stringify(tracked))),
   k400Verdict:'NOT_ADJUDICATED',production:'NOT_DEPLOYED',publicNetwork:'NOT_RUN',
   boundaries:['Ephemeral local trust fixture; no production identity enrollment or TLS confidentiality',
     'Only bounded pure read-only code-point counting; not arbitrary actions or exactly-once external side effects',
     'Durable mode uses Windows current-user DPAPI and signed recovery evidence; external anchor is opt-in and only covers its last explicit ledger prefix',
-    'Authority registry is an opt-in offline signed snapshot with caller-supplied member key material; no online publication, trusted clock or cross-device convergence',
+    'Authority registry and its optional distribution bundle are offline signed inputs with caller-supplied key material; quorum/fork checks do not provide online publication, trusted clock or cross-device convergence',
     'No browser replacement, application-seed cross-platform runtime, VPN or entire P00-P15 completion']};
 fs.writeFileSync(path.join(out,'LOCAL_VERIFICATION.json'),JSON.stringify(summary,null,2));
 console.log(JSON.stringify({status:summary.status,tests:summary.tests.count,passed:summary.tests.passed,scenarios:scenarios.map(x=>({transport:x.transport,pids:x.pids,path:x.firstPath,performance:x.boundedPerformance}))},null,2));

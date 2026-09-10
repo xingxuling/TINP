@@ -55,3 +55,12 @@ This supplements the two input specifications without editing the original DOCX 
 - **New Decision:** Preserve raw outcomes; perform explicitly attributed source-based engineering review. Do not replace the native answer with a generic model and label it USCE/DWAC.
 - **Impact:** The independent native architecture judgment remains unavailable. Fixing that separate organ integration is not a dependency of the demonstrated network closure.
 - **Rollback:** None required; no pins, authorities or organ registrations were mutated.
+
+## 7. Offline mirror quorum is an observation, not a registry service
+
+- **Original Assumption:** A signed authority registry file could be treated as globally published state once copied to several hosts.
+- **Observed Evidence:** The current candidate has no online registry, trusted clock, durable mirror history or cross-host transport. It can, however, verify several independent signatures over the same canonical registry root during one invocation.
+- **Reasoning:** Same-call agreement is useful evidence for distribution consistency, but it cannot establish publication, freshness, revocation propagation or recovery after a network partition.
+- **New Decision:** Add an opt-in `twni.authority-registry-distribution.v1` bundle. A caller-selected policy pins mirror fingerprints and a threshold; each receipt binds the registry policy root, registry root/sequence and bounded time window. Verification fails closed on a valid signed fork, stale receipt, duplicate mirror or insufficient threshold.
+- **Impact:** P05/P06 gain a bounded offline distribution observation. The bundle does not create RCL authority, RNCS world commit, AAF approval, online convergence, transparent history or production identity enrollment.
+- **Rollback:** Remove the distribution adapter and use the alpha.6 registry snapshot path; existing registry roots and owner boundaries remain unchanged.

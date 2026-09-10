@@ -1,0 +1,87 @@
+{
+  "format": "twni.delivery-evidence-ledger.v0.7",
+  "version": "0.1.0-alpha.7",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "tests": {
+    "command": ["C:\\Program Files\\nodejs\\node.exe", "--test", "--test-concurrency=1", "--test-reporter=tap", "tests/*.test.mjs", "vendor/tinp/tests/*.test.mjs"],
+    "exitCode": 0,
+    "count": 153,
+    "passed": 153,
+    "failed": 0,
+    "stdout": "evidence/0.1.0-alpha.7/tests.tap",
+    "stdoutSha256": "8b186eac50170736e3f2a372cfaeddb9d48270f47fc65b860fe850e1611a12bc",
+    "stderr": "evidence/0.1.0-alpha.7/tests.stderr.txt"
+  },
+  "verificationFile": "evidence/0.1.0-alpha.7/LOCAL_VERIFICATION.json",
+  "verificationSha256": "062cc8edf1a4258987322ebc679cabe41f2e44d1229a9327fd89926ee2a38b3d",
+  "sourceTreeRoot": "8c4752f578035103ca10e6a50be80d877aea124a2b13520e4164154e8e29c8f1",
+  "sourceFileCount": 172,
+  "startedAt": "2026-09-10T05:49:59.143Z",
+  "finishedAt": "2026-09-10T06:00:44.022Z",
+  "baseline": {
+    "commit": "a4ef94106db3510bbaef68a59468e9e5654d22c0",
+    "ledger": "evidence/0.1.0-alpha.6/EVIDENCE_LEDGER.json",
+    "sha256": "bd0110bd7ec64be3e4fc5421d247ae5d3bf4f917df9841c3616b0a39ba58d027"
+  },
+  "change": {
+    "owner": "TINP authority-registry host adapter plus offline multi-mirror distribution adapter",
+    "policyFormats": ["twni.authority-registry-policy.v1", "twni.authority-registry-distribution-policy.v1"],
+    "registryFormat": "twni.authority-registry.v1",
+    "distributionFormats": ["twni.authority-registry-distribution-receipt.v1", "twni.authority-registry-distribution.v1"],
+    "bridge": "Optional authority registry verification, recovery-anchor role keyring projection and same-call mirror quorum/fork observation",
+    "rclCoreChanged": false,
+    "privateKeyBoundary": "Issuer, mirror and member private keys remain outside registry/bundle/checkpoint; test children return public keys and signatures only"
+  },
+  "authorityRegistry": {
+    "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_LIFECYCLE",
+    "firstSequence": 1,
+    "secondSequence": 2,
+    "firstRegistryRoot": "af1ccbf65036a8d04b346e075a67b1b1faa4aca28906df23caa3dd9081889617",
+    "secondRegistryRoot": "395c62aabc1aec3575be69a5f6cb903e1749c10df1720b2546e5bb472e74ef22",
+    "rotatedSigners": ["operator:owner-v1 → operator:owner-v2", "recovery:witness-v1 → recovery:witness-v2"],
+    "revokedSigners": ["operator:owner-v1", "recovery:witness-v1"],
+    "activeSigners": ["operator:owner-v2", "recovery:witness-v2"],
+    "oldKeyDenied": true,
+    "keyMaterialPersisted": false,
+    "witness": "evidence/0.1.0-alpha.7/authority-registry.json"
+  },
+  "authorityRegistryDistribution": {
+    "status": "VERIFIED_LOCAL_OFFLINE_DISTRIBUTION_QUORUM",
+    "sequence": 1,
+    "registryRoot": "c35d8fe282ae4e2466439d12e19d96ccbbcec898544bc031078c75e019219e91",
+    "distributionPolicyRoot": "3212e51d2a2e63f85583e374db249add950e54cb0438879a704f988934b2df5d",
+    "threshold": 2,
+    "acceptedMirrors": ["mirror:alpha", "mirror:beta", "mirror:gamma"],
+    "forkDetected": true,
+    "forkRejectionCode": "AUTHORITY_REGISTRY_DISTRIBUTION_FORK_DETECTED",
+    "insufficientQuorum": true,
+    "insufficientQuorumCode": "AUTHORITY_REGISTRY_DISTRIBUTION_QUORUM_INSUFFICIENT",
+    "keyMaterialPersisted": false,
+    "witness": "evidence/0.1.0-alpha.7/authority-registry-distribution.json"
+  },
+  "authorityBoundary": "Offline caller-selected registry/distribution/policy/issuer/mirror/member files and local nowMs; no human enrollment, trusted clock, online publication, transparent log, durable conflict history or hardware custody",
+  "rcl": {
+    "coreChanged": false,
+    "profilesReused": ["rcl/recovery.rcl", "rcl/pending-retirement.rcl"],
+    "integration": "Registry and mirror verification are host observations; existing RCL predicates remain canonical",
+    "candidateCells": ["K057", "K110", "K117", "K250", "K257"],
+    "gates": {"EXPRESS": "NOT_ADJUDICATED", "COMPILE": "NOT_ADJUDICATED", "LOWER": "NOT_ADJUDICATED", "EXECUTE": "NOT_ADJUDICATED", "CORRECT": "NOT_ADJUDICATED", "ROBUST": "NOT_ADJUDICATED", "PERFORMANCE": "NOT_ADJUDICATED", "AI_GENERATE": "NOT_ADJUDICATED", "EVIDENCE": "NOT_ADJUDICATED"}
+  },
+  "externalActions": {
+    "githubActions": "NOT_RUN",
+    "merge": "NOT_RUN",
+    "deployment": "NOT_DEPLOYED",
+    "publicNetwork": "NOT_RUN",
+    "candidateBranch": "codex/tinp-registry-v06",
+    "candidateCommit": "PENDING_ALPHA7_COMMIT",
+    "candidatePush": "Pending alpha.7 candidate packaging and push"
+  },
+  "limits": [
+    "Registry and distribution policy/keyrings are offline inputs; a valid quorum does not establish online freshness or human identity",
+    "Local nowMs is not a trusted timestamp; no publication, transparent log, global revocation or durable cross-host conflict convergence exists",
+    "No hardware custody, lost-key recovery, cross-device encrypted anchor, post-snapshot suffix protection or code/configuration rollback protection",
+    "No arbitrary side-effect transactions or complete RNCS world grant",
+    "Warm local timing samples exclude signing, DPAPI, startup, WAN, throughput and SLA"
+  ],
+  "nextGap": "Production authority registry publication, trusted time, lost-key recovery and cross-device convergence"
+}

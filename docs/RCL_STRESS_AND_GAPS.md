@@ -54,7 +54,17 @@ Generality：签名 registry root、不可复活的 key lifecycle、角色不升
 
 Regression：伪造 issuer、issuer key 替换/撤销、policy/root/sequence/previous root 篡改、旧成员复活、authority 或 roles 升级、错误 predecessor/epoch、重复 active key、getter/inherited keyring、缺失或指纹不符成员 key、expired/not-yet-valid snapshot 都 fail closed。CLI 与 `recovery-anchor` opt-in bridge 均只读 registry，不写 checkpoint 或自动发布。
 
-Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 仅有本机 profile 与负例证据；PERFORMANCE 只测本机 CLI/crypto，不代表 registry SLA；AI_GENERATE 未评估；EVIDENCE 等待 alpha.6 `LOCAL_VERIFICATION.json`、Court 和 delivery receipt。九门仍 `NOT_ADJUDICATED`。
+Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 仅有本机 profile 与负例证据；PERFORMANCE 只测本机 CLI/crypto，不代表 registry SLA；AI_GENERATE 未评估；alpha.6 的 `LOCAL_VERIFICATION.json`、Court 和 delivery receipt 已归档，alpha.7 追加分发见证。九门仍 `NOT_ADJUDICATED`。
+
+## alpha.7 authority registry distribution 压力
+
+Task/missing capability：离线 registry 文件没有跨镜像一致性观察、分叉拒绝或最小签名阈值；gap type=AUTHORITY_PROVIDER_INTEGRATION + EXTERNAL_DISTRIBUTION_GAP，不是 RCL Core 表达缺口。Workaround/donor：新增严格 `twni.authority-registry-distribution.v1` bundle，复用 authority registry 的 canonical root/signature 和 external key fingerprint 边界；独立 mirror child 对同一 snapshot 签 receipt，验证器要求 caller policy 固定的 distinct mirror threshold。
+
+Generality：同一对象根上的多方签名、有效分叉 fail-closed、重复/过期/错误 key 拒绝可跨项目复用；candidate absorption 仍是 TINP host/profile，不增加 RCL primitive，不改变 RNCS/AAF owner。Provider advantage 是 Node IPC/crypto/JSON 的离线适配；mirror lifecycle、online publication、trusted time、cross-host history 和 durable conflict resolution 仍由 external authority 负责。
+
+Regression：不同 registry root/sequence 的有效 mirror receipt、threshold 不足、重复或乱序 receipt、镜像公钥替换/撤销/私钥输入、accessor/inherited keyring、错误 policy root、过期/未生效 receipt 均 fail closed。CLI 与 demo 只读取 bundle 与 keyring，不发布、持久化或自动修复分叉。
+
+Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 仅有本机分发 profile 与负例证据；PERFORMANCE 只测本机验签，不代表镜像网络 SLA；AI_GENERATE 未评估；EVIDENCE 以 alpha.7 `LOCAL_VERIFICATION.json`、Court 和 delivery receipt 为准。九门仍 `NOT_ADJUDICATED`。
 
 ## alpha.5 外部恢复锚点压力
 

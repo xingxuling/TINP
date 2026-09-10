@@ -66,3 +66,9 @@ alpha.2起可选Windows持久模式已保存网络密钥；alpha.4把操作员�
 `src/authority-registry.mjs` 是 TINP host/profile 的 authority-provider adapter，不接管 AAF approval 格式、RCL admission 或 RNCS world authority。registry policy 只固定 registry/issuer 标识、issuer SPKI 指纹和 policy root；签名快照固定 sequence/previous root、成员公钥指纹、authority、roles、keyEpoch、predecessor 和 revoked 状态。新成员必须由上一快照的 active 成员轮换而来，沿用 authority 和角色子集；旧成员不能复活。独立 issuer child 只签名 body，主机只验证签名和链。
 
 调用方仍显式提供 issuer keyring、成员公钥和本机 `nowMs`。`keyringFromAuthorityRegistry` 生成的是本次调用的兼容 keyring，未写入 checkpoint，且不构成身份注册、在线撤销收敛、可信时钟、硬件托管或跨设备恢复。`recovery-anchor` CLI 的 registry 参数是 opt-in bridge；RCL recovery 仍拥有恢复准入，registry 结果只是外部 authority observation。Formal-gate donor 的 pin/fingerprint 与 revocation-registry 经验已记录为 donor advantage，没有复制其 owner 或修改 RCL Core。
+
+## alpha.7 authority registry distribution boundary
+
+`src/authority-registry-distribution.mjs` 只拥有 TINP 的离线分发验证适配。调用方策略固定 distribution ID、registry policy root、镜像 SPKI 指纹和 threshold；每个 mirror receipt 绑定 registry root/sequence、策略根和有限时间窗。验证先由 authority registry owner 验证 registry，再以调用方提供的 mirror keyring 验签，要求 distinct mirror quorum，并把任何有效但不同 root/sequence 的 receipt 判为 fork。它不选择生产镜像、不发布或撤销 key、不记录跨调用历史，也不授予 RCL/RNCS/AAF 权限。
+
+独立镜像 child 只持有内存私钥并返回签名；bundle、policy 和 keyring 都是调用时输入，不写 checkpoint。quorum 证明是同一次读取中的一致性观察，不是在线收敛、透明日志、可信时间、跨设备恢复、硬件托管或代码/配置防回滚。External authority Owner 仍负责镜像生命周期、冲突处置、发布服务和生产密钥托管。

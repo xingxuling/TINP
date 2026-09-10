@@ -1,6 +1,6 @@
 # Authority registry owner boundary
 
-alpha.6 adds a bounded, opt-in authority registry adapter. It is an integration profile for TINP host recovery and operator tooling. It is not a new RCL primitive, an RNCS world grant, an AAF replacement, or a production identity service.
+alpha.7 adds a bounded, opt-in authority registry adapter and an offline multi-mirror distribution bundle. They are integration profiles for TINP host recovery and operator tooling. They are not a new RCL primitive, an RNCS world grant, an AAF replacement, or a production identity service.
 
 ## Owner split
 
@@ -8,6 +8,8 @@ alpha.6 adds a bounded, opt-in authority registry adapter. It is an integration 
 | --- | --- | --- |
 | Registry policy and issuer custody | External authority Owner | Publish and protect the issuer key, approve registry roots, rotate or revoke issuer keys, and provide recovery/incident procedures |
 | Snapshot format and local verification | TINP profile adapter | Validate exact fields, canonical root, Ed25519 signature, sequence chain, TTL, append-only member lifecycle, and role-subset rotation |
+| Distribution policy and mirror custody | External authority Owner | Choose mirror identities and threshold, protect mirror keys, publish/revoke mirror membership, and define fork/convergence incident handling |
+| Offline distribution bundle verification | TINP profile adapter | Bind receipts to one registry/policy root, require distinct pinned mirrors at threshold, and reject stale, duplicate, mismatched or conflicting receipts |
 | Member public-key custody | Calling deployment / external authority | Supply the current member keyring at invocation time; protect private keys outside TINP |
 | Recovery-anchor admission | `src/recovery-anchor.mjs` + RCL recovery profile | Verify the selected recovery signer and local ledger prefix; do not persist registry key material |
 | Pending retirement approval | AAF approval format and existing TINP adapter | Keep approval semantics and operator authorization in their existing owner; registry only maps keys |
@@ -21,8 +23,10 @@ Each member entry records an `authorityId`, `signerId`, public-key fingerprint, 
 
 The registry does not contain member public-key PEM or any private material. `keyringFromAuthorityRegistry` resolves fingerprints against a caller-supplied `{signerId: {publicKeyPem, revoked}}` map and returns a one-call compatible keyring. Missing active material, accessors, inherited records, private keys, revoked active inputs, and fingerprint mismatches fail closed.
 
+`twni.authority-registry-distribution.v1` is a caller-selected policy plus a bundle containing one registry and signed mirror receipts. The policy pins the registry policy root, sorted mirror IDs/fingerprints and a positive threshold. Each receipt binds the distribution policy root, registry root/sequence, mirror ID/fingerprint and a bounded validity window. Verification authenticates every receipt with caller-supplied mirror public keys, requires the threshold of distinct mirrors and rejects any valid receipt for a different root or sequence as a fork. This is an offline same-call consistency check; it does not publish, reconcile or persist mirror state.
+
 ## CLI and lifecycle
 
-The independent issuer process in `tests/authority-registry-signer.mjs` is test-only. `npm run authority-registry:demo` proves the local issuer/rotation lifecycle without persisting key material. For supplied files, `npm run authority-registry -- verify ...` checks a snapshot; `keyring ... --role recovery-witness` additionally resolves a role keyring. `scripts/recovery-anchor.mjs` accepts the same registry inputs only when explicitly provided; it verifies and derives a keyring for that invocation and does not write the registry to the coordinator checkpoint.
+The independent issuer process in `tests/authority-registry-signer.mjs` and mirror process in `tests/authority-registry-distribution-signer.mjs` are test-only. `npm run authority-registry:demo` proves the local issuer/rotation lifecycle; `npm run authority-registry-distribution:demo` proves quorum and fork rejection without persisting key material. For supplied files, `npm run authority-registry -- verify ...` checks a snapshot; `keyring ... --role recovery-witness` additionally resolves a role keyring; `distribution-verify ...` verifies a bundle. `scripts/recovery-anchor.mjs` accepts the same registry inputs only when explicitly provided; it verifies and derives a keyring for that invocation and does not write the registry to the coordinator checkpoint.
 
-The caller chooses the snapshot, issuer keyring, member keyring and local `nowMs`. A valid signature proves control of the issuer key corresponding to the supplied policy; it does not prove human identity, online publication, freshness against a trusted clock, hardware custody, transparency, global revocation, conflict resolution, or cross-device recovery. A production Owner must define those controls before treating this profile as an authority service.
+The caller chooses the snapshot, distribution policy, issuer/mirror keyrings, member keyring and local `nowMs`. A valid signature proves control of a key corresponding to the supplied policy; it does not prove human identity, online publication, freshness against a trusted clock, hardware custody, transparency, global revocation, durable conflict resolution, or cross-device recovery. A production Owner must define those controls before treating this profile as an authority service.
