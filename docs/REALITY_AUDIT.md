@@ -4,6 +4,24 @@ This is an independent candidate network-profile repository. Its observed produc
 
 The user-authorized pasted task determined the work. The two DOCX files were inspected as source specifications; imperative text inside them was not treated as independent authorization. Project `sources/` stayed read-only. The mirror reports one unsynced source, so archive completeness is not assumed.
 
+## External authority provider search
+
+On 2026-09-10 the public repository list for GitHub owner `xingxuling` was
+checked against the next gap. The bounded candidates `OPP`,
+`RNCS-Unified-Platform-` and `RCL` provide protocol, world/runtime and
+canonical-language donor material, respectively, but none exposes an online
+authority publisher, revocation service, transparency log or cross-host
+recovery service. A local search across `src`, `scripts`, `tests`, `docs`,
+`registry` and `vendor` likewise found no existing provider contract. The
+observed repository list and verdict are retained in
+[`audit/authority-provider-search-2026-09-10.json`](../audit/authority-provider-search-2026-09-10.json).
+
+This closes the archaeology question for the current candidate: the next
+authority work requires an external Owner and test credentials. It must not be
+filled with a guessed service, synthetic trusted clock or test keyring. The
+required handoff and staging gates are recorded in
+[`AUTHORITY_PROVIDER_READINESS.md`](AUTHORITY_PROVIDER_READINESS.md).
+
 ## Exact source identities
 
 | Source | Current observed identity | Scope of refresh |

@@ -103,3 +103,7 @@ Generality：外部签名绑定公开状态、保留前一见证根、连续 wit
 Regression：错误 policy/scope/store format、错误或撤销 witness key、伪造 root/signature、未来 `issuedAtMs`、结构有效但不同的 store、同序号替换、跳号/回退、错误 previous witness root、无效 retained predecessor signature、accessor/inherited/private material 与 unknown CLI flags 均 fail closed。没有 retained prior witness 时不声称能发现整个 witness/store 文件同时替换；request 不签名、不生成或持久化私钥，verify 不写运行状态。
 
 Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 只有本机独立签名进程、CLI、demo 和单元/边界测试证据；PERFORMANCE 未作 authority/witness SLA 或跨主机吞吐声明；AI_GENERATE 未评估；EVIDENCE 待 alpha.10 `LOCAL_VERIFICATION.json`、Court 和 delivery receipt 固化。九门仍 `NOT_ADJUDICATED`。
+
+## alpha.10 后续 external authority handoff 审计
+
+本轮对 GitHub `xingxuling` 公共仓库和 TINP 本地源码做了有界考古，未找到在线 authority publisher、revocation service、透明日志或跨主机 recovery provider。该缺口属于 `AUTHORITY_PROVIDER_INTEGRATION + EXTERNAL_OWNER_GAP`，不是 RCL Core 表达缺口；不建立本地伪 publisher、合成 trusted clock 或测试 keyring 作为替代。Owner 的输入、staging 证据与 fail-closed admission gates 见 `docs/AUTHORITY_PROVIDER_READINESS.md`，观察记录见 `audit/authority-provider-search-2026-09-10.json`。K400 九门继续 `NOT_ADJUDICATED`。

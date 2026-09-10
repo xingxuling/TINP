@@ -29,3 +29,5 @@ alpha.8 仅新增本仓库 JavaScript 的 authority registry convergence adapter
 alpha.9 仅新增本仓库 JavaScript 的 authority registry convergence store adapter、CLI 分支、独立本机原子写入 demo、测试与文档；未复制第三方存储、透明日志或共识源码，也未引入新 npm/Python 依赖。store 文件只由运行时临时生成，issuer/mirror/member 私钥和 keyring 不随源码包发布。既有 donor 许可、内部使用限制和未公开发布结论继续适用。
 
 alpha.10 仅新增本仓库 JavaScript 的 authority registry convergence witness adapter、CLI 分支、独立测试 witness signer、demo、测试与文档；未复制第三方见证、透明日志或共识源码，也未引入新 npm/Python 依赖。witness policy、witness、store、issuer/mirror/member/witness keyring 文件是调用方配置或运行时临时生成，私钥不随源码包发布。既有 donor 许可、内部使用限制和未公开发布结论继续适用。
+
+alpha.10 后续 authority-provider readiness 记录仅新增本仓库维护文档与 GitHub/本地考古 JSON，没有复制第三方代码、声明外部服务许可或引入运行时依赖。其 `BLOCKED_EXTERNAL_OWNER` 结论不改变现有 donor 与内部候选边界。

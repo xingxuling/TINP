@@ -1,0 +1,74 @@
+{
+  "format": "twni.authority-provider-search.v1",
+  "observedAt": "2026-09-10",
+  "repository": "https://github.com/xingxuling/TINP.git",
+  "branch": "codex/tinp-registry-v06",
+  "githubOwner": "xingxuling",
+  "method": "GitHub public repository metadata plus bounded local source search",
+  "repositoriesInspected": [
+    "xingxuling.github.io",
+    "HKG3KG-NAODIANBO",
+    "Tarot-Web",
+    "wise-augur-ai",
+    "aether-reactive-desktop",
+    "OPP",
+    "RNCS-Unified-Platform-",
+    "RCL",
+    "PakePlus-Android-v2.1.8",
+    "aetherfusion",
+    "AutoRAGsystem",
+    "PakePlus-iOS-v2.1.8",
+    "PakePlus-v2.1.8"
+  ],
+  "semanticDonors": [
+    {
+      "repository": "OPP",
+      "url": "https://github.com/xingxuling/OPP",
+      "relevance": "protocol negotiation and capability exchange",
+      "authorityServiceFound": false
+    },
+    {
+      "repository": "RNCS-Unified-Platform-",
+      "url": "https://github.com/xingxuling/RNCS-Unified-Platform-",
+      "relevance": "world, transport and authority-constrained runtime semantics",
+      "authorityServiceFound": false
+    },
+    {
+      "repository": "RCL",
+      "url": "https://github.com/xingxuling/RCL",
+      "relevance": "canonical language, compiler and runtime",
+      "authorityServiceFound": false
+    }
+  ],
+  "localSearch": {
+    "paths": [
+      "src",
+      "scripts",
+      "tests",
+      "docs",
+      "registry",
+      "vendor"
+    ],
+    "terms": [
+      "online authority",
+      "transparency log",
+      "trusted time",
+      "cross-host convergence",
+      "revocation service",
+      "publication endpoint"
+    ],
+    "authorityServiceContractFound": false
+  },
+  "verdict": "BLOCKED_EXTERNAL_OWNER",
+  "missingInputs": [
+    "production Owner identity and policy",
+    "issuer/mirror/witness key custody",
+    "authenticated publication and revocation service",
+    "trusted time evidence",
+    "append-only transparency and consistency proofs",
+    "two-host encrypted recovery and conflict policy",
+    "lost-key and incident-recovery procedure",
+    "staging credentials and human production approval"
+  ],
+  "tinpBoundary": "TINP may verify caller-supplied signed observations; it does not invent, publish or promote an authority service."
+}
