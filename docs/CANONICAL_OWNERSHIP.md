@@ -72,3 +72,9 @@ alpha.2起可选Windows持久模式已保存网络密钥；alpha.4把操作员�
 `src/authority-registry-distribution.mjs` 只拥有 TINP 的离线分发验证适配。调用方策略固定 distribution ID、registry policy root、镜像 SPKI 指纹和 threshold；每个 mirror receipt 绑定 registry root/sequence、策略根和有限时间窗。验证先由 authority registry owner 验证 registry，再以调用方提供的 mirror keyring 验签，要求 distinct mirror quorum，并把任何有效但不同 root/sequence 的 receipt 判为 fork。它不选择生产镜像、不发布或撤销 key、不记录跨调用历史，也不授予 RCL/RNCS/AAF 权限。
 
 独立镜像 child 只持有内存私钥并返回签名；bundle、policy 和 keyring 都是调用时输入，不写 checkpoint。quorum 证明是同一次读取中的一致性观察，不是在线收敛、透明日志、可信时间、跨设备恢复、硬件托管或代码/配置防回滚。External authority Owner 仍负责镜像生命周期、冲突处置、发布服务和生产密钥托管。
+
+## alpha.8 authority registry historical convergence boundary
+
+`src/authority-registry-convergence.mjs` 只拥有 TINP 对调用方提交的离线 registry 历史进行收敛检查的适配。`twni.authority-registry-convergence.v1` 绑定 distribution policy root、registry ID、排序后的 distribution bundles 和 `historyRoot`；验证要求 Genesis/序号 1、连续序号、逐段 `previousRegistryRoot`、每段 mirror quorum、稳定 accepted mirror 集合，并拒绝同序号重复或不同 root 的有效签名分叉。它不会选择生产历史、发布快照、提供透明日志或跨调用持久状态，也不授予 RCL/RNCS/AAF 权限。
+
+历史容器和每段 bundle 都由调用方提供，`nowMs` 仍是本机输入；单个未与竞争历史同时提交的有效 issuer 签名分叉无法由本地适配器凭空发现。External authority Owner 仍负责在线发布、可信时间、撤销传播、透明日志、镜像生命周期、冲突处置、硬件托管和跨设备恢复。

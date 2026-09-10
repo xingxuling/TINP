@@ -64,3 +64,12 @@ This supplements the two input specifications without editing the original DOCX 
 - **New Decision:** Add an opt-in `twni.authority-registry-distribution.v1` bundle. A caller-selected policy pins mirror fingerprints and a threshold; each receipt binds the registry policy root, registry root/sequence and bounded time window. Verification fails closed on a valid signed fork, stale receipt, duplicate mirror or insufficient threshold.
 - **Impact:** P05/P06 gain a bounded offline distribution observation. The bundle does not create RCL authority, RNCS world commit, AAF approval, online convergence, transparent history or production identity enrollment.
 - **Rollback:** Remove the distribution adapter and use the alpha.6 registry snapshot path; existing registry roots and owner boundaries remain unchanged.
+
+## 8. Finite historical convergence is still an offline observation
+
+- **Original Assumption:** Once each registry snapshot has a mirror quorum, a sequence of copied bundles could be treated as an already converged authority history.
+- **Observed Evidence:** The local candidate has no online publisher, transparent log, trusted clock, durable cross-host mirror state or conflict-resolution service. It can verify a caller-supplied finite sequence of distribution bundles and detect gaps, broken predecessor roots, duplicate/same-sequence forks and accepted-mirror-set drift.
+- **Reasoning:** Continuity within supplied history is stronger than same-call quorum, but it says nothing about omitted history or future publication. A valid issuer signature on a fork remains possible unless competing histories are available to the verifier.
+- **New Decision:** Add an opt-in `twni.authority-registry-convergence.v1` bundle with a canonical `historyRoot`. Require Genesis/sequence 1, contiguous sequence and previous-root links, per-snapshot mirror quorum and one stable accepted mirror set; fail closed on duplicate or conflicting roots and mirror drift.
+- **Impact:** P05/P06 gain a bounded historical-consistency observation. The bundle does not create RCL authority, RNCS world commit, AAF approval, online publication/revocation, transparent history, trusted time or production identity enrollment.
+- **Rollback:** Remove the convergence adapter and retain the alpha.7 single-distribution bundle path; existing registry/distribution roots and owner boundaries remain unchanged.

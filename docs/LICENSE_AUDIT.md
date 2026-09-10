@@ -23,3 +23,5 @@ alpha.4 新增最小AAF来源：RNCS-Unified-Platform- 的 d345ecb9d8801a911f375
 alpha.6 仅新增本仓库 JavaScript 的 authority registry adapter、CLI、独立测试 issuer 和文档；未复制 formal-gate 或 AAF registry 源码，也未引入新 npm/Python 依赖。formal-gate 的 pinned key/fingerprint 与 AAF revocation-registry 只作为设计审计 donor reference，既有 vendor 许可和来源边界继续适用。registry/issuer/member key 文件是调用方配置，不随源码包发布。
 
 alpha.7 仅新增本仓库 JavaScript 的 authority registry distribution adapter、CLI 分支、独立测试 mirror signer、测试与文档；未复制第三方分发或共识源码，也未引入新 npm/Python 依赖。distribution policy、bundle、issuer/mirror/member key 文件是调用方配置，不随源码包发布。既有 donor 许可、内部使用限制和未公开发布结论继续适用。
+
+alpha.8 仅新增本仓库 JavaScript 的 authority registry convergence adapter、CLI 分支、独立历史 demo、测试与文档；未复制第三方透明日志、共识或分发源码，也未引入新 npm/Python 依赖。convergence history、distribution policy、bundle、issuer/mirror/member key 文件是调用方配置，不随源码包发布。既有 donor 许可、内部使用限制和未公开发布结论继续适用。

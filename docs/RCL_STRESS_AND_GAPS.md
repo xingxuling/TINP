@@ -73,3 +73,13 @@ Task/missing capability：完整旧目录回放无法仅靠同一用户 DPAPI �
 Regression：策略/签名/root/公钥替换、撤销 key、低序号、缺失账本前缀和完整旧目录回放均 fail closed；有效新锚点可恢复同一主体/租约，checkpoint 不含 keyring 或私钥。`accept` 的维护启动尾部按已验证前缀接纳并记录 adoption mode，不生成新权限。
 
 Generality / gap：单调外部水位、配置根和恢复前缀可跨项目复用，但当前调用方提供的 keyring、时间、代码/配置版本与在线撤销仍未认证；上一次显式锚定后的尾部不在证明范围。没有修改 RCL Core，锚点只作为 host recovery observation。Affected K400 candidates 沿用 K110/K250/K257，九门仍 NOT_ADJUDICATED。
+
+## alpha.8 authority registry historical convergence 压力
+
+Task/missing capability：alpha.7 的单次 distribution quorum 没有跨快照的连续性、前根和镜像集合稳定性观察；gap type=AUTHORITY_PROVIDER_INTEGRATION + EXTERNAL_CONVERGENCE_GAP，不是 RCL Core 表达缺口。Workaround/donor：新增严格 `twni.authority-registry-convergence.v1` 容器，复用 authority registry 的 Genesis/sequence/previous-root 语义与 distribution bundle 的每段 mirror quorum，计算 `historyRoot` 绑定有限历史。
+
+Generality：连续签名历史、显式缺口、前根断裂、同序号重复/分叉和镜像集合漂移的 fail-closed 检查可跨项目复用；candidate absorption 仍是 TINP host/profile，不增加 RCL primitive，不改变 RNCS/AAF owner。Provider advantage 是 Node crypto/JSON 的离线容器与 CLI 适配；在线透明日志、可信时间、撤销传播、跨主机持久收敛、冲突处置和硬件托管仍由 external authority 负责。
+
+Regression：缺失序号、错误 Genesis、错误 predecessor root、同序号不同 issuer root、重复快照、篡改 `historyRoot`、每段 quorum 达标但 accepted mirror 集合漂移、乱序/重复 child、accessor/inherited history 以及私钥输入均 fail closed。CLI、demo 和 verifier 只读取调用方历史，不发布、修复或持久化共识状态；单独提交的有效签名分叉超出透明日志能力边界。
+
+Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 仅有本机历史 profile 与负例证据；PERFORMANCE 只测本机验签和排序，不代表透明日志或镜像网络 SLA；AI_GENERATE 未评估；EVIDENCE 以 alpha.8 `LOCAL_VERIFICATION.json`、Court 和 delivery receipt 为准。九门仍 `NOT_ADJUDICATED`。

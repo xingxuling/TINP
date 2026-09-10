@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import { keyringFromAuthorityRegistry, verifyAuthorityRegistry } from '../src/authority-registry.mjs';
 import { verifyAuthorityRegistryDistribution } from '../src/authority-registry-distribution.mjs';
+import { verifyAuthorityRegistryConvergence } from '../src/authority-registry-convergence.mjs';
 import { requireThat } from '../src/identity.mjs';
 
 const [action, registryFile, ...args] = process.argv.slice(2);
@@ -8,6 +9,7 @@ const allowed = {
   verify: ['policy', 'issuer-keyring', 'previous', 'now-ms'],
   keyring: ['policy', 'issuer-keyring', 'member-keyring', 'role', 'previous', 'now-ms'],
   'distribution-verify': ['policy', 'issuer-keyring', 'distribution-policy', 'mirror-keyring', 'previous', 'now-ms'],
+  'convergence-verify': ['policy', 'issuer-keyring', 'distribution-policy', 'mirror-keyring', 'now-ms'],
 };
 try {
   requireThat(Object.hasOwn(allowed, action) && registryFile, 'AUTHORITY_REGISTRY_COMMAND_INVALID');
@@ -29,7 +31,17 @@ try {
   requireThat(Number.isSafeInteger(nowMs) && nowMs >= 0 && (options['now-ms'] === undefined || /^[0-9]+$/.test(options['now-ms'])), 'AUTHORITY_REGISTRY_COMMAND_INVALID');
   const policy = readJson(options.policy), registryInput = readJson(registryFile), issuerKeyring = readJson(options['issuer-keyring']);
   const previousRegistry = options.previous ? readJson(options.previous) : undefined;
-  if (action === 'distribution-verify') {
+  if (action === 'convergence-verify') {
+    requireThat(options['distribution-policy'] && options['mirror-keyring'], 'AUTHORITY_REGISTRY_COMMAND_INVALID');
+    const distributionPolicy = readJson(options['distribution-policy']);
+    const mirrorKeyring = readJson(options['mirror-keyring']);
+    const verification = verifyAuthorityRegistryConvergence({ distributionPolicy, convergenceBundle: registryInput,
+      registryPolicy: policy, issuerKeyring, mirrorKeyring, nowMs });
+    console.log(JSON.stringify({ status: 'verified', verification, historyFile: registryFile,
+      timeSource: 'caller-supplied local nowMs; no trusted clock',
+      说明: '已验证连续 registry 历史、每段 mirror quorum 和稳定镜像集合；未连接在线透明日志、可信时钟或跨主机持久存储。' }, null, 2));
+    process.exitCode = 0;
+  } else if (action === 'distribution-verify') {
     requireThat(options['distribution-policy'] && options['mirror-keyring'], 'AUTHORITY_REGISTRY_COMMAND_INVALID');
     const distributionPolicy = readJson(options['distribution-policy']);
     const mirrorKeyring = readJson(options['mirror-keyring']);

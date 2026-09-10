@@ -1,6 +1,6 @@
 {
   "format": "twni.protocol-registry.v0.1",
-  "version": "0.1.0-alpha.7",
+  "version": "0.1.0-alpha.8",
   "classification": "candidate-local-profile",
   "scope": "Three independent local processes; UDP/TCP loopback only",
   "statusVocabulary": [
@@ -171,13 +171,18 @@
           "status": "implemented",
           "behavior": "Opt-in offline authority registry distribution bundle with distinct mirror threshold and deterministic signed-fork rejection",
           "evidenceLevel": "Local independent issuer and mirror processes, CLI and positive/negative quorum tests; no online publication or durable cross-host convergence"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Opt-in offline authority registry convergence history with Genesis/contiguous sequence, previous-root continuity, stable mirror-set and duplicate/fork rejection",
+          "evidenceLevel": "Local independent issuer and mirror processes, CLI and positive/negative historical tests; caller-supplied finite history, not online transparency or durable cross-host convergence"
         }
       ],
       "notImplemented": [
         "Production key custody/global revocation",
         "RNCS authority lease import",
         "General delegation and high-impact actions",
-        "Online registry publication, trusted time, cross-device convergence and lost-key recovery"
+        "Online registry publication, trusted time, transparent history, durable cross-device convergence and lost-key recovery"
       ],
       "ownerBoundary": [
         "RCL admission",
@@ -215,6 +220,11 @@
           "status": "implemented",
           "behavior": "Same-call mirror receipts bind one registry root/sequence and caller-selected threshold; conflicting signed roots fail closed",
           "evidenceLevel": "Local three-mirror bundle/demo, CLI and strict fork/quorum tests; offline observation only"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Finite convergence history binds ordered distribution bundles with a historyRoot and detects sequence gaps, broken predecessor roots, duplicate/fork snapshots and mirror-set drift",
+          "evidenceLevel": "Local two-snapshot issuer/mirror demo, CLI and strict historical tests; supplied-history observation only"
         }
       ],
       "notImplemented": [
