@@ -35,3 +35,5 @@ alpha.22 增加 live consumer 结果 validator 和 CLI fail-closed 子进程回�
 alpha.23 固定 live consumer run result 的 exact shape，成功结果显式 diagnostic:null，协商失败保留 bounded diagnostic，并在 CLI 写盘前重验。该改动继续收紧本机证据边界，未解决外部 Owner、第三方 consumer acceptance、生产发布/撤销或真实异机验证。
 
 alpha.24 增加 saved-result offline verify，使外部审阅者可在零网络请求条件下复核 live consumer 结果的 exact shape、roots 与 acceptance receipt。该入口仍不等于第三方 consumer acceptance、生产 authority 或真实异机验证。
+
+alpha.25 将 saved-result offline verify 接入完整 verify witness，防止版本化的公开 live 结果与其 policy/request roots 漂移。仍未解决第三方 consumer acceptance、生产 authority、真实异机和可信时间。

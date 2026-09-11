@@ -41,3 +41,5 @@ alpha.23 后续外部观察已完成：在清空已知代理变量的调用 shel
 alpha.24 已合并：新增 live consumer --verify 离线 CLI，只读取 policy/request/result，在写出验证 PASS 前重验 exact shape、roots、producer/consumer 状态和 acceptance receipt；篡改结果返回失败且不发起网络请求。完整 verify 为 205/205（0 fail），证据位于 evidence/0.1.0-alpha.24/LOCAL_VERIFICATION.json。
 
 alpha.24 后续复核已完成：使用 --verify 在当前 shell 复核已保存的真实 GitHub live consumer 结果，PASS 且 networkRequests=0；证据为 evidence/OPP_HTTP_CONSUMER_LIVE_GITHUB_VERIFY_2026-09-12.json。
+
+alpha.25 已合并：完整 verify 现在自动读取并重验仓库内公开 GitHub live consumer 结果，记录 externalLiveValidation=PASS、networkRequests=0、HTTP 200 和结果 SHA；完整 verify 为 205/205，证据位于 evidence/0.1.0-alpha.25/LOCAL_VERIFICATION.json。
