@@ -215,3 +215,8 @@ The candidate adds `scripts/opp-http-consumer-bridge.mjs`, a file-input CLI over
 ## alpha.19 rooted OPP consumer bundle
 
 The candidate adds `twni.opp-http-consumer-bridge-bundle.v1`, binding plan, policy, request, observation and consumer contract under one `bundleRoot`. The CLI can replay that single file and exposes the root in its output; a changed nested input fails before acceptance. This remains local replay evidence with no new network request, third-party consumer certification or production authority.
+
+
+## alpha.20 consumer bundle creation CLI
+
+The candidate adds `--make-bundle`, which reads the five existing acceptance inputs and writes a new `twni.opp-http-consumer-bridge-bundle.v1` file with a computed `bundleRoot`. A separate subprocess test validates the generated bundle before replay. Creation is still local file processing; it issues no network request and does not establish third-party consumer or production authority evidence.

@@ -156,3 +156,11 @@ This supplements the two input specifications without editing the original DOCX 
 - **Reasoning:** A single rooted input set makes replacement of one nested artifact observable before the existing consumer acceptance function runs.
 - **Impact:** P09/P15 gain stronger local replay evidence while OPP CHP/RCP ownership and TINP authority-free receipt boundaries remain unchanged. No network request is issued during replay.
 - **Rollback:** Remove bundle constructors/validators, CLI mode, focused tests, docs, registry/version changes and alpha.19 evidence; alpha.18 five-file replay remains available.
+
+
+## 18. Bundle creation remains a local file boundary
+
+- **New Decision:** Add `--make-bundle` to the consumer bridge CLI so callers can create a rooted bundle from five existing JSON inputs.
+- **Reasoning:** Generation and replay now use the same canonical bundle constructor/validator while preserving the OPP and TINP owner boundary.
+- **Impact:** P09/P15 gain a complete local bundle lifecycle without issuing network requests or granting authority.
+- **Rollback:** Remove the creation mode, focused test, docs, version/registry changes and alpha.20 evidence; alpha.19 bundle replay remains available.

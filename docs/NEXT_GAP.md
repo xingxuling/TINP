@@ -24,3 +24,6 @@ alpha.17 已实现 TINP-owned 的本机 OPP consumer acceptance binding：复用
 alpha.18 将同一 acceptance binding 暴露为文件输入 CLI。CLI 只读取已经生成的 plan、policy、request、observation 和 consumer contract，复用全部 root/owner/projection 校验并写出 bounded receipt；它不会重新发起请求，也不会把本机脚本运行当作第三方互操作。下一缺口仍是外部 Owner 的实际 consumer acceptance、生产发布/撤销与真实异机验证。
 
 alpha.19 将五份 consumer 输入绑定为带 `bundleRoot` 的单文件 bundle，并让 CLI 直接回放该 bundle。它提升输入集合的可审计性，但仍是本机验证；下一缺口仍是外部 Owner 的实际 consumer acceptance、生产发布/撤销与真实异机验证。
+
+
+alpha.20 增加 `--make-bundle` 生成入口，让五份已经验签的输入可以形成带 `bundleRoot` 的单文件后再回放。它补齐本机 bundle 的生成/回放闭环；下一缺口仍是外部 Owner 的实际 consumer acceptance、生产发布/撤销与真实异机验证。

@@ -1,8 +1,13 @@
 import fs from 'node:fs';
-import { acceptOppHttpReadonlyConsumer, acceptOppHttpReadonlyConsumerBundle } from '../src/opp-http-consumer-bridge.mjs';
+import {
+  acceptOppHttpReadonlyConsumer,
+  acceptOppHttpReadonlyConsumerBundle,
+  makeOppHttpConsumerBridgeBundle,
+} from '../src/opp-http-consumer-bridge.mjs';
 
 function usage() {
   process.stderr.write('usage: node scripts/opp-http-consumer-bridge.mjs <plan.json> <policy.json> <request.json> <observation.json> <contract.json> [--out <result.json>]\n       node scripts/opp-http-consumer-bridge.mjs --bundle <bundle.json> [--out <result.json>]\n');
+  process.stderr.write('       node scripts/opp-http-consumer-bridge.mjs --make-bundle <plan.json> <policy.json> <request.json> <observation.json> <contract.json> --out <bundle.json>\n');
 }
 
 function load(path) {
@@ -11,7 +16,10 @@ function load(path) {
 
 const args = process.argv.slice(2);
 const bundleMode = args[0] === '--bundle';
-const validArgs = bundleMode
+const makeBundleMode = args[0] === '--make-bundle';
+const validArgs = makeBundleMode
+  ? (args.length === 8 && args[6] === '--out')
+  : bundleMode
   ? (args.length === 2 || (args.length === 4 && args[2] === '--out'))
   : (args.length === 5 || (args.length === 7 && args[5] === '--out'));
 if (!validArgs) {
@@ -19,6 +27,17 @@ if (!validArgs) {
   process.exitCode = 2;
 } else {
   try {
+    if (makeBundleMode) {
+      const bundle = makeOppHttpConsumerBridgeBundle({
+        plan: load(args[1]),
+        policy: load(args[2]),
+        request: load(args[3]),
+        observation: load(args[4]),
+        consumerContract: load(args[5]),
+      });
+      fs.writeFileSync(args[7], `${JSON.stringify(bundle, null, 2)}\n`, { encoding: 'utf8', flag: 'wx' });
+      process.exitCode = 0;
+    } else {
     let bundle = null;
     if (bundleMode) bundle = load(args[1]);
     const result = bundleMode
@@ -45,6 +64,7 @@ if (!validArgs) {
     }
     else process.stdout.write(serialized);
     process.exitCode = result.status === 'PASS' ? 0 : 5;
+    }
   } catch (error) {
     process.stderr.write(`${error.code ?? 'OPP_HTTP_CONSUMER_BRIDGE_FAILED'}\n`);
     process.exitCode = 1;
