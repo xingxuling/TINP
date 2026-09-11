@@ -140,3 +140,11 @@ This supplements the two input specifications without editing the original DOCX 
 - **alpha.16 Node proxy switches:** `NODE_USE_ENV_PROXY`, `NODE_OPTIONS=--use-env-proxy`, and `execArgv` proxy switches are denied because the adapter cannot safely bind ambient routing. Dynamic global dispatcher changes remain outside observation. **Rollback:** revert the alpha.16 adapter/tests/verify/docs and restore alpha.15 package metadata.
 
 - **alpha.17 local consumer bridge:** TINP binds accepted OPP negotiation and a read-only HTTP receipt into a local acceptance receipt. **Boundary:** this does not establish independent third-party OPP consumer interoperability or production compatibility. **Rollback:** remove the consumer bridge module, tests, verify witness, registry entry and alpha.17 evidence/docs.
+
+
+## 16. Replayable OPP consumer acceptance remains a local CLI boundary
+
+- **New Decision:** Add `scripts/opp-http-consumer-bridge.mjs` as a file-input CLI over the alpha.17 acceptance function. It reads plan, policy, request, observation and consumer contract files and writes a rooted result without issuing another network request.
+- **Reasoning:** A subprocess and exclusive output file make the exact acceptance inputs replayable while preserving OPP CHP/RCP ownership in OPP and the transport/receipt boundary in TINP.
+- **Impact:** P09/P15 gain a reproducible local evidence path. This does not create an RCL primitive, independent third-party OPP consumer interoperability, production authority, or K400 promotion.
+- **Rollback:** Remove the CLI, npm entry, focused test, documentation, registry version bump and alpha.18 evidence; alpha.17 in-process consumer binding remains available.

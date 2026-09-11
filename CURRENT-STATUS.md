@@ -22,3 +22,5 @@ alpha.15 实现提交为 `9a38bb9`，证据与文档提交为 `5f02713`。本机
 合并后状态：`codex/next-internet-v01` 与 `codex/tinp-transport-policy-v03` 已共同指向最新合并提交，并已推送 GitHub。合并后 `npm test` 为 `189/189`（0 fail），日志已固定在 deliverables；alpha.16 包与解包聚焦测试 `15/15`、发行回执均位于 deliverables。状态仍为 `VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED`，公网 OPP 仅有一次独立只读观察，无 authority、生产、异机或 K400 晋升证据。
 
 alpha.17 已合并：codex/next-internet-v01 与 codex/tinp-opp-consumer-v01 已共同指向最新合并提交并推送 GitHub。合并后 npm test 为 195/195（0 fail）；发行包、解包 21/21 聚焦测试、ZIP CRC/敏感文件扫描和交付回执均已生成。当前状态为 VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED，本机 consumer acceptance 不等于独立第三方 OPP consumer、生产 authority 或 K400 晋升。
+
+alpha.18 候选已通过本机 verify：`196/196`、源码清单 `204` 个文件，`sourceTreeRoot=3763f3ba8d3a7932607502b5edb824f760cc2eefba43ec6decc9dff40ee469d6`，tests TAP SHA-256=`48d280a3c363332f894a4911738a6c4c588206a563fcadc75ed4e28d613076b3`，LOCAL_VERIFICATION SHA-256=`c942f3887b18bf8b4eb4fa8e74780dbe27ce8542f62bbe59bf2bfcbb2df9271b`，EVIDENCE_LEDGER SHA-256=`7f25c95f2db498d6a1d7ece1f8fe3c354af46eccd62f2ff2ff3d941661ec8b53`。候选提交为 `f88b068`，证据提交为 `c6c873e`；待合并到默认分支。外部第三方 consumer、生产 authority 和 K400 仍保持未证明。

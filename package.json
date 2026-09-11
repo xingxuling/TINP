@@ -1,12 +1,13 @@
 {
   "name": "@taowind/tinp-suite",
-  "version": "0.1.0-alpha.17",
+  "version": "0.1.0-alpha.18",
   "private": true,
   "type": "module",
   "scripts": {
     "test": "node --test --test-concurrency=1 tests/*.test.mjs vendor/tinp/tests/*.test.mjs",
     "demo": "node scripts/demo.mjs",
     "opp-http-readonly": "node scripts/opp-http-readonly.mjs",
+    "opp-http-consumer-bridge": "node scripts/opp-http-consumer-bridge.mjs",
     "verify": "node scripts/verify.mjs",
     "recovery:demo": "node scripts/recovery-demo.mjs",
     "pending": "node scripts/pending.mjs",

@@ -165,3 +165,12 @@ The adapter exercises environment variables, `NODE_OPTIONS`, and `execArgv` prox
 ## alpha.17 consumer binding stress
 
 The new bridge stresses cross-owner binding: OPP owns CHP/RCP negotiation, TINP owns the transport receipt, and the local consumer contract must match the projection exactly. Re-rooted responses, rejected negotiations and producer failures remain fail-closed. Candidate absorption remains P15/TINP provider scope; no RCL or K400 promotion.
+
+
+## alpha.18 consumer receipt replay stress
+
+Task/missing capability：alpha.17 的 acceptance binding 只能在调用方代码内使用，缺少一个可复现的文件边界来审计已生成的 consumer inputs；gap type=`LEGACY_INTEROP_ADAPTER_GAP + REPLAYABLE_EVIDENCE_GAP`，不是 RCL Core 表达缺口。Workaround/donor：新增 TINP-owned CLI，读取 plan/policy/request/observation/contract 并复用同一 acceptance validator，不复制 OPP CHP/RCP 语义，也不重新发起网络请求。
+
+Regression：真实子进程 CLI 只能在五份输入全部通过 owner、capability、projection、producer receipt 和 content-root 校验时返回 `PASS` 并写入新文件；失败闭合仍返回退出码 5 或结构错误退出码 1，输出文件使用独占创建。该证据只是本机可重放 receipt，不是第三方 consumer、生产 authority 或 K400 晋升。
+
+Affected K400 candidates：沿用 K057/K110/K117/K250/K257/K301/K318。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 只有本机 Node 子进程和确定性输入证据；PERFORMANCE 未作跨主机或 SLA 声明；AI_GENERATE 未评估；EVIDENCE 以 alpha.18 verify、Court、EVIDENCE_LEDGER 和 delivery receipt 固化。九门仍 `NOT_ADJUDICATED`。

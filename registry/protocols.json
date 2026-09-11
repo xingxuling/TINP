@@ -1,6 +1,6 @@
 {
   "format": "twni.protocol-registry.v0.1",
-  "version": "0.1.0-alpha.17",
+  "version": "0.1.0-alpha.18",
   "classification": "candidate-local-profile",
   "scope": "Three independent local network processes; UDP/TCP/TLS 1.3 loopback plus public-history replay, TINP DATA state-transfer, resumable transfer-journal and policy-bound read-only OPP HTTP observation harnesses",
   "statusVocabulary": [
