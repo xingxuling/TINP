@@ -1,0 +1,44 @@
+{
+  "format": "twni.evidence-ledger.v0.1",
+  "version": "0.1.0-alpha.24",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "mergeCommit": "5b4803e",
+  "candidateCommit": "944fbf1",
+  "verification": {
+    "file": "evidence/0.1.0-alpha.24/LOCAL_VERIFICATION.json",
+    "status": "VERIFIED_LOCAL_CANDIDATE",
+    "tests": 205,
+    "passed": 205,
+    "failed": 0,
+    "sourceFiles": 207,
+    "sourceTreeRoot": "48974d3bd52a87204811c5f0be4965fd057e27c2c989f869ecd2a18674b44818",
+    "testsSha256": "7e546140fd19bd06fb90d9450dbbb22a729e5b02d6b599cc9ee77451af8e5791"
+  },
+  "changes": [
+    "scripts/opp-http-consumer-live.mjs",
+    "tests/opp-http-consumer-live.test.mjs",
+    "package.json"
+  ],
+  "formats": [
+    "twni.opp-http-consumer-live-verify.v1",
+    "twni.opp-http-consumer-live-run.v1",
+    "twni.opp-http-consumer-bridge-receipt.v1"
+  ],
+  "offlineVerification": {
+    "networkRequests": 0,
+    "tamperedResultRejected": true,
+    "authorityGranted": false
+  },
+  "externalLiveObservation": {
+    "file": "evidence/OPP_HTTP_CONSUMER_LIVE_GITHUB_2026-09-12.json",
+    "status": "PASS",
+    "httpStatus": 200,
+    "networkRequests": 1,
+    "authorityGranted": false,
+    "scope": "Previously captured public GitHub observation; offline verify does not reissue it"
+  },
+  "production": "NOT_DEPLOYED",
+  "externalThirdPartyConsumer": "NOT_RUN",
+  "k400Verdict": "NOT_ADJUDICATED",
+  "boundary": "Offline validation of saved local/live result plus one previously captured bounded public observation; no credential, authority, production interoperability, trusted time or real-device evidence."
+}

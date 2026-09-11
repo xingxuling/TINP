@@ -33,3 +33,5 @@ alpha.21 增加 live consumer orchestration：单次调用复用真实 OPP CHP/R
 alpha.22 增加 live consumer 结果 validator 和 CLI fail-closed 子进程回归，确保输出 metadata、acceptance 状态及 rooted receipt 在写盘前可重验。该改动仍不提供外部 Owner、第三方 consumer acceptance、生产发布/撤销或真实异机证据；下一缺口保持不变。
 
 alpha.23 固定 live consumer run result 的 exact shape，成功结果显式 diagnostic:null，协商失败保留 bounded diagnostic，并在 CLI 写盘前重验。该改动继续收紧本机证据边界，未解决外部 Owner、第三方 consumer acceptance、生产发布/撤销或真实异机验证。
+
+alpha.24 增加 saved-result offline verify，使外部审阅者可在零网络请求条件下复核 live consumer 结果的 exact shape、roots 与 acceptance receipt。该入口仍不等于第三方 consumer acceptance、生产 authority 或真实异机验证。

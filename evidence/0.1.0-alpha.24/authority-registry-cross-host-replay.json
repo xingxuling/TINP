@@ -1,0 +1,33 @@
+{
+  "format": "twni.authority-registry-cross-host-replay-demo.v1",
+  "status": "VERIFIED_LOCAL_MULTI_PROCESS_CROSS_HOST_REPLAY",
+  "independentProcesses": true,
+  "independentDirectories": true,
+  "hosts": [
+    {
+      "id": "host-a",
+      "pid": 52136
+    },
+    {
+      "id": "host-b",
+      "pid": 60960
+    }
+  ],
+  "firstOperation": "appended",
+  "extensionOperation": "extended",
+  "importedOnSecondHost": true,
+  "replayOperation": "unchanged",
+  "secondHostExtension": "extended",
+  "firstSequence": 1,
+  "lastSequence": 3,
+  "historyRoot": "96d9e66d50501bf7c34a81461b52bc990a1615a48f689b51a415c2e21770224f",
+  "forkDetected": true,
+  "forkRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_STORE_PREFIX_MISMATCH",
+  "mirrorSetDriftDetected": true,
+  "mirrorSetDriftRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_MIRROR_SET_DRIFT",
+  "sequenceGapDetected": true,
+  "sequenceGapRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_CHAIN_GAP",
+  "rejectedStateRetained": true,
+  "privateMaterialTransferred": false,
+  "scope": "Actual independent local Node child processes and directories exchange public convergence-store state and replay signed histories; not two physical hosts, online authority, trusted time or cross-host production consensus."
+}

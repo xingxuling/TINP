@@ -1,0 +1,360 @@
+{
+  "status": "PASS",
+  "response": {
+    "default_branch": "main",
+    "full_name": "xingxuling/OPP",
+    "private": false
+  },
+  "receipt": {
+    "format": "twni.opp-http-consumer-bridge-receipt.v1",
+    "planRoot": "f35e6cbe750d5ddd33ab5a74718e9221ea98c622e55aadafcc6d7f8868cdc793",
+    "policyRoot": "6be087765fb345c7cbaefb2d73d9a01834ce0146aaec3421caee4f8ad11fc928",
+    "requestRoot": "748f6f8eddf951d35f24502af5b78d8df6d5f5737fbe048a112b54f652c3358d",
+    "producerReceiptRoot": "d2d6ba1612634286fec7d68290c8e1ea097193943cd52f5f6b59c55c858efdae",
+    "consumerContractRoot": "1a39bcf9e2c971a2e9128c32279b86d625d3ac369abcf23101a1f361fd34bc27",
+    "responseRoot": "a97a84ea4b0b782a102fd59c7cae8e03368271e0430a77da848553cbfe131130",
+    "status": "PASS",
+    "error": null,
+    "authorityGranted": false,
+    "sideEffects": false,
+    "boundary": "Local OPP consumer acceptance only; no authority grant, third-party interoperability or production availability",
+    "acceptanceRoot": "de8b6012a225e7db6c497109be8f3c3be96053113f462cbf3d9eb1b191f835bf"
+  },
+  "plan": {
+    "format": "twni.opp-http-consumer-bridge-plan.v1",
+    "bridgeId": "verify:opp-http-consumer-bridge",
+    "oppSource": {
+      "repository": "https://github.com/xingxuling/OPP",
+      "commit": "f7b76582a720d9d18af5153affa0fc2d78bc0410",
+      "protocols": [
+        "opp.chp.v0.1",
+        "opp.rcp.v0.1"
+      ]
+    },
+    "capabilityId": "opp-http-readonly",
+    "responseFields": [
+      "default_branch",
+      "full_name",
+      "private"
+    ],
+    "authorityGranted": false,
+    "boundary": "Local OPP consumer acceptance only; no authority grant, third-party interoperability or production availability",
+    "planRoot": "f35e6cbe750d5ddd33ab5a74718e9221ea98c622e55aadafcc6d7f8868cdc793"
+  },
+  "consumerContract": {
+    "format": "twni.opp-http-consumer-contract.v1",
+    "contractId": "verify:opp-http-consumer-contract",
+    "capabilityId": "opp-http-readonly",
+    "version": "1.0",
+    "responseFields": [
+      "default_branch",
+      "full_name",
+      "private"
+    ],
+    "negotiation": {
+      "handshake": {
+        "format": "taowind.opp.reality-envelope.v0.1",
+        "protocol": "opp.chp.v0.1",
+        "version": "0.1.0-candidate.1",
+        "kind": "protocol",
+        "id": "chp:consumer:provider",
+        "status": "candidate",
+        "issuedAt": "2026-09-11T21:08:13.902144Z",
+        "issuer": {
+          "id": "consumer",
+          "type": "runtime",
+          "displayName": "consumer"
+        },
+        "payload": {
+          "phase": "agreement",
+          "participants": [
+            "consumer",
+            "provider"
+          ],
+          "status": "accepted",
+          "agreedProtocols": [
+            "opp.chp.v0.1",
+            "opp.rcp.v0.1",
+            "opp.rep.v0.1",
+            "taowind.tinp.v0.2"
+          ],
+          "sharedCapabilities": [
+            "opp-http-readonly"
+          ],
+          "authorityScopes": [],
+          "evidencePolicy": {
+            "minimumConfidence": 0,
+            "acceptDerivedEvidence": false
+          },
+          "reasons": []
+        },
+        "constraints": [
+          "握手不得创建 offer 之外的新权限 / handshake must not create authority absent from offers"
+        ],
+        "evidenceRefs": [],
+        "extensions": {},
+        "integrity": {
+          "algorithm": "sha256",
+          "contentRoot": "0e0b96e3ca851bee622f1b00330460879059871039d51277ff606b5f87d8d4f3"
+        }
+      },
+      "capability": {
+        "format": "taowind.opp.capability-agreement.v0.1",
+        "version": "0.1.0-candidate.1",
+        "participants": [
+          "consumer",
+          "provider"
+        ],
+        "capabilityId": "opp-http-readonly",
+        "capabilityIds": [
+          "opp-http-readonly",
+          "opp-http-readonly"
+        ],
+        "status": "accepted",
+        "contractRoots": {
+          "local": {
+            "inputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0",
+            "outputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0"
+          },
+          "remote": {
+            "inputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0",
+            "outputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0"
+          }
+        },
+        "authorityRequired": [],
+        "authorityGranted": false,
+        "reasons": [],
+        "boundary": "RCP contract agreement proves exact declaration compatibility only; it does not authenticate identity, probe a provider, grant authority or prove quality.",
+        "contentRoot": "2066200e25308d4afd10a4be029e5604639dd0916810cbdd779f34539d05d1b3"
+      },
+      "owner": "OPP",
+      "upstreamCommit": "f7b76582a720d9d18af5153affa0fc2d78bc0410"
+    },
+    "authorityGranted": false,
+    "contractRoot": "1a39bcf9e2c971a2e9128c32279b86d625d3ac369abcf23101a1f361fd34bc27"
+  },
+  "bundle": {
+    "format": "twni.opp-http-consumer-bridge-bundle.v1",
+    "plan": {
+      "format": "twni.opp-http-consumer-bridge-plan.v1",
+      "bridgeId": "verify:opp-http-consumer-bridge",
+      "oppSource": {
+        "repository": "https://github.com/xingxuling/OPP",
+        "commit": "f7b76582a720d9d18af5153affa0fc2d78bc0410",
+        "protocols": [
+          "opp.chp.v0.1",
+          "opp.rcp.v0.1"
+        ]
+      },
+      "capabilityId": "opp-http-readonly",
+      "responseFields": [
+        "default_branch",
+        "full_name",
+        "private"
+      ],
+      "authorityGranted": false,
+      "boundary": "Local OPP consumer acceptance only; no authority grant, third-party interoperability or production availability",
+      "planRoot": "f35e6cbe750d5ddd33ab5a74718e9221ea98c622e55aadafcc6d7f8868cdc793"
+    },
+    "policy": {
+      "format": "twni.opp-http-readonly-policy.v1",
+      "policyId": "verify:opp-http-readonly",
+      "adapterVersion": "tinp-opp-http-readonly-v0.1",
+      "oppSource": {
+        "repository": "https://github.com/xingxuling/OPP",
+        "commit": "f7b76582a720d9d18af5153affa0fc2d78bc0410",
+        "protocols": [
+          "opp.chp.v0.1",
+          "opp.rcp.v0.1"
+        ]
+      },
+      "transport": {
+        "scheme": "https",
+        "method": "GET",
+        "allowedHosts": [
+          "api.github.com"
+        ],
+        "allowedPathPrefixes": [
+          "/repos/xingxuling/OPP"
+        ],
+        "timeoutMs": 15000,
+        "maxResponseBytes": 1048576,
+        "redirectPolicy": "deny",
+        "proxyPolicy": "deny-ambient",
+        "credentialPolicy": "none",
+        "maxAttempts": 1,
+        "allowedRequestHeaders": [
+          "accept",
+          "user-agent"
+        ],
+        "responseMediaType": "application/json",
+        "responseFields": [
+          "default_branch",
+          "full_name",
+          "private"
+        ]
+      },
+      "receiptFormat": "twni.opp-http-readonly-receipt.v1",
+      "authorityGranted": false,
+      "authorityBoundary": "Read-only external observation; no credential, retry, redirect, or authority grant",
+      "policyRoot": "6be087765fb345c7cbaefb2d73d9a01834ce0146aaec3421caee4f8ad11fc928"
+    },
+    "request": {
+      "format": "twni.opp-http-readonly-request.v1",
+      "requestId": "verify-opp-http-readonly",
+      "policyRoot": "6be087765fb345c7cbaefb2d73d9a01834ce0146aaec3421caee4f8ad11fc928",
+      "method": "GET",
+      "url": "https://api.github.com/repos/xingxuling/OPP",
+      "headers": {
+        "accept": "application/vnd.github+json",
+        "user-agent": "TINP-verify/0.1"
+      },
+      "requestRoot": "748f6f8eddf951d35f24502af5b78d8df6d5f5737fbe048a112b54f652c3358d"
+    },
+    "observation": {
+      "status": "PASS",
+      "response": {
+        "default_branch": "main",
+        "full_name": "xingxuling/OPP",
+        "private": false
+      },
+      "receipt": {
+        "format": "twni.opp-http-readonly-receipt.v1",
+        "policyRoot": "6be087765fb345c7cbaefb2d73d9a01834ce0146aaec3421caee4f8ad11fc928",
+        "requestRoot": "748f6f8eddf951d35f24502af5b78d8df6d5f5737fbe048a112b54f652c3358d",
+        "status": "PASS",
+        "httpStatus": 200,
+        "responseContentType": "application/json; charset=utf-8",
+        "responseEtag": "verify-etag",
+        "responseLastModified": "2026-09-11T00:00:00Z",
+        "responseBytes": 96,
+        "wireResponseRoot": "f33b09c3069d5558b52917cacc3be293798053fb4cd1c38c8f4d8edabb9c5041",
+        "responseRoot": "a97a84ea4b0b782a102fd59c7cae8e03368271e0430a77da848553cbfe131130",
+        "error": null,
+        "attempts": 1,
+        "redirectsFollowed": false,
+        "ambientProxyUsed": false,
+        "ambientCredentialsUsed": false,
+        "authorityGranted": false,
+        "boundary": "Read-only external observation; no credential, retry, redirect, or authority grant",
+        "receiptRoot": "d2d6ba1612634286fec7d68290c8e1ea097193943cd52f5f6b59c55c858efdae"
+      }
+    },
+    "consumerContract": {
+      "format": "twni.opp-http-consumer-contract.v1",
+      "contractId": "verify:opp-http-consumer-contract",
+      "capabilityId": "opp-http-readonly",
+      "version": "1.0",
+      "responseFields": [
+        "default_branch",
+        "full_name",
+        "private"
+      ],
+      "negotiation": {
+        "handshake": {
+          "format": "taowind.opp.reality-envelope.v0.1",
+          "protocol": "opp.chp.v0.1",
+          "version": "0.1.0-candidate.1",
+          "kind": "protocol",
+          "id": "chp:consumer:provider",
+          "status": "candidate",
+          "issuedAt": "2026-09-11T21:08:13.902144Z",
+          "issuer": {
+            "id": "consumer",
+            "type": "runtime",
+            "displayName": "consumer"
+          },
+          "payload": {
+            "phase": "agreement",
+            "participants": [
+              "consumer",
+              "provider"
+            ],
+            "status": "accepted",
+            "agreedProtocols": [
+              "opp.chp.v0.1",
+              "opp.rcp.v0.1",
+              "opp.rep.v0.1",
+              "taowind.tinp.v0.2"
+            ],
+            "sharedCapabilities": [
+              "opp-http-readonly"
+            ],
+            "authorityScopes": [],
+            "evidencePolicy": {
+              "minimumConfidence": 0,
+              "acceptDerivedEvidence": false
+            },
+            "reasons": []
+          },
+          "constraints": [
+            "握手不得创建 offer 之外的新权限 / handshake must not create authority absent from offers"
+          ],
+          "evidenceRefs": [],
+          "extensions": {},
+          "integrity": {
+            "algorithm": "sha256",
+            "contentRoot": "0e0b96e3ca851bee622f1b00330460879059871039d51277ff606b5f87d8d4f3"
+          }
+        },
+        "capability": {
+          "format": "taowind.opp.capability-agreement.v0.1",
+          "version": "0.1.0-candidate.1",
+          "participants": [
+            "consumer",
+            "provider"
+          ],
+          "capabilityId": "opp-http-readonly",
+          "capabilityIds": [
+            "opp-http-readonly",
+            "opp-http-readonly"
+          ],
+          "status": "accepted",
+          "contractRoots": {
+            "local": {
+              "inputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0",
+              "outputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0"
+            },
+            "remote": {
+              "inputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0",
+              "outputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0"
+            }
+          },
+          "authorityRequired": [],
+          "authorityGranted": false,
+          "reasons": [],
+          "boundary": "RCP contract agreement proves exact declaration compatibility only; it does not authenticate identity, probe a provider, grant authority or prove quality.",
+          "contentRoot": "2066200e25308d4afd10a4be029e5604639dd0916810cbdd779f34539d05d1b3"
+        },
+        "owner": "OPP",
+        "upstreamCommit": "f7b76582a720d9d18af5153affa0fc2d78bc0410"
+      },
+      "authorityGranted": false,
+      "contractRoot": "1a39bcf9e2c971a2e9128c32279b86d625d3ac369abcf23101a1f361fd34bc27"
+    },
+    "bundleRoot": "377812c82fe712b63d464d152f78c7f58f9683b3a2b912e13bcc1c91cd0bcc27"
+  },
+  "bundleReplay": {
+    "status": "PASS",
+    "response": {
+      "default_branch": "main",
+      "full_name": "xingxuling/OPP",
+      "private": false
+    },
+    "receipt": {
+      "format": "twni.opp-http-consumer-bridge-receipt.v1",
+      "planRoot": "f35e6cbe750d5ddd33ab5a74718e9221ea98c622e55aadafcc6d7f8868cdc793",
+      "policyRoot": "6be087765fb345c7cbaefb2d73d9a01834ce0146aaec3421caee4f8ad11fc928",
+      "requestRoot": "748f6f8eddf951d35f24502af5b78d8df6d5f5737fbe048a112b54f652c3358d",
+      "producerReceiptRoot": "d2d6ba1612634286fec7d68290c8e1ea097193943cd52f5f6b59c55c858efdae",
+      "consumerContractRoot": "1a39bcf9e2c971a2e9128c32279b86d625d3ac369abcf23101a1f361fd34bc27",
+      "responseRoot": "a97a84ea4b0b782a102fd59c7cae8e03368271e0430a77da848553cbfe131130",
+      "status": "PASS",
+      "error": null,
+      "authorityGranted": false,
+      "sideEffects": false,
+      "boundary": "Local OPP consumer acceptance only; no authority grant, third-party interoperability or production availability",
+      "acceptanceRoot": "de8b6012a225e7db6c497109be8f3c3be96053113f462cbf3d9eb1b191f835bf"
+    }
+  }
+}

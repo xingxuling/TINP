@@ -37,3 +37,5 @@ alpha.22 已合并：新增 validateOppHttpConsumerLiveResult，对 live consume
 alpha.23 已合并：live consumer 运行结果现在执行 exact-key、可枚举数据字段和成功/失败 diagnostic 形态校验，新增顶层字段篡改负例。完整 verify 为 204/204（0 fail），待本轮合并提交记录；状态仍为本机 VERIFIED_LOCAL_CANDIDATE，不等于第三方 consumer、生产 authority、真实异机或 K400 晋升。
 
 alpha.23 后续外部观察已完成：在清空已知代理变量的调用 shell 中，live CLI 对公开 GitHub OPP endpoint 发起一次真实 HTTPS/GET，请求返回 HTTP 200，live run 与 local acceptance 均为 PASS，authorityGranted=false。原始结果记录在 evidence/OPP_HTTP_CONSUMER_LIVE_GITHUB_2026-09-12.json；它仍不是独立第三方 OPP consumer、生产 authority 或长期公网可用性证明。
+
+alpha.24 已合并：新增 live consumer --verify 离线 CLI，只读取 policy/request/result，在写出验证 PASS 前重验 exact shape、roots、producer/consumer 状态和 acceptance receipt；篡改结果返回失败且不发起网络请求。完整 verify 为 205/205（0 fail），证据位于 evidence/0.1.0-alpha.24/LOCAL_VERIFICATION.json。
