@@ -40,5 +40,14 @@
   "production": "NOT_DEPLOYED",
   "externalThirdPartyConsumer": "NOT_RUN",
   "k400Verdict": "NOT_ADJUDICATED",
-  "boundary": "Offline validation of saved local/live result plus one previously captured bounded public observation; no credential, authority, production interoperability, trusted time or real-device evidence."
+  "boundary": "Offline validation of saved local/live result plus one previously captured bounded public observation; no credential, authority, production interoperability, trusted time or real-device evidence.",
+  "externalLiveOfflineVerification": {
+    "file": "evidence/OPP_HTTP_CONSUMER_LIVE_GITHUB_VERIFY_2026-09-12.json",
+    "status": "PASS",
+    "resultStatus": "PASS",
+    "networkRequests": 0,
+    "authorityGranted": false,
+    "sha256": "43bcc92fc2b232c995ff1b0e38841ea389a07f5a1c99e5fb6f02da351128235d",
+    "scope": "Offline validator replay of the saved public live result under the current shell; no network request"
+  }
 }

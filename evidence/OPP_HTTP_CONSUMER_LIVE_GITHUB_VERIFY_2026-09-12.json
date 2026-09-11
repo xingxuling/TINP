@@ -1,0 +1,8 @@
+{
+  "format": "twni.opp-http-consumer-live-verify.v1",
+  "status": "PASS",
+  "resultStatus": "PASS",
+  "networkRequests": 0,
+  "authorityGranted": false,
+  "boundary": "Offline validation of a saved live consumer result; no network request or authority grant"
+}
