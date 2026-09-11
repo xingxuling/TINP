@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { runOppHttpConsumerLive, validateOppHttpConsumerLiveResult } from '../src/opp-http-consumer-live.mjs';
+import { runOppHttpConsumerLive, validateOppHttpConsumerLiveResult, validateOppHttpConsumerLiveVerification } from '../src/opp-http-consumer-live.mjs';
 import { makeOppHttpReadonlyPolicy, makeOppHttpReadonlyRequest } from '../src/opp-http-readonly.mjs';
 
 function fixture() {
@@ -145,10 +145,21 @@ test('live consumer offline verify CLI revalidates a saved result without networ
   assert.equal(child.status, 0, child.stderr);
   assert.equal(child.stdout, '');
   const verification = JSON.parse(fs.readFileSync(verificationFile, 'utf8'));
-  assert.equal(verification.format, 'twni.opp-http-consumer-live-verify.v1');
+  assert.equal(verification.format, 'twni.opp-http-consumer-live-verify.v2');
   assert.equal(verification.status, 'PASS');
   assert.equal(verification.resultStatus, 'PASS');
   assert.equal(verification.networkRequests, 0);
+  assert.equal(verification.inputs.policyRoot, policy.policyRoot);
+  assert.equal(verification.inputs.requestRoot, request.requestRoot);
+  assert.equal(verification.inputs.acceptanceRoot, result.acceptance.receipt.acceptanceRoot);
+  assert.match(verification.inputs.policyFileSha256, /^[a-f0-9]{64}$/);
+  assert.match(verification.inputs.requestFileSha256, /^[a-f0-9]{64}$/);
+  assert.match(verification.inputs.resultFileSha256, /^[a-f0-9]{64}$/);
+  assert.equal(validateOppHttpConsumerLiveVerification(verification, {
+    policy, request, result,
+    policyBytes: fs.readFileSync(policyFile), requestBytes: fs.readFileSync(requestFile), resultBytes: fs.readFileSync(resultFile),
+  }), true);
+  assert.throws(() => validateOppHttpConsumerLiveVerification({ ...verification, inputs: { ...verification.inputs, resultFileSha256: '0'.repeat(64) } }, { policy, request, result, policyBytes: fs.readFileSync(policyFile), requestBytes: fs.readFileSync(requestFile), resultBytes: fs.readFileSync(resultFile) }), /OPP_HTTP_CONSUMER_LIVE_VERIFY_FILE_HASH_INVALID/);
   const duplicate = spawnSync(process.execPath, [script, '--verify', policyFile, requestFile, resultFile, '--out', verificationFile], {
     encoding: 'utf8',
     env: { ...process.env, HTTPS_PROXY: 'http://ambient.invalid' },

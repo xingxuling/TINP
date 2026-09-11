@@ -1,0 +1,45 @@
+{
+  "format": "twni.evidence-ledger.v0.1",
+  "version": "0.1.0-alpha.27",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "mergeCommit": "PENDING_MERGE",
+  "candidateCommit": "4c71afe",
+  "verification": {
+    "file": "evidence/0.1.0-alpha.27/LOCAL_VERIFICATION.json",
+    "status": "VERIFIED_LOCAL_CANDIDATE",
+    "tests": 205,
+    "passed": 205,
+    "failed": 0,
+    "sourceFiles": 207,
+    "sourceTreeRoot": "003848d20a20a3a45605fcb58cc2e44a6936ae81e2d20a71f9ff97ee4fa4fdc1",
+    "testsSha256": "1171ee91c912360d65bc801dec050ea6b53422756d34c9b689136bb1eb1bd336"
+  },
+  "changes": [
+    "src/opp-http-consumer-live.mjs",
+    "scripts/opp-http-consumer-live.mjs",
+    "tests/opp-http-consumer-live.test.mjs",
+    "package.json"
+  ],
+  "offlineVerificationReceipt": {
+    "format": "twni.opp-http-consumer-live-verify.v2",
+    "networkRequests": 0,
+    "exclusiveWrite": true,
+    "duplicateTargetRejected": true,
+    "semanticRootsBound": true,
+    "inputFileSha256Bound": true,
+    "receiptValidator": "validateOppHttpConsumerLiveVerification",
+    "authorityGranted": false
+  },
+  "externalLiveWitness": {
+    "file": "evidence/OPP_HTTP_CONSUMER_LIVE_GITHUB_2026-09-12.json",
+    "status": "PASS",
+    "httpStatus": 200,
+    "networkRequests": 0,
+    "resultSha256": "2b3d36af00ec82fb269481d4eb7bbfb369665c2b67c2a4c8ed9d428153f5b879"
+  },
+  "authorityGranted": false,
+  "production": "NOT_DEPLOYED",
+  "externalThirdPartyConsumer": "NOT_RUN",
+  "k400Verdict": "NOT_ADJUDICATED",
+  "boundary": "The v2 receipt binds one offline validation to exact semantic roots and input bytes; it remains a local archive artifact and does not prove third-party consumer interoperability, public availability or production authority."
+}
