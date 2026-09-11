@@ -98,3 +98,20 @@ transfer payload or source archive. This proves local TLS 1.3/socket behavior
 only; it does not define production certificate custody, physical-host
 enrollment, trusted time, online publication, global revocation, or a
 distributed conflict winner.
+
+## alpha.14 resumable TLS transfer boundary
+
+The alpha.14 harness keeps the same authority meaning and TINP DATA framing,
+but sends the public convergence-store state as a bounded sequence of chunks.
+The transfer manifest binds the transfer id, endpoints, state root, payload
+digest, chunk size and total count. A receiver journal is atomically replaced
+after each accepted chunk and records the next cursor plus the committed
+state. Restarting the receiver reuses that journal and resumes at the first
+missing chunk; a duplicate is idempotent, while an altered existing chunk or a
+manifest/state-root mismatch is rejected before store replacement.
+
+This is an auxiliary TINP host adapter and recovery mechanism for public state.
+It does not publish or revoke authority, choose a conflict winner, provide
+trusted time, enroll physical devices, custody production keys or create an
+RCL/RNCS/AAF semantic owner. The journal contains no issuer, mirror, member,
+witness or transport/TLS private key.

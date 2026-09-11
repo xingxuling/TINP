@@ -135,3 +135,18 @@ the message identity check. Production certificate issuance, rotation,
 revocation, hardware custody, physical-host enrollment and trusted time stay
 with the external deployment/authority Owner. No RCL Core, RNCS/RFE or AAF
 semantic owner changed.
+
+## alpha.14 resumable TLS transfer ownership
+
+The resumable transfer manifest and journal are owned by the TINP host adapter
+and its local filesystem boundary. They describe delivery of an already signed
+public convergence-store state; they do not add authority meaning. The existing
+store append/convergence validators remain the only state acceptance path, and
+the journal records a cursor and committed digest so a receiver can restart
+without silently replacing state or replaying a completed append.
+
+Node `tls` and the existing `LocalTransport` continue to own transport details;
+caller-supplied certificate pins and TINP peer public-key admission remain
+separate checks. Production publication, certificate lifecycle, trusted time,
+physical-device enrollment, lost-key recovery and conflict resolution remain
+with the external Owner. RCL Core, RNCS/RFE and AAF ownership is unchanged.

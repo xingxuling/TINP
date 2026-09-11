@@ -137,3 +137,13 @@ Generality：TLS 握手、caller-pinned peer certificate、TINP peer public-key 
 Regression：TLS 1.3 loopback 协商与真实 DATA 帧交换、错误 CA 在帧发送前失败、正确 pin 下 seq1→seq2 transfer、exact replay、seq3 extension、反向 transfer、分叉/镜像漂移/seq gap/篡改 `historyRoot` 拒绝及接收端 durable bytes 保持不变均有测试。临时私钥在 fixture 目录退出时删除；消息负载和证据对象不含 TLS 私钥。
 
 Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 仅有本机 TLS 1.3 loopback、独立进程和文件证据；PERFORMANCE 只记录握手/帧计数，不作生产 TLS、WAN 或 authority SLA 声明；AI_GENERATE 未评估；EVIDENCE 以 alpha.13 `LOCAL_VERIFICATION.json`、Court 和 delivery receipt 固化。九门仍 `NOT_ADJUDICATED`。
+
+## alpha.14 authority registry resumable TLS DATA 压力
+
+Task/missing capability：alpha.13 的 TLS DATA loopback 以单次 state transfer 为边界，缺少接收端中断、重启后续传、持久游标和重复/分块冲突证据；gap type=`DURABLE_TRANSFER_RECOVERY_GAP + AUTHORITY_PROVIDER_INTEGRATION`，不是 RCL Core 表达缺口。Workaround/donor：复用既有 `LocalTransport`、TINP `DATA` framing、TLS 1.3 caller pin 和 convergence-store append validators，新增 `authority-registry-resumable-transfer.mjs`、test-only resumable worker、原子 journal 与 demo，不新增 authority 根、发布器或冲突赢家。
+
+Generality：manifest 绑定 transfer id、端点、state root、payload digest、chunk 大小与总数；原子 journal 保存已接收 chunk 和游标；重启从首个缺口继续；重复保持幂等；同索引数据或 manifest/state-root 冲突在 store 替换前拒绝。这些是 TINP/TWNI host recovery profile 的候选语义，不能吸收为 RCL、RNCS/RFE 或 AAF authority。Provider advantage 是 Node 文件系统原子替换、TLS socket 与现有 canonical validators；两台真实设备、可信时间、在线发布/撤销、丢失密钥恢复和分布式冲突处置仍未实现。
+
+Regression：TLS 1.3 传输 14 个 DATA chunks，在第 7 个后终止接收进程并重启；B 从游标 7 收完、append store、journal 跨再次重启保持 `committed`。重复 chunk 返回 `unchanged`；篡改已收 chunk 返回 `AUTHORITY_REGISTRY_RESUMABLE_TRANSFER_CHUNK_CONFLICT`；相同 transfer id 换 state root 返回 `AUTHORITY_REGISTRY_RESUMABLE_TRANSFER_MANIFEST_CONFLICT`；冲突后 state root、store bytes 和 journal 保持原值，传输对象不含私钥。
+
+Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 只有本机 TLS 1.3、独立进程/目录、原子 journal 和负例证据；PERFORMANCE 只记录本次 chunk/帧/字节计数，不作物理跨设备吞吐、恢复 SLA 或 authority SLA 声明；AI_GENERATE 未评估；EVIDENCE 以 alpha.14 `LOCAL_VERIFICATION.json`、Court、EVIDENCE_LEDGER 和 delivery receipt 固化。九门仍 `NOT_ADJUDICATED`。

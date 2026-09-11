@@ -154,3 +154,27 @@ in the source archive. This is local TLS/socket/process evidence, not
 production certificate custody, physical-host enrollment, trusted time,
 online authority, global revocation or production conflict consensus. No RCL
 Core, RNCS world authority or AAF owner changed.
+
+## alpha.14 authority registry resumable TLS transfer
+
+The candidate adds a durable public-state chunk journal on top of the alpha.13
+TLS DATA path. The sender creates a manifest bound to the transfer id, source
+and target identities, state root, payload digest, chunk size and total count,
+then sends 14 chunks through the existing TINP `DATA` framing. The receiver
+atomically persists the journal after each chunk. The run terminates the
+receiver after chunk 7, restarts it with the same store and journal, and
+continues from cursor 7 through commit. A duplicate chunk is `unchanged`; an
+altered chunk at an existing index is rejected with
+`AUTHORITY_REGISTRY_RESUMABLE_TRANSFER_CHUNK_CONFLICT`; a manifest with the
+same transfer id but a different state root is rejected with
+`AUTHORITY_REGISTRY_RESUMABLE_TRANSFER_MANIFEST_CONFLICT`.
+
+The focused and full tests retain all prior registry, replay, TCP and TLS
+negative cases. The resumable run records TLS 1.3, the negotiated AEAD cipher,
+independent processes and directories, frame/byte counts, restart/commit
+state, conflict retention and the absence of private material in the payload.
+This is local TLS/socket/process/filesystem evidence with a crash-safe public
+cursor. It does not establish two physical hosts, production certificate
+custody, trusted time, online publication, global revocation, lost-key
+recovery or production conflict consensus. No RCL Core, RNCS world authority
+or AAF owner changed.

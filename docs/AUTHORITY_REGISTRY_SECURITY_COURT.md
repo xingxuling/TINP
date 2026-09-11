@@ -1,4 +1,4 @@
-# Authority registry security court — alpha.13
+# Authority registry security court — alpha.14
 
 Decision: **VERIFIED_LOCAL_CANDIDATE / NOT_PRODUCTION_AUTHORITY**.
 
@@ -100,3 +100,24 @@ global revocation, lost-key recovery or production conflict consensus.
 Evidence: `evidence/0.1.0-alpha.13/authority-registry-tls-loopback-transfer.json`,
 `LOCAL_VERIFICATION.json` and `EVIDENCE_LEDGER.json`. K400 promotion remains
 `NOT_ADJUDICATED`.
+
+## Alpha.14 resumable TLS DATA addendum
+
+Alpha.14 retains the caller-pinned TLS 1.3 and signed TINP DATA boundaries and
+adds an atomic public-state chunk journal. The sender emits 14 chunks; the
+receiver is stopped after chunk 7, restarted with the same store and journal,
+and resumes from cursor 7. The completed state is appended through the existing
+convergence-store validators and the journal remains `committed` across a
+second restart. Duplicate replay is `unchanged`.
+
+The negative cases reject an altered already-recorded chunk with
+`AUTHORITY_REGISTRY_RESUMABLE_TRANSFER_CHUNK_CONFLICT` and a different
+manifest/state root under the same transfer id with
+`AUTHORITY_REGISTRY_RESUMABLE_TRANSFER_MANIFEST_CONFLICT`; the prior durable
+state remains intact. The focused/full candidate run is 177/177 tests over 198
+source files. Evidence is
+`evidence/0.1.0-alpha.14/authority-registry-resumable-transfer.json`,
+`LOCAL_VERIFICATION.json` and `EVIDENCE_LEDGER.json`; all K400 gates remain
+`NOT_ADJUDICATED`. This does not certify physical-host recovery, production
+certificate custody, trusted time, online authority, lost-key recovery or
+distributed conflict consensus.

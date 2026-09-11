@@ -9,14 +9,16 @@ counter, a transparency log, or a human identity system.
 ## Current reality
 
 The repository is `https://github.com/xingxuling/TINP.git`, on the candidate
-branch `codex/tinp-registry-v06`. The local alpha.13 profile can verify an
+branch `codex/tinp-registry-v07`. The local alpha.14 profile can verify an
 offline registry, mirror quorum, finite history, local append-only prefix, an
 independently signed store-state witness and a public-history replay between
-two independent local processes/directories and a public-state transfer
-through the existing TINP DATA TCP or TLS 1.3 loopback path with caller-pinned
-ephemeral certificates. A same-call signature, local process separation,
-loopback socket, temporary certificate and the local `nowMs` value are not
-external publication, trusted time, or durable physical-host convergence.
+two independent local processes/directories and public-state transfer through
+the existing TINP DATA TCP/TLS 1.3 loopback paths with caller-pinned ephemeral
+certificates. It also records an atomic public chunk journal and receiver
+restart/resume on the TLS path. A same-call signature, local process
+separation, loopback socket, temporary certificate, durable cursor and the
+local `nowMs` value are not external publication, trusted time, or durable
+physical-host convergence.
 
 On 2026-09-10, the public repositories under the GitHub owner `xingxuling`
 were inspected. `OPP`, `RNCS-Unified-Platform-` and `RCL` are useful semantic
@@ -73,7 +75,7 @@ processes on two hosts:
    traces, negative cases and human approval. K400 remains `NOT_ADJUDICATED`
    until its nine gates are separately reviewed.
 
-Until those inputs exist, the alpha.13 offline adapters and local replay/loopback
+Until those inputs exist, the alpha.14 offline adapters and local replay/loopback
 harnesses remain the smallest
 honest boundary. Adding a local publisher, synthetic trusted clock, guessed
 Owner, or test keyring would create a parallel authority and would not close
