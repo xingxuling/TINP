@@ -1,0 +1,46 @@
+{
+  "format": "twni.evidence-ledger.v0.1",
+  "version": "0.1.0-alpha.28",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "mergeCommit": "PENDING_MERGE",
+  "candidateCommit": "136edda",
+  "verification": {
+    "file": "evidence/0.1.0-alpha.28/LOCAL_VERIFICATION.json",
+    "status": "VERIFIED_LOCAL_CANDIDATE",
+    "tests": 205,
+    "passed": 205,
+    "failed": 0,
+    "sourceFiles": 207,
+    "sourceTreeRoot": "d8bb1d76191cbb819fff7dfca11d8e7e79f6d935c088a277dc16082406edaaa1",
+    "testsSha256": "d9c42a8bb576af160d299b488a32416a652a8bb150b609a79c5a4f9cbdd63903"
+  },
+  "changes": [
+    "src/opp-http-consumer-live.mjs",
+    "scripts/opp-http-consumer-live.mjs",
+    "scripts/verify.mjs",
+    "tests/opp-http-consumer-live.test.mjs",
+    "package.json"
+  ],
+  "offlineVerificationWitness": {
+    "file": "evidence/0.1.0-alpha.28/opp-http-consumer-live-verify.json",
+    "format": "twni.opp-http-consumer-live-verify.v2",
+    "status": "PASS",
+    "resultStatus": "PASS",
+    "networkRequests": 0,
+    "authorityGranted": false,
+    "semanticRootsBound": true,
+    "inputFileSha256Bound": true
+  },
+  "externalLiveWitness": {
+    "file": "evidence/OPP_HTTP_CONSUMER_LIVE_GITHUB_2026-09-12.json",
+    "status": "PASS",
+    "httpStatus": 200,
+    "networkRequests": 0,
+    "resultSha256": "2b3d36af00ec82fb269481d4eb7bbfb369665c2b67c2a4c8ed9d428153f5b879"
+  },
+  "authorityGranted": false,
+  "production": "NOT_DEPLOYED",
+  "externalThirdPartyConsumer": "NOT_RUN",
+  "k400Verdict": "NOT_ADJUDICATED",
+  "boundary": "Full verify archives a locally generated v2 offline verification receipt for one saved public live result; this does not prove third-party consumer interoperability, public availability, trusted time or production authority."
+}
