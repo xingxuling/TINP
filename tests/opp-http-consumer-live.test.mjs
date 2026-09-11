@@ -1,6 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { runOppHttpConsumerLive } from '../src/opp-http-consumer-live.mjs';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { runOppHttpConsumerLive, validateOppHttpConsumerLiveResult } from '../src/opp-http-consumer-live.mjs';
 import { makeOppHttpReadonlyPolicy, makeOppHttpReadonlyRequest } from '../src/opp-http-readonly.mjs';
 
 function fixture() {
@@ -42,6 +47,7 @@ test('live consumer joins real OPP negotiation to one deterministic read-only ob
   assert.equal(Object.hasOwn(result.acceptance.response, 'ignored'), false);
   assert.equal(result.acceptance.receipt.authorityGranted, false);
   assert.equal(result.acceptance.receipt.sideEffects, false);
+  assert.equal(validateOppHttpConsumerLiveResult(result, { policy, request }), true);
 });
 
 test('live consumer preserves producer fail-closed and never fetches through ambient proxy', async () => {
@@ -58,6 +64,7 @@ test('live consumer preserves producer fail-closed and never fetches through amb
   assert.equal(result.observation.receipt.error, 'OPP_HTTP_AMBIENT_PROXY_CONFIGURED');
   assert.equal(result.acceptance.receipt.authorityGranted, false);
   assert.equal(result.acceptance.receipt.sideEffects, false);
+  assert.equal(validateOppHttpConsumerLiveResult(result, { policy, request }), true);
 });
 
 test('live consumer creates a rooted request when given an unrooted request descriptor', async () => {
@@ -73,4 +80,25 @@ test('live consumer creates a rooted request when given an unrooted request desc
   });
   assert.equal(result.status, 'PASS');
   assert.match(result.observation.receipt.requestRoot, /^[a-f0-9]{64}$/);
+});
+
+test('live consumer CLI writes a validated fail-closed result when ambient proxy is configured', () => {
+  const { policy, request } = fixture();
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'tinp-live-cli-'));
+  const policyFile = path.join(directory, 'policy.json');
+  const requestFile = path.join(directory, 'request.json');
+  const outputFile = path.join(directory, 'result.json');
+  fs.writeFileSync(policyFile, `${JSON.stringify(policy)}\n`);
+  fs.writeFileSync(requestFile, `${JSON.stringify(request)}\n`);
+  const script = fileURLToPath(new URL('../scripts/opp-http-consumer-live.mjs', import.meta.url));
+  const child = spawnSync(process.execPath, [script, policyFile, requestFile, '--out', outputFile], {
+    encoding: 'utf8',
+    env: { ...process.env, HTTPS_PROXY: 'http://ambient.invalid' },
+    windowsHide: true,
+  });
+  assert.equal(child.status, 5, child.stderr);
+  const result = JSON.parse(fs.readFileSync(outputFile, 'utf8'));
+  assert.equal(result.status, 'FAIL_CLOSED');
+  assert.equal(result.observation.receipt.error, 'OPP_HTTP_AMBIENT_PROXY_CONFIGURED');
+  assert.equal(validateOppHttpConsumerLiveResult(result, { policy, request }), true);
 });
