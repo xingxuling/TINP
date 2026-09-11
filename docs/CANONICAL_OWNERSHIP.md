@@ -165,3 +165,7 @@ Node `fetch` is an execution provider; an HTTP 200 or a PASS receipt does not
 grant authority, establish OPP consumer interoperability, or certify a
 production network. No RCL Core, RNCS/RFE world authority or AAF approval owner
 changed.
+
+## alpha.16 OPP transport hardening
+
+TINP remains the sole owner of the read-only HTTP transport policy and receipt adapter. Known Node environment-proxy switches are treated as ambient transport configuration and fail closed; OPP continues to own CHP/RCP semantics, and no authority or RCL ownership is added.

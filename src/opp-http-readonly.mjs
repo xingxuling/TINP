@@ -14,9 +14,8 @@ const OPP_SOURCE_KEYS = ['repository', 'commit', 'protocols'];
 const TRANSPORT_KEYS = ['scheme', 'method', 'allowedHosts', 'allowedPathPrefixes', 'timeoutMs', 'maxResponseBytes', 'redirectPolicy', 'proxyPolicy', 'credentialPolicy', 'maxAttempts', 'allowedRequestHeaders', 'responseMediaType', 'responseFields'];
 const REQUEST_KEYS = ['format', 'requestId', 'policyRoot', 'method', 'url', 'headers', 'requestRoot'];
 const RECEIPT_KEYS = ['format', 'policyRoot', 'requestRoot', 'status', 'httpStatus', 'responseContentType', 'responseEtag', 'responseLastModified', 'responseBytes', 'wireResponseRoot', 'responseRoot', 'error', 'attempts', 'redirectsFollowed', 'ambientProxyUsed', 'ambientCredentialsUsed', 'authorityGranted', 'boundary', 'receiptRoot'];
-const PROXY_ENVIRONMENT_KEYS = ['HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY', 'http_proxy', 'https_proxy', 'all_proxy'];
+const PROXY_ENVIRONMENT_KEYS = ['HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY', 'http_proxy', 'https_proxy', 'all_proxy', 'NODE_USE_ENV_PROXY'];
 const FORBIDDEN_HEADERS = new Set(['authorization', 'cookie', 'proxy-authorization', 'x-api-key', 'x-auth-token']);
-const FORBIDDEN_FIELD_NAMES = new Set(['__proto__', 'constructor', 'prototype']);
 
 const fail = code => { throw new ProtocolError(code); };
 const check = (ok, code) => { if (!ok) fail(code); };
@@ -79,7 +78,7 @@ function identifier(value) {
 }
 
 function fieldName(value) {
-  return identifier(value) && !FORBIDDEN_FIELD_NAMES.has(value);
+  return identifier(value);
 }
 
 function headerName(value) {
@@ -259,7 +258,7 @@ export function validateOppHttpReadonlyRequest(request, policy) {
   return true;
 }
 
-function proxyConfigured(environment) {
+function proxyConfigured(environment, execArgv) {
   check(environment !== null && typeof environment === 'object' && !Array.isArray(environment), 'OPP_HTTP_ENVIRONMENT_INVALID');
   let keys;
   try { keys = Reflect.ownKeys(environment); } catch { fail('OPP_HTTP_ENVIRONMENT_INVALID'); }
@@ -269,11 +268,17 @@ function proxyConfigured(environment) {
     try { descriptor = Object.getOwnPropertyDescriptor(environment, key); } catch { fail('OPP_HTTP_ENVIRONMENT_INVALID'); }
     check(descriptor && Object.hasOwn(descriptor, 'value') && descriptor.enumerable, 'OPP_HTTP_ENVIRONMENT_INVALID');
   }
-  return PROXY_ENVIRONMENT_KEYS.some(name => {
+  if (PROXY_ENVIRONMENT_KEYS.some(name => {
     if (!keys.includes(name)) return false;
     const value = Object.getOwnPropertyDescriptor(environment, name).value;
     return typeof value === 'string' && value.length > 0;
-  });
+  })) return true;
+  if (keys.includes('NODE_OPTIONS')) {
+    const nodeOptions = Object.getOwnPropertyDescriptor(environment, 'NODE_OPTIONS').value;
+    if (typeof nodeOptions === 'string' && /(?:^|\s)--use-env-proxy(?:=|\s|$)/.test(nodeOptions)) return true;
+  }
+  return Array.isArray(execArgv)
+    && execArgv.some(value => typeof value === 'string' && (value === '--use-env-proxy' || value.startsWith('--use-env-proxy=')));
 }
 
 function errorCode(error) {
@@ -319,7 +324,12 @@ function projectResponse(body, fields) {
   const projected = {};
   for (const field of fields) {
     check(Object.hasOwn(body, field), 'OPP_HTTP_RESPONSE_FIELD_MISSING');
-    projected[field] = body[field];
+    Object.defineProperty(projected, field, {
+      configurable: true,
+      enumerable: true,
+      value: body[field],
+      writable: true,
+    });
   }
   return projected;
 }
@@ -362,6 +372,7 @@ export function validateOppHttpReadonlyReceipt(receipt, policy, request) {
     && (receipt.responseEtag === null || identifier(receipt.responseEtag))
     && (receipt.responseLastModified === null || identifier(receipt.responseLastModified))
     && Number.isSafeInteger(receipt.responseBytes) && receipt.responseBytes >= 0
+    && receipt.responseBytes <= policy.transport.maxResponseBytes
     && (receipt.wireResponseRoot === null || HASH.test(receipt.wireResponseRoot))
     && (receipt.responseRoot === null || HASH.test(receipt.responseRoot))
     && (receipt.error === null || identifier(receipt.error)) && receipt.attempts === 1
@@ -370,13 +381,15 @@ export function validateOppHttpReadonlyReceipt(receipt, policy, request) {
     && receipt.boundary === OPP_HTTP_READONLY_BOUNDARY && HASH.test(receiptRoot)
     && (receipt.status === 'PASS'
       ? receipt.error === null && Number.isInteger(receipt.httpStatus) && receipt.httpStatus >= 200 && receipt.httpStatus <= 299
-        && HASH.test(receipt.wireResponseRoot ?? '') && HASH.test(receipt.responseRoot ?? '')
-      : receipt.error !== null)
+        && jsonContentType(receipt.responseContentType) && receipt.wireResponseRoot !== null
+        && receipt.responseRoot !== null
+      : receipt.error !== null && receipt.responseRoot === null)
     && rootHash(body) === receiptRoot, 'OPP_HTTP_RECEIPT_INVALID');
   return true;
 }
 
-export async function runOppHttpReadonly({ policy, request, fetchImpl = globalThis.fetch, environment = process.env } = {}) {
+export async function runOppHttpReadonly({ policy, request, fetchImpl = globalThis.fetch,
+  environment = process.env, execArgv = process.execArgv } = {}) {
   validateOppHttpReadonlyPolicy(policy);
   validateOppHttpReadonlyRequest(request, policy);
   if (typeof fetchImpl !== 'function') {
@@ -384,7 +397,7 @@ export async function runOppHttpReadonly({ policy, request, fetchImpl = globalTh
     return { status: receipt.status, response: null, receipt };
   }
   let ambientProxy;
-  try { ambientProxy = proxyConfigured(environment); } catch (error) {
+  try { ambientProxy = proxyConfigured(environment, execArgv); } catch (error) {
     const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', error: errorCode(error) });
     return { status: receipt.status, response: null, receipt };
   }

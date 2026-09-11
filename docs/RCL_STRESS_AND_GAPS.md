@@ -157,3 +157,7 @@ Generality：HTTPS/GET、精确 host/path、单次请求、无 ambient proxy/cre
 Regression：正例只返回固定 JSON 对象并排除未投影字段；恶意 accessor/symbol/`__proto__` 字段、编码路径、环境 proxy、响应元数据不一致、超限、非成功状态、非 JSON、原始 JSON 非对象和缺失 projection 均在 fetch 前或 receipt 生成时 fail closed；一次真实 GitHub REST 观察单独保存，不能替代 consumer acceptance。
 
 Affected K400 candidates：沿用 K057/K110/K117/K250/K257，并观察 K301/K318 的外部适配压力。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 只有本机 policy/receipt、确定性 verifier 和一次公开 REST 观察证据；PERFORMANCE 未作公网时延、吞吐或 SLA 声明；AI_GENERATE 未评估；EVIDENCE 以 alpha.15 `LOCAL_VERIFICATION.json`、Court、EVIDENCE_LEDGER 和 delivery receipt 固化。九门仍 `NOT_ADJUDICATED`。
+
+## alpha.16 Node proxy boundary stress
+
+The adapter exercises environment variables, `NODE_OPTIONS`, and `execArgv` proxy switches as fail-closed ambient transport inputs, plus literal `__proto__` projection and semantically consistent receipt roots. This remains a TINP provider/profile stress case with local deterministic evidence only; dynamic global dispatchers and public interoperability remain gaps, and no K400 cell is adjudicated.

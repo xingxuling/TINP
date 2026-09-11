@@ -197,3 +197,7 @@ projection fields. A separate public GitHub REST observation is recorded in
 observation, not an OPP consumer bridge or production network proof. OPP CHP
 and RCP remain OPP-owned semantics, and no RCL Core, RNCS world authority or
 AAF owner changed.
+
+## alpha.16 Node proxy and receipt hardening
+
+The OPP read-only adapter now denies `NODE_USE_ENV_PROXY`, `NODE_OPTIONS=--use-env-proxy`, and equivalent `execArgv` switches before fetch. Projection preserves a literal `__proto__` key as an own data property, and receipt validation binds PASS/FAIL status to response roots, media type, and bounded response bytes. These are deterministic local checks; dynamic global dispatcher mutation, a third-party OPP consumer bridge, and production authority remain unobserved.

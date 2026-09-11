@@ -87,3 +87,5 @@ content-rooted receipt, but it does not verify an OPP consumer bridge, publish
 or revoke authority, establish trusted time, or authorize any action. The
 public GitHub observation in `evidence/OPP_HTTP_READONLY_GITHUB_2026-09-11.json`
 is provider evidence only.
+
+The alpha.16 OPP transport hardening remains below authority readiness: Node proxy switches are denied, but no external dispatcher, consumer bridge, credential custody, or authority service is introduced.

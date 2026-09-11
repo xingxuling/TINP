@@ -6,6 +6,7 @@ import {
   runOppHttpReadonly,
   validateOppHttpReadonlyReceipt,
 } from '../src/opp-http-readonly.mjs';
+import { rootHash } from '../src/identity.mjs';
 
 function fixture() {
   const policy = makeOppHttpReadonlyPolicy({
@@ -139,6 +140,16 @@ test('response size, redirect/status, and media type boundaries fail closed', as
     environment: {},
   });
   assert.equal(missing.receipt.error, 'OPP_HTTP_RESPONSE_FIELD_MISSING');
+
+  const arrayResponse = await runOppHttpReadonly({
+    ...base,
+    fetchImpl: async () => new Response('["not", "an", "object"]', {
+      status: 200,
+      headers: { 'content-type': 'application/json' },
+    }),
+    environment: {},
+  });
+  assert.equal(arrayResponse.receipt.error, 'OPP_HTTP_RESPONSE_OBJECT_REQUIRED');
 });
 
 test('host and credential boundaries reject before execution', () => {
@@ -179,9 +190,73 @@ test('nested header and policy field shapes fail closed before a fetch', () => {
     policy, requestId: 'symbol', url: 'https://api.github.com/repos/xingxuling/OPP', headers: symbolHeaders,
   }), error => error.code === 'OPP_HTTP_REQUEST_HEADERS_INVALID');
   assert.throws(() => makeOppHttpReadonlyPolicy({
-    policyId: 'dangerous-field', allowedHosts: ['api.github.com'], allowedPathPrefixes: ['/repos/xingxuling/OPP'],
-    responseFields: ['__proto__'],
+    policyId: 'invalid-field', allowedHosts: ['api.github.com'], allowedPathPrefixes: ['/repos/xingxuling/OPP'],
+    responseFields: [''],
   }), error => error.code === 'OPP_HTTP_POLICY_RESPONSE_FIELDS_INVALID');
+});
+
+test('Node environment-proxy switches fail closed before fetch', async () => {
+  const { policy, request } = fixture();
+  for (const [name, options] of [
+    ['NODE_USE_ENV_PROXY', { environment: { NODE_USE_ENV_PROXY: '1' } }],
+    ['NODE_OPTIONS', { environment: { NODE_OPTIONS: '--use-env-proxy' } }],
+    ['execArgv', { environment: {}, execArgv: ['--use-env-proxy'] }],
+  ]) {
+    let calls = 0;
+    const result = await runOppHttpReadonly({
+      policy,
+      request,
+      ...options,
+      fetchImpl: async () => { calls++; throw new Error('must not run'); },
+    });
+    assert.equal(calls, 0, name);
+    assert.equal(result.status, 'FAIL_CLOSED', name);
+    assert.equal(result.receipt.error, 'OPP_HTTP_AMBIENT_PROXY_CONFIGURED', name);
+    assert.equal(validateOppHttpReadonlyReceipt(result.receipt, policy, request), true, name);
+  }
+});
+
+test('projection preserves a literal prototype key without changing the result prototype', async () => {
+  const policy = makeOppHttpReadonlyPolicy({
+    policyId: 'prototype-key',
+    allowedHosts: ['api.github.com'],
+    allowedPathPrefixes: ['/repos/xingxuling/OPP'],
+    responseFields: ['__proto__'],
+  });
+  const request = makeOppHttpReadonlyRequest({
+    policy,
+    requestId: 'prototype-key',
+    url: 'https://api.github.com/repos/xingxuling/OPP',
+  });
+  const result = await runOppHttpReadonly({
+    policy,
+    request,
+    fetchImpl: async () => new Response('{"__proto__":{"safe":true}}', {
+      status: 200,
+      headers: { 'content-type': 'application/json' },
+    }),
+    environment: {},
+  });
+  assert.equal(result.status, 'PASS');
+  assert.equal(Object.getPrototypeOf(result.response), Object.prototype);
+  assert.equal(Object.hasOwn(result.response, '__proto__'), true);
+  assert.deepEqual(result.response.__proto__, { safe: true });
+});
+
+test('receipt validator rejects a re-rooted semantically inconsistent PASS', async () => {
+  const { policy, request } = fixture();
+  const result = await runOppHttpReadonly({
+    policy,
+    request,
+    fetchImpl: async () => new Response(JSON.stringify({
+      default_branch: 'main', full_name: 'xingxuling/OPP', private: false,
+    }), { status: 200, headers: { 'content-type': 'application/json' } }),
+    environment: {},
+  });
+  const { receiptRoot, ...body } = result.receipt;
+  const forgedBody = { ...body, responseRoot: null };
+  const forged = { ...forgedBody, receiptRoot: rootHash(forgedBody) };
+  assert.throws(() => validateOppHttpReadonlyReceipt(forged, policy, request), /OPP_HTTP_RECEIPT_INVALID/);
 });
 
 test('encoded path traversal and malformed environment fail closed', async () => {

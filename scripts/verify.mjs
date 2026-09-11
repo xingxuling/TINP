@@ -343,15 +343,27 @@ if(oppHttpReadonlyProxy.status!=='FAIL_CLOSED'
   ||oppHttpReadonlyProxy.receipt.error!=='OPP_HTTP_AMBIENT_PROXY_CONFIGURED'
   ||validateOppHttpReadonlyReceipt(oppHttpReadonlyProxy.receipt,oppHttpReadonlyPolicy,oppHttpReadonlyRequest)!==true)
   throw new Error('OPP_HTTP_READONLY_PROXY_GUARD_INVALID');
+const oppHttpReadonlyNodeProxy=await runOppHttpReadonly({
+  policy:oppHttpReadonlyPolicy,
+  request:oppHttpReadonlyRequest,
+  fetchImpl:async()=>{throw new Error('OPP_HTTP_NODE_PROXY_SCENARIO_MUST_NOT_FETCH');},
+  environment:{},
+  execArgv:['--use-env-proxy'],
+});
+if(oppHttpReadonlyNodeProxy.status!=='FAIL_CLOSED'
+  ||oppHttpReadonlyNodeProxy.receipt.error!=='OPP_HTTP_AMBIENT_PROXY_CONFIGURED'
+  ||validateOppHttpReadonlyReceipt(oppHttpReadonlyNodeProxy.receipt,oppHttpReadonlyPolicy,oppHttpReadonlyRequest)!==true)
+  throw new Error('OPP_HTTP_READONLY_NODE_PROXY_GUARD_INVALID');
 const oppHttpReadonlyWitness={
   status:'VERIFIED_LOCAL_OPP_HTTP_READONLY_POLICY',
   policy:oppHttpReadonlyPolicy,
   request:oppHttpReadonlyRequest,
   pass:{status:oppHttpReadonlyPass.status,response:oppHttpReadonlyPass.response,receipt:oppHttpReadonlyPass.receipt},
   ambientProxy:{status:oppHttpReadonlyProxy.status,error:oppHttpReadonlyProxy.receipt.error,receipt:oppHttpReadonlyProxy.receipt},
+  nodeEnvironmentProxy:{status:oppHttpReadonlyNodeProxy.status,error:oppHttpReadonlyNodeProxy.receipt.error,receipt:oppHttpReadonlyNodeProxy.receipt},
   externalNetwork:'NOT_RUN',
   authorityGranted:false,
-  boundary:'Deterministic local policy/receipt exercise only; one public GitHub request is recorded separately and does not prove OPP consumer interoperability or production network availability.',
+  boundary:'Deterministic local policy/receipt exercise only; ambient proxy variables and known Node environment-proxy switches are denied. One public GitHub request is recorded separately and does not prove OPP consumer interoperability or production network availability.',
 };
 fs.writeFileSync(path.join(out,'opp-http-readonly.json'),JSON.stringify(oppHttpReadonlyWitness,null,2));
 oppHttpReadonlyScenarios.push(oppHttpReadonlyWitness);

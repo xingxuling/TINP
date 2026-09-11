@@ -20,7 +20,7 @@ This pin is intentionally explicit. It is not a claim that the vendored snapshot
 - exact host and path-prefix allowlists;
 - a bounded timeout and response byte limit;
 - redirects denied;
-- ambient proxy variables denied;
+- ambient proxy variables and known Node environment-proxy switches denied;
 - no credentials or credential-like request headers;
 - exactly one fetch attempt;
 - JSON response media type;
@@ -49,7 +49,7 @@ Exit `0` means this concrete request produced a `PASS` receipt. Exit `5` means a
 
 The adapter can establish TINP-owned transport-policy behavior and one concrete host observation. It does not establish OPP third-party interoperability until an OPP consumer accepts the adapter output through an explicit bridge and both receipts are bound. It does not establish public-network availability, cross-host behavior, proxy support, production credentials, certificate lifecycle, SLA, or authority.
 
-## alpha.15 hardening and verification
+## alpha.16 hardening and verification
 
 The adapter rejects accessor and symbol properties in policy, request headers,
 environment and response metadata; rejects prototype-sensitive projection field
@@ -57,6 +57,8 @@ names and encoded slash/dot/backslash path segments; snapshots response status
 and success metadata before reading the bounded body; and requires receipt
 consistency for both `PASS` and `FAIL_CLOSED`. The deterministic verifier stores
 the local pass and ambient-proxy rejection under
-`evidence/0.1.0-alpha.15/opp-http-readonly.json`. The separately captured
+`evidence/0.1.0-alpha.16/opp-http-readonly.json`. The separately captured
 GitHub result remains a single public observation and is not used as an
 authority or interoperability gate.
+
+The alpha.16 verifier also rejects `NODE_USE_ENV_PROXY`, `NODE_OPTIONS=--use-env-proxy`, and `execArgv` proxy switches as ambient proxy configuration. Dynamic global dispatcher changes remain outside this adapter's observation boundary.
