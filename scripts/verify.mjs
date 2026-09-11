@@ -8,7 +8,7 @@ import {InternetSuite} from '../src/suite.mjs';
 import {verifyLedger} from '../src/evidence.mjs';
 import {makeOppHttpReadonlyPolicy,makeOppHttpReadonlyRequest,runOppHttpReadonly,validateOppHttpReadonlyReceipt} from '../src/opp-http-readonly.mjs';
 import {acceptOppHttpReadonlyConsumer,acceptOppHttpReadonlyConsumerBundle,makeOppHttpConsumerBridgeBundle,makeOppHttpConsumerBridgePlan,makeOppHttpConsumerContract,validateOppHttpConsumerBridgeBundle,validateOppHttpConsumerBridgeReceipt} from '../src/opp-http-consumer-bridge.mjs';
-import {validateOppHttpConsumerLiveResult} from '../src/opp-http-consumer-live.mjs';
+import {validateOppHttpConsumerLiveResult,makeOppHttpConsumerLiveVerification} from '../src/opp-http-consumer-live.mjs';
 import {negotiateOpp} from '../adapters/opp-bridge.mjs';
 import {makeHello} from '../vendor/tinp/src/index.mjs';
 
@@ -392,11 +392,23 @@ if(oppHttpConsumerBundleAcceptance.status!=='PASS'
   throw new Error('OPP_HTTP_CONSUMER_BUNDLE_INVALID');
 const externalLivePath=path.join(root,'evidence','OPP_HTTP_CONSUMER_LIVE_GITHUB_2026-09-12.json');
 let externalLiveValidation={status:'NOT_FOUND',networkRequests:0,file:relative(externalLivePath)};
+const externalLiveOfflineVerificationPath=path.join(out,'opp-http-consumer-live-verify.json');
+let externalLiveOfflineVerification={status:'NOT_FOUND',networkRequests:0,file:relative(externalLiveOfflineVerificationPath)};
 if(fs.existsSync(externalLivePath)){
-  const externalPolicy=JSON.parse(fs.readFileSync(path.join(root,'examples','opp-http-readonly','github-opp-policy.json'),'utf8'));
-  const externalRequest=JSON.parse(fs.readFileSync(path.join(root,'examples','opp-http-readonly','github-opp-request.json'),'utf8'));
-  const externalResult=JSON.parse(fs.readFileSync(externalLivePath,'utf8'));
+  const externalPolicyPath=path.join(root,'examples','opp-http-readonly','github-opp-policy.json');
+  const externalRequestPath=path.join(root,'examples','opp-http-readonly','github-opp-request.json');
+  const externalPolicyBytes=fs.readFileSync(externalPolicyPath);
+  const externalRequestBytes=fs.readFileSync(externalRequestPath);
+  const externalResultBytes=fs.readFileSync(externalLivePath);
+  const externalPolicy=JSON.parse(externalPolicyBytes.toString('utf8'));
+  const externalRequest=JSON.parse(externalRequestBytes.toString('utf8'));
+  const externalResult=JSON.parse(externalResultBytes.toString('utf8'));
   validateOppHttpConsumerLiveResult(externalResult,{policy:externalPolicy,request:externalRequest});
+  const offlineVerification=makeOppHttpConsumerLiveVerification({policy:externalPolicy,request:externalRequest,result:externalResult,policyBytes:externalPolicyBytes,requestBytes:externalRequestBytes,resultBytes:externalResultBytes});
+  fs.writeFileSync(externalLiveOfflineVerificationPath,JSON.stringify(offlineVerification,null,2));
+  externalLiveOfflineVerification={status:'PASS',format:offlineVerification.format,resultStatus:offlineVerification.resultStatus,networkRequests:0,
+    file:relative(externalLiveOfflineVerificationPath),verificationSha256:sha(fs.readFileSync(externalLiveOfflineVerificationPath)),
+    resultFileSha256:offlineVerification.inputs.resultFileSha256};
   externalLiveValidation={status:'PASS',resultStatus:externalResult.status,httpStatus:externalResult.observation?.receipt?.httpStatus ?? null,
     networkRequests:0,file:relative(externalLivePath),resultSha256:sha(fs.readFileSync(externalLivePath))};
 }
@@ -409,6 +421,7 @@ const oppHttpReadonlyWitness={
   nodeEnvironmentProxy:{status:oppHttpReadonlyNodeProxy.status,error:oppHttpReadonlyNodeProxy.receipt.error,receipt:oppHttpReadonlyNodeProxy.receipt},
   consumerBridge:{status:oppHttpConsumerAcceptance.status,response:oppHttpConsumerAcceptance.response,receipt:oppHttpConsumerAcceptance.receipt,plan:oppHttpConsumerPlan,consumerContract:oppHttpConsumerContract,bundle:oppHttpConsumerBundle,bundleReplay:{status:oppHttpConsumerBundleAcceptance.status,response:oppHttpConsumerBundleAcceptance.response,receipt:oppHttpConsumerBundleAcceptance.receipt}},
   externalLiveValidation,
+  externalLiveOfflineVerification,
   externalNetwork:'NOT_RUN',
   authorityGranted:false,
   boundary:'Deterministic local policy/receipt exercise only; ambient proxy variables and known Node environment-proxy switches are denied. One public GitHub request is recorded separately and does not prove OPP consumer interoperability or production network availability.',

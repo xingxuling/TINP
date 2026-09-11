@@ -1,6 +1,6 @@
 # TaoWind 新互联网协议套件
 
-v0.1.0-alpha.27 是一个可运行的内部工程候选：普通用户输入一句能力请求，系统在三个独立本机进程之间自动发现、调用 OPP 协商契约、验证权限、建立会话、经 A→B→C 传输并返回带证据的执行结果。authority registry、多镜像分发、历史收敛、本机历史 store、外部收敛见证、跨进程 public-history replay、TCP/TLS 1.3 TINP DATA loopback state transfer、可恢复分块传输以及只读 OPP HTTP 观察适配器是可选的离线签名桥接和压力验证；alpha.21 提供 live OPP consumer orchestration；alpha.22 增加 live result validator 与 CLI fail-closed 回归；alpha.23 固定 live result exact shape；alpha.24 增加保存结果的离线 verify CLI；alpha.25 将该复核接入完整 verify witness；alpha.26 支持把离线验证结果独占写入回执文件；alpha.27 将 policy/request/result 的语义根和原始文件哈希绑定到离线验证回执，并提供回执自身校验。
+v0.1.0-alpha.28 是一个可运行的内部工程候选：普通用户输入一句能力请求，系统在三个独立本机进程之间自动发现、调用 OPP 协商契约、验证权限、建立会话、经 A→B→C 传输并返回带证据的执行结果。authority registry、多镜像分发、历史收敛、本机历史 store、外部收敛见证、跨进程 public-history replay、TCP/TLS 1.3 TINP DATA loopback state transfer、可恢复分块传输以及只读 OPP HTTP 观察适配器是可选的离线签名桥接和压力验证；alpha.21 提供 live OPP consumer orchestration；alpha.22 增加 live result validator 与 CLI fail-closed 回归；alpha.23 固定 live result exact shape；alpha.24 增加保存结果的离线 verify CLI；alpha.25 将该复核接入完整 verify witness；alpha.26 支持把离线验证结果独占写入回执文件；alpha.27 将 policy/request/result 的语义根和原始文件哈希绑定到离线验证回执，并提供回执自身校验；alpha.28 将该 v2 回执接入完整 verify witness 并归档。
 
 本版只有一个刻意收窄的能力：精确统计 Unicode 码点数量。它可以验证主体、权限、路由、迁移、退化和回执能否共同工作；它不代表整个新互联网已经实现。
 
@@ -308,7 +308,7 @@ alpha.27 的离线复核入口：
 npm run opp-http-consumer-live -- --verify <policy.json> <request.json> <result.json> --out <new-verification-file.json>
 ```
 
-输出格式为 `twni.opp-http-consumer-live-verify.v2`，除 PASS、结果状态和 `networkRequests: 0` 外，还固定 policy/request/acceptance 语义根及三份输入文件的 SHA-256。`validateOppHttpConsumerLiveVerification` 会在写出前复验这些绑定；它仍是离线本机证据，不代表第三方 consumer 或生产 authority。
+输出格式为 `twni.opp-http-consumer-live-verify.v2`，除 PASS、结果状态和 `networkRequests: 0` 外，还固定 policy/request/acceptance 语义根及三份输入文件的 SHA-256。`validateOppHttpConsumerLiveVerification` 会在写出前复验这些绑定；完整 `verify` 会对仓库内保存的公开 live 结果生成同格式归档回执并记录其哈希。它仍是离线本机证据，不代表第三方 consumer 或生产 authority。
 
 
 

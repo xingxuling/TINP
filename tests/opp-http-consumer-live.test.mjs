@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { runOppHttpConsumerLive, validateOppHttpConsumerLiveResult, validateOppHttpConsumerLiveVerification } from '../src/opp-http-consumer-live.mjs';
+import { runOppHttpConsumerLive, validateOppHttpConsumerLiveResult, validateOppHttpConsumerLiveVerification, makeOppHttpConsumerLiveVerification } from '../src/opp-http-consumer-live.mjs';
 import { makeOppHttpReadonlyPolicy, makeOppHttpReadonlyRequest } from '../src/opp-http-readonly.mjs';
 
 function fixture() {
@@ -159,6 +159,10 @@ test('live consumer offline verify CLI revalidates a saved result without networ
     policy, request, result,
     policyBytes: fs.readFileSync(policyFile), requestBytes: fs.readFileSync(requestFile), resultBytes: fs.readFileSync(resultFile),
   }), true);
+  assert.deepEqual(makeOppHttpConsumerLiveVerification({
+    policy, request, result,
+    policyBytes: fs.readFileSync(policyFile), requestBytes: fs.readFileSync(requestFile), resultBytes: fs.readFileSync(resultFile),
+  }), verification);
   assert.throws(() => validateOppHttpConsumerLiveVerification({ ...verification, inputs: { ...verification.inputs, resultFileSha256: '0'.repeat(64) } }, { policy, request, result, policyBytes: fs.readFileSync(policyFile), requestBytes: fs.readFileSync(requestFile), resultBytes: fs.readFileSync(resultFile) }), /OPP_HTTP_CONSUMER_LIVE_VERIFY_FILE_HASH_INVALID/);
   const duplicate = spawnSync(process.execPath, [script, '--verify', policyFile, requestFile, resultFile, '--out', verificationFile], {
     encoding: 'utf8',

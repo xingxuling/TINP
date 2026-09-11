@@ -1,6 +1,5 @@
 import fs from 'node:fs';
-import { runOppHttpConsumerLive, validateOppHttpConsumerLiveResult, validateOppHttpConsumerLiveVerification, OPP_HTTP_CONSUMER_LIVE_VERIFY_FORMAT, OPP_HTTP_CONSUMER_LIVE_VERIFY_BOUNDARY } from '../src/opp-http-consumer-live.mjs';
-import { createHash } from 'node:crypto';
+import { runOppHttpConsumerLive, validateOppHttpConsumerLiveResult, makeOppHttpConsumerLiveVerification } from '../src/opp-http-consumer-live.mjs';
 
 function usage() {
   process.stderr.write('usage: node scripts/opp-http-consumer-live.mjs <policy.json> <request.json> [--out <result.json>]\n');
@@ -30,23 +29,7 @@ if (!validArgs) {
       const request = requestInput.value;
       const result = resultInput.value;
       validateOppHttpConsumerLiveResult(result, { policy, request });
-      const verification = {
-        format: OPP_HTTP_CONSUMER_LIVE_VERIFY_FORMAT,
-        status: 'PASS',
-        resultStatus: result.status,
-        networkRequests: 0,
-        authorityGranted: false,
-        inputs: {
-          policyRoot: policy.policyRoot,
-          requestRoot: request.requestRoot,
-          acceptanceRoot: result.acceptance?.receipt?.acceptanceRoot ?? null,
-          policyFileSha256: createHash('sha256').update(policyInput.bytes).digest('hex'),
-          requestFileSha256: createHash('sha256').update(requestInput.bytes).digest('hex'),
-          resultFileSha256: createHash('sha256').update(resultInput.bytes).digest('hex'),
-        },
-        boundary: OPP_HTTP_CONSUMER_LIVE_VERIFY_BOUNDARY,
-      };
-      validateOppHttpConsumerLiveVerification(verification, { policy, request, result, policyBytes: policyInput.bytes, requestBytes: requestInput.bytes, resultBytes: resultInput.bytes });
+      const verification = makeOppHttpConsumerLiveVerification({ policy, request, result, policyBytes: policyInput.bytes, requestBytes: requestInput.bytes, resultBytes: resultInput.bytes });
       const serialized = `${JSON.stringify(verification, null, 2)}\n`;
       if (args.length === 6) fs.writeFileSync(args[5], serialized, { encoding: 'utf8', flag: 'wx' });
       else process.stdout.write(serialized);
