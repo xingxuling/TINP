@@ -6,6 +6,7 @@ import {createHash} from 'node:crypto';
 import {performance} from 'node:perf_hooks';
 import {InternetSuite} from '../src/suite.mjs';
 import {verifyLedger} from '../src/evidence.mjs';
+import {makeOppHttpReadonlyPolicy,makeOppHttpReadonlyRequest,runOppHttpReadonly,validateOppHttpReadonlyReceipt} from '../src/opp-http-readonly.mjs';
 
 const root=fileURLToPath(new URL('..',import.meta.url));process.chdir(root);
 const version=JSON.parse(fs.readFileSync('package.json','utf8')).version;
@@ -303,6 +304,57 @@ const authorityRegistryResumableTransferWitness={...authorityRegistryResumableTr
   scope:'Actual TINP DATA framing over TLS 1.3 loopback with a durable public-state chunk journal; receiver interruption, restart, duplicate replay and chunk/manifest conflicts are exercised across independent local processes and directories; not two physical hosts, production certificate custody, trusted time, online authority or production conflict consensus.'};
 fs.writeFileSync(path.join(out,'authority-registry-resumable-transfer.json'),JSON.stringify(authorityRegistryResumableTransferWitness,null,2));
 authorityRegistryResumableTransferScenarios.push(authorityRegistryResumableTransferWitness);
+const oppHttpReadonlyScenarios=[];
+const oppHttpReadonlyPolicy=makeOppHttpReadonlyPolicy({
+  policyId:'verify:opp-http-readonly',
+  allowedHosts:['api.github.com'],
+  allowedPathPrefixes:['/repos/xingxuling/OPP'],
+  responseFields:['default_branch','full_name','private'],
+});
+const oppHttpReadonlyRequest=makeOppHttpReadonlyRequest({
+  policy:oppHttpReadonlyPolicy,
+  requestId:'verify-opp-http-readonly',
+  url:'https://api.github.com/repos/xingxuling/OPP',
+  headers:{accept:'application/vnd.github+json','user-agent':'TINP-verify/0.1'},
+});
+const oppHttpReadonlyPass=await runOppHttpReadonly({
+  policy:oppHttpReadonlyPolicy,
+  request:oppHttpReadonlyRequest,
+  fetchImpl:async()=>new Response(JSON.stringify({default_branch:'main',full_name:'xingxuling/OPP',private:false,ignored:'not projected'}),{
+    status:200,
+    headers:{'content-type':'application/json; charset=utf-8',etag:'verify-etag','last-modified':'2026-09-11T00:00:00Z'},
+  }),
+  environment:{},
+});
+if(oppHttpReadonlyPass.status!=='PASS'
+  ||oppHttpReadonlyPass.response?.full_name!=='xingxuling/OPP'
+  ||oppHttpReadonlyPass.response?.default_branch!=='main'
+  ||oppHttpReadonlyPass.response?.private!==false
+  ||Object.hasOwn(oppHttpReadonlyPass.response,'ignored')
+  ||validateOppHttpReadonlyReceipt(oppHttpReadonlyPass.receipt,oppHttpReadonlyPolicy,oppHttpReadonlyRequest)!==true)
+  throw new Error('OPP_HTTP_READONLY_LOCAL_PASS_INVALID');
+const oppHttpReadonlyProxy=await runOppHttpReadonly({
+  policy:oppHttpReadonlyPolicy,
+  request:oppHttpReadonlyRequest,
+  fetchImpl:async()=>{throw new Error('OPP_HTTP_PROXY_SCENARIO_MUST_NOT_FETCH');},
+  environment:{HTTPS_PROXY:'http://ambient.invalid'},
+});
+if(oppHttpReadonlyProxy.status!=='FAIL_CLOSED'
+  ||oppHttpReadonlyProxy.receipt.error!=='OPP_HTTP_AMBIENT_PROXY_CONFIGURED'
+  ||validateOppHttpReadonlyReceipt(oppHttpReadonlyProxy.receipt,oppHttpReadonlyPolicy,oppHttpReadonlyRequest)!==true)
+  throw new Error('OPP_HTTP_READONLY_PROXY_GUARD_INVALID');
+const oppHttpReadonlyWitness={
+  status:'VERIFIED_LOCAL_OPP_HTTP_READONLY_POLICY',
+  policy:oppHttpReadonlyPolicy,
+  request:oppHttpReadonlyRequest,
+  pass:{status:oppHttpReadonlyPass.status,response:oppHttpReadonlyPass.response,receipt:oppHttpReadonlyPass.receipt},
+  ambientProxy:{status:oppHttpReadonlyProxy.status,error:oppHttpReadonlyProxy.receipt.error,receipt:oppHttpReadonlyProxy.receipt},
+  externalNetwork:'NOT_RUN',
+  authorityGranted:false,
+  boundary:'Deterministic local policy/receipt exercise only; one public GitHub request is recorded separately and does not prove OPP consumer interoperability or production network availability.',
+};
+fs.writeFileSync(path.join(out,'opp-http-readonly.json'),JSON.stringify(oppHttpReadonlyWitness,null,2));
+oppHttpReadonlyScenarios.push(oppHttpReadonlyWitness);
 const mismatches=tracked.filter(x=>sha(fs.readFileSync(x.path))!==x.sha256);
 if(mismatches.length)throw new Error('Source changed during verification: '+JSON.stringify(mismatches));
 const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CANDIDATE',startedAt,finishedAt:new Date().toISOString(),
@@ -310,7 +362,7 @@ const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CAND
   node:process.version,platform:process.platform,architecture:process.arch,
   tests:{command:result.command,exitCode:result.code,count:Number(result.stdout.match(/# tests (\d+)/)?.[1]),passed:Number(result.stdout.match(/# pass (\d+)/)?.[1]),failed:Number(result.stdout.match(/# fail (\d+)/)?.[1]),
     stdout:relative(path.join(out,'tests.tap')),stdoutSha256:sha(Buffer.from(result.stdout)),stderr:relative(path.join(out,'tests.stderr.txt'))},
-  scenarios,recoveryScenarios,pendingScenarios,operatorScenarios,recoveryAnchorScenarios,authorityRegistryScenarios,authorityRegistryDistributionScenarios,authorityRegistryConvergenceScenarios,authorityRegistryConvergenceStoreScenarios,authorityRegistryConvergenceWitnessScenarios,authorityRegistryCrossHostReplayScenarios,authorityRegistryLoopbackTransferScenarios,authorityRegistryTlsLoopbackTransferScenarios,authorityRegistryResumableTransferScenarios,sourceFiles:tracked,sourceTreeRoot:sha(Buffer.from(JSON.stringify(tracked))),
+  scenarios,recoveryScenarios,pendingScenarios,operatorScenarios,recoveryAnchorScenarios,authorityRegistryScenarios,authorityRegistryDistributionScenarios,authorityRegistryConvergenceScenarios,authorityRegistryConvergenceStoreScenarios,authorityRegistryConvergenceWitnessScenarios,authorityRegistryCrossHostReplayScenarios,authorityRegistryLoopbackTransferScenarios,authorityRegistryTlsLoopbackTransferScenarios,authorityRegistryResumableTransferScenarios,oppHttpReadonlyScenarios,sourceFiles:tracked,sourceTreeRoot:sha(Buffer.from(JSON.stringify(tracked))),
   k400Verdict:'NOT_ADJUDICATED',production:'NOT_DEPLOYED',publicNetwork:'NOT_RUN',
   boundaries:['Ephemeral local trust fixture; no production identity enrollment or TLS confidentiality',
     'Only bounded pure read-only code-point counting; not arbitrary actions or exactly-once external side effects',
@@ -320,6 +372,7 @@ const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CAND
     'Loopback transfer evidence uses existing TINP DATA framing over one TCP loopback interface and existing convergence-store append validators; it does not prove physical cross-host delivery, encrypted transport, trusted time or production conflict consensus',
     'TLS loopback evidence uses caller-pinned ephemeral certificates over one local TLS 1.3 interface; it does not prove production certificate custody, physical cross-host enrollment, trusted time or production conflict consensus',
     'Resumable transfer evidence uses an atomic local public chunk journal and receiver restart on one host; it does not prove durable physical cross-device convergence, trusted time, production certificate custody or production conflict consensus',
+    'OPP HTTP read-only evidence uses an explicit HTTPS/GET host/path policy, one local deterministic response and a separate public GitHub observation; it does not prove OPP consumer interoperability, public availability, credentials or authority',
     'No browser replacement, application-seed cross-platform runtime, VPN or entire P00-P15 completion']};
 fs.writeFileSync(path.join(out,'LOCAL_VERIFICATION.json'),JSON.stringify(summary,null,2));
 console.log(JSON.stringify({status:summary.status,tests:summary.tests.count,passed:summary.tests.passed,scenarios:scenarios.map(x=>({transport:x.transport,pids:x.pids,path:x.firstPath,performance:x.boundedPerformance}))},null,2));

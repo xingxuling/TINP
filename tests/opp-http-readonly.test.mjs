@@ -165,3 +165,61 @@ test('host and credential boundaries reject before execution', () => {
     headers: { authorization: 'Bearer secret' },
   }), /OPP_HTTP_POLICY_HEADERS_INVALID/);
 });
+
+test('nested header and policy field shapes fail closed before a fetch', () => {
+  const { policy } = fixture();
+  const accessorHeaders = {};
+  Object.defineProperty(accessorHeaders, 'accept', { enumerable: true, get() { throw new Error('getter'); } });
+  assert.throws(() => makeOppHttpReadonlyRequest({
+    policy, requestId: 'accessor', url: 'https://api.github.com/repos/xingxuling/OPP', headers: accessorHeaders,
+  }), error => error.code === 'OPP_HTTP_REQUEST_HEADERS_INVALID');
+  const symbolHeaders = { accept: 'application/json' };
+  symbolHeaders[Symbol('unexpected')] = 'value';
+  assert.throws(() => makeOppHttpReadonlyRequest({
+    policy, requestId: 'symbol', url: 'https://api.github.com/repos/xingxuling/OPP', headers: symbolHeaders,
+  }), error => error.code === 'OPP_HTTP_REQUEST_HEADERS_INVALID');
+  assert.throws(() => makeOppHttpReadonlyPolicy({
+    policyId: 'dangerous-field', allowedHosts: ['api.github.com'], allowedPathPrefixes: ['/repos/xingxuling/OPP'],
+    responseFields: ['__proto__'],
+  }), error => error.code === 'OPP_HTTP_POLICY_RESPONSE_FIELDS_INVALID');
+});
+
+test('encoded path traversal and malformed environment fail closed', async () => {
+  const { policy } = fixture();
+  assert.throws(() => makeOppHttpReadonlyRequest({
+    policy, requestId: 'encoded', url: 'https://api.github.com/repos/xingxuling/OPP/%2Fsecrets',
+  }), error => error.code === 'OPP_HTTP_REQUEST_PATH_ENCODING_INVALID');
+  const request = makeOppHttpReadonlyRequest({
+    policy, requestId: 'environment', url: 'https://api.github.com/repos/xingxuling/OPP',
+  });
+  const environment = {};
+  Object.defineProperty(environment, 'HTTPS_PROXY', { enumerable: true, get() { throw new Error('getter'); } });
+  const result = await runOppHttpReadonly({
+    policy, request, environment, fetchImpl: async () => { throw new Error('must not run'); },
+  });
+  assert.equal(result.status, 'FAIL_CLOSED');
+  assert.equal(result.receipt.error, 'OPP_HTTP_ENVIRONMENT_INVALID');
+  assert.equal(validateOppHttpReadonlyReceipt(result.receipt, policy, request), true);
+});
+
+test('successful responses require a JSON object and consistent response metadata', async () => {
+  const { policy, request } = fixture();
+  const primitive = await runOppHttpReadonly({
+    policy, request,
+    fetchImpl: async () => new Response('true', { status: 200, headers: { 'content-type': 'application/json' } }),
+    environment: {},
+  });
+  assert.equal(primitive.status, 'FAIL_CLOSED');
+  assert.equal(primitive.receipt.error, 'OPP_HTTP_RESPONSE_OBJECT_REQUIRED');
+  const inconsistent = await runOppHttpReadonly({
+    policy, request,
+    fetchImpl: async () => ({
+      status: 200, ok: false,
+      headers: { get: name => name === 'content-type' ? 'application/json' : null },
+      body: null,
+    }),
+    environment: {},
+  });
+  assert.equal(inconsistent.status, 'FAIL_CLOSED');
+  assert.equal(inconsistent.receipt.error, 'OPP_HTTP_RESPONSE_INVALID');
+});

@@ -16,6 +16,7 @@ const REQUEST_KEYS = ['format', 'requestId', 'policyRoot', 'method', 'url', 'hea
 const RECEIPT_KEYS = ['format', 'policyRoot', 'requestRoot', 'status', 'httpStatus', 'responseContentType', 'responseEtag', 'responseLastModified', 'responseBytes', 'wireResponseRoot', 'responseRoot', 'error', 'attempts', 'redirectsFollowed', 'ambientProxyUsed', 'ambientCredentialsUsed', 'authorityGranted', 'boundary', 'receiptRoot'];
 const PROXY_ENVIRONMENT_KEYS = ['HTTP_PROXY', 'HTTPS_PROXY', 'ALL_PROXY', 'http_proxy', 'https_proxy', 'all_proxy'];
 const FORBIDDEN_HEADERS = new Set(['authorization', 'cookie', 'proxy-authorization', 'x-api-key', 'x-auth-token']);
+const FORBIDDEN_FIELD_NAMES = new Set(['__proto__', 'constructor', 'prototype']);
 
 const fail = code => { throw new ProtocolError(code); };
 const check = (ok, code) => { if (!ok) fail(code); };
@@ -39,14 +40,35 @@ function exact(value, fields, code) {
   }
 }
 
+function dataKeys(value, code) {
+  check(plain(value), code);
+  let keys;
+  try { keys = Reflect.ownKeys(value); } catch { fail(code); }
+  check(keys.every(key => typeof key === 'string'), code);
+  for (const key of keys) {
+    let descriptor;
+    try { descriptor = Object.getOwnPropertyDescriptor(value, key); } catch { fail(code); }
+    check(descriptor && Object.hasOwn(descriptor, 'value') && descriptor.enumerable, code);
+  }
+  return keys;
+}
+
 function strictArray(value, code) {
   check(Array.isArray(value), code);
   let keys;
-  try { keys = Reflect.ownKeys(value); } catch { fail(code); }
-  check(Object.getPrototypeOf(value) === Array.prototype && keys.length === value.length + 1
-    && keys.includes('length') && keys.every(key => key === 'length' || (typeof key === 'string' && /^\d+$/.test(key) && Number(key) < value.length)), code);
-  for (let index = 0; index < value.length; index++) {
-    const descriptor = Object.getOwnPropertyDescriptor(value, String(index));
+  let length;
+  let prototype;
+  try {
+    keys = Reflect.ownKeys(value);
+    length = value.length;
+    prototype = Object.getPrototypeOf(value);
+  } catch { fail(code); }
+  check(prototype === Array.prototype && Number.isSafeInteger(length) && length >= 0
+    && keys.length === length + 1 && keys.includes('length')
+    && keys.every(key => key === 'length' || (typeof key === 'string' && /^\d+$/.test(key) && Number(key) < length)), code);
+  for (let index = 0; index < length; index++) {
+    let descriptor;
+    try { descriptor = Object.getOwnPropertyDescriptor(value, String(index)); } catch { fail(code); }
     check(descriptor && Object.hasOwn(descriptor, 'value') && descriptor.enumerable, code);
   }
 }
@@ -54,6 +76,10 @@ function strictArray(value, code) {
 function identifier(value) {
   return typeof value === 'string' && value.length > 0 && value.length <= 256
     && value.trim() === value && !/[\u0000-\u001f\u007f]/.test(value);
+}
+
+function fieldName(value) {
+  return identifier(value) && !FORBIDDEN_FIELD_NAMES.has(value);
 }
 
 function headerName(value) {
@@ -121,7 +147,7 @@ function validatePolicyBody(policy) {
   sortedUnique(policy.transport.allowedPathPrefixes, 'OPP_HTTP_POLICY_PATHS_UNSORTED');
   for (const header of policy.transport.allowedRequestHeaders) check(headerName(header) && !FORBIDDEN_HEADERS.has(header), 'OPP_HTTP_POLICY_HEADERS_INVALID');
   sortedUnique(policy.transport.allowedRequestHeaders, 'OPP_HTTP_POLICY_HEADERS_UNSORTED');
-  for (const field of policy.transport.responseFields) check(identifier(field), 'OPP_HTTP_POLICY_RESPONSE_FIELDS_INVALID');
+  for (const field of policy.transport.responseFields) check(fieldName(field), 'OPP_HTTP_POLICY_RESPONSE_FIELDS_INVALID');
   sortedUnique(policy.transport.responseFields, 'OPP_HTTP_POLICY_RESPONSE_FIELDS_UNSORTED');
   check(HASH.test(policy.policyRoot), 'OPP_HTTP_POLICY_ROOT_INVALID');
 }
@@ -183,6 +209,7 @@ function parseUrl(url, policy) {
   check(parsed.protocol === `${policy.transport.scheme}:` && !parsed.username && !parsed.password && !parsed.hash,
     'OPP_HTTP_REQUEST_URL_INVALID');
   check(!parsed.port || parsed.port === '443', 'OPP_HTTP_REQUEST_PORT_INVALID');
+  check(!/%(?:2f|2e|5c)/i.test(parsed.pathname), 'OPP_HTTP_REQUEST_PATH_ENCODING_INVALID');
   check(policy.transport.allowedHosts.includes(parsed.hostname), 'OPP_HTTP_REQUEST_HOST_DENIED');
   check(policy.transport.allowedPathPrefixes.some(prefix => parsed.pathname === prefix || parsed.pathname.startsWith(`${prefix}/`)),
     'OPP_HTTP_REQUEST_PATH_DENIED');
@@ -190,8 +217,8 @@ function parseUrl(url, policy) {
 }
 
 function validateHeaders(headers, policy) {
-  check(plain(headers), 'OPP_HTTP_REQUEST_HEADERS_INVALID');
-  for (const [name, value] of Object.entries(headers)) {
+  for (const name of dataKeys(headers, 'OPP_HTTP_REQUEST_HEADERS_INVALID')) {
+    const value = Object.getOwnPropertyDescriptor(headers, name).value;
     const normalized = name.toLowerCase();
     check(name === normalized && headerName(name) && policy.transport.allowedRequestHeaders.includes(name)
       && !FORBIDDEN_HEADERS.has(normalized) && headerValue(value), 'OPP_HTTP_REQUEST_HEADERS_INVALID');
@@ -200,13 +227,14 @@ function validateHeaders(headers, policy) {
 
 export function makeOppHttpReadonlyRequest({ policy, requestId, url, headers = {} } = {}) {
   validateOppHttpReadonlyPolicy(policy);
+  validateHeaders(headers, policy);
   const body = {
     format: OPP_HTTP_READONLY_REQUEST_FORMAT,
     requestId,
     policyRoot: policy.policyRoot,
     method: policy.transport.method,
     url,
-    headers: Object.fromEntries(Object.entries(headers).map(([name, value]) => [name.toLowerCase(), value])
+    headers: Object.fromEntries(dataKeys(headers, 'OPP_HTTP_REQUEST_HEADERS_INVALID').map(name => [name, Object.getOwnPropertyDescriptor(headers, name).value])
       .sort(([left], [right]) => left.localeCompare(right))),
   };
   validateRequestBody(body, policy);
@@ -232,7 +260,20 @@ export function validateOppHttpReadonlyRequest(request, policy) {
 }
 
 function proxyConfigured(environment) {
-  return PROXY_ENVIRONMENT_KEYS.some(name => typeof environment?.[name] === 'string' && environment[name].length > 0);
+  check(environment !== null && typeof environment === 'object' && !Array.isArray(environment), 'OPP_HTTP_ENVIRONMENT_INVALID');
+  let keys;
+  try { keys = Reflect.ownKeys(environment); } catch { fail('OPP_HTTP_ENVIRONMENT_INVALID'); }
+  check(keys.every(key => typeof key === 'string'), 'OPP_HTTP_ENVIRONMENT_INVALID');
+  for (const key of keys) {
+    let descriptor;
+    try { descriptor = Object.getOwnPropertyDescriptor(environment, key); } catch { fail('OPP_HTTP_ENVIRONMENT_INVALID'); }
+    check(descriptor && Object.hasOwn(descriptor, 'value') && descriptor.enumerable, 'OPP_HTTP_ENVIRONMENT_INVALID');
+  }
+  return PROXY_ENVIRONMENT_KEYS.some(name => {
+    if (!keys.includes(name)) return false;
+    const value = Object.getOwnPropertyDescriptor(environment, name).value;
+    return typeof value === 'string' && value.length > 0;
+  });
 }
 
 function errorCode(error) {
@@ -273,8 +314,8 @@ function jsonContentType(value) {
 }
 
 function projectResponse(body, fields) {
-  if (fields.length === 0) return body;
   check(plain(body), 'OPP_HTTP_RESPONSE_OBJECT_REQUIRED');
+  if (fields.length === 0) return body;
   const projected = {};
   for (const field of fields) {
     check(Object.hasOwn(body, field), 'OPP_HTTP_RESPONSE_FIELD_MISSING');
@@ -327,6 +368,10 @@ export function validateOppHttpReadonlyReceipt(receipt, policy, request) {
     && receipt.redirectsFollowed === false && receipt.ambientProxyUsed === false
     && receipt.ambientCredentialsUsed === false && receipt.authorityGranted === false
     && receipt.boundary === OPP_HTTP_READONLY_BOUNDARY && HASH.test(receiptRoot)
+    && (receipt.status === 'PASS'
+      ? receipt.error === null && Number.isInteger(receipt.httpStatus) && receipt.httpStatus >= 200 && receipt.httpStatus <= 299
+        && HASH.test(receipt.wireResponseRoot ?? '') && HASH.test(receipt.responseRoot ?? '')
+      : receipt.error !== null)
     && rootHash(body) === receiptRoot, 'OPP_HTTP_RECEIPT_INVALID');
   return true;
 }
@@ -338,7 +383,12 @@ export async function runOppHttpReadonly({ policy, request, fetchImpl = globalTh
     const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', error: 'OPP_HTTP_FETCH_UNAVAILABLE' });
     return { status: receipt.status, response: null, receipt };
   }
-  if (proxyConfigured(environment)) {
+  let ambientProxy;
+  try { ambientProxy = proxyConfigured(environment); } catch (error) {
+    const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', error: errorCode(error) });
+    return { status: receipt.status, response: null, receipt };
+  }
+  if (ambientProxy) {
     const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', error: 'OPP_HTTP_AMBIENT_PROXY_CONFIGURED' });
     return { status: receipt.status, response: null, receipt };
   }
@@ -359,35 +409,55 @@ export async function runOppHttpReadonly({ policy, request, fetchImpl = globalTh
     const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', error: errorCode(error) });
     return { status: receipt.status, response: null, receipt };
   }
-  const type = contentType(response);
-  const etag = response.headers.get('etag');
-  const lastModified = response.headers.get('last-modified');
+  let type;
+  let etag;
+  let lastModified;
+  let statusCode;
+  let responseOk;
+  try {
+    if (!response || typeof response !== 'object' || !response.headers || typeof response.headers.get !== 'function') {
+      fail('OPP_HTTP_RESPONSE_INVALID');
+    }
+    type = contentType(response);
+    etag = response.headers.get('etag');
+    lastModified = response.headers.get('last-modified');
+    statusCode = response.status;
+    responseOk = response.ok;
+    check(Number.isSafeInteger(statusCode) && statusCode >= 100 && statusCode <= 599
+      && typeof responseOk === 'boolean' && responseOk === (statusCode >= 200 && statusCode <= 299)
+      && (type === null || identifier(type)) && (etag === null || identifier(etag))
+      && (lastModified === null || identifier(lastModified)), 'OPP_HTTP_RESPONSE_INVALID');
+  } catch (error) {
+    clearTimeout(timer);
+    const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', error: errorCode(error) });
+    return { status: receipt.status, response: null, receipt };
+  }
   let bytes;
   try {
     bytes = await readBoundedBody(response, policy.transport.maxResponseBytes);
   } catch (error) {
     clearTimeout(timer);
-    const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', httpStatus: response.status,
+    const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', httpStatus: statusCode,
       responseContentType: type, responseEtag: etag, responseLastModified: lastModified,
       error: controller.signal.aborted ? 'OPP_HTTP_TIMEOUT' : errorCode(error) });
     return { status: receipt.status, response: null, receipt };
   }
   clearTimeout(timer);
-  if (!response.ok) {
-    const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', httpStatus: response.status,
+  if (!responseOk) {
+    const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', httpStatus: statusCode,
       responseContentType: type, responseEtag: etag, responseLastModified: lastModified,
       responseBytes: bytes.length, error: 'OPP_HTTP_STATUS_NOT_SUCCESS' });
     return { status: receipt.status, response: null, receipt };
   }
   if (!jsonContentType(type)) {
-    const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', httpStatus: response.status,
+    const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', httpStatus: statusCode,
       responseContentType: type, responseEtag: etag, responseLastModified: lastModified,
       responseBytes: bytes.length, error: 'OPP_HTTP_JSON_REQUIRED' });
     return { status: receipt.status, response: null, receipt };
   }
   let body;
   try { body = JSON.parse(bytes.toString('utf8')); } catch {
-    const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', httpStatus: response.status,
+    const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', httpStatus: statusCode,
       responseContentType: type, responseEtag: etag, responseLastModified: lastModified,
       responseBytes: bytes.length, error: 'OPP_HTTP_JSON_INVALID' });
     return { status: receipt.status, response: null, receipt };
@@ -395,12 +465,12 @@ export async function runOppHttpReadonly({ policy, request, fetchImpl = globalTh
   const wireResponseRoot = rootHash(body);
   let projected;
   try { projected = projectResponse(body, policy.transport.responseFields); } catch (error) {
-    const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', httpStatus: response.status,
+    const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', httpStatus: statusCode,
       responseContentType: type, responseEtag: etag, responseLastModified: lastModified,
       responseBytes: bytes.length, wireResponseRoot, error: errorCode(error) });
     return { status: receipt.status, response: null, receipt };
   }
-  const receipt = makeReceipt({ policy, request, status: 'PASS', httpStatus: response.status,
+  const receipt = makeReceipt({ policy, request, status: 'PASS', httpStatus: statusCode,
     responseContentType: type, responseEtag: etag, responseLastModified: lastModified,
     responseBytes: bytes.length, wireResponseRoot, responseRoot: rootHash(projected) });
   return { status: receipt.status, response: projected, receipt };
