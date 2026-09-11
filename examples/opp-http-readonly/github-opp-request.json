@@ -1,0 +1,12 @@
+{
+  "format": "twni.opp-http-readonly-request.v1",
+  "requestId": "github-rest-audit-2026-09-11",
+  "policyRoot": "0b0626c2784f40ab7afade7f69f9f7374710cc6fac621accd1089bac32cedc0d",
+  "method": "GET",
+  "url": "https://api.github.com/repos/xingxuling/OPP",
+  "headers": {
+    "accept": "application/vnd.github+json",
+    "user-agent": "TaoWind-TINP-OPP-audit/0.1"
+  },
+  "requestRoot": "98683026a23aa9dcc444f28a03a52f778277b0547737a773b477f5ce2b02ad29"
+}

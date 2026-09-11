@@ -1,0 +1,43 @@
+{
+  "format": "twni.opp-http-readonly-policy.v1",
+  "policyId": "github:opp:repository",
+  "adapterVersion": "tinp-opp-http-readonly-v0.1",
+  "oppSource": {
+    "repository": "https://github.com/xingxuling/OPP",
+    "commit": "f7b76582a720d9d18af5153affa0fc2d78bc0410",
+    "protocols": [
+      "opp.chp.v0.1",
+      "opp.rcp.v0.1"
+    ]
+  },
+  "transport": {
+    "scheme": "https",
+    "method": "GET",
+    "allowedHosts": [
+      "api.github.com"
+    ],
+    "allowedPathPrefixes": [
+      "/repos/xingxuling/OPP"
+    ],
+    "timeoutMs": 15000,
+    "maxResponseBytes": 1048576,
+    "redirectPolicy": "deny",
+    "proxyPolicy": "deny-ambient",
+    "credentialPolicy": "none",
+    "maxAttempts": 1,
+    "allowedRequestHeaders": [
+      "accept",
+      "user-agent"
+    ],
+    "responseMediaType": "application/json",
+    "responseFields": [
+      "default_branch",
+      "full_name",
+      "private"
+    ]
+  },
+  "receiptFormat": "twni.opp-http-readonly-receipt.v1",
+  "authorityGranted": false,
+  "authorityBoundary": "Read-only external observation; no credential, retry, redirect, or authority grant",
+  "policyRoot": "0b0626c2784f40ab7afade7f69f9f7374710cc6fac621accd1089bac32cedc0d"
+}
