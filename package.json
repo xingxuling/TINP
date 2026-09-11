@@ -1,6 +1,6 @@
 {
   "name": "@taowind/tinp-suite",
-  "version": "0.1.0-alpha.20",
+  "version": "0.1.0-alpha.21",
   "private": true,
   "type": "module",
   "scripts": {
@@ -8,6 +8,7 @@
     "demo": "node scripts/demo.mjs",
     "opp-http-readonly": "node scripts/opp-http-readonly.mjs",
     "opp-http-consumer-bridge": "node scripts/opp-http-consumer-bridge.mjs",
+    "opp-http-consumer-live": "node scripts/opp-http-consumer-live.mjs",
     "verify": "node scripts/verify.mjs",
     "recovery:demo": "node scripts/recovery-demo.mjs",
     "pending": "node scripts/pending.mjs",
