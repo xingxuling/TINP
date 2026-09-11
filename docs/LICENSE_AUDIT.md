@@ -35,3 +35,5 @@ alpha.10 后续 authority-provider readiness 记录仅新增本仓库维护文�
 alpha.11 仅新增本仓库 JavaScript replay demo、test-only IPC worker、测试、协议登记与文档；未复制第三方跨主机/共识源码，也未引入新 npm/Python 依赖。传输的 registry/convergence/store/keyring 输入均为调用方公开材料，私钥不进入 worker 或源码包。既有 donor 许可、内部使用限制和未公开发布结论继续适用。
 
 alpha.12 仅新增本仓库 JavaScript 的 TINP loopback transfer demo、test-only transport worker、测试、协议登记、verify 分支与文档；复用既有 `LocalTransport`、vendored TINP `DATA` framing 和现有 convergence/store validators，未复制第三方传输/共识源码，也未引入新 npm/Python 依赖。transfer payload 与源码包不含 issuer、mirror、member、witness 或 transport 私钥。既有 donor 许可、内部使用限制和未公开发布结论继续适用。
+
+alpha.13 仅新增本仓库 JavaScript 的 TLS transport 分支、临时 OpenSSL 证书夹具、loopback wrapper、测试、协议登记、verify 分支与文档；复用 Node 内置 `tls`、既有 `LocalTransport`、vendored TINP `DATA` framing 和现有 convergence/store validators，未复制 OpenSSL 或第三方 TLS/共识源码，也未引入新的 npm/Python 依赖。证书私钥只在测试临时目录和子进程内存中存在，退出后删除，不进入 transfer payload、store 或源码包。OpenSSL 是本机测试工具，不改变既有 donor 许可、内部使用限制和未公开发布结论。

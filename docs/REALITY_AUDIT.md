@@ -133,3 +133,24 @@ This is a local socket/process/filesystem stress case. It does not establish
 TLS confidentiality, two physical hosts, trusted time, online publication,
 global revocation, hardware custody, lost-key recovery or production conflict
 consensus. No RCL Core, RNCS world authority or AAF owner changed.
+
+## alpha.13 authority registry TLS loopback transfer
+
+The candidate extends the same `LocalTransport` with a caller-supplied TLS
+credential mode. Two independent Node transport workers generate temporary
+self-signed certificates outside the source tree, bind TLS 1.3 loopback
+endpoints and advertise only the peer certificate as a CA pin. The existing
+TINP `DATA` frame and signed peer envelope remain unchanged; the receiver still
+imports only public convergence-store state through the existing append and
+convergence validators. The run negotiated `TLS_AES_256_GCM_SHA384`, recorded
+TLS handshakes and frame counters, accepted the public history extension and
+rejected a peer certificate outside the configured CA pin before a DATA frame
+was sent.
+
+The focused and full tests also retain the TCP loopback, replay, fork, mirror
+drift, sequence-gap and tampered-state negative cases. Temporary certificate
+private keys are deleted with the fixture directory and no private PEM occurs
+in the source archive. This is local TLS/socket/process evidence, not
+production certificate custody, physical-host enrollment, trusted time,
+online authority, global revocation or production conflict consensus. No RCL
+Core, RNCS world authority or AAF owner changed.

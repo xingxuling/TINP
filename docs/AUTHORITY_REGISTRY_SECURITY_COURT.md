@@ -1,4 +1,4 @@
-# Authority registry security court — alpha.12
+# Authority registry security court — alpha.13
 
 Decision: **VERIFIED_LOCAL_CANDIDATE / NOT_PRODUCTION_AUTHORITY**.
 
@@ -37,7 +37,7 @@ RCL remains the owner of recovery and transaction admission. AAF remains the own
 | CORRECT / ROBUST | CANDIDATE evidence | Positive lifecycle/quorum plus malformed, rollback, rotation, fork, stale and keyring negative cases |
 | PERFORMANCE | NOT_ADJUDICATED | No registry SLA or cross-device throughput claim |
 | AI_GENERATE | NOT_RUN | No independent generation evaluation |
-| EVIDENCE | CANDIDATE evidence | Alpha.10 verification JSON, tests TAP, source hashes and delivery receipt |
+| EVIDENCE | CANDIDATE evidence | Alpha.13 verification JSON, tests TAP, source hashes and delivery receipt |
 | K400 promotion | NOT_ADJUDICATED | No universal cell admission is implied |
 
 ## Alpha.11 replay addendum
@@ -78,4 +78,25 @@ recovery or production conflict consensus.
 Evidence: `evidence/0.1.0-alpha.12/authority-registry-loopback-transfer.json`,
 `LOCAL_VERIFICATION.json` and `EVIDENCE_LEDGER.json`. The final candidate has
 172/172 tests and 191 source files; all K400 gates remain
+`NOT_ADJUDICATED`.
+
+## Alpha.13 TLS loopback addendum
+
+Alpha.13 extends the same transport boundary with caller-supplied TLS 1.3
+credentials. Two independent Node transport workers generate ephemeral
+self-signed certificates in a temporary directory, pin the peer certificate
+as a CA and keep TINP peer public-key admission for the signed DATA envelope.
+The run negotiates TLS 1.3 with an AEAD cipher, transfers the same public store
+history, and keeps the TCP harness's replay, extension and conflict checks.
+
+The negative test supplies the wrong CA pin and confirms that the handshake
+fails before a DATA frame is sent. Store state, issuer/mirror/member/witness
+material and transport private keys are not carried in the transfer payload;
+temporary certificate files are deleted after the fixture. This is local
+encrypted socket evidence only. It does not certify production certificate
+issuance or custody, physical-host enrollment, trusted time, online authority,
+global revocation, lost-key recovery or production conflict consensus.
+
+Evidence: `evidence/0.1.0-alpha.13/authority-registry-tls-loopback-transfer.json`,
+`LOCAL_VERIFICATION.json` and `EVIDENCE_LEDGER.json`. K400 promotion remains
 `NOT_ADJUDICATED`.

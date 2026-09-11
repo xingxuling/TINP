@@ -80,3 +80,21 @@ issuer, mirror, member, witness or transport private key. This proves local
 socket/process behavior only; it does not make TINP an online authority,
 provide TLS or physical-host recovery, establish trusted time, or choose a
 production conflict winner.
+
+## alpha.13 TLS loopback transfer boundary
+
+The alpha.13 harness extends the same `LocalTransport` with a caller-supplied
+TLS 1.3 mode. Each local worker receives a temporary certificate and private
+key from the test fixture; the endpoint advertises only the peer certificate
+as a CA pin. The client requires that pin and the `tinp-loopback` server name,
+then the existing TINP peer public-key admission authenticates the signed DATA
+envelope. A wrong CA fails during the TLS handshake before a DATA frame is
+sent.
+
+The public store transfer still uses the existing convergence validators and
+retains all alpha.12 negative cases. Temporary certificate files are deleted
+with the fixture directory and no TLS private key is serialized into a store,
+transfer payload or source archive. This proves local TLS 1.3/socket behavior
+only; it does not define production certificate custody, physical-host
+enrollment, trusted time, online publication, global revocation, or a
+distributed conflict winner.

@@ -118,3 +118,20 @@ TINP process/socket behavior on one host; external authority still owns TLS,
 physical-host enrollment, trusted time, publication, revocation, hardware
 custody and production conflict resolution. RCL Core, RNCS/RFE and AAF owners
 are unchanged.
+
+## alpha.13 TLS loopback transfer ownership
+
+TLS 1.3 is an auxiliary transport provider capability owned by the TINP
+`LocalTransport` adapter and Node's TLS runtime. The authority meaning remains
+the signed public store state and the existing convergence validators; no TLS
+certificate is treated as an authority lease or registry membership. The
+caller supplies each worker's certificate/private key and the peer certificate
+CA pin; the test fixture creates and deletes those credentials in a temporary
+directory.
+
+The TLS layer protects the local socket and verifies the configured certificate
+before a DATA frame is sent. TINP's signed peer public-key admission remains
+the message identity check. Production certificate issuance, rotation,
+revocation, hardware custody, physical-host enrollment and trusted time stay
+with the external deployment/authority Owner. No RCL Core, RNCS/RFE or AAF
+semantic owner changed.

@@ -127,3 +127,13 @@ Generality：认证 public-state transfer、幂等 replay、反向前缀扩展�
 Regression：两个独立 transport worker 各自绑定 `127.0.0.1` TCP endpoint 与目录，完成 seq1→seq2 transfer、B 端 exact replay、seq3 extension、反向 transfer；同长度签名分叉、threshold-valid mirror-set drift、seq2→seq4 gap 和篡改 `historyRoot` 的 transfer 均在写入前拒绝，接收端无 invalid frame 且原 durable bytes 保持不变。transfer payload 不含 issuer/mirror/member/witness/transport private key。
 
 Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 仅有本机 TCP loopback、独立进程和文件证据；PERFORMANCE 只记录本次帧/字节计数，不作 TLS、WAN 或 authority SLA 声明；AI_GENERATE 未评估；EVIDENCE 以 alpha.12 `LOCAL_VERIFICATION.json`、Court 和 delivery receipt 固化。九门仍 `NOT_ADJUDICATED`。
+
+## alpha.13 authority registry TLS loopback transfer 压力
+
+Task/missing capability：alpha.12 的 TINP DATA loopback 仍没有传输机密性和证书身份固定的本机证据；gap type=`TRANSPORT_SECURITY_GAP + AUTHORITY_PROVIDER_INTEGRATION`，不是 RCL Core 表达缺口。Workaround/donor：扩展既有 `LocalTransport` 增加 caller-supplied TLS 1.3 模式，复用 TINP `DATA` framing、signed peer envelope 和既有 convergence-store validators；测试夹具用本机 OpenSSL 临时生成自签名证书，证书只作为对端 CA pin，不把 TLS 私钥写入源码或归档。
+
+Generality：TLS 握手、caller-pinned peer certificate、TINP peer public-key admission、公开状态导入、幂等 replay、反向扩展、篡改/分叉/漂移/缺口拒绝和 durable bytes 保留可跨本机部署复用；candidate absorption 属于 TINP/TWNI transport provider，不改变 RCL、RNCS/RFE 或 external authority Owner。Provider advantage 是 Node `tls` runtime 与现有 framing；生产证书生命周期、硬件托管、真实异机 enrollment、可信时间、在线发布和分布式冲突处置仍由 external authority 负责。
+
+Regression：TLS 1.3 loopback 协商与真实 DATA 帧交换、错误 CA 在帧发送前失败、正确 pin 下 seq1→seq2 transfer、exact replay、seq3 extension、反向 transfer、分叉/镜像漂移/seq gap/篡改 `historyRoot` 拒绝及接收端 durable bytes 保持不变均有测试。临时私钥在 fixture 目录退出时删除；消息负载和证据对象不含 TLS 私钥。
+
+Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 仅有本机 TLS 1.3 loopback、独立进程和文件证据；PERFORMANCE 只记录握手/帧计数，不作生产 TLS、WAN 或 authority SLA 声明；AI_GENERATE 未评估；EVIDENCE 以 alpha.13 `LOCAL_VERIFICATION.json`、Court 和 delivery receipt 固化。九门仍 `NOT_ADJUDICATED`。

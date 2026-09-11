@@ -109,3 +109,12 @@ This supplements the two input specifications without editing the original DOCX 
 - **New Decision:** Add a test-only `twni.authority-registry-loopback-transfer-demo.v1` worker/demo/test path. Keep the transfer format public-state-only, route acceptance through existing `LocalTransport` and convergence-store append validators, and preserve unresolved conflicts; do not add a production authority sync protocol or winner election.
 - **Impact:** P05/P06/P09 gain bounded local socket/process evidence. This does not create an RCL primitive, RNCS world grant, AAF approval, online registry, global revocation, hardware custody, trusted timestamp or distributed durable consensus; the external Owner gap remains open.
 - **Rollback:** Remove the loopback worker, demo, test, protocol-registry row and evidence entry; alpha.11 replay/store/witness behavior remains unchanged.
+
+## 13. TLS 1.3 loopback transfer is an auxiliary encrypted transport candidate
+
+- **Original Assumption:** TINP's TCP loopback evidence could exercise the wire path while leaving socket confidentiality and peer certificate admission for a later provider.
+- **Observed Evidence:** The existing `LocalTransport` signs DATA envelopes and pins TINP peer public keys, but its TCP socket is plaintext. Node's TLS runtime can accept caller-supplied credentials and reject a peer whose certificate is outside the configured CA pin; the same signed public store state can then be transferred over TLS 1.3.
+- **Reasoning:** Reusing `LocalTransport`, TINP DATA framing and existing convergence/store validators isolates transport confidentiality without creating a second authority protocol. TLS certificate possession is transport evidence, not an authority lease, registry membership or RCL decision.
+- **New Decision:** Add a caller-supplied `tls` transport mode, a test-only temporary OpenSSL certificate fixture, a TLS loopback demo and a wrong-CA negative test. Require TLS 1.3, pin the peer certificate as a CA and retain TINP peer public-key admission for message identity.
+- **Impact:** P06/P09 gain bounded local encrypted-socket evidence. Production certificate issuance/rotation/revocation, hardware custody, physical-host enrollment, trusted time, online authority and distributed conflict resolution remain unimplemented; no RCL Core, RNCS/RFE or AAF owner changes.
+- **Rollback:** Remove the TLS mode, certificate fixture, wrapper/demo/test and alpha.13 registry/evidence entries; TCP/UDP transport and alpha.12 public-state transfer remain available.
