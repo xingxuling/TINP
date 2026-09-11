@@ -1,0 +1,25 @@
+{
+  "format": "twni.authority-registry-distribution-demo.v1",
+  "status": "VERIFIED_LOCAL_OFFLINE_DISTRIBUTION_QUORUM",
+  "issuerPid": 37956,
+  "mirrorPids": [
+    70836,
+    55912,
+    31004
+  ],
+  "registryRoot": "08c613abfa2399cd78822ac15bf1309c74c120201513bd384d5961e28c992e03",
+  "sequence": 1,
+  "distributionPolicyRoot": "aab686bf07d255499dd2b0956365dcb4218f73c41e624d9b60406796a89fa6eb",
+  "threshold": 2,
+  "acceptedMirrors": [
+    "mirror:alpha",
+    "mirror:beta",
+    "mirror:gamma"
+  ],
+  "forkDetected": true,
+  "forkRejectionCode": "AUTHORITY_REGISTRY_DISTRIBUTION_FORK_DETECTED",
+  "insufficientQuorum": true,
+  "insufficientQuorumCode": "AUTHORITY_REGISTRY_DISTRIBUTION_QUORUM_INSUFFICIENT",
+  "keyMaterialPersisted": false,
+  "scope": "Actual independent issuer and mirror child processes, signed receipts over one registry root and deterministic fork/quorum rejection; no online publication, trusted clock, transparent log or cross-device convergence."
+}

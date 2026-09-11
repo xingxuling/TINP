@@ -31,3 +31,5 @@ alpha.20 候选已通过本机 verify：`199/199`、源码清单 `204` 个文件
 
 alpha.21 已合并：新增 runOppHttpConsumerLive 与 scripts/opp-http-consumer-live.mjs，将真实 OPP CHP/RCP accepted 协商、一次策略约束的 HTTPS/JSON 只读观察、consumer contract 和 rooted acceptance receipt 串成单次 live consumer 路径。候选完整套件为 202/202（0 fail），合并提交为 9d4988e；证据位于 evidence/0.1.0-alpha.21/LOCAL_VERIFICATION.json。该路径仍是本机受约束候选，不等于独立第三方 consumer、生产 authority、真实异机部署或 K400 晋升。
 
+
+alpha.22 已合并：新增 validateOppHttpConsumerLiveResult，对 live consumer 输出、状态、policy/request roots、acceptance receipt 和 negotiation failure 形态做独立校验；CLI 子进程在 ambient proxy 环境下失败闭合并写入可验证结果。完整 verify 为 203/203（0 fail），合并提交为 393e3c9；证据位于 evidence/0.1.0-alpha.22/LOCAL_VERIFICATION.json。状态仍为本机 VERIFIED_LOCAL_CANDIDATE，不等于第三方 consumer、生产 authority、真实异机或 K400 晋升。

@@ -1,0 +1,28 @@
+{
+  "format": "twni.authority-registry-convergence-demo.v1",
+  "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_CONVERGENCE",
+  "issuerPid": 74584,
+  "mirrorPids": [
+    58628,
+    3876,
+    67440
+  ],
+  "firstSequence": 1,
+  "lastSequence": 2,
+  "registryRoots": [
+    "d91d1c2d4288565dbfbace0b30d5b7bb023cd8de7a79117b864c171685c33a86",
+    "49677f3412a057282b60543c33fc61148ca5d3ffdd994016e7f4a63949a02ae9"
+  ],
+  "historyRoot": "8315195937c14da5b2b977517dac334a35a90d164f7048c070ae2cb968a17828",
+  "stableMirrors": [
+    "mirror:alpha",
+    "mirror:beta",
+    "mirror:gamma"
+  ],
+  "forkDetected": true,
+  "forkRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_FORK_DETECTED",
+  "mirrorSetDrift": true,
+  "mirrorSetDriftCode": "AUTHORITY_REGISTRY_CONVERGENCE_MIRROR_SET_DRIFT",
+  "keyMaterialPersisted": false,
+  "scope": "Actual independent issuer and mirror child processes, contiguous signed registry history with per-snapshot quorum, stable mirror-set check and deterministic historical fork rejection; no online transparency log, trusted clock or durable cross-host convergence."
+}
