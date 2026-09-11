@@ -1,4 +1,5 @@
 import net from 'node:net';
+import tls from 'node:tls';
 import {UdpTransport} from '../vendor/tinp/src/transport-udp.mjs';
 import {encodeFrame,decodeFrame} from '../vendor/tinp/src/protocol.mjs';
 import {authentic,seal,id,ProtocolError,requireThat} from './identity.mjs';
@@ -6,10 +7,11 @@ import {authentic,seal,id,ProtocolError,requireThat} from './identity.mjs';
 const MAX_FRAME=60000;
 const MAX_INFLIGHT=64;
 export class LocalTransport {
-  constructor({nodeId,identity,kind='udp'}) {
-    requireThat(['udp','tcp'].includes(kind),'TRANSPORT_UNSUPPORTED');
-    this.nodeId=nodeId;this.identity=identity;this.kind=kind;this.peers={};this.pending=new Map();this.sockets=new Set();
-    this.metrics={sentFrames:0,receivedFrames:0,sentBytes:0,invalidFrames:0,overloadRejected:0};this.blocked=new Set();this.bandwidth=0;
+  constructor({nodeId,identity,kind='udp',tlsOptions=null}) {
+    requireThat(['udp','tcp','tls'].includes(kind),'TRANSPORT_UNSUPPORTED');
+    if(kind==='tls')requireThat(tlsOptions&&typeof tlsOptions.key==='string'&&typeof tlsOptions.cert==='string','TLS_CREDENTIALS_REQUIRED');
+    this.nodeId=nodeId;this.identity=identity;this.kind=kind;this.tlsOptions=tlsOptions;this.peers={};this.pending=new Map();this.sockets=new Set();
+    this.metrics={sentFrames:0,receivedFrames:0,sentBytes:0,invalidFrames:0,overloadRejected:0,secureConnections:0,tlsVersion:null,tlsCipher:null};this.blocked=new Set();this.bandwidth=0;
     this.activeHandlers=0;this.closed=false;this.lifetime=new AbortController();
   }
   async bind(){
@@ -18,10 +20,11 @@ export class LocalTransport {
       this.udp.onFrame((frame,rinfo)=>{if(frame.error){this.metrics.invalidFrames++;return;}this.receive(frame.payload).catch(()=>{this.metrics.invalidFrames++;});});
       this.port=this.udp.port;
     }else{
-      this.server=net.createServer(socket=>{
+      const onConnection=socket=>{
         if(this.sockets.size>=MAX_INFLIGHT){this.metrics.overloadRejected++;socket.destroy();return;}
         this.sockets.add(socket);let bytes=Buffer.alloc(0);
         socket.setTimeout(2000,()=>socket.destroy());
+        if(this.kind==='tls')this.recordTls(socket);
         socket.on('error',()=>{});socket.on('close',()=>this.sockets.delete(socket));
         socket.on('data',chunk=>{
           bytes=Buffer.concat([bytes,chunk]);
@@ -31,13 +34,25 @@ export class LocalTransport {
             if(bytes.length===length){try{const frame=decodeFrame(bytes);this.receive(frame.payload).catch(()=>{this.metrics.invalidFrames++;});}catch{this.metrics.invalidFrames++;}socket.end();}
           }
         });
-      });
+      };
+      if(this.kind==='tls'){
+        const options={...this.tlsOptions,minVersion:this.tlsOptions.minVersion??'TLSv1.3'};
+        this.server=tls.createServer(options,onConnection);this.server.on('tlsClientError',()=>{this.metrics.invalidFrames++;});
+      }else this.server=net.createServer(onConnection);
       await new Promise((resolve,reject)=>{this.server.once('error',reject);this.server.listen(0,'127.0.0.1',resolve);});
       this.port=this.server.address().port;
     }
     return this;
   }
-  endpoint(){return {host:'127.0.0.1',port:this.port,transport:this.kind};}
+  endpoint(){
+    const endpoint={host:'127.0.0.1',port:this.port,transport:this.kind};
+    if(this.kind==='tls')endpoint.tls={ca:this.tlsOptions.cert,servername:this.tlsOptions.servername??'tinp-loopback'};
+    return endpoint;
+  }
+  recordTls(socket){
+    this.metrics.secureConnections++;
+    try{this.metrics.tlsVersion=socket.getProtocol?.()??null;this.metrics.tlsCipher=socket.getCipher?.().name??null;}catch{}
+  }
   async send(peerId,message,requestSignal){
     requireThat(!this.closed,'TRANSPORT_CLOSED');
     const signal=requestSignal?AbortSignal.any([requestSignal,this.lifetime.signal]):this.lifetime.signal;
@@ -54,10 +69,16 @@ export class LocalTransport {
     if(this.kind==='udp')await this.udp.send(peer.endpoint.host,peer.endpoint.port,'DATA',signed);
     else await new Promise((resolve,reject)=>{
       if(this.sockets.size>=MAX_INFLIGHT){this.metrics.overloadRejected++;reject(new ProtocolError('TRANSPORT_OVERLOADED'));return;}
-      const socket=net.createConnection({host:peer.endpoint.host,port:peer.endpoint.port});this.sockets.add(socket);
+      let options={host:peer.endpoint.host,port:peer.endpoint.port};
+      const readyEvent=this.kind==='tls'?'secureConnect':'connect';
+      if(this.kind==='tls'){
+        const peerTls=peer.endpoint.tls;requireThat(peerTls&&typeof peerTls.ca==='string','TLS_PEER_CA_REQUIRED');
+        options={...options,ca:peerTls.ca,servername:peerTls.servername??'tinp-loopback',rejectUnauthorized:true,minVersion:'TLSv1.3'};
+      }
+      const socket=this.kind==='tls'?tls.connect(options):net.createConnection(options);this.sockets.add(socket);
       socket.setTimeout(1000,()=>socket.destroy(new ProtocolError('TCP_TIMEOUT')));
       socket.once('error',reject);socket.once('close',()=>this.sockets.delete(socket));
-      socket.once('connect',()=>socket.end(bytes,resolve));
+      socket.once(readyEvent,()=>{if(this.kind==='tls')this.recordTls(socket);socket.end(bytes,resolve);});
     });
     this.metrics.sentFrames++;this.metrics.sentBytes+=bytes.length;
   }

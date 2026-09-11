@@ -9,6 +9,7 @@ import { newIdentity, rootHash } from '../src/identity.mjs';
 import { makeAuthorityRegistryDistributionBundle, makeAuthorityRegistryDistributionPolicy,
   makeAuthorityRegistryDistributionReceiptBody, signAuthorityRegistryDistributionReceipt } from '../src/authority-registry-distribution.mjs';
 import { makeAuthorityRegistryConvergenceBundle } from '../src/authority-registry-convergence.mjs';
+import { createTlsLoopbackCertificates, removeTlsLoopbackCertificates } from '../tests/tls-loopback-certificates.mjs';
 
 const workerUrl = new URL('../tests/authority-registry-loopback-transfer-worker.mjs', import.meta.url);
 let callId = 0;
@@ -108,7 +109,7 @@ function fixture() {
   return { now, context, history1, history2, history3, forkHistory3, driftHistory3, gapHistory };
 }
 
-async function startWorker(id, file, context) {
+async function startWorker(id, file, context, { kind = 'tcp', tls = null } = {}) {
   const child = fork(fileURLToPath(workerUrl), [id], {
     stdio: ['ignore', 'ignore', 'ignore', 'ipc'], execArgv: [], windowsHide: true,
   });
@@ -121,7 +122,7 @@ async function startWorker(id, file, context) {
       clearTimeout(timer); child.off('message', handler); resolve(message);
     };
     child.on('message', handler);
-    child.send({ command: 'init', callId: ++callId, nodeId: id, file, context });
+    child.send({ command: 'init', callId: ++callId, nodeId: id, file, context, kind, tls });
   });
   return { id, child, file, ...initialized };
 }
@@ -131,12 +132,17 @@ function privateMaterialPresent(value) {
 }
 
 const f = fixture();
+const transportKind = process.env.TINP_LOOPBACK_TRANSPORT ?? 'tcp';
+if (!['tcp', 'tls'].includes(transportKind)) throw new Error('AUTHORITY_REGISTRY_LOOPBACK_TRANSPORT_UNSUPPORTED');
 const baseDirectory = fs.mkdtempSync(path.join(os.tmpdir(), 'tinp-authority-registry-loopback-transfer-'));
 const directoryA = path.join(baseDirectory, 'node-a');
 const directoryB = path.join(baseDirectory, 'node-b');
 fs.mkdirSync(directoryA); fs.mkdirSync(directoryB);
-const hostA = await startWorker('authority-node-a', path.join(directoryA, 'history.json'), f.context);
-const hostB = await startWorker('authority-node-b', path.join(directoryB, 'history.json'), f.context);
+const tlsBundle = transportKind === 'tls' ? createTlsLoopbackCertificates(baseDirectory) : null;
+const hostA = await startWorker('authority-node-a', path.join(directoryA, 'history.json'), f.context,
+  { kind: transportKind, tls: tlsBundle?.certificates.a ?? null });
+const hostB = await startWorker('authority-node-b', path.join(directoryB, 'history.json'), f.context,
+  { kind: transportKind, tls: tlsBundle?.certificates.b ?? null });
 
 try {
   await rpc(hostA.child, 'configure-peers', { peers: { [hostB.id]: { endpoint: hostB.endpoint, publicKey: hostB.publicKey } } });
@@ -175,9 +181,10 @@ try {
   const bAfterReject = await rpc(hostB.child, 'verify', { nowMs: f.now + 12 });
   const output = {
     format: 'twni.authority-registry-loopback-transfer-demo.v1',
-    status: 'VERIFIED_LOCAL_TINP_LOOPBACK_STATE_TRANSFER',
-    transport: 'tcp',
+    status: transportKind === 'tls' ? 'VERIFIED_LOCAL_TINP_TLS_LOOPBACK_STATE_TRANSFER' : 'VERIFIED_LOCAL_TINP_LOOPBACK_STATE_TRANSFER',
+    transport: transportKind,
     frameType: 'DATA',
+    encryptedTransport: transportKind === 'tls',
     independentProcesses: hostA.pid !== hostB.pid,
     independentDirectories: path.dirname(hostA.file) !== path.dirname(hostB.file),
     firstOperation: aFirst.status,
@@ -194,6 +201,13 @@ try {
     receiverFrames: bAfter.metrics.receivedFrames,
     senderBytes: aAfter.metrics.sentBytes,
     receiverInvalidFrames: bAfter.metrics.invalidFrames,
+    tlsVersion: transportKind === 'tls' ? aAfter.metrics.tlsVersion : null,
+    tlsCipher: transportKind === 'tls' ? aAfter.metrics.tlsCipher : null,
+    tlsHandshakes: transportKind === 'tls' ? aAfter.metrics.secureConnections + bAfter.metrics.secureConnections : 0,
+    peerCertificatePinned: transportKind === 'tls'
+      ? Boolean(hostA.endpoint.tls?.ca && hostB.endpoint.tls?.ca
+        && hostA.endpoint.tls.servername === hostB.endpoint.tls.servername)
+      : false,
     peerAuthenticationConfigured: aAfter.peerIds.includes(hostB.id) && bAfter.peerIds.includes(hostA.id),
     forkDetected: forkCode === 'AUTHORITY_REGISTRY_CONVERGENCE_STORE_PREFIX_MISMATCH',
     forkRejectionCode: forkCode,
@@ -207,7 +221,9 @@ try {
       && Buffer.compare(beforeTamper, afterTamper) === 0
       && bAfterReject.historyRoot === aAfterSync.historyRoot && bAfterReject.lastSequence === 3,
     privateMaterialTransferred: privateMaterialPresent(f.context) || privateMaterialPresent(aToB) || privateMaterialPresent(bToA),
-    scope: 'Actual TINP DATA framing over TCP loopback between two independent local Node processes and directories; public convergence-store state is imported through the existing append validators. This is a local socket stress harness, not two physical hosts, encrypted transport, trusted time, online authority or production conflict consensus.',
+    scope: transportKind === 'tls'
+      ? 'Actual TINP DATA framing over TLS 1.3 loopback between two independent local Node child processes and directories; peer certificates are caller-pinned and public convergence-store state is imported through the existing append validators. This is a local socket stress harness, not two physical hosts, production certificate custody, trusted time, online authority or production conflict consensus.'
+      : 'Actual TINP DATA framing over TCP loopback between two independent local Node child processes and directories; public convergence-store state is imported through the existing append validators. This is a local socket stress harness, not two physical hosts, encrypted transport, trusted time, online authority or production conflict consensus.',
   };
   if (!output.independentProcesses || !output.independentDirectories || output.firstOperation !== 'appended'
     || output.localExtensionOperation !== 'extended' || output.networkTransferOperation !== 'appended'
@@ -219,8 +235,13 @@ try {
     || !output.tamperedTransferDetected || !output.rejectedStateRetained || output.privateMaterialTransferred) {
     throw new Error(`AUTHORITY_REGISTRY_LOOPBACK_TRANSFER_ASSERTION_FAILED:${JSON.stringify(output)}`);
   }
+  if (transportKind === 'tls' && (!output.encryptedTransport || output.tlsVersion !== 'TLSv1.3'
+    || !output.tlsCipher || output.tlsHandshakes < 2 || !output.peerCertificatePinned)) {
+    throw new Error(`AUTHORITY_REGISTRY_TLS_LOOPBACK_ASSERTION_FAILED:${JSON.stringify(output)}`);
+  }
   console.log(JSON.stringify(output, null, 2));
 } finally {
   await Promise.all(workers.map(stop));
+  removeTlsLoopbackCertificates(tlsBundle);
   fs.rmSync(baseDirectory, { recursive: true, force: true });
 }

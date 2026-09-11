@@ -1,8 +1,8 @@
 {
   "format": "twni.protocol-registry.v0.1",
-  "version": "0.1.0-alpha.12",
+  "version": "0.1.0-alpha.13",
   "classification": "candidate-local-profile",
-  "scope": "Three independent local network processes; UDP/TCP loopback plus two-process public-history replay and TINP DATA state-transfer harnesses",
+  "scope": "Three independent local network processes; UDP/TCP/TLS 1.3 loopback plus two-process public-history replay and TINP DATA state-transfer harnesses",
   "statusVocabulary": [
     "implemented",
     "partial",
@@ -196,6 +196,11 @@
           "status": "implemented",
           "behavior": "Public convergence-store state transfer through authenticated TINP DATA over TCP loopback with replay and fail-closed tamper handling",
           "evidenceLevel": "Two independent local Node child processes use existing LocalTransport peer keys and store append validators; not encrypted physical-host transport or production authority"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Public convergence-store state transfer through authenticated TINP DATA over TLS 1.3 loopback with caller-pinned ephemeral certificates",
+          "evidenceLevel": "Two independent local Node child processes use existing LocalTransport peer keys, TLS 1.3 certificate pins and store append validators; not production certificate custody or physical-host enrollment"
         }
       ],
       "notImplemented": [
@@ -265,6 +270,11 @@
           "status": "implemented",
           "behavior": "TINP DATA loopback state-transfer evidence binds public state roots and retains the receiving store after replay, fork, gap or tamper rejection",
           "evidenceLevel": "Local TCP socket worker/demo with peer authentication counters and existing store validators; no encrypted cross-host transport, trusted time or durable distributed agreement"
+        },
+        {
+          "status": "implemented",
+          "behavior": "TINP DATA TLS 1.3 loopback state-transfer evidence binds public state roots and retains the receiving store after certificate, replay, fork, gap or tamper rejection",
+          "evidenceLevel": "Local TLS 1.3 socket worker/demo with caller-pinned ephemeral certificates, peer authentication counters and existing store validators; no production certificate custody, trusted time or durable distributed agreement"
         }
       ],
       "notImplemented": [
@@ -371,10 +381,15 @@
           "status": "implemented",
           "behavior": "Authenticated TINP DATA TCP loopback transfer of public authority state",
           "evidenceLevel": "Two independent local Node workers with real framed bytes and peer public-key pins; not TLS, physical-host delivery or public enrollment"
+        },
+        {
+          "status": "implemented",
+          "behavior": "Authenticated TINP DATA TLS 1.3 loopback transfer of public authority state with caller-pinned peer certificates",
+          "evidenceLevel": "Two independent local Node workers with real framed bytes, TLS 1.3 and peer certificate/public-key pins; not production certificate custody, physical-host delivery or public enrollment"
         }
       ],
       "notImplemented": [
-        "QUIC, TLS, WebSocket, NAT traversal, authenticated public transport enrollment"
+        "QUIC, WebSocket, NAT traversal, production certificate custody and authenticated public transport enrollment"
       ],
       "ownerBoundary": [
         "TINP framing/UDP",

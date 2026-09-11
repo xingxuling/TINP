@@ -9,6 +9,7 @@ let store = null;
 let context = null;
 let nodeId = null;
 let identity = null;
+let transportKind = null;
 
 function send(message) {
   try { process.send(message); } catch { process.exitCode = 1; }
@@ -54,10 +55,11 @@ process.on('message', async message => {
       identity = newIdentity();
       store = new AuthorityRegistryConvergenceStore(message.file);
       context = message.context;
-      transport = await new LocalTransport({ nodeId, identity, kind: 'tcp' }).bind();
+      transportKind = message.kind ?? 'tcp';
+      transport = await new LocalTransport({ nodeId, identity, kind: transportKind, tlsOptions: message.tls ?? null }).bind();
       transport.handler = receiveStateTransfer;
       send({ callId, event: 'initialized', nodeId, pid: process.pid, file: store.file,
-        endpoint: transport.endpoint(), publicKey: identity.publicKey });
+        endpoint: transport.endpoint(), publicKey: identity.publicKey, transport: transportKind });
       return;
     }
     if (!store || !transport || !context) throw new Error('AUTHORITY_REGISTRY_LOOPBACK_NOT_INITIALIZED');
