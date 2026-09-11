@@ -27,4 +27,4 @@ alpha.18 候选已通过本机 verify：`196/196`、源码清单 `204` 个文件
 
 alpha.19 候选已通过本机 verify：`198/198`、源码清单 `204` 个文件，`sourceTreeRoot=173293421bc030ae4ffdb76669c384647f57dbe49ea2c2bb59a877aabd148dc2`，tests TAP SHA-256=`d04026c2ecf75c43a7eaedf51b2edcfddf680d68e3bce325ce8b2d33e3848593`，LOCAL_VERIFICATION 已生成。候选提交为 `f3f9b0f`，已通过合并提交 `39866fb` 合并到 `codex/next-internet-v01` 并推送 GitHub。合并后 npm test 为 `198/198`（0 fail）；发行包、解包 `25/25` 聚焦测试、bundle CLI 回放、ZIP CRC/敏感文件扫描和交付回执均已生成。外部第三方 consumer、生产 authority 和 K400 仍保持未证明。
 
-alpha.20 候选增加 `--make-bundle` CLI 入口，从五份已有输入生成带 `bundleRoot` 的单文件；回放仍保持零网络请求、零 authority。待完成本机 verify、发行包和合并后复测。
+alpha.20 候选已通过本机 verify：`199/199`、源码清单 `204` 个文件，`sourceTreeRoot=976aabbcc045593c8db88c8d1d1de30cfbf9538eea86a193f32e7f768973a88b`，tests TAP SHA-256=`ffb942a35d09a861db82ef13f6b8bf9b9ccb1ac5f3ed765033217c038294b495`，LOCAL_VERIFICATION 已生成。候选提交为 `e4e14c9`，待合并；外部第三方 consumer、生产 authority 和 K400 仍保持未证明。
