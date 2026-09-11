@@ -183,3 +183,10 @@ Task/missing capability：alpha.18 的五文件 CLI 仍允许调用方替换其�
 Regression：bundle 中任一 plan/policy/request/observation/contract 改动都会使 `bundleRoot` 校验失败；有效 bundle 的回放保持 `PASS`、零网络请求和 `authorityGranted:false`。该证据仍不是第三方 consumer、生产 authority 或 K400 晋升。
 
 Affected K400 candidates：沿用 K057/K110/K117/K250/K257/K301/K318；九门仍 `NOT_ADJUDICATED`。
+
+
+## alpha.20 bundle creation stress
+
+Task/missing capability：alpha.19 能回放 rooted bundle，但没有同一 CLI 的生成入口，输入集合仍需外部手工组装；gap type=`REPLAYABLE_EVIDENCE_GAP`，不是 RCL Core 表达缺口。Workaround/donor：新增 `--make-bundle`，复用 `makeOppHttpConsumerBridgeBundle` 和五份既有文件，使用独占输出创建 bundle。
+
+Regression：生成结果必须通过完整 bundle validator 并包含 `bundleRoot`；输出路径已存在时拒绝覆盖，生成过程不发起网络请求、不授予 authority。九门仍 `NOT_ADJUDICATED`。

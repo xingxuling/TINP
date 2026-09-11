@@ -1,6 +1,6 @@
 # 当前状态
 
-TINP v0.1.0-alpha.19：可选外部 AAF 操作员签章、外部恢复锚点、authority registry 快照、多镜像分发 quorum、历史收敛桥接、本机历史 store、外部收敛见证、跨进程 public-history replay、TCP 与 TLS 1.3 TINP DATA loopback state transfer、可恢复分块传输 journal、策略绑定只读 OPP HTTP 观察适配器的本机候选。
+TINP v0.1.0-alpha.20：可选外部 AAF 操作员签章、外部恢复锚点、authority registry 快照、多镜像分发 quorum、历史收敛桥接、本机历史 store、外部收敛见证、跨进程 public-history replay、TCP 与 TLS 1.3 TINP DATA loopback state transfer、可恢复分块传输 journal、策略绑定只读 OPP HTTP 观察适配器的本机候选。
 
 从已核对远端的 alpha.13 / `1aa235d9f5718f87c959e275da10a7bf12d58e9f` 继续，候选分支 `codex/tinp-registry-v07`；alpha.14 实现提交为 `f88798d3a0360eea20eda257126e26755b2a421b`，证据与文档提交为 `bc78af0185c732bb0f7f8b1a848601450db6dd09`，新增 TLS 1.3 TINP DATA 可恢复分块传输、原子接收 journal、接收端重启游标、重复与 chunk/manifest 冲突负例、演示、验证入口与协议注册表记录，完整最终验收以 `evidence/0.1.0-alpha.14/LOCAL_VERIFICATION.json` 的源码哈希、退出码及运行见证为准。
 
@@ -26,3 +26,5 @@ alpha.15 实现提交为 `9a38bb9`，证据与文档提交为 `5f02713`。本机
 alpha.18 候选已通过本机 verify：`196/196`、源码清单 `204` 个文件，`sourceTreeRoot=3763f3ba8d3a7932607502b5edb824f760cc2eefba43ec6decc9dff40ee469d6`，tests TAP SHA-256=`48d280a3c363332f894a4911738a6c4c588206a563fcadc75ed4e28d613076b3`，LOCAL_VERIFICATION SHA-256=`c942f3887b18bf8b4eb4fa8e74780dbe27ce8542f62bbe59bf2bfcbb2df9271b`，EVIDENCE_LEDGER SHA-256=`7f25c95f2db498d6a1d7ece1f8fe3c354af46eccd62f2ff2ff3d941661ec8b53`。候选提交为 `f88b068`，证据提交为 `c6c873e`；已通过合并提交 `9854627` 合并到 `codex/next-internet-v01` 并推送 GitHub。合并后 npm test 为 `196/196`（0 fail）；发行包、解包 `23/23` 聚焦测试、CLI 文件回放、ZIP CRC/敏感文件扫描和交付回执均已生成。外部第三方 consumer、生产 authority 和 K400 仍保持未证明。
 
 alpha.19 候选已通过本机 verify：`198/198`、源码清单 `204` 个文件，`sourceTreeRoot=173293421bc030ae4ffdb76669c384647f57dbe49ea2c2bb59a877aabd148dc2`，tests TAP SHA-256=`d04026c2ecf75c43a7eaedf51b2edcfddf680d68e3bce325ce8b2d33e3848593`，LOCAL_VERIFICATION 已生成。候选提交为 `f3f9b0f`，已通过合并提交 `39866fb` 合并到 `codex/next-internet-v01` 并推送 GitHub。合并后 npm test 为 `198/198`（0 fail）；发行包、解包 `25/25` 聚焦测试、bundle CLI 回放、ZIP CRC/敏感文件扫描和交付回执均已生成。外部第三方 consumer、生产 authority 和 K400 仍保持未证明。
+
+alpha.20 候选增加 `--make-bundle` CLI 入口，从五份已有输入生成带 `bundleRoot` 的单文件；回放仍保持零网络请求、零 authority。待完成本机 verify、发行包和合并后复测。

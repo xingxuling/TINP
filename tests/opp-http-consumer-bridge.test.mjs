@@ -166,3 +166,28 @@ test('consumer bridge CLI replays a single rooted bundle without network access'
     fs.rmSync(directory, { recursive: true, force: true });
   }
 });
+
+test('consumer bridge CLI creates a rooted bundle from five supplied files', async () => {
+  const { policy, request, plan, consumerContract, observation } = await acceptedFixture();
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'tinp-opp-consumer-bundle-create-'));
+  try {
+    const files = { plan, policy, request, observation, contract: consumerContract };
+    const paths = Object.fromEntries(Object.entries(files).map(([name, value]) => {
+      const file = path.join(directory, `${name}.json`);
+      fs.writeFileSync(file, `${JSON.stringify(value)}\n`, { flag: 'wx' });
+      return [name, file];
+    }));
+    const bundlePath = path.join(directory, 'bundle.json');
+    const child = spawnSync(process.execPath, [
+      'scripts/opp-http-consumer-bridge.mjs', '--make-bundle', paths.plan, paths.policy,
+      paths.request, paths.observation, paths.contract, '--out', bundlePath,
+    ], { cwd: path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), encoding: 'utf8', windowsHide: true });
+    assert.equal(child.status, 0, child.stderr);
+    assert.equal(child.stdout, '');
+    const bundle = JSON.parse(fs.readFileSync(bundlePath, 'utf8'));
+    assert.equal(validateOppHttpConsumerBridgeBundle(bundle), true);
+    assert.equal(bundle.format, 'twni.opp-http-consumer-bridge-bundle.v1');
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+});
