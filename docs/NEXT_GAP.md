@@ -27,3 +27,5 @@ alpha.19 将五份 consumer 输入绑定为带 `bundleRoot` 的单文件 bundle�
 
 
 alpha.20 增加 `--make-bundle` 生成入口，让五份已经验签的输入可以形成带 `bundleRoot` 的单文件后再回放。它补齐本机 bundle 的生成/回放闭环；下一缺口仍是外部 Owner 的实际 consumer acceptance、生产发布/撤销与真实异机验证。
+
+alpha.21 增加 live consumer orchestration：单次调用复用真实 OPP CHP/RCP accepted 协商，执行一条显式 HTTPS/GET policy 下的只读观测，并把 producer receipt 与 consumer contract 绑定为 acceptance receipt。确定性 fetch、ambient proxy 拒绝、未加根请求和完整回归均已通过；该结果仍只证明本机候选链路，不证明独立第三方 consumer、生产 authority、真实异机或公网可用性。下一缺口仍是外部 Owner 的发布/撤销和真实异机 consumer acceptance。

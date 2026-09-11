@@ -1,0 +1,33 @@
+{
+  "format": "twni.evidence-ledger.v0.1",
+  "version": "0.1.0-alpha.21",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "mergeCommit": "9d4988e",
+  "candidateCommit": "b6b3e12",
+  "verification": {
+    "file": "evidence/0.1.0-alpha.21/LOCAL_VERIFICATION.json",
+    "status": "VERIFIED_LOCAL_CANDIDATE",
+    "tests": 202,
+    "passed": 202,
+    "failed": 0,
+    "sourceFiles": 207,
+    "sourceTreeRoot": "ff44a7741e3b2353d3cefb521a6c2c77a97f15c5e8a75c3afa3bc9847afabb1e",
+    "testsSha256": "ef423295c7b296283aa7003fdb10e8108f8a8140a0bf37b6d89e386ede1f3bf8"
+  },
+  "changes": [
+    "src/opp-http-consumer-live.mjs",
+    "scripts/opp-http-consumer-live.mjs",
+    "tests/opp-http-consumer-live.test.mjs",
+    "package.json"
+  ],
+  "formats": [
+    "twni.opp-http-consumer-live-run.v1",
+    "twni.opp-http-consumer-bridge-receipt.v1",
+    "twni.opp-http-readonly-receipt.v1"
+  ],
+  "authorityGranted": false,
+  "production": "NOT_DEPLOYED",
+  "externalThirdPartyConsumer": "NOT_RUN",
+  "k400Verdict": "NOT_ADJUDICATED",
+  "boundary": "Local OPP negotiation plus one bounded read-only observation; no credential, authority, production interoperability, trusted time or real-device evidence."
+}
