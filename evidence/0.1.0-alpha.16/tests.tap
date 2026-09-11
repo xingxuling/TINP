@@ -1,0 +1,1156 @@
+TAP version 13
+# Subtest: real AAF signature authorizes the exact bounded challenge through the external public key
+ok 1 - real AAF signature authorizes the exact bounded challenge through the external public key
+  ---
+  duration_ms: 7.0933
+  type: 'test'
+  ...
+# Subtest: unsigned, cryptographically tampered, or incorrectly rooted approvals fail
+ok 2 - unsigned, cryptographically tampered, or incorrectly rooted approvals fail
+  ---
+  duration_ms: 2.3305
+  type: 'test'
+  ...
+# Subtest: replacement keys cannot satisfy the pin even with a valid signature
+ok 3 - replacement keys cannot satisfy the pin even with a valid signature
+  ---
+  duration_ms: 1.2825
+  type: 'test'
+  ...
+# Subtest: key revocation metadata must be explicit false and cannot carry inline private material
+ok 4 - key revocation metadata must be explicit false and cannot carry inline private material
+  ---
+  duration_ms: 1.3171
+  type: 'test'
+  ...
+# Subtest: challenge, signer, and approver bindings are independent hard gates
+ok 5 - challenge, signer, and approver bindings are independent hard gates
+  ---
+  duration_ms: 0.8299
+  type: 'test'
+  ...
+# Subtest: scope and role profiles reject wildcards, extra roles, and conditions
+ok 6 - scope and role profiles reject wildcards, extra roles, and conditions
+  ---
+  duration_ms: 2.0959
+  type: 'test'
+  ...
+# Subtest: time windows reject future, expired, overlong, invalid and noncanonical timestamps
+ok 7 - time windows reject future, expired, overlong, invalid and noncanonical timestamps
+  ---
+  duration_ms: 2.7454
+  type: 'test'
+  ...
+# Subtest: historical authorization can be verified at its admission time but cannot renew current authority
+ok 8 - historical authorization can be verified at its admission time but cannot renew current authority
+  ---
+  duration_ms: 0.7964
+  type: 'test'
+  ...
+# Subtest: approval shape rejects inline keys, extra fields, accessors, and prototype fields
+ok 9 - approval shape rejects inline keys, extra fields, accessors, and prototype fields
+  ---
+  duration_ms: 1.1282
+  type: 'test'
+  ...
+# Subtest: canonical signature encoding rejects extra bytes, whitespace, and altered algorithm
+ok 10 - canonical signature encoding rejects extra bytes, whitespace, and altered algorithm
+  ---
+  duration_ms: 1.054
+  type: 'test'
+  ...
+# Subtest: policy validation rejects root drift, wildcard policy, public keys, and non-Ed25519 keys
+ok 11 - policy validation rejects root drift, wildcard policy, public keys, and non-Ed25519 keys
+  ---
+  duration_ms: 1.0662
+  type: 'test'
+  ...
+# Subtest: external keyring entry accessors are rejected without evaluation
+ok 12 - external keyring entry accessors are rejected without evaluation
+  ---
+  duration_ms: 0.6916
+  type: 'test'
+  ...
+# Subtest: vendored AAF bytes match the recorded git HEAD provenance hashes
+ok 13 - vendored AAF bytes match the recorded git HEAD provenance hashes
+  ---
+  duration_ms: 1.0221
+  type: 'test'
+  ...
+# Subtest: authority registry CLI verifies an external snapshot and derives a role keyring
+ok 14 - authority registry CLI verifies an external snapshot and derives a role keyring
+  ---
+  duration_ms: 889.8965
+  type: 'test'
+  ...
+# Subtest: recovery-anchor status can opt into the signed registry bridge
+ok 15 - recovery-anchor status can opt into the signed registry bridge
+  ---
+  duration_ms: 4551.0359
+  type: 'test'
+  ...
+# Subtest: authority registry convergence CLI verifies a contiguous history
+ok 16 - authority registry convergence CLI verifies a contiguous history
+  ---
+  duration_ms: 234.78
+  type: 'test'
+  ...
+# Subtest: authority registry convergence store CLI appends, verifies and rejects rollback
+ok 17 - authority registry convergence store CLI appends, verifies and rejects rollback
+  ---
+  duration_ms: 2146.4606
+  type: 'test'
+  ...
+# Subtest: store persists the first verified history and reloads it
+ok 18 - store persists the first verified history and reloads it
+  ---
+  duration_ms: 372.9719
+  type: 'test'
+  ...
+# Subtest: store accepts an exact full-history extension and makes replay idempotent
+ok 19 - store accepts an exact full-history extension and makes replay idempotent
+  ---
+  duration_ms: 1138.3841
+  type: 'test'
+  ...
+# Subtest: store rejects rollback and prefix rewrite without changing durable bytes
+ok 20 - store rejects rollback and prefix rewrite without changing durable bytes
+  ---
+  duration_ms: 919.5083
+  type: 'test'
+  ...
+# Subtest: store detects tampered history roots and malformed state before use
+ok 21 - store detects tampered history roots and malformed state before use
+  ---
+  duration_ms: 414.6956
+  type: 'test'
+  ...
+# Subtest: store rejects a changed policy and keeps the existing history
+ok 22 - store rejects a changed policy and keeps the existing history
+  ---
+  duration_ms: 676.157
+  type: 'test'
+  ...
+# Subtest: authority registry convergence witness CLI requests and verifies an external binding
+ok 23 - authority registry convergence witness CLI requests and verifies an external binding
+  ---
+  duration_ms: 1134.0327
+  type: 'test'
+  ...
+# Subtest: external witness binds one exact convergence-store state
+ok 24 - external witness binds one exact convergence-store state
+  ---
+  duration_ms: 11.8033
+  type: 'test'
+  ...
+# Subtest: witness chain accepts extension and rejects rollback or same-sequence replacement
+ok 25 - witness chain accepts extension and rejects rollback or same-sequence replacement
+  ---
+  duration_ms: 11.036
+  type: 'test'
+  ...
+# Subtest: witness rejects a store replacement even when the replacement is structurally valid
+ok 26 - witness rejects a store replacement even when the replacement is structurally valid
+  ---
+  duration_ms: 3.2689
+  type: 'test'
+  ...
+# Subtest: witness key, signature, time and object boundaries fail closed
+ok 27 - witness key, signature, time and object boundaries fail closed
+  ---
+  duration_ms: 4.6471
+  type: 'test'
+  ...
+# Subtest: convergence bundle verifies a contiguous history with a stable mirror quorum
+ok 28 - convergence bundle verifies a contiguous history with a stable mirror quorum
+  ---
+  duration_ms: 15.6562
+  type: 'test'
+  ...
+# Subtest: same-sequence alternate roots are rejected as a historical fork
+ok 29 - same-sequence alternate roots are rejected as a historical fork
+  ---
+  duration_ms: 7.6976
+  type: 'test'
+  ...
+# Subtest: missing sequence and broken predecessor are rejected before distributed history is accepted
+ok 30 - missing sequence and broken predecessor are rejected before distributed history is accepted
+  ---
+  duration_ms: 8.3247
+  type: 'test'
+  ...
+# Subtest: mirror set drift is visible even when each snapshot individually reaches threshold
+ok 31 - mirror set drift is visible even when each snapshot individually reaches threshold
+  ---
+  duration_ms: 5.7089
+  type: 'test'
+  ...
+# Subtest: duplicate snapshots, root drift and accessors fail closed
+ok 32 - duplicate snapshots, root drift and accessors fail closed
+  ---
+  duration_ms: 4.2859
+  type: 'test'
+  ...
+# Subtest: independent local hosts replay public history and retain unresolved conflicts
+ok 33 - independent local hosts replay public history and retain unresolved conflicts
+  ---
+  duration_ms: 3564.7648
+  type: 'test'
+  ...
+# Subtest: authority registry distribution CLI verifies a quorum bundle and rejects unknown flags
+ok 34 - authority registry distribution CLI verifies a quorum bundle and rejects unknown flags
+  ---
+  duration_ms: 529.2487
+  type: 'test'
+  ...
+# Subtest: distribution policy and mirror quorum converge on one signed registry root
+ok 35 - distribution policy and mirror quorum converge on one signed registry root
+  ---
+  duration_ms: 9.5113
+  type: 'test'
+  ...
+# Subtest: validly signed conflicting mirror receipt is rejected as a deterministic fork
+ok 36 - validly signed conflicting mirror receipt is rejected as a deterministic fork
+  ---
+  duration_ms: 3.3446
+  type: 'test'
+  ...
+# Subtest: quorum and receipt validity are bounded by caller time and threshold
+ok 37 - quorum and receipt validity are bounded by caller time and threshold
+  ---
+  duration_ms: 2.76
+  type: 'test'
+  ...
+# Subtest: mirror key replacement, revocation, duplicate and ordering fail closed
+ok 38 - mirror key replacement, revocation, duplicate and ordering fail closed
+  ---
+  duration_ms: 2.6272
+  type: 'test'
+  ...
+# Subtest: strict object and private-key boundaries reject accessors and private mirror material
+ok 39 - strict object and private-key boundaries reject accessors and private mirror material
+  ---
+  duration_ms: 2.0576
+  type: 'test'
+  ...
+# Subtest: TINP loopback DATA transport transfers public history and retains rejects
+ok 40 - TINP loopback DATA transport transfers public history and retains rejects
+  ---
+  duration_ms: 4018.8332
+  type: 'test'
+  ...
+# Subtest: resumable transfer journal persists cursors and makes duplicate chunks idempotent
+ok 41 - resumable transfer journal persists cursors and makes duplicate chunks idempotent
+  ---
+  duration_ms: 1306.6982
+  type: 'test'
+  ...
+# Subtest: resumable transfer rejects altered chunks, manifests and incomplete commits without mutation
+ok 42 - resumable transfer rejects altered chunks, manifests and incomplete commits without mutation
+  ---
+  duration_ms: 0.7822
+  type: 'test'
+  ...
+# Subtest: TLS resumable transfer resumes a durable public journal after receiver restart
+ok 43 - TLS resumable transfer resumes a durable public journal after receiver restart
+  ---
+  duration_ms: 10482.9949
+  type: 'test'
+  ...
+# Subtest: TINP TLS loopback transfers public history with certificate pinning
+ok 44 - TINP TLS loopback transfers public history with certificate pinning
+  ---
+  duration_ms: 5201.3842
+  type: 'test'
+  ...
+# Subtest: TLS loopback rejects a peer certificate outside the configured CA pin
+ok 45 - TLS loopback rejects a peer certificate outside the configured CA pin
+  ---
+  duration_ms: 753.6354
+  type: 'test'
+  ...
+# Subtest: authority registry policy and snapshot are signed by an independent issuer
+ok 46 - authority registry policy and snapshot are signed by an independent issuer
+  ---
+  duration_ms: 315.7318
+  type: 'test'
+  ...
+# Subtest: append-only registry rotation revokes old members and cannot escalate roles
+ok 47 - append-only registry rotation revokes old members and cannot escalate roles
+  ---
+  duration_ms: 207.7926
+  type: 'test'
+  ...
+# Subtest: registry chain rejects forged signatures, rollback and replaced predecessors
+ok 48 - registry chain rejects forged signatures, rollback and replaced predecessors
+  ---
+  duration_ms: 285.8341
+  type: 'test'
+  ...
+# Subtest: issuer revocation, key replacement and missing member material fail closed
+ok 49 - issuer revocation, key replacement and missing member material fail closed
+  ---
+  duration_ms: 278.8479
+  type: 'test'
+  ...
+# Subtest: strict object and time boundaries reject accessors, resurrection and stale snapshots
+ok 50 - strict object and time boundaries reject accessors, resurrection and stale snapshots
+  ---
+  duration_ms: 194.4618
+  type: 'test'
+  ...
+# Subtest: authenticated network rejects mutated transaction facts before any provider execution
+ok 51 - authenticated network rejects mutated transaction facts before any provider execution
+  ---
+  duration_ms: 1092.3887
+  type: 'test'
+  ...
+# Subtest: concurrent exact retry executes once; changed request content cannot replay
+ok 52 - concurrent exact retry executes once; changed request content cannot replay
+  ---
+  duration_ms: 1209.8649
+  type: 'test'
+  ...
+# Subtest: receipt mutation and durable ledger tampering cannot become verified evidence
+ok 53 - receipt mutation and durable ledger tampering cannot become verified evidence
+  ---
+  duration_ms: 1019.8052
+  type: 'test'
+  ...
+# Subtest: bounded path selection applies cost, region, latency and energy together
+ok 54 - bounded path selection applies cost, region, latency and energy together
+  ---
+  duration_ms: 1.0475
+  type: 'test'
+  ...
+# Subtest: deterministic malformed wire corpus rejects framing errors
+ok 55 - deterministic malformed wire corpus rejects framing errors
+  ---
+  duration_ms: 1.0724
+  type: 'test'
+  ...
+# Subtest: integrated RCL migration rejects a changed subject before issuing a replacement
+ok 56 - integrated RCL migration rejects a changed subject before issuing a replacement
+  ---
+  duration_ms: 1565.3882
+  type: 'test'
+  ...
+# Subtest: integrated RCL route gate enforces signed latency and energy budgets from trusted edges
+ok 57 - integrated RCL route gate enforces signed latency and energy budgets from trusted edges
+  ---
+  duration_ms: 1212.7576
+  type: 'test'
+  ...
+# Subtest: an ambiguous lost response reconciles the exact signed request without a second execution
+ok 58 - an ambiguous lost response reconciles the exact signed request without a second execution
+  ---
+  duration_ms: 1201.651
+  type: 'test'
+  ...
+# Subtest: operator CLI imports an independently signed AAF approval and preserves the old revoked lease
+ok 59 - operator CLI imports an independently signed AAF approval and preserves the old revoked lease
+  ---
+  duration_ms: 25249.5301
+  type: 'test'
+  ...
+# Subtest: external operator pin is immutable and persisted as a fingerprint without the external keyring or private signer
+ok 60 - external operator pin is immutable and persisted as a fingerprint without the external keyring or private signer
+  ---
+  duration_ms: 15862.6204
+  type: 'test'
+  ...
+# Subtest: pinned operator requires a signed approval and the matching currently unrevoked external key before any revocation
+ok 61 - pinned operator requires a signed approval and the matching currently unrevoked external key before any revocation
+  ---
+  duration_ms: 10930.0615
+  type: 'test'
+  ...
+# Subtest: valid external signatures for another challenge, signer identity, scope or expired interval grant no retirement
+ok 62 - valid external signatures for another challenge, signer identity, scope or expired interval grant no retirement
+  ---
+  duration_ms: 11370.4148
+  type: 'test'
+  ...
+# Subtest: operator revocation after actual node acknowledgements is rechecked and cannot commit a terminal
+ok 63 - operator revocation after actual node acknowledgements is rechecked and cannot commit a terminal
+  ---
+  duration_ms: 14150.9113
+  type: 'test'
+  ...
+# Subtest: approval expiry while waiting for real node acknowledgements retains pending and produces no terminal
+ok 64 - approval expiry while waiting for real node acknowledgements retains pending and produces no terminal
+  ---
+  duration_ms: 13833.1875
+  type: 'test'
+  ...
+# Subtest: authenticated checkpoint cannot drop or replace an operator pin already recorded in the signed ledger
+ok 65 - authenticated checkpoint cannot drop or replace an operator pin already recorded in the signed ledger
+  ---
+  duration_ms: 13462.6088
+  type: 'test'
+  ...
+# Subtest: actual coordinator crash finalizes a historical approval after expiry while requiring its external nonrevoked key
+ok 66 - actual coordinator crash finalizes a historical approval after expiry while requiring its external nonrevoked key
+  ---
+  duration_ms: 28341.8932
+  type: 'test'
+  ...
+# Subtest: a coordinator-signed terminal cannot forge external approval or recorded authorization evidence
+ok 67 - a coordinator-signed terminal cannot forge external approval or recorded authorization evidence
+  ---
+  duration_ms: 31256.2938
+  type: 'test'
+  ...
+# Subtest: real upstream OPP preserves Unicode and returns non-authoritative exact contract
+ok 68 - real upstream OPP preserves Unicode and returns non-authoritative exact contract
+  ---
+  duration_ms: 621.515
+  type: 'test'
+  ...
+# Subtest: upstream rejects schema drift and intersects scopes without granting authority
+ok 69 - upstream rejects schema drift and intersects scopes without granting authority
+  ---
+  duration_ms: 574.0972
+  type: 'test'
+  ...
+# Subtest: profile version mismatch fails before contract use
+ok 70 - profile version mismatch fails before contract use
+  ---
+  duration_ms: 611.5444
+  type: 'test'
+  ...
+# Subtest: missing required schema fails closed
+ok 71 - missing required schema fails closed
+  ---
+  duration_ms: 659.3623
+  type: 'test'
+  ...
+# Subtest: policy and request roots are deterministic and bind the pinned OPP profile
+ok 72 - policy and request roots are deterministic and bind the pinned OPP profile
+  ---
+  duration_ms: 12.8356
+  type: 'test'
+  ...
+# Subtest: readonly adapter performs one explicit JSON GET and returns a rooted receipt
+ok 73 - readonly adapter performs one explicit JSON GET and returns a rooted receipt
+  ---
+  duration_ms: 24.2362
+  type: 'test'
+  ...
+# Subtest: ambient proxy configuration fails closed before fetch
+ok 74 - ambient proxy configuration fails closed before fetch
+  ---
+  duration_ms: 1.5131
+  type: 'test'
+  ...
+# Subtest: network failure is one attempt and does not retry
+ok 75 - network failure is one attempt and does not retry
+  ---
+  duration_ms: 0.9656
+  type: 'test'
+  ...
+# Subtest: response size, redirect/status, and media type boundaries fail closed
+ok 76 - response size, redirect/status, and media type boundaries fail closed
+  ---
+  duration_ms: 3.6702
+  type: 'test'
+  ...
+# Subtest: host and credential boundaries reject before execution
+ok 77 - host and credential boundaries reject before execution
+  ---
+  duration_ms: 1.4482
+  type: 'test'
+  ...
+# Subtest: nested header and policy field shapes fail closed before a fetch
+ok 78 - nested header and policy field shapes fail closed before a fetch
+  ---
+  duration_ms: 0.8713
+  type: 'test'
+  ...
+# Subtest: Node environment-proxy switches fail closed before fetch
+ok 79 - Node environment-proxy switches fail closed before fetch
+  ---
+  duration_ms: 3.5657
+  type: 'test'
+  ...
+# Subtest: projection preserves a literal prototype key without changing the result prototype
+ok 80 - projection preserves a literal prototype key without changing the result prototype
+  ---
+  duration_ms: 2.0081
+  type: 'test'
+  ...
+# Subtest: receipt validator rejects a re-rooted semantically inconsistent PASS
+ok 81 - receipt validator rejects a re-rooted semantically inconsistent PASS
+  ---
+  duration_ms: 1.3254
+  type: 'test'
+  ...
+# Subtest: encoded path traversal and malformed environment fail closed
+ok 82 - encoded path traversal and malformed environment fail closed
+  ---
+  duration_ms: 0.6317
+  type: 'test'
+  ...
+# Subtest: successful responses require a JSON object and consistent response metadata
+ok 83 - successful responses require a JSON object and consistent response metadata
+  ---
+  duration_ms: 1.0154
+  type: 'test'
+  ...
+# Subtest: pending CLI: inspect then retire unsent pending without resending
+ok 84 - pending CLI: inspect then retire unsent pending without resending
+  ---
+  duration_ms: 29940.5327
+  type: 'test'
+  ...
+# Subtest: pending CLI: retrieve executed receipt without resending
+ok 85 - pending CLI: retrieve executed receipt without resending
+  ---
+  duration_ms: 19937.4874
+  type: 'test'
+  ...
+# Subtest: pending inspector is offline, nonmutating, redacted and refuses missing state without creating it
+ok 86 - pending inspector is offline, nonmutating, redacted and refuses missing state without creating it
+  ---
+  duration_ms: 12917.9507
+  type: 'test'
+  ...
+# Subtest: maintenance denies direct execution and service restart cannot activate a provider
+ok 87 - maintenance denies direct execution and service restart cannot activate a provider
+  ---
+  duration_ms: 15906.8707
+  type: 'test'
+  ...
+# Subtest: retirement root and explicit confirmation fail before any durable mutation
+ok 88 - retirement root and explicit confirmation fail before any durable mutation
+  ---
+  duration_ms: 10102.2147
+  type: 'test'
+  ...
+# Subtest: authenticated pending state binds its public root, target and whole route even when the route root is unchanged
+ok 89 - authenticated pending state binds its public root, target and whole route even when the route root is unchanged
+  ---
+  duration_ms: 11767.8029
+  type: 'test'
+  ...
+# Subtest: retirement missing one live acknowledgement preserves pending and resumes only with full revocation evidence
+ok 90 - retirement missing one live acknowledgement preserves pending and resumes only with full revocation evidence
+  ---
+  duration_ms: 15274.3746
+  type: 'test'
+  ...
+# Subtest: actual coordinator death after retirement prefix commit recovers without execution or lease renewal
+ok 91 - actual coordinator death after retirement prefix commit recovers without execution or lease renewal
+  ---
+  duration_ms: 17638.9003
+  type: 'test'
+  ...
+# Subtest: actual coordinator death after retirement suffix commit recovers without execution or lease renewal
+ok 92 - actual coordinator death after retirement suffix commit recovers without execution or lease renewal
+  ---
+  duration_ms: 18367.6906
+  type: 'test'
+  ...
+# Subtest: authority-signed terminal does not excuse missing node evidence, wrong epoch or fake RCL admission
+ok 93 - authority-signed terminal does not excuse missing node evidence, wrong epoch or fake RCL admission
+  ---
+  duration_ms: 39242.6267
+  type: 'test'
+  ...
+# Subtest: udp: Chinese life intent executes through three independent local processes and two socket hops
+ok 94 - udp: Chinese life intent executes through three independent local processes and two socket hops
+  ---
+  duration_ms: 1256.9872
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-c3PNW9
+# Subtest: tcp: Chinese life intent executes through three independent local processes and two socket hops
+ok 95 - tcp: Chinese life intent executes through three independent local processes and two socket hops
+  ---
+  duration_ms: 1252.8624
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-wMGpj1
+# Subtest: commercial: contract-identical provider replacement executes; semantic drift rolls back; missing provider migrates to B
+ok 96 - commercial: contract-identical provider replacement executes; semantic drift rolls back; missing provider migrates to B
+  ---
+  duration_ms: 4583.2386
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-vlvOr9
+# Subtest: degraded: killing relay B causes authenticated direct A-C execution without authority or evidence loss
+ok 97 - degraded: killing relay B causes authenticated direct A-C execution without authority or evidence loss
+  ---
+  duration_ms: 3076.7234
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-c6SoGd
+# Subtest: partition: actual links blocked on both sides preserve local isolated capability without remote execution
+ok 98 - partition: actual links blocked on both sides preserve local isolated capability without remote execution
+  ---
+  duration_ms: 2055.2917
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-yc3x5A
+# Subtest: degraded: a real link failure with B still alive reroutes socket traffic over A-C
+ok 99 - degraded: a real link failure with B still alive reroutes socket traffic over A-C
+  ---
+  duration_ms: 1165.3116
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-OUJyku
+# Subtest: survival: every provider disappears; no execution is fabricated and identity/session/durable prefix survive
+ok 100 - survival: every provider disappears; no execution is fabricated and identity/session/durable prefix survive
+  ---
+  duration_ms: 1122.6706
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-c9DDYP
+# Subtest: commercial: source migration A to B preserves subject, session, authority and a verifiable durable evidence chain
+ok 101 - commercial: source migration A to B preserves subject, session, authority and a verifiable durable evidence chain
+  ---
+  duration_ms: 2012.8948
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-rEor6K
+# Subtest: commercial: protocol downgrade is negotiated and an unsupported provider version fails over without invoking it
+ok 102 - commercial: protocol downgrade is negotiated and an unsupported provider version fails over without invoking it
+  ---
+  duration_ms: 1849.1305
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-wwnIGS
+# Subtest: degraded: actual socket send throttling delays bytes while the same guarded operation still executes
+ok 103 - degraded: actual socket send throttling delays bytes while the same guarded operation still executes
+  ---
+  duration_ms: 2877.8861
+  type: 'test'
+  ...
+# Local process/socket evidence: C:\\Users\\User\\.codex\\.chatgpt-projects\\g-p-6a437af98cc08191af8185180f66b55e\\work\\TaoWind-Next-Internet\\.runs\\profiles\\run-SpM3Kp
+# {"profile":"actual-throttled-local-udp","sentBytes":16054,"bytesPerSecond":16000,"elapsedMs":1893.508899999997,"nominalDelayMs":1003.375,"probeBytes":4916,"probeElapsedMs":352.0721000000012,"probeNominalMs":307.25}
+# Subtest: protected storage rejects missing purpose and unsupported platforms
+ok 104 - protected storage rejects missing purpose and unsupported platforms
+  ---
+  duration_ms: 2.2626
+  type: 'test'
+  ...
+# Subtest: actual current-user DPAPI roundtrip protects Ed25519 private keys on disk
+ok 105 - actual current-user DPAPI roundtrip protects Ed25519 private keys on disk
+  ---
+  duration_ms: 1559.3874
+  type: 'test'
+  ...
+# Subtest: DPAPI purpose binding rejects a different state domain without changing ciphertext
+ok 106 - DPAPI purpose binding rejects a different state domain without changing ciphertext
+  ---
+  duration_ms: 2008.1811
+  type: 'test'
+  ...
+# Subtest: corrupted header, ciphertext and truncation all fail closed
+ok 107 - corrupted header, ciphertext and truncation all fail closed
+  ---
+  duration_ms: 640.3071
+  type: 'test'
+  ...
+# Subtest: atomic snapshot overwrite retains latest state and leaves no temporary files
+ok 108 - atomic snapshot overwrite retains latest state and leaves no temporary files
+  ---
+  duration_ms: 1910.6931
+  type: 'test'
+  ...
+# Subtest: DPAPI rejects modified protected content even when the outer checksum is recomputed
+ok 109 - DPAPI rejects modified protected content even when the outer checksum is recomputed
+  ---
+  duration_ms: 1205.867
+  type: 'test'
+  ...
+# Subtest: unavailable provider preserves last snapshot and never writes a plaintext fallback
+ok 110 - unavailable provider preserves last snapshot and never writes a plaintext fallback
+  ---
+  duration_ms: 1218.4452
+  type: 'test'
+  ...
+# Subtest: a fresh Node process recovers the same protected private key and session
+ok 111 - a fresh Node process recovers the same protected private key and session
+  ---
+  duration_ms: 1696.7603
+  type: 'test'
+  ...
+# Subtest: invalid JSON payload inputs do not overwrite a healthy snapshot
+ok 112 - invalid JSON payload inputs do not overwrite a healthy snapshot
+  ---
+  duration_ms: 1218.898
+  type: 'test'
+  ...
+# Subtest: fixed RCL source compiles and admits authenticated matching observations
+ok 113 - fixed RCL source compiles and admits authenticated matching observations
+  ---
+  duration_ms: 32.052
+  type: 'test'
+  ...
+# Subtest: each semantic predicate independently denies in RCL
+ok 114 - each semantic predicate independently denies in RCL
+  ---
+  duration_ms: 46.1029
+  type: 'test'
+  ...
+# Subtest: missing, malformed, accessor and injection inputs fail closed without compilation
+ok 115 - missing, malformed, accessor and injection inputs fail closed without compilation
+  ---
+  duration_ms: 4.9624
+  type: 'test'
+  ...
+# Subtest: facts are snapshotted before asynchronous execution and requests stay isolated
+ok 116 - facts are snapshotted before asynchronous execution and requests stay isolated
+  ---
+  duration_ms: 31.0825
+  type: 'test'
+  ...
+# Subtest: RCL admits scope attenuation, equal expiry and scope order independence
+ok 117 - RCL admits scope attenuation, equal expiry and scope order independence
+  ---
+  duration_ms: 43.1751
+  type: 'test'
+  ...
+# Subtest: identity, continuity, world, expiry and scope expansion are independently denied in RCL
+ok 118 - identity, continuity, world, expiry and scope expansion are independently denied in RCL
+  ---
+  duration_ms: 13.3731
+  type: 'test'
+  ...
+# Subtest: missing fields, invalid timestamps and malformed scope sets fail closed
+ok 119 - missing fields, invalid timestamps and malformed scope sets fail closed
+  ---
+  duration_ms: 1.1479
+  type: 'test'
+  ...
+# Subtest: scope snapshots and concurrent migration decisions remain isolated
+ok 120 - scope snapshots and concurrent migration decisions remain isolated
+  ---
+  duration_ms: 16.9518
+  type: 'test'
+  ...
+# Subtest: fixed RCL pending retirement compiles and records actual runtime admission
+ok 121 - fixed RCL pending retirement compiles and records actual runtime admission
+  ---
+  duration_ms: 30.6535
+  type: 'test'
+  ...
+# Subtest: RCL independently denies every false predicate and mismatched root in the complete truth table
+ok 122 - RCL independently denies every false predicate and mismatched root in the complete truth table
+  ---
+  duration_ms: 31.5456
+  type: 'test'
+  ...
+# Subtest: pending retirement observations reject missing, extra, inherited, accessor and malformed fields
+ok 123 - pending retirement observations reject missing, extra, inherited, accessor and malformed fields
+  ---
+  duration_ms: 3.2841
+  type: 'test'
+  ...
+# Subtest: request root binding is exact and does not silently normalize valid hexadecimal strings
+ok 124 - request root binding is exact and does not silently normalize valid hexadecimal strings
+  ---
+  duration_ms: 5.8452
+  type: 'test'
+  ...
+# Subtest: pending retirement input snapshots remain isolated across mutations and concurrent calls
+ok 125 - pending retirement input snapshots remain isolated across mutations and concurrent calls
+  ---
+  duration_ms: 15.4561
+  type: 'test'
+  ...
+# Subtest: fixed RCL recovery program admits equality, shorter expiry and forward revocation epoch
+ok 126 - fixed RCL recovery program admits equality, shorter expiry and forward revocation epoch
+  ---
+  duration_ms: 44.5654
+  type: 'test'
+  ...
+# Subtest: each identity, lease, revocation, evidence and authentication predicate denies independently in RCL
+ok 127 - each identity, lease, revocation, evidence and authentication predicate denies independently in RCL
+  ---
+  duration_ms: 19.1213
+  type: 'test'
+  ...
+# Subtest: recovery observations reject missing, extra, inherited, accessor and malformed data
+ok 128 - recovery observations reject missing, extra, inherited, accessor and malformed data
+  ---
+  duration_ms: 2.2323
+  type: 'test'
+  ...
+# Subtest: recovery inputs remain data and concurrent snapshots stay isolated
+ok 129 - recovery inputs remain data and concurrent snapshots stay isolated
+  ---
+  duration_ms: 28.2885
+  type: 'test'
+  ...
+# Subtest: loading expired historical state does not admit expired execution
+ok 130 - loading expired historical state does not admit expired execution
+  ---
+  duration_ms: 11.9588
+  type: 'test'
+  ...
+# Subtest: RCL admits fractional metrics, inclusive budgets and zero local route
+ok 131 - RCL admits fractional metrics, inclusive budgets and zero local route
+  ---
+  duration_ms: 41.6411
+  type: 'test'
+  ...
+# Subtest: RCL independently rejects each budget, region, reachability and security failure
+ok 132 - RCL independently rejects each budget, region, reachability and security failure
+  ---
+  duration_ms: 26.7537
+  type: 'test'
+  ...
+# Subtest: missing fields, nonfinite/unsafe/negative metrics and coercion attempts fail closed
+ok 133 - missing fields, nonfinite/unsafe/negative metrics and coercion attempts fail closed
+  ---
+  duration_ms: 0.9624
+  type: 'test'
+  ...
+# Subtest: metrics are snapshotted and concurrent route decisions remain isolated
+ok 134 - metrics are snapshotted and concurrent route decisions remain isolated
+  ---
+  duration_ms: 20.9441
+  type: 'test'
+  ...
+# Subtest: recovery-anchor CLI exports a read-only request and imports an external signature
+ok 135 - recovery-anchor CLI exports a read-only request and imports an external signature
+  ---
+  duration_ms: 12528.0665
+  type: 'test'
+  ...
+# Subtest: external recovery anchor pins a public fingerprint, excludes keyring material, and survives restart
+ok 136 - external recovery anchor pins a public fingerprint, excludes keyring material, and survives restart
+  ---
+  duration_ms: 23843.2451
+  type: 'test'
+  ...
+# Subtest: a newer externally signed anchor detects a complete older directory replay
+ok 137 - a newer externally signed anchor detects a complete older directory replay
+  ---
+  duration_ms: 33084.3964
+  type: 'test'
+  ...
+# Subtest: anchor policy and monotonic sequence reject replacement, stale, forged, and revoked trust inputs before writes
+ok 138 - anchor policy and monotonic sequence reject replacement, stale, forged, and revoked trust inputs before writes
+  ---
+  duration_ms: 23650.745
+  type: 'test'
+  ...
+# Subtest: anchor verification rejects a lower external sequence and a mismatched signer without changing durable state
+ok 139 - anchor verification rejects a lower external sequence and a mismatched signer without changing durable state
+  ---
+  duration_ms: 13755.3887
+  type: 'test'
+  ...
+# Subtest: actual recovery caller witnesses admission and independently denies checkpoint root, epoch and lease expansion
+ok 140 - actual recovery caller witnesses admission and independently denies checkpoint root, epoch and lease expansion
+  ---
+  duration_ms: 1358.2328
+  type: 'test'
+  ...
+# Subtest: actual recovery caller rejects correctly signed session scope, identity, world and expiry violations before RCL
+ok 141 - actual recovery caller rejects correctly signed session scope, identity, world and expiry violations before RCL
+  ---
+  duration_ms: 1535.8429
+  type: 'test'
+  ...
+# Subtest: valid protected checkpoint with a wrong prefix root is rejected by the host before admission
+ok 142 - valid protected checkpoint with a wrong prefix root is rejected by the host before admission
+  ---
+  duration_ms: 2764.5686
+  type: 'test'
+  ...
+# Subtest: authenticated signed crash suffix cannot reissue the checkpoint lease during host recovery
+ok 143 - authenticated signed crash suffix cannot reissue the checkpoint lease during host recovery
+  ---
+  duration_ms: 2100.4778
+  type: 'test'
+  ...
+# Subtest: signed crash suffix cannot expand an attenuated saved session within its wider lease
+ok 144 - signed crash suffix cannot expand an attenuated saved session within its wider lease
+  ---
+  duration_ms: 4428.2114
+  type: 'test'
+  ...
+# Subtest: full process reopening records an actual RCL recovery witness but expired lease execution stays denied
+ok 145 - full process reopening records an actual RCL recovery witness but expired lease execution stays denied
+  ---
+  duration_ms: 9639.8422
+  type: 'test'
+  ...
+# Subtest: durable recovery: actual service kill preserves identity, exact receipt and consumed anchors
+ok 146 - durable recovery: actual service kill preserves identity, exact receipt and consumed anchors
+  ---
+  duration_ms: 8321.4432
+  type: 'test'
+  ...
+# Subtest: durable recovery: revocation survives service death and coordinator reopening
+ok 147 - durable recovery: revocation survives service death and coordinator reopening
+  ---
+  duration_ms: 14730.9839
+  type: 'test'
+  ...
+# Subtest: durable recovery: independent second coordinator cannot acquire active state
+ok 148 - durable recovery: independent second coordinator cannot acquire active state
+  ---
+  duration_ms: 4502.3195
+  type: 'test'
+  ...
+# Subtest: durable recovery: an existing node writer blocks coordinator recovery without changing its cache
+ok 149 - durable recovery: an existing node writer blocks coordinator recovery without changing its cache
+  ---
+  duration_ms: 13977.2323
+  type: 'test'
+  ...
+# Subtest: durable recovery: actual coordinator kill after execution reconciles one retained receipt
+ok 150 - durable recovery: actual coordinator kill after execution reconciles one retained receipt
+  ---
+  duration_ms: 12765.9684
+  type: 'test'
+  ...
+# Subtest: durable recovery: unresolved persisted request never becomes an automatic new execution
+ok 151 - durable recovery: unresolved persisted request never becomes an automatic new execution
+  ---
+  duration_ms: 11705.5644
+  type: 'test'
+  ...
+# Subtest: durable recovery: ciphertext corruption cannot silently create fresh authority
+ok 152 - durable recovery: ciphertext corruption cannot silently create fresh authority
+  ---
+  duration_ms: 6771.6861
+  type: 'test'
+  ...
+# Subtest: durable recovery: ledger truncated behind its committed checkpoint fails closed
+ok 153 - durable recovery: ledger truncated behind its committed checkpoint fails closed
+  ---
+  duration_ms: 7840.3542
+  type: 'test'
+  ...
+# Subtest: durable recovery: rehashed forged ledger suffix lacks authority signature
+ok 154 - durable recovery: rehashed forged ledger suffix lacks authority signature
+  ---
+  duration_ms: 8401.0601
+  type: 'test'
+  ...
+# Subtest: durable recovery: an older valid service snapshot cannot erase committed execution evidence
+ok 155 - durable recovery: an older valid service snapshot cannot erase committed execution evidence
+  ---
+  duration_ms: 9915.883
+  type: 'test'
+  ...
+# Subtest: durable recovery: cache signatures, request keys and consumed anchors are independently bound
+ok 156 - durable recovery: cache signatures, request keys and consumed anchors are independently bound
+  ---
+  duration_ms: 6830.2086
+  type: 'test'
+  ...
+# Subtest: durable recovery: authenticated storage does not excuse malformed cache records
+ok 157 - durable recovery: authenticated storage does not excuse malformed cache records
+  ---
+  duration_ms: 18219.409
+  type: 'test'
+  ...
+# Subtest: security: consumed session evidence anchor cannot authorize a second divergent request
+ok 158 - security: consumed session evidence anchor cannot authorize a second divergent request
+  ---
+  duration_ms: 1315.6996
+  type: 'test'
+  ...
+# Subtest: security: subject cannot lower route cost below an authority budget by rewriting route metrics
+ok 159 - security: subject cannot lower route cost below an authority budget by rewriting route metrics
+  ---
+  duration_ms: 1236.3844
+  type: 'test'
+  ...
+# Subtest: security: concurrent exact retries return one execution and identical receipt
+ok 160 - security: concurrent exact retries return one execution and identical receipt
+  ---
+  duration_ms: 1094.2432
+  type: 'test'
+  ...
+# Subtest: security: trusted provider receipt cannot relabel world, capability or result status
+ok 161 - security: trusted provider receipt cannot relabel world, capability or result status
+  ---
+  duration_ms: 1384.3541
+  type: 'test'
+  ...
+# Subtest: security: authority-issued source node binding cannot be replaced by the subject
+ok 162 - security: authority-issued source node binding cannot be replaced by the subject
+  ---
+  duration_ms: 1231.0945
+  type: 'test'
+  ...
+# Subtest: security: signed slow requests have a hard concurrency bound and forged senders never invoke handlers
+ok 163 - security: signed slow requests have a hard concurrency bound and forged senders never invoke handlers
+  ---
+  duration_ms: 40.8906
+  type: 'test'
+  ...
+# Subtest: security: request timeout cancels a bandwidth-delayed UDP transmission
+ok 164 - security: request timeout cancels a bandwidth-delayed UDP transmission
+  ---
+  duration_ms: 111.8174
+  type: 'test'
+  ...
+# Subtest: security: forwarding rejects skipped ingress hops, cycles, unknown edges and tampering
+ok 165 - security: forwarding rejects skipped ingress hops, cycles, unknown edges and tampering
+  ---
+  duration_ms: 718.3267
+  type: 'test'
+  ...
+# Subtest: all ten shared projections validate real signed runtime data with Python jsonschema and reject malformed fields
+ok 166 - all ten shared projections validate real signed runtime data with Python jsonschema and reject malformed fields
+  ---
+  duration_ms: 15149.8182
+  type: 'test'
+  ...
+# {"engine":"python-jsonschema-Draft202012Validator","positiveRuntimeObjects":10,"malformedRejections":11,"directory":"C:\\\\Users\\\\User\\\\.codex\\\\.chatgpt-projects\\\\g-p-6a437af98cc08191af8185180f66b55e\\\\work\\\\TaoWind-Next-Internet\\\\.runs\\\\shared-ir\\\\run-52ngyL"}
+# Subtest: protocol registry distinguishes bounded implemented behaviors from all sixteen roadmap domains
+ok 167 - protocol registry distinguishes bounded implemented behaviors from all sixteen roadmap domains
+  ---
+  duration_ms: 2.3236
+  type: 'test'
+  ...
+# Subtest: subject and capability addresses round-trip
+ok 168 - subject and capability addresses round-trip
+  ---
+  duration_ms: 1.6856
+  type: 'test'
+  ...
+# Subtest: node directory discovers compatible capability and expires stale nodes
+ok 169 - node directory discovers compatible capability and expires stale nodes
+  ---
+  duration_ms: 1.9088
+  type: 'test'
+  ...
+# Subtest: route graph selects lower-cost multi-hop path
+ok 170 - route graph selects lower-cost multi-hop path
+  ---
+  duration_ms: 0.9804
+  type: 'test'
+  ...
+# Subtest: forward envelope is fail-closed on wrong hop and decrements ttl
+ok 171 - forward envelope is fail-closed on wrong hop and decrements ttl
+  ---
+  duration_ms: 1.0801
+  type: 'test'
+  ...
+# Subtest: security provider registry rejects non-production-safe profile
+ok 172 - security provider registry rejects non-production-safe profile
+  ---
+  duration_ms: 0.3526
+  type: 'test'
+  ...
+# Subtest: transport provider registry selects by predicate
+ok 173 - transport provider registry selects by predicate
+  ---
+  duration_ms: 0.1493
+  type: 'test'
+  ...
+# Subtest: session migration preserves subjects, authority and receipt continuity anchor
+ok 174 - session migration preserves subjects, authority and receipt continuity anchor
+  ---
+  duration_ms: 0.9497
+  type: 'test'
+  ...
+# Subtest: OPP CHP bridge emits schema-compatible offer shape and deterministic agreement
+ok 175 - OPP CHP bridge emits schema-compatible offer shape and deterministic agreement
+  ---
+  duration_ms: 0.4391
+  type: 'test'
+  ...
+# Subtest: three real UDP localhost nodes forward one TINP frame across two hops
+ok 176 - three real UDP localhost nodes forward one TINP frame across two hops
+  ---
+  duration_ms: 40.0408
+  type: 'test'
+  ...
+# Subtest: wire frame round-trips with fixed header
+ok 177 - wire frame round-trips with fixed header
+  ---
+  duration_ms: 1.9856
+  type: 'test'
+  ...
+# Subtest: wire corruption is fail-closed
+ok 178 - wire corruption is fail-closed
+  ---
+  duration_ms: 0.5082
+  type: 'test'
+  ...
+# Subtest: authority negotiation never expands beyond intersection
+ok 179 - authority negotiation never expands beyond intersection
+  ---
+  duration_ms: 1.8881
+  type: 'test'
+  ...
+# Subtest: capability router picks highest-priority compatible provider
+ok 180 - capability router picks highest-priority compatible provider
+  ---
+  duration_ms: 0.422
+  type: 'test'
+  ...
+# Subtest: unroutable capability fails closed
+ok 181 - unroutable capability fails closed
+  ---
+  duration_ms: 0.2398
+  type: 'test'
+  ...
+# Subtest: intent executes and creates evidence-chained receipt
+ok 182 - intent executes and creates evidence-chained receipt
+  ---
+  duration_ms: 0.9188
+  type: 'test'
+  ...
+# Subtest: payload cannot select executable/provider or grant authority
+ok 183 - payload cannot select executable/provider or grant authority
+  ---
+  duration_ms: 0.4374
+  type: 'test'
+  ...
+# Subtest: wrong subject cannot use session
+ok 184 - wrong subject cannot use session
+  ---
+  duration_ms: 0.2535
+  type: 'test'
+  ...
+# Subtest: revocation immediately invalidates session
+ok 185 - revocation immediately invalidates session
+  ---
+  duration_ms: 0.2905
+  type: 'test'
+  ...
+# Subtest: production session refuses none-test security profile
+ok 186 - production session refuses none-test security profile
+  ---
+  duration_ms: 0.3885
+  type: 'test'
+  ...
+# Subtest: OPP CHP projection preserves TINP capability and authority declarations without granting authority
+ok 187 - OPP CHP projection preserves TINP capability and authority declarations without granting authority
+  ---
+  duration_ms: 0.357
+  type: 'test'
+  ...
+# Subtest: RNR state packet can be carried as a named payload profile
+ok 188 - RNR state packet can be carried as a named payload profile
+  ---
+  duration_ms: 0.18
+  type: 'test'
+  ...
+# Subtest: UDP reference transport performs real localhost wire round-trip
+ok 189 - UDP reference transport performs real localhost wire round-trip
+  ---
+  duration_ms: 34.7109
+  type: 'test'
+  ...
+1..189
+# tests 189
+# suites 0
+# pass 189
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 721643.6313

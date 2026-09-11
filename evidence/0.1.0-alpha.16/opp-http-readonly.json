@@ -1,0 +1,140 @@
+{
+  "status": "VERIFIED_LOCAL_OPP_HTTP_READONLY_POLICY",
+  "policy": {
+    "format": "twni.opp-http-readonly-policy.v1",
+    "policyId": "verify:opp-http-readonly",
+    "adapterVersion": "tinp-opp-http-readonly-v0.1",
+    "oppSource": {
+      "repository": "https://github.com/xingxuling/OPP",
+      "commit": "f7b76582a720d9d18af5153affa0fc2d78bc0410",
+      "protocols": [
+        "opp.chp.v0.1",
+        "opp.rcp.v0.1"
+      ]
+    },
+    "transport": {
+      "scheme": "https",
+      "method": "GET",
+      "allowedHosts": [
+        "api.github.com"
+      ],
+      "allowedPathPrefixes": [
+        "/repos/xingxuling/OPP"
+      ],
+      "timeoutMs": 15000,
+      "maxResponseBytes": 1048576,
+      "redirectPolicy": "deny",
+      "proxyPolicy": "deny-ambient",
+      "credentialPolicy": "none",
+      "maxAttempts": 1,
+      "allowedRequestHeaders": [
+        "accept",
+        "user-agent"
+      ],
+      "responseMediaType": "application/json",
+      "responseFields": [
+        "default_branch",
+        "full_name",
+        "private"
+      ]
+    },
+    "receiptFormat": "twni.opp-http-readonly-receipt.v1",
+    "authorityGranted": false,
+    "authorityBoundary": "Read-only external observation; no credential, retry, redirect, or authority grant",
+    "policyRoot": "6be087765fb345c7cbaefb2d73d9a01834ce0146aaec3421caee4f8ad11fc928"
+  },
+  "request": {
+    "format": "twni.opp-http-readonly-request.v1",
+    "requestId": "verify-opp-http-readonly",
+    "policyRoot": "6be087765fb345c7cbaefb2d73d9a01834ce0146aaec3421caee4f8ad11fc928",
+    "method": "GET",
+    "url": "https://api.github.com/repos/xingxuling/OPP",
+    "headers": {
+      "accept": "application/vnd.github+json",
+      "user-agent": "TINP-verify/0.1"
+    },
+    "requestRoot": "748f6f8eddf951d35f24502af5b78d8df6d5f5737fbe048a112b54f652c3358d"
+  },
+  "pass": {
+    "status": "PASS",
+    "response": {
+      "default_branch": "main",
+      "full_name": "xingxuling/OPP",
+      "private": false
+    },
+    "receipt": {
+      "format": "twni.opp-http-readonly-receipt.v1",
+      "policyRoot": "6be087765fb345c7cbaefb2d73d9a01834ce0146aaec3421caee4f8ad11fc928",
+      "requestRoot": "748f6f8eddf951d35f24502af5b78d8df6d5f5737fbe048a112b54f652c3358d",
+      "status": "PASS",
+      "httpStatus": 200,
+      "responseContentType": "application/json; charset=utf-8",
+      "responseEtag": "verify-etag",
+      "responseLastModified": "2026-09-11T00:00:00Z",
+      "responseBytes": 96,
+      "wireResponseRoot": "f33b09c3069d5558b52917cacc3be293798053fb4cd1c38c8f4d8edabb9c5041",
+      "responseRoot": "a97a84ea4b0b782a102fd59c7cae8e03368271e0430a77da848553cbfe131130",
+      "error": null,
+      "attempts": 1,
+      "redirectsFollowed": false,
+      "ambientProxyUsed": false,
+      "ambientCredentialsUsed": false,
+      "authorityGranted": false,
+      "boundary": "Read-only external observation; no credential, retry, redirect, or authority grant",
+      "receiptRoot": "d2d6ba1612634286fec7d68290c8e1ea097193943cd52f5f6b59c55c858efdae"
+    }
+  },
+  "ambientProxy": {
+    "status": "FAIL_CLOSED",
+    "error": "OPP_HTTP_AMBIENT_PROXY_CONFIGURED",
+    "receipt": {
+      "format": "twni.opp-http-readonly-receipt.v1",
+      "policyRoot": "6be087765fb345c7cbaefb2d73d9a01834ce0146aaec3421caee4f8ad11fc928",
+      "requestRoot": "748f6f8eddf951d35f24502af5b78d8df6d5f5737fbe048a112b54f652c3358d",
+      "status": "FAIL_CLOSED",
+      "httpStatus": null,
+      "responseContentType": null,
+      "responseEtag": null,
+      "responseLastModified": null,
+      "responseBytes": 0,
+      "wireResponseRoot": null,
+      "responseRoot": null,
+      "error": "OPP_HTTP_AMBIENT_PROXY_CONFIGURED",
+      "attempts": 1,
+      "redirectsFollowed": false,
+      "ambientProxyUsed": false,
+      "ambientCredentialsUsed": false,
+      "authorityGranted": false,
+      "boundary": "Read-only external observation; no credential, retry, redirect, or authority grant",
+      "receiptRoot": "461341c49dcf7549f84e96090372bbc19a0594039719c6ddf47d38f9949e3319"
+    }
+  },
+  "nodeEnvironmentProxy": {
+    "status": "FAIL_CLOSED",
+    "error": "OPP_HTTP_AMBIENT_PROXY_CONFIGURED",
+    "receipt": {
+      "format": "twni.opp-http-readonly-receipt.v1",
+      "policyRoot": "6be087765fb345c7cbaefb2d73d9a01834ce0146aaec3421caee4f8ad11fc928",
+      "requestRoot": "748f6f8eddf951d35f24502af5b78d8df6d5f5737fbe048a112b54f652c3358d",
+      "status": "FAIL_CLOSED",
+      "httpStatus": null,
+      "responseContentType": null,
+      "responseEtag": null,
+      "responseLastModified": null,
+      "responseBytes": 0,
+      "wireResponseRoot": null,
+      "responseRoot": null,
+      "error": "OPP_HTTP_AMBIENT_PROXY_CONFIGURED",
+      "attempts": 1,
+      "redirectsFollowed": false,
+      "ambientProxyUsed": false,
+      "ambientCredentialsUsed": false,
+      "authorityGranted": false,
+      "boundary": "Read-only external observation; no credential, retry, redirect, or authority grant",
+      "receiptRoot": "461341c49dcf7549f84e96090372bbc19a0594039719c6ddf47d38f9949e3319"
+    }
+  },
+  "externalNetwork": "NOT_RUN",
+  "authorityGranted": false,
+  "boundary": "Deterministic local policy/receipt exercise only; ambient proxy variables and known Node environment-proxy switches are denied. One public GitHub request is recorded separately and does not prove OPP consumer interoperability or production network availability."
+}
