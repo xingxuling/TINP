@@ -22,3 +22,5 @@ alpha.16 在 alpha.15 的只读 OPP policy/receipt 之上补齐已知 Node 环�
 alpha.17 已实现 TINP-owned 的本机 OPP consumer acceptance binding：复用真实 OPP CHP/RCP accepted 协商，把 consumer contract、HTTP policy/request、producer receipt 与 projected response root 固定到新的 rooted acceptance receipt。它证明本机这一次具体消费者接受，不等于独立第三方 OPP consumer、公网部署或生产 authority。下一缺口收窄为外部 Owner 对该 bridge 的实际 consumer acceptance 与生产发布/撤销服务。
 
 alpha.18 将同一 acceptance binding 暴露为文件输入 CLI。CLI 只读取已经生成的 plan、policy、request、observation 和 consumer contract，复用全部 root/owner/projection 校验并写出 bounded receipt；它不会重新发起请求，也不会把本机脚本运行当作第三方互操作。下一缺口仍是外部 Owner 的实际 consumer acceptance、生产发布/撤销与真实异机验证。
+
+alpha.19 将五份 consumer 输入绑定为带 `bundleRoot` 的单文件 bundle，并让 CLI 直接回放该 bundle。它提升输入集合的可审计性，但仍是本机验证；下一缺口仍是外部 Owner 的实际 consumer acceptance、生产发布/撤销与真实异机验证。

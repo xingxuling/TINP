@@ -14,8 +14,11 @@ import {
 } from '../src/opp-http-readonly.mjs';
 import {
   acceptOppHttpReadonlyConsumer,
+  acceptOppHttpReadonlyConsumerBundle,
+  makeOppHttpConsumerBridgeBundle,
   makeOppHttpConsumerBridgePlan,
   makeOppHttpConsumerContract,
+  validateOppHttpConsumerBridgeBundle,
   validateOppHttpConsumerBridgeReceipt,
 } from '../src/opp-http-consumer-bridge.mjs';
 
@@ -128,6 +131,37 @@ test('consumer bridge CLI replays supplied files and writes a bounded receipt', 
     assert.equal(output.response.full_name, 'xingxuling/OPP');
     assert.equal(output.receipt.authorityGranted, false);
     assert.equal(output.receipt.sideEffects, false);
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+});
+
+test('consumer bridge bundle binds all inputs to one root', async () => {
+  const { policy, request, plan, consumerContract, observation } = await acceptedFixture();
+  const bundle = makeOppHttpConsumerBridgeBundle({ plan, policy, request, observation, consumerContract });
+  assert.equal(validateOppHttpConsumerBridgeBundle(bundle), true);
+  const accepted = acceptOppHttpReadonlyConsumerBundle({ bundle });
+  assert.equal(accepted.status, 'PASS');
+  assert.equal(accepted.receipt.consumerContractRoot, consumerContract.contractRoot);
+  assert.throws(() => validateOppHttpConsumerBridgeBundle({ ...bundle, observation: { ...observation, status: 'FAIL_CLOSED' } }), /OPP_HTTP_CONSUMER_BUNDLE_ROOT_INVALID/);
+});
+
+test('consumer bridge CLI replays a single rooted bundle without network access', async () => {
+  const { policy, request, plan, consumerContract, observation } = await acceptedFixture();
+  const bundle = makeOppHttpConsumerBridgeBundle({ plan, policy, request, observation, consumerContract });
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'tinp-opp-consumer-bundle-cli-'));
+  try {
+    const bundlePath = path.join(directory, 'bundle.json');
+    const outputPath = path.join(directory, 'result.json');
+    fs.writeFileSync(bundlePath, `${JSON.stringify(bundle)}\n`, { flag: 'wx' });
+    const child = spawnSync(process.execPath, ['scripts/opp-http-consumer-bridge.mjs', '--bundle', bundlePath, '--out', outputPath], {
+      cwd: path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), encoding: 'utf8', windowsHide: true,
+    });
+    assert.equal(child.status, 0, child.stderr);
+    const output = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+    assert.equal(output.status, 'PASS');
+    assert.equal(output.bundleRoot, bundle.bundleRoot);
+    assert.equal(output.receipt.authorityGranted, false);
   } finally {
     fs.rmSync(directory, { recursive: true, force: true });
   }

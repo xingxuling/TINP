@@ -10,6 +10,7 @@ import {
 export const OPP_HTTP_CONSUMER_BRIDGE_PLAN_FORMAT = 'twni.opp-http-consumer-bridge-plan.v1';
 export const OPP_HTTP_CONSUMER_CONTRACT_FORMAT = 'twni.opp-http-consumer-contract.v1';
 export const OPP_HTTP_CONSUMER_BRIDGE_RECEIPT_FORMAT = 'twni.opp-http-consumer-bridge-receipt.v1';
+export const OPP_HTTP_CONSUMER_BRIDGE_BUNDLE_FORMAT = 'twni.opp-http-consumer-bridge-bundle.v1';
 export const OPP_HTTP_CONSUMER_BRIDGE_BOUNDARY = 'Local OPP consumer acceptance only; no authority grant, third-party interoperability or production availability';
 
 const HASH = /^[a-f0-9]{64}$/;
@@ -17,6 +18,7 @@ const COMMIT = /^[a-f0-9]{40}$/;
 const PLAN_KEYS = ['format', 'bridgeId', 'oppSource', 'capabilityId', 'responseFields', 'authorityGranted', 'boundary', 'planRoot'];
 const SOURCE_KEYS = ['repository', 'commit', 'protocols'];
 const CONTRACT_KEYS = ['format', 'contractId', 'capabilityId', 'version', 'responseFields', 'negotiation', 'authorityGranted', 'contractRoot'];
+const BUNDLE_KEYS = ['format', 'plan', 'policy', 'request', 'observation', 'consumerContract', 'bundleRoot'];
 const RECEIPT_KEYS = ['format', 'planRoot', 'policyRoot', 'requestRoot', 'producerReceiptRoot', 'consumerContractRoot', 'responseRoot', 'status', 'error', 'authorityGranted', 'sideEffects', 'boundary', 'acceptanceRoot'];
 
 const fail = code => { throw new ProtocolError(code); };
@@ -176,6 +178,27 @@ export function makeOppHttpConsumerContract({ contractId, capabilityId, version 
   return contract;
 }
 
+export function makeOppHttpConsumerBridgeBundle({ plan, policy, request, observation, consumerContract } = {}) {
+  const body = { format: OPP_HTTP_CONSUMER_BRIDGE_BUNDLE_FORMAT, plan, policy, request, observation, consumerContract };
+  const bundle = { ...body, bundleRoot: rootHash(body) };
+  validateOppHttpConsumerBridgeBundle(bundle);
+  return bundle;
+}
+
+export function validateOppHttpConsumerBridgeBundle(bundle) {
+  exact(bundle, BUNDLE_KEYS, 'OPP_HTTP_CONSUMER_BUNDLE_INVALID');
+  check(bundle.format === OPP_HTTP_CONSUMER_BRIDGE_BUNDLE_FORMAT && plain(bundle.observation),
+    'OPP_HTTP_CONSUMER_BUNDLE_INVALID');
+  validateOppHttpConsumerBridgePlan(bundle.plan);
+  validateOppHttpReadonlyPolicy(bundle.policy);
+  validateOppHttpReadonlyRequest(bundle.request, bundle.policy);
+  validateContract(bundle.consumerContract, bundle.plan);
+  check(HASH.test(bundle.bundleRoot), 'OPP_HTTP_CONSUMER_BUNDLE_ROOT_INVALID');
+  const { bundleRoot, ...body } = bundle;
+  check(rootHash(body) === bundleRoot, 'OPP_HTTP_CONSUMER_BUNDLE_ROOT_INVALID');
+  return true;
+}
+
 function makeReceipt({ plan, policy, request, producerReceiptRoot, consumerContractRoot, responseRoot, status, error }) {
   const body = {
     format: OPP_HTTP_CONSUMER_BRIDGE_RECEIPT_FORMAT,
@@ -241,4 +264,9 @@ export function acceptOppHttpReadonlyConsumer({ plan, policy, request, observati
     status: 'PASS', error: null });
   validateOppHttpConsumerBridgeReceipt(receipt, plan, policy, request, consumerContract);
   return { status: receipt.status, response: observation.response, receipt };
+}
+
+export function acceptOppHttpReadonlyConsumerBundle({ bundle } = {}) {
+  validateOppHttpConsumerBridgeBundle(bundle);
+  return acceptOppHttpReadonlyConsumer(bundle);
 }
