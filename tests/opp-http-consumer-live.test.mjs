@@ -132,21 +132,29 @@ test('live consumer offline verify CLI revalidates a saved result without networ
   const policyFile = path.join(directory, 'policy.json');
   const requestFile = path.join(directory, 'request.json');
   const resultFile = path.join(directory, 'result.json');
+  const verificationFile = path.join(directory, 'verification.json');
   fs.writeFileSync(policyFile, `${JSON.stringify(policy)}\n`);
   fs.writeFileSync(requestFile, `${JSON.stringify(request)}\n`);
   fs.writeFileSync(resultFile, `${JSON.stringify(result)}\n`);
   const script = fileURLToPath(new URL('../scripts/opp-http-consumer-live.mjs', import.meta.url));
-  const child = spawnSync(process.execPath, [script, '--verify', policyFile, requestFile, resultFile], {
+  const child = spawnSync(process.execPath, [script, '--verify', policyFile, requestFile, resultFile, '--out', verificationFile], {
     encoding: 'utf8',
     env: { ...process.env, HTTPS_PROXY: 'http://ambient.invalid' },
     windowsHide: true,
   });
   assert.equal(child.status, 0, child.stderr);
-  const verification = JSON.parse(child.stdout);
+  assert.equal(child.stdout, '');
+  const verification = JSON.parse(fs.readFileSync(verificationFile, 'utf8'));
   assert.equal(verification.format, 'twni.opp-http-consumer-live-verify.v1');
   assert.equal(verification.status, 'PASS');
   assert.equal(verification.resultStatus, 'PASS');
   assert.equal(verification.networkRequests, 0);
+  const duplicate = spawnSync(process.execPath, [script, '--verify', policyFile, requestFile, resultFile, '--out', verificationFile], {
+    encoding: 'utf8',
+    env: { ...process.env, HTTPS_PROXY: 'http://ambient.invalid' },
+    windowsHide: true,
+  });
+  assert.equal(duplicate.status, 1);
   const forgedFile = path.join(directory, 'forged.json');
   fs.writeFileSync(forgedFile, `${JSON.stringify({ ...result, unbound: true })}\n`);
   const forged = spawnSync(process.execPath, [script, '--verify', policyFile, requestFile, forgedFile], {
