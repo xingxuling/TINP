@@ -82,6 +82,20 @@ test('live consumer creates a rooted request when given an unrooted request desc
   assert.match(result.observation.receipt.requestRoot, /^[a-f0-9]{64}$/);
 });
 
+test('live consumer result validator rejects unbound top-level fields', async () => {
+  const { policy, request } = fixture();
+  const result = await runOppHttpConsumerLive({
+    policy,
+    request,
+    fetchImpl: async () => new Response(JSON.stringify({ default_branch: 'main', full_name: 'xingxuling/OPP', private: false }), {
+      status: 200,
+      headers: { 'content-type': 'application/json' },
+    }),
+    environment: {},
+  });
+  assert.throws(() => validateOppHttpConsumerLiveResult({ ...result, unbound: true }, { policy, request }), /OPP_HTTP_CONSUMER_LIVE_RESULT_INVALID/);
+});
+
 test('live consumer CLI writes a validated fail-closed result when ambient proxy is configured', () => {
   const { policy, request } = fixture();
   const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'tinp-live-cli-'));

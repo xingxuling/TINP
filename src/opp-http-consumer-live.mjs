@@ -28,8 +28,25 @@ const bridgeSpec = {
   authorityRequired: [],
 };
 
+const LIVE_RESULT_KEYS = ['format', 'status', 'error', 'plan', 'negotiation', 'consumerContract', 'observation', 'acceptance', 'boundary', 'diagnostic'];
+
 const fail = code => { throw new ProtocolError(code); };
 const check = (ok, code) => { if (!ok) fail(code); };
+
+function exactResult(value) {
+  check(value !== null && typeof value === 'object' && !Array.isArray(value), 'OPP_HTTP_CONSUMER_LIVE_RESULT_INVALID');
+  let keys;
+  try { keys = Reflect.ownKeys(value); } catch { fail('OPP_HTTP_CONSUMER_LIVE_RESULT_INVALID'); }
+  check(keys.length === LIVE_RESULT_KEYS.length
+    && keys.every(key => typeof key === 'string' && LIVE_RESULT_KEYS.includes(key)),
+  'OPP_HTTP_CONSUMER_LIVE_RESULT_INVALID');
+  for (const key of LIVE_RESULT_KEYS) {
+    let descriptor;
+    try { descriptor = Object.getOwnPropertyDescriptor(value, key); } catch { fail('OPP_HTTP_CONSUMER_LIVE_RESULT_INVALID'); }
+    check(descriptor && Object.hasOwn(descriptor, 'value') && descriptor.enumerable,
+      'OPP_HTTP_CONSUMER_LIVE_RESULT_INVALID');
+  }
+}
 
 const hello = nodeId => makeHello({
   nodeId,
@@ -109,11 +126,12 @@ export async function runOppHttpConsumerLive({
     observation,
     acceptance,
     boundary: OPP_HTTP_CONSUMER_LIVE_BOUNDARY,
+    diagnostic: null,
   };
 }
 
 export function validateOppHttpConsumerLiveResult(result, { policy, request } = {}) {
-  check(result !== null && typeof result === 'object' && !Array.isArray(result), 'OPP_HTTP_CONSUMER_LIVE_RESULT_INVALID');
+  exactResult(result);
   check(result.format === OPP_HTTP_CONSUMER_LIVE_FORMAT
     && [ 'PASS', 'FAIL_CLOSED' ].includes(result.status)
     && result.boundary === OPP_HTTP_CONSUMER_LIVE_BOUNDARY, 'OPP_HTTP_CONSUMER_LIVE_RESULT_INVALID');
@@ -126,12 +144,13 @@ export function validateOppHttpConsumerLiveResult(result, { policy, request } = 
   if (result.error === 'OPP_NEGOTIATION_FAILED') {
     check(result.status === 'FAIL_CLOSED' && result.negotiation === null
       && result.consumerContract === null && result.observation === null
-      && result.acceptance === null, 'OPP_HTTP_CONSUMER_LIVE_NEGOTIATION_FAILURE_INVALID');
+      && result.acceptance === null && typeof result.diagnostic === 'string'
+      && result.diagnostic.length > 0, 'OPP_HTTP_CONSUMER_LIVE_NEGOTIATION_FAILURE_INVALID');
     return true;
   }
   check(result.error === null && result.negotiation !== null
     && result.consumerContract !== null && result.observation !== null
-    && result.acceptance !== null, 'OPP_HTTP_CONSUMER_LIVE_RESULT_INVALID');
+    && result.acceptance !== null && result.diagnostic === null, 'OPP_HTTP_CONSUMER_LIVE_RESULT_INVALID');
   check(result.observation.status === result.acceptance.status
     && result.status === result.acceptance.status, 'OPP_HTTP_CONSUMER_LIVE_STATUS_MISMATCH');
   const accepted = acceptOppHttpReadonlyConsumer({
