@@ -39,3 +39,5 @@ alpha.24 增加 saved-result offline verify，使外部审阅者可在零网络�
 alpha.25 将 saved-result offline verify 接入完整 verify witness，防止版本化的公开 live 结果与其 policy/request roots 漂移。仍未解决第三方 consumer acceptance、生产 authority、真实异机和可信时间。
 
 alpha.26 为离线 saved-result verify 增加独占回执文件输出，方便外部审阅归档；该入口仍不等于第三方 consumer acceptance、生产 authority 或真实异机验证。
+
+alpha.27 为离线 saved-result verify 回执增加 policy/request/acceptance 语义根和 policy/request/result 原始文件 SHA-256，并在写出前由回执 validator 复验这些绑定。它解决了归档回执无法识别输入文件替换的本机证据缺口，仍不等于第三方 consumer acceptance、生产 authority、真实异机或可信时间。
