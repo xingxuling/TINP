@@ -222,3 +222,35 @@ export function validateOppHttpConsumerLiveVerification(verification, {
   if (resultBytes !== undefined) check(verification.inputs.resultFileSha256 === sha256(resultBytes), 'OPP_HTTP_CONSUMER_LIVE_VERIFY_FILE_HASH_INVALID');
   return true;
 }
+
+export function makeOppHttpConsumerLiveVerification({
+  policy,
+  request,
+  result,
+  policyBytes,
+  requestBytes,
+  resultBytes,
+} = {}) {
+  const verification = {
+    format: OPP_HTTP_CONSUMER_LIVE_VERIFY_FORMAT,
+    status: 'PASS',
+    resultStatus: result?.status,
+    networkRequests: 0,
+    authorityGranted: false,
+    inputs: {
+      policyRoot: policy?.policyRoot,
+      requestRoot: request?.requestRoot,
+      acceptanceRoot: result?.acceptance?.receipt?.acceptanceRoot ?? null,
+      policyFileSha256: policyBytes === undefined ? null : sha256(policyBytes),
+      requestFileSha256: requestBytes === undefined ? null : sha256(requestBytes),
+      resultFileSha256: resultBytes === undefined ? null : sha256(resultBytes),
+    },
+    boundary: OPP_HTTP_CONSUMER_LIVE_VERIFY_BOUNDARY,
+  };
+  check(verification.inputs.policyFileSha256 !== null
+    && verification.inputs.requestFileSha256 !== null
+    && verification.inputs.resultFileSha256 !== null,
+  'OPP_HTTP_CONSUMER_LIVE_VERIFY_FILES_REQUIRED');
+  validateOppHttpConsumerLiveVerification(verification, { policy, request, result, policyBytes, requestBytes, resultBytes });
+  return verification;
+}
