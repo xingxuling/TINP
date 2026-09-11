@@ -21,5 +21,4 @@ alpha.15 实现提交为 `9a38bb9`，证据与文档提交为 `5f02713`。本机
 
 合并后状态：`codex/next-internet-v01` 与 `codex/tinp-transport-policy-v03` 已共同指向最新合并提交，并已推送 GitHub。合并后 `npm test` 为 `189/189`（0 fail），日志已固定在 deliverables；alpha.16 包与解包聚焦测试 `15/15`、发行回执均位于 deliverables。状态仍为 `VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED`，公网 OPP 仅有一次独立只读观察，无 authority、生产、异机或 K400 晋升证据。
 
-alpha.17 已合并：codex/next-internet-v01 与 codex/tinp-opp-consumer-v01 已共同指向最新合并提交并推送 GitHub。合并后 
-pm test 为 195/195（0 fail）；发行包、解包 21/21 聚焦测试、ZIP CRC/敏感文件扫描和交付回执均已生成。当前状态为 VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED，本机 consumer acceptance 不等于独立第三方 OPP consumer、生产 authority 或 K400 晋升。
+alpha.17 已合并：codex/next-internet-v01 与 codex/tinp-opp-consumer-v01 已共同指向最新合并提交并推送 GitHub。合并后 npm test 为 195/195（0 fail）；发行包、解包 21/21 聚焦测试、ZIP CRC/敏感文件扫描和交付回执均已生成。当前状态为 VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED，本机 consumer acceptance 不等于独立第三方 OPP consumer、生产 authority 或 K400 晋升。
