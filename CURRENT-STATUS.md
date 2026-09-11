@@ -43,3 +43,5 @@ alpha.24 已合并：新增 live consumer --verify 离线 CLI，只读取 policy
 alpha.24 后续复核已完成：使用 --verify 在当前 shell 复核已保存的真实 GitHub live consumer 结果，PASS 且 networkRequests=0；证据为 evidence/OPP_HTTP_CONSUMER_LIVE_GITHUB_VERIFY_2026-09-12.json。
 
 alpha.25 已合并：完整 verify 现在自动读取并重验仓库内公开 GitHub live consumer 结果，记录 externalLiveValidation=PASS、networkRequests=0、HTTP 200 和结果 SHA；完整 verify 为 205/205，证据位于 evidence/0.1.0-alpha.25/LOCAL_VERIFICATION.json。
+
+alpha.26 已合并：--verify 支持 --out 独占写入 twni.opp-http-consumer-live-verify.v1 回执，重复目标文件拒绝；完整 verify 为 205/205，证据位于 evidence/0.1.0-alpha.26/LOCAL_VERIFICATION.json。

@@ -1,0 +1,37 @@
+{
+  "format": "twni.evidence-ledger.v0.1",
+  "version": "0.1.0-alpha.26",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "mergeCommit": "e7b4ee6",
+  "candidateCommit": "f939be9",
+  "verification": {
+    "file": "evidence/0.1.0-alpha.26/LOCAL_VERIFICATION.json",
+    "status": "VERIFIED_LOCAL_CANDIDATE",
+    "tests": 205,
+    "passed": 205,
+    "failed": 0,
+    "sourceFiles": 207,
+    "sourceTreeRoot": "77257a0207868d420525a6858b2b9ba38742d8e4329e166a3fe890100c7425f8",
+    "testsSha256": "76acc40ea154dd1c6e743b834e81e2034620b5b90672cbf20ea29e1082ff3367"
+  },
+  "changes": ["scripts/opp-http-consumer-live.mjs", "tests/opp-http-consumer-live.test.mjs", "package.json"],
+  "offlineVerificationReceipt": {
+    "format": "twni.opp-http-consumer-live-verify.v1",
+    "networkRequests": 0,
+    "exclusiveWrite": true,
+    "duplicateTargetRejected": true,
+    "authorityGranted": false
+  },
+  "externalLiveWitness": {
+    "file": "evidence/OPP_HTTP_CONSUMER_LIVE_GITHUB_2026-09-12.json",
+    "status": "PASS",
+    "httpStatus": 200,
+    "networkRequests": 0,
+    "resultSha256": "2b3d36af00ec82fb269481d4eb7bbfb369665c2b67c2a4c8ed9d428153f5b879"
+  },
+  "authorityGranted": false,
+  "production": "NOT_DEPLOYED",
+  "externalThirdPartyConsumer": "NOT_RUN",
+  "k400Verdict": "NOT_ADJUDICATED",
+  "boundary": "Offline validation receipt is an archive artifact and makes zero network requests; public live witness remains one bounded unauthenticated observation and does not prove third-party consumer or production authority."
+}
