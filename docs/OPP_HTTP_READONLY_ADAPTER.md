@@ -52,8 +52,7 @@ The adapter can establish TINP-owned transport-policy behavior and one concrete 
 ## alpha.16 hardening and verification
 
 The adapter rejects accessor and symbol properties in policy, request headers,
-environment and response metadata; rejects prototype-sensitive projection field
-names and encoded slash/dot/backslash path segments; snapshots response status
+environment and response metadata; preserves a literal `__proto__` projection key as data while rejecting malformed policy/request fields and encoded slash/dot/backslash path segments; snapshots response status
 and success metadata before reading the bounded body; and requires receipt
 consistency for both `PASS` and `FAIL_CLOSED`. The deterministic verifier stores
 the local pass and ambient-proxy rejection under
