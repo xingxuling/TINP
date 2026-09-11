@@ -1,0 +1,23 @@
+{
+  "format": "twni.authority-registry-convergence-store-demo.v1",
+  "status": "VERIFIED_LOCAL_AUTHORITY_REGISTRY_CONVERGENCE_STORE",
+  "firstOperation": "appended",
+  "extensionOperation": "extended",
+  "replayOperation": "unchanged",
+  "firstSequence": 1,
+  "lastSequence": 2,
+  "historyRoot": "8ca13fb01251038aff1874fc64df86dfd0aa50351d422cfeb51afd21f915ef69",
+  "stableMirrors": [
+    "mirror:alpha",
+    "mirror:beta",
+    "mirror:gamma"
+  ],
+  "storeWritten": true,
+  "storeBytes": 7491,
+  "rollbackDetected": true,
+  "rollbackRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_STORE_ROLLBACK",
+  "prefixRewriteDetected": true,
+  "prefixRewriteRejectionCode": "AUTHORITY_REGISTRY_CONVERGENCE_STORE_PREFIX_MISMATCH",
+  "keyMaterialPersisted": false,
+  "scope": "Actual local atomic store write/read with directory writer lease, full-history extension and deterministic rollback/prefix-rewrite rejection; no online transparency log, trusted clock or durable cross-host consensus."
+}
