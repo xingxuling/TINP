@@ -8,6 +8,7 @@ import {InternetSuite} from '../src/suite.mjs';
 import {verifyLedger} from '../src/evidence.mjs';
 import {makeOppHttpReadonlyPolicy,makeOppHttpReadonlyRequest,runOppHttpReadonly,validateOppHttpReadonlyReceipt} from '../src/opp-http-readonly.mjs';
 import {acceptOppHttpReadonlyConsumer,acceptOppHttpReadonlyConsumerBundle,makeOppHttpConsumerBridgeBundle,makeOppHttpConsumerBridgePlan,makeOppHttpConsumerContract,validateOppHttpConsumerBridgeBundle,validateOppHttpConsumerBridgeReceipt} from '../src/opp-http-consumer-bridge.mjs';
+import {validateOppHttpConsumerLiveResult} from '../src/opp-http-consumer-live.mjs';
 import {negotiateOpp} from '../adapters/opp-bridge.mjs';
 import {makeHello} from '../vendor/tinp/src/index.mjs';
 
@@ -389,6 +390,16 @@ if(oppHttpConsumerBundleAcceptance.status!=='PASS'
   ||validateOppHttpConsumerBridgeBundle(oppHttpConsumerBundle)!==true
   ||oppHttpConsumerBundle.bundleRoot===null)
   throw new Error('OPP_HTTP_CONSUMER_BUNDLE_INVALID');
+const externalLivePath=path.join(root,'evidence','OPP_HTTP_CONSUMER_LIVE_GITHUB_2026-09-12.json');
+let externalLiveValidation={status:'NOT_FOUND',networkRequests:0,file:relative(externalLivePath)};
+if(fs.existsSync(externalLivePath)){
+  const externalPolicy=JSON.parse(fs.readFileSync(path.join(root,'examples','opp-http-readonly','github-opp-policy.json'),'utf8'));
+  const externalRequest=JSON.parse(fs.readFileSync(path.join(root,'examples','opp-http-readonly','github-opp-request.json'),'utf8'));
+  const externalResult=JSON.parse(fs.readFileSync(externalLivePath,'utf8'));
+  validateOppHttpConsumerLiveResult(externalResult,{policy:externalPolicy,request:externalRequest});
+  externalLiveValidation={status:'PASS',resultStatus:externalResult.status,httpStatus:externalResult.observation?.receipt?.httpStatus ?? null,
+    networkRequests:0,file:relative(externalLivePath),resultSha256:sha(fs.readFileSync(externalLivePath))};
+}
 const oppHttpReadonlyWitness={
   status:'VERIFIED_LOCAL_OPP_HTTP_READONLY_POLICY',
   policy:oppHttpReadonlyPolicy,
@@ -397,6 +408,7 @@ const oppHttpReadonlyWitness={
   ambientProxy:{status:oppHttpReadonlyProxy.status,error:oppHttpReadonlyProxy.receipt.error,receipt:oppHttpReadonlyProxy.receipt},
   nodeEnvironmentProxy:{status:oppHttpReadonlyNodeProxy.status,error:oppHttpReadonlyNodeProxy.receipt.error,receipt:oppHttpReadonlyNodeProxy.receipt},
   consumerBridge:{status:oppHttpConsumerAcceptance.status,response:oppHttpConsumerAcceptance.response,receipt:oppHttpConsumerAcceptance.receipt,plan:oppHttpConsumerPlan,consumerContract:oppHttpConsumerContract,bundle:oppHttpConsumerBundle,bundleReplay:{status:oppHttpConsumerBundleAcceptance.status,response:oppHttpConsumerBundleAcceptance.response,receipt:oppHttpConsumerBundleAcceptance.receipt}},
+  externalLiveValidation,
   externalNetwork:'NOT_RUN',
   authorityGranted:false,
   boundary:'Deterministic local policy/receipt exercise only; ambient proxy variables and known Node environment-proxy switches are denied. One public GitHub request is recorded separately and does not prove OPP consumer interoperability or production network availability.',
