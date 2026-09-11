@@ -2,7 +2,7 @@
 
 TINP v0.1.0-alpha.14：可选外部 AAF 操作员签章、外部恢复锚点、authority registry 快照、多镜像分发 quorum、历史收敛桥接、本机历史 store、外部收敛见证、跨进程 public-history replay、TCP 与 TLS 1.3 TINP DATA loopback state transfer、可恢复分块传输 journal 的本机候选。
 
-从已核对远端的 alpha.13 / `1aa235d9f5718f87c959e275da10a7bf12d58e9f` 继续，候选分支 `codex/tinp-registry-v07`；alpha.14 实现提交为 `f88798d3a0360eea20eda257126e26755b2a421b`，新增 TLS 1.3 TINP DATA 可恢复分块传输、原子接收 journal、接收端重启游标、重复与 chunk/manifest 冲突负例、演示、验证入口与协议注册表记录，完整最终验收以 `evidence/0.1.0-alpha.14/LOCAL_VERIFICATION.json` 的源码哈希、退出码及运行见证为准。
+从已核对远端的 alpha.13 / `1aa235d9f5718f87c959e275da10a7bf12d58e9f` 继续，候选分支 `codex/tinp-registry-v07`；alpha.14 实现提交为 `f88798d3a0360eea20eda257126e26755b2a421b`，证据与文档提交为 `bc78af0185c732bb0f7f8b1a848601450db6dd09`，新增 TLS 1.3 TINP DATA 可恢复分块传输、原子接收 journal、接收端重启游标、重复与 chunk/manifest 冲突负例、演示、验证入口与协议注册表记录，完整最终验收以 `evidence/0.1.0-alpha.14/LOCAL_VERIFICATION.json` 的源码哈希、退出码及运行见证为准。
 
 operator-pin 明确固定独立签署方 ID 与 SPKI DER 指纹。启用后，confirmed 不能替代外部 AAF approval；请求/租约/会话/主体/世界/协调器/策略绑定、范围、签名、时间与调用方提供的当前 revoked 状态均检查。外部 keyring 不写 checkpoint，网络端不持有操作员私钥。旧版无 pin 本机夹具兼容，不能把兼容模式冒充外部认证。
 
