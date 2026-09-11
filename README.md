@@ -292,3 +292,13 @@ npm run opp-http-consumer-bridge -- <plan.json> <policy.json> <request.json> <ob
 
 CLI 的 `PASS` 只表示这组输入在本机通过了 OPP owner、投影字段和 content-root 绑定；`FAIL_CLOSED` 返回退出码 5。它仍不等于独立第三方 consumer 互操作、生产发布或 K400 晋升。
 
+## OPP live consumer
+
+alpha.21 提供一次性 live consumer 入口：它调用本地 OPP CHP/RCP adapter，随后按 policy 对指定 HTTPS/GET endpoint 发起一次只读请求，再输出 consumer contract 与 acceptance receipt。环境中存在已知 proxy 配置、网络错误或 OPP 协商失败时均失败闭合。
+
+```powershell
+npm run opp-http-consumer-live -- <policy.json> <request.json> --out <new-live-result.json>
+```
+
+该入口不接收凭据、不授予 authority、不重试或跟随重定向；通过只表示这一次本机受约束链路成功，不表示第三方 OPP consumer、生产服务或公网可用性。
+
