@@ -20,3 +20,6 @@ AAF 格式与签章 Owner 保持原项目，RCL 继续拥有固定退休准入�
 alpha.15 实现提交为 `9a38bb9`，证据与文档提交为 `5f02713`。本机 verify 已完成 `186/186`，源码清单 `201` 个文件；`sourceTreeRoot=4cb785ec6fae1b97a05f6669572d1a288b58993a6ed39e6f0f2fb6136102264b`，tests TAP SHA-256=`b8460a50a5922099f869f346ae4446a46b5149d444c0e7df6cc84ae4156203fb`，LOCAL_VERIFICATION SHA-256=`f12b2cfa39c11297eec3d62f01cb328af5fb2398d3db3566dcc0a0c15fa775c7`，EVIDENCE_LEDGER SHA-256=`26a98f06ff03f49f9f0d33dbee0075137dae4b25fade23bd60c82f80a8df29e2`。确定性 OPP 见证位于 `evidence/0.1.0-alpha.15/opp-http-readonly.json`，一次公网观察仍独立保存在 `evidence/OPP_HTTP_READONLY_GITHUB_2026-09-11.json`。
 
 合并后状态：`codex/next-internet-v01` 与 `codex/tinp-transport-policy-v03` 已共同指向最新合并提交，并已推送 GitHub。合并后 `npm test` 为 `189/189`（0 fail），日志已固定在 deliverables；alpha.16 包与解包聚焦测试 `15/15`、发行回执均位于 deliverables。状态仍为 `VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED`，公网 OPP 仅有一次独立只读观察，无 authority、生产、异机或 K400 晋升证据。
+
+alpha.17 已合并：codex/next-internet-v01 与 codex/tinp-opp-consumer-v01 已共同指向最新合并提交并推送 GitHub。合并后 
+pm test 为 195/195（0 fail）；发行包、解包 21/21 聚焦测试、ZIP CRC/敏感文件扫描和交付回执均已生成。当前状态为 VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED，本机 consumer acceptance 不等于独立第三方 OPP consumer、生产 authority 或 K400 晋升。
