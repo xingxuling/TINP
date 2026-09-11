@@ -147,3 +147,13 @@ Generality：manifest 绑定 transfer id、端点、state root、payload digest�
 Regression：TLS 1.3 传输 14 个 DATA chunks，在第 7 个后终止接收进程并重启；B 从游标 7 收完、append store、journal 跨再次重启保持 `committed`。重复 chunk 返回 `unchanged`；篡改已收 chunk 返回 `AUTHORITY_REGISTRY_RESUMABLE_TRANSFER_CHUNK_CONFLICT`；相同 transfer id 换 state root 返回 `AUTHORITY_REGISTRY_RESUMABLE_TRANSFER_MANIFEST_CONFLICT`；冲突后 state root、store bytes 和 journal 保持原值，传输对象不含私钥。
 
 Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 只有本机 TLS 1.3、独立进程/目录、原子 journal 和负例证据；PERFORMANCE 只记录本次 chunk/帧/字节计数，不作物理跨设备吞吐、恢复 SLA 或 authority SLA 声明；AI_GENERATE 未评估；EVIDENCE 以 alpha.14 `LOCAL_VERIFICATION.json`、Court、EVIDENCE_LEDGER 和 delivery receipt 固化。九门仍 `NOT_ADJUDICATED`。
+
+## alpha.15 policy-bound OPP HTTP observation stress
+
+Task/missing capability：现有 TINP/OPP 装配缺少一个可审计的外部 HTTP 观察边界，能在不夺取 OPP CHP/RCP Owner 或 authority 的情况下限制公网请求并绑定内容证据；gap type=`LEGACY_INTEROP_ADAPTER_GAP + TRANSPORT_POLICY_GAP`，不是 RCL Core 表达缺口。Workaround/donor：复用 OPP 固定 commit 作为 source reference、Node `fetch` 作为执行 provider、既有 `rootHash`/`ProtocolError`，新增 TINP-owned policy/request/receipt adapter，不复制 OPP 协商实现。
+
+Generality：HTTPS/GET、精确 host/path、单次请求、无 ambient proxy/credentials/redirect、有界 JSON、显式 projection、wire/projected roots 和 fail-closed receipt 可复用于受限外部观察；candidate absorption 保持在 TINP P09/P15 provider/profile，不改变 RCL、RNCS/RFE 或 OPP Owner。Provider advantage 是 Node fetch 与现有内容根工具；公网稳定性、OPP consumer bridge、生产凭据、证书生命周期和 authority 仍未实现。
+
+Regression：正例只返回固定 JSON 对象并排除未投影字段；恶意 accessor/symbol/`__proto__` 字段、编码路径、环境 proxy、响应元数据不一致、超限、非成功状态、非 JSON、原始 JSON 非对象和缺失 projection 均在 fetch 前或 receipt 生成时 fail closed；一次真实 GitHub REST 观察单独保存，不能替代 consumer acceptance。
+
+Affected K400 candidates：沿用 K057/K110/K117/K250/K257，并观察 K301/K318 的外部适配压力。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 只有本机 policy/receipt、确定性 verifier 和一次公开 REST 观察证据；PERFORMANCE 未作公网时延、吞吐或 SLA 声明；AI_GENERATE 未评估；EVIDENCE 以 alpha.15 `LOCAL_VERIFICATION.json`、Court、EVIDENCE_LEDGER 和 delivery receipt 固化。九门仍 `NOT_ADJUDICATED`。

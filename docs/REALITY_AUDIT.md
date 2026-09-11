@@ -178,3 +178,22 @@ cursor. It does not establish two physical hosts, production certificate
 custody, trusted time, online publication, global revocation, lost-key
 recovery or production conflict consensus. No RCL Core, RNCS world authority
 or AAF owner changed.
+
+## alpha.15 policy-bound OPP read-only HTTP observation
+
+The candidate adds a TINP-owned `twni.opp-http-readonly-policy.v1` adapter that
+binds a pinned OPP source commit to an explicit HTTPS `GET`. Policy validation
+requires exact host and path-prefix allowlists, bounded timeout and bytes,
+denied redirects, denied ambient proxy variables, no credentials, one attempt,
+JSON media type and an explicit response projection. Requests and receipts bind
+policy/request roots; receipts retain the full wire JSON root and projected
+response root while keeping `authorityGranted: false`.
+
+The focused tests and full verifier exercise deterministic success and
+fail-closed cases for malformed field shapes, path encoding, environment
+accessors, response metadata, size/status/media-type errors and missing
+projection fields. A separate public GitHub REST observation is recorded in
+`evidence/OPP_HTTP_READONLY_GITHUB_2026-09-11.json`; it is one provider
+observation, not an OPP consumer bridge or production network proof. OPP CHP
+and RCP remain OPP-owned semantics, and no RCL Core, RNCS world authority or
+AAF owner changed.

@@ -1,0 +1,509 @@
+{
+  "status": "VERIFIED_LOCAL_EXTERNAL_OPERATOR",
+  "transport": "tcp",
+  "signerPid": 38668,
+  "nodePids": [
+    39744,
+    19232,
+    65404
+  ],
+  "externalKeyring": {
+    "operator:external-test": {
+      "publicKeyPem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAFK3Ke/J4jrG/Z06cNAQlHM2EmeOm6MUqoEyff/YKuXM=\n-----END PUBLIC KEY-----\n",
+      "revoked": false
+    }
+  },
+  "booleanConfirmationDenied": true,
+  "zeroExecutions": true,
+  "leasePreserved": true,
+  "externalKeyringNotCheckpointed": true,
+  "terminal": {
+    "format": "twni.evidence.v0.1",
+    "sequence": 5,
+    "previousRoot": "8e107b82173158dcc7ca94e7c362a256fa08346bd28adbd59038433c49ac1133",
+    "type": "pending.retired",
+    "time": "2026-09-11T13:09:05.960Z",
+    "classification": "observed-local",
+    "detail": {
+      "requestRoot": "ca423532b9642fb7c2976c8684edcbb626a79f64c4cda55ecc9a418a810d86be",
+      "leaseRoot": "d0c7b75da3020dcd277b907ee1e1cae819d2fae4197ae3ce8227c88b46f9b382",
+      "revocationEpoch": 1,
+      "watermark": {
+        "body": {
+          "requestRoot": "ca423532b9642fb7c2976c8684edcbb626a79f64c4cda55ecc9a418a810d86be",
+          "leaseRoot": "d0c7b75da3020dcd277b907ee1e1cae819d2fae4197ae3ce8227c88b46f9b382",
+          "format": "twni.revocation-watermark.v1",
+          "epoch": 1,
+          "leaseIds": [
+            "lease:8f3f1abf-5453-493c-91d1-573162d41e50"
+          ]
+        },
+        "root": "62013268b997e19c4480481e81ca6d1e2c44811d82a5d1a155301805747932fc",
+        "signature": "/Kll+32vsoLtZbUqzoNCrNTrnt9jJxJWwXqdLdOWZ/HVNaBo9yqOcizeupLbHd3JseKVaV8Le4P1rDgoYBECAA=="
+      },
+      "acknowledgements": [
+        {
+          "body": {
+            "format": "twni.revocation-ack.v1",
+            "nodeId": "A",
+            "epoch": 1,
+            "leaseIds": [
+              "lease:8f3f1abf-5453-493c-91d1-573162d41e50"
+            ],
+            "watermarkRoot": "62013268b997e19c4480481e81ca6d1e2c44811d82a5d1a155301805747932fc"
+          },
+          "root": "a01d77dcb4cca1861e68a6890015e6c81745ebba62f7c4a939702fec496ec0a7",
+          "signature": "+1nVWR29EfE4bKVHjyBJomUx5GGwwDgFVh09GLgk4tMZxsPccb2fvCPj+zZxSyCIlQmrpsHUl3e7GB5sgNy5CA=="
+        },
+        {
+          "body": {
+            "format": "twni.revocation-ack.v1",
+            "nodeId": "B",
+            "epoch": 1,
+            "leaseIds": [
+              "lease:8f3f1abf-5453-493c-91d1-573162d41e50"
+            ],
+            "watermarkRoot": "62013268b997e19c4480481e81ca6d1e2c44811d82a5d1a155301805747932fc"
+          },
+          "root": "ec426abe5a9b572ff1577516171aa42e92ac5c90ffb6a9e894b6c050debf3a57",
+          "signature": "aqq5yW83xSPaqoLf3oZ27nS6vgxeXF1YlbF9DyS/MdkzsMBXKgc0lMqB8t3cgaPGBf4S9GCVkrw635Ny2JzPAQ=="
+        },
+        {
+          "body": {
+            "format": "twni.revocation-ack.v1",
+            "nodeId": "C",
+            "epoch": 1,
+            "leaseIds": [
+              "lease:8f3f1abf-5453-493c-91d1-573162d41e50"
+            ],
+            "watermarkRoot": "62013268b997e19c4480481e81ca6d1e2c44811d82a5d1a155301805747932fc"
+          },
+          "root": "75168e31a45707f679e5aa28e3444280fc75f3334bb9177b3de6f8a1972d43a8",
+          "signature": "Cf039G4uy+PH2HEya1os6Pfx+hRD0WFJwaw/MGP3aJ6wTXrbo33IsRmanfCyHTCq/dd88GACyzPm7ASutdb2Ag=="
+        }
+      ],
+      "guard": {
+        "allowed": true,
+        "code": "RCL_PENDING_RETIREMENT_ALLOWED",
+        "history": [
+          {
+            "kind": "Transition",
+            "rule": "loadPendingRetirement",
+            "ruleKind": "Emergence",
+            "mode": "realize",
+            "status": "realized",
+            "actor": "kernel",
+            "from": null,
+            "into": null,
+            "beforeRoot": "6197f877327c9d5d1379c6307617dc899e82bba325f2bff8d8ee661fe91de402",
+            "afterRoot": "43070cc7f97c37566d3963878f3c0cb892361415e1674e1cf289ce40e3279d59",
+            "changes": [
+              {
+                "target": "retirement.loaded",
+                "before": false,
+                "after": true,
+                "source": "alter"
+              },
+              {
+                "target": "facts.expectedRequestRoot",
+                "before": "",
+                "after": "ca423532b9642fb7c2976c8684edcbb626a79f64c4cda55ecc9a418a810d86be",
+                "source": "host:observation.expectedRequestRoot"
+              },
+              {
+                "target": "facts.actualRequestRoot",
+                "before": "",
+                "after": "ca423532b9642fb7c2976c8684edcbb626a79f64c4cda55ecc9a418a810d86be",
+                "source": "host:observation.actualRequestRoot"
+              },
+              {
+                "target": "facts.operatorAuthorized",
+                "before": false,
+                "after": true,
+                "source": "host:observation.operatorAuthorized"
+              },
+              {
+                "target": "facts.leaseRevoked",
+                "before": false,
+                "after": true,
+                "source": "host:observation.leaseRevoked"
+              },
+              {
+                "target": "facts.allNodesAcknowledged",
+                "before": false,
+                "after": true,
+                "source": "host:observation.allNodesAcknowledged"
+              },
+              {
+                "target": "facts.pendingPresent",
+                "before": false,
+                "after": true,
+                "source": "host:observation.pendingPresent"
+              }
+            ],
+            "authority": {
+              "needs": [
+                {
+                  "capability": "observation.read",
+                  "target": "facts"
+                }
+              ],
+              "activeWarrants": [
+                {
+                  "subject": "kernel",
+                  "capability": "observation.read",
+                  "target": "facts"
+                },
+                {
+                  "subject": "kernel",
+                  "capability": "pending.retire",
+                  "target": "retirement"
+                }
+              ]
+            },
+            "witnesses": [
+              "next-internet:pending-retirement-observations"
+            ],
+            "hostCalls": [
+              {
+                "host": "observation",
+                "capability": "expectedRequestRoot",
+                "fullCapability": "observation.expectedRequestRoot",
+                "args": [],
+                "rule": "loadPendingRetirement",
+                "actor": "kernel",
+                "authorityNeeds": [
+                  {
+                    "capability": "observation.read",
+                    "target": "facts"
+                  }
+                ],
+                "witnesses": [
+                  "next-internet:pending-retirement-observations"
+                ],
+                "mode": "realize",
+                "state": {
+                  "retirement.allowed": false,
+                  "retirement.loaded": false,
+                  "facts.pendingPresent": false,
+                  "facts.allNodesAcknowledged": false,
+                  "facts.leaseRevoked": false,
+                  "facts.operatorAuthorized": false,
+                  "facts.actualRequestRoot": "",
+                  "facts.expectedRequestRoot": ""
+                }
+              },
+              {
+                "host": "observation",
+                "capability": "actualRequestRoot",
+                "fullCapability": "observation.actualRequestRoot",
+                "args": [],
+                "rule": "loadPendingRetirement",
+                "actor": "kernel",
+                "authorityNeeds": [
+                  {
+                    "capability": "observation.read",
+                    "target": "facts"
+                  }
+                ],
+                "witnesses": [
+                  "next-internet:pending-retirement-observations"
+                ],
+                "mode": "realize",
+                "state": {
+                  "retirement.allowed": false,
+                  "retirement.loaded": false,
+                  "facts.pendingPresent": false,
+                  "facts.allNodesAcknowledged": false,
+                  "facts.leaseRevoked": false,
+                  "facts.operatorAuthorized": false,
+                  "facts.actualRequestRoot": "",
+                  "facts.expectedRequestRoot": ""
+                }
+              },
+              {
+                "host": "observation",
+                "capability": "operatorAuthorized",
+                "fullCapability": "observation.operatorAuthorized",
+                "args": [],
+                "rule": "loadPendingRetirement",
+                "actor": "kernel",
+                "authorityNeeds": [
+                  {
+                    "capability": "observation.read",
+                    "target": "facts"
+                  }
+                ],
+                "witnesses": [
+                  "next-internet:pending-retirement-observations"
+                ],
+                "mode": "realize",
+                "state": {
+                  "retirement.allowed": false,
+                  "retirement.loaded": false,
+                  "facts.pendingPresent": false,
+                  "facts.allNodesAcknowledged": false,
+                  "facts.leaseRevoked": false,
+                  "facts.operatorAuthorized": false,
+                  "facts.actualRequestRoot": "",
+                  "facts.expectedRequestRoot": ""
+                }
+              },
+              {
+                "host": "observation",
+                "capability": "leaseRevoked",
+                "fullCapability": "observation.leaseRevoked",
+                "args": [],
+                "rule": "loadPendingRetirement",
+                "actor": "kernel",
+                "authorityNeeds": [
+                  {
+                    "capability": "observation.read",
+                    "target": "facts"
+                  }
+                ],
+                "witnesses": [
+                  "next-internet:pending-retirement-observations"
+                ],
+                "mode": "realize",
+                "state": {
+                  "retirement.allowed": false,
+                  "retirement.loaded": false,
+                  "facts.pendingPresent": false,
+                  "facts.allNodesAcknowledged": false,
+                  "facts.leaseRevoked": false,
+                  "facts.operatorAuthorized": false,
+                  "facts.actualRequestRoot": "",
+                  "facts.expectedRequestRoot": ""
+                }
+              },
+              {
+                "host": "observation",
+                "capability": "allNodesAcknowledged",
+                "fullCapability": "observation.allNodesAcknowledged",
+                "args": [],
+                "rule": "loadPendingRetirement",
+                "actor": "kernel",
+                "authorityNeeds": [
+                  {
+                    "capability": "observation.read",
+                    "target": "facts"
+                  }
+                ],
+                "witnesses": [
+                  "next-internet:pending-retirement-observations"
+                ],
+                "mode": "realize",
+                "state": {
+                  "retirement.allowed": false,
+                  "retirement.loaded": false,
+                  "facts.pendingPresent": false,
+                  "facts.allNodesAcknowledged": false,
+                  "facts.leaseRevoked": false,
+                  "facts.operatorAuthorized": false,
+                  "facts.actualRequestRoot": "",
+                  "facts.expectedRequestRoot": ""
+                }
+              },
+              {
+                "host": "observation",
+                "capability": "pendingPresent",
+                "fullCapability": "observation.pendingPresent",
+                "args": [],
+                "rule": "loadPendingRetirement",
+                "actor": "kernel",
+                "authorityNeeds": [
+                  {
+                    "capability": "observation.read",
+                    "target": "facts"
+                  }
+                ],
+                "witnesses": [
+                  "next-internet:pending-retirement-observations"
+                ],
+                "mode": "realize",
+                "state": {
+                  "retirement.allowed": false,
+                  "retirement.loaded": false,
+                  "facts.pendingPresent": false,
+                  "facts.allNodesAcknowledged": false,
+                  "facts.leaseRevoked": false,
+                  "facts.operatorAuthorized": false,
+                  "facts.actualRequestRoot": "",
+                  "facts.expectedRequestRoot": ""
+                }
+              }
+            ]
+          },
+          {
+            "kind": "Transition",
+            "rule": "admitPendingRetirement",
+            "ruleKind": "Emergence",
+            "mode": "realize",
+            "status": "realized",
+            "actor": "kernel",
+            "from": null,
+            "into": null,
+            "beforeRoot": "43070cc7f97c37566d3963878f3c0cb892361415e1674e1cf289ce40e3279d59",
+            "afterRoot": "4a25be8c8759aedfdc85e227c35cbe50acea2e76327caf97a3a7e13d7aca245e",
+            "changes": [
+              {
+                "target": "retirement.allowed",
+                "before": false,
+                "after": true,
+                "source": "alter"
+              }
+            ],
+            "authority": {
+              "needs": [
+                {
+                  "capability": "pending.retire",
+                  "target": "retirement"
+                }
+              ],
+              "activeWarrants": [
+                {
+                  "subject": "kernel",
+                  "capability": "observation.read",
+                  "target": "facts"
+                },
+                {
+                  "subject": "kernel",
+                  "capability": "pending.retire",
+                  "target": "retirement"
+                }
+              ]
+            },
+            "witnesses": [
+              "next-internet:rcl-pending-retirement"
+            ],
+            "hostCalls": []
+          }
+        ],
+        "programRoot": "9e46bec0723a3352a377bab697c3114b5e443db15d508e6019ae53adf73aa845",
+        "stateRoot": "4a25be8c8759aedfdc85e227c35cbe50acea2e76327caf97a3a7e13d7aca245e",
+        "sourceSha256": "d6507c7b979484d9195dbacb2078e9d8a1ff4eaf0adfe3e419d6479b8035e46c",
+        "factsRoot": "1bbec5b88f0b3d432c2f06df97d3e7fc9d387c29757c1703fcbcaf8e8f44633e",
+        "runtime": "RCL canonical compiler and JavaScript semantic runtime",
+        "coverage": "lowered-execution"
+      },
+      "executionOutcome": "unknown",
+      "operatorBoundary": "external-aaf-operator",
+      "operatorAuthorization": {
+        "challenge": {
+          "format": "twni.operator-challenge.v1",
+          "action": "retire-entire-lease",
+          "requestRoot": "ca423532b9642fb7c2976c8684edcbb626a79f64c4cda55ecc9a418a810d86be",
+          "leaseRoot": "d0c7b75da3020dcd277b907ee1e1cae819d2fae4197ae3ce8227c88b46f9b382",
+          "sessionRoot": "2abae39ebdf600b26addf72daa677e9993b4031753b3c967545e35cb2ac04c50",
+          "subjectId": "subject:local-user",
+          "continuityRoot": "b1a1ce5d3c98c2c4cd72055d1dcb2cbada67bf2b8f387b869a8394ebe4779516",
+          "worldId": "world:local-demonstration",
+          "coordinatorKeySha256": "82b1d42c2326583df139871262fe495ae63feadfa433ecd0b0e16c3e967d222c",
+          "policyRoot": "08cc0f290e318e3685d201c3f9134ccf08fd5c7cd657bf032c2163060296e06b",
+          "challengeRoot": "99eb20b51f5652ebea06c11060387338b11d83e0985349435b982e73bdbbb3f7"
+        },
+        "approval": {
+          "format": "aaf.approval-receipt.v0.1",
+          "approval_id": "approval:isolated-demo",
+          "proposal_root": "99eb20b51f5652ebea06c11060387338b11d83e0985349435b982e73bdbbb3f7",
+          "approver_id": "operator:external-test",
+          "approver_roles": [
+            "tinp.operator"
+          ],
+          "decision": "approved",
+          "scopes": [
+            "tinp.pending.retire"
+          ],
+          "conditions": [],
+          "issued_at": "2026-09-11T13:08:58.618Z",
+          "expires_at": "2026-09-11T13:10:59.618Z",
+          "approval_root": "e4a5db5ee61fde192e754ae23ec75daa63e05e7fba47c447cdb55507452b91f0",
+          "signature": {
+            "algorithm": "Ed25519",
+            "signer_id": "operator:external-test",
+            "value": "uptbv+nc+WV8HELzrFerNXV+iuPQC77sOX40uP3u38NuLF9AxCbz36bg8UY/By/8f3/FtkcPCv4otsr4xi54DQ=="
+          }
+        },
+        "verification": {
+          "format": "twni.external-operator-verification.v1",
+          "approvalRoot": "e4a5db5ee61fde192e754ae23ec75daa63e05e7fba47c447cdb55507452b91f0",
+          "signerId": "operator:external-test",
+          "publicKeySha256": "bf2e9bfc5ecb4d9ffd1819d68cb02f2c728bd1df8ddfd91b0e596892df228ec7",
+          "challengeRoot": "99eb20b51f5652ebea06c11060387338b11d83e0985349435b982e73bdbbb3f7",
+          "authorizedAtMs": 1789132145960
+        },
+        "firstVerifiedAtMs": 1789132144556
+      },
+      "recovery": {
+        "session": {
+          "body": {
+            "format": "twni.session.v0.1",
+            "sessionId": "session:d3eb421d-10e3-4d7e-9cb9-d6eaee44b6d5",
+            "subjectId": "subject:local-user",
+            "continuityRoot": "b1a1ce5d3c98c2c4cd72055d1dcb2cbada67bf2b8f387b869a8394ebe4779516",
+            "worldId": "world:local-demonstration",
+            "sourceNodeId": "A",
+            "targetNodeId": "C",
+            "leaseRoot": "d0c7b75da3020dcd277b907ee1e1cae819d2fae4197ae3ce8227c88b46f9b382",
+            "scopes": [
+              "text.read"
+            ],
+            "expiresAtMs": 1789132726783,
+            "expectedEvidenceRoot": "3ee46319b0a0f69cf70d41dfce4e47eac181fb1419e5bfbc72290517875c72b5",
+            "previousSessionRoot": null
+          },
+          "root": "2abae39ebdf600b26addf72daa677e9993b4031753b3c967545e35cb2ac04c50",
+          "signature": "UqBZ0M5BObmNjAafPo15J/QlBRNX8dYS4Jcnpo/iPvc88fte44ZxwqWd487By5csAHug0aBeimbhtKIQr5UfAw=="
+        },
+        "lease": {
+          "body": {
+            "format": "twni.authority-lease.v0.1",
+            "leaseId": "lease:8f3f1abf-5453-493c-91d1-573162d41e50",
+            "subjectId": "subject:local-user",
+            "continuityRoot": "b1a1ce5d3c98c2c4cd72055d1dcb2cbada67bf2b8f387b869a8394ebe4779516",
+            "worldId": "world:local-demonstration",
+            "capabilityId": "text.codepoint-count",
+            "scopes": [
+              "text.read"
+            ],
+            "notBeforeMs": 1789132125783,
+            "expiresAtMs": 1789132726783,
+            "region": "local",
+            "maxRetentionSeconds": 0,
+            "maxCost": 20,
+            "maxLatencyMs": 1000,
+            "maxEnergy": 20,
+            "securityProfile": "ed25519-pinned-local.v1",
+            "delegable": false,
+            "purpose": "local read-only Unicode code point counting experiment"
+          },
+          "root": "d0c7b75da3020dcd277b907ee1e1cae819d2fae4197ae3ce8227c88b46f9b382",
+          "signature": "A9kBypD2dktXaHKwXxAYx2NahefimCkWCRXssxTOTAaFKQgKzVGGV5TKj12xCfPJx6LTW0Nga0315dBh6S4OAg=="
+        },
+        "currentSource": "A",
+        "operatorPolicy": {
+          "format": "twni.external-operator-policy.v1",
+          "signerId": "operator:external-test",
+          "publicKeySha256": "bf2e9bfc5ecb4d9ffd1819d68cb02f2c728bd1df8ddfd91b0e596892df228ec7",
+          "scope": "tinp.pending.retire",
+          "role": "tinp.operator",
+          "policyRoot": "08cc0f290e318e3685d201c3f9134ccf08fd5c7cd657bf032c2163060296e06b"
+        },
+        "revoked": true,
+        "revocationEpoch": 1,
+        "pendingRoot": "ca423532b9642fb7c2976c8684edcbb626a79f64c4cda55ecc9a418a810d86be",
+        "recoveryAnchorPolicy": null,
+        "recoveryAnchorRoot": null,
+        "recoveryAnchorSequence": 0
+      }
+    },
+    "eventRoot": "771ab2fbe643461319f9a389f922b9b9a0f7019d8bf506eeb558536bac89b0f9",
+    "signature": "JGnNETJ93l+jXOofXjiVcMZWYH901AoBuFtNRtHnWWnOkaVtKN6OfcMlgEjvRQ4G6+/26W1gl8XCx9HQdX7iDw=="
+  },
+  "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEABQCIUR3chQoIDgTInJECSvGeLH6n1hN8fNNK0zGOjrg=\n-----END PUBLIC KEY-----\n",
+  "evidenceRoot": "db46a5ce840bad34265978425d65a09b78e0da1d654fb272190a1ea8146d9c4e",
+  "scope": "Actual CLI and independent ephemeral test signer. No production human enrollment, external clock, hardware custody or anti-rollback anchor.",
+  "ledger": "evidence/0.1.0-alpha.15/operator-tcp.jsonl",
+  "ledgerSha256": "00f796f66c5d01828ee0c4dd0da5f604fef8a14f10baf8733a0f6698467640e5"
+}

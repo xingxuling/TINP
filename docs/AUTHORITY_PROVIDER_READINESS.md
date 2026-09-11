@@ -75,8 +75,15 @@ processes on two hosts:
    traces, negative cases and human approval. K400 remains `NOT_ADJUDICATED`
    until its nine gates are separately reviewed.
 
-Until those inputs exist, the alpha.14 offline adapters and local replay/loopback
+Until those inputs exist, the alpha.15 offline adapters and local replay/loopback
 harnesses remain the smallest
 honest boundary. Adding a local publisher, synthetic trusted clock, guessed
 Owner, or test keyring would create a parallel authority and would not close
 this gap.
+
+The alpha.15 OPP HTTP adapter is deliberately below these authority gates. It
+can observe one explicitly allowlisted public HTTP response and produce a
+content-rooted receipt, but it does not verify an OPP consumer bridge, publish
+or revoke authority, establish trusted time, or authorize any action. The
+public GitHub observation in `evidence/OPP_HTTP_READONLY_GITHUB_2026-09-11.json`
+is provider evidence only.

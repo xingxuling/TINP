@@ -39,3 +39,5 @@ alpha.12 仅新增本仓库 JavaScript 的 TINP loopback transfer demo、test-on
 alpha.13 仅新增本仓库 JavaScript 的 TLS transport 分支、临时 OpenSSL 证书夹具、loopback wrapper、测试、协议登记、verify 分支与文档；复用 Node 内置 `tls`、既有 `LocalTransport`、vendored TINP `DATA` framing 和现有 convergence/store validators，未复制 OpenSSL 或第三方 TLS/共识源码，也未引入新的 npm/Python 依赖。证书私钥只在测试临时目录和子进程内存中存在，退出后删除，不进入 transfer payload、store 或源码包。OpenSSL 是本机测试工具，不改变既有 donor 许可、内部使用限制和未公开发布结论。
 
 alpha.14 仅新增本仓库 JavaScript 的公开 state 分块/journal 模块、test-only TLS worker、可恢复传输 demo、测试、协议登记、verify 分支与文档；复用 Node 内置 `fs`、`crypto`、`tls`、既有 `LocalTransport`、vendored TINP `DATA` framing 和现有 convergence/store validators，未引入新的 npm/Python 依赖或复制第三方传输/共识源码。journal、transfer payload 与源码包不含 issuer、mirror、member、witness、transport 或 TLS 私钥；临时证书只由 OpenSSL fixture 生成并在运行结束删除。既有 donor 许可、内部使用限制和未公开发布结论继续适用。
+
+alpha.15 仅新增本仓库 JavaScript 的只读 OPP HTTP policy/request/receipt adapter、CLI、示例、测试、协议登记、verify 分支与文档；复用 Node 内置 `fetch`、`AbortController`、`Response` 和既有 `rootHash`，未复制 OPP CHP/RCP 源码，也未引入新的 npm/Python 依赖。固定 OPP commit、GitHub 响应和外部观察回执是引用/运行输出，不构成 OPP 许可或再分发授权；无凭据、私钥或 authority key 进入源码包。既有 OPP 未声明许可证、内部使用限制和未公开发布结论继续适用。

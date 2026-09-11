@@ -150,3 +150,18 @@ caller-supplied certificate pins and TINP peer public-key admission remain
 separate checks. Production publication, certificate lifecycle, trusted time,
 physical-device enrollment, lost-key recovery and conflict resolution remain
 with the external Owner. RCL Core, RNCS/RFE and AAF ownership is unchanged.
+
+## alpha.15 OPP read-only HTTP ownership
+
+`src/opp-http-readonly.mjs` owns only the TINP transport/provider boundary for
+one explicitly policy-bound external observation. The policy, request and
+receipt formats bind a pinned OPP source reference, HTTPS/GET allowlists,
+bounded response handling and content roots; `authorityGranted` is always
+`false`. OPP remains the canonical owner of CHP/RCP negotiation semantics and
+its source is referenced by commit rather than copied into this adapter.
+
+The caller still owns the policy choice, endpoint and response projection.
+Node `fetch` is an execution provider; an HTTP 200 or a PASS receipt does not
+grant authority, establish OPP consumer interoperability, or certify a
+production network. No RCL Core, RNCS/RFE world authority or AAF approval owner
+changed.
