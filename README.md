@@ -278,7 +278,7 @@ alpha.16 增加一个 TINP-owned 的只读 OPP HTTP 观察适配器。它固定 
 npm run opp-http-readonly -- examples/opp-http-readonly/github-opp-policy.json examples/opp-http-readonly/github-opp-request.json --out <new-result-file.json>
 ```
 
-本地 `npm test` 和 `npm run verify` 会验证 policy/request/receipt 的正负例；`evidence/OPP_HTTP_READONLY_GITHUB_2026-09-11.json` 保存一次实际 GitHub `/repos/xingxuling/OPP` 的公开 REST 观察。该结果仍不是 OPP 第三方 consumer bridge、公网可用性、生产凭据或 authority 证据，下一缺口见 `docs/NEXT_GAP.md`。
+本地 `npm test` 和 `npm run verify` 会验证 policy/request/receipt 的正负例；`evidence/OPP_HTTP_READONLY_GITHUB_2026-09-11.json` 保存一次实际 GitHub `/repos/xingxuling/OPP` 的公开 REST 观察，`evidence/OPP_HTTP_CONSUMER_LIVE_GITHUB_2026-09-12.json` 另保存一次 live consumer 实际运行结果。该结果仍不是 OPP 第三方 consumer bridge、公网可用性、生产凭据或 authority 证据，下一缺口见 `docs/NEXT_GAP.md`。
 
 ## OPP consumer bridge CLI
 
@@ -301,6 +301,7 @@ npm run opp-http-consumer-live -- <policy.json> <request.json> --out <new-live-r
 ```
 
 该入口不接收凭据、不授予 authority、不重试或跟随重定向；通过只表示这一次本机受约束链路成功，不表示第三方 OPP consumer、生产服务或公网可用性。
+
 
 
 

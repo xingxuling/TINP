@@ -29,5 +29,16 @@
   "production": "NOT_DEPLOYED",
   "externalThirdPartyConsumer": "NOT_RUN",
   "k400Verdict": "NOT_ADJUDICATED",
-  "boundary": "Local exact-shape validation and one bounded read-only OPP observation; no credential, authority, production interoperability, trusted time or real-device evidence."
+  "boundary": "Local exact-shape validation and one bounded read-only OPP observation; no credential, authority, production interoperability, trusted time or real-device evidence.",
+  "externalLiveObservation": {
+    "file": "evidence/OPP_HTTP_CONSUMER_LIVE_GITHUB_2026-09-12.json",
+    "status": "PASS",
+    "httpStatus": 200,
+    "requestRoot": "98683026a23aa9dcc444f28a03a52f778277b0547737a773b477f5ce2b02ad29",
+    "acceptanceRoot": "d4374249c8f8c0b6669cf6c69caba4a8e7f158f5fcca4edff421feb6a5d835bb",
+    "sha256": "2b3d36af00ec82fb269481d4eb7bbfb369665c2b67c2a4c8ed9d428153f5b879",
+    "networkRequests": 1,
+    "authorityGranted": false,
+    "scope": "One public GitHub REST observation with known proxy variables cleared in the invoking shell; not an independent OPP consumer or production service"
+  }
 }
