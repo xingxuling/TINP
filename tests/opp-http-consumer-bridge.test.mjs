@@ -1,5 +1,10 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { negotiateOpp } from '../adapters/opp-bridge.mjs';
 import { makeHello } from '../vendor/tinp/src/index.mjs';
 import {
@@ -98,4 +103,32 @@ test('consumer bridge rejects a capability agreement whose content root was not 
     negotiation: { ...negotiation, capability: { ...negotiation.capability, reasons: ['tampered'] } },
   });
   assert.throws(() => acceptOppHttpReadonlyConsumer({ plan, policy: base.policy, request: base.request, observation: {}, consumerContract: contract }), /OPP_HTTP_CONSUMER_CAPABILITY_ROOT_INVALID/);
+});
+
+test('consumer bridge CLI replays supplied files and writes a bounded receipt', async () => {
+  const { policy, request, plan, consumerContract, observation } = await acceptedFixture();
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'tinp-opp-consumer-cli-'));
+  try {
+    const files = { plan, policy, request, observation, contract: consumerContract };
+    const paths = Object.fromEntries(Object.entries(files).map(([name, value]) => {
+      const file = path.join(directory, `${name}.json`);
+      fs.writeFileSync(file, `${JSON.stringify(value)}\n`, { flag: 'wx' });
+      return [name, file];
+    }));
+    const outputPath = path.join(directory, 'result.json');
+    const child = spawnSync(process.execPath, [
+      'scripts/opp-http-consumer-bridge.mjs', paths.plan, paths.policy, paths.request,
+      paths.observation, paths.contract, '--out', outputPath,
+    ], { cwd: path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'), encoding: 'utf8', windowsHide: true });
+    assert.equal(child.status, 0, child.stderr);
+    assert.equal(child.stdout, '');
+    const output = JSON.parse(fs.readFileSync(outputPath, 'utf8'));
+    assert.equal(output.format, 'twni.opp-http-consumer-bridge-run.v1');
+    assert.equal(output.status, 'PASS');
+    assert.equal(output.response.full_name, 'xingxuling/OPP');
+    assert.equal(output.receipt.authorityGranted, false);
+    assert.equal(output.receipt.sideEffects, false);
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
 });

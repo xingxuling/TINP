@@ -205,3 +205,8 @@ The OPP read-only adapter now denies `NODE_USE_ENV_PROXY`, `NODE_OPTIONS=--use-e
 ## alpha.17 local OPP consumer acceptance
 
 The candidate now binds a real OPP CHP/RCP accepted negotiation to the read-only HTTP policy/request and producer receipt. The local acceptance receipt checks the pinned OPP owner, capability agreement, response projection and content roots. This is a concrete local consumer bridge witness; no independently operated third-party consumer or production authority was available.
+
+
+## alpha.18 replayable OPP consumer bridge CLI
+
+The candidate adds `scripts/opp-http-consumer-bridge.mjs`, a file-input CLI over the alpha.17 acceptance function. It reads a previously produced plan, policy, request, observation and consumer contract, then writes the same rooted acceptance receipt without making another network request. The focused test exercises a real subprocess and an exclusive output file; the CLI is still local evidence and does not establish third-party OPP interoperability, production authority or public availability.

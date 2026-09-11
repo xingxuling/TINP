@@ -279,3 +279,13 @@ npm run opp-http-readonly -- examples/opp-http-readonly/github-opp-policy.json e
 ```
 
 本地 `npm test` 和 `npm run verify` 会验证 policy/request/receipt 的正负例；`evidence/OPP_HTTP_READONLY_GITHUB_2026-09-11.json` 保存一次实际 GitHub `/repos/xingxuling/OPP` 的公开 REST 观察。该结果仍不是 OPP 第三方 consumer bridge、公网可用性、生产凭据或 authority 证据，下一缺口见 `docs/NEXT_GAP.md`。
+
+## OPP consumer bridge CLI
+
+alpha.18 增加文件输入的本机 consumer bridge CLI。它只接受已经生成的 plan、policy、request、read-only observation 和 consumer contract，复用现有 acceptance validator，输出 rooted receipt；不会重新发起网络请求，也不会授予 authority。
+
+```powershell
+npm run opp-http-consumer-bridge -- <plan.json> <policy.json> <request.json> <observation.json> <contract.json> --out <new-result-file.json>
+```
+
+CLI 的 `PASS` 只表示这组输入在本机通过了 OPP owner、投影字段和 content-root 绑定；`FAIL_CLOSED` 返回退出码 5。它仍不等于独立第三方 consumer 互操作、生产发布或 K400 晋升。
