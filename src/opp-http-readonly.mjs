@@ -51,6 +51,21 @@ function strictArray(value, code) {
   }
 }
 
+function ownEnumerableEntries(value, code) {
+  check(plain(value), code);
+  let keys;
+  try { keys = Reflect.ownKeys(value); } catch { fail(code); }
+  const entries = [];
+  for (const key of keys) {
+    check(typeof key === 'string', code);
+    let descriptor;
+    try { descriptor = Object.getOwnPropertyDescriptor(value, key); } catch { fail(code); }
+    check(descriptor && Object.hasOwn(descriptor, 'value') && descriptor.enumerable, code);
+    entries.push([key, descriptor.value]);
+  }
+  return entries;
+}
+
 function identifier(value) {
   return typeof value === 'string' && value.length > 0 && value.length <= 256
     && value.trim() === value && !/[\u0000-\u001f\u007f]/.test(value);
@@ -190,8 +205,7 @@ function parseUrl(url, policy) {
 }
 
 function validateHeaders(headers, policy) {
-  check(plain(headers), 'OPP_HTTP_REQUEST_HEADERS_INVALID');
-  for (const [name, value] of Object.entries(headers)) {
+  for (const [name, value] of ownEnumerableEntries(headers, 'OPP_HTTP_REQUEST_HEADERS_INVALID')) {
     const normalized = name.toLowerCase();
     check(name === normalized && headerName(name) && policy.transport.allowedRequestHeaders.includes(name)
       && !FORBIDDEN_HEADERS.has(normalized) && headerValue(value), 'OPP_HTTP_REQUEST_HEADERS_INVALID');
@@ -200,14 +214,17 @@ function validateHeaders(headers, policy) {
 
 export function makeOppHttpReadonlyRequest({ policy, requestId, url, headers = {} } = {}) {
   validateOppHttpReadonlyPolicy(policy);
+  const inputHeaders = ownEnumerableEntries(headers, 'OPP_HTTP_REQUEST_HEADERS_INVALID')
+    .map(([name, value]) => [name.toLowerCase(), value]);
+  check(new Set(inputHeaders.map(([name]) => name)).size === inputHeaders.length,
+    'OPP_HTTP_REQUEST_HEADERS_INVALID');
   const body = {
     format: OPP_HTTP_READONLY_REQUEST_FORMAT,
     requestId,
     policyRoot: policy.policyRoot,
     method: policy.transport.method,
     url,
-    headers: Object.fromEntries(Object.entries(headers).map(([name, value]) => [name.toLowerCase(), value])
-      .sort(([left], [right]) => left.localeCompare(right))),
+    headers: Object.fromEntries(inputHeaders.sort(([left], [right]) => left.localeCompare(right))),
   };
   validateRequestBody(body, policy);
   return { ...body, requestRoot: rootHash(body) };
@@ -273,12 +290,17 @@ function jsonContentType(value) {
 }
 
 function projectResponse(body, fields) {
-  if (fields.length === 0) return body;
   check(plain(body), 'OPP_HTTP_RESPONSE_OBJECT_REQUIRED');
+  if (fields.length === 0) return body;
   const projected = {};
   for (const field of fields) {
     check(Object.hasOwn(body, field), 'OPP_HTTP_RESPONSE_FIELD_MISSING');
-    projected[field] = body[field];
+    Object.defineProperty(projected, field, {
+      configurable: true,
+      enumerable: true,
+      value: body[field],
+      writable: true,
+    });
   }
   return projected;
 }
@@ -314,6 +336,7 @@ export function validateOppHttpReadonlyReceipt(receipt, policy, request) {
   validateOppHttpReadonlyPolicy(policy);
   validateOppHttpReadonlyRequest(request, policy);
   const { receiptRoot, ...body } = receipt;
+  const pass = receipt.status === 'PASS';
   check(receipt.format === OPP_HTTP_READONLY_RECEIPT_FORMAT && receipt.policyRoot === policy.policyRoot
     && receipt.requestRoot === request.requestRoot && ['PASS', 'FAIL_CLOSED'].includes(receipt.status)
     && (receipt.httpStatus === null || (Number.isSafeInteger(receipt.httpStatus) && receipt.httpStatus >= 100 && receipt.httpStatus <= 599))
@@ -321,12 +344,18 @@ export function validateOppHttpReadonlyReceipt(receipt, policy, request) {
     && (receipt.responseEtag === null || identifier(receipt.responseEtag))
     && (receipt.responseLastModified === null || identifier(receipt.responseLastModified))
     && Number.isSafeInteger(receipt.responseBytes) && receipt.responseBytes >= 0
+    && receipt.responseBytes <= policy.transport.maxResponseBytes
     && (receipt.wireResponseRoot === null || HASH.test(receipt.wireResponseRoot))
     && (receipt.responseRoot === null || HASH.test(receipt.responseRoot))
     && (receipt.error === null || identifier(receipt.error)) && receipt.attempts === 1
     && receipt.redirectsFollowed === false && receipt.ambientProxyUsed === false
     && receipt.ambientCredentialsUsed === false && receipt.authorityGranted === false
     && receipt.boundary === OPP_HTTP_READONLY_BOUNDARY && HASH.test(receiptRoot)
+    && (pass
+      ? receipt.httpStatus !== null && receipt.httpStatus >= 200 && receipt.httpStatus <= 299
+        && jsonContentType(receipt.responseContentType) && receipt.wireResponseRoot !== null
+        && receipt.responseRoot !== null && receipt.error === null
+      : receipt.error !== null && receipt.responseRoot === null)
     && rootHash(body) === receiptRoot, 'OPP_HTTP_RECEIPT_INVALID');
   return true;
 }
