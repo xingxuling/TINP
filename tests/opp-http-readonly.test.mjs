@@ -83,6 +83,27 @@ test('ambient proxy configuration fails closed before fetch', async () => {
   assert.equal(validateOppHttpReadonlyReceipt(result.receipt, policy, request), true);
 });
 
+test('Node environment-proxy switches fail closed before fetch', async () => {
+  const { policy, request } = fixture();
+  for (const [name, options] of [
+    ['NODE_USE_ENV_PROXY', { environment: { NODE_USE_ENV_PROXY: '1' } }],
+    ['NODE_OPTIONS', { environment: { NODE_OPTIONS: '--use-env-proxy' } }],
+    ['execArgv', { environment: {}, execArgv: ['--use-env-proxy'] }],
+  ]) {
+    let calls = 0;
+    const result = await runOppHttpReadonly({
+      policy,
+      request,
+      ...options,
+      fetchImpl: async () => { calls++; throw new Error('must not run'); },
+    });
+    assert.equal(calls, 0, name);
+    assert.equal(result.status, 'FAIL_CLOSED', name);
+    assert.equal(result.receipt.error, 'OPP_HTTP_AMBIENT_PROXY_CONFIGURED', name);
+    assert.equal(validateOppHttpReadonlyReceipt(result.receipt, policy, request), true, name);
+  }
+});
+
 test('network failure is one attempt and does not retry', async () => {
   const { policy, request } = fixture();
   let calls = 0;
