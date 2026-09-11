@@ -1,6 +1,6 @@
 # 当前状态
 
-TINP v0.1.0-alpha.20：可选外部 AAF 操作员签章、外部恢复锚点、authority registry 快照、多镜像分发 quorum、历史收敛桥接、本机历史 store、外部收敛见证、跨进程 public-history replay、TCP 与 TLS 1.3 TINP DATA loopback state transfer、可恢复分块传输 journal、策略绑定只读 OPP HTTP 观察适配器的本机候选。
+TINP v0.1.0-alpha.21：可选外部 AAF 操作员签章、外部恢复锚点、authority registry 快照、多镜像分发 quorum、历史收敛桥接、本机历史 store、外部收敛见证、跨进程 public-history replay、TCP 与 TLS 1.3 TINP DATA loopback state transfer、可恢复分块传输 journal、策略绑定只读 OPP HTTP 观察适配器的本机候选。
 
 从已核对远端的 alpha.13 / `1aa235d9f5718f87c959e275da10a7bf12d58e9f` 继续，候选分支 `codex/tinp-registry-v07`；alpha.14 实现提交为 `f88798d3a0360eea20eda257126e26755b2a421b`，证据与文档提交为 `bc78af0185c732bb0f7f8b1a848601450db6dd09`，新增 TLS 1.3 TINP DATA 可恢复分块传输、原子接收 journal、接收端重启游标、重复与 chunk/manifest 冲突负例、演示、验证入口与协议注册表记录，完整最终验收以 `evidence/0.1.0-alpha.14/LOCAL_VERIFICATION.json` 的源码哈希、退出码及运行见证为准。
 
@@ -30,3 +30,4 @@ alpha.19 候选已通过本机 verify：`198/198`、源码清单 `204` 个文件
 alpha.20 候选已通过本机 verify：`199/199`、源码清单 `204` 个文件，`sourceTreeRoot=976aabbcc045593c8db88c8d1d1de30cfbf9538eea86a193f32e7f768973a88b`，tests TAP SHA-256=`ffb942a35d09a861db82ef13f6b8bf9b9ccb1ac5f3ed765033217c038294b495`，LOCAL_VERIFICATION 已生成。候选提交为 `e4e14c9`，已通过合并提交 `0b8d4a3` 合并到 `codex/next-internet-v01` 并推送 GitHub。合并后 npm test 为 `199/199`（0 fail）；发行包、解包 `26/26` 聚焦测试、`--make-bundle` 生成和 bundle 回放均已通过。外部第三方 consumer、生产 authority 和 K400 仍保持未证明。
 
 alpha.21 已合并：新增 runOppHttpConsumerLive 与 scripts/opp-http-consumer-live.mjs，将真实 OPP CHP/RCP accepted 协商、一次策略约束的 HTTPS/JSON 只读观察、consumer contract 和 rooted acceptance receipt 串成单次 live consumer 路径。候选完整套件为 202/202（0 fail），合并提交为 9d4988e；证据位于 evidence/0.1.0-alpha.21/LOCAL_VERIFICATION.json。该路径仍是本机受约束候选，不等于独立第三方 consumer、生产 authority、真实异机部署或 K400 晋升。
+
