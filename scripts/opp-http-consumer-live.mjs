@@ -3,7 +3,7 @@ import { runOppHttpConsumerLive, validateOppHttpConsumerLiveResult } from '../sr
 
 function usage() {
   process.stderr.write('usage: node scripts/opp-http-consumer-live.mjs <policy.json> <request.json> [--out <result.json>]\n');
-  process.stderr.write('       node scripts/opp-http-consumer-live.mjs --verify <policy.json> <request.json> <result.json>\n');
+  process.stderr.write('       node scripts/opp-http-consumer-live.mjs --verify <policy.json> <request.json> <result.json> [--out <verification.json>]\n');
 }
 
 function load(file) {
@@ -13,7 +13,7 @@ function load(file) {
 const args = process.argv.slice(2);
 const verifyMode = args[0] === '--verify';
 const validArgs = verifyMode
-  ? args.length === 4
+  ? args.length === 4 || (args.length === 6 && args[4] === '--out')
   : args.length >= 2 && args.length <= 4 && (args.length !== 4 || args[2] === '--out');
 if (!validArgs) {
   usage();
@@ -25,14 +25,17 @@ if (!validArgs) {
       const request = load(args[2]);
       const result = load(args[3]);
       validateOppHttpConsumerLiveResult(result, { policy, request });
-      process.stdout.write(`${JSON.stringify({
+      const verification = {
         format: 'twni.opp-http-consumer-live-verify.v1',
         status: 'PASS',
         resultStatus: result.status,
         networkRequests: 0,
         authorityGranted: false,
         boundary: 'Offline validation of a saved live consumer result; no network request or authority grant',
-      }, null, 2)}\n`);
+      };
+      const serialized = `${JSON.stringify(verification, null, 2)}\n`;
+      if (args.length === 6) fs.writeFileSync(args[5], serialized, { encoding: 'utf8', flag: 'wx' });
+      else process.stdout.write(serialized);
       process.exitCode = 0;
     } else {
     const policy = load(args[0]);
