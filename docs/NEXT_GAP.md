@@ -18,3 +18,5 @@ alpha.15 在不改变 OPP Owner 的前提下把只读 HTTPS/JSON transport polic
 现有RCL表达能力仍足够。本轮将操作员认证结果作为已校验观测传给原退休Profile，无Core新原语，无K400晋升。RNCS/RFE世界事实、AAF批准格式和TINP网络装配各保持单一Owner。
 
 alpha.16 在 alpha.15 的只读 OPP policy/receipt 之上补齐已知 Node 环境代理开关（环境变量、NODE_OPTIONS 与 execArgv）的 fail-closed 检查，保留字面量 `__proto__` projection 的安全对象语义，并强化 PASS/FAIL receipt 一致性。新增确定性负例与本机 verify 见证；动态全局 dispatcher 仍不可观测，公网观察仍只是单次 provider 输出。下一缺口仍是显式 OPP consumer bridge 与真实 authority Owner，不解除生产凭据、跨主机或 K400 边界。
+
+alpha.17 已实现 TINP-owned 的本机 OPP consumer acceptance binding：复用真实 OPP CHP/RCP accepted 协商，把 consumer contract、HTTP policy/request、producer receipt 与 projected response root 固定到新的 rooted acceptance receipt。它证明本机这一次具体消费者接受，不等于独立第三方 OPP consumer、公网部署或生产 authority。下一缺口收窄为外部 Owner 对该 bridge 的实际 consumer acceptance 与生产发布/撤销服务。

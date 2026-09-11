@@ -43,3 +43,5 @@ alpha.14 仅新增本仓库 JavaScript 的公开 state 分块/journal 模块、t
 alpha.15 仅新增本仓库 JavaScript 的只读 OPP HTTP policy/request/receipt adapter、CLI、示例、测试、协议登记、verify 分支与文档；复用 Node 内置 `fetch`、`AbortController`、`Response` 和既有 `rootHash`，未复制 OPP CHP/RCP 源码，也未引入新的 npm/Python 依赖。固定 OPP commit、GitHub 响应和外部观察回执是引用/运行输出，不构成 OPP 许可或再分发授权；无凭据、私钥或 authority key 进入源码包。既有 OPP 未声明许可证、内部使用限制和未公开发布结论继续适用。
 
 alpha.16 only hardens the existing JavaScript OPP read-only adapter and deterministic tests/verify evidence. No new dependency or vendored source was added; existing OPP license and authority boundaries remain unchanged.
+
+alpha.17 adds only first-party JavaScript consumer-binding code, tests, verifier wiring and documentation. It reuses the pinned OPP adapter output and adds no dependency or copied OPP source.

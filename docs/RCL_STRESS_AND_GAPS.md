@@ -161,3 +161,7 @@ Affected K400 candidates：沿用 K057/K110/K117/K250/K257，并观察 K301/K318
 ## alpha.16 Node proxy boundary stress
 
 The adapter exercises environment variables, `NODE_OPTIONS`, and `execArgv` proxy switches as fail-closed ambient transport inputs, plus literal `__proto__` projection and semantically consistent receipt roots. This remains a TINP provider/profile stress case with local deterministic evidence only; dynamic global dispatchers and public interoperability remain gaps, and no K400 cell is adjudicated.
+
+## alpha.17 consumer binding stress
+
+The new bridge stresses cross-owner binding: OPP owns CHP/RCP negotiation, TINP owns the transport receipt, and the local consumer contract must match the projection exactly. Re-rooted responses, rejected negotiations and producer failures remain fail-closed. Candidate absorption remains P15/TINP provider scope; no RCL or K400 promotion.

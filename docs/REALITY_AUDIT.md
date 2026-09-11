@@ -201,3 +201,7 @@ AAF owner changed.
 ## alpha.16 Node proxy and receipt hardening
 
 The OPP read-only adapter now denies `NODE_USE_ENV_PROXY`, `NODE_OPTIONS=--use-env-proxy`, and equivalent `execArgv` switches before fetch. Projection preserves a literal `__proto__` key as an own data property, and receipt validation binds PASS/FAIL status to response roots, media type, and bounded response bytes. These are deterministic local checks; dynamic global dispatcher mutation, a third-party OPP consumer bridge, and production authority remain unobserved.
+
+## alpha.17 local OPP consumer acceptance
+
+The candidate now binds a real OPP CHP/RCP accepted negotiation to the read-only HTTP policy/request and producer receipt. The local acceptance receipt checks the pinned OPP owner, capability agreement, response projection and content roots. This is a concrete local consumer bridge witness; no independently operated third-party consumer or production authority was available.

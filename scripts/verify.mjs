@@ -7,6 +7,9 @@ import {performance} from 'node:perf_hooks';
 import {InternetSuite} from '../src/suite.mjs';
 import {verifyLedger} from '../src/evidence.mjs';
 import {makeOppHttpReadonlyPolicy,makeOppHttpReadonlyRequest,runOppHttpReadonly,validateOppHttpReadonlyReceipt} from '../src/opp-http-readonly.mjs';
+import {acceptOppHttpReadonlyConsumer,makeOppHttpConsumerBridgePlan,makeOppHttpConsumerContract,validateOppHttpConsumerBridgeReceipt} from '../src/opp-http-consumer-bridge.mjs';
+import {negotiateOpp} from '../adapters/opp-bridge.mjs';
+import {makeHello} from '../vendor/tinp/src/index.mjs';
 
 const root=fileURLToPath(new URL('..',import.meta.url));process.chdir(root);
 const version=JSON.parse(fs.readFileSync('package.json','utf8')).version;
@@ -354,6 +357,28 @@ if(oppHttpReadonlyNodeProxy.status!=='FAIL_CLOSED'
   ||oppHttpReadonlyNodeProxy.receipt.error!=='OPP_HTTP_AMBIENT_PROXY_CONFIGURED'
   ||validateOppHttpReadonlyReceipt(oppHttpReadonlyNodeProxy.receipt,oppHttpReadonlyPolicy,oppHttpReadonlyRequest)!==true)
   throw new Error('OPP_HTTP_READONLY_NODE_PROXY_GUARD_INVALID');
+const bridgeHello=nodeId=>makeHello({nodeId,subjectId:`subject:${nodeId}`,capabilities:['opp-http-readonly'],authorityScopes:[]});
+const bridgeSpec={capabilityId:'opp-http-readonly',version:'1.0',inputSchema:{type:'object'},outputSchema:{type:'object'},authorityRequired:[]};
+const oppHttpConsumerNegotiation=await negotiateOpp({
+  localHello:bridgeHello('consumer'),remoteHello:bridgeHello('provider'),
+  localCapability:structuredClone(bridgeSpec),remoteCapability:structuredClone(bridgeSpec),
+});
+const oppHttpConsumerPlan=makeOppHttpConsumerBridgePlan({
+  bridgeId:'verify:opp-http-consumer-bridge',capabilityId:'opp-http-readonly',
+  responseFields:oppHttpReadonlyPolicy.transport.responseFields,
+});
+const oppHttpConsumerContract=makeOppHttpConsumerContract({
+  contractId:'verify:opp-http-consumer-contract',capabilityId:oppHttpConsumerPlan.capabilityId,
+  responseFields:oppHttpConsumerPlan.responseFields,negotiation:oppHttpConsumerNegotiation,
+});
+const oppHttpConsumerAcceptance=acceptOppHttpReadonlyConsumer({
+  plan:oppHttpConsumerPlan,policy:oppHttpReadonlyPolicy,request:oppHttpReadonlyRequest,
+  observation:oppHttpReadonlyPass,consumerContract:oppHttpConsumerContract,
+});
+if(oppHttpConsumerAcceptance.status!=='PASS'
+  ||oppHttpConsumerAcceptance.response?.full_name!=='xingxuling/OPP'
+  ||validateOppHttpConsumerBridgeReceipt(oppHttpConsumerAcceptance.receipt,oppHttpConsumerPlan,oppHttpReadonlyPolicy,oppHttpReadonlyRequest,oppHttpConsumerContract)!==true)
+  throw new Error('OPP_HTTP_CONSUMER_BRIDGE_INVALID');
 const oppHttpReadonlyWitness={
   status:'VERIFIED_LOCAL_OPP_HTTP_READONLY_POLICY',
   policy:oppHttpReadonlyPolicy,
@@ -361,11 +386,13 @@ const oppHttpReadonlyWitness={
   pass:{status:oppHttpReadonlyPass.status,response:oppHttpReadonlyPass.response,receipt:oppHttpReadonlyPass.receipt},
   ambientProxy:{status:oppHttpReadonlyProxy.status,error:oppHttpReadonlyProxy.receipt.error,receipt:oppHttpReadonlyProxy.receipt},
   nodeEnvironmentProxy:{status:oppHttpReadonlyNodeProxy.status,error:oppHttpReadonlyNodeProxy.receipt.error,receipt:oppHttpReadonlyNodeProxy.receipt},
+  consumerBridge:{status:oppHttpConsumerAcceptance.status,response:oppHttpConsumerAcceptance.response,receipt:oppHttpConsumerAcceptance.receipt,plan:oppHttpConsumerPlan,consumerContract:oppHttpConsumerContract},
   externalNetwork:'NOT_RUN',
   authorityGranted:false,
   boundary:'Deterministic local policy/receipt exercise only; ambient proxy variables and known Node environment-proxy switches are denied. One public GitHub request is recorded separately and does not prove OPP consumer interoperability or production network availability.',
 };
 fs.writeFileSync(path.join(out,'opp-http-readonly.json'),JSON.stringify(oppHttpReadonlyWitness,null,2));
+fs.writeFileSync(path.join(out,'opp-http-consumer-bridge.json'),JSON.stringify(oppHttpReadonlyWitness.consumerBridge,null,2));
 oppHttpReadonlyScenarios.push(oppHttpReadonlyWitness);
 const mismatches=tracked.filter(x=>sha(fs.readFileSync(x.path))!==x.sha256);
 if(mismatches.length)throw new Error('Source changed during verification: '+JSON.stringify(mismatches));

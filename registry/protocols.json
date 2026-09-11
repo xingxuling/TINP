@@ -1,6 +1,6 @@
 {
   "format": "twni.protocol-registry.v0.1",
-  "version": "0.1.0-alpha.16",
+  "version": "0.1.0-alpha.17",
   "classification": "candidate-local-profile",
   "scope": "Three independent local network processes; UDP/TCP/TLS 1.3 loopback plus public-history replay, TINP DATA state-transfer, resumable transfer-journal and policy-bound read-only OPP HTTP observation harnesses",
   "statusVocabulary": [
@@ -404,7 +404,7 @@
         },
         {
           "status": "implemented",
-          "behavior": "Policy-bound read-only HTTPS GET observation with exact host/path allowlists, one attempt, no ambient proxy or credentials, known Node environment-proxy switches denied, bounded JSON and rooted receipt",
+          "behavior": "Policy-bound read-only HTTPS GET observation with exact host/path allowlists, one attempt, no ambient proxy or credentials, known Node environment-proxy switches denied, bounded JSON, rooted receipt and explicit local OPP consumer acceptance binding",
           "evidenceLevel": "Local policy/receipt tests and deterministic verifier scenario plus one public GitHub REST observation; not OPP consumer interoperability, public availability or authority"
         }
       ],
@@ -520,12 +520,12 @@
       "implemented": [
         {
           "status": "implemented",
-          "behavior": "Narrow TINP-owned read-only HTTP observation adapter for a pinned OPP source, with projected JSON response and content-rooted receipt",
-          "evidenceLevel": "Local policy/receipt tests and deterministic verifier scenario plus one public GitHub REST observation; no OPP consumer bridge or production compatibility"
+          "behavior": "Narrow TINP-owned read-only HTTP observation adapter for a pinned OPP source, with projected JSON response, content-rooted receipt and explicit local OPP consumer acceptance binding",
+          "evidenceLevel": "Local policy/receipt tests, deterministic verifier scenario and local consumer binding plus one public GitHub REST observation; no independent third-party consumer or production compatibility"
         }
       ],
       "notImplemented": [
-        "DNS/TLS/browser/application compatibility adapters, general HTTP migration and OPP consumer bridge; using UDP/TCP does not implement migration protocol"
+        "DNS/TLS/browser/application compatibility adapters, general HTTP migration and independently accepted third-party OPP consumer; using UDP/TCP does not implement migration protocol"
       ],
       "ownerBoundary": [
         "Existing Internet protocols retained",

@@ -138,3 +138,5 @@ This supplements the two input specifications without editing the original DOCX 
 - **Rollback:** Remove the adapter, CLI, examples, tests, registry entries and alpha.15 evidence/docs; alpha.14 TLS resumable transfer and earlier behavior remain available.
 
 - **alpha.16 Node proxy switches:** `NODE_USE_ENV_PROXY`, `NODE_OPTIONS=--use-env-proxy`, and `execArgv` proxy switches are denied because the adapter cannot safely bind ambient routing. Dynamic global dispatcher changes remain outside observation. **Rollback:** revert the alpha.16 adapter/tests/verify/docs and restore alpha.15 package metadata.
+
+- **alpha.17 local consumer bridge:** TINP binds accepted OPP negotiation and a read-only HTTP receipt into a local acceptance receipt. **Boundary:** this does not establish independent third-party OPP consumer interoperability or production compatibility. **Rollback:** remove the consumer bridge module, tests, verify witness, registry entry and alpha.17 evidence/docs.

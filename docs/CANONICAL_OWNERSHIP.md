@@ -169,3 +169,7 @@ changed.
 ## alpha.16 OPP transport hardening
 
 TINP remains the sole owner of the read-only HTTP transport policy and receipt adapter. Known Node environment-proxy switches are treated as ambient transport configuration and fail closed; OPP continues to own CHP/RCP semantics, and no authority or RCL ownership is added.
+
+## alpha.17 OPP consumer bridge ownership
+
+`src/opp-http-consumer-bridge.mjs` owns only the TINP local binding receipt. It consumes an OPP-owned accepted CHP/RCP negotiation and a TINP read-only HTTP receipt; it cannot mint authority, alter OPP semantics, or certify an external consumer.
