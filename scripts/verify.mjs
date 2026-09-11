@@ -270,6 +270,39 @@ const authorityRegistryTlsLoopbackTransferWitness={...authorityRegistryTlsLoopba
   scope:'Actual TINP DATA framing over TLS 1.3 loopback between two independent local Node child processes and directories; peer certificates are caller-pinned and public convergence-store state is imported through existing append validators; not two physical hosts, production certificate custody, trusted time, online authority or production conflict consensus.'};
 fs.writeFileSync(path.join(out,'authority-registry-tls-loopback-transfer.json'),JSON.stringify(authorityRegistryTlsLoopbackTransferWitness,null,2));
 authorityRegistryTlsLoopbackTransferScenarios.push(authorityRegistryTlsLoopbackTransferWitness);
+const authorityRegistryResumableTransferScenarios=[];
+const authorityRegistryResumableTransferDemo=await new Promise((resolve,reject)=>{
+  const child=spawn(process.execPath,['scripts/authority-registry-resumable-transfer-demo.mjs'],{cwd:root,windowsHide:true,stdio:['ignore','pipe','pipe']});
+  let stdout='',stderr='';child.stdout.on('data',x=>stdout+=x.toString('utf8'));child.stderr.on('data',x=>stderr+=x.toString('utf8'));
+  child.once('error',reject);child.once('exit',code=>code===0?resolve(JSON.parse(stdout)):reject(new Error(`Authority registry resumable transfer: ${stderr}`)));
+});
+if(authorityRegistryResumableTransferDemo.status!=='VERIFIED_LOCAL_TINP_TLS_RESUMABLE_STATE_TRANSFER'
+  || authorityRegistryResumableTransferDemo.transport!=='tls'
+  || authorityRegistryResumableTransferDemo.frameType!=='DATA'
+  || authorityRegistryResumableTransferDemo.encryptedTransport!==true
+  || authorityRegistryResumableTransferDemo.tlsVersion!=='TLSv1.3'
+  || typeof authorityRegistryResumableTransferDemo.tlsCipher!=='string'
+  || authorityRegistryResumableTransferDemo.tlsHandshakes < 4
+  || authorityRegistryResumableTransferDemo.peerCertificatePinned!==true
+  || authorityRegistryResumableTransferDemo.independentProcesses!==true
+  || authorityRegistryResumableTransferDemo.independentDirectories!==true
+  || authorityRegistryResumableTransferDemo.receiverRestarted!==true
+  || authorityRegistryResumableTransferDemo.totalChunks < 4
+  || authorityRegistryResumableTransferDemo.resumedFromChunk!==authorityRegistryResumableTransferDemo.interruptedAfterChunks
+  || authorityRegistryResumableTransferDemo.duplicateChunkOperation!=='unchanged'
+  || authorityRegistryResumableTransferDemo.completedOperation!=='appended'
+  || authorityRegistryResumableTransferDemo.committedAfterRestart!==true
+  || authorityRegistryResumableTransferDemo.postCommitReplayOperation!=='unchanged'
+  || authorityRegistryResumableTransferDemo.conflictDetected!==true
+  || authorityRegistryResumableTransferDemo.manifestConflictDetected!==true
+  || authorityRegistryResumableTransferDemo.stateRetainedAfterConflict!==true
+  || authorityRegistryResumableTransferDemo.receiverInvalidFrames!==0
+  || authorityRegistryResumableTransferDemo.privateMaterialTransferred!==false)
+  throw new Error('AUTHORITY_REGISTRY_RESUMABLE_TRANSFER_INVALID');
+const authorityRegistryResumableTransferWitness={...authorityRegistryResumableTransferDemo,
+  scope:'Actual TINP DATA framing over TLS 1.3 loopback with a durable public-state chunk journal; receiver interruption, restart, duplicate replay and chunk/manifest conflicts are exercised across independent local processes and directories; not two physical hosts, production certificate custody, trusted time, online authority or production conflict consensus.'};
+fs.writeFileSync(path.join(out,'authority-registry-resumable-transfer.json'),JSON.stringify(authorityRegistryResumableTransferWitness,null,2));
+authorityRegistryResumableTransferScenarios.push(authorityRegistryResumableTransferWitness);
 const mismatches=tracked.filter(x=>sha(fs.readFileSync(x.path))!==x.sha256);
 if(mismatches.length)throw new Error('Source changed during verification: '+JSON.stringify(mismatches));
 const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CANDIDATE',startedAt,finishedAt:new Date().toISOString(),
@@ -277,7 +310,7 @@ const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CAND
   node:process.version,platform:process.platform,architecture:process.arch,
   tests:{command:result.command,exitCode:result.code,count:Number(result.stdout.match(/# tests (\d+)/)?.[1]),passed:Number(result.stdout.match(/# pass (\d+)/)?.[1]),failed:Number(result.stdout.match(/# fail (\d+)/)?.[1]),
     stdout:relative(path.join(out,'tests.tap')),stdoutSha256:sha(Buffer.from(result.stdout)),stderr:relative(path.join(out,'tests.stderr.txt'))},
-  scenarios,recoveryScenarios,pendingScenarios,operatorScenarios,recoveryAnchorScenarios,authorityRegistryScenarios,authorityRegistryDistributionScenarios,authorityRegistryConvergenceScenarios,authorityRegistryConvergenceStoreScenarios,authorityRegistryConvergenceWitnessScenarios,authorityRegistryCrossHostReplayScenarios,authorityRegistryLoopbackTransferScenarios,authorityRegistryTlsLoopbackTransferScenarios,sourceFiles:tracked,sourceTreeRoot:sha(Buffer.from(JSON.stringify(tracked))),
+  scenarios,recoveryScenarios,pendingScenarios,operatorScenarios,recoveryAnchorScenarios,authorityRegistryScenarios,authorityRegistryDistributionScenarios,authorityRegistryConvergenceScenarios,authorityRegistryConvergenceStoreScenarios,authorityRegistryConvergenceWitnessScenarios,authorityRegistryCrossHostReplayScenarios,authorityRegistryLoopbackTransferScenarios,authorityRegistryTlsLoopbackTransferScenarios,authorityRegistryResumableTransferScenarios,sourceFiles:tracked,sourceTreeRoot:sha(Buffer.from(JSON.stringify(tracked))),
   k400Verdict:'NOT_ADJUDICATED',production:'NOT_DEPLOYED',publicNetwork:'NOT_RUN',
   boundaries:['Ephemeral local trust fixture; no production identity enrollment or TLS confidentiality',
     'Only bounded pure read-only code-point counting; not arbitrary actions or exactly-once external side effects',
@@ -286,6 +319,7 @@ const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CAND
     'Cross-host replay evidence uses independent local Node processes and directories only; it does not prove two physical hosts, encrypted transport, trusted time or production conflict consensus',
     'Loopback transfer evidence uses existing TINP DATA framing over one TCP loopback interface and existing convergence-store append validators; it does not prove physical cross-host delivery, encrypted transport, trusted time or production conflict consensus',
     'TLS loopback evidence uses caller-pinned ephemeral certificates over one local TLS 1.3 interface; it does not prove production certificate custody, physical cross-host enrollment, trusted time or production conflict consensus',
+    'Resumable transfer evidence uses an atomic local public chunk journal and receiver restart on one host; it does not prove durable physical cross-device convergence, trusted time, production certificate custody or production conflict consensus',
     'No browser replacement, application-seed cross-platform runtime, VPN or entire P00-P15 completion']};
 fs.writeFileSync(path.join(out,'LOCAL_VERIFICATION.json'),JSON.stringify(summary,null,2));
 console.log(JSON.stringify({status:summary.status,tests:summary.tests.count,passed:summary.tests.passed,scenarios:scenarios.map(x=>({transport:x.transport,pids:x.pids,path:x.firstPath,performance:x.boundedPerformance}))},null,2));
