@@ -210,3 +210,8 @@ The candidate now binds a real OPP CHP/RCP accepted negotiation to the read-only
 ## alpha.18 replayable OPP consumer bridge CLI
 
 The candidate adds `scripts/opp-http-consumer-bridge.mjs`, a file-input CLI over the alpha.17 acceptance function. It reads a previously produced plan, policy, request, observation and consumer contract, then writes the same rooted acceptance receipt without making another network request. The focused test exercises a real subprocess and an exclusive output file; the CLI is still local evidence and does not establish third-party OPP interoperability, production authority or public availability.
+
+
+## alpha.19 rooted OPP consumer bundle
+
+The candidate adds `twni.opp-http-consumer-bridge-bundle.v1`, binding plan, policy, request, observation and consumer contract under one `bundleRoot`. The CLI can replay that single file and exposes the root in its output; a changed nested input fails before acceptance. This remains local replay evidence with no new network request, third-party consumer certification or production authority.

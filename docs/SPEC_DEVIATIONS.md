@@ -148,3 +148,11 @@ This supplements the two input specifications without editing the original DOCX 
 - **Reasoning:** A subprocess and exclusive output file make the exact acceptance inputs replayable while preserving OPP CHP/RCP ownership in OPP and the transport/receipt boundary in TINP.
 - **Impact:** P09/P15 gain a reproducible local evidence path. This does not create an RCL primitive, independent third-party OPP consumer interoperability, production authority, or K400 promotion.
 - **Rollback:** Remove the CLI, npm entry, focused test, documentation, registry version bump and alpha.18 evidence; alpha.17 in-process consumer binding remains available.
+
+
+## 17. Rooted OPP consumer bundles remain a local replay boundary
+
+- **New Decision:** Add `twni.opp-http-consumer-bridge-bundle.v1` and a `--bundle` CLI mode that binds the five acceptance inputs under one `bundleRoot`.
+- **Reasoning:** A single rooted input set makes replacement of one nested artifact observable before the existing consumer acceptance function runs.
+- **Impact:** P09/P15 gain stronger local replay evidence while OPP CHP/RCP ownership and TINP authority-free receipt boundaries remain unchanged. No network request is issued during replay.
+- **Rollback:** Remove bundle constructors/validators, CLI mode, focused tests, docs, registry/version changes and alpha.19 evidence; alpha.18 five-file replay remains available.
