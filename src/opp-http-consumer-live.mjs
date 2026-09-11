@@ -1,3 +1,4 @@
+import { ProtocolError } from './identity.mjs';
 import { negotiateOpp } from '../adapters/opp-bridge.mjs';
 import { makeHello } from '../vendor/tinp/src/index.mjs';
 import {
@@ -8,7 +9,13 @@ import {
   acceptOppHttpReadonlyConsumer,
   makeOppHttpConsumerBridgePlan,
   makeOppHttpConsumerContract,
+  validateOppHttpConsumerBridgePlan,
+  validateOppHttpConsumerBridgeReceipt,
 } from './opp-http-consumer-bridge.mjs';
+import {
+  validateOppHttpReadonlyPolicy,
+  validateOppHttpReadonlyRequest,
+} from './opp-http-readonly.mjs';
 
 export const OPP_HTTP_CONSUMER_LIVE_FORMAT = 'twni.opp-http-consumer-live-run.v1';
 export const OPP_HTTP_CONSUMER_LIVE_BOUNDARY = 'One bounded live read-only observation joined to local OPP negotiation; no credentials, authority grant, retry, redirect or production interoperability claim';
@@ -20,6 +27,9 @@ const bridgeSpec = {
   outputSchema: { type: 'object' },
   authorityRequired: [],
 };
+
+const fail = code => { throw new ProtocolError(code); };
+const check = (ok, code) => { if (!ok) fail(code); };
 
 const hello = nodeId => makeHello({
   nodeId,
@@ -100,4 +110,40 @@ export async function runOppHttpConsumerLive({
     acceptance,
     boundary: OPP_HTTP_CONSUMER_LIVE_BOUNDARY,
   };
+}
+
+export function validateOppHttpConsumerLiveResult(result, { policy, request } = {}) {
+  check(result !== null && typeof result === 'object' && !Array.isArray(result), 'OPP_HTTP_CONSUMER_LIVE_RESULT_INVALID');
+  check(result.format === OPP_HTTP_CONSUMER_LIVE_FORMAT
+    && [ 'PASS', 'FAIL_CLOSED' ].includes(result.status)
+    && result.boundary === OPP_HTTP_CONSUMER_LIVE_BOUNDARY, 'OPP_HTTP_CONSUMER_LIVE_RESULT_INVALID');
+  validateOppHttpReadonlyPolicy(policy);
+  const rootedRequest = request?.requestRoot
+    ? request
+    : makeOppHttpReadonlyRequest({ policy, ...request });
+  validateOppHttpReadonlyRequest(rootedRequest, policy);
+  validateOppHttpConsumerBridgePlan(result.plan);
+  if (result.error === 'OPP_NEGOTIATION_FAILED') {
+    check(result.status === 'FAIL_CLOSED' && result.negotiation === null
+      && result.consumerContract === null && result.observation === null
+      && result.acceptance === null, 'OPP_HTTP_CONSUMER_LIVE_NEGOTIATION_FAILURE_INVALID');
+    return true;
+  }
+  check(result.error === null && result.negotiation !== null
+    && result.consumerContract !== null && result.observation !== null
+    && result.acceptance !== null, 'OPP_HTTP_CONSUMER_LIVE_RESULT_INVALID');
+  check(result.observation.status === result.acceptance.status
+    && result.status === result.acceptance.status, 'OPP_HTTP_CONSUMER_LIVE_STATUS_MISMATCH');
+  const accepted = acceptOppHttpReadonlyConsumer({
+    plan: result.plan,
+    policy,
+    request: rootedRequest,
+    observation: result.observation,
+    consumerContract: result.consumerContract,
+  });
+  check(accepted.status === result.acceptance.status
+    && accepted.receipt.acceptanceRoot === result.acceptance.receipt.acceptanceRoot,
+  'OPP_HTTP_CONSUMER_LIVE_ACCEPTANCE_ROOT_INVALID');
+  validateOppHttpConsumerBridgeReceipt(result.acceptance.receipt, result.plan, policy, rootedRequest, result.consumerContract);
+  return true;
 }
