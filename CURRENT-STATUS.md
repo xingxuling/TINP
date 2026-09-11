@@ -46,4 +46,4 @@ alpha.25 已合并：完整 verify 现在自动读取并重验仓库内公开 Gi
 
 alpha.26 已合并：--verify 支持 --out 独占写入 twni.opp-http-consumer-live-verify.v1 回执，重复目标文件拒绝；完整 verify 为 205/205，证据位于 evidence/0.1.0-alpha.26/LOCAL_VERIFICATION.json。
 
-alpha.27 候选：--verify 回执升级为 twni.opp-http-consumer-live-verify.v2，绑定 policy/request/acceptance 语义根和三份输入文件 SHA-256，并在写出前执行回执自身校验。该改动只加强离线归档可追溯性，不改变 OPP Owner，也不提供第三方 consumer、生产 authority、真实异机或 K400 证据。
+alpha.27 已合并：--verify 回执升级为 twni.opp-http-consumer-live-verify.v2，绑定 policy/request/acceptance 语义根和三份输入文件 SHA-256，并在写出前执行回执自身校验。合并提交为 b4b0617；该改动只加强离线归档可追溯性，不改变 OPP Owner，也不提供第三方 consumer、生产 authority、真实异机或 K400 证据。

@@ -2,7 +2,7 @@
   "format": "twni.evidence-ledger.v0.1",
   "version": "0.1.0-alpha.27",
   "status": "VERIFIED_LOCAL_CANDIDATE",
-  "mergeCommit": "PENDING_MERGE",
+  "mergeCommit": "b4b0617",
   "candidateCommit": "4c71afe",
   "verification": {
     "file": "evidence/0.1.0-alpha.27/LOCAL_VERIFICATION.json",
