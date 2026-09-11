@@ -1,0 +1,33 @@
+{
+  "format": "twni.evidence-ledger.v0.1",
+  "version": "0.1.0-alpha.23",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "mergeCommit": "06edd2b",
+  "candidateCommit": "69a5ab3",
+  "verification": {
+    "file": "evidence/0.1.0-alpha.23/LOCAL_VERIFICATION.json",
+    "status": "VERIFIED_LOCAL_CANDIDATE",
+    "tests": 204,
+    "passed": 204,
+    "failed": 0,
+    "sourceFiles": 207,
+    "sourceTreeRoot": "5b56d86e6281d6c478702e4db036fd3966dad0e6d175d0d600519026c74923c5",
+    "testsSha256": "f7028d69f5a6758e0fad26da0016fbc13946c30a4b209ff2a373c079f8ee38e2"
+  },
+  "changes": [
+    "src/opp-http-consumer-live.mjs",
+    "scripts/opp-http-consumer-live.mjs",
+    "tests/opp-http-consumer-live.test.mjs",
+    "package.json"
+  ],
+  "formats": [
+    "twni.opp-http-consumer-live-run.v1",
+    "twni.opp-http-consumer-bridge-receipt.v1",
+    "twni.opp-http-readonly-receipt.v1"
+  ],
+  "authorityGranted": false,
+  "production": "NOT_DEPLOYED",
+  "externalThirdPartyConsumer": "NOT_RUN",
+  "k400Verdict": "NOT_ADJUDICATED",
+  "boundary": "Local exact-shape validation and one bounded read-only OPP observation; no credential, authority, production interoperability, trusted time or real-device evidence."
+}

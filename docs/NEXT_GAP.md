@@ -31,3 +31,5 @@ alpha.20 增加 `--make-bundle` 生成入口，让五份已经验签的输入可
 alpha.21 增加 live consumer orchestration：单次调用复用真实 OPP CHP/RCP accepted 协商，执行一条显式 HTTPS/GET policy 下的只读观测，并把 producer receipt 与 consumer contract 绑定为 acceptance receipt。确定性 fetch、ambient proxy 拒绝、未加根请求和完整回归均已通过；该结果仍只证明本机候选链路，不证明独立第三方 consumer、生产 authority、真实异机或公网可用性。下一缺口仍是外部 Owner 的发布/撤销和真实异机 consumer acceptance。
 
 alpha.22 增加 live consumer 结果 validator 和 CLI fail-closed 子进程回归，确保输出 metadata、acceptance 状态及 rooted receipt 在写盘前可重验。该改动仍不提供外部 Owner、第三方 consumer acceptance、生产发布/撤销或真实异机证据；下一缺口保持不变。
+
+alpha.23 固定 live consumer run result 的 exact shape，成功结果显式 diagnostic:null，协商失败保留 bounded diagnostic，并在 CLI 写盘前重验。该改动继续收紧本机证据边界，未解决外部 Owner、第三方 consumer acceptance、生产发布/撤销或真实异机验证。
