@@ -135,3 +135,18 @@ the message identity check. Production certificate issuance, rotation,
 revocation, hardware custody, physical-host enrollment and trusted time stay
 with the external deployment/authority Owner. No RCL Core, RNCS/RFE or AAF
 semantic owner changed.
+
+## Unreleased OPP read-only HTTP policy candidate
+
+`src/opp-http-readonly.mjs` is a TINP transport/provider adapter, not a second
+OPP negotiation implementation. TINP owns the caller-supplied HTTPS/GET policy,
+host/path allowlist, request boundary, bounded fetch and observation receipt.
+OPP keeps ownership of CHP/RCP contract semantics and consumes the result only
+through its explicit handoff verifier. The pinned OPP commit in the policy is a
+source/provenance binding, not a transfer of transport ownership or authority.
+
+The adapter's `authorityGranted: false` field and evidence-only boundary are
+deliberate. A successful HTTP observation cannot create an OPP capability,
+RCL lease, RNCS world fact, credential, or production approval. The candidate
+is documented in `docs/INTEGRATION_COURT_2026-09-11_OPP_HTTP_READONLY.md` and
+has not been merged or released.

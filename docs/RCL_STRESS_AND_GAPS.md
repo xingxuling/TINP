@@ -137,3 +137,15 @@ Generality：TLS 握手、caller-pinned peer certificate、TINP peer public-key 
 Regression：TLS 1.3 loopback 协商与真实 DATA 帧交换、错误 CA 在帧发送前失败、正确 pin 下 seq1→seq2 transfer、exact replay、seq3 extension、反向 transfer、分叉/镜像漂移/seq gap/篡改 `historyRoot` 拒绝及接收端 durable bytes 保持不变均有测试。临时私钥在 fixture 目录退出时删除；消息负载和证据对象不含 TLS 私钥。
 
 Affected K400 candidates：沿用 K057/K110/K117/K250/K257。EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 仅有本机 TLS 1.3 loopback、独立进程和文件证据；PERFORMANCE 只记录握手/帧计数，不作生产 TLS、WAN 或 authority SLA 声明；AI_GENERATE 未评估；EVIDENCE 以 alpha.13 `LOCAL_VERIFICATION.json`、Court 和 delivery receipt 固化。九门仍 `NOT_ADJUDICATED`。
+
+## alpha.13 后续 OPP HTTP policy / handoff 压力
+
+Task/missing capability：OPP 的现有 bounded child 不能继承宿主的公网代理/凭据；需要一个明确 transport/provider policy 将一次受限外部观察交给 OPP consumer，同时防止 header 规范化、响应形状和回执语义被静默扩大。gap type=`TRANSPORT_PROVIDER_BOUNDARY_GAP + OPP_HANDOFF_GAP`，不是 RCL Core 表达缺口。
+
+Workaround/donor：复用 TINP 的 `identity.mjs` canonical root、现有 `LocalTransport`/Node runtime 与 OPP 固定 `CHP/RCP` profile；新增 `twni.opp-http-readonly-policy.v1`、request/receipt/run formats、显式 OPP handoff verifier。策略固定 HTTPS/GET、host/path、超时/大小、无 proxy/credentials/redirect/retry；response projection 不推断 schema，也不产生 authority。
+
+Generality：大小写折叠 header 冲突拒绝、对象响应边界、`__proto__` 数据投影保护、重新计算 receipt root 后仍要求 PASS/FAIL_CLOSED 语义一致，这些是可跨 provider 复用的 fail-closed 约束；candidate absorption 仍为 TINP provider profile，不增加 RCL primitive、不改变 OPP/TINP/RNCS/AAF owner。Node fetch 是 provider advantage；代理、证书、凭据、跨主机和恢复 lifecycle 仍由外部部署 Owner 负责。
+
+Regression：adapter `8/8 PASS`，TINP full suite `182/182 PASS`；GitHub public read 的 policy/request/receipt/response roots 在 hardening 后复验通过。负例覆盖 ambient proxy、network no-retry、oversize/status/media/malformed/object-shape/projection、host/path/credential、duplicate/hidden header、prototype field 和 re-rooted forged receipt。
+
+Affected K400 candidates：仅记录 EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 的本机候选证据；PERFORMANCE、AI_GENERATE 未评估，九门仍 `NOT_ADJUDICATED`。EVIDENCE 见 `evidence/OPP_HTTP_READONLY_HARDENING_2026-09-11.json` 与 `docs/INTEGRATION_COURT_2026-09-11_OPP_HTTP_READONLY.md`；不晋升 `THIRD_PARTY_VERIFIED`、cross-host 或 production。

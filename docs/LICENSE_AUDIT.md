@@ -37,3 +37,5 @@ alpha.11 仅新增本仓库 JavaScript replay demo、test-only IPC worker、测�
 alpha.12 仅新增本仓库 JavaScript 的 TINP loopback transfer demo、test-only transport worker、测试、协议登记、verify 分支与文档；复用既有 `LocalTransport`、vendored TINP `DATA` framing 和现有 convergence/store validators，未复制第三方传输/共识源码，也未引入新 npm/Python 依赖。transfer payload 与源码包不含 issuer、mirror、member、witness 或 transport 私钥。既有 donor 许可、内部使用限制和未公开发布结论继续适用。
 
 alpha.13 仅新增本仓库 JavaScript 的 TLS transport 分支、临时 OpenSSL 证书夹具、loopback wrapper、测试、协议登记、verify 分支与文档；复用 Node 内置 `tls`、既有 `LocalTransport`、vendored TINP `DATA` framing 和现有 convergence/store validators，未复制 OpenSSL 或第三方 TLS/共识源码，也未引入新的 npm/Python 依赖。证书私钥只在测试临时目录和子进程内存中存在，退出后删除，不进入 transfer payload、store 或源码包。OpenSSL 是本机测试工具，不改变既有 donor 许可、内部使用限制和未公开发布结论。
+
+本轮未发布的 OPP read-only HTTP adapter 与 hardening 仅新增本仓库 JavaScript、测试、证据和文档；HTTP runtime 使用 Node 内置 `fetch`/WHATWG `Response`，未引入 npm/Python 依赖，未复制 OPP 源码。策略中的 OPP commit 是来源/语义 profile pin；由于该 GitHub 源在既有审计中没有可确认的 LICENSE，仍按内部第一方候选处理，不把公共可访问性当作再许可。新证据不包含凭据或私钥；公开 GitHub 响应仅作为一次受限观察保存。

@@ -1,0 +1,45 @@
+{
+  "format": "twni.opp-http-readonly-hardening-evidence.v1",
+  "status": "PASS",
+  "source": {
+    "repository": "https://github.com/xingxuling/TINP",
+    "branch": "codex/tinp-transport-policy-v01",
+    "commit": "9367f9a17216a34ea39a13081988c0a0b4fe577d"
+  },
+  "tests": {
+    "adapter": {
+      "command": "node --test tests/opp-http-readonly.test.mjs",
+      "tests": 8,
+      "passed": 8,
+      "failed": 0
+    },
+    "fullSuite": {
+      "command": "npm test",
+      "tests": 182,
+      "passed": 182,
+      "failed": 0,
+      "cancelled": 0,
+      "durationMs": 939218.3566
+    }
+  },
+  "hardening": [
+    "Case-folded duplicate request headers fail closed instead of being silently overwritten",
+    "Non-enumerable and symbol request-header properties fail closed",
+    "JSON array and scalar responses fail closed; the adapter accepts JSON objects only",
+    "Projection of a literal __proto__ field preserves an ordinary result prototype",
+    "Receipt validation enforces PASS/FAIL_CLOSED semantic relationships after receipt-root recomputation"
+  ],
+  "liveEvidence": {
+    "path": "evidence/OPP_HTTP_READONLY_GITHUB_2026-09-11.json",
+    "policyRoot": "0b0626c2784f40ab7afade7f69f9f7374710cc6fac621accd1089bac32cedc0d",
+    "requestRoot": "98683026a23aa9dcc444f28a03a52f778277b0547737a773b477f5ce2b02ad29",
+    "receiptRoot": "678062d0333113b7c3f3bba66ae3e93aeebdbf65bf401812d85f210c546dcf41",
+    "responseRootRevalidated": true,
+    "receiptRootRevalidated": true
+  },
+  "authority": {
+    "authorityGranted": false,
+    "productionPromoted": false
+  },
+  "boundary": "This is local candidate evidence for one TINP-owned read-only HTTP policy adapter; it does not prove independent third-party interoperability, cross-host transport, production credentials, or general network authority."
+}

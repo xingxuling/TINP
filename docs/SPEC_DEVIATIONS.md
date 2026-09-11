@@ -118,3 +118,12 @@ This supplements the two input specifications without editing the original DOCX 
 - **New Decision:** Add a caller-supplied `tls` transport mode, a test-only temporary OpenSSL certificate fixture, a TLS loopback demo and a wrong-CA negative test. Require TLS 1.3, pin the peer certificate as a CA and retain TINP peer public-key admission for message identity.
 - **Impact:** P06/P09 gain bounded local encrypted-socket evidence. Production certificate issuance/rotation/revocation, hardware custody, physical-host enrollment, trusted time, online authority and distributed conflict resolution remain unimplemented; no RCL Core, RNCS/RFE or AAF owner changes.
 - **Rollback:** Remove the TLS mode, certificate fixture, wrapper/demo/test and alpha.13 registry/evidence entries; TCP/UDP transport and alpha.12 public-state transfer remain available.
+
+## 14. Read-only HTTP policy is a transport observation, not general Internet authority
+
+- **Original Assumption:** A real public REST response could be treated as proof that OPP had gained a general Internet adapter.
+- **Observed Evidence:** TINP can execute one caller-pinned HTTPS `GET` with exact host/path allowlists, one attempt, no ambient proxy or credentials, bounded JSON, explicit field projection and a rooted receipt. The OPP consumer accepts this output only through a separate handoff verifier. The live provider is still a TaoWind TINP candidate, not an independent provider.
+- **Reasoning:** Transport reachability and a rooted observation are useful integration evidence, but they do not create CHP/RCP authority, credential custody, broad HTTP semantics, cross-host trust or external-world fact ownership. Receipt validation must also enforce coherent `PASS`/`FAIL_CLOSED` relationships after root recomputation.
+- **New Decision:** Keep the adapter under TINP transport/provider ownership, keep OPP as the interop/consumer owner, and record the explicit handoff as candidate-only. Reject duplicate folded headers, hidden header properties, non-object JSON and semantically inconsistent rooted receipts.
+- **Impact:** One concrete OPP-shaped public read is reproducible and auditable. No RCL Core primitive, RNCS world fact, authority lease, general HTTP/OpenAPI/MCP support or production claim is added.
+- **Rollback:** Remove the read-only adapter, hardening tests, evidence and Court entry; existing TINP transport and OPP CHP/RCP paths remain unchanged.
