@@ -20,7 +20,7 @@ This pin is intentionally explicit. It is not a claim that the vendored snapshot
 - exact host and path-prefix allowlists;
 - a bounded timeout and response byte limit;
 - redirects denied;
-- ambient proxy variables denied;
+- ambient proxy variables and Node environment-proxy switches denied;
 - no credentials or credential-like request headers;
 - exactly one fetch attempt;
 - JSON response media type;
@@ -33,7 +33,7 @@ The policy root is the SHA-256 root of the policy body without `policyRoot`. The
 
 `twni.opp-http-readonly-receipt.v1` records the request root, policy root, HTTP status, selected response metadata, bounded response bytes, the full wire JSON root, the projected response root, error code, one-attempt/no-redirect/no-ambient-authority flags, and a receipt root. It is an observation receipt, not a signature, lease, authority grant, or production availability proof.
 
-The adapter returns `PASS` only for a bounded successful JSON response whose declared projection is present. DNS/network failure, ambient proxy configuration, redirects, non-success status, oversized bodies, non-JSON responses, malformed JSON and missing projection fields return `FAIL_CLOSED` without retry.
+The adapter returns `PASS` only for a bounded successful JSON response whose declared projection is present. DNS/network failure, known ambient proxy configuration, Node environment-proxy switches, redirects, non-success status, oversized bodies, non-JSON responses, malformed JSON and missing projection fields return `FAIL_CLOSED` without retry. The current profile cannot prove that an application has not installed a dynamic process-global dispatcher; that remains outside the receipt's evidence boundary.
 
 ## Candidate run
 

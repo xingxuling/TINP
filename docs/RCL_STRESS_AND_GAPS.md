@@ -146,6 +146,6 @@ Workaround/donor：复用 TINP 的 `identity.mjs` canonical root、现有 `Local
 
 Generality：大小写折叠 header 冲突拒绝、对象响应边界、`__proto__` 数据投影保护、重新计算 receipt root 后仍要求 PASS/FAIL_CLOSED 语义一致，这些是可跨 provider 复用的 fail-closed 约束；candidate absorption 仍为 TINP provider profile，不增加 RCL primitive、不改变 OPP/TINP/RNCS/AAF owner。Node fetch 是 provider advantage；代理、证书、凭据、跨主机和恢复 lifecycle 仍由外部部署 Owner 负责。
 
-Regression：adapter `8/8 PASS`，TINP full suite `182/182 PASS`；GitHub public read 的 policy/request/receipt/response roots 在 hardening 后复验通过。负例覆盖 ambient proxy、network no-retry、oversize/status/media/malformed/object-shape/projection、host/path/credential、duplicate/hidden header、prototype field 和 re-rooted forged receipt。
+Regression：adapter `9/9 PASS`，TINP full suite `183/183 PASS`；GitHub public read 的 policy/request/receipt/response roots 在 hardening 后复验通过。负例覆盖 ambient proxy、Node `NODE_USE_ENV_PROXY`/`NODE_OPTIONS`/`--use-env-proxy`、network no-retry、oversize/status/media/malformed/object-shape/projection、host/path/credential、duplicate/hidden header、prototype field 和 re-rooted forged receipt。
 
-Affected K400 candidates：仅记录 EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 的本机候选证据；PERFORMANCE、AI_GENERATE 未评估，九门仍 `NOT_ADJUDICATED`。EVIDENCE 见 `evidence/OPP_HTTP_READONLY_HARDENING_2026-09-11.json` 与 `docs/INTEGRATION_COURT_2026-09-11_OPP_HTTP_READONLY.md`；不晋升 `THIRD_PARTY_VERIFIED`、cross-host 或 production。
+Affected K400 candidates：仅记录 EXPRESS/COMPILE/LOWER/EXECUTE/CORRECT/ROBUST 的本机候选证据；PERFORMANCE、AI_GENERATE 未评估，九门仍 `NOT_ADJUDICATED`。EVIDENCE 见 `evidence/OPP_HTTP_READONLY_HARDENING_2026-09-11.json` 与 `docs/INTEGRATION_COURT_2026-09-11_OPP_HTTP_READONLY.md`；动态 process-global dispatcher、`THIRD_PARTY_VERIFIED`、cross-host 或 production 仍不成立。

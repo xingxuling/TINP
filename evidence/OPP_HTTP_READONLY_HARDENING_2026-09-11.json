@@ -4,22 +4,22 @@
   "source": {
     "repository": "https://github.com/xingxuling/TINP",
     "branch": "codex/tinp-transport-policy-v01",
-    "commit": "9367f9a17216a34ea39a13081988c0a0b4fe577d"
+    "commit": "47b662723763ea2581da9a3011afcb0dd89156a8"
   },
   "tests": {
     "adapter": {
       "command": "node --test tests/opp-http-readonly.test.mjs",
-      "tests": 8,
-      "passed": 8,
+      "tests": 9,
+      "passed": 9,
       "failed": 0
     },
     "fullSuite": {
       "command": "npm test",
-      "tests": 182,
-      "passed": 182,
+      "tests": 183,
+      "passed": 183,
       "failed": 0,
       "cancelled": 0,
-      "durationMs": 939218.3566
+      "durationMs": 863678.2886
     }
   },
   "hardening": [
@@ -27,7 +27,8 @@
     "Non-enumerable and symbol request-header properties fail closed",
     "JSON array and scalar responses fail closed; the adapter accepts JSON objects only",
     "Projection of a literal __proto__ field preserves an ordinary result prototype",
-    "Receipt validation enforces PASS/FAIL_CLOSED semantic relationships after receipt-root recomputation"
+    "Receipt validation enforces PASS/FAIL_CLOSED semantic relationships after receipt-root recomputation",
+    "Known Node environment and CLI proxy switches fail closed before fetch"
   ],
   "liveEvidence": {
     "path": "evidence/OPP_HTTP_READONLY_GITHUB_2026-09-11.json",
@@ -37,9 +38,14 @@
     "responseRootRevalidated": true,
     "receiptRootRevalidated": true
   },
+  "runtime": {
+    "node": "v24.15.0",
+    "knownProxySwitches": ["NODE_USE_ENV_PROXY", "NODE_OPTIONS=--use-env-proxy", "--use-env-proxy"],
+    "dynamicGlobalDispatcherObserved": false
+  },
   "authority": {
     "authorityGranted": false,
     "productionPromoted": false
   },
-  "boundary": "This is local candidate evidence for one TINP-owned read-only HTTP policy adapter; it does not prove independent third-party interoperability, cross-host transport, production credentials, or general network authority."
+  "boundary": "This is local candidate evidence for one TINP-owned read-only HTTP policy adapter; it rejects the known proxy environment variables and Node environment-proxy switches but does not prove that an externally installed runtime dispatcher cannot proxy requests. It does not prove independent third-party interoperability, cross-host transport, production credentials, or general network authority."
 }

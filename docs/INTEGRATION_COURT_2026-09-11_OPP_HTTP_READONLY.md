@@ -14,7 +14,8 @@ The adapter already provided HTTPS/GET-only access, exact host/path allowlists, 
 - case-folded duplicate headers, non-enumerable properties and symbol properties fail closed;
 - JSON arrays/scalars fail closed because this profile carries an object projection;
 - a literal `__proto__` response field is projected as data without changing the result prototype;
-- receipt validation requires a coherent `PASS` or `FAIL_CLOSED` relationship even when an attacker recomputes `receiptRoot`.
+- receipt validation requires a coherent `PASS` or `FAIL_CLOSED` relationship even when an attacker recomputes `receiptRoot`;
+- the known Node `NODE_USE_ENV_PROXY`, `NODE_OPTIONS=--use-env-proxy` and `--use-env-proxy` paths fail closed before fetch.
 
 ## Evidence
 
@@ -26,8 +27,8 @@ The adapter already provided HTTPS/GET-only access, exact host/path allowlists, 
 
 ## Tests
 
-- Adapter tests: `8/8 PASS`.
-- Full TINP suite: `182/182 PASS`, `0` failed, `0` cancelled.
+- Adapter tests: `9/9 PASS`.
+- Full TINP suite: `183/183 PASS`, `0` failed, `0` cancelled.
 - The full run exercised the new adapter tests alongside existing authority, recovery, RCL, TCP/TLS loopback and security tests.
 
 ## Claims Promoted
@@ -46,7 +47,7 @@ These are candidate transport/provider claims only.
 
 ## Remaining Production Gaps
 
-`OPP-TRANSPORT-001` remains open: the adapter is unmerged, locally tested and not independently reviewed; external credential/certificate lifecycle, cross-host fault behavior, proxy policy and recovery remain outside the evidence.
+`OPP-TRANSPORT-001` remains open: the adapter is unmerged, locally tested and not independently reviewed; external credential/certificate lifecycle, cross-host fault behavior, dynamic process-global dispatcher state and recovery remain outside the evidence.
 
 `OPP-THIRD-PARTY-001` also remains open: GitHub supplied the observed bytes, but the executable provider is a TaoWind TINP candidate and the OPP consumer is an explicit local fixture.
 
