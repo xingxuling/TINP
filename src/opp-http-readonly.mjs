@@ -1,3 +1,4 @@
+import { Agent as HttpsAgent, request as httpsRequest } from 'node:https';
 import { ProtocolError, rootHash } from './identity.mjs';
 
 export const OPP_HTTP_READONLY_POLICY_FORMAT = 'twni.opp-http-readonly-policy.v1';
@@ -256,6 +257,86 @@ function proxyConfigured(environment, execArgv) {
     && execArgv.some(value => typeof value === 'string' && (value === '--use-env-proxy' || value.startsWith('--use-env-proxy=')));
 }
 
+function nativeResponseHeaders(response) {
+  return {
+    get(name) {
+      const value = response.headers[String(name).toLowerCase()];
+      if (value === undefined) return null;
+      return Array.isArray(value) ? value.join(', ') : String(value);
+    },
+  };
+}
+
+function explicitHttpsRequest({ url, method, headers, timeoutMs }) {
+  const parsed = new URL(url);
+  const agent = new HttpsAgent({ keepAlive: false, maxSockets: 1 });
+  const controller = new AbortController();
+  let timer;
+  let timedOut = false;
+  let settled = false;
+  const cleanup = () => {
+    if (timer !== undefined) {
+      clearTimeout(timer);
+      timer = undefined;
+    }
+    agent.destroy();
+  };
+  return new Promise((resolve, reject) => {
+    const rejectOnce = error => {
+      if (settled) return;
+      settled = true;
+      cleanup();
+      reject(error);
+    };
+    timer = setTimeout(() => {
+      timedOut = true;
+      controller.abort();
+    }, timeoutMs);
+    let request;
+    try {
+      request = httpsRequest({
+        protocol: 'https:',
+        hostname: parsed.hostname,
+        port: parsed.port || 443,
+        path: `${parsed.pathname}${parsed.search}`,
+        method,
+        headers,
+        agent,
+        rejectUnauthorized: true,
+        servername: parsed.hostname,
+        signal: controller.signal,
+      }, response => {
+        if (settled) {
+          response.destroy();
+          return;
+        }
+        settled = true;
+        const status = Number.isSafeInteger(response.statusCode) ? response.statusCode : 0;
+        resolve({
+          status,
+          ok: status >= 200 && status <= 299,
+          headers: nativeResponseHeaders(response),
+          body: response,
+          cancel: () => response.destroy(),
+          cleanup,
+          timedOut: () => timedOut,
+        });
+      });
+    } catch (error) {
+      rejectOnce(error);
+      return;
+    }
+    request.once('error', error => {
+      if (timedOut) {
+        rejectOnce(new ProtocolError('OPP_HTTP_TIMEOUT'));
+        return;
+      }
+      rejectOnce(error);
+    });
+    request.end();
+  });
+}
+
 function errorCode(error) {
   if (error instanceof ProtocolError) return error.code;
   if (error?.name === 'AbortError') return 'OPP_HTTP_TIMEOUT';
@@ -364,32 +445,44 @@ export function validateOppHttpReadonlyReceipt(receipt, policy, request) {
   return true;
 }
 
-export async function runOppHttpReadonly({ policy, request, fetchImpl = globalThis.fetch,
-  environment = process.env, execArgv = process.execArgv } = {}) {
+export async function runOppHttpReadonly({ policy, request, fetchImpl,
+  requestImpl = explicitHttpsRequest, environment = process.env, execArgv = process.execArgv } = {}) {
   validateOppHttpReadonlyPolicy(policy);
   validateOppHttpReadonlyRequest(request, policy);
-  if (typeof fetchImpl !== 'function') {
-    const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', error: 'OPP_HTTP_FETCH_UNAVAILABLE' });
+  if (typeof fetchImpl !== 'function' && typeof requestImpl !== 'function') {
+    const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', error: 'OPP_HTTP_TRANSPORT_UNAVAILABLE' });
     return { status: receipt.status, response: null, receipt };
   }
   if (proxyConfigured(environment, execArgv)) {
     const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', error: 'OPP_HTTP_AMBIENT_PROXY_CONFIGURED' });
     return { status: receipt.status, response: null, receipt };
   }
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), policy.transport.timeoutMs);
+  let controller;
+  let timer;
   let response;
   try {
-    response = await fetchImpl(request.url, {
-      method: request.method,
-      headers: request.headers,
-      redirect: 'error',
-      credentials: 'omit',
-      cache: 'no-store',
-      signal: controller.signal,
-    });
+    if (typeof fetchImpl === 'function') {
+      controller = new AbortController();
+      timer = setTimeout(() => controller.abort(), policy.transport.timeoutMs);
+      response = await fetchImpl(request.url, {
+        method: request.method,
+        headers: request.headers,
+        redirect: 'error',
+        credentials: 'omit',
+        cache: 'no-store',
+        signal: controller.signal,
+      });
+    } else {
+      response = await requestImpl({
+        url: request.url,
+        method: request.method,
+        headers: request.headers,
+        timeoutMs: policy.transport.timeoutMs,
+        maxResponseBytes: policy.transport.maxResponseBytes,
+      });
+    }
   } catch (error) {
-    clearTimeout(timer);
+    if (timer !== undefined) clearTimeout(timer);
     const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', error: errorCode(error) });
     return { status: receipt.status, response: null, receipt };
   }
@@ -400,13 +493,16 @@ export async function runOppHttpReadonly({ policy, request, fetchImpl = globalTh
   try {
     bytes = await readBoundedBody(response, policy.transport.maxResponseBytes);
   } catch (error) {
-    clearTimeout(timer);
+    response.cancel?.();
+    response.cleanup?.();
+    if (timer !== undefined) clearTimeout(timer);
     const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', httpStatus: response.status,
       responseContentType: type, responseEtag: etag, responseLastModified: lastModified,
-      error: controller.signal.aborted ? 'OPP_HTTP_TIMEOUT' : errorCode(error) });
+      error: response.timedOut?.() || controller?.signal.aborted ? 'OPP_HTTP_TIMEOUT' : errorCode(error) });
     return { status: receipt.status, response: null, receipt };
   }
-  clearTimeout(timer);
+  response.cleanup?.();
+  if (timer !== undefined) clearTimeout(timer);
   if (!response.ok) {
     const receipt = makeReceipt({ policy, request, status: 'FAIL_CLOSED', httpStatus: response.status,
       responseContentType: type, responseEtag: etag, responseLastModified: lastModified,

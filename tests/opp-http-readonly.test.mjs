@@ -68,6 +68,36 @@ test('readonly adapter performs one explicit JSON GET and returns a rooted recei
   assert.equal(validateOppHttpReadonlyReceipt(result.receipt, policy, request), true);
 });
 
+test('default runtime transport does not consult the global fetch dispatcher', async () => {
+  const { policy, request } = fixture();
+  const originalFetch = globalThis.fetch;
+  let nativeTransportCalls = 0;
+  globalThis.fetch = async () => { throw new Error('global fetch must not be used'); };
+  try {
+    const result = await runOppHttpReadonly({
+      policy,
+      request,
+      requestImpl: async options => {
+        nativeTransportCalls++;
+        assert.equal(options.url, request.url);
+        assert.equal(options.method, 'GET');
+        assert.deepEqual(options.headers, request.headers);
+        assert.equal(options.timeoutMs, policy.transport.timeoutMs);
+        return new Response(JSON.stringify({ default_branch: 'main', full_name: 'xingxuling/OPP', private: false }), {
+          status: 200,
+          headers: { 'content-type': 'application/json' },
+        });
+      },
+      environment: {},
+    });
+    assert.equal(nativeTransportCalls, 1);
+    assert.equal(result.status, 'PASS');
+    assert.equal(validateOppHttpReadonlyReceipt(result.receipt, policy, request), true);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test('ambient proxy configuration fails closed before fetch', async () => {
   const { policy, request } = fixture();
   let calls = 0;
