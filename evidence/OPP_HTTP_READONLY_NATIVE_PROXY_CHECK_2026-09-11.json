@@ -1,0 +1,29 @@
+{
+  "format": "twni.opp-http-readonly-native-proxy-check.v1",
+  "status": "PASS",
+  "source": {
+    "repository": "https://github.com/xingxuling/TINP",
+    "branch": "codex/tinp-transport-policy-v01",
+    "commit": "a9e10b9334cda09f6f3834eae632472fb568db28"
+  },
+  "runtime": {
+    "node": "v24.15.0",
+    "transport": "node:https.request",
+    "agent": "per-request explicit node:https.Agent",
+    "globalProxyApi": "node:http.setGlobalProxyFromEnv"
+  },
+  "experiment": {
+    "configuredGlobalProxy": "http://127.0.0.1:9",
+    "providerEnvironment": {},
+    "requestUrl": "https://api.github.com/repos/xingxuling/OPP",
+    "httpStatus": 200,
+    "projectedResponseRoot": "a97a84ea4b0b782a102fd59c7cae8e03368271e0430a77da848553cbfe131130",
+    "receiptRoot": "d16b35f2fbf660d52c58fcda7b4148a9a8d98300e0955480ae5e2aa871ca4b34",
+    "proxyEndpointWasNotUsed": true
+  },
+  "authority": {
+    "authorityGranted": false,
+    "productionPromoted": false
+  },
+  "boundary": "This check shows that the default native HTTPS path completed the bounded request while Node's standard global proxy API pointed at an unavailable loopback endpoint. It does not prove immunity to arbitrary monkey-patching, custom injected transports, DNS manipulation, certificate lifecycle failure, cross-host behavior or production availability."
+}

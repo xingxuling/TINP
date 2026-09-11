@@ -22,7 +22,7 @@ This pin is intentionally explicit. It is not a claim that the vendored snapshot
 - redirects denied;
 - ambient proxy variables and Node environment-proxy switches denied;
 - no credentials or credential-like request headers;
-- exactly one fetch attempt;
+- exactly one native HTTPS attempt in the default runtime path;
 - JSON response media type;
 - an explicit top-level `responseFields` projection, or an empty list when the caller intentionally accepts the complete JSON object;
 - `authorityGranted: false` and an explicit evidence-only boundary.
@@ -33,7 +33,9 @@ The policy root is the SHA-256 root of the policy body without `policyRoot`. The
 
 `twni.opp-http-readonly-receipt.v1` records the request root, policy root, HTTP status, selected response metadata, bounded response bytes, the full wire JSON root, the projected response root, error code, one-attempt/no-redirect/no-ambient-authority flags, and a receipt root. It is an observation receipt, not a signature, lease, authority grant, or production availability proof.
 
-The adapter returns `PASS` only for a bounded successful JSON response whose declared projection is present. DNS/network failure, known ambient proxy configuration, Node environment-proxy switches, redirects, non-success status, oversized bodies, non-JSON responses, malformed JSON and missing projection fields return `FAIL_CLOSED` without retry. The current profile cannot prove that an application has not installed a dynamic process-global dispatcher; that remains outside the receipt's evidence boundary.
+The adapter returns `PASS` only for a bounded successful JSON response whose declared projection is present. DNS/network failure, known ambient proxy configuration, Node environment-proxy switches, redirects, non-success status, oversized bodies, non-JSON responses, malformed JSON and missing projection fields return `FAIL_CLOSED` without retry. The default runtime uses Node's built-in `https.request` with a per-request explicit `https.Agent`, so it does not consult the global `fetch` dispatcher. A bounded check also passed while Node's standard `http.setGlobalProxyFromEnv` pointed at an unavailable loopback proxy. The caller-supplied `fetchImpl` seam and arbitrary runtime monkey-patching remain outside the production evidence boundary.
+
+The RCL AI001 donor was inspected before adding transport code: `src/openapi-source-frontend.mjs` extracts one capability specification per OpenAPI 3.x operation and explicitly states that it does not execute HTTP. It is a source-frontend donor only; it does not provide an HTTP provider, and no OpenAPI execution claim is promoted here.
 
 ## Candidate run
 
@@ -47,4 +49,4 @@ Exit `0` means this concrete request produced a `PASS` receipt. Exit `5` means a
 
 ## Evidence boundary
 
-The adapter can establish TINP-owned transport-policy behavior and one concrete host observation. It does not establish OPP third-party interoperability until an OPP consumer accepts the adapter output through an explicit bridge and both receipts are bound. It does not establish public-network availability, cross-host behavior, proxy support, production credentials, certificate lifecycle, SLA, or authority.
+The adapter can establish TINP-owned transport-policy behavior and one concrete host observation. It does not establish OPP third-party interoperability until an OPP consumer accepts the adapter output through an explicit bridge and both receipts are bound. It does not establish public-network availability, cross-host behavior, proxy support, production credentials, certificate lifecycle, SLA, arbitrary runtime-hook resistance or authority.

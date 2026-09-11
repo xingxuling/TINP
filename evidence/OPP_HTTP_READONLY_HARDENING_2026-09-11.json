@@ -4,22 +4,22 @@
   "source": {
     "repository": "https://github.com/xingxuling/TINP",
     "branch": "codex/tinp-transport-policy-v01",
-    "commit": "47b662723763ea2581da9a3011afcb0dd89156a8"
+    "commit": "a9e10b9334cda09f6f3834eae632472fb568db28"
   },
   "tests": {
     "adapter": {
       "command": "node --test tests/opp-http-readonly.test.mjs",
-      "tests": 9,
-      "passed": 9,
+      "tests": 10,
+      "passed": 10,
       "failed": 0
     },
     "fullSuite": {
       "command": "npm test",
-      "tests": 183,
-      "passed": 183,
+      "tests": 184,
+      "passed": 184,
       "failed": 0,
       "cancelled": 0,
-      "durationMs": 863678.2886
+      "durationMs": 711482.2357
     }
   },
   "hardening": [
@@ -28,24 +28,29 @@
     "JSON array and scalar responses fail closed; the adapter accepts JSON objects only",
     "Projection of a literal __proto__ field preserves an ordinary result prototype",
     "Receipt validation enforces PASS/FAIL_CLOSED semantic relationships after receipt-root recomputation",
-    "Known Node environment and CLI proxy switches fail closed before fetch"
+    "Known Node environment and CLI proxy switches fail closed before transport",
+    "Default runtime uses node:https.request with a per-request explicit Agent instead of global fetch",
+    "The native path remains successful when node:http.setGlobalProxyFromEnv points at an unavailable loopback proxy"
   ],
   "liveEvidence": {
-    "path": "evidence/OPP_HTTP_READONLY_GITHUB_2026-09-11.json",
+    "path": "evidence/OPP_HTTP_READONLY_NATIVE_2026-09-11.json",
     "policyRoot": "0b0626c2784f40ab7afade7f69f9f7374710cc6fac621accd1089bac32cedc0d",
     "requestRoot": "98683026a23aa9dcc444f28a03a52f778277b0547737a773b477f5ce2b02ad29",
-    "receiptRoot": "678062d0333113b7c3f3bba66ae3e93aeebdbf65bf401812d85f210c546dcf41",
+    "receiptRoot": "d16b35f2fbf660d52c58fcda7b4148a9a8d98300e0955480ae5e2aa871ca4b34",
     "responseRootRevalidated": true,
     "receiptRootRevalidated": true
   },
   "runtime": {
     "node": "v24.15.0",
     "knownProxySwitches": ["NODE_USE_ENV_PROXY", "NODE_OPTIONS=--use-env-proxy", "--use-env-proxy"],
-    "dynamicGlobalDispatcherObserved": false
+    "defaultTransport": "node:https.request",
+    "perRequestExplicitAgent": true,
+    "standardGlobalProxyBypassObserved": true,
+    "customDynamicDispatcherImmunityProven": false
   },
   "authority": {
     "authorityGranted": false,
     "productionPromoted": false
   },
-  "boundary": "This is local candidate evidence for one TINP-owned read-only HTTP policy adapter; it rejects the known proxy environment variables and Node environment-proxy switches but does not prove that an externally installed runtime dispatcher cannot proxy requests. It does not prove independent third-party interoperability, cross-host transport, production credentials, or general network authority."
+  "boundary": "This is local candidate evidence for one TINP-owned read-only HTTP policy adapter; known proxy environment variables and Node environment-proxy switches fail closed, and the default native path bypasses the standard Node global proxy Agent in a bounded check. It does not prove immunity to arbitrary runtime monkey-patching or custom injected transports. It does not prove independent third-party interoperability, cross-host transport, production credentials, or general network authority."
 }

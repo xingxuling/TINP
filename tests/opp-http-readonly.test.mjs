@@ -98,7 +98,7 @@ test('default runtime transport does not consult the global fetch dispatcher', a
   }
 });
 
-test('ambient proxy configuration fails closed before fetch', async () => {
+test('ambient proxy configuration fails closed before transport', async () => {
   const { policy, request } = fixture();
   let calls = 0;
   const result = await runOppHttpReadonly({
@@ -113,7 +113,7 @@ test('ambient proxy configuration fails closed before fetch', async () => {
   assert.equal(validateOppHttpReadonlyReceipt(result.receipt, policy, request), true);
 });
 
-test('Node environment-proxy switches fail closed before fetch', async () => {
+test('Node environment-proxy switches fail closed before transport', async () => {
   const { policy, request } = fixture();
   for (const [name, options] of [
     ['NODE_USE_ENV_PROXY', { environment: { NODE_USE_ENV_PROXY: '1' } }],

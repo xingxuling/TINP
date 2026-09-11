@@ -1,0 +1,33 @@
+{
+  "format": "twni.opp-http-readonly-run.v1",
+  "status": "PASS",
+  "policyRoot": "0b0626c2784f40ab7afade7f69f9f7374710cc6fac621accd1089bac32cedc0d",
+  "requestRoot": "98683026a23aa9dcc444f28a03a52f778277b0547737a773b477f5ce2b02ad29",
+  "response": {
+    "default_branch": "main",
+    "full_name": "xingxuling/OPP",
+    "private": false
+  },
+  "receipt": {
+    "format": "twni.opp-http-readonly-receipt.v1",
+    "policyRoot": "0b0626c2784f40ab7afade7f69f9f7374710cc6fac621accd1089bac32cedc0d",
+    "requestRoot": "98683026a23aa9dcc444f28a03a52f778277b0547737a773b477f5ce2b02ad29",
+    "status": "PASS",
+    "httpStatus": 200,
+    "responseContentType": "application/json; charset=utf-8",
+    "responseEtag": "W/\"dfbed9f5265f1bf968ab78d6f12c052f6dd6c6d6cf8ad2795c3b2d8f9c0a1eb8\"",
+    "responseLastModified": "Thu, 10 Sep 2026 03:46:55 GMT",
+    "responseBytes": 4975,
+    "wireResponseRoot": "f5b9960baa7d746aa892224c353944d8d672f66c4b6bd3b554c3596fdb40bc6e",
+    "responseRoot": "a97a84ea4b0b782a102fd59c7cae8e03368271e0430a77da848553cbfe131130",
+    "error": null,
+    "attempts": 1,
+    "redirectsFollowed": false,
+    "ambientProxyUsed": false,
+    "ambientCredentialsUsed": false,
+    "authorityGranted": false,
+    "boundary": "Read-only external observation; no credential, retry, redirect, or authority grant",
+    "receiptRoot": "d16b35f2fbf660d52c58fcda7b4148a9a8d98300e0955480ae5e2aa871ca4b34"
+  },
+  "boundary": "The adapter proves only this explicit read-only request; it grants no authority or general network access"
+}
