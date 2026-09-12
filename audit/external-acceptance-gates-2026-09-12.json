@@ -1,0 +1,46 @@
+{
+  "format": "twni.external-acceptance-gates.v1",
+  "observedAt": "2026-09-12",
+  "product": "TINP",
+  "version": "0.1.0-alpha.29",
+  "status": "OPEN_EXTERNAL_GATES",
+  "authorityProvider": {
+    "owner": "UNASSIGNED",
+    "status": "BLOCKED_EXTERNAL_OWNER",
+    "surfaces": [
+      {"id":"identity-registration","status":"BLOCKED_EXTERNAL_OWNER","requiredEvidence":"independent enrollment and owner identity contract"},
+      {"id":"online-publication","status":"BLOCKED_EXTERNAL_OWNER","requiredEvidence":"signed snapshot and authenticated publication receipt"},
+      {"id":"online-revocation","status":"BLOCKED_EXTERNAL_OWNER","requiredEvidence":"revocation stream, stale-cache and reconnect traces"},
+      {"id":"trusted-time","status":"BLOCKED_EXTERNAL_OWNER","requiredEvidence":"independently verifiable time token and freshness policy"},
+      {"id":"hsm-key-custody","status":"BLOCKED_EXTERNAL_OWNER","requiredEvidence":"hardware custody, operator separation, rotation and backup evidence"},
+      {"id":"transparent-log","status":"BLOCKED_EXTERNAL_OWNER","requiredEvidence":"inclusion and consistency proofs with pinned mirrors"},
+      {"id":"device-registration","status":"BLOCKED_EXTERNAL_OWNER","requiredEvidence":"real device enrollment, rotation and revocation evidence"},
+      {"id":"lost-key-recovery","status":"BLOCKED_EXTERNAL_OWNER","requiredEvidence":"recovery incident record proving revoked keys cannot return"},
+      {"id":"physical-host-convergence","status":"BLOCKED_EXTERNAL_OWNER","requiredEvidence":"two independently operated physical hosts and conflict traces"},
+      {"id":"production-conflict-adjudication","status":"BLOCKED_EXTERNAL_OWNER","requiredEvidence":"owner policy and human-signed irreversible adjudication receipt"}
+    ]
+  },
+  "physicalMultiHost": {
+    "status": "NOT_RUN",
+    "minimumHosts": 2,
+    "disallowedSubstitutes": ["same-host-processes","loopback-only","container-snapshot","synthetic-clock"],
+    "runbook": "docs/EXTERNAL_ACCEPTANCE_GATES.md#2-两台或更多独立物理机器"
+  },
+  "independentThirdPartyConsumer": {
+    "status": "NOT_RUN",
+    "requires": ["independent-organization-identity","release-package-sha256","third-party-adapter-source","independent-environment","positive-and-negative-cases","signed-receipt","no-tinp-private-fixtures"],
+    "runbook": "docs/EXTERNAL_ACCEPTANCE_GATES.md#3-独立第三方-consumer--安全审计"
+  },
+  "independentSecurityAudit": {
+    "status": "NOT_RUN",
+    "requires": ["auditor-identity","scope","findings","unresolved-risks","auditor-signature"]
+  },
+  "admission": {
+    "requiredStatuses": ["PASS","PASS","PASS"],
+    "humanIntegrationCourt": "REQUIRED",
+    "currentVerdict": "NOT_ADMITTED",
+    "production": "NOT_DEPLOYED",
+    "k400": "NOT_ADJUDICATED"
+  },
+  "boundary": "This manifest defines external evidence gates and does not claim that any external authority, physical deployment or independent consumer/audit has run."
+}
