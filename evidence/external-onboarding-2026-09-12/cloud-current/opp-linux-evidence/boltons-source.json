@@ -1,0 +1,155 @@
+{
+  "distribution": "boltons",
+  "version": "26.2.0",
+  "files": [
+    {
+      "path": "boltons-26.2.0.dist-info/INSTALLER",
+      "sha256": "ceebae7b8927a3227e5303cf5e0f1f7b34bb542ad7250ac03fbcde36ec2f1508"
+    },
+    {
+      "path": "boltons-26.2.0.dist-info/METADATA",
+      "sha256": "eab839f3c5700b1b697f7f8b9d15a3da86e1844fded36f8ae24b42490dea8493"
+    },
+    {
+      "path": "boltons-26.2.0.dist-info/RECORD",
+      "sha256": "cda21b041985f2261bc83bbcfca957dcce467015f6f154973345bbc26c37c760"
+    },
+    {
+      "path": "boltons-26.2.0.dist-info/REQUESTED",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "boltons-26.2.0.dist-info/WHEEL",
+      "sha256": "1b68144734c4b66791f27add5d425f3620775585718a03d0f9b110ba3a4d88db"
+    },
+    {
+      "path": "boltons-26.2.0.dist-info/licenses/LICENSE",
+      "sha256": "c301912653a8d8c99eab6212aa3aea8d164ea249d8ad53c941e0558a0a5ac1e3"
+    },
+    {
+      "path": "boltons/__init__.py",
+      "sha256": "f8a0ab78920d0c3727dd3eddae099dcb06191c85efd3ff457224ff87a97f8bb5"
+    },
+    {
+      "path": "boltons/cacheutils.py",
+      "sha256": "77f6c35dc6332482c2f3f57b13059f3c1962641fbb7a6212aa7fd221c6d8aaad"
+    },
+    {
+      "path": "boltons/debugutils.py",
+      "sha256": "e701ab82126836aa661f7e9272a9a8b339814ae602977b47213f0aebacfda283"
+    },
+    {
+      "path": "boltons/deprutils.py",
+      "sha256": "d8f2c0fdce9d8276466127f093771e1a0a8844bcd1bd92e6880f30d2782e0151"
+    },
+    {
+      "path": "boltons/dictutils.py",
+      "sha256": "6319c07cb68f18c2bfc01aa4393d0423463cf5d6357f229173d2d1e485e7b656"
+    },
+    {
+      "path": "boltons/easterutils.py",
+      "sha256": "1bfc6e9e05606689ab4087b00585c183ff4fcc4eb4a423f9be153a0be6818d40"
+    },
+    {
+      "path": "boltons/ecoutils.py",
+      "sha256": "ce3663d4e772fe871c17dcd0847717f8a610616a6b0141106564bedc5ab8a3b6"
+    },
+    {
+      "path": "boltons/excutils.py",
+      "sha256": "6a2eddd26f46dbdceeda125bd20379d52ffc98a941fe867e3434d17b93119957"
+    },
+    {
+      "path": "boltons/fileutils.py",
+      "sha256": "0c2025cf1e649eabd511a84303b491c19ea59cdcac2f958f9a90b7e39e0a8b0e"
+    },
+    {
+      "path": "boltons/formatutils.py",
+      "sha256": "15c7963d5c97b11ec7a419e9e4aec7c20ca765bcf701306510c9c57c7eaeb1a4"
+    },
+    {
+      "path": "boltons/funcutils.py",
+      "sha256": "f290815c9dbe5c4d73ade849935dfb2814411a89aeff89c7afef60c7b3aaba72"
+    },
+    {
+      "path": "boltons/gcutils.py",
+      "sha256": "e82a32093560c14bb8298532681a3338d2ec6f48d20ccf2f1a4496dd67a17f97"
+    },
+    {
+      "path": "boltons/ioutils.py",
+      "sha256": "36727e503a7483d1f91efc7cd837e502dc4b560e1bff5f7f9e66cda09421b6bc"
+    },
+    {
+      "path": "boltons/iterutils.py",
+      "sha256": "7fb67f49dc1d895051549b523c2e21161e3c1f4e21590fa7fd09039386d08510"
+    },
+    {
+      "path": "boltons/jsonutils.py",
+      "sha256": "46b92387597863e6a12d489a370220d03c2d70ebc795121f000d2b724b0fb50a"
+    },
+    {
+      "path": "boltons/listutils.py",
+      "sha256": "5f45432e942b04040d3cc917f08a7a9fee7fc5339768591fa946ae0298ca882d"
+    },
+    {
+      "path": "boltons/mathutils.py",
+      "sha256": "c4f32563bb0a9281d5b7a3770c661e5a3ae3c6c3ae2644f5ff0a608edce2d5e6"
+    },
+    {
+      "path": "boltons/mboxutils.py",
+      "sha256": "426b5211f7b3ce6ee9d1c80d794b56d9544435865b48a016d1955cd0a1e0320d"
+    },
+    {
+      "path": "boltons/namedutils.py",
+      "sha256": "0f5a4a0e196c7d918762928bfd9157c29d411a9d827ae7f45a53c43328887224"
+    },
+    {
+      "path": "boltons/pathutils.py",
+      "sha256": "667a4bb46ed79f66af83b07fac419f3f91576c2e7ed404e11f28cd68b4645fbd"
+    },
+    {
+      "path": "boltons/queueutils.py",
+      "sha256": "a60f04f5f27803429c7a79f3f51f9b286cba3bd997f122161f252c66ca0499bb"
+    },
+    {
+      "path": "boltons/setutils.py",
+      "sha256": "d385936effa655abbd6bae772c08089e6c9ac8b266eff13105f4386fe1a58b43"
+    },
+    {
+      "path": "boltons/socketutils.py",
+      "sha256": "b2d5da2d58dd3d05c14153a83f36da928fe6285a4a44850c2eab9877c1959adc"
+    },
+    {
+      "path": "boltons/statsutils.py",
+      "sha256": "0c4d05a17b14244a880e5047c1823d1e1e522e6c5ee76c6b47f54d8bde791e68"
+    },
+    {
+      "path": "boltons/strutils.py",
+      "sha256": "c5ecb7efd3b2e86f92545c18d8d72193f45a1bd1d0edaf3da65868aa0e8bcdda"
+    },
+    {
+      "path": "boltons/tableutils.py",
+      "sha256": "0f01e27d91ab37d322db529f3e08873feefcea822fdbf760262093b3e01524ff"
+    },
+    {
+      "path": "boltons/tbutils.py",
+      "sha256": "7cd7fb1b7ce1873c37ee3053bb59d8166b671cf667013bd27e2fdbc52ab03e29"
+    },
+    {
+      "path": "boltons/timeutils.py",
+      "sha256": "27f8f2999b698a3e6064f24b1ff312ef86358592a503ad2c0c5b4fd265ff430c"
+    },
+    {
+      "path": "boltons/typeutils.py",
+      "sha256": "4da2b26d71386ee9010dfb52104e461ecba486ba5544a8cf50d9e26cd34e9c09"
+    },
+    {
+      "path": "boltons/urlutils.py",
+      "sha256": "0de5f96e627483f3de1dce10fc4e5f8d913a36c800166842cd55970d4ddd0812"
+    }
+  ],
+  "manifestRoot": "64965c96c04077c847b222212999e6d302f4a557778e763f1007603e82426cf5",
+  "metadataLicense": null,
+  "projectUrls": [
+    "Homepage, https://github.com/mahmoud/boltons"
+  ]
+}

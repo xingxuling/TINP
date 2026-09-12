@@ -1,0 +1,86 @@
+{
+  "status": "PASS",
+  "summarySha256": "4cfbfe16c83fc2bfe8f3ba68b6f232736a7c1b6a9bbf9058512985f17a91be5c",
+  "rows": [
+    {
+      "project": "boltons",
+      "acceptance": {
+        "format": "twni.opp-native-interop-acceptance.v1",
+        "interopReceiptRoot": "3b89819f5b90ee7ec1b147525422fc95bd558483a12996a62eb4334584f73564",
+        "status": "PASS",
+        "finalResultRoot": "12957bc580d4f651522e8114ee8929b98892c06a94850bd02c7c2df9c0530556",
+        "authorityGranted": false,
+        "sideEffects": false,
+        "boundary": "TINP binds one OPP-owned candidate interop receipt; it does not copy OPP runtime semantics, grant authority or claim production interoperability",
+        "acceptanceRoot": "b687dc5079bdd4112cf3542a880ba79a29a5c75522de510d45b4c67260c3f32a"
+      },
+      "recovery": {
+        "format": "twni.opp-native-interop-acceptance.v1",
+        "interopReceiptRoot": "3b89819f5b90ee7ec1b147525422fc95bd558483a12996a62eb4334584f73564",
+        "status": "PASS",
+        "finalResultRoot": "12957bc580d4f651522e8114ee8929b98892c06a94850bd02c7c2df9c0530556",
+        "authorityGranted": false,
+        "sideEffects": false,
+        "boundary": "TINP binds one OPP-owned candidate interop receipt; it does not copy OPP runtime semantics, grant authority or claim production interoperability",
+        "acceptanceRoot": "b687dc5079bdd4112cf3542a880ba79a29a5c75522de510d45b4c67260c3f32a"
+      },
+      "tamperRejected": true
+    },
+    {
+      "project": "more-itertools",
+      "acceptance": {
+        "format": "twni.opp-native-interop-acceptance.v1",
+        "interopReceiptRoot": "5303c5a486b074c76611d37b5a61617172a2704ce0150edef4cba770c371c037",
+        "status": "PASS",
+        "finalResultRoot": "b3ccf9265c936f1914e347e8f1d89c00a3048d1854860dd6a8b0724de01bc3d6",
+        "authorityGranted": false,
+        "sideEffects": false,
+        "boundary": "TINP binds one OPP-owned candidate interop receipt; it does not copy OPP runtime semantics, grant authority or claim production interoperability",
+        "acceptanceRoot": "48341deec1147f4bd9ad83e9e8a2abbcd64809e488af4b9a493338f23e9a5632"
+      },
+      "recovery": {
+        "format": "twni.opp-native-interop-acceptance.v1",
+        "interopReceiptRoot": "5303c5a486b074c76611d37b5a61617172a2704ce0150edef4cba770c371c037",
+        "status": "PASS",
+        "finalResultRoot": "b3ccf9265c936f1914e347e8f1d89c00a3048d1854860dd6a8b0724de01bc3d6",
+        "authorityGranted": false,
+        "sideEffects": false,
+        "boundary": "TINP binds one OPP-owned candidate interop receipt; it does not copy OPP runtime semantics, grant authority or claim production interoperability",
+        "acceptanceRoot": "48341deec1147f4bd9ad83e9e8a2abbcd64809e488af4b9a493338f23e9a5632"
+      },
+      "tamperRejected": true
+    },
+    {
+      "project": "jmespath",
+      "acceptance": {
+        "format": "twni.opp-native-interop-acceptance.v1",
+        "interopReceiptRoot": "cc6f6a934290afd9550c06c300de3242bf41cb9f6c0d94270a531e5db84314ca",
+        "status": "PASS",
+        "finalResultRoot": "b3ccf9265c936f1914e347e8f1d89c00a3048d1854860dd6a8b0724de01bc3d6",
+        "authorityGranted": false,
+        "sideEffects": false,
+        "boundary": "TINP binds one OPP-owned candidate interop receipt; it does not copy OPP runtime semantics, grant authority or claim production interoperability",
+        "acceptanceRoot": "2858df292ed26ec6a2f727087338c8774c0d1021142c47ae99f44ced82584a5c"
+      },
+      "recovery": {
+        "format": "twni.opp-native-interop-acceptance.v1",
+        "interopReceiptRoot": "cc6f6a934290afd9550c06c300de3242bf41cb9f6c0d94270a531e5db84314ca",
+        "status": "PASS",
+        "finalResultRoot": "b3ccf9265c936f1914e347e8f1d89c00a3048d1854860dd6a8b0724de01bc3d6",
+        "authorityGranted": false,
+        "sideEffects": false,
+        "boundary": "TINP binds one OPP-owned candidate interop receipt; it does not copy OPP runtime semantics, grant authority or claim production interoperability",
+        "acceptanceRoot": "2858df292ed26ec6a2f727087338c8774c0d1021142c47ae99f44ced82584a5c"
+      },
+      "tamperRejected": true
+    }
+  ],
+  "targetExecutions": 0,
+  "networkRequests": 0,
+  "platform": "linux",
+  "nodeVersion": "v22.23.2",
+  "githubRunId": "34692507409",
+  "githubSha": "692c0e485a8a855d2e6c089de789365f66b4f1e6",
+  "runnerOs": "Linux",
+  "boundary": "Artifact handoff and cross-platform verification; no direct TINP transport, physical-host attestation, independent operator, trusted time or authority claim."
+}

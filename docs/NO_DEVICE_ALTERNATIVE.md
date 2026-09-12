@@ -46,3 +46,5 @@ are not promoted to a cryptographic trusted-time service or an authority enrollm
 decision. The existing OPP/TINP content roots cannot supply that missing authority.
 The next no-device work can use these runners for further compatibility regressions
 and a real MCP integration; no new protocol family or local issuer is needed.
+
+Final compatibility repair replay: [34692507409](https://github.com/xingxuling/TINP/actions/runs/34692507409) also passed all three jobs. OPP source `7c4970cd1f19ffcbc3f90ac6ed39ff0ab9364d45`; expected summary SHA-256 `4cfbfe16c83fc2bfe8f3ba68b6f232736a7c1b6a9bbf9058512985f17a91be5c`. Full artifacts retained in `cloud-current/` alongside the earlier run.

@@ -10,24 +10,25 @@
   "originalReleaseVerifyCommand": "NOT_RUN; targeted runtime, package smoke, npm test and hosted workflow recorded separately",
   "hostedCI": {
     "status": "PASS_HOSTED_ARTIFACT_HANDOFF",
-    "runUrl": "https://github.com/xingxuling/TINP/actions/runs/34692267549",
-    "tinpSource": "d9b956219400991e930bcd36bece10f89c171217",
-    "oppSource": "231a8a95631227b85ce58a1aaf2ad1b91210c10f",
+    "runUrl": "https://github.com/xingxuling/TINP/actions/runs/34692507409",
+    "tinpSource": "692c0e485a8a855d2e6c089de789365f66b4f1e6",
+    "oppSource": "7c4970cd1f19ffcbc3f90ac6ed39ff0ab9364d45",
+    "summarySha256": "4cfbfe16c83fc2bfe8f3ba68b6f232736a7c1b6a9bbf9058512985f17a91be5c",
     "jobs": [
       {
         "name": "produce",
         "status": "success",
-        "url": "https://github.com/xingxuling/TINP/actions/runs/34692267549/job/103549508768"
-      },
-      {
-        "name": "verify (ubuntu-latest)",
-        "status": "success",
-        "url": "https://github.com/xingxuling/TINP/actions/runs/34692267549/job/103549544795"
+        "url": "https://github.com/xingxuling/TINP/actions/runs/34692507409/job/103550154815"
       },
       {
         "name": "verify (windows-latest)",
         "status": "success",
-        "url": "https://github.com/xingxuling/TINP/actions/runs/34692267549/job/103549544808"
+        "url": "https://github.com/xingxuling/TINP/actions/runs/34692507409/job/103550195457"
+      },
+      {
+        "name": "verify (ubuntu-latest)",
+        "status": "success",
+        "url": "https://github.com/xingxuling/TINP/actions/runs/34692507409/job/103550195496"
       }
     ],
     "physicalHostProof": false,
@@ -250,7 +251,7 @@
     },
     {
       "path": ".github/workflows/external-onboarding.yml",
-      "sha256": "1a29d6e6fb228e115104111d4346624da05d970b1fcbf0b5313a37094f91b3dd"
+      "sha256": "b00765a8438868d761425f7e8a795fe8d3016f1eb4951ebf85fd571e5191e890"
     }
   ],
   "evidenceFiles": [
@@ -329,6 +330,78 @@
     {
       "path": "cloud/tinp-acceptance-windows-latest/acceptance.json",
       "sha256": "2a74aa98e71e31306888aa2ae1dc464e51e5700f6ac2a36ba314cd7f320909ac"
+    },
+    {
+      "path": "cloud-current/artifacts.json",
+      "sha256": "56ee6ea2e7391a4d24e7301464fce21d6611b264b246a722aff2b06aef39d7bf"
+    },
+    {
+      "path": "cloud-current/opp-linux-evidence/__pycache__/adapters.cpython-311.pyc",
+      "sha256": "8b3fdf03510543b4365072c1ee4d8685b0970b046cbd0cb399e99579c46631d1"
+    },
+    {
+      "path": "cloud-current/opp-linux-evidence/adapters.py",
+      "sha256": "aae3536cde19247fde05d7dac0e0b9807a7355147ba0f52e2de5e50fa1f727b6"
+    },
+    {
+      "path": "cloud-current/opp-linux-evidence/boltons-discovery.json",
+      "sha256": "f09d75681d25ec2a4a69028ae98fb220d48c47bdfdb8b739dbc0fe31dda8d815"
+    },
+    {
+      "path": "cloud-current/opp-linux-evidence/boltons-run.json",
+      "sha256": "6bd863fa275117fcce7e1e369b81f8134ea53a7a0ae6f81ebf0d0471e4dbb000"
+    },
+    {
+      "path": "cloud-current/opp-linux-evidence/boltons-source.json",
+      "sha256": "7144179a15c6b433b90cf396c32555569eebbae9bbd0ae6cae718a55bff5d630"
+    },
+    {
+      "path": "cloud-current/opp-linux-evidence/jmespath-discovery.json",
+      "sha256": "91d7ee6a4f70c415310b913d1a539a65dca5bc3adca81f671dfd815ca264fd76"
+    },
+    {
+      "path": "cloud-current/opp-linux-evidence/jmespath-run.json",
+      "sha256": "79fd3a5e737629cf8c715717e72cde508469763d74990dbbec89d1b44dd581b5"
+    },
+    {
+      "path": "cloud-current/opp-linux-evidence/jmespath-source.json",
+      "sha256": "78594faf1ec0128686bf4217a4619217bdc7beb71255df7184db810d499b3f57"
+    },
+    {
+      "path": "cloud-current/opp-linux-evidence/more-itertools-discovery.json",
+      "sha256": "14e24006fca90256cd8d890e08b4dd09999abf3c4e8c602a21bbca5fce6ca716"
+    },
+    {
+      "path": "cloud-current/opp-linux-evidence/more-itertools-run.json",
+      "sha256": "6f442183a7c7c94f45b7e6b78a6f7c394de6f5c5585587e78527e7a3de8d0ba0"
+    },
+    {
+      "path": "cloud-current/opp-linux-evidence/more-itertools-source.json",
+      "sha256": "837b7e81ab8c4792f4422ea9bc43562788ecee8ddfe537c862f591aa91c39d9d"
+    },
+    {
+      "path": "cloud-current/opp-linux-evidence/summary.json",
+      "sha256": "4cfbfe16c83fc2bfe8f3ba68b6f232736a7c1b6a9bbf9058512985f17a91be5c"
+    },
+    {
+      "path": "cloud-current/remote.log",
+      "sha256": "49779d02144f8f5741fb3811922bcf4ea4b5306b7d1dd370be045c5cbf8f6be0"
+    },
+    {
+      "path": "cloud-current/run.json",
+      "sha256": "901227fdaaa56a8c51bc2e9ec9efbdfbc365b37d7ffa08b7477b9c53e76e5672"
+    },
+    {
+      "path": "cloud-current/tinp-acceptance-ubuntu-latest/acceptance.json",
+      "sha256": "2fc828468638c12f468702c9875ec5cc76a730b76ce766fd52f8517f5a2e22bc"
+    },
+    {
+      "path": "cloud-current/tinp-acceptance-windows-latest/acceptance.json",
+      "sha256": "8494ecd415d335b43505632fce08b7a5faaff04833aa4bd42bceae0bc673ea12"
+    },
+    {
+      "path": "ENVIRONMENT.json",
+      "sha256": "5a808d8f8e7a786649ab69fb24c79c69c31b0f1b5f7df5dbc57364ecea1af502"
     },
     {
       "path": "INTEGRATION_COURT.md",
@@ -431,12 +504,222 @@
       "sha256": "0ca02a8d53c83c7fee004a84c3fc3d98f352e094f63d1c15aa57efc32ed0b36f"
     },
     {
+      "path": "PACKAGE.json",
+      "sha256": "206081c75ed00669b06f07c89464ec0a99ac5f72b77455fb93ced866f71512a0"
+    },
+    {
       "path": "RCL_STRESS.json",
       "sha256": "cd7360323d25331118a04721d6818c0cf70538a52660cb1ae2c75183c829518e"
     },
     {
       "path": "tests.log",
       "sha256": "846ef8216840f1fbf7834cabd324f0c00e74a5693920dc355899c5005f01ec47"
+    }
+  ],
+  "testSourceFiles": [
+    {
+      "path": "tests/aaf-operator.test.mjs",
+      "sha256": "d1b1d4ead7e6e82551c2b2d731ceaddd55920dfb3f8bff0d0244bb9daff9a2ff"
+    },
+    {
+      "path": "tests/authority-registry-cli-fixture.mjs",
+      "sha256": "4355d140872d057ccd57b627461069ded77c0de76d67bc04a28986616d7fff96"
+    },
+    {
+      "path": "tests/authority-registry-cli.test.mjs",
+      "sha256": "683de1c483d2bcf5d7b362a9bfcac044fe1f31e780b6919883206665e057de58"
+    },
+    {
+      "path": "tests/authority-registry-convergence-cli.test.mjs",
+      "sha256": "708e65f4f491e0cc4f640a844549e967c18172bb68a974024ef3ad733bfb18a2"
+    },
+    {
+      "path": "tests/authority-registry-convergence-store-cli.test.mjs",
+      "sha256": "7a1143a5f7b2e079d1dec4d17d130520ef185f9d41b40003ab6b40dce8ab43dd"
+    },
+    {
+      "path": "tests/authority-registry-convergence-store.test.mjs",
+      "sha256": "b361a038a22548e3feedf5fb2f5b2c0cfa43f44f2567a9dd3b7122a501e88f25"
+    },
+    {
+      "path": "tests/authority-registry-convergence-witness-cli.test.mjs",
+      "sha256": "f7ca9eaa8b13ec337b7ce11172a999dbc5c9af0a9afa10ccd802f165551dd7c6"
+    },
+    {
+      "path": "tests/authority-registry-convergence-witness-signer.mjs",
+      "sha256": "0434b38d7b7cd798b68ce62b26c48a72ec83b4ac2c2423f13a679c362cfec94c"
+    },
+    {
+      "path": "tests/authority-registry-convergence-witness.test.mjs",
+      "sha256": "0b49b0310b54d8405f8592019ac77febff1f4368eb88acc1e572f2f47a297d75"
+    },
+    {
+      "path": "tests/authority-registry-convergence.test.mjs",
+      "sha256": "167c1ad43d63d78b7f2797ae2620404ccf1028cba08f4b919c7c5eab5d2ee55a"
+    },
+    {
+      "path": "tests/authority-registry-cross-host-replay-worker.mjs",
+      "sha256": "bb3e4e66ad43440dd593ace72140df2e1c483d2b9570818e1c19241211dfa751"
+    },
+    {
+      "path": "tests/authority-registry-cross-host-replay.test.mjs",
+      "sha256": "586c3de0c3b75860df2a37553e4012fb89e0a9493fd101540399e3f4452432de"
+    },
+    {
+      "path": "tests/authority-registry-distribution-cli.test.mjs",
+      "sha256": "c3fdc1a0d0511db838043d0abb994afd48dc1082ff342b2d6d5ce24284f337f5"
+    },
+    {
+      "path": "tests/authority-registry-distribution-signer.mjs",
+      "sha256": "b5bdd42d349c7c9371d200eae1f1a62e33dab134367d7f7d0a8c1935c1da17ac"
+    },
+    {
+      "path": "tests/authority-registry-distribution.test.mjs",
+      "sha256": "52d23aa383018d70f2b1ccbf6ce9e54b5624e349d3bcda23b5e68c143f92ca44"
+    },
+    {
+      "path": "tests/authority-registry-loopback-transfer-worker.mjs",
+      "sha256": "19e5b9bbad79c96821c9cc7c19d1bddfc51968571fa5dd5cd475528f700e78dc"
+    },
+    {
+      "path": "tests/authority-registry-loopback-transfer.test.mjs",
+      "sha256": "98a2757936f222a5eb58f82bd28e71ee33b6ce213959470b03d57ec31fcdbabc"
+    },
+    {
+      "path": "tests/authority-registry-resumable-transfer-worker.mjs",
+      "sha256": "0892f6febad62c7c77c40fb6acff5840480592d772e34ce27093e1047265950a"
+    },
+    {
+      "path": "tests/authority-registry-resumable-transfer.test.mjs",
+      "sha256": "ac5dc41fd1a50c475cc107b9d26f73561d4f912cb5b82f538104f9f736f1452c"
+    },
+    {
+      "path": "tests/authority-registry-signer.mjs",
+      "sha256": "e6f7a948879a67bb5cf340d69ca527c06dfb219bb7c4ee69026c9d0699251758"
+    },
+    {
+      "path": "tests/authority-registry-tls-loopback-transfer.test.mjs",
+      "sha256": "bda040563e9a12d85aaf22069ca15b50e2ad3c69b6829b3240d52f97961d9ac4"
+    },
+    {
+      "path": "tests/authority-registry.test.mjs",
+      "sha256": "1139234c91e686ee36aeb84141a86642e9985c12b47fd970095a40594d6564fc"
+    },
+    {
+      "path": "tests/conformance.test.mjs",
+      "sha256": "2e41824d45e62c7ff42644a7847ba6bb797aeb8989db312eeacde79779114aae"
+    },
+    {
+      "path": "tests/operator-cli.test.mjs",
+      "sha256": "851cfe18580001e024f46896966183ca230b990314f62d91a7def610ffbbcdfe"
+    },
+    {
+      "path": "tests/operator-coordinator.fixture.mjs",
+      "sha256": "65fcde9ffcafe69d61beb14dcca2e21fde52424868d38df6ea868539f490277d"
+    },
+    {
+      "path": "tests/operator-security.test.mjs",
+      "sha256": "d12f9390675a7cffdbdb00b6a305c71ada2a0b0d40f2542bb8f16ceb7b3bcb47"
+    },
+    {
+      "path": "tests/opp-bridge.test.mjs",
+      "sha256": "101be7a2d1257c2074aefa71342ea2572e6a34fb73f0fd35301a605f9e4dd1d2"
+    },
+    {
+      "path": "tests/opp-http-consumer-bridge.test.mjs",
+      "sha256": "9cae213d64db8225509b153249a04175b66b5c01e8225659906c4538cb1d7153"
+    },
+    {
+      "path": "tests/opp-http-consumer-live.test.mjs",
+      "sha256": "5d58bb9dcb309e7f43830315d249dcaa1e962b63e30d6409461df92dbbe70747"
+    },
+    {
+      "path": "tests/opp-http-readonly.test.mjs",
+      "sha256": "8ea0107d8e435081040aca0bd7a1d8ea3b3e7e1b613fc85c7a719cd362f75e73"
+    },
+    {
+      "path": "tests/opp-native-interop.test.mjs",
+      "sha256": "ac55785a62d4292b350d72cd6f88922c862b0ac8101594ea1df9965f99bb541a"
+    },
+    {
+      "path": "tests/pending-cli.test.mjs",
+      "sha256": "519c0e88d77805722395c50845f44298ba12768e77b97a631c6a8322e7fb837d"
+    },
+    {
+      "path": "tests/pending-coordinator.fixture.mjs",
+      "sha256": "738353d9e78116c11001970333fb21b1ad0a1edc36002f79975305dd9c386f39"
+    },
+    {
+      "path": "tests/pending-security.test.mjs",
+      "sha256": "19af2bb166fdf78e80dc73a3e6fc85dab737ff4033ce631856f9bb95733ad56f"
+    },
+    {
+      "path": "tests/profiles.test.mjs",
+      "sha256": "0a1c0cfaea088775b0defce3663e177ebd130d86daac5654f462d6b984246239"
+    },
+    {
+      "path": "tests/protected-store.test.mjs",
+      "sha256": "83fa2eb3ea162662e0abb0eb4e4b320cf4e0b8747619a41eb058960b9d0edea2"
+    },
+    {
+      "path": "tests/public-sdk.test.mjs",
+      "sha256": "abdb2e72c10228592655c33d5957c039610e5595ebdee32cb923bae633a2e084"
+    },
+    {
+      "path": "tests/rcl-guard.test.mjs",
+      "sha256": "6ede7906f392137c04c0c4088a7f13a07738d13c331e790841d5889b1f2a1782"
+    },
+    {
+      "path": "tests/rcl-migration.test.mjs",
+      "sha256": "0510c97c199279c64e8a5e732f5a6ea0b113aff7882d62a0f8f9fc07ed602ae4"
+    },
+    {
+      "path": "tests/rcl-pending-retirement.test.mjs",
+      "sha256": "ac5fd611fff781fe22d95b148c5e47f9aa42e0c7ed46191987d974a72790725c"
+    },
+    {
+      "path": "tests/rcl-recovery.test.mjs",
+      "sha256": "ed9e0c2ee2facb1b5f1e801d3546bceadaf74fa6e1c51207fde69cc81df636ad"
+    },
+    {
+      "path": "tests/rcl-route.test.mjs",
+      "sha256": "317736d4afc2a620eb3666e4b6363ed4dc44b79f2d44c392ee5b26504d961d62"
+    },
+    {
+      "path": "tests/recovery-anchor-cli.test.mjs",
+      "sha256": "f094599ec3de9013255a1da98f27913d7cbca213de95d0869bf89962db4f027a"
+    },
+    {
+      "path": "tests/recovery-anchor-signer.mjs",
+      "sha256": "f6a5d00e42e3e64cc66c72b677396de602e18fc7db87739e5971e4291042e540"
+    },
+    {
+      "path": "tests/recovery-anchor.test.mjs",
+      "sha256": "13130159c4000148b1c5dff70df47f0c445c0d0656953713afeb065d45f89aff"
+    },
+    {
+      "path": "tests/recovery-coordinator.fixture.mjs",
+      "sha256": "788cc6a8a13e4e38376748ea57e834f8def37790803447cfcd39f0a8ecc753e2"
+    },
+    {
+      "path": "tests/recovery-gate-integration.test.mjs",
+      "sha256": "18f02a34669ee00dd1cc32a65f6ed8e402b7b17c73b9b1ca6daf5f50cba227f5"
+    },
+    {
+      "path": "tests/recovery-security.test.mjs",
+      "sha256": "62d11e2923ffaef98fdf5e93880b6b468d39099b0a7ff44c1f06a5a573a44333"
+    },
+    {
+      "path": "tests/security-review.test.mjs",
+      "sha256": "08a99e4ff8c4771940064b8ff0f7b8366e9f47f0c9a80e738c36777cb7e98a92"
+    },
+    {
+      "path": "tests/shared-ir.test.mjs",
+      "sha256": "c1d9eaef5c68981ad89ef13a9450a3f556d1a1ed211f290193cce5bff81a3af6"
+    },
+    {
+      "path": "tests/tls-loopback-certificates.mjs",
+      "sha256": "66a297b74d77ba51f961b6c857efa4592db73434d2a797c97f85d3f281310c3a"
     }
   ]
 }

@@ -55,3 +55,5 @@ capability to the existing authorized provider path and test it on independently
 identified physical devices. Keys/authority must come from their real owner, not
 from another local test issuer. See [public SDK](PUBLIC_SDK.md) and
 [external acceptance gates](EXTERNAL_ACCEPTANCE_GATES.md).
+
+Final code replay: [34692507409](https://github.com/xingxuling/TINP/actions/runs/34692507409), all three hosted jobs PASS; OPP `7c4970c`, TINP `692c0e4`. The earlier run is retained as historical evidence.
