@@ -1,0 +1,48 @@
+name: Bug report
+about: Report a reproducible problem in TINP
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢提交问题。安全漏洞请先阅读 SECURITY.md，不要在公开 Issue 中放出可利用细节。
+  - type: textarea
+    id: problem
+    attributes:
+      label: 发生了什么？
+      description: 请描述实际行为，以及它发生在哪条路径上。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 最小复现步骤
+      description: 请尽量给出命令、输入、节点状态和故障条件。
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 你原本期待什么？
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: TINP 版本 / commit
+      placeholder: 0.1.0-alpha.29 / commit SHA
+  - type: input
+    id: environment
+    attributes:
+      label: 环境
+      placeholder: OS, Node.js version, Python version
+  - type: textarea
+    id: evidence
+    attributes:
+      label: receipt、Evidence Ledger 或日志
+      description: 请删掉私钥、令牌、个人数据和其他敏感信息。
+      render: shell
