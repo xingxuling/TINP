@@ -20,7 +20,7 @@ Provider C
 
 ```powershell
 python -m pip install -r adapters/requirements.txt
-npm run business:demo
+node scripts/business-demo.mjs
 ```
 
 Demo 会真实做三次运行：
