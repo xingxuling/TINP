@@ -23,7 +23,26 @@ python -m pip install -r adapters/requirements.txt
 node scripts/business-demo.mjs
 ```
 
-Demo 会真实做三次运行：
+如果你想把**这一次真实运行**保存下来，而不是只看终端：
+
+```powershell
+node scripts/business-demo.mjs --out .runs/business-demo-output.json
+```
+
+输出文件会记录每一步的：
+
+- 主体；
+- 会话；
+- 实际路由；
+- 实际 Provider；
+- 服务等级；
+- 权限租约根；
+- 回执根；
+- 当前证据根。
+
+这些 roots 会随每次运行的身份、会话和证据状态变化，所以 README 不把动态哈希伪装成固定产品常量。
+
+## Demo 会真实做三次运行
 
 ### 1. 正常执行
 
@@ -31,25 +50,38 @@ Demo 会真实做三次运行：
 A -> B -> C
 ```
 
-输出当前路由、Provider、服务等级、回执根和证据根。
+当前回归测试要求正常路径由 C 执行，服务等级为 `Full`。
 
 ### 2. 主 Provider C 不可用
 
 脚本会显式关闭 C 的 Provider，再发起一次请求。
 
-如果备用 Provider B 满足同一契约和权限条件，TINP 会改由 B 执行，而不是把失败伪装成成功。
+如果备用 Provider B 满足同一契约和权限条件，TINP 会改由 B 执行，而不是把失败伪装成成功。当前回归套件要求这时：
+
+```text
+route: A -> B
+provider: B:counter
+level: Essential
+```
 
 ### 3. A-B 中间链路故障
 
 脚本重新启用 C，然后阻断 A 与 B 之间的链路。
 
-在当前本机测试拓扑中，TINP 会尝试改走备用路径：
+在当前本机测试拓扑中，TINP 会改走：
 
 ```text
-A -> C
+route: A -> C
+provider: C:counter
+level: Reduced
 ```
 
-整个过程中，脚本会把实际 Provider、路由和回执打印出来。
+当前 `tests/profiles.test.mjs` 还额外覆盖：
+
+- B 进程直接死亡后的 A -> C reroute；
+- 所有 Provider 都不可用时返回 `deferred / Survival / NO_AUTHORIZED_PROVIDER`，而不是制造成功结果；
+- Provider 契约发生语义漂移时拒绝替换并回滚；
+- source 从 A 迁移到 B 时保留 subject、session、authority 和证据前缀。
 
 ## 为什么这个 Demo 比“字符计数”更重要
 
@@ -84,3 +116,5 @@ Provider 换了
 ```text
 VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED
 ```
+
+如果要接自己的 Provider，请看 [`docs/INTEGRATION.md`](docs/INTEGRATION.md)。
