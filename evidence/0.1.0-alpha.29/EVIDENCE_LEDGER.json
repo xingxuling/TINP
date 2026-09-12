@@ -1,0 +1,56 @@
+{
+  "format": "twni.evidence-ledger.v0.1",
+  "version": "0.1.0-alpha.29",
+  "status": "VERIFIED_LOCAL_CANDIDATE",
+  "mergeCommit": "PENDING_MERGE",
+  "candidateCommit": "6786dc2",
+  "verification": {
+    "file": "evidence/0.1.0-alpha.29/LOCAL_VERIFICATION.json",
+    "status": "VERIFIED_LOCAL_CANDIDATE",
+    "tests": 209,
+    "passed": 209,
+    "failed": 0,
+    "sourceFiles": 209,
+    "sourceTreeRoot": "c0403c1bcce99eb9365d32f264105be52301b394ccf65571c0c885b97825e020",
+    "testsSha256": "d98fba699a2e7b9ec2a656fd1051758a461253307509c4dc4d1a89c03cf81d78"
+  },
+  "changes": [
+    "src/opp-native-interop.mjs",
+    "tests/opp-native-interop.test.mjs",
+    "scripts/verify.mjs",
+    "package.json"
+  ],
+  "oppSourceAudit": {
+    "file": "audit/opp-source-audit-2026-09-12.json",
+    "latestRef": "61cc3828a58a7bffa8b1dbeb8c44ff3a9cb471d1",
+    "tests": 41,
+    "passed": 41,
+    "interopReceiptRoot": "77b4cdfaa0f95a9cc75a4c7d08f9d8cc3b94d40f2a9b46b87c51b2b1496f7ff2",
+    "interopResultSha256": "91fd28fcda038a06f758f47d1feae037bda53d623b26b9986d5397c66ad59d37",
+    "authorityPromotionPerformed": false,
+    "strongOsSandboxClaimed": false
+  },
+  "nativeInteropAcceptance": {
+    "file": "evidence/0.1.0-alpha.29/opp-native-interop-acceptance.json",
+    "format": "twni.opp-native-interop-acceptance.v1",
+    "status": "PASS",
+    "acceptanceRoot": "0d51f4f1183294ce50137fa75f9decb4fdf5f387f9ec5846b3bce3ec42bf9bb5",
+    "sha256": "296dd8ad594538688f735506b09c172befb0b3df8e049808dc976485394efd00",
+    "authorityGranted": false,
+    "sideEffects": false
+  },
+  "externalLiveWitness": {
+    "file": "evidence/OPP_HTTP_CONSUMER_LIVE_GITHUB_2026-09-12.json",
+    "status": "PASS",
+    "httpStatus": 200,
+    "networkRequests": 0,
+    "authorityGranted": false,
+    "boundary": "Saved public GitHub observation was revalidated offline; this is not independent third-party consumer evidence."
+  },
+  "authorityGranted": false,
+  "production": "NOT_DEPLOYED",
+  "externalThirdPartyConsumer": "NOT_RUN",
+  "physicalMultiHost": "NOT_RUN",
+  "k400Verdict": "NOT_ADJUDICATED",
+  "boundary": "OPP native interop candidate evidence is adapted through a thin TINP validator; no authority provider, physical multi-host deployment, independent third-party consumer or production claim."
+}
