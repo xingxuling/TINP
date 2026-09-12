@@ -1,0 +1,44 @@
+name: Feature request
+about: Propose a concrete improvement to TINP
+title: "[Feature] "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 你遇到的具体问题是什么？
+      description: 先描述现实故障或能力缺口，不要只写“希望支持某某技术”。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 你建议怎么解决？
+      description: 如果涉及身份、权限、路由、恢复、Authority 或传输，请说明最小行为。
+    validations:
+      required: true
+  - type: textarea
+    id: failure
+    attributes:
+      label: 失败时应该发生什么？
+      description: 请说明 fail closed、pending、拒绝、回滚或其他预期行为。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 你希望怎样验证？
+      description: 最好包含正常路径、负例和需要保存的 receipt / evidence。
+  - type: dropdown
+    id: area
+    attributes:
+      label: 主要涉及哪一部分？
+      options:
+        - Identity / authorization
+        - Routing / provider selection
+        - Recovery / pending
+        - Authority registry / convergence
+        - Transport / TLS
+        - OPP interoperability
+        - Evidence / receipt
+        - Documentation / examples
+        - Other
