@@ -6,6 +6,7 @@
   "scripts": {
     "test": "node --test --test-concurrency=1 tests/*.test.mjs vendor/tinp/tests/*.test.mjs",
     "demo": "node scripts/demo.mjs",
+    "business:demo": "node scripts/business-demo.mjs",
     "opp-http-readonly": "node scripts/opp-http-readonly.mjs",
     "opp-http-consumer-bridge": "node scripts/opp-http-consumer-bridge.mjs",
     "opp-http-consumer-live": "node scripts/opp-http-consumer-live.mjs",
