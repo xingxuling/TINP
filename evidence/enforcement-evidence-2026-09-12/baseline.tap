@@ -1,0 +1,129 @@
+TAP version 13
+# Subtest: authenticated network rejects mutated transaction facts before any provider execution
+ok 1 - authenticated network rejects mutated transaction facts before any provider execution
+  ---
+  duration_ms: 2055.176151
+  type: 'test'
+  ...
+# Subtest: concurrent exact retry executes once; changed request content cannot replay
+ok 2 - concurrent exact retry executes once; changed request content cannot replay
+  ---
+  duration_ms: 1642.435982
+  type: 'test'
+  ...
+# Subtest: receipt mutation and durable ledger tampering cannot become verified evidence
+ok 3 - receipt mutation and durable ledger tampering cannot become verified evidence
+  ---
+  duration_ms: 1718.581743
+  type: 'test'
+  ...
+# Subtest: bounded path selection applies cost, region, latency and energy together
+ok 4 - bounded path selection applies cost, region, latency and energy together
+  ---
+  duration_ms: 2.732716
+  type: 'test'
+  ...
+# Subtest: deterministic malformed wire corpus rejects framing errors
+ok 5 - deterministic malformed wire corpus rejects framing errors
+  ---
+  duration_ms: 1.176382
+  type: 'test'
+  ...
+# Subtest: integrated RCL migration rejects a changed subject before issuing a replacement
+ok 6 - integrated RCL migration rejects a changed subject before issuing a replacement
+  ---
+  duration_ms: 3238.780024
+  type: 'test'
+  ...
+# Subtest: integrated RCL route gate enforces signed latency and energy budgets from trusted edges
+ok 7 - integrated RCL route gate enforces signed latency and energy budgets from trusted edges
+  ---
+  duration_ms: 1633.397492
+  type: 'test'
+  ...
+# Subtest: an ambiguous lost response reconciles the exact signed request without a second execution
+ok 8 - an ambiguous lost response reconciles the exact signed request without a second execution
+  ---
+  duration_ms: 1697.576107
+  type: 'test'
+  ...
+# Subtest: udp: Chinese life intent executes through three independent local processes and two socket hops
+ok 9 - udp: Chinese life intent executes through three independent local processes and two socket hops
+  ---
+  duration_ms: 1596.139776
+  type: 'test'
+  ...
+# Local process/socket evidence: /mnt/data/tinp_enforcement_update/TINP/.runs/profiles/run-bBPvpw
+# Subtest: tcp: Chinese life intent executes through three independent local processes and two socket hops
+ok 10 - tcp: Chinese life intent executes through three independent local processes and two socket hops
+  ---
+  duration_ms: 1613.475454
+  type: 'test'
+  ...
+# Local process/socket evidence: /mnt/data/tinp_enforcement_update/TINP/.runs/profiles/run-wTNLWi
+# Subtest: commercial: contract-identical provider replacement executes; semantic drift rolls back; missing provider migrates to B
+ok 11 - commercial: contract-identical provider replacement executes; semantic drift rolls back; missing provider migrates to B
+  ---
+  duration_ms: 7721.414465
+  type: 'test'
+  ...
+# Local process/socket evidence: /mnt/data/tinp_enforcement_update/TINP/.runs/profiles/run-yFDhvf
+# Subtest: degraded: killing relay B causes authenticated direct A-C execution without authority or evidence loss
+ok 12 - degraded: killing relay B causes authenticated direct A-C execution without authority or evidence loss
+  ---
+  duration_ms: 3930.481364
+  type: 'test'
+  ...
+# Local process/socket evidence: /mnt/data/tinp_enforcement_update/TINP/.runs/profiles/run-2V8oRK
+# Subtest: partition: actual links blocked on both sides preserve local isolated capability without remote execution
+ok 13 - partition: actual links blocked on both sides preserve local isolated capability without remote execution
+  ---
+  duration_ms: 3370.680201
+  type: 'test'
+  ...
+# Local process/socket evidence: /mnt/data/tinp_enforcement_update/TINP/.runs/profiles/run-L7Ounr
+# Subtest: degraded: a real link failure with B still alive reroutes socket traffic over A-C
+ok 14 - degraded: a real link failure with B still alive reroutes socket traffic over A-C
+  ---
+  duration_ms: 1663.373301
+  type: 'test'
+  ...
+# Local process/socket evidence: /mnt/data/tinp_enforcement_update/TINP/.runs/profiles/run-Dd0IvA
+# Subtest: survival: every provider disappears; no execution is fabricated and identity/session/durable prefix survive
+ok 15 - survival: every provider disappears; no execution is fabricated and identity/session/durable prefix survive
+  ---
+  duration_ms: 1590.311373
+  type: 'test'
+  ...
+# Local process/socket evidence: /mnt/data/tinp_enforcement_update/TINP/.runs/profiles/run-oUhgVV
+# Subtest: commercial: source migration A to B preserves subject, session, authority and a verifiable durable evidence chain
+ok 16 - commercial: source migration A to B preserves subject, session, authority and a verifiable durable evidence chain
+  ---
+  duration_ms: 3077.931129
+  type: 'test'
+  ...
+# Local process/socket evidence: /mnt/data/tinp_enforcement_update/TINP/.runs/profiles/run-VajY25
+# Subtest: commercial: protocol downgrade is negotiated and an unsupported provider version fails over without invoking it
+ok 17 - commercial: protocol downgrade is negotiated and an unsupported provider version fails over without invoking it
+  ---
+  duration_ms: 3265.235378
+  type: 'test'
+  ...
+# Local process/socket evidence: /mnt/data/tinp_enforcement_update/TINP/.runs/profiles/run-Fq7Bal
+# Subtest: degraded: actual socket send throttling delays bytes while the same guarded operation still executes
+ok 18 - degraded: actual socket send throttling delays bytes while the same guarded operation still executes
+  ---
+  duration_ms: 2990.386595
+  type: 'test'
+  ...
+# Local process/socket evidence: /mnt/data/tinp_enforcement_update/TINP/.runs/profiles/run-l8noAM
+# {"profile":"actual-throttled-local-udp","sentBytes":16054,"bytesPerSecond":16000,"elapsedMs":2572.2649249999995,"nominalDelayMs":1003.375,"probeBytes":4916,"probeElapsedMs":340.8044029999983,"probeNominalMs":307.25}
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 42981.212781

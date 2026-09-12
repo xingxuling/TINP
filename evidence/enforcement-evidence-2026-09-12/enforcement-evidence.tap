@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: 执行前：直接送达主节点和备用节点的非法请求均不增加执行次数或回执缓存
+ok 1 - 执行前：直接送达主节点和备用节点的非法请求均不增加执行次数或回执缓存
+  ---
+  duration_ms: 3105.519918
+  type: 'test'
+  ...
+# C: 缺少租约 -> AUTHORITY_REQUIRED; execution/cache delta = 0
+# C: 请求未获授权的能力范围 -> RCL_GUARD_DENIED; execution/cache delta = 0
+# C: 会话扩大权限 -> AUTHORITY_EXPANSION; execution/cache delta = 0
+# B: 缺少租约 -> AUTHORITY_REQUIRED; execution/cache delta = 0
+# B: 请求未获授权的能力范围 -> RCL_GUARD_DENIED; execution/cache delta = 0
+# B: 会话扩大权限 -> AUTHORITY_EXPANSION; execution/cache delta = 0
+# Subtest: 执行前：请求已生成但权限随后撤销，执行端仍拒绝且不产生业务执行
+ok 2 - 执行前：请求已生成但权限随后撤销，执行端仍拒绝且不产生业务执行
+  ---
+  duration_ms: 1585.031527
+  type: 'test'
+  ...
+# Subtest: 执行前：已缓存的请求也不能绕过当前撤销检查
+ok 3 - 执行前：已缓存的请求也不能绕过当前撤销检查
+  ---
+  duration_ms: 1700.661042
+  type: 'test'
+  ...
+# Subtest: 执行后：篡改回执被拒收；校验不撤销已发生的执行，也不再次调用节点
+ok 4 - 执行后：篡改回执被拒收；校验不撤销已发生的执行，也不再次调用节点
+  ---
+  duration_ms: 1601.947091
+  type: 'test'
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8072.69635
