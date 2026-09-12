@@ -26,7 +26,7 @@
 
 ```powershell
 python -m pip install -r adapters/requirements.txt
-npm run business:demo
+node scripts/business-demo.mjs
 ```
 
 这个 Demo 会真实跑三次本机请求：
