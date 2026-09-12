@@ -1,2 +1,5 @@
 # Evidence and donor provenance bind exact bytes, including original line endings.
 * -text
+
+# Receipt file hashes bind raw bytes, including original line endings.
+/evidence/external-onboarding-2026-09-12/** -text

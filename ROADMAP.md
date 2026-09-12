@@ -147,3 +147,30 @@ alpha.29 已经能绑定 OPP native interop 的本机 acceptance，但这仍不�
 - 在没有真实试点数据时写无证据的性能或 ROI 数字。
 
 当前最短真实缺口仍以 [`docs/NEXT_GAP.md`](docs/NEXT_GAP.md) 为准。
+
+## 2026-09-12 external onboarding update
+
+## This candidate
+
+- Public `sdk/v1.mjs` read-only provider and receipt entry point reusing current implementations.
+- Reuse of explicit native HTTPS, including the live consumer orchestration path.
+- Standalone installation, real Open-Meteo execution and offline/tamper verification.
+- OPP receipts from three independently maintained installed libraries verified in Node.
+- Five-project joint evidence with incomplete httpbingo 402 preserved, not promoted.
+
+## Next development gaps
+
+1. General Provider SDK registration bound to the existing contract, authorization and node execution path.
+2. One real external capability through discovery → OPP → authorized TINP route → failover → receipt → recovery.
+3. Official MCP SDK interoperability with a real independent server project.
+4. Cross-release public surface compatibility and an external operator onboarding trial.
+
+## Owner/device gates
+
+- Two independently identified physical devices and their permitted connection path.
+- Real Authority Provider and owner-managed enrollment, revocation, loss recovery and trusted time.
+- Independent receipt verifier/operator and security review.
+- License/release reconciliation for historical vendored snapshots before public distribution.
+
+No new protocol family or canonical ownership layer is required for this list.
+Current implementation and complete external acceptance are separate milestones.
