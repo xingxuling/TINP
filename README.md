@@ -20,6 +20,35 @@
 
 > **许可提醒：** 仓库包含历史来源快照和 `vendor/`。对外再分发、打包或商业发行前，请先看 [`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md)。
 
+## 先看业务故障 Demo
+
+比“字符计数”更容易理解 TINP 的方式，是直接看一个企业内部 Agent 请求在故障时怎么处理。
+
+```powershell
+python -m pip install -r adapters/requirements.txt
+node scripts/business-demo.mjs
+```
+
+这个 Demo 会真实跑三次本机请求：
+
+```text
+1. 正常：A -> B -> C
+2. 主 Provider C 不可用：切换到备用 Provider B
+3. A-B 中间链路故障：改走 A -> C
+```
+
+每一步都会打印：
+
+- 实际路由；
+- 实际 Provider；
+- 服务等级；
+- 回执根；
+- 当前证据根。
+
+业务文本只是演示载荷，不连接真实 CRM；底层 Provider 仍使用只读、确定性的测试能力。这个 Demo 要展示的是**故障发生以后，身份、权限、路由和证据是否还能保持连续**。
+
+完整说明见 [`BUSINESS_DEMO.md`](BUSINESS_DEMO.md)。
+
 ## 什么时候你会需要它？
 
 如果你只有一个 Agent 调几个普通 API，TINP 很可能不是必需的。
@@ -60,14 +89,16 @@ TINP 不是用来取代这些工具的。
 
 更完整的说明见 [`docs/COMPARISON.md`](docs/COMPARISON.md)。
 
-## 3 分钟试一下
+## 技术最小 Demo（3 分钟）
+
+如果想看最小执行链：
 
 ```powershell
 python -m pip install -r adapters/requirements.txt
 npm run demo -- "我要使用字符计数能力完成：你好，TINP"
 ```
 
-当前 Demo 故意只做很小的 Unicode 字符计数。重点不是“数几个字”，而是验证整条执行链能不能闭环。
+当前最小 Demo 故意只做 Unicode 字符计数。重点不是“数几个字”，而是验证整条执行链能不能闭环。
 
 当前 `scripts/demo.mjs` 会输出下面这些字段；路径、节点和文件名会随实际运行变化：
 
@@ -171,7 +202,8 @@ OPP：<https://github.com/xingxuling/OPP>
 
 ## 文档入口
 
-- [`DEMO.md`](DEMO.md) — 3 分钟演示
+- [`BUSINESS_DEMO.md`](BUSINESS_DEMO.md) — 业务故障 Demo：Provider / 链路切换
+- [`DEMO.md`](DEMO.md) — 技术最小 Demo
 - [`docs/COMPARISON.md`](docs/COMPARISON.md) — 和 MCP / A2A / OAuth / Temporal / MQ 的关系
 - [`docs/GLOSSARY.md`](docs/GLOSSARY.md) — 术语翻成普通话
 - [`docs/USE_CASES.md`](docs/USE_CASES.md) — 什么时候值得用 TINP

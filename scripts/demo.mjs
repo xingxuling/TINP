@@ -1,5 +1,5 @@
 import {InternetSuite,parseLifeIntent} from '../src/suite.mjs';
-const input=process.argv.slice(2).join(' ')||'我要使用字符计数能力完成：你好，新互联网🌏';
+const input=process.argv.slice(2).join(' ')||'我要使用字符计数能力完成：你好，TINP🌏';
 const intent=parseLifeIntent(input);const suite=await InternetSuite.start();
 try{
   const result=await suite.use(intent.text);
