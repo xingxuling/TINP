@@ -1,13 +1,64 @@
 # TINP
 
-**面向 Agent 与软件服务的本地优先通信运行时：带身份、权限、路由、恢复和执行证据。**
+**让多个 Agent 和软件服务在本地或私有环境里协作时，知道谁在调用、有没有权限、失败后怎么办，以及事后能不能复核。**
 
-TINP 不解决“怎么调一个 API”这种单点问题。它解决的是请求真正跑起来以后更麻烦的事：**谁在调用、有没有权限、由哪个节点执行、路径坏了怎么办、任务中断后怎么恢复，以及最后能不能复核。**
+调用一个 API 并不难。真正难的是系统开始自动执行以后：
+
+- 这次请求是谁发的？
+- 它当时有没有权限？权限什么时候失效？
+- Provider 或中间节点挂了以后能不能换？
+- 请求超时了，到底能不能安全重试？
+- 如果不知道上一次有没有执行成功，怎么办？
+- 出问题以后，能不能还原当时发生了什么？
+
+**TINP 主要解决这些问题。**
 
 > 当前版本：`0.1.0-alpha.29`  
 > 当前状态：`VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED`
 
-这表示当前版本已经通过本机集成验证，但还不是生产网络，也不声称已经具备互联网规模、生产级密钥托管或军用安全认证。
+当前版本已经通过本机集成验证，但仍是研究/试点候选，不是生产公网，也不声称已经具备生产级密钥托管、第三方安全认证或军用安全认证。
+
+> **许可提醒：** 仓库包含历史来源快照和 `vendor/`。对外再分发、打包或商业发行前，请先看 [`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md)。
+
+## 什么时候你会需要它？
+
+如果你只有一个 Agent 调几个普通 API，TINP 很可能不是必需的。
+
+当系统开始出现下面这些问题时，TINP 才有价值：
+
+```text
+能不能调用
+    ↓
+谁能调用
+    ↓
+能调用多久
+    ↓
+由哪个节点执行
+    ↓
+失败能不能重试
+    ↓
+换节点后权限还算不算
+    ↓
+出事后怎么证明当时发生了什么
+```
+
+典型场景包括：私有 Agent 网络、企业内部自动化、边缘/本地节点协作，以及需要恢复和审计的受控执行。
+
+## 它和你已经认识的工具有什么区别？
+
+TINP 不是用来取代这些工具的。
+
+| 技术 | 主要解决什么 | TINP 补在哪里 |
+|---|---|---|
+| **MCP** | Agent 怎么发现和调用工具 | 调用前后的身份、权限、失败和证据 |
+| **A2A** | Agent 与 Agent 怎么通信协作 | 执行治理、节点、权限和恢复 |
+| **gRPC / REST** | 服务怎么发请求和收响应 | 不替代 RPC；关注请求背后的主体和执行状态 |
+| **OAuth / OIDC** | 认证与授权委托 | 可以一起使用；TINP 不替代 OAuth/OIDC |
+| **Temporal** | 持久工作流和重试编排 | 有恢复问题交集，但 TINP 不是工作流引擎 |
+| **Kafka / RabbitMQ** | 消息传输、队列和缓冲 | TINP 不重新发明消息队列 |
+| **OPP** | 能力是什么、两个系统能不能接 | TINP 接管身份、权限、路由、恢复和证据 |
+
+更完整的说明见 [`docs/COMPARISON.md`](docs/COMPARISON.md)。
 
 ## 3 分钟试一下
 
@@ -16,61 +67,35 @@ python -m pip install -r adapters/requirements.txt
 npm run demo -- "我要使用字符计数能力完成：你好，TINP"
 ```
 
-完整说明见 [`DEMO.md`](DEMO.md)。
+当前 Demo 故意只做很小的 Unicode 字符计数。重点不是“数几个字”，而是验证整条执行链能不能闭环。
 
-当前演示只做很小的 Unicode 字符计数，目的不是展示业务能力，而是验证这条链能不能闭环：
+当前 `scripts/demo.mjs` 会输出下面这些字段；路径、节点和文件名会随实际运行变化：
 
-```text
-主体
-  ↓
-能力协商
-  ↓
-权限检查
-  ↓
-会话
-  ↓
-路由
-  ↓
-Provider 执行
-  ↓
-结果 + 回执 + 证据
+```json
+{
+  "用户意图": "...",
+  "结果": {"count": 0},
+  "状态": "...",
+  "路径": ["..."],
+  "证据账本": "...",
+  "验证范围": "三个独立本机进程，真实回环传输",
+  "nodes": {"...": "..."}
+}
 ```
 
-## 它能做什么
+这里的 `count: 0` 只是结构示例，不是固定运行结果。真实结果由输入决定。
 
-当前候选已经覆盖：
+完整说明见 [`DEMO.md`](DEMO.md)。当前版本的完整验证记录是：
 
-- 主体、节点和密钥分离；
-- Ed25519 签名、权限租约和会话状态；
-- Provider 目录与 OPP 能力协商；
-- 本机多进程、UDP、TCP 与多跳请求；
-- 备用路由和满足同一契约时的 Provider 替换；
-- 重复请求回执、分叉拒绝和 Evidence Ledger；
-- Windows 持久状态、节点重启和协调器中断恢复；
-- Pending 请求管理和 Recovery Anchor；
-- Authority Registry、历史分发与收敛候选；
-- TLS 1.3 loopback 状态传输和可恢复分块传输；
-- 受策略约束的 OPP HTTP / native interop 接入。
+```text
+209 / 209 tests passed
+0 failed
+status: VERIFIED_LOCAL_CANDIDATE
+```
 
-详细模块见 [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md)。
+证据见 [`evidence/0.1.0-alpha.29/INTEGRATION_COURT.md`](evidence/0.1.0-alpha.29/INTEGRATION_COURT.md)。
 
-## 三个最直接的用途
-
-### 1. 私有 Agent 网络
-
-多个 Agent、服务和本地节点之间，不只是“能调用”，还要知道谁能调用、权限什么时候失效、结果在哪里执行。
-
-### 2. 故障后的切换和恢复
-
-路径坏了时尝试合法备用路径；Provider 不可用时，在契约和权限允许的情况下切换；无法确认时保持 `pending`，而不是假装成功或盲目重试。
-
-### 3. 需要审计的自动化
-
-一次请求从主体、权限、路由、Provider 到结果和恢复过程，都尽量留下可复核证据。
-
-更多现实映射见 [`docs/REAL_WORLD_EXAMPLES.md`](docs/REAL_WORLD_EXAMPLES.md)。
-
-## 工作方式
+## 它实际做了什么？
 
 ```mermaid
 flowchart LR
@@ -83,16 +108,47 @@ flowchart LR
     D -. Provider 不可用 .-> H[替代 Provider / Pending]
 ```
 
-TINP 的目标不是“永不失败”，而是**失败时不丢身份、不静默扩大权限、不把未知状态包装成成功。**
+TINP 的目标不是“永不失败”，而是：
 
-## 和 OPP 的分工
+> **失败时不丢身份、不静默扩大权限、不把未知状态包装成成功。**
+
+当前候选已经覆盖身份、签名、权限租约、会话、Provider 目录、多跳请求、备用路由、Provider 替换、回执、证据账本、持久恢复、Pending、Recovery Anchor、Authority Registry 候选、TLS loopback 状态传输和可恢复分块传输等能力。
+
+如果这些术语看着烦，先不用管。普通话解释见 [`docs/GLOSSARY.md`](docs/GLOSSARY.md)。
+
+## 适合谁 / 不适合谁
+
+### 适合
+
+- 正在做多个 Agent / 服务互相调用的平台团队；
+- 需要“谁能做什么、多久有效”这类权限边界的企业内部系统；
+- 需要故障切换、恢复和未决状态管理的自动化；
+- 需要执行回执、审计证据或失败闭合的试点；
+- 边缘、本地、私有网络和弱网络环境的研究验证。
+
+### 暂时不适合
+
+- 只需要简单 API 调用的普通应用；
+- 想找成熟生产级 Service Mesh、消息队列或 OAuth 平台的团队；
+- 需要现成云控制台、商业 SLA、HSM 托管和大规模生产案例的客户；
+- 需要已经完成第三方安全认证的系统。
+
+## 三类价值怎么理解
+
+| 方向 | 现在能看到的价值 | 当前成熟度 |
+|---|---|---|
+| **企业 / 商业** | Agent/服务调用治理、权限边界、恢复和审计 | 适合原型、PoC、试点 |
+| **高保障 / 受监管环境** | fail-closed、断连、恢复、操作员批准、证据 | 有研究价值，但不能宣称生产或认证级能力 |
+| **个人 / 生活化** | 本地 AI 的一次性权限、操作历史、跨节点恢复 | 目前只是长期产品化方向，还不是消费产品 |
+
+## OPP 和 TINP 的分工
 
 ```text
 OPP：这个系统会什么？两个系统能不能接？怎么转换？
 TINP：谁能调用？怎么传？失败怎么办？怎么恢复？
 ```
 
-TINP 会使用 OPP 的能力协商和互操作结果，但“能力兼容”不会自动变成“已经授权”。
+TINP 会使用 OPP 的能力协商和互操作结果，但**能力兼容不等于已经授权**。
 
 OPP：<https://github.com/xingxuling/OPP>
 
@@ -113,35 +169,20 @@ OPP：<https://github.com/xingxuling/OPP>
 
 当前 TLS、恢复、分发和收敛证据主要来自**本机受控环境**。
 
-## 验证状态
-
-`alpha.29` 当前集成法院记录：
-
-```text
-209 / 209 tests passed
-0 failed
-status: VERIFIED_LOCAL_CANDIDATE
-```
-
-完整证据：
-
-- [`evidence/0.1.0-alpha.29/INTEGRATION_COURT.md`](evidence/0.1.0-alpha.29/INTEGRATION_COURT.md)
-- [`evidence/0.1.0-alpha.29/EVIDENCE_LEDGER.json`](evidence/0.1.0-alpha.29/EVIDENCE_LEDGER.json)
-- [`docs/EXTERNAL_ACCEPTANCE_GATES.md`](docs/EXTERNAL_ACCEPTANCE_GATES.md)
-
 ## 文档入口
 
 - [`DEMO.md`](DEMO.md) — 3 分钟演示
+- [`docs/COMPARISON.md`](docs/COMPARISON.md) — 和 MCP / A2A / OAuth / Temporal / MQ 的关系
+- [`docs/GLOSSARY.md`](docs/GLOSSARY.md) — 术语翻成普通话
 - [`docs/USE_CASES.md`](docs/USE_CASES.md) — 什么时候值得用 TINP
-- [`docs/REAL_WORLD_EXAMPLES.md`](docs/REAL_WORLD_EXAMPLES.md) — 三个现实业务映射
+- [`docs/REAL_WORLD_EXAMPLES.md`](docs/REAL_WORLD_EXAMPLES.md) — 现实业务映射
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — 架构和模块分工
 - [`docs/NEXT_GAP.md`](docs/NEXT_GAP.md) — 当前最短真实缺口
 - [`docs/EXTERNAL_ACCEPTANCE_GATES.md`](docs/EXTERNAL_ACCEPTANCE_GATES.md) — 外部验收门
-- [`CONTRIBUTING.md`](CONTRIBUTING.md) — 参与开发
-- [`SECURITY.md`](SECURITY.md) — 安全问题报告
 - [`ROADMAP.md`](ROADMAP.md) — 后续路线
+- [`SECURITY.md`](SECURITY.md) — 安全边界与报告方式
 
-## 许可
+## License / 许可
 
 这个仓库包含历史来源快照和 `vendor/` 目录，公开仓库不等于所有历史组件都自动拥有统一开放许可。
 
