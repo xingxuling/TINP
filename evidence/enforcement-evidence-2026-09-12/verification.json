@@ -1,0 +1,49 @@
+{
+  "scope": "前置准入与后置核对的文档说明和针对性回归；未修改运行时逻辑",
+  "reviewedCommit": "6c8f3eb9a617a9caa769f0551a08ec770afb8b6a",
+  "localSourceSnapshot": "78f4362df693197d5b0ed7bfcfe9591c0bbd58c5",
+  "sourceMatchBasis": "GitHub compare 显示上述两版本间，本轮三节点运行路径、RCL 规则、conformance/profiles 测试及其既有依赖未变；最新变更在独立外部接入 SDK/HTTP 路径及文档。测试没有覆盖本轮未同步的外部 HTTP 增量。",
+  "capturedAtUtc": "2026-09-12T12:23:43.965408+00:00",
+  "environment": {
+    "os": "Linux",
+    "python": "3.13.5",
+    "node": "v22.16.0"
+  },
+  "runs": [
+    {
+      "command": "node --test --test-concurrency=1 tests/enforcement-evidence.test.mjs",
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "log": "enforcement-evidence.tap",
+      "sha256": "2fa80150c86d5f1282af80215d5ba3eb018cef306276c61a188dd066c74c0660"
+    },
+    {
+      "command": "node --test --test-concurrency=1 tests/conformance.test.mjs tests/profiles.test.mjs",
+      "passed": 18,
+      "failed": 0,
+      "skipped": 0,
+      "log": "baseline.tap",
+      "sha256": "4f95389312325e03562e04d669e46785ae213e2c194701387be48eb9b73c4cb2"
+    }
+  ],
+  "sourceSha256": {
+    "src/node-process.mjs": "4c4feb83952cb37bf02cd5654056fe9008318328c1eb8d0341e24bf8fc44c203",
+    "src/suite.mjs": "f38b68dd67777b55328bc45b8f210480b4875784475ade6f81dc9f1502126390",
+    "src/identity.mjs": "1264a4747acd2e4825986e62f76500e3adac6b2143cca27fdd7ef6933d79b2c1",
+    "src/evidence.mjs": "221e516f5bc5b79a3b700b270c83313c1b7fb3d1612ee4d9729426536017a094",
+    "src/routing.mjs": "eae0f915c6affee748c6df3b316ab2cfa4ea87aa119c1f936b53e0f3f3d321db",
+    "src/transport.mjs": "2ed2bd8e346e5a68af5a04dd41be162d92e0553b63153933ee89948b9be627e6",
+    "adapters/rcl-guard.mjs": "35ae41e8c928596d79fe9e3ae405b686ca056f392c07858bb5b6af6c8bac3077",
+    "adapters/rcl-route-guard.mjs": "1dd4059a940840d8e81aec6d69fae6dc746424d51487a2d98418aae526606413",
+    "rcl/transaction.rcl": "4f98721eb2ab8f0ecdbfc0151541d8aed103d7fb7aaffb82d206621c2412bbf7",
+    "rcl/route.rcl": "951c0003795fc137e3b68c82a47157e6b01b1905136350bcffa23636cb98a688",
+    "tests/conformance.test.mjs": "2e41824d45e62c7ff42644a7847ba6bb797aeb8989db312eeacde79779114aae",
+    "tests/profiles.test.mjs": "0a1c0cfaea088775b0defce3663e177ebd130d86daac5654f462d6b984246239",
+    "tests/enforcement-evidence.test.mjs": "c8f0b1c565916efd7c13095ca166b1ed98fe4c6a5b1e2c26de4883e98ee12fc7"
+  },
+  "fullRegression": "NOT_RUN / 未重跑全仓测试",
+  "physicalMultiHost": "NOT_RUN / 未做物理多机测试",
+  "production": "NOT_DEPLOYED / 未生产部署",
+  "reviewMode": "单一助手按工程、测试、安全和发布角色分别复核；未宣称调用 DWAC 或独立第三方审计"
+}
