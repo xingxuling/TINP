@@ -2,6 +2,45 @@
 
 这不是发布日期承诺，而是根据当前 `docs/NEXT_GAP.md`、`README.md` 和 alpha.29 证据整理出的**下一阶段真实缺口**。
 
+## 从试点到生产的最短路径
+
+```text
+当前：VERIFIED_LOCAL_CANDIDATE
+        ↓
+稳定第三方集成接口
+        ↓
+真实两台设备闭环
+        ↓
+生产 Authority + 密钥生命周期
+        ↓
+可信时间 + 独立第三方接入
+        ↓
+独立安全评估
+        ↓
+才讨论生产部署
+```
+
+每一层都应该有对应的可复核 evidence；不因为上一层 PASS 就自动跳过下一层。
+
+## P0 — 稳定外部集成接口
+
+alpha.29 已经有 `InternetSuite`、OPP acceptance、HTTP read-only adapter 和仓库内部 Provider 路径，但还没有稳定的第三方 Provider SDK。
+
+进入外部 PoC 前，需要先收敛：
+
+- Caller public surface；
+- Provider manifest 最小字段；
+- capability / OPP 映射；
+- handler 输入输出约束；
+- receipt 稳定字段；
+- 错误码与恢复语义；
+- 版本兼容策略；
+- 一套最小第三方 Provider 示例。
+
+这一步的目标不是“冻结所有内部实现”，而是让外部团队不必修改 `src/node-process.mjs` 才能接入。
+
+当前集成边界见 [`docs/INTEGRATION.md`](docs/INTEGRATION.md)。
+
 ## P0 — 真实跨设备验证
 
 当前多数传输、恢复和收敛证据来自本机多进程与 loopback。
@@ -104,6 +143,7 @@ alpha.29 已经能绑定 OPP native interop 的本机 acceptance，但这仍不�
 - 用“新互联网”口号代替跨设备证据；
 - 为了自动化而静默重试高影响动作；
 - 在没有生产 Owner 时自动指定信任根；
-- 把本机 loopback 结果当成公网结果。
+- 把本机 loopback 结果当成公网结果；
+- 在没有真实试点数据时写无证据的性能或 ROI 数字。
 
 当前最短真实缺口仍以 [`docs/NEXT_GAP.md`](docs/NEXT_GAP.md) 为准。
