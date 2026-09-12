@@ -2,7 +2,7 @@
   "format": "twni.evidence-ledger.v0.1",
   "version": "0.1.0-alpha.29",
   "status": "VERIFIED_LOCAL_CANDIDATE",
-  "mergeCommit": "PENDING_MERGE",
+  "mergeCommit": "4692e88",
   "candidateCommit": "6786dc2",
   "verification": {
     "file": "evidence/0.1.0-alpha.29/LOCAL_VERIFICATION.json",
@@ -54,3 +54,4 @@
   "k400Verdict": "NOT_ADJUDICATED",
   "boundary": "OPP native interop candidate evidence is adapted through a thin TINP validator; no authority provider, physical multi-host deployment, independent third-party consumer or production claim."
 }
+

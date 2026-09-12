@@ -50,4 +50,5 @@ alpha.27 已合并：--verify 回执升级为 twni.opp-http-consumer-live-verify
 
 alpha.28 已合并：完整 `verify` 直接生成并校验仓库内公开 GitHub live 结果的 v2 离线回执，保存回执文件、输入根、文件哈希和回执摘要。合并提交为 8537536；它补齐正式验证见证与 CLI 输出的本机证据闭环，仍不提供第三方 consumer、生产 authority、真实异机或 K400 证据。
 
-alpha.29 候选：审计 OPP 最新 `main`（`61cc3828`）的 candidate native interop runtime，新增 TINP 薄适配器验证 OPP interop receipt 并生成 `twni.opp-native-interop-acceptance.v1`。OPP 继续拥有 native interop 语义，TINP 只绑定本地 acceptance；不升级 vendored OPP、不复制运行时、不授予 authority。
+alpha.29 已合并（merge `4692e88`）：审计 OPP 最新 `main`（`61cc3828`）的 candidate native interop runtime，新增 TINP 薄适配器验证 OPP interop receipt 并生成 `twni.opp-native-interop-acceptance.v1`。OPP 继续拥有 native interop 语义，TINP 只绑定本地 acceptance；不升级 vendored OPP、不复制运行时、不授予 authority。
+
