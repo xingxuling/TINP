@@ -1,0 +1,24 @@
+{
+  "format": "twni.recovery-anchor-demo.v1",
+  "status": "VERIFIED_LOCAL_EXTERNAL_RECOVERY_ANCHOR",
+  "transport": "udp",
+  "signerPid": 13972,
+  "nodePids": [
+    41968,
+    71608,
+    25260
+  ],
+  "firstAnchorRoot": "6321acafe68df4ed70d203251dd0f4ccced31005b6019d5640acd98350166cf2",
+  "secondAnchorRoot": "7a0314d1d7efa6aee3c48371f07067577e7192d09ad0b5f3f08017400e90b41d",
+  "firstSequence": 1,
+  "secondSequence": 2,
+  "rollbackDetected": true,
+  "rollbackCode": "RECOVERY_ANCHOR_ROLLBACK",
+  "externalKeyringNotCheckpointed": true,
+  "leasePreserved": true,
+  "evidenceRoot": "15c2a38402df589b0291ea0810a6baca868edc3202d66cdb8627ada7c8d6c973",
+  "authorityPublicKey": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAr8CbSyycDqCbmGNUj4AI4Z1GZAeHELmTW+UTrHYIoA8=\n-----END PUBLIC KEY-----\n",
+  "scope": "Actual independent signer process and complete local directory replay. No production registry, trusted clock, hardware custody or cross-device anchor.",
+  "ledger": "evidence/0.1.0-alpha.29/recovery-anchor-udp.jsonl",
+  "ledgerSha256": "a24148018a460e2ce9d77bc2f317f0e27e33f26f935430b8940e3ae94ddb4d66"
+}

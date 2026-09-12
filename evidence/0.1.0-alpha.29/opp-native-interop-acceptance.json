@@ -1,0 +1,10 @@
+{
+  "format": "twni.opp-native-interop-acceptance.v1",
+  "interopReceiptRoot": "77b4cdfaa0f95a9cc75a4c7d08f9d8cc3b94d40f2a9b46b87c51b2b1496f7ff2",
+  "status": "PASS",
+  "finalResultRoot": "ed6793599193a88ce3df7a785b90cc47e08976911652eb5334b5b1557faf810e",
+  "authorityGranted": false,
+  "sideEffects": false,
+  "boundary": "TINP binds one OPP-owned candidate interop receipt; it does not copy OPP runtime semantics, grant authority or claim production interoperability",
+  "acceptanceRoot": "0d51f4f1183294ce50137fa75f9decb4fdf5f387f9ec5846b3bce3ec42bf9bb5"
+}
