@@ -18,7 +18,7 @@
 
 当前版本已经通过本机集成验证，但仍是研究/试点候选，不是生产公网，也不声称已经具备生产级密钥托管、第三方安全认证或军用安全认证。
 
-> **许可提醒：** 仓库包含历史来源快照和 `vendor/`。对外再分发、打包或商业发行前，请先看 [`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md)。
+> **License TL;DR：** 当前对外许可与发行资格仍是 `NOT_ADJUDICATED`。公开仓库不等于整仓已经获得统一商业再分发许可；对外打包、再分发或商业发行前，需要先完成 `vendor/` 等历史来源组件的许可裁决。详见 [`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md)。
 
 ## 先看业务故障 Demo
 
@@ -29,23 +29,24 @@ python -m pip install -r adapters/requirements.txt
 node scripts/business-demo.mjs
 ```
 
-这个 Demo 会真实跑三次本机请求：
+如果想把**这一次真实运行**保存成 JSON：
 
-```text
-1. 正常：A -> B -> C
-2. 主 Provider C 不可用：切换到备用 Provider B
-3. A-B 中间链路故障：改走 A -> C
+```powershell
+node scripts/business-demo.mjs --out .runs/business-demo-output.json
 ```
 
-每一步都会打印：
+输出会记录主体、会话、实际路由、实际 Provider、服务等级、权限租约根、回执根和当前证据根。
 
-- 实际路由；
-- 实际 Provider；
-- 服务等级；
-- 回执根；
-- 当前证据根。
+当前回归套件已经固定验证了这些行为：
 
-业务文本只是演示载荷，不连接真实 CRM；底层 Provider 仍使用只读、确定性的测试能力。这个 Demo 要展示的是**故障发生以后，身份、权限、路由和证据是否还能保持连续**。
+| 场景 | 路由 | Provider | 服务等级 |
+|---|---|---|---|
+| 正常执行 | `A -> B -> C` | `C:counter` | `Full` |
+| 主 Provider C 不可用 | `A -> B` | `B:counter` | `Essential` |
+| A-B 链路故障 | `A -> C` | `C:counter` | `Reduced` |
+| 所有 Provider 不可用 | 不执行 | 无 | `Survival`，返回 `deferred / NO_AUTHORIZED_PROVIDER` |
+
+这些断言来自当前 `tests/profiles.test.mjs`。业务文本只是演示载荷，不连接真实 CRM；底层 Provider 仍使用只读、确定性的测试能力。
 
 完整说明见 [`BUSINESS_DEMO.md`](BUSINESS_DEMO.md)。
 
@@ -89,6 +90,58 @@ TINP 不是用来取代这些工具的。
 
 更完整的说明见 [`docs/COMPARISON.md`](docs/COMPARISON.md)。
 
+## OPP + TINP 目前已经打通到哪里？
+
+两者的分工可以先这样理解：
+
+```text
+企业现有系统 / API / Agent / MCP
+              ↓
+             OPP
+        能不能接？怎么转？
+              ↓
+             TINP
+     谁能调用？失败怎么办？
+              ↓
+       执行 + 回执 + 恢复
+```
+
+alpha.29 已经有一条真实、固定、可复核的组合证据：**TINP 对 OPP native interop receipt 做精确结构和 root 校验，再生成 acceptance binding。**
+
+```text
+OPP interop receipt root:
+77b4cdfaa0f95a9cc75a4c7d08f9d8cc3b94d40f2a9b46b87c51b2b1496f7ff2
+
+TINP acceptance root:
+0d51f4f1183294ce50137fa75f9decb4fdf5f387f9ec5846b3bce3ec42bf9bb5
+
+status: PASS
+authorityGranted: false
+sideEffects: false
+```
+
+证据文件：
+
+- [`evidence/0.1.0-alpha.29/opp-native-interop-acceptance.json`](evidence/0.1.0-alpha.29/opp-native-interop-acceptance.json)
+- [`evidence/0.1.0-alpha.29/EVIDENCE_LEDGER.json`](evidence/0.1.0-alpha.29/EVIDENCE_LEDGER.json)
+
+这证明的是**当前候选能够验收绑定一条 OPP-owned interop 结果**，不是“任意 OPP bridge 已经自动进入生产 TINP 网络”。
+
+## 我怎么接自己的 Agent / Provider？
+
+当前已经有可用的 alpha 接口，但还没有稳定的第三方 Provider SDK。
+
+现在的集成表面包括：
+
+- Caller：`InternetSuite.start()` + `suite.use(...)`；
+- OPP native interop acceptance：`src/opp-native-interop.mjs`；
+- 受策略约束的只读 HTTPS / JSON adapter；
+- 仓库内部 Provider manifest / node process 路径。
+
+如果今天要接一个新的 Provider，仍属于**源码级 PoC 集成**：需要定义 capability、Provider manifest、执行入口、签名 receipt，并补权限/故障/重放/恢复负例测试。
+
+完整步骤和当前 public surface 边界见 [`docs/INTEGRATION.md`](docs/INTEGRATION.md)。
+
 ## 技术最小 Demo（3 分钟）
 
 如果想看最小执行链：
@@ -98,25 +151,20 @@ python -m pip install -r adapters/requirements.txt
 npm run demo -- "我要使用字符计数能力完成：你好，TINP"
 ```
 
-当前最小 Demo 故意只做 Unicode 字符计数。重点不是“数几个字”，而是验证整条执行链能不能闭环。
-
-当前 `scripts/demo.mjs` 会输出下面这些字段；路径、节点和文件名会随实际运行变化：
+对这个固定输入，当前逻辑的稳定业务结果是：
 
 ```json
 {
-  "用户意图": "...",
-  "结果": {"count": 0},
-  "状态": "...",
-  "路径": ["..."],
-  "证据账本": "...",
-  "验证范围": "三个独立本机进程，真实回环传输",
-  "nodes": {"...": "..."}
+  "结果": {"count": 7},
+  "状态": "Full",
+  "路径": ["A", "B", "C"],
+  "验证范围": "三个独立本机进程，真实回环传输"
 }
 ```
 
-这里的 `count: 0` 只是结构示例，不是固定运行结果。真实结果由输入决定。
+PID、端口、会话和各类 hash/root 是运行时生成值，不写成固定常量。若要看你这一次运行的完整值，直接运行命令即可。
 
-完整说明见 [`DEMO.md`](DEMO.md)。当前版本的完整验证记录是：
+当前版本完整验证记录：
 
 ```text
 209 / 209 tests passed
@@ -143,9 +191,17 @@ TINP 的目标不是“永不失败”，而是：
 
 > **失败时不丢身份、不静默扩大权限、不把未知状态包装成成功。**
 
-当前候选已经覆盖身份、签名、权限租约、会话、Provider 目录、多跳请求、备用路由、Provider 替换、回执、证据账本、持久恢复、Pending、Recovery Anchor、Authority Registry 候选、TLS loopback 状态传输和可恢复分块传输等能力。
+## 五个常见术语，直接翻成人话
 
-如果这些术语看着烦，先不用管。普通话解释见 [`docs/GLOSSARY.md`](docs/GLOSSARY.md)。
+| 术语 | 一句话解释 |
+|---|---|
+| **Continuity Root** | 表示“还是同一个主体连续状态”的根标识；不是现实身份证明 |
+| **Authority Registry** | 当前规则下哪些签署方、公钥和角色被认可的候选注册结构 |
+| **Evidence Ledger** | 按顺序保存执行证据，并用哈希链连起来的账本 |
+| **Recovery Anchor** | 外部保留的已知恢复锚点，用来帮助发现回退或旧状态替换 |
+| **Pending** | 无法确认请求是否已经完成时留下的未决状态；默认不盲目重发 |
+
+完整术语表见 [`docs/GLOSSARY.md`](docs/GLOSSARY.md)。
 
 ## 适合谁 / 不适合谁
 
@@ -172,16 +228,37 @@ TINP 的目标不是“永不失败”，而是：
 | **高保障 / 受监管环境** | fail-closed、断连、恢复、操作员批准、证据 | 有研究价值，但不能宣称生产或认证级能力 |
 | **个人 / 生活化** | 本地 AI 的一次性权限、操作历史、跨节点恢复 | 目前只是长期产品化方向，还不是消费产品 |
 
-## OPP 和 TINP 的分工
+## 从试点到生产还差什么？
+
+当前路线不是“alpha 再改几个版本号就生产”，而是有明确验收门：
 
 ```text
-OPP：这个系统会什么？两个系统能不能接？怎么转换？
-TINP：谁能调用？怎么传？失败怎么办？怎么恢复？
+当前：VERIFIED_LOCAL_CANDIDATE
+        ↓
+稳定第三方集成接口
+        ↓
+真实两台设备闭环
+        ↓
+生产 Authority + 密钥生命周期
+        ↓
+可信时间 + 独立第三方接入
+        ↓
+独立安全评估
+        ↓
+才讨论生产部署
 ```
 
-TINP 会使用 OPP 的能力协商和互操作结果，但**能力兼容不等于已经授权**。
+最关键的未完成项包括：
 
-OPP：<https://github.com/xingxuling/OPP>
+- 稳定第三方 Caller / Provider 接口；
+- 真实物理多机验证；
+- 生产 Authority Owner；
+- 完整密钥生成、托管、轮换、撤销与恢复；
+- 可信外部时间与透明历史；
+- 独立第三方 consumer；
+- 独立安全评估。
+
+完整路线见 [`ROADMAP.md`](ROADMAP.md) 和 [`docs/NEXT_GAP.md`](docs/NEXT_GAP.md)。
 
 ## 当前还没证明什么
 
@@ -202,8 +279,9 @@ OPP：<https://github.com/xingxuling/OPP>
 
 ## 文档入口
 
-- [`BUSINESS_DEMO.md`](BUSINESS_DEMO.md) — 业务故障 Demo：Provider / 链路切换
+- [`BUSINESS_DEMO.md`](BUSINESS_DEMO.md) — 业务故障 Demo：Provider / 链路切换与运行证据导出
 - [`DEMO.md`](DEMO.md) — 技术最小 Demo
+- [`docs/INTEGRATION.md`](docs/INTEGRATION.md) — 怎么接自己的 Agent / Provider
 - [`docs/COMPARISON.md`](docs/COMPARISON.md) — 和 MCP / A2A / OAuth / Temporal / MQ 的关系
 - [`docs/GLOSSARY.md`](docs/GLOSSARY.md) — 术语翻成普通话
 - [`docs/USE_CASES.md`](docs/USE_CASES.md) — 什么时候值得用 TINP
@@ -211,11 +289,14 @@ OPP：<https://github.com/xingxuling/OPP>
 - [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — 架构和模块分工
 - [`docs/NEXT_GAP.md`](docs/NEXT_GAP.md) — 当前最短真实缺口
 - [`docs/EXTERNAL_ACCEPTANCE_GATES.md`](docs/EXTERNAL_ACCEPTANCE_GATES.md) — 外部验收门
-- [`ROADMAP.md`](ROADMAP.md) — 后续路线
+- [`ROADMAP.md`](ROADMAP.md) — 从试点到生产的路线
 - [`SECURITY.md`](SECURITY.md) — 安全边界与报告方式
+- [`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md) — 当前许可审计
 
 ## License / 许可
 
-这个仓库包含历史来源快照和 `vendor/` 目录，公开仓库不等于所有历史组件都自动拥有统一开放许可。
+当前仓库的对外许可与发行资格仍是 **`NOT_ADJUDICATED`**。
 
-对外再分发、打包或商业发行前，请以 [`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md) 为准。
+公开仓库不等于所有历史组件都自动拥有统一开放许可。特别是 `vendor/` 中的固定历史快照不能因为上游后来出现新许可证，就自动追溯获得同一结论。
+
+如果要对外打包、再分发或商业发行，请先完成各来源组件的许可核对与裁决。详见 [`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md)。
