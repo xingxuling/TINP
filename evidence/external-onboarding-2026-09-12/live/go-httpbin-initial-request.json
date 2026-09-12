@@ -1,0 +1,9 @@
+{
+  "format": "twni.opp-http-readonly-request.v1",
+  "requestId": "go-httpbin-initial",
+  "policyRoot": "4aa8ec7d0aa2a6405d611e173401d89347ef80cb58a29af480c5c4e93f99f015",
+  "method": "GET",
+  "url": "https://httpbingo.org/get?opp=external-probe",
+  "headers": {},
+  "requestRoot": "dbdd480fce6b164e37a2ea3f9c233624cd02f9237a3b809f4fdbf39bef47e0c5"
+}

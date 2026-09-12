@@ -1,0 +1,705 @@
+produce	Set up job	﻿2026-09-12T11:54:53.1570551Z Current runner version: '2.337.0'
+produce	Set up job	2026-09-12T11:54:53.1598314Z ##[group]Runner Image Provisioner
+produce	Set up job	2026-09-12T11:54:53.1599350Z Hosted Compute Agent
+produce	Set up job	2026-09-12T11:54:53.1599985Z Version: 20260828.587
+produce	Set up job	2026-09-12T11:54:53.1600658Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+produce	Set up job	2026-09-12T11:54:53.1601465Z Build Date: 2026-08-28T16:44:25Z
+produce	Set up job	2026-09-12T11:54:53.1602228Z Worker ID: {95ab87d2-f4bd-4492-bbc0-4ebc86b7e41e}
+produce	Set up job	2026-09-12T11:54:53.1603061Z Azure Region: westus
+produce	Set up job	2026-09-12T11:54:53.1603676Z ##[endgroup]
+produce	Set up job	2026-09-12T11:54:53.1605303Z ##[group]Operating System
+produce	Set up job	2026-09-12T11:54:53.1606047Z Ubuntu
+produce	Set up job	2026-09-12T11:54:53.1607051Z 24.04.5
+produce	Set up job	2026-09-12T11:54:53.1607612Z LTS
+produce	Set up job	2026-09-12T11:54:53.1608230Z ##[endgroup]
+produce	Set up job	2026-09-12T11:54:53.1608848Z ##[group]Runner Image
+produce	Set up job	2026-09-12T11:54:53.1609523Z Image: ubuntu-24.04
+produce	Set up job	2026-09-12T11:54:53.1610168Z Version: 20260907.300.1
+produce	Set up job	2026-09-12T11:54:53.1611258Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260907.300/images/ubuntu/Ubuntu2404-Readme.md
+produce	Set up job	2026-09-12T11:54:53.1613554Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260907.300
+produce	Set up job	2026-09-12T11:54:53.1614596Z ##[endgroup]
+produce	Set up job	2026-09-12T11:54:53.1615738Z ##[group]GITHUB_TOKEN Permissions
+produce	Set up job	2026-09-12T11:54:53.1618412Z Contents: read
+produce	Set up job	2026-09-12T11:54:53.1619101Z Metadata: read
+produce	Set up job	2026-09-12T11:54:53.1619685Z ##[endgroup]
+produce	Set up job	2026-09-12T11:54:53.1621879Z Secret source: Actions
+produce	Set up job	2026-09-12T11:54:53.1622881Z Cache mode: write
+produce	Set up job	2026-09-12T11:54:53.1623699Z Prepare workflow directory
+produce	Set up job	2026-09-12T11:54:53.1963054Z Prepare all required actions
+produce	Set up job	2026-09-12T11:54:53.2031828Z Getting action download info
+produce	Set up job	2026-09-12T11:54:53.6928832Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+produce	Set up job	2026-09-12T11:54:53.8286778Z Download action repository 'actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+produce	Set up job	2026-09-12T11:54:53.9248423Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+produce	Set up job	2026-09-12T11:54:54.1493149Z Complete job name: produce
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	﻿2026-09-12T11:54:54.2278503Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2287137Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2288112Z with:
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2288571Z   repository: xingxuling/OPP
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2289144Z   ref: 231a8a95631227b85ce58a1aaf2ad1b91210c10f
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2289766Z   persist-credentials: false
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2293389Z   token: ***
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2293840Z   ssh-strict: true
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2294297Z   ssh-user: git
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2294738Z   clean: true
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2295231Z   sparse-checkout-cone-mode: true
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2295771Z   fetch-depth: 1
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2296214Z   fetch-tags: false
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2297168Z   show-progress: true
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2297689Z   lfs: false
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2298112Z   submodules: false
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2298574Z   set-safe-directory: true
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2299094Z   allow-unsafe-pr-checkout: false
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.2299953Z ##[endgroup]
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3288608Z Syncing repository: xingxuling/OPP
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3290765Z ##[group]Getting Git version info
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3291499Z Working directory is '/home/runner/work/TINP/TINP'
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3292461Z [command]/usr/bin/git version
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3372176Z git version 2.55.0
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3396937Z ##[endgroup]
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3431760Z Temporarily overriding HOME='/home/runner/work/_temp/0f8dd2a3-43c3-4705-a162-8666bbe17c85' before making global git config changes
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3434197Z Adding repository directory to the temporary git global config as a safe directory
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3438168Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TINP/TINP
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3517427Z Deleting the contents of '/home/runner/work/TINP/TINP'
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3520028Z ##[group]Initializing the repository
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3521444Z [command]/usr/bin/git init /home/runner/work/TINP/TINP
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3601605Z hint: Using 'master' as the name for the initial branch. This default branch name
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3603048Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3604034Z hint: to use in all of your new repositories, which will suppress this warning,
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3604819Z hint: call:
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3605255Z hint:
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3605788Z hint: 	git config --global init.defaultBranch <name>
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3606711Z hint:
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3607322Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3608312Z hint: 'development'. The just-created branch can be renamed via this command:
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3609089Z hint:
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3609526Z hint: 	git branch -m <name>
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3610037Z hint:
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3610685Z hint: Disable this message with "git config set advice.defaultBranchName false"
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3616712Z Initialized empty Git repository in /home/runner/work/TINP/TINP/.git/
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3627373Z [command]/usr/bin/git remote add origin https://github.com/xingxuling/OPP
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3677322Z ##[endgroup]
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3678678Z ##[group]Disabling automatic garbage collection
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3681962Z [command]/usr/bin/git config --local gc.auto 0
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3747006Z ##[endgroup]
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3747921Z ##[group]Setting up auth
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3748687Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.3760788Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.4152255Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.4197629Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.4438239Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.4474957Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.4702381Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.4741751Z ##[endgroup]
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.4742631Z ##[group]Fetching the repository
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:54.4751777Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin 231a8a95631227b85ce58a1aaf2ad1b91210c10f
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1059360Z From https://github.com/xingxuling/OPP
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1061949Z  * branch            231a8a95631227b85ce58a1aaf2ad1b91210c10f -> FETCH_HEAD
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1068054Z ##[endgroup]
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1070247Z ##[group]Determining the checkout info
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1072470Z ##[endgroup]
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1074095Z [command]/usr/bin/git sparse-checkout disable
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1123669Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1157649Z ##[group]Checking out the ref
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1162997Z [command]/usr/bin/git checkout --progress --force 231a8a95631227b85ce58a1aaf2ad1b91210c10f
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1360197Z Note: switching to '231a8a95631227b85ce58a1aaf2ad1b91210c10f'.
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1361675Z 
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1362816Z You are in 'detached HEAD' state. You can look around, make experimental
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1365807Z changes and commit them, and you can discard any commits you make in this
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1368583Z state without impacting any branches by switching back to a branch.
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1369718Z 
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1370446Z If you want to create a new branch to retain commits you create, you may
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1372195Z do so (now or later) by using -c with the switch command. Example:
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1373304Z 
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1373779Z   git switch -c <new-branch-name>
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1374529Z 
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1374988Z Or undo this operation with:
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1375718Z 
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1376128Z   git switch -
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1377165Z 
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1378526Z Turn off this advice by setting config variable advice.detachedHead to false
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1379908Z 
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1380907Z HEAD is now at 231a8a9 fix: preserve evidence bytes and existing roadmap commitments
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1385208Z ##[endgroup]
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1419833Z [command]/usr/bin/git log -1 --format=%H
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1448616Z 231a8a95631227b85ce58a1aaf2ad1b91210c10f
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1458298Z ##[group]Removing auth
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1461984Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1495192Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1715408Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1745311Z http.https://github.com/.extraheader
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1755695Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.1791677Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.2010279Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.2041486Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+produce	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:54:55.2281641Z ##[endgroup]
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	﻿2026-09-12T11:54:55.2674259Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:54:55.2682917Z ##[group]Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:54:55.2684824Z with:
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:54:55.2685858Z   python-version: 3.11
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:54:55.2687640Z   check-latest: false
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:54:55.2698672Z   token: ***
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:54:55.2768329Z   update-environment: true
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:54:55.2770324Z   allow-prereleases: false
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:54:55.2772051Z   freethreaded: false
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:54:55.2773223Z ##[endgroup]
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:54:55.4125381Z ##[group]Installed versions
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:54:55.4223875Z (node:2330) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:54:55.4228264Z (Use `node --trace-deprecation ...` to show where the warning was created)
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:54:55.4230669Z Successfully set up CPython (3.11.16)
+produce	Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:54:55.4233242Z ##[endgroup]
+produce	Build and install OPP wheel and pinned external libraries	﻿2026-09-12T11:54:55.4448806Z ##[group]Run python -m pip wheel --no-deps . -w /tmp/opp-wheels
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:55.4450575Z ^[[36;1mpython -m pip wheel --no-deps . -w /tmp/opp-wheels^[[0m
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:55.4452007Z ^[[36;1mpython -m venv /tmp/opp-env^[[0m
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:55.4453812Z ^[[36;1m/tmp/opp-env/bin/python -m pip install /tmp/opp-wheels/*.whl -r examples/external-projects/requirements.txt^[[0m
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:55.4518842Z shell: /usr/bin/bash -e {0}
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:55.4520032Z env:
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:55.4521232Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:55.4522878Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:55.4524521Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:55.4526056Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:55.4527854Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:55.4529040Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:55.4530098Z ##[endgroup]
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:56.1904987Z Processing ./.
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:56.1921661Z   Installing build dependencies: started
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:56.8671141Z   Installing build dependencies: finished with status 'done'
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:56.8677142Z   Getting requirements to build wheel: started
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:57.5856012Z   Getting requirements to build wheel: finished with status 'done'
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:57.5865821Z   Preparing metadata (pyproject.toml): started
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:57.8672133Z   Preparing metadata (pyproject.toml): finished with status 'done'
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:57.8696451Z Building wheels for collected packages: taowind-opp
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:57.8706512Z   Building wheel for taowind-opp (pyproject.toml): started
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:58.0872351Z   Building wheel for taowind-opp (pyproject.toml): finished with status 'done'
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:58.0880751Z   Created wheel for taowind-opp: filename=taowind_opp-0.3.0.dev1-py3-none-any.whl size=60236 sha256=044d6e76753a3d05944d02ea5d85d6b59e2b25dce5fbcfef7a9fa742308fd003
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:58.0883411Z   Stored in directory: /tmp/pip-ephem-wheel-cache-srma4ul1/wheels/7a/16/1a/e6a33523d201ee8377e74c6e535b9fba7f7026b2a7ac318787
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:54:58.0905519Z Successfully built taowind-opp
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.3227466Z Processing /tmp/opp-wheels/taowind_opp-0.3.0.dev1-py3-none-any.whl
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.3835058Z Collecting boltons==26.2.0 (from -r examples/external-projects/requirements.txt (line 1))
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.4361146Z   Downloading boltons-26.2.0-py3-none-any.whl.metadata (7.0 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.4643145Z Collecting more-itertools==11.1.0 (from -r examples/external-projects/requirements.txt (line 2))
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.4757979Z   Downloading more_itertools-11.1.0-py3-none-any.whl.metadata (41 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.4902109Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 41.4/41.4 kB 2.9 MB/s eta 0:00:00
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.5072542Z Collecting jmespath==1.1.0 (from -r examples/external-projects/requirements.txt (line 3))
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.5179835Z   Downloading jmespath-1.1.0-py3-none-any.whl.metadata (7.6 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.5618063Z Collecting jsonschema>=4.23 (from taowind-opp==0.3.0.dev1)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.5732364Z   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.6122637Z Collecting attrs>=22.2.0 (from jsonschema>=4.23->taowind-opp==0.3.0.dev1)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.6233108Z   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.6448475Z Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.23->taowind-opp==0.3.0.dev1)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.6558905Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.6945618Z Collecting referencing>=0.28.4 (from jsonschema>=4.23->taowind-opp==0.3.0.dev1)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:02.7058615Z   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.0549056Z Collecting rpds-py>=0.25.0 (from jsonschema>=4.23->taowind-opp==0.3.0.dev1)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.0656158Z   Downloading rpds_py-2026.6.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.1117043Z Collecting typing-extensions>=4.4.0 (from referencing>=0.28.4->jsonschema>=4.23->taowind-opp==0.3.0.dev1)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.1221431Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.1396286Z Downloading boltons-26.2.0-py3-none-any.whl (199 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.1629543Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 199.5/199.5 kB 9.2 MB/s eta 0:00:00
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.1737100Z Downloading more_itertools-11.1.0-py3-none-any.whl (72 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.1784275Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.2/72.2 kB 24.0 MB/s eta 0:00:00
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.1891582Z Downloading jmespath-1.1.0-py3-none-any.whl (20 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.2022674Z Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.2068403Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 30.7 MB/s eta 0:00:00
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.2173190Z Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.2214667Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 67.5/67.5 kB 24.8 MB/s eta 0:00:00
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.2319566Z Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.2443826Z Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.2569636Z Downloading rpds_py-2026.6.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (371 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.2792985Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 371.3/371.3 kB 17.8 MB/s eta 0:00:00
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.2896673Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.2962054Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 7.8 MB/s eta 0:00:00
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:03.3701720Z Installing collected packages: typing-extensions, rpds-py, more-itertools, jmespath, boltons, attrs, referencing, jsonschema-specifications, jsonschema, taowind-opp
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:04.6779635Z Successfully installed attrs-26.1.0 boltons-26.2.0 jmespath-1.1.0 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 more-itertools-11.1.0 referencing-0.37.0 rpds-py-2026.6.3 taowind-opp-0.3.0.dev1 typing-extensions-4.16.0
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:04.7766563Z 
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:04.7767479Z [notice] A new release of pip is available: 24.0 -> 26.2.1
+produce	Build and install OPP wheel and pinned external libraries	2026-09-12T11:55:04.7767988Z [notice] To update, run: python -m pip install --upgrade pip
+produce	Execute real libraries from the installed wheel	﻿2026-09-12T11:55:04.8931717Z ##[group]Run /tmp/opp-env/bin/python -I scripts/verify_external_projects.py --out /tmp/opp-evidence
+produce	Execute real libraries from the installed wheel	2026-09-12T11:55:04.8932498Z ^[[36;1m/tmp/opp-env/bin/python -I scripts/verify_external_projects.py --out /tmp/opp-evidence^[[0m
+produce	Execute real libraries from the installed wheel	2026-09-12T11:55:04.8972363Z shell: /usr/bin/bash -e {0}
+produce	Execute real libraries from the installed wheel	2026-09-12T11:55:04.8972637Z env:
+produce	Execute real libraries from the installed wheel	2026-09-12T11:55:04.8972916Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Execute real libraries from the installed wheel	2026-09-12T11:55:04.8973386Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+produce	Execute real libraries from the installed wheel	2026-09-12T11:55:04.8973850Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Execute real libraries from the installed wheel	2026-09-12T11:55:04.8974260Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Execute real libraries from the installed wheel	2026-09-12T11:55:04.8974681Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Execute real libraries from the installed wheel	2026-09-12T11:55:04.8975101Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+produce	Execute real libraries from the installed wheel	2026-09-12T11:55:04.8975443Z ##[endgroup]
+produce	Execute real libraries from the installed wheel	2026-09-12T11:55:06.0788416Z {"status": "REAL_THIRD_PARTY_LIBRARIES_LOCAL_OPERATOR", "out": "/tmp/opp-evidence", "cases": [{"project": "boltons", "interfaceCount": 175, "untypedOutputs": 173, "scanSeconds": 0.2678, "version": "26.2.0", "automatedRunSeconds": 0.2125, "humanMinutes": null, "humanTimingStatus": "NOT_MEASURED", "manualInterventions": ["choose API", "write thin library wrapper", "declare JSON field schema", "install pinned packages"], "automatic": ["static signature discovery", "declared-shape compatibility", "normalized field-rename synthesis", "child execution receipts"], "bridge": "PASS", "negative": "TypeError:expected an iterable, not <class 'int'>", "recovery": "EXPLICIT_STATELESS_REINVOKE", "offlineVerified": true, "independentOperator": false, "physicalMultiHost": "NOT_RUN"}, {"project": "more-itertools", "interfaceCount": 180, "untypedOutputs": 180, "scanSeconds": 0.1142, "version": "11.1.0", "automatedRunSeconds": 0.2162, "humanMinutes": null, "humanTimingStatus": "NOT_MEASURED", "manualInterventions": ["choose API", "write thin library wrapper", "declare JSON field schema", "install pinned packages"], "automatic": ["static signature discovery", "declared-shape compatibility", "normalized field-rename synthesis", "child execution receipts"], "bridge": "PASS", "negative": "TypeError:'int' object is not iterable", "recovery": "EXPLICIT_STATELESS_REINVOKE", "offlineVerified": true, "independentOperator": false, "physicalMultiHost": "NOT_RUN"}, {"project": "jmespath", "interfaceCount": 32, "untypedOutputs": 32, "scanSeconds": 0.0356, "version": "1.1.0", "automatedRunSeconds": 0.2077, "humanMinutes": null, "humanTimingStatus": "NOT_MEASURED", "manualInterventions": ["choose API", "write thin library wrapper", "declare JSON field schema", "install pinned packages"], "automatic": ["static signature discovery", "declared-shape compatibility", "normalized field-rename synthesis", "child execution receipts"], "bridge": "PASS", "negative": "JMESPathTypeError:In function sort(), invalid type for value: 7, expected one of: ['array-string', 'array-number'], received: \"number\"", "recovery": "EXPLICIT_STATELESS_REINVOKE", "offlineVerified": true, "independentOperator": false, "physicalMultiHost": "NOT_RUN"}]}
+produce	Bind transferred evidence outside its payload	﻿2026-09-12T11:55:06.0999850Z ##[group]Run python -c "import hashlib,os; from pathlib import Path; digest=hashlib.sha256(Path('/tmp/opp-evidence/summary.json').read_bytes()).hexdigest(); Path(os.environ['GITHUB_OUTPUT']).write_text('summary-hash='+digest+'\n')"
+produce	Bind transferred evidence outside its payload	2026-09-12T11:55:06.1001578Z ^[[36;1mpython -c "import hashlib,os; from pathlib import Path; digest=hashlib.sha256(Path('/tmp/opp-evidence/summary.json').read_bytes()).hexdigest(); Path(os.environ['GITHUB_OUTPUT']).write_text('summary-hash='+digest+'\n')"^[[0m
+produce	Bind transferred evidence outside its payload	2026-09-12T11:55:06.1039053Z shell: /usr/bin/bash -e {0}
+produce	Bind transferred evidence outside its payload	2026-09-12T11:55:06.1039312Z env:
+produce	Bind transferred evidence outside its payload	2026-09-12T11:55:06.1039590Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Bind transferred evidence outside its payload	2026-09-12T11:55:06.1040065Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+produce	Bind transferred evidence outside its payload	2026-09-12T11:55:06.1040519Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Bind transferred evidence outside its payload	2026-09-12T11:55:06.1040924Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Bind transferred evidence outside its payload	2026-09-12T11:55:06.1041322Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Bind transferred evidence outside its payload	2026-09-12T11:55:06.1041783Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+produce	Bind transferred evidence outside its payload	2026-09-12T11:55:06.1042119Z ##[endgroup]
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	﻿2026-09-12T11:55:06.1438088Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1439501Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1439899Z with:
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1440099Z   name: opp-linux-evidence
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1440346Z   path: /tmp/opp-evidence
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1440586Z   if-no-files-found: error
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1440834Z   retention-days: 14
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1441046Z   compression-level: 6
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1441258Z   overwrite: false
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1441484Z   include-hidden-files: false
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1441715Z env:
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1441965Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1442397Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib/pkgconfig
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1442863Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1443245Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1443621Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.16/x64
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1444006Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.16/x64/lib
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.1444330Z ##[endgroup]
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.3170691Z (node:2476) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.3171669Z (Use `node --trace-deprecation ...` to show where the warning was created)
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.3277172Z With the provided path, there will be 12 files uploaded
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.3278288Z Artifact name is valid!
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.3278691Z Root directory input is valid!
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.7044286Z Beginning upload of artifact content to blob storage
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:06.7488386Z (node:2476) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:07.1620016Z Uploaded bytes 51305
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:07.2420689Z Finished uploading artifact content to blob storage!
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:07.2421830Z SHA256 digest of uploaded artifact zip is 1645dd8c5382ca1254d753fd0a69b9283c6fa4b0266260acb506fe6230db14dc
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:07.2423200Z Finalizing artifact upload
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:07.5165158Z Artifact opp-linux-evidence.zip successfully finalized. Artifact ID 10297885199
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:07.5166917Z Artifact opp-linux-evidence has been successfully uploaded! Final size is 51305 bytes. Artifact ID is 10297885199
+produce	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:07.5173059Z Artifact download URL: https://github.com/xingxuling/TINP/actions/runs/34692267549/artifacts/10297885199
+produce	Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	﻿2026-09-12T11:55:07.5353756Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+produce	Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:55:07.5355019Z Post job cleanup.
+produce	Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:55:07.6586832Z (node:2490) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+produce	Post Run actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065	2026-09-12T11:55:07.6588212Z (Use `node --trace-deprecation ...` to show where the warning was created)
+produce	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	﻿2026-09-12T11:55:07.6789491Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+produce	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:07.6791728Z Post job cleanup.
+produce	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:07.7786051Z [command]/usr/bin/git version
+produce	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:07.7839158Z git version 2.55.0
+produce	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:07.7889807Z Temporarily overriding HOME='/home/runner/work/_temp/a0ae0187-4984-4b0f-9094-7841cc9ad054' before making global git config changes
+produce	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:07.7907315Z Adding repository directory to the temporary git global config as a safe directory
+produce	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:07.7908597Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TINP/TINP
+produce	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:07.7963863Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+produce	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:07.8012738Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+produce	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:07.8356760Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+produce	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:07.8444474Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+produce	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:07.8779591Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+produce	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:07.8859716Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+produce	Complete job	﻿2026-09-12T11:55:07.9288134Z Evaluate and set job outputs
+produce	Complete job	2026-09-12T11:55:07.9295382Z Set output 'summary-hash'
+produce	Complete job	2026-09-12T11:55:07.9298045Z Cleaning up orphan processes
+produce	Complete job	2026-09-12T11:55:07.9606669Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify (ubuntu-latest)	Set up job	﻿2026-09-12T11:55:12.7582851Z Current runner version: '2.337.0'
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7621174Z ##[group]Runner Image Provisioner
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7622735Z Hosted Compute Agent
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7623909Z Version: 20260828.587
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7625276Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7626651Z Build Date: 2026-08-28T16:44:25Z
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7627849Z Worker ID: {d7802fb5-ca64-45c3-939f-25392ec8c8a7}
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7629263Z Azure Region: centralus
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7630758Z ##[endgroup]
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7633112Z ##[group]Operating System
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7634390Z Ubuntu
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7635072Z 24.04.5
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7635677Z LTS
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7636235Z ##[endgroup]
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7636785Z ##[group]Runner Image
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7637450Z Image: ubuntu-24.04
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7638020Z Version: 20260907.300.1
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7639474Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260907.300/images/ubuntu/Ubuntu2404-Readme.md
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7641621Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260907.300
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7642688Z ##[endgroup]
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7643778Z ##[group]GITHUB_TOKEN Permissions
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7645997Z Contents: read
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7646627Z Metadata: read
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7647253Z ##[endgroup]
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7649753Z Secret source: Actions
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7651103Z Cache mode: write
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7652195Z Prepare workflow directory
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.7993907Z Prepare all required actions
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:12.8042534Z Getting action download info
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:13.0592931Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:13.1831832Z Download action repository 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:13.2720925Z Download action repository 'actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:13.7422308Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+verify (ubuntu-latest)	Set up job	2026-09-12T11:55:13.9620762Z Complete job name: verify (ubuntu-latest)
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	﻿2026-09-12T11:55:14.0446571Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0456237Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0457271Z with:
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0457783Z   persist-credentials: false
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0458368Z   repository: xingxuling/TINP
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0462880Z   token: ***
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0463380Z   ssh-strict: true
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0463907Z   ssh-user: git
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0464379Z   clean: true
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0464874Z   sparse-checkout-cone-mode: true
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0465457Z   fetch-depth: 1
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0465945Z   fetch-tags: false
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0466449Z   show-progress: true
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0466965Z   lfs: false
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0467477Z   submodules: false
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0467972Z   set-safe-directory: true
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0468535Z   allow-unsafe-pr-checkout: false
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.0469381Z ##[endgroup]
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1535199Z Syncing repository: xingxuling/TINP
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1537557Z ##[group]Getting Git version info
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1538524Z Working directory is '/home/runner/work/TINP/TINP'
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1540016Z [command]/usr/bin/git version
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1618418Z git version 2.55.0
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1647593Z ##[endgroup]
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1665124Z Temporarily overriding HOME='/home/runner/work/_temp/38e29fac-3841-4886-8669-242f33ba323b' before making global git config changes
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1668972Z Adding repository directory to the temporary git global config as a safe directory
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1672534Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TINP/TINP
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1725036Z Deleting the contents of '/home/runner/work/TINP/TINP'
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1731154Z ##[group]Initializing the repository
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1734908Z [command]/usr/bin/git init /home/runner/work/TINP/TINP
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1852496Z hint: Using 'master' as the name for the initial branch. This default branch name
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1854573Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1856266Z hint: to use in all of your new repositories, which will suppress this warning,
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1857989Z hint: call:
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1858835Z hint:
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1859800Z hint: 	git config --global init.defaultBranch <name>
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1861129Z hint:
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1862220Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1864068Z hint: 'development'. The just-created branch can be renamed via this command:
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1865569Z hint:
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1866312Z hint: 	git branch -m <name>
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1867161Z hint:
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1868353Z hint: Disable this message with "git config set advice.defaultBranchName false"
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1870768Z Initialized empty Git repository in /home/runner/work/TINP/TINP/.git/
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1874898Z [command]/usr/bin/git remote add origin https://github.com/xingxuling/TINP
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1933521Z ##[endgroup]
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1935148Z ##[group]Disabling automatic garbage collection
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1936683Z [command]/usr/bin/git config --local gc.auto 0
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1966577Z ##[endgroup]
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1968627Z ##[group]Setting up auth
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1974149Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.2017583Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.2432084Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.2468475Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.2695660Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.2734134Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.2960409Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.3000947Z ##[endgroup]
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.3002757Z ##[group]Fetching the repository
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.3013566Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +d9b956219400991e930bcd36bece10f89c171217:refs/remotes/origin/codex/tinp-external-onboarding-v01
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.0031825Z From https://github.com/xingxuling/TINP
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.0034112Z  * [new ref]         d9b956219400991e930bcd36bece10f89c171217 -> origin/codex/tinp-external-onboarding-v01
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.0038627Z ##[endgroup]
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.0040842Z ##[group]Determining the checkout info
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.0042519Z ##[endgroup]
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.0046053Z [command]/usr/bin/git sparse-checkout disable
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.0098411Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.0132249Z ##[group]Checking out the ref
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.0137389Z [command]/usr/bin/git checkout --progress --force -B codex/tinp-external-onboarding-v01 refs/remotes/origin/codex/tinp-external-onboarding-v01
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.1259119Z Switched to a new branch 'codex/tinp-external-onboarding-v01'
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.1264549Z branch 'codex/tinp-external-onboarding-v01' set up to track 'origin/codex/tinp-external-onboarding-v01'.
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.1279715Z ##[endgroup]
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.1325442Z [command]/usr/bin/git log -1 --format=%H
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.1352749Z d9b956219400991e930bcd36bece10f89c171217
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.1363417Z ##[group]Removing auth
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.1367521Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.1402759Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.1629916Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.1660130Z http.https://github.com/.extraheader
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.1669107Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.1710541Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.1934978Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.1971898Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+verify (ubuntu-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:15.2195791Z ##[endgroup]
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	﻿2026-09-12T11:55:15.2637326Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.2643726Z ##[group]Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.2645389Z with:
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.2646292Z   node-version: 22
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.2647281Z   always-auth: false
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.2648292Z   check-latest: false
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.2659122Z   token: ***
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.2660079Z ##[endgroup]
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.4173039Z Found in cache @ /opt/hostedtoolcache/node/22.23.2/x64
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.4178219Z (node:2326) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.4183042Z ##[group]Environment details
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.4185597Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.8543779Z node: v22.23.2
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.8545066Z npm: 10.9.8
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.8545929Z yarn: 1.22.22
+verify (ubuntu-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:15.8547886Z ##[endgroup]
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	﻿2026-09-12T11:55:15.8792854Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:15.8798181Z ##[group]Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:15.8799816Z with:
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:15.8800955Z   name: opp-linux-evidence
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:15.8801979Z   path: transferred
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:15.8802910Z   merge-multiple: false
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:15.8803901Z   repository: xingxuling/TINP
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:15.8804945Z   run-id: 34692267549
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:15.8805862Z ##[endgroup]
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:16.0380952Z Downloading single artifact
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:16.0521522Z (node:2357) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:16.0524503Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:16.1941996Z Preparing to download the following artifacts:
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:16.1945238Z - opp-linux-evidence (ID: 10297885199, Size: 51305, Expected Digest: sha256:1645dd8c5382ca1254d753fd0a69b9283c6fa4b0266260acb506fe6230db14dc)
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:16.3576048Z Redirecting to blob download url: https://productionresultssa16.blob.core.windows.net/actions-results/bc6e0bec-cd83-45d6-8f0a-e8cd3ce499bf/workflow-job-run-1faf23cd-ed71-5838-b5c1-53b0bdd94065/artifacts/d75f2d205385ccdec3afdd3f2d80e3996f19d32b8d5e502fcb046e8e520d8bb4.zip
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:16.3592830Z Starting download of artifact to: /home/runner/work/TINP/TINP/transferred
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:16.4872979Z (node:2357) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:16.5212151Z SHA256 digest of downloaded artifact is 1645dd8c5382ca1254d753fd0a69b9283c6fa4b0266260acb506fe6230db14dc
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:16.5213703Z Artifact download completed successfully.
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:16.5214520Z Total of 1 artifact(s) downloaded
+verify (ubuntu-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:16.5219258Z Download artifact has finished successfully
+verify (ubuntu-latest)	Verify roots, actual library receipts, recovery and tamper rejection	﻿2026-09-12T11:55:16.5362334Z ##[group]Run node scripts/verify-external-batch.mjs transferred acceptance.json "$EXPECTED_SUMMARY_SHA256"
+verify (ubuntu-latest)	Verify roots, actual library receipts, recovery and tamper rejection	2026-09-12T11:55:16.5363334Z ^[[36;1mnode scripts/verify-external-batch.mjs transferred acceptance.json "$EXPECTED_SUMMARY_SHA256"^[[0m
+verify (ubuntu-latest)	Verify roots, actual library receipts, recovery and tamper rejection	2026-09-12T11:55:16.5413026Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+verify (ubuntu-latest)	Verify roots, actual library receipts, recovery and tamper rejection	2026-09-12T11:55:16.5413468Z env:
+verify (ubuntu-latest)	Verify roots, actual library receipts, recovery and tamper rejection	2026-09-12T11:55:16.5413931Z   EXPECTED_SUMMARY_SHA256: 78af15ce2ae4c860f6fdf7aab0e4d1659b386b987b783d8fb15b79ae77f3a888
+verify (ubuntu-latest)	Verify roots, actual library receipts, recovery and tamper rejection	2026-09-12T11:55:16.5414458Z ##[endgroup]
+verify (ubuntu-latest)	Verify roots, actual library receipts, recovery and tamper rejection	2026-09-12T11:55:16.6018623Z {"status":"PASS","projects":3,"platform":"linux"}
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	﻿2026-09-12T11:55:16.6166649Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.6168247Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.6168711Z with:
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.6169048Z   name: tinp-acceptance-ubuntu-latest
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.6169428Z   path: acceptance.json
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.6169745Z   if-no-files-found: error
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.6170051Z   retention-days: 14
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.6170645Z   compression-level: 6
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.6170953Z   overwrite: false
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.6171253Z   include-hidden-files: false
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.6171581Z ##[endgroup]
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.7881017Z (node:2378) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.7882288Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.7927357Z With the provided path, there will be 1 file uploaded
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.7941361Z Artifact name is valid!
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:16.7942123Z Root directory input is valid!
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:17.0582775Z Beginning upload of artifact content to blob storage
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:17.0778426Z (node:2378) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:17.2091263Z Uploaded bytes 1128
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:17.2511779Z Finished uploading artifact content to blob storage!
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:17.2513529Z SHA256 digest of uploaded artifact zip is 8dc9b1053d541d395e513aba387e99ce182e15853ecbf2d726f0fdb87335483e
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:17.2514772Z Finalizing artifact upload
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:17.4483699Z Artifact tinp-acceptance-ubuntu-latest.zip successfully finalized. Artifact ID 10297905633
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:17.4485214Z Artifact tinp-acceptance-ubuntu-latest has been successfully uploaded! Final size is 1128 bytes. Artifact ID is 10297905633
+verify (ubuntu-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:17.4491671Z Artifact download URL: https://github.com/xingxuling/TINP/actions/runs/34692267549/artifacts/10297905633
+verify (ubuntu-latest)	Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	﻿2026-09-12T11:55:17.4677090Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify (ubuntu-latest)	Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:17.4678429Z Post job cleanup.
+verify (ubuntu-latest)	Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:17.5925913Z (node:2392) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify (ubuntu-latest)	Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:17.5927330Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify (ubuntu-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	﻿2026-09-12T11:55:17.6157414Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify (ubuntu-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.6159747Z Post job cleanup.
+verify (ubuntu-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.7189726Z [command]/usr/bin/git version
+verify (ubuntu-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.7251867Z git version 2.55.0
+verify (ubuntu-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.7324419Z Temporarily overriding HOME='/home/runner/work/_temp/e5ff94b8-4355-4b31-ac07-882951983725' before making global git config changes
+verify (ubuntu-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.7326293Z Adding repository directory to the temporary git global config as a safe directory
+verify (ubuntu-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.7331958Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TINP/TINP
+verify (ubuntu-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.7390062Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+verify (ubuntu-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.7493026Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+verify (ubuntu-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.7808120Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+verify (ubuntu-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.7854596Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+verify (ubuntu-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.8216227Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+verify (ubuntu-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.8264323Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+verify (ubuntu-latest)	Complete job	﻿2026-09-12T11:55:17.8737944Z Cleaning up orphan processes
+verify (ubuntu-latest)	Complete job	2026-09-12T11:55:17.9034758Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093, actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify (windows-latest)	Set up job	﻿2026-09-12T11:55:12.2592335Z Current runner version: '2.337.0'
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2640446Z ##[group]Runner Image Provisioner
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2641111Z Hosted Compute Agent
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2641653Z Version: 20260828.587
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2642142Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2642690Z Build Date: 2026-08-28T16:44:25Z
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2643195Z Worker ID: {1f362d58-1741-4a19-b5b3-22fe15b74dc2}
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2643709Z Azure Region: eastus
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2644499Z ##[endgroup]
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2645606Z ##[group]Operating System
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2646110Z Microsoft Windows Server 2025
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2646642Z 10.0.26100
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2647037Z Datacenter
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2647460Z ##[endgroup]
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2647897Z ##[group]Runner Image
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2648345Z Image: windows-2025-vs2026
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2648826Z Version: 20260907.229.1
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2649689Z Included Software: https://github.com/actions/runner-images/blob/win25-vs2026/20260907.229/images/windows/Windows2025-VS2026-Readme.md
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2651199Z Image Release: https://github.com/actions/runner-images/releases/tag/win25-vs2026%2F20260907.229
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2651935Z ##[endgroup]
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2652849Z ##[group]GITHUB_TOKEN Permissions
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2654349Z Contents: read
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2654875Z Metadata: read
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2655293Z ##[endgroup]
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2657004Z Secret source: Actions
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2657733Z Cache mode: write
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2658313Z Prepare workflow directory
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2952060Z Prepare all required actions
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.2990865Z Getting action download info
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.4376479Z Download action repository 'actions/checkout@11d5960a326750d5838078e36cf38b85af677262' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.6005687Z Download action repository 'actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.7222938Z Download action repository 'actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+verify (windows-latest)	Set up job	2026-09-12T11:55:12.9461442Z Download action repository 'actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+verify (windows-latest)	Set up job	2026-09-12T11:55:13.2784985Z Complete job name: verify (windows-latest)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	﻿2026-09-12T11:55:13.4188079Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4196437Z ##[group]Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4197165Z with:
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4197511Z   persist-credentials: false
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4197918Z   repository: xingxuling/TINP
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4201181Z   token: ***
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4201519Z   ssh-strict: true
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4201856Z   ssh-user: git
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4202177Z   clean: true
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4202519Z   sparse-checkout-cone-mode: true
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4202927Z   fetch-depth: 1
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4203253Z   fetch-tags: false
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4203590Z   show-progress: true
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4203939Z   lfs: false
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4204304Z   submodules: false
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4204646Z   set-safe-directory: true
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4205040Z   allow-unsafe-pr-checkout: false
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.4205582Z ##[endgroup]
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.5379195Z Syncing repository: xingxuling/TINP
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.5380828Z ##[group]Getting Git version info
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.5381316Z Working directory is 'D:\a\TINP\TINP'
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:13.7071209Z [command]"C:\Program Files\Git\bin\git.exe" version
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1532058Z git version 2.55.0.windows.5
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1569311Z ##[endgroup]
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1585706Z Temporarily overriding HOME='D:\a\_temp\e6433a5d-df1f-46c5-8489-ed86c8944cba' before making global git config changes
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1587193Z Adding repository directory to the temporary git global config as a safe directory
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.1594216Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\TINP\TINP
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.2148035Z Deleting the contents of 'D:\a\TINP\TINP'
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.2154401Z ##[group]Initializing the repository
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.2162176Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\TINP\TINP
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.3038423Z Initialized empty Git repository in D:/a/TINP/TINP/.git/
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.3084242Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/xingxuling/TINP
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.4000221Z ##[endgroup]
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.4001782Z ##[group]Disabling automatic garbage collection
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.4008170Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.4253468Z ##[endgroup]
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.4254946Z ##[group]Setting up auth
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.4263351Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:14.4506149Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:16.1559749Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:16.1828761Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:16.6131006Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:16.6383685Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.0870554Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.1125610Z ##[endgroup]
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.1127805Z ##[group]Fetching the repository
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:17.1135998Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +d9b956219400991e930bcd36bece10f89c171217:refs/remotes/origin/codex/tinp-external-onboarding-v01
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:18.6540461Z From https://github.com/xingxuling/TINP
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:18.6542828Z  * [new ref]         d9b956219400991e930bcd36bece10f89c171217 -> origin/codex/tinp-external-onboarding-v01
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:18.6577205Z ##[endgroup]
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:18.6646655Z ##[group]Determining the checkout info
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:18.6647533Z ##[endgroup]
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:18.6649709Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:18.7001316Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:18.7253148Z ##[group]Checking out the ref
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:18.7261173Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B codex/tinp-external-onboarding-v01 refs/remotes/origin/codex/tinp-external-onboarding-v01
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.3096922Z Updating files:  87% (1157/1323)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.3124942Z Updating files:  88% (1165/1323)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.4161127Z Updating files:  89% (1178/1323)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.4322965Z Updating files:  90% (1191/1323)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.4499764Z Updating files:  91% (1204/1323)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.4525247Z Updating files:  92% (1218/1323)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.4675235Z Updating files:  93% (1231/1323)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.4859428Z Updating files:  94% (1244/1323)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.4884966Z Updating files:  95% (1257/1323)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.4912520Z Updating files:  96% (1271/1323)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.5062143Z Updating files:  97% (1284/1323)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.5221468Z Updating files:  98% (1297/1323)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.5407668Z Updating files:  99% (1310/1323)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.5408122Z Updating files: 100% (1323/1323)
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.5408459Z Updating files: 100% (1323/1323), done.
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.5529290Z Switched to a new branch 'codex/tinp-external-onboarding-v01'
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.6244323Z branch 'codex/tinp-external-onboarding-v01' set up to track 'origin/codex/tinp-external-onboarding-v01'.
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.6291877Z ##[endgroup]
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.6584434Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.6790056Z d9b956219400991e930bcd36bece10f89c171217
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.6821552Z ##[group]Removing auth
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.6829147Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:20.7055503Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:21.3395575Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:21.3640567Z http.https://github.com/.extraheader
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:21.3679609Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:21.3966959Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:21.8164993Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:21.8408837Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+verify (windows-latest)	Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:22.2467759Z ##[endgroup]
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	﻿2026-09-12T11:55:22.2810716Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:22.2812447Z ##[group]Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:22.2812732Z with:
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:22.2812885Z   node-version: 22
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:22.2813072Z   always-auth: false
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:22.2813237Z   check-latest: false
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:22.2815246Z   token: ***
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:22.2815432Z ##[endgroup]
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:22.4286517Z Found in cache @ C:\hostedtoolcache\windows\node\22.23.2\x64
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:22.4292949Z (node:5160) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:22.4293818Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:22.4295873Z ##[group]Environment details
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:28.9639936Z node: v22.23.2
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:28.9640264Z npm: 10.9.8
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:28.9640409Z yarn: 1.22.22
+verify (windows-latest)	Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:28.9640972Z ##[endgroup]
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	﻿2026-09-12T11:55:28.9911424Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:28.9912598Z ##[group]Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:28.9913091Z with:
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:28.9913405Z   name: opp-linux-evidence
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:28.9913581Z   path: transferred
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:28.9913742Z   merge-multiple: false
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:28.9913911Z   repository: xingxuling/TINP
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:28.9914083Z   run-id: 34692267549
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:28.9914232Z ##[endgroup]
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:29.1389518Z Downloading single artifact
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:29.1564772Z (node:7668) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:29.1565764Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:29.2262767Z Preparing to download the following artifacts:
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:29.2263764Z - opp-linux-evidence (ID: 10297885199, Size: 51305, Expected Digest: sha256:1645dd8c5382ca1254d753fd0a69b9283c6fa4b0266260acb506fe6230db14dc)
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:29.3325425Z Redirecting to blob download url: https://productionresultssa16.blob.core.windows.net/actions-results/bc6e0bec-cd83-45d6-8f0a-e8cd3ce499bf/workflow-job-run-1faf23cd-ed71-5838-b5c1-53b0bdd94065/artifacts/d75f2d205385ccdec3afdd3f2d80e3996f19d32b8d5e502fcb046e8e520d8bb4.zip
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:29.3326580Z Starting download of artifact to: D:\a\TINP\TINP\transferred
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:29.3747868Z (node:7668) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:29.3914274Z SHA256 digest of downloaded artifact is 1645dd8c5382ca1254d753fd0a69b9283c6fa4b0266260acb506fe6230db14dc
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:29.3915142Z Artifact download completed successfully.
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:29.3915428Z Total of 1 artifact(s) downloaded
+verify (windows-latest)	Run actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093	2026-09-12T11:55:29.3920214Z Download artifact has finished successfully
+verify (windows-latest)	Verify roots, actual library receipts, recovery and tamper rejection	﻿2026-09-12T11:55:29.4173327Z ##[group]Run node scripts/verify-external-batch.mjs transferred acceptance.json "$EXPECTED_SUMMARY_SHA256"
+verify (windows-latest)	Verify roots, actual library receipts, recovery and tamper rejection	2026-09-12T11:55:29.4174028Z ^[[36;1mnode scripts/verify-external-batch.mjs transferred acceptance.json "$EXPECTED_SUMMARY_SHA256"^[[0m
+verify (windows-latest)	Verify roots, actual library receipts, recovery and tamper rejection	2026-09-12T11:55:29.4188161Z shell: C:\Program Files\Git\bin\bash.EXE --noprofile --norc -e -o pipefail {0}
+verify (windows-latest)	Verify roots, actual library receipts, recovery and tamper rejection	2026-09-12T11:55:29.4188477Z env:
+verify (windows-latest)	Verify roots, actual library receipts, recovery and tamper rejection	2026-09-12T11:55:29.4188767Z   EXPECTED_SUMMARY_SHA256: 78af15ce2ae4c860f6fdf7aab0e4d1659b386b987b783d8fb15b79ae77f3a888
+verify (windows-latest)	Verify roots, actual library receipts, recovery and tamper rejection	2026-09-12T11:55:29.4189112Z ##[endgroup]
+verify (windows-latest)	Verify roots, actual library receipts, recovery and tamper rejection	2026-09-12T11:55:29.7211236Z {"status":"PASS","projects":3,"platform":"win32"}
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	﻿2026-09-12T11:55:29.7527391Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.7528576Z ##[group]Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.7528863Z with:
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.7529052Z   name: tinp-acceptance-windows-latest
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.7529264Z   path: acceptance.json
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.7529442Z   if-no-files-found: error
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.7529609Z   retention-days: 14
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.7529763Z   compression-level: 6
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.7529916Z   overwrite: false
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.7530073Z   include-hidden-files: false
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.7530257Z ##[endgroup]
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.9090294Z (node:5220) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.9090991Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.9133499Z With the provided path, there will be 1 file uploaded
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.9137481Z Artifact name is valid!
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:29.9139170Z Root directory input is valid!
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:30.1061501Z Beginning upload of artifact content to blob storage
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:30.1222021Z (node:5220) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:30.1610702Z Uploaded bytes 1130
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:30.1796946Z Finished uploading artifact content to blob storage!
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:30.1797934Z SHA256 digest of uploaded artifact zip is 43705f6ba2712fe69f087323dc13f88d9d3d156b88ef5f7c6b1af2165bd706ef
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:30.1799526Z Finalizing artifact upload
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:30.3608256Z Artifact tinp-acceptance-windows-latest.zip successfully finalized. Artifact ID 10298230405
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:30.3609746Z Artifact tinp-acceptance-windows-latest has been successfully uploaded! Final size is 1130 bytes. Artifact ID is 10298230405
+verify (windows-latest)	Run actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02	2026-09-12T11:55:30.3619944Z Artifact download URL: https://github.com/xingxuling/TINP/actions/runs/34692267549/artifacts/10298230405
+verify (windows-latest)	Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	﻿2026-09-12T11:55:30.3901221Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify (windows-latest)	Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:30.3902262Z Post job cleanup.
+verify (windows-latest)	Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:30.5094983Z (node:5480) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+verify (windows-latest)	Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020	2026-09-12T11:55:30.5095798Z (Use `node --trace-deprecation ...` to show where the warning was created)
+verify (windows-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	﻿2026-09-12T11:55:30.5345600Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+verify (windows-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:30.5346639Z Post job cleanup.
+verify (windows-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:30.6944338Z [command]"C:\Program Files\Git\bin\git.exe" version
+verify (windows-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:30.7181262Z git version 2.55.0.windows.5
+verify (windows-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:30.7240913Z Temporarily overriding HOME='D:\a\_temp\925dd359-a635-48fb-bb51-8afc0c44bf67' before making global git config changes
+verify (windows-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:30.7241974Z Adding repository directory to the temporary git global config as a safe directory
+verify (windows-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:30.7249880Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\TINP\TINP
+verify (windows-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:30.7518979Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+verify (windows-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:30.7816416Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+verify (windows-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:31.2170755Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+verify (windows-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:31.2416630Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+verify (windows-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:31.6641077Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+verify (windows-latest)	Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262	2026-09-12T11:55:31.6899071Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+verify (windows-latest)	Complete job	﻿2026-09-12T11:55:32.1548555Z Cleaning up orphan processes
+verify (windows-latest)	Complete job	2026-09-12T11:55:32.1611092Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@11d5960a326750d5838078e36cf38b85af677262, actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093, actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020, actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

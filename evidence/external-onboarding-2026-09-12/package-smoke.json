@@ -1,0 +1,259 @@
+{
+  "importUrl": "file:///C:/Users/User/Documents/RCL/_inspect/tinp-external-consumer/node_modules/@taowind/tinp-suite/sdk/v1.mjs",
+  "sdkVersion": 1,
+  "offlineVerified": true,
+  "tamperRejected": true,
+  "liveStatus": "PASS",
+  "httpStatus": 200,
+  "observed": {
+    "format": "twni.opp-http-consumer-live-run.v1",
+    "status": "PASS",
+    "error": null,
+    "plan": {
+      "format": "twni.opp-http-consumer-bridge-plan.v1",
+      "bridgeId": "live:opp-http-consumer",
+      "oppSource": {
+        "repository": "https://github.com/xingxuling/OPP",
+        "commit": "f7b76582a720d9d18af5153affa0fc2d78bc0410",
+        "protocols": [
+          "opp.chp.v0.1",
+          "opp.rcp.v0.1"
+        ]
+      },
+      "capabilityId": "opp-http-readonly",
+      "responseFields": [
+        "latitude",
+        "longitude",
+        "timezone"
+      ],
+      "authorityGranted": false,
+      "boundary": "Local OPP consumer acceptance only; no authority grant, third-party interoperability or production availability",
+      "planRoot": "e9d37d01efa83550f64c49a8c9214537e240b3aab65152125832cfd5c60e8990"
+    },
+    "negotiation": {
+      "handshake": {
+        "format": "taowind.opp.reality-envelope.v0.1",
+        "protocol": "opp.chp.v0.1",
+        "version": "0.1.0-candidate.1",
+        "kind": "protocol",
+        "id": "chp:tinp-consumer:opp-provider",
+        "status": "candidate",
+        "issuedAt": "2026-09-12T11:44:43.649300Z",
+        "issuer": {
+          "id": "tinp-consumer",
+          "type": "runtime",
+          "displayName": "tinp-consumer"
+        },
+        "payload": {
+          "phase": "agreement",
+          "participants": [
+            "tinp-consumer",
+            "opp-provider"
+          ],
+          "status": "accepted",
+          "agreedProtocols": [
+            "opp.chp.v0.1",
+            "opp.rcp.v0.1",
+            "opp.rep.v0.1",
+            "taowind.tinp.v0.2"
+          ],
+          "sharedCapabilities": [
+            "opp-http-readonly"
+          ],
+          "authorityScopes": [],
+          "evidencePolicy": {
+            "minimumConfidence": 0,
+            "acceptDerivedEvidence": false
+          },
+          "reasons": []
+        },
+        "constraints": [
+          "握手不得创建 offer 之外的新权限 / handshake must not create authority absent from offers"
+        ],
+        "evidenceRefs": [],
+        "extensions": {},
+        "integrity": {
+          "algorithm": "sha256",
+          "contentRoot": "4d598a72ccce164138387468da389edb88db9e3a6128cf8e7934ee269ac4ecd0"
+        }
+      },
+      "capability": {
+        "format": "taowind.opp.capability-agreement.v0.1",
+        "version": "0.1.0-candidate.1",
+        "participants": [
+          "tinp-consumer",
+          "opp-provider"
+        ],
+        "capabilityId": "opp-http-readonly",
+        "capabilityIds": [
+          "opp-http-readonly",
+          "opp-http-readonly"
+        ],
+        "status": "accepted",
+        "contractRoots": {
+          "local": {
+            "inputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0",
+            "outputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0"
+          },
+          "remote": {
+            "inputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0",
+            "outputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0"
+          }
+        },
+        "authorityRequired": [],
+        "authorityGranted": false,
+        "reasons": [],
+        "boundary": "RCP contract agreement proves exact declaration compatibility only; it does not authenticate identity, probe a provider, grant authority or prove quality.",
+        "contentRoot": "830812bb6c882f19a3e2ef797a3ac3f81d0a6580e067ced95e38b990d3932908"
+      },
+      "owner": "OPP",
+      "upstreamCommit": "f7b76582a720d9d18af5153affa0fc2d78bc0410"
+    },
+    "consumerContract": {
+      "format": "twni.opp-http-consumer-contract.v1",
+      "contractId": "live:opp-http-consumer-contract",
+      "capabilityId": "opp-http-readonly",
+      "version": "1.0",
+      "responseFields": [
+        "latitude",
+        "longitude",
+        "timezone"
+      ],
+      "negotiation": {
+        "handshake": {
+          "format": "taowind.opp.reality-envelope.v0.1",
+          "protocol": "opp.chp.v0.1",
+          "version": "0.1.0-candidate.1",
+          "kind": "protocol",
+          "id": "chp:tinp-consumer:opp-provider",
+          "status": "candidate",
+          "issuedAt": "2026-09-12T11:44:43.649300Z",
+          "issuer": {
+            "id": "tinp-consumer",
+            "type": "runtime",
+            "displayName": "tinp-consumer"
+          },
+          "payload": {
+            "phase": "agreement",
+            "participants": [
+              "tinp-consumer",
+              "opp-provider"
+            ],
+            "status": "accepted",
+            "agreedProtocols": [
+              "opp.chp.v0.1",
+              "opp.rcp.v0.1",
+              "opp.rep.v0.1",
+              "taowind.tinp.v0.2"
+            ],
+            "sharedCapabilities": [
+              "opp-http-readonly"
+            ],
+            "authorityScopes": [],
+            "evidencePolicy": {
+              "minimumConfidence": 0,
+              "acceptDerivedEvidence": false
+            },
+            "reasons": []
+          },
+          "constraints": [
+            "握手不得创建 offer 之外的新权限 / handshake must not create authority absent from offers"
+          ],
+          "evidenceRefs": [],
+          "extensions": {},
+          "integrity": {
+            "algorithm": "sha256",
+            "contentRoot": "4d598a72ccce164138387468da389edb88db9e3a6128cf8e7934ee269ac4ecd0"
+          }
+        },
+        "capability": {
+          "format": "taowind.opp.capability-agreement.v0.1",
+          "version": "0.1.0-candidate.1",
+          "participants": [
+            "tinp-consumer",
+            "opp-provider"
+          ],
+          "capabilityId": "opp-http-readonly",
+          "capabilityIds": [
+            "opp-http-readonly",
+            "opp-http-readonly"
+          ],
+          "status": "accepted",
+          "contractRoots": {
+            "local": {
+              "inputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0",
+              "outputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0"
+            },
+            "remote": {
+              "inputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0",
+              "outputSchemaRoot": "a2c799262a3ce3c19ef5cdd983bf3d12b43ab3c426227091b909dcb7054738c0"
+            }
+          },
+          "authorityRequired": [],
+          "authorityGranted": false,
+          "reasons": [],
+          "boundary": "RCP contract agreement proves exact declaration compatibility only; it does not authenticate identity, probe a provider, grant authority or prove quality.",
+          "contentRoot": "830812bb6c882f19a3e2ef797a3ac3f81d0a6580e067ced95e38b990d3932908"
+        },
+        "owner": "OPP",
+        "upstreamCommit": "f7b76582a720d9d18af5153affa0fc2d78bc0410"
+      },
+      "authorityGranted": false,
+      "contractRoot": "06e32b7fa7145c03ac37637712764e218bc2fe2cef966484e5b3fd6643711c2a"
+    },
+    "observation": {
+      "status": "PASS",
+      "response": {
+        "latitude": 52.52,
+        "longitude": 13.419998,
+        "timezone": "GMT"
+      },
+      "receipt": {
+        "format": "twni.opp-http-readonly-receipt.v1",
+        "policyRoot": "9052993768c196a5e23930b7c006b70773a3143964f691c26f7a3f605e4be045",
+        "requestRoot": "a96e5b66925463332348a4d77c081effb6fbd2fade797980de903d1a48196dc7",
+        "status": "PASS",
+        "httpStatus": 200,
+        "responseContentType": "application/json; charset=utf-8",
+        "responseEtag": null,
+        "responseLastModified": null,
+        "responseBytes": 169,
+        "wireResponseRoot": "2d88cbb86acc209d0c93afed20cff6d11f221eadcefd741595e1ddc15288a11d",
+        "responseRoot": "44cb27c78b998cd6941068fdcf56a106ec2eef015a501ad75383e31b74ff3317",
+        "error": null,
+        "attempts": 1,
+        "redirectsFollowed": false,
+        "ambientProxyUsed": false,
+        "ambientCredentialsUsed": false,
+        "authorityGranted": false,
+        "boundary": "Read-only external observation; no credential, retry, redirect, or authority grant",
+        "receiptRoot": "d1476472e6e691f6f3bbacc37918648914a0962ff30543a96a4f2ffa7d6f0152"
+      }
+    },
+    "acceptance": {
+      "status": "PASS",
+      "response": {
+        "latitude": 52.52,
+        "longitude": 13.419998,
+        "timezone": "GMT"
+      },
+      "receipt": {
+        "format": "twni.opp-http-consumer-bridge-receipt.v1",
+        "planRoot": "e9d37d01efa83550f64c49a8c9214537e240b3aab65152125832cfd5c60e8990",
+        "policyRoot": "9052993768c196a5e23930b7c006b70773a3143964f691c26f7a3f605e4be045",
+        "requestRoot": "a96e5b66925463332348a4d77c081effb6fbd2fade797980de903d1a48196dc7",
+        "producerReceiptRoot": "d1476472e6e691f6f3bbacc37918648914a0962ff30543a96a4f2ffa7d6f0152",
+        "consumerContractRoot": "06e32b7fa7145c03ac37637712764e218bc2fe2cef966484e5b3fd6643711c2a",
+        "responseRoot": "44cb27c78b998cd6941068fdcf56a106ec2eef015a501ad75383e31b74ff3317",
+        "status": "PASS",
+        "error": null,
+        "authorityGranted": false,
+        "sideEffects": false,
+        "boundary": "Local OPP consumer acceptance only; no authority grant, third-party interoperability or production availability",
+        "acceptanceRoot": "1032ccdd93b52f6bf7c6e646dcb7e1e9b8ab4649684a3544d5684421ff7b4380"
+      }
+    },
+    "boundary": "One bounded live read-only observation joined to local OPP negotiation; no credentials, authority grant, retry, redirect or production interoperability claim",
+    "diagnostic": null
+  }
+}

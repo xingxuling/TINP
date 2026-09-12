@@ -1,0 +1,94 @@
+{
+  "status": "INCOMPLETE",
+  "rows": [
+    {
+      "project": "go-httpbin",
+      "source": "https://github.com/mccutchen/go-httpbin",
+      "status": "INCOMPLETE_EXTERNAL_RUN",
+      "steps": [
+        {
+          "step": "initial",
+          "status": "FAIL_CLOSED",
+          "httpStatus": 402,
+          "error": "OPP_HTTP_STATUS_NOT_SUCCESS",
+          "offlineVerified": "PASS"
+        },
+        {
+          "step": "failure",
+          "status": "FAIL_CLOSED",
+          "httpStatus": 402,
+          "error": "OPP_HTTP_STATUS_NOT_SUCCESS",
+          "offlineVerified": "PASS"
+        },
+        {
+          "step": "recovery",
+          "status": "FAIL_CLOSED",
+          "httpStatus": 402,
+          "error": "OPP_HTTP_STATUS_NOT_SUCCESS",
+          "offlineVerified": "PASS"
+        }
+      ],
+      "automatedRunSeconds": 5.526651800000001,
+      "manualInterventions": [
+        "read public API documentation",
+        "declare allowed host/paths and response fields"
+      ],
+      "humanMinutes": null,
+      "humanTimingStatus": "NOT_MEASURED",
+      "automatic": [
+        "OPP local CHP/RCP negotiation",
+        "bounded native HTTPS GET",
+        "projection and receipt binding",
+        "offline verification"
+      ],
+      "recovery": "EXPLICIT_STATELESS_GET_AFTER_FAILURE",
+      "failover": "NOT_RUN",
+      "independentOperator": false
+    },
+    {
+      "project": "open-meteo",
+      "source": "https://github.com/open-meteo/open-meteo",
+      "status": "OBSERVED_FAILURE_AND_RECOVERY",
+      "steps": [
+        {
+          "step": "initial",
+          "status": "PASS",
+          "httpStatus": 200,
+          "error": null,
+          "offlineVerified": "PASS"
+        },
+        {
+          "step": "failure",
+          "status": "FAIL_CLOSED",
+          "httpStatus": 400,
+          "error": "OPP_HTTP_STATUS_NOT_SUCCESS",
+          "offlineVerified": "PASS"
+        },
+        {
+          "step": "recovery",
+          "status": "PASS",
+          "httpStatus": 200,
+          "error": null,
+          "offlineVerified": "PASS"
+        }
+      ],
+      "automatedRunSeconds": 4.878330699999999,
+      "manualInterventions": [
+        "read public API documentation",
+        "declare allowed host/paths and response fields"
+      ],
+      "humanMinutes": null,
+      "humanTimingStatus": "NOT_MEASURED",
+      "automatic": [
+        "OPP local CHP/RCP negotiation",
+        "bounded native HTTPS GET",
+        "projection and receipt binding",
+        "offline verification"
+      ],
+      "recovery": "EXPLICIT_STATELESS_GET_AFTER_FAILURE",
+      "failover": "NOT_RUN",
+      "independentOperator": false
+    }
+  ],
+  "boundary": "Real remote services observed by a local TaoWind consumer. Negotiation is local; remote services do not speak OPP/TINP. No multi-hop routing, independent acceptance, authority, trusted time or production claim."
+}

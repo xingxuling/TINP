@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "project": "jmespath",
+  "inputSha256": "2e8e855071bc1669d2b935cfa9810bf9ea1878e3bfe11a2ea43252b79a2fb30f",
+  "acceptance": {
+    "format": "twni.opp-native-interop-acceptance.v1",
+    "interopReceiptRoot": "cb8cf80fbaf58ceb67f2f79f3169158b36288c9cd16bacf00eaaa1ceaff0588c",
+    "status": "PASS",
+    "finalResultRoot": "b3ccf9265c936f1914e347e8f1d89c00a3048d1854860dd6a8b0724de01bc3d6",
+    "authorityGranted": false,
+    "sideEffects": false,
+    "boundary": "TINP binds one OPP-owned candidate interop receipt; it does not copy OPP runtime semantics, grant authority or claim production interoperability",
+    "acceptanceRoot": "59d32eaace851b0c58ca9070590cf0f4e08db1dec7095044329f98da16a6af79"
+  },
+  "networkRequests": 0,
+  "targetExecutions": 0,
+  "boundary": "Different implementation language, same TaoWind operator. No independent operator or execution attestation."
+}

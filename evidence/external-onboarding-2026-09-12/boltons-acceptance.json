@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "project": "boltons",
+  "inputSha256": "3a7e7b840bfd89caebd9ae7694eef4c61953c1a6c1a2b7e8496a7e5b75515288",
+  "acceptance": {
+    "format": "twni.opp-native-interop-acceptance.v1",
+    "interopReceiptRoot": "6afc09652c2963d1bb7789f9e38e12aa4f5290ee9a65ff14209bfdcaa975eefa",
+    "status": "PASS",
+    "finalResultRoot": "12957bc580d4f651522e8114ee8929b98892c06a94850bd02c7c2df9c0530556",
+    "authorityGranted": false,
+    "sideEffects": false,
+    "boundary": "TINP binds one OPP-owned candidate interop receipt; it does not copy OPP runtime semantics, grant authority or claim production interoperability",
+    "acceptanceRoot": "424278967198f847b3be02379f51b69bef0c79f0a5a2cef3c6d1c302f570211e"
+  },
+  "networkRequests": 0,
+  "targetExecutions": 0,
+  "boundary": "Different implementation language, same TaoWind operator. No independent operator or execution attestation."
+}

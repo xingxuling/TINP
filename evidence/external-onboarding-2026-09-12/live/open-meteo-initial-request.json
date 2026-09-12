@@ -1,0 +1,9 @@
+{
+  "format": "twni.opp-http-readonly-request.v1",
+  "requestId": "open-meteo-initial",
+  "policyRoot": "9052993768c196a5e23930b7c006b70773a3143964f691c26f7a3f605e4be045",
+  "method": "GET",
+  "url": "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41",
+  "headers": {},
+  "requestRoot": "a96e5b66925463332348a4d77c081effb6fbd2fade797980de903d1a48196dc7"
+}

@@ -1,0 +1,442 @@
+{
+  "status": "VERIFIED_BOUNDED_EXTERNAL_CANDIDATE",
+  "baseline": "78f4362df693197d5b0ed7bfcfe9591c0bbd58c5",
+  "tests": {
+    "count": 210,
+    "pass": 210,
+    "log": "tests.log",
+    "elapsedMs": 945427.0994
+  },
+  "originalReleaseVerifyCommand": "NOT_RUN; targeted runtime, package smoke, npm test and hosted workflow recorded separately",
+  "hostedCI": {
+    "status": "PASS_HOSTED_ARTIFACT_HANDOFF",
+    "runUrl": "https://github.com/xingxuling/TINP/actions/runs/34692267549",
+    "tinpSource": "d9b956219400991e930bcd36bece10f89c171217",
+    "oppSource": "231a8a95631227b85ce58a1aaf2ad1b91210c10f",
+    "jobs": [
+      {
+        "name": "produce",
+        "status": "success",
+        "url": "https://github.com/xingxuling/TINP/actions/runs/34692267549/job/103549508768"
+      },
+      {
+        "name": "verify (ubuntu-latest)",
+        "status": "success",
+        "url": "https://github.com/xingxuling/TINP/actions/runs/34692267549/job/103549544795"
+      },
+      {
+        "name": "verify (windows-latest)",
+        "status": "success",
+        "url": "https://github.com/xingxuling/TINP/actions/runs/34692267549/job/103549544808"
+      }
+    ],
+    "physicalHostProof": false,
+    "independentOperator": false,
+    "trustedTime": false,
+    "authorityGranted": false
+  },
+  "liveServices": {
+    "open-meteo": "200/400/200",
+    "go-httpbin": "402/402/402; INCOMPLETE"
+  },
+  "authority": "BLOCKED_EXTERNAL_OWNER",
+  "physicalMultiHost": "NOT_RUN",
+  "independentConsumer": "NOT_RUN",
+  "production": "NOT_DEPLOYED",
+  "sourceFiles": [
+    {
+      "path": "src/authority-registry-convergence-store.mjs",
+      "sha256": "eac60dd557a29de6216f5d6c392546c5f42c112da6ce3e6abbf53f91bfcef8db"
+    },
+    {
+      "path": "src/authority-registry-convergence-witness.mjs",
+      "sha256": "b524287ca9c590261f57b515478e270e93439a3bd0e9160adaabf3618a1cfa36"
+    },
+    {
+      "path": "src/authority-registry-convergence.mjs",
+      "sha256": "74d170e7033de92f35348ed7aa07268eb0619dd94b84df3360b6ff2a9ceacfe2"
+    },
+    {
+      "path": "src/authority-registry-distribution.mjs",
+      "sha256": "8310f38f33f619f7f0a957045f5d0dae10a89deeed1fd357598a5c67e04a717f"
+    },
+    {
+      "path": "src/authority-registry-resumable-transfer.mjs",
+      "sha256": "d935b45c7117ba9c4ca6640d230a59d870136696fa8f6fca69e0e500503cf37c"
+    },
+    {
+      "path": "src/authority-registry.mjs",
+      "sha256": "99c070f1c60269086fa6fa4ac88c6426e95e6dac00d546e9b6cc5d96de40ac0f"
+    },
+    {
+      "path": "src/contract.mjs",
+      "sha256": "f33e160e62383f1b01e8f6ca0c8236f852299b8a96c6fb8741c91ac8b6bad86f"
+    },
+    {
+      "path": "src/coordinator-state.mjs",
+      "sha256": "24149acc28b8e2d3e913fdb7f49ac46fdac80c721843a34259e714272b62f09c"
+    },
+    {
+      "path": "src/directory-lease.mjs",
+      "sha256": "07f4efcf9c00f246184a3422aac88547494306e3d151ffa5d5f86b28ea3539e7"
+    },
+    {
+      "path": "src/evidence.mjs",
+      "sha256": "221e516f5bc5b79a3b700b270c83313c1b7fb3d1612ee4d9729426536017a094"
+    },
+    {
+      "path": "src/identity.mjs",
+      "sha256": "1264a4747acd2e4825986e62f76500e3adac6b2143cca27fdd7ef6933d79b2c1"
+    },
+    {
+      "path": "src/node-process.mjs",
+      "sha256": "4c4feb83952cb37bf02cd5654056fe9008318328c1eb8d0341e24bf8fc44c203"
+    },
+    {
+      "path": "src/node-state.mjs",
+      "sha256": "d7f42a998064a5d38e3e41ab6a948712f4bddd9f1b6676c00851259b430ceb32"
+    },
+    {
+      "path": "src/operator-authorization.mjs",
+      "sha256": "13def4439ff12ce7cf7fdf84c2a094a4aeb9fba861ebf0c21c9899d5f7756a3c"
+    },
+    {
+      "path": "src/opp-http-consumer-bridge.mjs",
+      "sha256": "997ace6dfa63a7cbccbd2549ea35e31960268a78f781a373719fc6ea61d5df53"
+    },
+    {
+      "path": "src/opp-http-consumer-live.mjs",
+      "sha256": "a9570f86929a7815f005e9c3007703a30b71eca54bd8c04ff678284e97b80e3e"
+    },
+    {
+      "path": "src/opp-http-readonly.mjs",
+      "sha256": "2278928ecb338a2cdac251cbb004471fdbe02df35a8ed23f18f5a183c5405273"
+    },
+    {
+      "path": "src/opp-native-interop.mjs",
+      "sha256": "259accca185535f0856d4ef006989ff527759eb6c8955befd11780c4f91187bd"
+    },
+    {
+      "path": "src/pending-management.mjs",
+      "sha256": "8981038e4bf42369167a0d89cdb9558c9cb5445ced18797f5b477523b8bd02b0"
+    },
+    {
+      "path": "src/protected-store.mjs",
+      "sha256": "a25330f392167ce24eddfd153e89cda79fc2f8dcf8d22744ca16e39ceafc499c"
+    },
+    {
+      "path": "src/recovery-anchor.mjs",
+      "sha256": "5bff42eb821a5e53a4aaf6de34ddd30f901f4f600d9175d190f00281366dd462"
+    },
+    {
+      "path": "src/routing.mjs",
+      "sha256": "eae0f915c6affee748c6df3b316ab2cfa4ea87aa119c1f936b53e0f3f3d321db"
+    },
+    {
+      "path": "src/suite.mjs",
+      "sha256": "f38b68dd67777b55328bc45b8f210480b4875784475ade6f81dc9f1502126390"
+    },
+    {
+      "path": "src/transport.mjs",
+      "sha256": "2ed2bd8e346e5a68af5a04dd41be162d92e0553b63153933ee89948b9be627e6"
+    },
+    {
+      "path": "sdk/v1.mjs",
+      "sha256": "f208a192402533b435648ded235b9003235ba7f15f9755d6a1c4cf5acd225ee5"
+    },
+    {
+      "path": "scripts/authority-registry-convergence-demo.mjs",
+      "sha256": "0ec989d2b9483307f0028e23df945329d5d30df0dddbd8afb5c440df11113b47"
+    },
+    {
+      "path": "scripts/authority-registry-convergence-store-demo.mjs",
+      "sha256": "b57482884f57bc92b087fe394be646a102cbf4e35877ae1fa6f79332e86bdeb9"
+    },
+    {
+      "path": "scripts/authority-registry-convergence-witness-demo.mjs",
+      "sha256": "00fe1af3554a1cf5fa14476b6c94b54702d7edd0e318c08ce1b52a2eaf00ac32"
+    },
+    {
+      "path": "scripts/authority-registry-cross-host-replay-demo.mjs",
+      "sha256": "cd041afe65cdf5abc1ed500b266cef639a0a8603ec92fe1a2f554aa27c44ad72"
+    },
+    {
+      "path": "scripts/authority-registry-demo.mjs",
+      "sha256": "9ba38f3d0eba2847d17fba3dec28c929fdc230580ab686b5ae178bbc6446e872"
+    },
+    {
+      "path": "scripts/authority-registry-distribution-demo.mjs",
+      "sha256": "92bb615fefe04b4f0e30a7010c184e39cb7729b2e212374a8a72f915df6aaf4a"
+    },
+    {
+      "path": "scripts/authority-registry-loopback-transfer-demo.mjs",
+      "sha256": "9b801a188292d3556e23c56000f952b15a1c1b525af244726d4efb329291ef2c"
+    },
+    {
+      "path": "scripts/authority-registry-resumable-transfer-demo.mjs",
+      "sha256": "2d59f1e7f1cb30db8b05a0511115dde64241b27f509491e8f1e36c5092296f76"
+    },
+    {
+      "path": "scripts/authority-registry-tls-loopback-transfer-demo.mjs",
+      "sha256": "6240d70115e4a17fedc11e35439c23904e0a107e7088900dabd35c51930263a1"
+    },
+    {
+      "path": "scripts/authority-registry.mjs",
+      "sha256": "8bce16b22d21f36198ac058600d4db7a0d0d82647c79ee0c9d4c0a265f9b1c06"
+    },
+    {
+      "path": "scripts/business-demo.mjs",
+      "sha256": "e85fa3969b2d3bcbd2a676e71435f332e40ee10ae4070d132972d7f5d0cee23d"
+    },
+    {
+      "path": "scripts/demo.mjs",
+      "sha256": "7e952bd261f4625e693029b1635ce7a17e868b2ce4651a1c6c2bfad95e097a91"
+    },
+    {
+      "path": "scripts/external-verify.mjs",
+      "sha256": "e9845d6bcf23efecf0758ef65d8d8964eabb87466fa872d7b192cca32ba4a0c7"
+    },
+    {
+      "path": "scripts/operator-demo.mjs",
+      "sha256": "2ce2c4b1245552e33ccfcbaea4b5882062d36871b629643bf4118f550a46fbac"
+    },
+    {
+      "path": "scripts/opp-http-consumer-bridge.mjs",
+      "sha256": "6fdc32c2d1f1f0c312b1929b1f1164834109f896fe72aca64bf3a64f0b946180"
+    },
+    {
+      "path": "scripts/opp-http-consumer-live.mjs",
+      "sha256": "749e0f5f86dec1ec3ec742c787c67f2497c0250b8b3283bf5b4bb8f0447943e5"
+    },
+    {
+      "path": "scripts/opp-http-readonly.mjs",
+      "sha256": "b73a5916b305273777f650befeb8b9f41ce0560a987df22adadcf1122de3b472"
+    },
+    {
+      "path": "scripts/package.py",
+      "sha256": "aa2e317058d4f5e767fa579aa5197a7e642880bde33c044197fa6fef4e56a69c"
+    },
+    {
+      "path": "scripts/pending-demo.mjs",
+      "sha256": "f6512eb5bf1806e2fe5bfefb8f2f42b5a332676e4e9ce2c5711b9069a1b07dc5"
+    },
+    {
+      "path": "scripts/pending.mjs",
+      "sha256": "c024fa78646b96005f5d265d955cfad64be1cad1e52a74ce888e3e41511c90b3"
+    },
+    {
+      "path": "scripts/recovery-anchor-demo.mjs",
+      "sha256": "1053db1aee0b7c3961fc3dfac5ea7ef17c11799edaa573742a488eb6ebe2d73c"
+    },
+    {
+      "path": "scripts/recovery-anchor.mjs",
+      "sha256": "d70f441f3e39a505cdae4b0db28192d58817a8c2bd1d6bb86d8a05c6215f624a"
+    },
+    {
+      "path": "scripts/recovery-demo.mjs",
+      "sha256": "d3a690e3b54aceab23f49d0d96f3d4bae7b28cf89b11133d0badda5257c988e6"
+    },
+    {
+      "path": "scripts/verify-external-batch.mjs",
+      "sha256": "c72c171a6aed4815464baaeb682362143dddb68c60ad00b9dc9eb1c01047331d"
+    },
+    {
+      "path": "scripts/verify-external-http.mjs",
+      "sha256": "1215c19eaa5fdf54f8f2ee8080df7d72d7190bea57c53862c476d3f80db60105"
+    },
+    {
+      "path": "scripts/verify.mjs",
+      "sha256": "bd2eccef5f72216c7fe819a1682cce669d68fcc92bb8b6eda4803cbcfcb3968a"
+    },
+    {
+      "path": ".github/workflows/external-onboarding.yml",
+      "sha256": "1a29d6e6fb228e115104111d4346624da05d970b1fcbf0b5313a37094f91b3dd"
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "batch-smoke.json",
+      "sha256": "cedfdfe759d3c06786ab85dd1f523b224d07e733d2c383578ac20cf1dc822e0d"
+    },
+    {
+      "path": "boltons-acceptance.json",
+      "sha256": "2b5991f0d81238697658424d455e092afc0128b0f2ceee59d5b3113294309492"
+    },
+    {
+      "path": "cloud/artifacts.json",
+      "sha256": "f414a1169f5f59278d6a77f00fa0c37689ec029c93d1374f98f373228ec8d613"
+    },
+    {
+      "path": "cloud/opp-linux-evidence/__pycache__/adapters.cpython-311.pyc",
+      "sha256": "d343846c9f704eef3c9af3b93a0c25960e140fd41982f1f5e5fe3e6a7379576e"
+    },
+    {
+      "path": "cloud/opp-linux-evidence/adapters.py",
+      "sha256": "aae3536cde19247fde05d7dac0e0b9807a7355147ba0f52e2de5e50fa1f727b6"
+    },
+    {
+      "path": "cloud/opp-linux-evidence/boltons-discovery.json",
+      "sha256": "f09d75681d25ec2a4a69028ae98fb220d48c47bdfdb8b739dbc0fe31dda8d815"
+    },
+    {
+      "path": "cloud/opp-linux-evidence/boltons-run.json",
+      "sha256": "16b6b808e71fbdd2dfb09da320ec129cd8d4fb47c755d88100489e8f2d4fae46"
+    },
+    {
+      "path": "cloud/opp-linux-evidence/boltons-source.json",
+      "sha256": "7144179a15c6b433b90cf396c32555569eebbae9bbd0ae6cae718a55bff5d630"
+    },
+    {
+      "path": "cloud/opp-linux-evidence/jmespath-discovery.json",
+      "sha256": "91d7ee6a4f70c415310b913d1a539a65dca5bc3adca81f671dfd815ca264fd76"
+    },
+    {
+      "path": "cloud/opp-linux-evidence/jmespath-run.json",
+      "sha256": "0fba0cfe005f12b36eec0c4157c6808ab6dd6b6129fb5fba3c82b79f8e927357"
+    },
+    {
+      "path": "cloud/opp-linux-evidence/jmespath-source.json",
+      "sha256": "78594faf1ec0128686bf4217a4619217bdc7beb71255df7184db810d499b3f57"
+    },
+    {
+      "path": "cloud/opp-linux-evidence/more-itertools-discovery.json",
+      "sha256": "14e24006fca90256cd8d890e08b4dd09999abf3c4e8c602a21bbca5fce6ca716"
+    },
+    {
+      "path": "cloud/opp-linux-evidence/more-itertools-run.json",
+      "sha256": "34397cfccaffcab12265db2aa102f5cbd40ab766a64035c4c391d97ff8fb48bf"
+    },
+    {
+      "path": "cloud/opp-linux-evidence/more-itertools-source.json",
+      "sha256": "837b7e81ab8c4792f4422ea9bc43562788ecee8ddfe537c862f591aa91c39d9d"
+    },
+    {
+      "path": "cloud/opp-linux-evidence/summary.json",
+      "sha256": "78af15ce2ae4c860f6fdf7aab0e4d1659b386b987b783d8fb15b79ae77f3a888"
+    },
+    {
+      "path": "cloud/remote.log",
+      "sha256": "c76406ac371b214377dc8926b0149278ad6c477da0b6a2ed3cedc21c6527e054"
+    },
+    {
+      "path": "cloud/run.json",
+      "sha256": "66e18f756f0a78b55387ab6777c7cfd088905fcae4ecdc1074d3bb6024ab9d31"
+    },
+    {
+      "path": "cloud/tinp-acceptance-ubuntu-latest/acceptance.json",
+      "sha256": "b05908755f161139693b30c237f3bca165fae8819abfe6d7666882154c58bd2f"
+    },
+    {
+      "path": "cloud/tinp-acceptance-windows-latest/acceptance.json",
+      "sha256": "2a74aa98e71e31306888aa2ae1dc464e51e5700f6ac2a36ba314cd7f320909ac"
+    },
+    {
+      "path": "INTEGRATION_COURT.md",
+      "sha256": "64e2e6690bcc03a31da4bb5c25e27617132d19bf91b95ca35b981126782f7309"
+    },
+    {
+      "path": "jmespath-acceptance.json",
+      "sha256": "358afa00496226d9ce3b97842b075d618329a228d5c9c27a930b3986fbb46c67"
+    },
+    {
+      "path": "live/go-httpbin-failure-request.json",
+      "sha256": "7088e5af2cb2f371931f805f97dbf4f21cad59dd044ac91ce3395742fcc950b6"
+    },
+    {
+      "path": "live/go-httpbin-failure-result.json",
+      "sha256": "4a750b08fb5825f9fbfdacbcb3dde8e0b4f9870acb3f0da7f58f406332c325ac"
+    },
+    {
+      "path": "live/go-httpbin-failure-verification.json",
+      "sha256": "bae830caf25b924c8dc880b19c7eb2309922deb4b78af6205e74b89420220fe0"
+    },
+    {
+      "path": "live/go-httpbin-initial-request.json",
+      "sha256": "0559af69d2de4b10a4c7bd8535a0de97c11832cf9eee53a9ca2e783d817b8ee7"
+    },
+    {
+      "path": "live/go-httpbin-initial-result.json",
+      "sha256": "46e90383fc4c1a54e79754614f0855188bcb01ba6b3ded5bbcf6788a6787fe7e"
+    },
+    {
+      "path": "live/go-httpbin-initial-verification.json",
+      "sha256": "491bcafe349f98cc7806515ae6fc1443c7caf1fb76f7118793182e9b6b9912cf"
+    },
+    {
+      "path": "live/go-httpbin-policy.json",
+      "sha256": "89b41b54272df2a2db4144deb63e602ca74f4990acfc0fc17a72c4f16d294faf"
+    },
+    {
+      "path": "live/go-httpbin-recovery-request.json",
+      "sha256": "784f08d3f136198092b1d7a912b4a9dcfadb60fd37a0d8cd989044ab56af7db5"
+    },
+    {
+      "path": "live/go-httpbin-recovery-result.json",
+      "sha256": "0deaed91382d85648b9fa40c61c6aa280d4f623ed16fbb368295203f6cd4f451"
+    },
+    {
+      "path": "live/go-httpbin-recovery-verification.json",
+      "sha256": "e9301c7c6cc2420a00626b5846315d9eca602a9d3686059725c1aa83cbfad291"
+    },
+    {
+      "path": "live/open-meteo-failure-request.json",
+      "sha256": "71d889fe7736ed2261d691719be2e9854ee5fc20186fe317bca6368fccf60f8d"
+    },
+    {
+      "path": "live/open-meteo-failure-result.json",
+      "sha256": "03529a3912684759d7e1b331a5fc2f10f32b870a8ef866879d3e1e94a74515ef"
+    },
+    {
+      "path": "live/open-meteo-failure-verification.json",
+      "sha256": "b02a52b161331d28f51a5adfc721cf40aba3c5fde752916bff86e6cb768ad29a"
+    },
+    {
+      "path": "live/open-meteo-initial-request.json",
+      "sha256": "5410b7e12e2be38e712c01e2b943e6859676cb9cd810fd4d3548a5bb027dcf3d"
+    },
+    {
+      "path": "live/open-meteo-initial-result.json",
+      "sha256": "d4f5a342017ad7bdad6941f9e6311bbaf598852174abb77d9c413d74dc005cf4"
+    },
+    {
+      "path": "live/open-meteo-initial-verification.json",
+      "sha256": "8a19d63be6f821438e6991ee7d5444117571adc054b73033ab857183c652e0e3"
+    },
+    {
+      "path": "live/open-meteo-policy.json",
+      "sha256": "fdbf1d1a9fbb1ccdaefcec9c109047097f4262f95520fc2765dd5bece5864146"
+    },
+    {
+      "path": "live/open-meteo-recovery-request.json",
+      "sha256": "06660df2d73e3c0d56a54b5fbdb15439ac04f18d76c116fdcebbeff4365f93b2"
+    },
+    {
+      "path": "live/open-meteo-recovery-result.json",
+      "sha256": "287d30d2810246ed1a561658338c81f3824a733bf605268df9613441ab0ef175"
+    },
+    {
+      "path": "live/open-meteo-recovery-verification.json",
+      "sha256": "8941bb27dfffa3b9879d4dcb66a58ca8238c8ccb7516cad30e58a3e7a7a65c07"
+    },
+    {
+      "path": "live/summary.json",
+      "sha256": "9ae01f436a3c9d6b5ca39f49e961c3a0a84104004c584bc81e0e06bb282ee636"
+    },
+    {
+      "path": "more-itertools-acceptance.json",
+      "sha256": "f3616ec1cc4828e1853a144f08d68727b00e904a00dbf7a29f1f8dcf101f6f97"
+    },
+    {
+      "path": "package-smoke.json",
+      "sha256": "0ca02a8d53c83c7fee004a84c3fc3d98f352e094f63d1c15aa57efc32ed0b36f"
+    },
+    {
+      "path": "RCL_STRESS.json",
+      "sha256": "cd7360323d25331118a04721d6818c0cf70538a52660cb1ae2c75183c829518e"
+    },
+    {
+      "path": "tests.log",
+      "sha256": "846ef8216840f1fbf7834cabd324f0c00e74a5693920dc355899c5005f01ec47"
+    }
+  ]
+}

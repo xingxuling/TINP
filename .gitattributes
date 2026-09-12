@@ -2,4 +2,4 @@
 * -text
 
 # Receipt file hashes bind raw bytes, including original line endings.
-/evidence/external-onboarding-2026-09-12/** -text
+/evidence/external-onboarding-2026-09-12/** -text whitespace=cr-at-eol

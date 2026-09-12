@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "project": "more-itertools",
+  "inputSha256": "50e39f246ab7179f494069d7b58ed773100f4ea619b9f78e3edaeaf061f5f291",
+  "acceptance": {
+    "format": "twni.opp-native-interop-acceptance.v1",
+    "interopReceiptRoot": "a736ce83ab57c5a79f0c482f7a6bda5cdfa3fed08030751fe7ca7876e29d3b5e",
+    "status": "PASS",
+    "finalResultRoot": "b3ccf9265c936f1914e347e8f1d89c00a3048d1854860dd6a8b0724de01bc3d6",
+    "authorityGranted": false,
+    "sideEffects": false,
+    "boundary": "TINP binds one OPP-owned candidate interop receipt; it does not copy OPP runtime semantics, grant authority or claim production interoperability",
+    "acceptanceRoot": "eedf0bdb3fce6c8000e3b920f64650ab191f4082a563e95fae054023342ecb9b"
+  },
+  "networkRequests": 0,
+  "targetExecutions": 0,
+  "boundary": "Different implementation language, same TaoWind operator. No independent operator or execution attestation."
+}
