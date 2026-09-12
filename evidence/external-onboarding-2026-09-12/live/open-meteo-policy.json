@@ -1,0 +1,43 @@
+{
+  "format": "twni.opp-http-readonly-policy.v1",
+  "policyId": "open-meteo",
+  "adapterVersion": "tinp-opp-http-readonly-v0.1",
+  "oppSource": {
+    "repository": "https://github.com/xingxuling/OPP",
+    "commit": "f7b76582a720d9d18af5153affa0fc2d78bc0410",
+    "protocols": [
+      "opp.chp.v0.1",
+      "opp.rcp.v0.1"
+    ]
+  },
+  "transport": {
+    "scheme": "https",
+    "method": "GET",
+    "allowedHosts": [
+      "api.open-meteo.com"
+    ],
+    "allowedPathPrefixes": [
+      "/v1/forecast"
+    ],
+    "timeoutMs": 12000,
+    "maxResponseBytes": 65536,
+    "redirectPolicy": "deny",
+    "proxyPolicy": "deny-ambient",
+    "credentialPolicy": "none",
+    "maxAttempts": 1,
+    "allowedRequestHeaders": [
+      "accept",
+      "user-agent"
+    ],
+    "responseMediaType": "application/json",
+    "responseFields": [
+      "latitude",
+      "longitude",
+      "timezone"
+    ]
+  },
+  "receiptFormat": "twni.opp-http-readonly-receipt.v1",
+  "authorityGranted": false,
+  "authorityBoundary": "Read-only external observation; no credential, retry, redirect, or authority grant",
+  "policyRoot": "9052993768c196a5e23930b7c006b70773a3143964f691c26f7a3f605e4be045"
+}

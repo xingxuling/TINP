@@ -135,3 +135,7 @@ sideEffects: false
 - OPP/TINP 分工：[`COMPARISON.md`](COMPARISON.md)
 - 当前生产缺口：[`../ROADMAP.md`](../ROADMAP.md)
 - 许可边界：[`LICENSE_AUDIT.md`](LICENSE_AUDIT.md)
+
+## 2026-09-12 增量：有界只读 SDK
+
+当前候选增加 [sdk/v1.mjs](PUBLIC_SDK.md)，可从独立安装包调用现有 HTTPS 只读 Provider 与离线回执验证。上文“独立通用 Provider SDK 尚未提供”的边界仍成立；新入口不提供 registerProvider，也不会让外部任意 handler 进入授权三节点执行链。

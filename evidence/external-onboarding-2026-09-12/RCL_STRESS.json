@@ -1,0 +1,66 @@
+{
+  "task": "OPP + TINP external onboarding",
+  "classification": "PROVIDER_EVIDENCE_NOT_RCL_CORE_GAP",
+  "owners": {
+    "OPP": "static compatibility, declarative bridge, native receipt semantics",
+    "TINP": "transport policy, provider observation, acceptance binding",
+    "RCL": "existing admission/recovery profiles; unchanged"
+  },
+  "missingCapability": "practical external onboarding and honest unknown-type/receipt boundaries; no demonstrated missing RCL primitive",
+  "workaround": "Python distribution execution and Node HTTPS are explicit auxiliary provider implementations, not RCL-native completion",
+  "donor": [
+    "OPP existing bridge/invocation",
+    "TINP existing HTTP and validators",
+    "Boltons",
+    "more-itertools",
+    "JMESPath",
+    "Node HTTPS"
+  ],
+  "gapType": "integration-and-provider",
+  "generality": "cross-project adapter and evidence practice; library algorithms remain domain providers",
+  "candidateAbsorption": "NONE; no new Primitive/IR/Runtime/Profile proposed",
+  "matrixSource": {
+    "path": "src/universal-program-stress.mjs",
+    "repository": "RCL",
+    "sha256": "70f461a51a166eb80c9d012b1d7663786ba420de554b5c27eb082b99f6a9cf15"
+  },
+  "affectedK400Cells": [
+    {
+      "id": "windows::cli",
+      "campaignId": "K042"
+    },
+    {
+      "id": "server::web",
+      "campaignId": "K104"
+    },
+    {
+      "id": "distributed-runtime::distributed",
+      "campaignId": "K250"
+    },
+    {
+      "id": "automation-runtime::agent",
+      "campaignId": "K354"
+    }
+  ],
+  "gates": {
+    "EXPRESS": "NOT_ADJUDICATED",
+    "COMPILE": "NOT_ADJUDICATED",
+    "LOWER": "NOT_ADJUDICATED",
+    "EXECUTE": "NOT_ADJUDICATED",
+    "CORRECT": "NOT_ADJUDICATED",
+    "ROBUST": "NOT_ADJUDICATED",
+    "PERFORMANCE": "NOT_ADJUDICATED",
+    "AI_GENERATE": "NOT_ADJUDICATED",
+    "EVIDENCE": "NOT_ADJUDICATED"
+  },
+  "stressCases": [
+    "unknown outputs cannot prove exact compatibility",
+    "Chinese/emoji survive installed isolated Python child",
+    "tampered bridge rejected before execution",
+    "offline receipts bind original inputs",
+    "HTTP 402/400 remain failures",
+    "global fetch not used by native default"
+  ],
+  "candidateOnly": true,
+  "canonicalPromotion": false
+}

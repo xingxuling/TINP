@@ -80,7 +80,7 @@ const hello = nodeId => makeHello({
 export async function runOppHttpConsumerLive({
   policy,
   request,
-  fetchImpl = globalThis.fetch,
+  fetchImpl,
   environment = process.env,
   execArgv = process.execArgv,
   consumerId = 'tinp-consumer',

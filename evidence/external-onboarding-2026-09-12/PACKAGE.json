@@ -1,0 +1,15 @@
+{
+  "sha256": "44d9936db4c968630dc0412cfa380905d46a86120116df252f032fd7f6e3ed06",
+  "filename": "taowind-tinp-suite-0.1.0-alpha.29.tgz",
+  "bytes": 4282297,
+  "verifiedCurrentFiles": [
+    "sdk/v1.mjs",
+    "src/opp-http-readonly.mjs",
+    "src/opp-http-consumer-live.mjs",
+    "scripts/external-verify.mjs",
+    "scripts/verify-external-batch.mjs"
+  ],
+  "sensitiveRuntimeEntries": [],
+  "installedSmoke": "package-smoke.json",
+  "note": "Final tarball runtime bytes match current and previously executed SDK runtime; batch verifier additionally passed hosted CI."
+}

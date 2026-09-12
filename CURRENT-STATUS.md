@@ -52,3 +52,7 @@ alpha.28 已合并：完整 `verify` 直接生成并校验仓库内公开 GitHub
 
 alpha.29 已合并（merge `4692e88`）：审计 OPP 最新 `main`（`61cc3828`）的 candidate native interop runtime，新增 TINP 薄适配器验证 OPP interop receipt 并生成 `twni.opp-native-interop-acceptance.v1`。OPP 继续拥有 native interop 语义，TINP 只绑定本地 acceptance；不升级 vendored OPP、不复制运行时、不授予 authority。
 
+
+## 2026-09-12 external onboarding candidate
+
+Added the documented read-only SDK surface, reused native HTTPS and stopped live orchestration from injecting global fetch. Standalone npm installation executed a real Open-Meteo GET and offline/tamper validation. Joint experiments covered three actual Python distributions plus Open-Meteo and httpbingo; the latter returned 402 and is INCOMPLETE. General Provider registration, joint authorized external routing/failover, real MCP, physical hosts and independent authority/operator remain open. See docs/EXTERNAL_ONBOARDING.md and ROADMAP.md.

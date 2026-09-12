@@ -1,0 +1,16 @@
+{
+  "format": "twni.opp-http-consumer-live-verify.v2",
+  "status": "PASS",
+  "resultStatus": "FAIL_CLOSED",
+  "networkRequests": 0,
+  "authorityGranted": false,
+  "inputs": {
+    "policyRoot": "4aa8ec7d0aa2a6405d611e173401d89347ef80cb58a29af480c5c4e93f99f015",
+    "requestRoot": "dbdd480fce6b164e37a2ea3f9c233624cd02f9237a3b809f4fdbf39bef47e0c5",
+    "acceptanceRoot": "4ea54d41934b56c66cafe6871a5e33a5a8026f6583827e5e233edb74d04098e9",
+    "policyFileSha256": "89b41b54272df2a2db4144deb63e602ca74f4990acfc0fc17a72c4f16d294faf",
+    "requestFileSha256": "0559af69d2de4b10a4c7bd8535a0de97c11832cf9eee53a9ca2e783d817b8ee7",
+    "resultFileSha256": "46e90383fc4c1a54e79754614f0855188bcb01ba6b3ded5bbcf6788a6787fe7e"
+  },
+  "boundary": "Offline validation of a saved live consumer result with exact semantic roots and input file hashes; no network request or authority grant"
+}

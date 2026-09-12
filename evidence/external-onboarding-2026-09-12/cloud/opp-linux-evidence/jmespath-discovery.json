@@ -1,0 +1,1721 @@
+{
+  "format": "taowind.opp.semantic-verification.v0.1",
+  "sourceId": "jmespath",
+  "root": "/tmp/opp-env/lib/python3.11/site-packages/jmespath",
+  "profile": "generic",
+  "primitiveFindingCount": 0,
+  "interfaceCount": 32,
+  "interfaces": [
+    {
+      "interfaceId": "semantic-563d8789188b24d7fd9d2c45",
+      "name": "compile",
+      "interfaceKind": "callable",
+      "operation": "compile",
+      "inputs": [
+        {
+          "port_id": "compile.in.expression",
+          "name": "expression",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "expression"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "compile.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "compile"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "__init__.py",
+        "digest": "1bdefe3427441afe5dd173812b95de18db16731294a4c114e392e1ef949cd8a3",
+        "line": 7,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-d372c5e225d0697a144e9f11",
+      "name": "search",
+      "interfaceKind": "callable",
+      "operation": "search",
+      "inputs": [
+        {
+          "port_id": "search.in.expression",
+          "name": "expression",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "expression"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "search.in.data",
+          "name": "data",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "data"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "search.in.options",
+          "name": "options",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "options"
+          ],
+          "required": false,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "search.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "search"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "__init__.py",
+        "digest": "1bdefe3427441afe5dd173812b95de18db16731294a4c114e392e1ef949cd8a3",
+        "line": 11,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-81a5098089c3d39771c5d4a7",
+      "name": "comparator",
+      "interfaceKind": "callable",
+      "operation": "comparator",
+      "inputs": [
+        {
+          "port_id": "comparator.in.name",
+          "name": "name",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "name"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "comparator.in.first",
+          "name": "first",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "first"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "comparator.in.second",
+          "name": "second",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "second"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "comparator.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "comparator"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 5,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-91009227d1dfc921f4dbb5f6",
+      "name": "current_node",
+      "interfaceKind": "callable",
+      "operation": "current_node",
+      "inputs": [],
+      "outputs": [
+        {
+          "port_id": "current_node.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "current_node"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 9,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-e597ab984a9877a98321decc",
+      "name": "expref",
+      "interfaceKind": "callable",
+      "operation": "expref",
+      "inputs": [
+        {
+          "port_id": "expref.in.expression",
+          "name": "expression",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "expression"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "expref.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "expref"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 13,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-2f5bd9968cc244ae50bcefed",
+      "name": "function_expression",
+      "interfaceKind": "callable",
+      "operation": "function_expression",
+      "inputs": [
+        {
+          "port_id": "function_expression.in.name",
+          "name": "name",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "name"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "function_expression.in.args",
+          "name": "args",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "args"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "function_expression.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "function_expression"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 17,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-4055c039d0823d205a12de6b",
+      "name": "field",
+      "interfaceKind": "callable",
+      "operation": "field",
+      "inputs": [
+        {
+          "port_id": "field.in.name",
+          "name": "name",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "name"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "field.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "field"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 21,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-888723a9251c4276d789fade",
+      "name": "filter_projection",
+      "interfaceKind": "callable",
+      "operation": "filter_projection",
+      "inputs": [
+        {
+          "port_id": "filter_projection.in.left",
+          "name": "left",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "left"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "filter_projection.in.right",
+          "name": "right",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "right"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "filter_projection.in.comparator",
+          "name": "comparator",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "comparator"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "filter_projection.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "filter_projection"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 25,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-5e73cd36832f919410a40891",
+      "name": "flatten",
+      "interfaceKind": "callable",
+      "operation": "flatten",
+      "inputs": [
+        {
+          "port_id": "flatten.in.node",
+          "name": "node",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "node"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "flatten.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "flatten"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 29,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-bdab1de93a089b529469c26a",
+      "name": "identity",
+      "interfaceKind": "callable",
+      "operation": "identity",
+      "inputs": [],
+      "outputs": [
+        {
+          "port_id": "identity.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "identity"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 33,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-8663bcfd8d4cf5f70b3690cf",
+      "name": "index",
+      "interfaceKind": "callable",
+      "operation": "index",
+      "inputs": [
+        {
+          "port_id": "index.in.index",
+          "name": "index",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "index"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "index.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "index"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 37,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-f60d60b729a78ec755efc731",
+      "name": "index_expression",
+      "interfaceKind": "callable",
+      "operation": "index_expression",
+      "inputs": [
+        {
+          "port_id": "index_expression.in.children",
+          "name": "children",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "children"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "index_expression.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "index_expression"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 41,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-d845eeff546a6002cc1bb394",
+      "name": "key_val_pair",
+      "interfaceKind": "callable",
+      "operation": "key_val_pair",
+      "inputs": [
+        {
+          "port_id": "key_val_pair.in.key_name",
+          "name": "key_name",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "key_name"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "key_val_pair.in.node",
+          "name": "node",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "node"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "key_val_pair.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "key_val_pair"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 45,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-3a75cf3d749ebad76cebfde3",
+      "name": "literal",
+      "interfaceKind": "callable",
+      "operation": "literal",
+      "inputs": [
+        {
+          "port_id": "literal.in.literal_value",
+          "name": "literal_value",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "literal_value"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "literal.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "literal"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 49,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-4db23338c4d32e0554f02935",
+      "name": "multi_select_dict",
+      "interfaceKind": "callable",
+      "operation": "multi_select_dict",
+      "inputs": [
+        {
+          "port_id": "multi_select_dict.in.nodes",
+          "name": "nodes",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "nodes"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "multi_select_dict.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "multi_select_dict"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 53,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-a7a7056bbc9ecabac224b749",
+      "name": "multi_select_list",
+      "interfaceKind": "callable",
+      "operation": "multi_select_list",
+      "inputs": [
+        {
+          "port_id": "multi_select_list.in.nodes",
+          "name": "nodes",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "nodes"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "multi_select_list.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "multi_select_list"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 57,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-94704d16d887d52b1b94fc9b",
+      "name": "or_expression",
+      "interfaceKind": "callable",
+      "operation": "or_expression",
+      "inputs": [
+        {
+          "port_id": "or_expression.in.left",
+          "name": "left",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "left"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "or_expression.in.right",
+          "name": "right",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "right"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "or_expression.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "or_expression"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 61,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-287208cd71a6b1105dbf272c",
+      "name": "and_expression",
+      "interfaceKind": "callable",
+      "operation": "and_expression",
+      "inputs": [
+        {
+          "port_id": "and_expression.in.left",
+          "name": "left",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "left"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "and_expression.in.right",
+          "name": "right",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "right"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "and_expression.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "and_expression"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 65,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-533add113138c30a2d15e0ee",
+      "name": "not_expression",
+      "interfaceKind": "callable",
+      "operation": "not_expression",
+      "inputs": [
+        {
+          "port_id": "not_expression.in.expr",
+          "name": "expr",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "expr"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "not_expression.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "not_expression"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 69,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-5cba25f2e12e39d31939025e",
+      "name": "pipe",
+      "interfaceKind": "callable",
+      "operation": "pipe",
+      "inputs": [
+        {
+          "port_id": "pipe.in.left",
+          "name": "left",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "left"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "pipe.in.right",
+          "name": "right",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "right"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "pipe.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "pipe"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 73,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-3a3d9f3a2af9cc6411927cd6",
+      "name": "projection",
+      "interfaceKind": "callable",
+      "operation": "projection",
+      "inputs": [
+        {
+          "port_id": "projection.in.left",
+          "name": "left",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "left"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "projection.in.right",
+          "name": "right",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "right"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "projection.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "projection"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 77,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-9893ad4a0b0e2c4591286b4e",
+      "name": "subexpression",
+      "interfaceKind": "callable",
+      "operation": "subexpression",
+      "inputs": [
+        {
+          "port_id": "subexpression.in.children",
+          "name": "children",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "children"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "subexpression.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "subexpression"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 81,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-ae8cf2561236d7ed581c486d",
+      "name": "slice",
+      "interfaceKind": "callable",
+      "operation": "slice",
+      "inputs": [
+        {
+          "port_id": "slice.in.start",
+          "name": "start",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "start"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "slice.in.end",
+          "name": "end",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "end"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "slice.in.step",
+          "name": "step",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "step"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "slice.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "slice"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 85,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-fd441f23fb6d7e266d6c4802",
+      "name": "value_projection",
+      "interfaceKind": "callable",
+      "operation": "value_projection",
+      "inputs": [
+        {
+          "port_id": "value_projection.in.left",
+          "name": "left",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "left"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "value_projection.in.right",
+          "name": "right",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "right"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "value_projection.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "value_projection"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "ast.py",
+        "digest": "4a21d133599d40f46dd76476aa442efc4cdb77e8219391cbcb51e5d631c0caff",
+        "line": 89,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-5077543893780a81ec18b987",
+      "name": "with_str_method",
+      "interfaceKind": "callable",
+      "operation": "with_str_method",
+      "inputs": [],
+      "outputs": [
+        {
+          "port_id": "with_str_method.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "with_str_method"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "compat.py",
+        "digest": "acc1e9be61b7240c57fe5434c8f2b57612f3fb23ae1326cca9dac4aba45102be",
+        "line": 10,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-b89c4ea689d4fb01f2afdcef",
+      "name": "with_repr_method",
+      "interfaceKind": "callable",
+      "operation": "with_repr_method",
+      "inputs": [],
+      "outputs": [
+        {
+          "port_id": "with_repr_method.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "with_repr_method"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "compat.py",
+        "digest": "acc1e9be61b7240c57fe5434c8f2b57612f3fb23ae1326cca9dac4aba45102be",
+        "line": 14,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-a1ec47310272297ab0f17699",
+      "name": "get_methods",
+      "interfaceKind": "callable",
+      "operation": "get_methods",
+      "inputs": [],
+      "outputs": [
+        {
+          "port_id": "get_methods.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "get_methods"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "compat.py",
+        "digest": "acc1e9be61b7240c57fe5434c8f2b57612f3fb23ae1326cca9dac4aba45102be",
+        "line": 17,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-d8941c15c16c70c11d51b6cf",
+      "name": "signature",
+      "interfaceKind": "callable",
+      "operation": "signature",
+      "inputs": [],
+      "outputs": [
+        {
+          "port_id": "signature.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "signature"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "functions.py",
+        "digest": "73d29131314d9ba2a457a23d42f82386264673bb3120bb3e2f79afc47055fe4c",
+        "line": 38,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-2312e92f73773721c229e3de",
+      "name": "_equals",
+      "interfaceKind": "callable",
+      "operation": "_equals",
+      "inputs": [
+        {
+          "port_id": "_equals.in.x",
+          "name": "x",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "x"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "_equals.in.y",
+          "name": "y",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "y"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "_equals.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "_equals"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "visitor.py",
+        "digest": "c38a44cfad82ee5f50b37d003f736638c12be799ee256555fa46fe4211182912",
+        "line": 8,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-8080526829a69f20ab3b4579",
+      "name": "_is_special_number_case",
+      "interfaceKind": "callable",
+      "operation": "_is_special_number_case",
+      "inputs": [
+        {
+          "port_id": "_is_special_number_case.in.x",
+          "name": "x",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "x"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        },
+        {
+          "port_id": "_is_special_number_case.in.y",
+          "name": "y",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "y"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "_is_special_number_case.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "_is_special_number_case"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "visitor.py",
+        "digest": "c38a44cfad82ee5f50b37d003f736638c12be799ee256555fa46fe4211182912",
+        "line": 15,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-ced0269d6a9088d0e42c0a37",
+      "name": "_is_comparable",
+      "interfaceKind": "callable",
+      "operation": "_is_comparable",
+      "inputs": [
+        {
+          "port_id": "_is_comparable.in.x",
+          "name": "x",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "x"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "_is_comparable.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "_is_comparable"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "visitor.py",
+        "digest": "c38a44cfad82ee5f50b37d003f736638c12be799ee256555fa46fe4211182912",
+        "line": 38,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    },
+    {
+      "interfaceId": "semantic-95f3d1740dbdb75a9a595232",
+      "name": "_is_actual_number",
+      "interfaceKind": "callable",
+      "operation": "_is_actual_number",
+      "inputs": [
+        {
+          "port_id": "_is_actual_number.in.x",
+          "name": "x",
+          "direction": "input",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "x"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.55
+        }
+      ],
+      "outputs": [
+        {
+          "port_id": "_is_actual_number.out.return",
+          "name": "return",
+          "direction": "output",
+          "shape": {},
+          "modality": "data",
+          "semantic_tags": [
+            "_is_actual_number"
+          ],
+          "required": true,
+          "default": null,
+          "confidence": 0.45
+        }
+      ],
+      "sideEffects": [],
+      "authorityRequired": [],
+      "source": {
+        "path": "visitor.py",
+        "digest": "c38a44cfad82ee5f50b37d003f736638c12be799ee256555fa46fe4211182912",
+        "line": 46,
+        "extractor": "python-ast-signature"
+      },
+      "confidence": 0.48,
+      "evidence": [
+        "python-ast-signature"
+      ],
+      "runtimeSupport": "unverified"
+    }
+  ],
+  "warnings": [],
+  "authority": {
+    "sourceAuthorityInherited": false,
+    "canonicalPromotionPerformed": false
+  },
+  "boundary": "Static semantic inference only. Signatures and schemas support bounded interface-shape claims, not runtime interoperability, business meaning, truth, or authority / 仅静态语义推断；签名与模式只支持有限的接口形状主张，不证明运行互操作、业务含义、真实性或权限。"
+}

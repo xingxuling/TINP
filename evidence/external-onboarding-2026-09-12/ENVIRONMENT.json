@@ -1,0 +1,64 @@
+{
+  "platform": "Windows-10-10.0.26200-SP0",
+  "pythonExecutable": "C:\\Users\\User\\Documents\\RCL\\_inspect\\opp-external-env\\Scripts\\python.exe",
+  "node": "v24.15.0",
+  "packages": [
+    {
+      "name": "attrs",
+      "version": "26.1.0"
+    },
+    {
+      "name": "boltons",
+      "version": "26.2.0"
+    },
+    {
+      "name": "jmespath",
+      "version": "1.1.0"
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.26.0"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1"
+    },
+    {
+      "name": "more-itertools",
+      "version": "11.1.0"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3"
+    },
+    {
+      "name": "pip",
+      "version": "23.2.1"
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0"
+    },
+    {
+      "name": "rpds-py",
+      "version": "2026.6.3"
+    },
+    {
+      "name": "setuptools",
+      "version": "65.5.0"
+    },
+    {
+      "name": "taowind-opp",
+      "version": "0.3.0.dev1"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0"
+    },
+    {
+      "name": "wheel",
+      "version": "0.48.0"
+    }
+  ],
+  "clockTrust": "LOCAL_SYSTEM_TIME_NOT_TRUSTED_TIMESTAMP"
+}

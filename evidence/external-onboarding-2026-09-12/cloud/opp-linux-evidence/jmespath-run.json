@@ -1,0 +1,420 @@
+{
+  "project": "jmespath",
+  "runSpec": {
+    "format": "taowind.opp.interop-run.v0.1",
+    "runId": "jmespath",
+    "producer": {
+      "format": "taowind.opp.invocation-spec.v0.1",
+      "version": "0.3.0-candidate.1",
+      "specId": "jmespath_producer",
+      "adapterKind": "python-function",
+      "sourceRoot": "/tmp/opp-evidence",
+      "entrypoint": "adapters.py:jmespath_producer",
+      "callingConvention": "kwargs",
+      "timeoutMs": 3000,
+      "maxOutputBytes": 262144,
+      "cwdPolicy": "ephemeral",
+      "environmentPolicy": "sanitized",
+      "authorityRequired": [],
+      "status": "candidate"
+    },
+    "consumer": {
+      "format": "taowind.opp.invocation-spec.v0.1",
+      "version": "0.3.0-candidate.1",
+      "specId": "consume_boltons",
+      "adapterKind": "python-function",
+      "sourceRoot": "/tmp/opp-evidence",
+      "entrypoint": "adapters.py:consume_boltons",
+      "callingConvention": "kwargs",
+      "timeoutMs": 3000,
+      "maxOutputBytes": 262144,
+      "cwdPolicy": "ephemeral",
+      "environmentPolicy": "sanitized",
+      "authorityRequired": [],
+      "status": "candidate"
+    },
+    "bridgePlan": {
+      "format": "taowind.opp.auto-bridge-plan.v0.1",
+      "version": "0.2.0-candidate.1",
+      "bridgeId": "bridge-plan-319145bb76374f43149f9642",
+      "status": "candidate",
+      "producerPort": "producer.items",
+      "consumerPort": "consumer.items",
+      "compatibility": {
+        "format": "taowind.opp.bridge-compatibility.v0.1",
+        "classification": "structural",
+        "producerPort": "producer.items",
+        "consumerPort": "consumer.items",
+        "typeCompatible": true,
+        "semanticCompatible": null,
+        "confidence": 0.99,
+        "reasons": [
+          "$.itemList:exact-shape",
+          "$.itemList:normalized-name-rename:item_list->itemList"
+        ],
+        "operations": [
+          {
+            "op": "rename",
+            "from": "item_list",
+            "to": "itemList"
+          }
+        ],
+        "missingInformation": [],
+        "authorityGap": [],
+        "boundary": "Compatibility is inferred from declared/static shapes and tags. It is not proof that either native runtime actually interoperates / 兼容性来自声明或静态形状与语义标签推断，不证明原生运行时实际互操作。"
+      },
+      "operations": [
+        {
+          "op": "rename",
+          "from": "item_list",
+          "to": "itemList"
+        }
+      ],
+      "executionModel": "opp-declarative-json-transform",
+      "authority": {
+        "required": [],
+        "available": [],
+        "promotionPerformed": false
+      },
+      "safety": {
+        "sourceCodeExecution": false,
+        "arbitraryCodeGeneration": false,
+        "informationInvention": false,
+        "authorityInvention": false,
+        "lossyAllowed": false
+      },
+      "boundary": "Generated plans only transform supplied JSON-like values. They cannot create missing required information, privileges, native runtime support, or semantic truth / 生成计划只转换已提供的 JSON 类数据；不能创造缺失的必需信息、权限、原生运行支持或语义真实性。",
+      "planRoot": "7cb8e8949ab86fe77dfc5534d57d2288be0b6faa3488825a8b051c60e4718a5d"
+    }
+  },
+  "input": {
+    "items": [
+      "香港🌏",
+      "B",
+      "香港🌏",
+      "A"
+    ]
+  },
+  "expected": {
+    "values": [
+      "A",
+      "B",
+      "香港🌏"
+    ]
+  },
+  "result": {
+    "receipt": {
+      "format": "taowind.opp.interop-receipt.v0.1",
+      "version": "0.3.0-candidate.1",
+      "runId": "jmespath",
+      "status": "PASS",
+      "producerRequestRoot": "a8f35239a36163492049f6cc807811913c5bada0ac0043843c4dd68af6ea0dcb",
+      "producerReceiptRoot": "a0d8e2119dde0e3e8882f567fb6f68893cb2f96394d9617647e2cc73991ee751",
+      "bridgePlanRoot": "7cb8e8949ab86fe77dfc5534d57d2288be0b6faa3488825a8b051c60e4718a5d",
+      "transformedRoot": "07252adb2d956cc5514418dd1b1fb4fc0108ebc435a03378bad2da9f0aa7fb46",
+      "consumerReceiptRoot": "b6349549e1fda88d524a8e1b57e88785a42f8e04d15b4e0c1f2bdcd6db966601",
+      "finalResultRoot": "b3ccf9265c936f1914e347e8f1d89c00a3048d1854860dd6a8b0724de01bc3d6",
+      "error": null,
+      "authority": {
+        "promotionPerformed": false,
+        "environmentAuthorityInherited": false
+      },
+      "executionBoundary": {
+        "explicitConsentRequired": true,
+        "strongOsSandboxClaimed": false,
+        "hiddenRetries": false
+      },
+      "boundary": "Interop PASS proves only this concrete producer/bridge/consumer run. It does not establish universal compatibility, target safety, or strong OS isolation / 互操作 PASS 只证明本次具体生产端/桥/消费端运行成功，不代表普遍兼容、目标安全或强操作系统隔离。",
+      "receiptRoot": "cc6f6a934290afd9550c06c300de3242bf41cb9f6c0d94270a531e5db84314ca"
+    },
+    "producer": {
+      "receipt": {
+        "format": "taowind.opp.invocation-receipt.v0.1",
+        "version": "0.3.0-candidate.1",
+        "specId": "jmespath_producer",
+        "adapterKind": "python-function",
+        "entrypoint": "adapters.py:jmespath_producer",
+        "status": "PASS",
+        "requestRoot": "082abfaca063998d64a4f2d649eb185724d3faafa8d1d2e1e883bd263cda1a29",
+        "resultRoot": "6134981eddd865a54b6b5f6506c52579fc4a3af7c11de924aa8a465abf606f5f",
+        "exitCode": 0,
+        "timedOut": false,
+        "stdoutBytes": 106,
+        "stderrBytes": 0,
+        "targetStdout": "",
+        "targetStderr": "",
+        "error": null,
+        "authority": {
+          "required": [],
+          "inheritedFromEnvironment": false,
+          "promotionPerformed": false
+        },
+        "executionBoundary": {
+          "explicitConsentRequired": true,
+          "shellUsed": false,
+          "environmentPolicy": "sanitized",
+          "cwdPolicy": "ephemeral",
+          "strongOsSandboxClaimed": false
+        },
+        "boundary": "PASS proves only this explicit invocation completed under the OPP bounded child-process policy. It does not prove the target is safe or strongly sandboxed / PASS 只证明本次显式调用在 OPP 有界子进程策略下完成，不证明目标代码安全或具备强沙箱隔离。",
+        "durationMs": 40.666,
+        "receiptRoot": "a0d8e2119dde0e3e8882f567fb6f68893cb2f96394d9617647e2cc73991ee751"
+      },
+      "result": {
+        "item_list": [
+          "A",
+          "B",
+          "香港🌏",
+          "香港🌏"
+        ]
+      }
+    },
+    "transformed": {
+      "itemList": [
+        "A",
+        "B",
+        "香港🌏",
+        "香港🌏"
+      ]
+    },
+    "consumer": {
+      "receipt": {
+        "format": "taowind.opp.invocation-receipt.v0.1",
+        "version": "0.3.0-candidate.1",
+        "specId": "consume_boltons",
+        "adapterKind": "python-function",
+        "entrypoint": "adapters.py:consume_boltons",
+        "status": "PASS",
+        "requestRoot": "716ec66ac888c4f2831d615a62d3c945fe3eff10c1849b0daa2d3173597fa628",
+        "resultRoot": "b3ccf9265c936f1914e347e8f1d89c00a3048d1854860dd6a8b0724de01bc3d6",
+        "exitCode": 0,
+        "timedOut": false,
+        "stdoutBytes": 90,
+        "stderrBytes": 0,
+        "targetStdout": "",
+        "targetStderr": "",
+        "error": null,
+        "authority": {
+          "required": [],
+          "inheritedFromEnvironment": false,
+          "promotionPerformed": false
+        },
+        "executionBoundary": {
+          "explicitConsentRequired": true,
+          "shellUsed": false,
+          "environmentPolicy": "sanitized",
+          "cwdPolicy": "ephemeral",
+          "strongOsSandboxClaimed": false
+        },
+        "boundary": "PASS proves only this explicit invocation completed under the OPP bounded child-process policy. It does not prove the target is safe or strongly sandboxed / PASS 只证明本次显式调用在 OPP 有界子进程策略下完成，不证明目标代码安全或具备强沙箱隔离。",
+        "durationMs": 39.389,
+        "receiptRoot": "b6349549e1fda88d524a8e1b57e88785a42f8e04d15b4e0c1f2bdcd6db966601"
+      },
+      "result": {
+        "values": [
+          "A",
+          "B",
+          "香港🌏"
+        ]
+      }
+    },
+    "result": {
+      "values": [
+        "A",
+        "B",
+        "香港🌏"
+      ]
+    }
+  },
+  "negativeInput": {
+    "items": 7
+  },
+  "negative": {
+    "receipt": {
+      "format": "taowind.opp.interop-receipt.v0.1",
+      "version": "0.3.0-candidate.1",
+      "runId": "jmespath",
+      "status": "FAIL",
+      "producerRequestRoot": "19e000b92af2f4c0f4f9a7ade4c3719be4157cf430d2dcaf86dc0361db638e54",
+      "producerReceiptRoot": "257e695b325eba7eb9f09ed5575869c11de163bee47db2a7cedf4ba7312943c0",
+      "bridgePlanRoot": "7cb8e8949ab86fe77dfc5534d57d2288be0b6faa3488825a8b051c60e4718a5d",
+      "transformedRoot": null,
+      "consumerReceiptRoot": null,
+      "finalResultRoot": null,
+      "error": "PRODUCER_FAILED",
+      "authority": {
+        "promotionPerformed": false,
+        "environmentAuthorityInherited": false
+      },
+      "executionBoundary": {
+        "explicitConsentRequired": true,
+        "strongOsSandboxClaimed": false,
+        "hiddenRetries": false
+      },
+      "boundary": "Interop PASS proves only this concrete producer/bridge/consumer run. It does not establish universal compatibility, target safety, or strong OS isolation / 互操作 PASS 只证明本次具体生产端/桥/消费端运行成功，不代表普遍兼容、目标安全或强操作系统隔离。",
+      "receiptRoot": "926740b03bf4ca1108802db988ae1e7fe1ea61d915da6260c308838b3cfcd5f4"
+    },
+    "producer": {
+      "receipt": {
+        "format": "taowind.opp.invocation-receipt.v0.1",
+        "version": "0.3.0-candidate.1",
+        "specId": "jmespath_producer",
+        "adapterKind": "python-function",
+        "entrypoint": "adapters.py:jmespath_producer",
+        "status": "FAIL",
+        "requestRoot": "4d2eb3e1c8b6bec906774178eee49c6f08ee5923b229108b64d684a8dc5cb486",
+        "resultRoot": null,
+        "exitCode": 70,
+        "timedOut": false,
+        "stdoutBytes": 2040,
+        "stderrBytes": 0,
+        "targetStdout": "",
+        "targetStderr": "",
+        "error": "JMESPathTypeError:In function sort(), invalid type for value: 7, expected one of: ['array-string', 'array-number'], received: \"number\"",
+        "authority": {
+          "required": [],
+          "inheritedFromEnvironment": false,
+          "promotionPerformed": false
+        },
+        "executionBoundary": {
+          "explicitConsentRequired": true,
+          "shellUsed": false,
+          "environmentPolicy": "sanitized",
+          "cwdPolicy": "ephemeral",
+          "strongOsSandboxClaimed": false
+        },
+        "boundary": "PASS proves only this explicit invocation completed under the OPP bounded child-process policy. It does not prove the target is safe or strongly sandboxed / PASS 只证明本次显式调用在 OPP 有界子进程策略下完成，不证明目标代码安全或具备强沙箱隔离。",
+        "durationMs": 42.38,
+        "receiptRoot": "257e695b325eba7eb9f09ed5575869c11de163bee47db2a7cedf4ba7312943c0"
+      },
+      "result": null
+    },
+    "transformed": null,
+    "consumer": null,
+    "result": null
+  },
+  "recovered": {
+    "receipt": {
+      "format": "taowind.opp.interop-receipt.v0.1",
+      "version": "0.3.0-candidate.1",
+      "runId": "jmespath",
+      "status": "PASS",
+      "producerRequestRoot": "a8f35239a36163492049f6cc807811913c5bada0ac0043843c4dd68af6ea0dcb",
+      "producerReceiptRoot": "a0d8e2119dde0e3e8882f567fb6f68893cb2f96394d9617647e2cc73991ee751",
+      "bridgePlanRoot": "7cb8e8949ab86fe77dfc5534d57d2288be0b6faa3488825a8b051c60e4718a5d",
+      "transformedRoot": "07252adb2d956cc5514418dd1b1fb4fc0108ebc435a03378bad2da9f0aa7fb46",
+      "consumerReceiptRoot": "b6349549e1fda88d524a8e1b57e88785a42f8e04d15b4e0c1f2bdcd6db966601",
+      "finalResultRoot": "b3ccf9265c936f1914e347e8f1d89c00a3048d1854860dd6a8b0724de01bc3d6",
+      "error": null,
+      "authority": {
+        "promotionPerformed": false,
+        "environmentAuthorityInherited": false
+      },
+      "executionBoundary": {
+        "explicitConsentRequired": true,
+        "strongOsSandboxClaimed": false,
+        "hiddenRetries": false
+      },
+      "boundary": "Interop PASS proves only this concrete producer/bridge/consumer run. It does not establish universal compatibility, target safety, or strong OS isolation / 互操作 PASS 只证明本次具体生产端/桥/消费端运行成功，不代表普遍兼容、目标安全或强操作系统隔离。",
+      "receiptRoot": "cc6f6a934290afd9550c06c300de3242bf41cb9f6c0d94270a531e5db84314ca"
+    },
+    "producer": {
+      "receipt": {
+        "format": "taowind.opp.invocation-receipt.v0.1",
+        "version": "0.3.0-candidate.1",
+        "specId": "jmespath_producer",
+        "adapterKind": "python-function",
+        "entrypoint": "adapters.py:jmespath_producer",
+        "status": "PASS",
+        "requestRoot": "082abfaca063998d64a4f2d649eb185724d3faafa8d1d2e1e883bd263cda1a29",
+        "resultRoot": "6134981eddd865a54b6b5f6506c52579fc4a3af7c11de924aa8a465abf606f5f",
+        "exitCode": 0,
+        "timedOut": false,
+        "stdoutBytes": 106,
+        "stderrBytes": 0,
+        "targetStdout": "",
+        "targetStderr": "",
+        "error": null,
+        "authority": {
+          "required": [],
+          "inheritedFromEnvironment": false,
+          "promotionPerformed": false
+        },
+        "executionBoundary": {
+          "explicitConsentRequired": true,
+          "shellUsed": false,
+          "environmentPolicy": "sanitized",
+          "cwdPolicy": "ephemeral",
+          "strongOsSandboxClaimed": false
+        },
+        "boundary": "PASS proves only this explicit invocation completed under the OPP bounded child-process policy. It does not prove the target is safe or strongly sandboxed / PASS 只证明本次显式调用在 OPP 有界子进程策略下完成，不证明目标代码安全或具备强沙箱隔离。",
+        "durationMs": 40.349,
+        "receiptRoot": "a0d8e2119dde0e3e8882f567fb6f68893cb2f96394d9617647e2cc73991ee751"
+      },
+      "result": {
+        "item_list": [
+          "A",
+          "B",
+          "香港🌏",
+          "香港🌏"
+        ]
+      }
+    },
+    "transformed": {
+      "itemList": [
+        "A",
+        "B",
+        "香港🌏",
+        "香港🌏"
+      ]
+    },
+    "consumer": {
+      "receipt": {
+        "format": "taowind.opp.invocation-receipt.v0.1",
+        "version": "0.3.0-candidate.1",
+        "specId": "consume_boltons",
+        "adapterKind": "python-function",
+        "entrypoint": "adapters.py:consume_boltons",
+        "status": "PASS",
+        "requestRoot": "716ec66ac888c4f2831d615a62d3c945fe3eff10c1849b0daa2d3173597fa628",
+        "resultRoot": "b3ccf9265c936f1914e347e8f1d89c00a3048d1854860dd6a8b0724de01bc3d6",
+        "exitCode": 0,
+        "timedOut": false,
+        "stdoutBytes": 90,
+        "stderrBytes": 0,
+        "targetStdout": "",
+        "targetStderr": "",
+        "error": null,
+        "authority": {
+          "required": [],
+          "inheritedFromEnvironment": false,
+          "promotionPerformed": false
+        },
+        "executionBoundary": {
+          "explicitConsentRequired": true,
+          "shellUsed": false,
+          "environmentPolicy": "sanitized",
+          "cwdPolicy": "ephemeral",
+          "strongOsSandboxClaimed": false
+        },
+        "boundary": "PASS proves only this explicit invocation completed under the OPP bounded child-process policy. It does not prove the target is safe or strongly sandboxed / PASS 只证明本次显式调用在 OPP 有界子进程策略下完成，不证明目标代码安全或具备强沙箱隔离。",
+        "durationMs": 38.865,
+        "receiptRoot": "b6349549e1fda88d524a8e1b57e88785a42f8e04d15b4e0c1f2bdcd6db966601"
+      },
+      "result": {
+        "values": [
+          "A",
+          "B",
+          "香港🌏"
+        ]
+      }
+    },
+    "result": {
+      "values": [
+        "A",
+        "B",
+        "香港🌏"
+      ]
+    }
+  }
+}

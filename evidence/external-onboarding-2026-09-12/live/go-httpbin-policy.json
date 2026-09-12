@@ -1,0 +1,43 @@
+{
+  "format": "twni.opp-http-readonly-policy.v1",
+  "policyId": "go-httpbin",
+  "adapterVersion": "tinp-opp-http-readonly-v0.1",
+  "oppSource": {
+    "repository": "https://github.com/xingxuling/OPP",
+    "commit": "f7b76582a720d9d18af5153affa0fc2d78bc0410",
+    "protocols": [
+      "opp.chp.v0.1",
+      "opp.rcp.v0.1"
+    ]
+  },
+  "transport": {
+    "scheme": "https",
+    "method": "GET",
+    "allowedHosts": [
+      "httpbingo.org"
+    ],
+    "allowedPathPrefixes": [
+      "/get",
+      "/status/503"
+    ],
+    "timeoutMs": 12000,
+    "maxResponseBytes": 65536,
+    "redirectPolicy": "deny",
+    "proxyPolicy": "deny-ambient",
+    "credentialPolicy": "none",
+    "maxAttempts": 1,
+    "allowedRequestHeaders": [
+      "accept",
+      "user-agent"
+    ],
+    "responseMediaType": "application/json",
+    "responseFields": [
+      "args",
+      "url"
+    ]
+  },
+  "receiptFormat": "twni.opp-http-readonly-receipt.v1",
+  "authorityGranted": false,
+  "authorityBoundary": "Read-only external observation; no credential, retry, redirect, or authority grant",
+  "policyRoot": "4aa8ec7d0aa2a6405d611e173401d89347ef80cb58a29af480c5c4e93f99f015"
+}

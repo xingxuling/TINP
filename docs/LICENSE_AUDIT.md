@@ -45,3 +45,9 @@ alpha.15 仅新增本仓库 JavaScript 的只读 OPP HTTP policy/request/receipt
 alpha.16 only hardens the existing JavaScript OPP read-only adapter and deterministic tests/verify evidence. No new dependency or vendored source was added; existing OPP license and authority boundaries remain unchanged.
 
 alpha.17 adds only first-party JavaScript consumer-binding code, tests, verifier wiring and documentation. It reuses the pinned OPP adapter output and adds no dependency or copied OPP source.
+
+## 2026-09-12 refresh
+
+The audited OPP default HEAD 5b18ca5b1df88791f69175811a1bb0912cf5d0bb now includes MIT LICENSE. This updates the earlier current-upstream observation; it does not silently rewrite the provenance/license of the older vendored f7b76582 snapshot. This candidate did not replace that vendor snapshot or relicense TINP/RCL/AAF. The local npm archive remains a private review artifact, not a public release. Third-party libraries were installed in a separate OPP test environment, not copied into TINP. Remote response projections contain no third-party code. Open-Meteo is the source of the observed coordinate/timezone data.
+
+Live repository visibility audit on 2026-09-12: both OPP and TINP are PUBLIC. Earlier private-repository descriptions are historical; this does not by itself resolve historical vendored-license or production-release gates.
