@@ -17,6 +17,15 @@ TINP 关注的不是“怎么调用一个 API”，而是调用发生之后更�
 
 这意味着：当前版本已经通过本机集成验证，但还不是生产网络，也不声称已经具备互联网规模、生产级密钥托管或军用安全认证。
 
+## 从这里开始
+
+- 想知道它能解决什么问题：[`docs/USE_CASES.md`](docs/USE_CASES.md)
+- 想直接跑起来：看下面的“快速开始”
+- 想看完整验证证据：[`evidence/0.1.0-alpha.29/INTEGRATION_COURT.md`](evidence/0.1.0-alpha.29/INTEGRATION_COURT.md)
+- 想参与开发：[`CONTRIBUTING.md`](CONTRIBUTING.md)
+- 想报告安全问题：[`SECURITY.md`](SECURITY.md)
+- 想确认许可边界：[`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md)
+
 ## 一分钟理解
 
 假设有三个节点：
@@ -49,6 +58,22 @@ A -> B -> C
 
 如果 B 失效，系统可以尝试备用路径；如果原 Provider 消失，可以在满足同一契约时切换到替代 Provider；如果当前没有可用 Provider，则保留会话、身份和证据，把请求留在可恢复状态，而不是静默重试。
 
+## 三个最常见的用途
+
+### 1. 私有 Agent 网络
+
+多个 Agent、服务和本地节点之间，不只是“能调用”，还需要知道谁能调用、权限什么时候失效、结果在哪里执行。
+
+### 2. 故障后的切换和恢复
+
+路径坏了就找合法备用路径；Provider 不可用时，在契约允许的情况下换到替代 Provider；无法确认时保持 pending，不假装成功。
+
+### 3. 需要审计的自动化
+
+一次请求从主体、权限、路由、Provider 到结果和回执，都尽量留下可复核证据。
+
+更多场景见 [`docs/USE_CASES.md`](docs/USE_CASES.md)。
+
 ## TINP 和 OPP 的关系
 
 两者解决不同问题：
@@ -66,6 +91,23 @@ TINP: 接起来以后怎么可靠地运行
 ```
 
 TINP 当前会实际调用 OPP 的能力协商结果，但协商本身不会自动授予权限。
+
+OPP：<https://github.com/xingxuling/OPP>
+
+## 工作方式
+
+```mermaid
+flowchart LR
+    A[Caller] --> B[身份与权限检查]
+    B --> C[会话与路由]
+    C --> D[Provider]
+    D --> E[结果与回执]
+    E --> F[Evidence Ledger]
+    C -. 路径失效 .-> G[备用路径]
+    D -. Provider 不可用 .-> H[替代 Provider / Pending]
+```
+
+TINP 当前的重点不是把所有情况都“自动恢复”，而是在失败时保持原有身份和权限边界，并把无法确认的状态明确留下来。
 
 ## 当前已实现
 
@@ -256,7 +298,11 @@ TINP 当前实现遵循几个明确原则：
 - 遇到无法确认的状态时优先失败关闭；
 - 测试夹具通过不等于生产安全通过。
 
-详细安全边界见 `docs/` 和各版本 `evidence/`。
+详细安全边界见 [`SECURITY.md`](SECURITY.md)、`docs/` 和各版本 `evidence/`。
+
+## 参与开发
+
+贡献指南见 [`CONTRIBUTING.md`](CONTRIBUTING.md)。如果改动涉及恢复、撤销、Operator Approval、Authority Registry 或传输，建议同时提供失败路径和负例测试。
 
 ## License / 许可
 
