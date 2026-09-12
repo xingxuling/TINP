@@ -1,6 +1,6 @@
 # TaoWind 新互联网协议套件
 
-v0.1.0-alpha.28 是一个可运行的内部工程候选：普通用户输入一句能力请求，系统在三个独立本机进程之间自动发现、调用 OPP 协商契约、验证权限、建立会话、经 A→B→C 传输并返回带证据的执行结果。authority registry、多镜像分发、历史收敛、本机历史 store、外部收敛见证、跨进程 public-history replay、TCP/TLS 1.3 TINP DATA loopback state transfer、可恢复分块传输以及只读 OPP HTTP 观察适配器是可选的离线签名桥接和压力验证；alpha.21 提供 live OPP consumer orchestration；alpha.22 增加 live result validator 与 CLI fail-closed 回归；alpha.23 固定 live result exact shape；alpha.24 增加保存结果的离线 verify CLI；alpha.25 将该复核接入完整 verify witness；alpha.26 支持把离线验证结果独占写入回执文件；alpha.27 将 policy/request/result 的语义根和原始文件哈希绑定到离线验证回执，并提供回执自身校验；alpha.28 将该 v2 回执接入完整 verify witness 并归档。
+v0.1.0-alpha.29 是一个可运行的内部工程候选：普通用户输入一句能力请求，系统在三个独立本机进程之间自动发现、调用 OPP 协商契约、验证权限、建立会话、经 A→B→C 传输并返回带证据的执行结果。authority registry、多镜像分发、历史收敛、本机历史 store、外部收敛见证、跨进程 public-history replay、TCP/TLS 1.3 TINP DATA loopback state transfer、可恢复分块传输以及只读 OPP HTTP 观察适配器是可选的离线签名桥接和压力验证；alpha.21 提供 live OPP consumer orchestration；alpha.22 增加 live result validator 与 CLI fail-closed 回归；alpha.23 固定 live result exact shape；alpha.24 增加保存结果的离线 verify CLI；alpha.25 将该复核接入完整 verify witness；alpha.26 支持把离线验证结果独占写入回执文件；alpha.27 将 policy/request/result 的语义根和原始文件哈希绑定到离线验证回执，并提供回执自身校验；alpha.28 将该 v2 回执接入完整 verify witness 并归档；alpha.29 适配最新 OPP candidate native interop 回执并绑定 TINP acceptance。
 
 本版只有一个刻意收窄的能力：精确统计 Unicode 码点数量。它可以验证主体、权限、路由、迁移、退化和回执能否共同工作；它不代表整个新互联网已经实现。
 
@@ -25,7 +25,7 @@ npm run verify
 npm run recovery:demo
 ```
 
-`verify` 冻结源码哈希，按文件顺序运行全部测试，然后分别启动 UDP 和 TCP 三进程、持久恢复见证、外部恢复锚点整目录回放见证、独立 issuer 的 authority registry 轮换见证、独立多镜像分发见证、连续历史收敛见证、本机历史 store 扩展见证、独立外部收敛见证、两个独立本机进程的 public-history replay 见证、TCP 和 TLS 1.3 两个独立本机 transport worker 的 TINP DATA loopback state-transfer 见证、带磁盘 journal 的 TLS 可恢复分块传输见证，以及确定性只读 OPP HTTP policy/receipt 见证，保存签名回执、磁盘账本和有界计时到 `evidence/0.1.0-alpha.27/LOCAL_VERIFICATION.json`。TLS 演示需要本机 OpenSSL 生成临时自签名证书；私钥只存在临时目录和进程内存。重放并发测试内部仍使用真实并发。`npm test` 也按文件顺序运行，避免 Windows 临时目录清理竞态；发行证据使用同一顺序入口。
+`verify` 冻结源码哈希，按文件顺序运行全部测试，然后分别启动 UDP 和 TCP 三进程、持久恢复见证、外部恢复锚点整目录回放见证、独立 issuer 的 authority registry 轮换见证、独立多镜像分发见证、连续历史收敛见证、本机历史 store 扩展见证、独立外部收敛见证、两个独立本机进程的 public-history replay 见证、TCP 和 TLS 1.3 两个独立本机 transport worker 的 TINP DATA loopback state-transfer 见证、带磁盘 journal 的 TLS 可恢复分块传输见证，以及确定性只读 OPP HTTP policy/receipt 见证和 OPP native interop acceptance 见证，保存签名回执、磁盘账本和有界计时到 `evidence/0.1.0-alpha.29/LOCAL_VERIFICATION.json`。TLS 演示需要本机 OpenSSL 生成临时自签名证书；私钥只存在临时目录和进程内存。重放并发测试内部仍使用真实并发。`npm test` 也按文件顺序运行，避免 Windows 临时目录清理竞态；发行证据使用同一顺序入口。
 
 ## 已实现的闭环
 
@@ -40,7 +40,7 @@ npm run recovery:demo
 
 ## 证据与边界
 
-阅读 `docs/REALITY_AUDIT.md`、`docs/CANONICAL_OWNERSHIP.md`、`docs/SPEC_DEVIATIONS.md`、`docs/AUTHORITY_PROVIDER_READINESS.md`、`docs/OPP_HTTP_READONLY_ADAPTER.md`、`docs/OPP_HTTP_CONSUMER_BRIDGE.md`、`evidence/0.1.0-alpha.27/INTEGRATION_COURT.md` 和 `evidence/0.1.0-alpha.27/EVIDENCE_LEDGER.json`。原规范保留在 `constitution/`，未修改下载文件或同步项目参考文件。
+阅读 `docs/REALITY_AUDIT.md`、`docs/CANONICAL_OWNERSHIP.md`、`docs/SPEC_DEVIATIONS.md`、`docs/AUTHORITY_PROVIDER_READINESS.md`、`docs/OPP_HTTP_READONLY_ADAPTER.md`、`docs/OPP_HTTP_CONSUMER_BRIDGE.md`、`evidence/0.1.0-alpha.29/INTEGRATION_COURT.md` 和 `evidence/0.1.0-alpha.29/EVIDENCE_LEDGER.json`。原规范保留在 `constitution/`，未修改下载文件或同步项目参考文件。
 
 当前是 **VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED**。没有公网、真实异机部署、军用安全认证、互联网规模收敛、生产密钥托管或第三方安全评估。签名提供当前夹具内的认证与完整性；TLS 1.3 以及可恢复分块传输仅在 alpha.14 的临时证书 loopback harness 中验证，alpha.17 的 OPP HTTP 适配器只允许显式 HTTPS/GET 观察，并拒绝已知 Node 环境代理开关；alpha.20 增加 bundle 生成 CLI；alpha.21 增加 live consumer orchestration，alpha.22 增加最终结果 validator 与 CLI 子进程回归，alpha.23 固定 exact shape，alpha.24 增加离线 saved-result verify，但仍只证明一次本机受约束的 OPP 协商与只读观察；alpha.19 增加带 bundleRoot 的单文件 consumer bridge 回放，默认运行仍严格限制回环地址。
 
@@ -309,6 +309,8 @@ npm run opp-http-consumer-live -- --verify <policy.json> <request.json> <result.
 ```
 
 输出格式为 `twni.opp-http-consumer-live-verify.v2`，除 PASS、结果状态和 `networkRequests: 0` 外，还固定 policy/request/acceptance 语义根及三份输入文件的 SHA-256。`validateOppHttpConsumerLiveVerification` 会在写出前复验这些绑定；完整 `verify` 会对仓库内保存的公开 live 结果生成同格式归档回执并记录其哈希。它仍是离线本机证据，不代表第三方 consumer 或生产 authority。
+
+alpha.29 增加 `src/opp-native-interop.mjs` 薄适配器。它验证 OPP `taowind.opp.interop-receipt.v0.1` 的内容根、生产端/消费端回执、转换结果根和无权限提升边界，再生成 `twni.opp-native-interop-acceptance.v1`。OPP 仍拥有 interop runtime；TINP 只拥有本地 acceptance binding，不复制 OPP 运行时。
 
 
 

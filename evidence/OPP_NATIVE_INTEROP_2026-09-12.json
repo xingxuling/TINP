@@ -1,0 +1,116 @@
+{
+  "receipt": {
+    "format": "taowind.opp.interop-receipt.v0.1",
+    "version": "0.3.0-candidate.1",
+    "runId": "example-native-interop",
+    "status": "PASS",
+    "producerRequestRoot": "45eb026f6511f46d54b93c52dadc5708eff561727f4eeb8e006c6075702b7f1e",
+    "producerReceiptRoot": "8483e8b5d6dae52774b1b26ecb3fb559f872036f5e15c7faf9f934308c4942de",
+    "bridgePlanRoot": "d8ff9c1508d7a2928043a372009b8c456c0c5b1745c952d74c3eea39967be46a",
+    "transformedRoot": "9c1734c1618ebd7c6ebd7d6eef0dd717edf4047253ad5781cd1eb7db7a79dec8",
+    "consumerReceiptRoot": "8d5b0ec499db64207dbe40f09a484dcad54dd2dbe075132980d66a247f9a92f3",
+    "finalResultRoot": "ed6793599193a88ce3df7a785b90cc47e08976911652eb5334b5b1557faf810e",
+    "error": null,
+    "authority": {
+      "promotionPerformed": false,
+      "environmentAuthorityInherited": false
+    },
+    "executionBoundary": {
+      "explicitConsentRequired": true,
+      "strongOsSandboxClaimed": false,
+      "hiddenRetries": false
+    },
+    "boundary": "Interop PASS proves only this concrete producer/bridge/consumer run. It does not establish universal compatibility, target safety, or strong OS isolation / 互操作 PASS 只证明本次具体生产端/桥/消费端运行成功，不代表普遍兼容、目标安全或强操作系统隔离。",
+    "receiptRoot": "77b4cdfaa0f95a9cc75a4c7d08f9d8cc3b94d40f2a9b46b87c51b2b1496f7ff2"
+  },
+  "producer": {
+    "receipt": {
+      "format": "taowind.opp.invocation-receipt.v0.1",
+      "version": "0.3.0-candidate.1",
+      "specId": "fixture-producer",
+      "adapterKind": "python-function",
+      "entrypoint": "examples/native-fixtures/producer.py:produce_user",
+      "status": "PASS",
+      "requestRoot": "3b3a25ee61935f6a4d59bff6cb6e23f874a8393b8dc5c1999c018ebd18867efb",
+      "resultRoot": "4ddea90bafe768865d1f63fe557433a77120490a79d514047f79e4dbb5cd0099",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdoutBytes": 115,
+      "stderrBytes": 0,
+      "targetStdout": "producer-called\n",
+      "targetStderr": "",
+      "error": null,
+      "authority": {
+        "required": [],
+        "inheritedFromEnvironment": false,
+        "promotionPerformed": false
+      },
+      "executionBoundary": {
+        "explicitConsentRequired": true,
+        "shellUsed": false,
+        "environmentPolicy": "sanitized",
+        "cwdPolicy": "ephemeral",
+        "strongOsSandboxClaimed": false
+      },
+      "boundary": "PASS proves only this explicit invocation completed under the OPP bounded child-process policy. It does not prove the target is safe or strongly sandboxed / PASS 只证明本次显式调用在 OPP 有界子进程策略下完成，不证明目标代码安全或具备强沙箱隔离。",
+      "durationMs": 266.063,
+      "receiptRoot": "8483e8b5d6dae52774b1b26ecb3fb559f872036f5e15c7faf9f934308c4942de"
+    },
+    "result": {
+      "user_name": "Ada",
+      "age": 20,
+      "debug": true
+    }
+  },
+  "transformed": {
+    "age": 20,
+    "locale": "zh-HK",
+    "username": "Ada"
+  },
+  "consumer": {
+    "receipt": {
+      "format": "taowind.opp.invocation-receipt.v0.1",
+      "version": "0.3.0-candidate.1",
+      "specId": "fixture-consumer",
+      "adapterKind": "python-function",
+      "entrypoint": "examples/native-fixtures/consumer.py:consume_user",
+      "status": "PASS",
+      "requestRoot": "0e36c5f0ecefcabe1945a55b0884b07f301a26b25da85db01c08169d36e67e45",
+      "resultRoot": "ed6793599193a88ce3df7a785b90cc47e08976911652eb5334b5b1557faf810e",
+      "exitCode": 0,
+      "timedOut": false,
+      "stdoutBytes": 134,
+      "stderrBytes": 0,
+      "targetStdout": "consumer-called\n",
+      "targetStderr": "",
+      "error": null,
+      "authority": {
+        "required": [],
+        "inheritedFromEnvironment": false,
+        "promotionPerformed": false
+      },
+      "executionBoundary": {
+        "explicitConsentRequired": true,
+        "shellUsed": false,
+        "environmentPolicy": "sanitized",
+        "cwdPolicy": "ephemeral",
+        "strongOsSandboxClaimed": false
+      },
+      "boundary": "PASS proves only this explicit invocation completed under the OPP bounded child-process policy. It does not prove the target is safe or strongly sandboxed / PASS 只证明本次显式调用在 OPP 有界子进程策略下完成，不证明目标代码安全或具备强沙箱隔离。",
+      "durationMs": 210.119,
+      "receiptRoot": "8d5b0ec499db64207dbe40f09a484dcad54dd2dbe075132980d66a247f9a92f3"
+    },
+    "result": {
+      "accepted": true,
+      "username": "Ada",
+      "age": 20,
+      "locale": "zh-HK"
+    }
+  },
+  "result": {
+    "accepted": true,
+    "username": "Ada",
+    "age": 20,
+    "locale": "zh-HK"
+  }
+}

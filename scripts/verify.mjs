@@ -9,6 +9,7 @@ import {verifyLedger} from '../src/evidence.mjs';
 import {makeOppHttpReadonlyPolicy,makeOppHttpReadonlyRequest,runOppHttpReadonly,validateOppHttpReadonlyReceipt} from '../src/opp-http-readonly.mjs';
 import {acceptOppHttpReadonlyConsumer,acceptOppHttpReadonlyConsumerBundle,makeOppHttpConsumerBridgeBundle,makeOppHttpConsumerBridgePlan,makeOppHttpConsumerContract,validateOppHttpConsumerBridgeBundle,validateOppHttpConsumerBridgeReceipt} from '../src/opp-http-consumer-bridge.mjs';
 import {validateOppHttpConsumerLiveResult,makeOppHttpConsumerLiveVerification} from '../src/opp-http-consumer-live.mjs';
+import {validateOppNativeInteropResult,makeOppNativeInteropAcceptance,validateOppNativeInteropAcceptance} from '../src/opp-native-interop.mjs';
 import {negotiateOpp} from '../adapters/opp-bridge.mjs';
 import {makeHello} from '../vendor/tinp/src/index.mjs';
 
@@ -429,6 +430,23 @@ const oppHttpReadonlyWitness={
 fs.writeFileSync(path.join(out,'opp-http-readonly.json'),JSON.stringify(oppHttpReadonlyWitness,null,2));
 fs.writeFileSync(path.join(out,'opp-http-consumer-bridge.json'),JSON.stringify(oppHttpReadonlyWitness.consumerBridge,null,2));
 oppHttpReadonlyScenarios.push(oppHttpReadonlyWitness);
+const oppNativeInteropPath=path.join(root,'evidence','OPP_NATIVE_INTEROP_2026-09-12.json');
+const oppNativeInteropAcceptancePath=path.join(out,'opp-native-interop-acceptance.json');
+let oppNativeInteropWitness={status:'NOT_FOUND',file:relative(oppNativeInteropPath),networkRequests:0};
+if(fs.existsSync(oppNativeInteropPath)){
+  const oppNativeInteropResult=JSON.parse(fs.readFileSync(oppNativeInteropPath,'utf8'));
+  validateOppNativeInteropResult(oppNativeInteropResult);
+  const oppNativeInteropAcceptance=makeOppNativeInteropAcceptance({interopResult:oppNativeInteropResult});
+  validateOppNativeInteropAcceptance(oppNativeInteropAcceptance,{interopResult:oppNativeInteropResult});
+  fs.writeFileSync(oppNativeInteropAcceptancePath,JSON.stringify(oppNativeInteropAcceptance,null,2));
+  oppNativeInteropWitness={status:'PASS',receiptFormat:oppNativeInteropResult.receipt.format,oppVersion:oppNativeInteropResult.receipt.version,
+    receiptRoot:oppNativeInteropResult.receipt.receiptRoot,finalResultRoot:oppNativeInteropResult.receipt.finalResultRoot,
+    acceptanceFormat:oppNativeInteropAcceptance.format,acceptanceRoot:oppNativeInteropAcceptance.acceptanceRoot,
+    acceptanceFile:relative(oppNativeInteropAcceptancePath),acceptanceSha256:sha(fs.readFileSync(oppNativeInteropAcceptancePath)),
+    sourceFile:relative(oppNativeInteropPath),sourceSha256:sha(fs.readFileSync(oppNativeInteropPath)),networkRequests:0,
+    authorityGranted:false,externalAuthorityPromotion:false,
+    boundary:'OPP-owned candidate native interop receipt adapted into a TINP acceptance binding; no authority promotion or production interoperability claim.'};
+}
 const mismatches=tracked.filter(x=>sha(fs.readFileSync(x.path))!==x.sha256);
 if(mismatches.length)throw new Error('Source changed during verification: '+JSON.stringify(mismatches));
 const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CANDIDATE',startedAt,finishedAt:new Date().toISOString(),
@@ -436,7 +454,7 @@ const summary={format:'twni.local-verification.v0.1',status:'VERIFIED_LOCAL_CAND
   node:process.version,platform:process.platform,architecture:process.arch,
   tests:{command:result.command,exitCode:result.code,count:Number(result.stdout.match(/# tests (\d+)/)?.[1]),passed:Number(result.stdout.match(/# pass (\d+)/)?.[1]),failed:Number(result.stdout.match(/# fail (\d+)/)?.[1]),
     stdout:relative(path.join(out,'tests.tap')),stdoutSha256:sha(Buffer.from(result.stdout)),stderr:relative(path.join(out,'tests.stderr.txt'))},
-  scenarios,recoveryScenarios,pendingScenarios,operatorScenarios,recoveryAnchorScenarios,authorityRegistryScenarios,authorityRegistryDistributionScenarios,authorityRegistryConvergenceScenarios,authorityRegistryConvergenceStoreScenarios,authorityRegistryConvergenceWitnessScenarios,authorityRegistryCrossHostReplayScenarios,authorityRegistryLoopbackTransferScenarios,authorityRegistryTlsLoopbackTransferScenarios,authorityRegistryResumableTransferScenarios,oppHttpReadonlyScenarios,sourceFiles:tracked,sourceTreeRoot:sha(Buffer.from(JSON.stringify(tracked))),
+  scenarios,recoveryScenarios,pendingScenarios,operatorScenarios,recoveryAnchorScenarios,authorityRegistryScenarios,authorityRegistryDistributionScenarios,authorityRegistryConvergenceScenarios,authorityRegistryConvergenceStoreScenarios,authorityRegistryConvergenceWitnessScenarios,authorityRegistryCrossHostReplayScenarios,authorityRegistryLoopbackTransferScenarios,authorityRegistryTlsLoopbackTransferScenarios,authorityRegistryResumableTransferScenarios,oppHttpReadonlyScenarios,oppNativeInteropWitness,sourceFiles:tracked,sourceTreeRoot:sha(Buffer.from(JSON.stringify(tracked))),
   k400Verdict:'NOT_ADJUDICATED',production:'NOT_DEPLOYED',publicNetwork:'NOT_RUN',
   boundaries:['Ephemeral local trust fixture; no production identity enrollment or TLS confidentiality',
     'Only bounded pure read-only code-point counting; not arbitrary actions or exactly-once external side effects',

@@ -43,3 +43,5 @@ alpha.26 为离线 saved-result verify 增加独占回执文件输出，方便�
 alpha.27 为离线 saved-result verify 回执增加 policy/request/acceptance 语义根和 policy/request/result 原始文件 SHA-256，并在写出前由回执 validator 复验这些绑定。它解决了归档回执无法识别输入文件替换的本机证据缺口，仍不等于第三方 consumer acceptance、生产 authority、真实异机或可信时间。
 
 alpha.28 将上述 v2 回执接入完整 `verify`：完整见证现在直接对仓库内保存的公开 GitHub live 结果生成并校验离线回执，归档回执文件及其 SHA-256 摘要。它补齐了正式验证账本与 CLI 回执之间的证据闭环，仍不等于第三方 consumer acceptance、生产 authority、真实异机或可信时间。
+
+alpha.29 审计 GitHub OPP 最新 `main`（`61cc3828`）后，确认其 candidate native interop runtime 可实际运行 `Producer → Bridge → Consumer`，并由 41/41 本机测试和 receipt root 证明该次具体调用。TINP 通过 `src/opp-native-interop.mjs` 做薄适配并输出本地 acceptance binding，保持 OPP 的 Canonical Owner；这扩大了实际 provider/consumer 证据，但仍不等于生产 authority、独立第三方 consumer、真实异机或强沙箱。

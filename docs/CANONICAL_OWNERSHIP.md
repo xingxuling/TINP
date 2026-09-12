@@ -173,3 +173,15 @@ TINP remains the sole owner of the read-only HTTP transport policy and receipt a
 ## alpha.17 OPP consumer bridge ownership
 
 `src/opp-http-consumer-bridge.mjs` owns only the TINP local binding receipt. It consumes an OPP-owned accepted CHP/RCP negotiation and a TINP read-only HTTP receipt; it cannot mint authority, alter OPP semantics, or certify an external consumer.
+
+## alpha.29 OPP native interop adaptation
+
+The latest public OPP `main` at `61cc3828` owns the candidate native
+`Producer -> Bridge -> Consumer` runtime and its
+`taowind.opp.interop-receipt.v0.1` receipt. TINP keeps OPP independent and
+uses `src/opp-native-interop.mjs` only to verify that receipt's content roots,
+invocation receipts, final result and explicit no-promotion boundary, then
+emit a TINP-owned acceptance binding. This is `ADAPT`, not a vendoring or
+semantic merge decision. The OPP runtime remains candidate-only, and the
+binding does not prove production sandboxing, authority or physical-host
+interoperability.

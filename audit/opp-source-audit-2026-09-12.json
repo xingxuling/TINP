@@ -1,0 +1,38 @@
+{
+  "format": "twni.opp-source-audit.v1",
+  "observedAt": "2026-09-12",
+  "repository": "https://github.com/xingxuling/OPP.git",
+  "latestRef": "61cc3828a58a7bffa8b1dbeb8c44ff3a9cb471d1",
+  "localVendoredRef": "f7b76582a720d9d18af5153affa0fc2d78bc0410",
+  "method": "Fresh public git ls-remote, shallow source checkout, UTF-8 local test run and explicit native interop fixture execution",
+  "latestStatus": {
+    "runtime": "0.3.0-candidate.1",
+    "nativeInterop": "candidate",
+    "authorityPromotion": "none",
+    "strongOsSandbox": false,
+    "hiddenRetries": false,
+    "tests": 41,
+    "passed": 41,
+    "failed": 0,
+    "testLogSha256": "5b3f653dcec48afbd59a2370448654ee6c8cdd669d5f4f0876613ad01ef7f63c"
+  },
+  "interopObservation": {
+    "resultFile": "deliverables/opp-latest-audit-20260912/interop-result-20260912.json",
+    "resultSha256": "91fd28fcda038a06f758f47d1feae037bda53d623b26b9986d5397c66ad59d37",
+    "receiptFormat": "taowind.opp.interop-receipt.v0.1",
+    "receiptRoot": "77b4cdfaa0f95a9cc75a4c7d08f9d8cc3b94d40f2a9b46b87c51b2b1496f7ff2",
+    "status": "PASS",
+    "producer": "PASS",
+    "consumer": "PASS",
+    "authorityPromotionPerformed": false,
+    "explicitConsentRequired": true,
+    "strongOsSandboxClaimed": false
+  },
+  "originalAssumption": "The TINP OPP adapter only needed the older CHP/RCP negotiation surface.",
+  "observedEvidence": "OPP latest main adds a candidate native interop runtime, interop receipt schema and a concrete producer-bridge-consumer fixture; all 41 OPP tests pass when the repository source is selected and UTF-8 is forced on Windows.",
+  "reasoning": "OPP owns native interop semantics and receipt production. TINP can gain a bounded consumer acceptance observation by validating the external receipt without copying or reimplementing the OPP runtime.",
+  "newDecision": "ADAPT",
+  "impact": "Add a TINP-owned receipt validator and acceptance binding; keep vendored OPP pinned and keep authorityGranted false.",
+  "rollback": "Remove src/opp-native-interop.mjs, its tests and the OPP native interop evidence without changing TINP core, RCL or the vendored OPP source.",
+  "boundary": "This is candidate local provider evidence, not independent third-party deployment, production authority, strong OS sandboxing or K400 promotion."
+}
