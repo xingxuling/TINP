@@ -1,0 +1,47 @@
+# Bearer discovery and OS interface enumeration remain provider observations.
+# Final local-first bearer admission belongs to this fixed RCL conjunction.
+reality TINPLocalBearerAdmission {
+  facet facts.endpointPolicyMet : Truth = false
+  facet facts.meteringPolicyMet : Truth = false
+  facet facts.routeReachable : Truth = false
+  facet facts.securityFloorMet : Truth = false
+  facet facts.privacyFloorMet : Truth = false
+  facet facts.localFirstSatisfied : Truth = false
+  facet bearer.loaded : Truth = false
+  facet bearer.allowed : Truth = false
+  subject kernel {
+    warrant observation.read on facts
+    warrant bearer.admit on bearer
+  }
+  host observation {
+    offers endpointPolicyMet -> Truth
+    offers meteringPolicyMet -> Truth
+    offers routeReachable -> Truth
+    offers securityFloorMet -> Truth
+    offers privacyFloorMet -> Truth
+    offers localFirstSatisfied -> Truth
+  }
+  emergence loadBearer {
+    cause kernel
+    when not bearer.loaded
+    needs observation.read on facts
+    call observation.endpointPolicyMet() -> facts.endpointPolicyMet
+    call observation.meteringPolicyMet() -> facts.meteringPolicyMet
+    call observation.routeReachable() -> facts.routeReachable
+    call observation.securityFloorMet() -> facts.securityFloorMet
+    call observation.privacyFloorMet() -> facts.privacyFloorMet
+    call observation.localFirstSatisfied() -> facts.localFirstSatisfied
+    alter bearer.loaded <- true
+    witness "next-internet:trusted-bearer-observations"
+  }
+  emergence admitBearer {
+    cause kernel
+    when bearer.loaded and facts.endpointPolicyMet and facts.meteringPolicyMet and facts.routeReachable and facts.securityFloorMet and facts.privacyFloorMet and facts.localFirstSatisfied
+    needs bearer.admit on bearer
+    alter bearer.allowed <- true
+    preserve bearer.loaded
+    witness "next-internet:rcl-bearer-admission"
+  }
+  realize loadBearer
+  realize admitBearer
+}
