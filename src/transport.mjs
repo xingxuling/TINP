@@ -3,20 +3,29 @@ import tls from 'node:tls';
 import {UdpTransport} from '../vendor/tinp/src/transport-udp.mjs';
 import {encodeFrame,decodeFrame} from '../vendor/tinp/src/protocol.mjs';
 import {authentic,seal,id,ProtocolError,requireThat} from './identity.mjs';
+import {endpointPolicy} from './bearer-policy.mjs';
 
 const MAX_FRAME=60000;
 const MAX_INFLIGHT=64;
+const isLegacyLoopback=host=>host==='127.0.0.1'||host==='::1'||host==='localhost';
 export class LocalTransport {
-  constructor({nodeId,identity,kind='udp',tlsOptions=null}) {
+  constructor({nodeId,identity,kind='udp',tlsOptions=null,bindHost='127.0.0.1',advertiseHost=null,networkPolicy=null}) {
     requireThat(['udp','tcp','tls'].includes(kind),'TRANSPORT_UNSUPPORTED');
     if(kind==='tls')requireThat(tlsOptions&&typeof tlsOptions.key==='string'&&typeof tlsOptions.cert==='string','TLS_CREDENTIALS_REQUIRED');
-    this.nodeId=nodeId;this.identity=identity;this.kind=kind;this.tlsOptions=tlsOptions;this.peers={};this.pending=new Map();this.sockets=new Set();
-    this.metrics={sentFrames:0,receivedFrames:0,sentBytes:0,invalidFrames:0,overloadRejected:0,secureConnections:0,tlsVersion:null,tlsCipher:null};this.blocked=new Set();this.bandwidth=0;
+    if(!isLegacyLoopback(bindHost)){
+      requireThat(networkPolicy,'NON_LOOPBACK_BIND_REQUIRES_POLICY');
+      const decision=endpointPolicy({host:bindHost,metered:false},networkPolicy);
+      requireThat(decision.allowed,'NON_LOOPBACK_BIND_DENIED');
+    }
+    this.nodeId=nodeId;this.identity=identity;this.kind=kind;this.tlsOptions=tlsOptions;
+    this.bindHost=bindHost;this.advertiseHost=advertiseHost??bindHost;this.networkPolicy=networkPolicy;
+    this.peers={};this.pending=new Map();this.sockets=new Set();
+    this.metrics={sentFrames:0,receivedFrames:0,sentBytes:0,invalidFrames:0,overloadRejected:0,secureConnections:0,tlsVersion:null,tlsCipher:null,policyRejected:0};this.blocked=new Set();this.bandwidth=0;
     this.activeHandlers=0;this.closed=false;this.lifetime=new AbortController();
   }
   async bind(){
     if(this.kind==='udp'){
-      this.udp=await new UdpTransport().bind();
+      this.udp=await new UdpTransport({host:this.bindHost,unsafeAllowNonLoopback:!isLegacyLoopback(this.bindHost)}).bind();
       this.udp.onFrame((frame,rinfo)=>{if(frame.error){this.metrics.invalidFrames++;return;}this.receive(frame.payload).catch(()=>{this.metrics.invalidFrames++;});});
       this.port=this.udp.port;
     }else{
@@ -39,13 +48,13 @@ export class LocalTransport {
         const options={...this.tlsOptions,minVersion:this.tlsOptions.minVersion??'TLSv1.3'};
         this.server=tls.createServer(options,onConnection);this.server.on('tlsClientError',()=>{this.metrics.invalidFrames++;});
       }else this.server=net.createServer(onConnection);
-      await new Promise((resolve,reject)=>{this.server.once('error',reject);this.server.listen(0,'127.0.0.1',resolve);});
+      await new Promise((resolve,reject)=>{this.server.once('error',reject);this.server.listen(0,this.bindHost,resolve);});
       this.port=this.server.address().port;
     }
     return this;
   }
   endpoint(){
-    const endpoint={host:'127.0.0.1',port:this.port,transport:this.kind};
+    const endpoint={host:this.advertiseHost,port:this.port,transport:this.kind};
     if(this.kind==='tls')endpoint.tls={ca:this.tlsOptions.cert,servername:this.tlsOptions.servername??'tinp-loopback'};
     return endpoint;
   }
@@ -53,11 +62,17 @@ export class LocalTransport {
     this.metrics.secureConnections++;
     try{this.metrics.tlsVersion=socket.getProtocol?.()??null;this.metrics.tlsCipher=socket.getCipher?.().name??null;}catch{}
   }
+  assertPeerPolicy(peer){
+    if(!this.networkPolicy)return;
+    const decision=endpointPolicy(peer.endpoint,this.networkPolicy);
+    if(!decision.allowed){this.metrics.policyRejected++;throw new ProtocolError(decision.code);}
+  }
   async send(peerId,message,requestSignal){
     requireThat(!this.closed,'TRANSPORT_CLOSED');
     const signal=requestSignal?AbortSignal.any([requestSignal,this.lifetime.signal]):this.lifetime.signal;
     requireThat(!signal.aborted,'REQUEST_CANCELLED');
     const peer=this.peers[peerId];requireThat(peer && !this.blocked.has(peerId),'LINK_UNAVAILABLE');
+    this.assertPeerPolicy(peer);
     const signed=seal({sender:this.nodeId,recipient:peerId,...message},this.identity.privateKey);
     const bytes=encodeFrame('DATA',signed);requireThat(bytes.length<=MAX_FRAME,'FRAME_TOO_LARGE');
     if(this.bandwidth>0)await new Promise((resolve,reject)=>{

@@ -1,0 +1,21 @@
+{
+  "format": "tinp.evidence-ledger.local-first-bearer.v0.1",
+  "date": "2026-09-15",
+  "status": "LOCAL_RUNTIME_VERIFIED",
+  "physicalLanStatus": "PENDING",
+  "tests": {"targeted": 9, "passed": 9, "failed": 0, "skipped": 0},
+  "observations": [
+    "non-loopback private IPv4 TCP bind succeeded",
+    "signed TINP DATA request/response succeeded on that interface",
+    "public egress was denied before socket connection",
+    "RCL bearer conjunction admitted positive case and denied a failed security floor",
+    "unknown LAN discovery key was not automatically admitted"
+  ],
+  "notClaims": [
+    "two physical Wi-Fi devices verified",
+    "Wi-Fi Direct link establishment verified",
+    "multi-hop mesh verified",
+    "free public Internet",
+    "production security certification"
+  ]
+}
