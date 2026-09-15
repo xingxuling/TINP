@@ -1,0 +1,8 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {newIdentity} from '../src/identity.mjs';
+import {createLanAdvertisement,verifyLanAdvertisement,admitDiscoveredPeer} from '../src/lan-discovery.mjs';
+
+test('signed LAN advertisement is a discovery candidate, not authority',()=>{const identity=newIdentity();const env=createLanAdvertisement({nodeId:'B',subjectId:'subject:B',identity,endpoint:{host:'192.168.1.5',port:4400,transport:'udp'}});const candidate=verifyLanAdvertisement(env);assert.equal(candidate.trust,'unverified');assert.equal(candidate.authorityGranted,false);});
+test('pinned peer validates and conflicting key fails closed',()=>{const identity=newIdentity(),other=newIdentity();const env=createLanAdvertisement({nodeId:'B',subjectId:'subject:B',identity,endpoint:{host:'10.0.0.5',port:4400,transport:'udp'}});assert.equal(verifyLanAdvertisement(env,{trustedPeers:{B:identity.publicKey}}).trust,'pinned');assert.throws(()=>verifyLanAdvertisement(env,{trustedPeers:{B:other.publicKey}}),e=>e.code==='DISCOVERY_PIN_CONFLICT');});
+test('unknown candidates cannot silently enter the transport trust set',()=>{const identity=newIdentity();const env=createLanAdvertisement({nodeId:'B',subjectId:'subject:B',identity,endpoint:{host:'10.0.0.5',port:4400,transport:'udp'}});const candidate=verifyLanAdvertisement(env);const transport={peers:{}};assert.throws(()=>admitDiscoveredPeer(transport,candidate),e=>e.code==='DISCOVERY_PEER_PIN_REQUIRED');const admitted=admitDiscoveredPeer(transport,candidate,{allowExplicitTofu:true});assert.equal(admitted.trust,'explicit-tofu');assert.equal(transport.peers.B.publicKey,identity.publicKey);});
