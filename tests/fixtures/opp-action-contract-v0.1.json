@@ -1,0 +1,41 @@
+{
+  "actionInputRoot": "4466dfca65fe81b799562e8815ecd9634b6f829d1fcaca4da0c4968b34cdac08",
+  "authorityGranted": false,
+  "authorityRequired": ["workspace.edit"],
+  "boundary": "OPP describes the requested action, effects and contract roots only; it does not authenticate the subject, grant authority, execute the action or prove runtime isolation.",
+  "capability": {
+    "format": "taowind.opp.reality-envelope.v0.1",
+    "id": "cap:code",
+    "issuedAt": "2026-09-29T00:00:00Z",
+    "issuer": {"id": "agent:coder", "type": "agent"},
+    "kind": "capability",
+    "payload": {
+      "authorityRequired": ["workspace.edit"],
+      "availability": "candidate-only",
+      "capabilityId": "code.edit",
+      "determinism": "unknown",
+      "domain": "software",
+      "evidence": [],
+      "inputModalities": ["json"],
+      "name": "Code edit",
+      "operation": "edit",
+      "outputModalities": ["json"],
+      "reversibility": "compensatable",
+      "sideEffects": ["filesystem.write"],
+      "statefulness": "session"
+    },
+    "protocol": "opp.rcp.v0.1",
+    "status": "candidate",
+    "version": "0.1.0-candidate.1"
+  },
+  "capabilityId": "code.edit",
+  "capabilityRoot": "61c01efa45689a853b47143247f710b04626a7bfa46d817773e275b07fc5b305",
+  "contractRoot": "1ee167f7268ab98198d5b4195874826e1faac3b4034cfe3378e410c9149d07c0",
+  "format": "taowind.opp.action-contract.v0.1",
+  "operation": "edit",
+  "requestedEffects": [{"kind": "filesystem.write", "resource": "workspace:/project/src/app.js"}],
+  "reversibility": "compensatable",
+  "riskClass": "medium",
+  "subjectId": "agent:coder",
+  "version": "0.1.0-candidate.1"
+}
