@@ -2,7 +2,9 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {rootHash} from '../src/identity.mjs';
-import {makeAgentActionAdmissionFacts,verifyOppActionContract} from '../src/agent-action-policy.mjs';
+import {
+  makeAgentActionAdmissionFacts,verifyOppActionContract,verifyObservedAgentAction,
+} from '../src/agent-action-policy.mjs';
 
 const contract=JSON.parse(fs.readFileSync(new URL('./fixtures/opp-agent-action-contract.json',import.meta.url),'utf8'));
 
@@ -52,4 +54,17 @@ test('package postinstall needs the effect and exact package binding',()=>{
     allowedEffects:['package.script'],packages:['demo@1.0.0'],acceptedReversibility:['compensatable'],
   }});
   assert.equal(admitted.resourcesBounded,true);
+});
+
+test('post-execution verification detects undeclared side effects and resource escape',()=>{
+  const pass=verifyObservedAgentAction({contract,observedEffects:['filesystem.read'],
+    observedResources:{filesystem:['workspace/project/file.txt']}});
+  assert.equal(pass.status,'PASS');
+  assert.match(pass.verificationRoot,/^[a-f0-9]{64}$/);
+
+  const escaped=verifyObservedAgentAction({contract,observedEffects:['filesystem.read','network.egress'],
+    observedResources:{filesystem:['workspace/project/file.txt'],network:['attacker.example']}});
+  assert.equal(escaped.status,'FAIL');
+  assert.ok(escaped.violations.includes('UNDECLARED_EFFECT:network.egress'));
+  assert.ok(escaped.violations.includes('NETWORK_RESOURCE_ESCAPE'));
 });
