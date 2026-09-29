@@ -26,6 +26,7 @@ VERIFIED / QUARANTINED / PROVIDER_ERROR
 ## 这轮解决什么
 
 - Prompt injection 把 `workspace.read` 偷换成 `shell.exec`：binding toolName 不一致，Provider 不会收到调用。
+- Prompt injection 保持工具名不变、只把 `path` 从 `workspace/project/readme.md` 换成 `.ssh/id_rsa`：input resource projection（输入资源投影）与 Action Contract 不一致，Provider calls = 0。
 - Agent 没有对应 Authority scope：RCL 前置拒绝，`providerCalls=0`。
 - Provider 调用后报告了未声明 `network.egress`：结果进入 `QUARANTINED`，不能当 VERIFIED。
 - Provider 超时或报错：只调用一次，不自动重试高风险动作。
