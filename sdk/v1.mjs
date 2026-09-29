@@ -25,3 +25,9 @@ export {
   DEFAULT_DISCOVERY_GROUP, DEFAULT_DISCOVERY_PORT, LanPeerDiscovery,
   createLanAdvertisement, verifyLanAdvertisement, admitDiscoveredPeer,
 } from '../src/lan-discovery.mjs';
+export {
+  AGENT_ACTION_AUTHORITIES, evaluateAgentActionGuard,
+} from '../adapters/rcl-agent-action-guard.mjs';
+export {
+  AGENT_ACTION_EFFECTS, evaluateAgentEffectGuard,
+} from '../adapters/rcl-agent-effect-guard.mjs';
