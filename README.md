@@ -321,3 +321,36 @@ flowchart LR
 GitHub [远端执行 34692267549](https://github.com/xingxuling/TINP/actions/runs/34692267549) 的 Linux 生产端及 Linux / Windows 复核端全部成功。真实库运行与证据交接已离开当前电脑；仍不代表双物理设备、独立操作员或真实 Authority Provider。
 
 Final code replay: [34692507409](https://github.com/xingxuling/TINP/actions/runs/34692507409), all three hosted jobs PASS; OPP `7c4970c`, TINP `692c0e4`. The earlier run is retained as historical evidence.
+
+
+## Agent Action Trust Plane candidate（2026-09-29）
+
+TINP 现在有一条面向 Code Agent / MCP 的执行治理候选链：
+
+```text
+GuardedMcpRegistry
+  ↓
+OPP MCP Action Binding
+  ↓
+argument → resource verification
+  ↓
+TINP Authority / Policy
+  ↓
+RCL admission
+  ↓
+private Provider
+  ↓
+observed-effect verification
+```
+
+已经有一个真实本地只读 Provider：`BoundedWorkspaceReadProvider`。正常的 `workspace.read` 可以真实读取 workspace 文件；如果 prompt injection 只偷换参数、把 `path` 改成 `.ssh/id_rsa`，会在 Provider 调用前得到 `DENIED_INPUT_BINDING`，`providerCalls=0`。
+
+运行：
+
+```bash
+npm run agent-action:real-demo
+```
+
+详细边界见 [Guarded MCP Gateway](docs/GUARDED_MCP_TOOL_GATEWAY.md)、[Guarded MCP Registry](docs/GUARDED_MCP_REGISTRY.md) 和 [Bounded Workspace Provider](docs/BOUNDED_WORKSPACE_PROVIDER.md)。
+
+当前仍是应用层 Candidate，不声称已经拥有 OS / container / seccomp 级不可绕过 reference monitor。
