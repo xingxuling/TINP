@@ -31,14 +31,16 @@
     "agent-action:real-demo": "node scripts/agent-action-real-provider-demo.mjs",
     "agent-action:mcp": "node scripts/guarded-mcp-stdio-server.mjs",
     "agent-action:mcp:verify": "node scripts/guarded-mcp-stdio-client-demo.mjs",
-    "agent-action:security-benchmark": "node scripts/agent-action-security-benchmark.mjs"
+    "agent-action:security-benchmark": "node scripts/agent-action-security-benchmark.mjs",
+    "agent-action:mcp:http": "node scripts/guarded-mcp-http-server.mjs"
   },
   "engines": {
     "node": ">=22"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "2.2.0",
-    "zod": "4.6.5"
+    "zod": "4.6.5",
+    "@modelcontextprotocol/node": "2.1.0"
   },
   "devDependencies": {
     "@modelcontextprotocol/client": "2.2.0"
