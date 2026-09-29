@@ -32,7 +32,7 @@ export async function evaluateAgentActionGuard(input){
       compiled=compileReality(source);sourceSha256=hash(source);
     }
     const result=await runReality(compiled,{hostAdapters:{observation:{invoke(request){
-      if(!Object.hasOwn(facts,request.capability)||request.args.length!==0)throw new Error('Unexpected action observation');
+      if(!Object.hasOwn(facts,request.capability)||request.args.length!==1||request.args[0]!=='agent-action')throw new Error('Unexpected action observation');
       return facts[request.capability];
     }}}});
     const allowed=result.state['gate.allowed']===true;
