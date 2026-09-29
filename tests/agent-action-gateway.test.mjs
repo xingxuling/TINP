@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import {rootHash,newIdentity} from '../src/identity.mjs';
-import {makeAgentActionLease,planAgentAction,runAgentAction} from '../src/agent-action-gateway.mjs';
+import {makeAgentActionLease,planAgentAction,runAgentAction,validateOppActionContract} from '../src/agent-action-gateway.mjs';
 
 function contract({effects=[{kind:'filesystem.write',resource:'workspace:/project/src/app.js'}],declared=['filesystem.write'],authorities=['workspace.edit'],input={prompt:'safe'}}={}){
   const capability={format:'taowind.opp.reality-envelope.v0.1',protocol:'opp.rcp.v0.1',version:'0.1.0-candidate.1',kind:'capability',id:'cap:code',status:'candidate',issuedAt:'2026-09-29T00:00:00Z',issuer:{id:'agent:coder',type:'agent'},payload:{capabilityId:'code.edit',name:'Code edit',domain:'software',operation:'edit',inputModalities:['json'],outputModalities:['json'],determinism:'unknown',statefulness:'session',authorityRequired:authorities,sideEffects:declared,reversibility:'compensatable',availability:'candidate-only',evidence:[]}};
@@ -84,4 +85,10 @@ test('invalid observed effect evidence is quarantined instead of accepted',async
   const f=fixture(),c=contract();
   const r=await runAgentAction({contract:c.contract,actionInput:c.input,leaseEnvelope:f.lease,issuerPublicKey:f.issuer.publicKey,providerId:'provider:workspace',nowMs:f.now},{executor:async()=>({result:{ok:true},observedEffects:[{kind:'kernel.exec',resource:'host:/'}]})});
   assert.equal(r.status,'QUARANTINED');assert.equal(r.resultAccepted,false);assert.equal(r.diagnosticCode,'AGENT_ACTION_OBSERVED_EFFECT_INVALID');
+});
+
+test('TINP validates an actual OPP-generated action contract with identical cross-language roots',()=>{
+  const fixture=JSON.parse(fs.readFileSync(new URL('./fixtures/opp-action-contract-v0.1.json',import.meta.url),'utf8'));
+  assert.equal(fixture.contractRoot,'1ee167f7268ab98198d5b4195874826e1faac3b4034cfe3378e410c9149d07c0');
+  assert.equal(validateOppActionContract(fixture),true);
 });
