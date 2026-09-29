@@ -26,7 +26,8 @@
     "authority-registry-loopback-transfer:demo": "node scripts/authority-registry-loopback-transfer-demo.mjs",
     "authority-registry-tls-loopback-transfer:demo": "node scripts/authority-registry-tls-loopback-transfer-demo.mjs",
     "authority-registry-resumable-transfer:demo": "node scripts/authority-registry-resumable-transfer-demo.mjs",
-    "external:verify": "node scripts/external-verify.mjs"
+    "external:verify": "node scripts/external-verify.mjs",
+    "agent-action:demo": "node scripts/agent-action-gateway-demo.mjs"
   },
   "engines": {
     "node": ">=22"
