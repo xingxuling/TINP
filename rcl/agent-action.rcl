@@ -1,0 +1,104 @@
+# Candidate Agent Action admission profile.
+# Observations come from authenticated server context and a verified OPP contract / TINP lease.
+# Prompt text is never an authority input.
+reality AgentActionTransaction {
+  facet facts.subjectId : Text = ""
+  facet facts.sessionSubjectId : Text = ""
+  facet facts.leaseSubjectId : Text = ""
+  facet facts.actionId : Text = ""
+  facet facts.resourceId : Text = ""
+  facet facts.contractRoot : Text = ""
+  facet facts.nowMs : Number = 0
+  facet facts.notBeforeMs : Number = 0
+  facet facts.expiresAtMs : Number = 0
+  facet facts.signatureVerified : Truth = false
+  facet facts.sessionVerified : Truth = false
+  facet facts.revoked : Truth = false
+  facet facts.oppContractVerified : Truth = false
+  facet facts.authorityScopeAllowed : Truth = false
+  facet facts.actionAllowed : Truth = false
+  facet facts.resourceAllowed : Truth = false
+  facet facts.sideEffectAllowed : Truth = false
+  facet facts.reversibilityAllowed : Truth = false
+  facet facts.credentialBoundaryMet : Truth = false
+  facet facts.networkBoundaryMet : Truth = false
+  facet facts.processBoundaryMet : Truth = false
+  facet facts.packageBoundaryMet : Truth = false
+  facet facts.evidenceContinuous : Truth = false
+  facet gate.loaded : Truth = false
+  facet gate.allowed : Truth = false
+
+  subject kernel {
+    warrant observation.read on facts
+    warrant transaction.admit on gate
+  }
+
+  host observation {
+    offers subjectId -> Text
+    offers sessionSubjectId -> Text
+    offers leaseSubjectId -> Text
+    offers actionId -> Text
+    offers resourceId -> Text
+    offers contractRoot -> Text
+    offers nowMs -> Number
+    offers notBeforeMs -> Number
+    offers expiresAtMs -> Number
+    offers signatureVerified -> Truth
+    offers sessionVerified -> Truth
+    offers revoked -> Truth
+    offers oppContractVerified -> Truth
+    offers authorityScopeAllowed -> Truth
+    offers actionAllowed -> Truth
+    offers resourceAllowed -> Truth
+    offers sideEffectAllowed -> Truth
+    offers reversibilityAllowed -> Truth
+    offers credentialBoundaryMet -> Truth
+    offers networkBoundaryMet -> Truth
+    offers processBoundaryMet -> Truth
+    offers packageBoundaryMet -> Truth
+    offers evidenceContinuous -> Truth
+  }
+
+  emergence loadFacts {
+    cause kernel
+    when not gate.loaded
+    needs observation.read on facts
+    call observation.subjectId("subjectId") -> facts.subjectId
+    call observation.sessionSubjectId("sessionSubjectId") -> facts.sessionSubjectId
+    call observation.leaseSubjectId("leaseSubjectId") -> facts.leaseSubjectId
+    call observation.actionId("actionId") -> facts.actionId
+    call observation.resourceId("resourceId") -> facts.resourceId
+    call observation.contractRoot("contractRoot") -> facts.contractRoot
+    call observation.nowMs("nowMs") -> facts.nowMs
+    call observation.notBeforeMs("notBeforeMs") -> facts.notBeforeMs
+    call observation.expiresAtMs("expiresAtMs") -> facts.expiresAtMs
+    call observation.signatureVerified("signatureVerified") -> facts.signatureVerified
+    call observation.sessionVerified("sessionVerified") -> facts.sessionVerified
+    call observation.revoked("revoked") -> facts.revoked
+    call observation.oppContractVerified("oppContractVerified") -> facts.oppContractVerified
+    call observation.authorityScopeAllowed("authorityScopeAllowed") -> facts.authorityScopeAllowed
+    call observation.actionAllowed("actionAllowed") -> facts.actionAllowed
+    call observation.resourceAllowed("resourceAllowed") -> facts.resourceAllowed
+    call observation.sideEffectAllowed("sideEffectAllowed") -> facts.sideEffectAllowed
+    call observation.reversibilityAllowed("reversibilityAllowed") -> facts.reversibilityAllowed
+    call observation.credentialBoundaryMet("credentialBoundaryMet") -> facts.credentialBoundaryMet
+    call observation.networkBoundaryMet("networkBoundaryMet") -> facts.networkBoundaryMet
+    call observation.processBoundaryMet("processBoundaryMet") -> facts.processBoundaryMet
+    call observation.packageBoundaryMet("packageBoundaryMet") -> facts.packageBoundaryMet
+    call observation.evidenceContinuous("evidenceContinuous") -> facts.evidenceContinuous
+    alter gate.loaded <- true
+    witness "agent-action:observed-facts"
+  }
+
+  emergence admit {
+    cause kernel
+    when gate.loaded and facts.subjectId == facts.sessionSubjectId and facts.subjectId == facts.leaseSubjectId and facts.notBeforeMs <= facts.nowMs and facts.nowMs < facts.expiresAtMs and facts.signatureVerified and facts.sessionVerified and not facts.revoked and facts.oppContractVerified and facts.authorityScopeAllowed and facts.actionAllowed and facts.resourceAllowed and facts.sideEffectAllowed and facts.reversibilityAllowed and facts.credentialBoundaryMet and facts.networkBoundaryMet and facts.processBoundaryMet and facts.packageBoundaryMet and facts.evidenceContinuous
+    needs transaction.admit on gate
+    alter gate.allowed <- true
+    preserve gate.loaded
+    witness "agent-action:rcl-admission"
+  }
+
+  realize loadFacts
+  realize admit
+}
