@@ -15,7 +15,9 @@ export function verifyOppMcpActionBinding(binding){
   fail(typeof bindingRoot==='string'&&bindingRoot===rootHash(body),'MCP_ACTION_BINDING_ROOT_INVALID');
   fail(body.authorityGranted===false&&body.annotationsTrusted===false,'MCP_ACTION_BINDING_TRUST_BOUNDARY_INVALID');
   fail(typeof body.toolName==='string'&&body.toolName.length>0,'MCP_ACTION_BINDING_TOOL_INVALID');
-  fail(typeof body.mcpToolRoot==='string'&&/^[a-f0-9]{64}$/.test(body.mcpToolRoot),'MCP_ACTION_BINDING_TOOL_ROOT_INVALID');
+  fail(body.mcpTool&&typeof body.mcpTool==='object'&&!Array.isArray(body.mcpTool),'MCP_ACTION_BINDING_TOOL_DESCRIPTOR_REQUIRED');
+  fail(rootHash(body.mcpTool)===body.mcpToolRoot,'MCP_ACTION_BINDING_TOOL_ROOT_INVALID');
+  fail(body.mcpTool.name===body.toolName,'MCP_ACTION_BINDING_TOOL_NAME_MISMATCH');
   fail(body.capabilityDeclaration&&typeof body.capabilityDeclaration==='object','MCP_ACTION_BINDING_CAPABILITY_REQUIRED');
   fail(rootHash(body.capabilityDeclaration)===body.capabilityRoot,'MCP_ACTION_BINDING_CAPABILITY_ROOT_MISMATCH');
   fail(body.actionContract&&typeof body.actionContract==='object','MCP_ACTION_BINDING_CONTRACT_REQUIRED');
