@@ -18,7 +18,7 @@ export {
 } from '../src/opp-native-interop.mjs';
 export {
   AGENT_ACTION_FORMAT, KNOWN_AGENT_EFFECTS, AgentActionPolicyError,
-  verifyOppActionContract, makeAgentActionAdmissionFacts,
+  verifyOppActionContract, makeAgentActionAdmissionFacts, verifyObservedAgentAction,
 } from '../src/agent-action-policy.mjs';
 export {
   LOCAL_FIRST_POLICY, classifyNetworkHost, inferBearerKind, endpointPolicy,
