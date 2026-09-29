@@ -19,27 +19,47 @@
       "name": "workspace.read",
       "domain": "surface-provider",
       "operation": "workspace.read",
-      "inputModalities": ["json"],
-      "outputModalities": ["json"],
+      "inputModalities": [
+        "json"
+      ],
+      "outputModalities": [
+        "json"
+      ],
       "inputSchema": {
         "type": "object",
-        "properties": {"path": {"type": "string"}},
-        "required": ["path"],
+        "properties": {
+          "path": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ],
         "additionalProperties": false
       },
       "outputSchema": {
         "type": "object",
-        "properties": {"text": {"type": "string"}},
-        "required": ["text"],
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ],
         "additionalProperties": false
       },
       "determinism": "unknown",
       "statefulness": "stateless",
-      "authorityRequired": ["workspace.read"],
+      "authorityRequired": [
+        "workspace.read"
+      ],
       "sideEffects": [],
       "reversibility": "reversible",
       "availability": "candidate-only",
-      "evidence": ["f27efe5ba87dcdf9c4ed35d0ffd62c45bb22de294df27f981647cedd424cb243"],
+      "evidence": [
+        "f27efe5ba87dcdf9c4ed35d0ffd62c45bb22de294df27f981647cedd424cb243"
+      ],
       "claimBoundary": "Provider declarations and semantic assertions, not authenticated facts."
     },
     "extensions": {
@@ -52,7 +72,10 @@
           "discoveryRoot": "f27efe5ba87dcdf9c4ed35d0ffd62c45bb22de294df27f981647cedd424cb243",
           "toolName": "workspace.read"
         },
-        "semantics": {"input": {}, "output": {}}
+        "semantics": {
+          "input": {},
+          "output": {}
+        }
       }
     },
     "integrity": {
@@ -67,12 +90,20 @@
     "capabilityId": "workspace.read",
     "capabilityRoot": "bf5c0b8a07b038dcf921265cc16f78ff30a0fea8edf725429a927d16940df15f",
     "operation": "workspace.read",
-    "requiredAuthority": ["workspace.read"],
-    "declaredEffects": ["filesystem.read"],
-    "acceptedEffects": ["filesystem.read"],
+    "requiredAuthority": [
+      "workspace.read"
+    ],
+    "declaredEffects": [
+      "filesystem.read"
+    ],
+    "acceptedEffects": [
+      "filesystem.read"
+    ],
     "resources": {
       "commands": [],
-      "filesystem": ["workspace/project/readme.md"],
+      "filesystem": [
+        "workspace/project/readme.md"
+      ],
       "network": [],
       "packages": []
     },
@@ -88,5 +119,13 @@
   "authorityGranted": false,
   "annotationsTrusted": false,
   "boundary": "MCP tool annotations are descriptive hints only. This binding does not authenticate the server, grant authority, prove sandboxing, or prove that runtime side effects match the declaration.",
-  "bindingRoot": "2f2092cbf7a839070d4e306fb04e00cb27a6bfa7377d85bb549e861c3ea5a170"
+  "bindingRoot": "e3c8eb55d00902f40d7ce6feeaef90ab6366507608e13d0fd42d1289c57a3f16",
+  "resourceBindings": {
+    "commands": [],
+    "filesystem": [
+      "path"
+    ],
+    "network": [],
+    "packages": []
+  }
 }
