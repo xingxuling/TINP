@@ -1,0 +1,109 @@
+import {rootHash} from './identity.mjs';
+import {admitAgentAction} from './agent-action-admission.mjs';
+import {verifyObservedAgentAction} from './agent-action-policy.mjs';
+import {verifyOppMcpActionBinding} from './mcp-action-binding.mjs';
+
+export class GuardedToolGatewayError extends Error{
+  constructor(code){super(code);this.code=code;}
+}
+function fail(ok,code){if(!ok)throw new GuardedToolGatewayError(code);}
+function sealBody(body){return {...body,receiptRoot:rootHash(body)};}
+
+export class GuardedMcpToolGateway{
+  #providerCall;
+  #authorityScopes;
+  #policy;
+
+  constructor({providerCall,authorityScopes=[],policy={}}={}){
+    fail(typeof providerCall==='function','MCP_PROVIDER_CALL_REQUIRED');
+    this.#providerCall=providerCall;
+    this.#authorityScopes=structuredClone(authorityScopes);
+    this.#policy=structuredClone(policy);
+  }
+
+  async call({binding,toolName,input={}}={}){
+    const verifiedBinding=verifyOppMcpActionBinding(binding);
+    fail(toolName===verifiedBinding.toolName,'MCP_TOOL_NAME_BINDING_MISMATCH');
+    fail(input&&typeof input==='object'&&!Array.isArray(input),'MCP_TOOL_INPUT_OBJECT_REQUIRED');
+    const inputRoot=rootHash(input);
+    const admission=await admitAgentAction({
+      contract:verifiedBinding.actionContract,
+      authorityScopes:this.#authorityScopes,
+      policy:this.#policy,
+    });
+
+    if(!admission.allowed){
+      return sealBody({
+        format:'twni.guarded-mcp-tool-receipt.v1',
+        status:'DENIED',
+        toolName,inputRoot,bindingRoot:verifiedBinding.bindingRoot,
+        contractRoot:verifiedBinding.actionContractRoot,
+        admissionRoot:admission.admissionRoot,
+        providerCalls:0,implicitRetries:0,executionMayHaveOccurred:false,
+        providerResultRoot:null,observationVerification:null,
+        authorityGranted:false,
+        boundary:'TINP denied before the upstream MCP provider callback was invoked.',
+      });
+    }
+
+    let providerResult;
+    try{
+      providerResult=await this.#providerCall({name:toolName,arguments:structuredClone(input)});
+    }catch(error){
+      return sealBody({
+        format:'twni.guarded-mcp-tool-receipt.v1',
+        status:'PROVIDER_ERROR',
+        toolName,inputRoot,bindingRoot:verifiedBinding.bindingRoot,
+        contractRoot:verifiedBinding.actionContractRoot,
+        admissionRoot:admission.admissionRoot,
+        providerCalls:1,implicitRetries:0,executionMayHaveOccurred:true,
+        providerResultRoot:null,observationVerification:null,
+        providerError:String(error?.code??error?.message??error),
+        authorityGranted:false,
+        boundary:'Provider invocation failed after admission. No automatic retry or rollback is claimed.',
+      });
+    }
+
+    fail(providerResult&&typeof providerResult==='object'&&!Array.isArray(providerResult),'MCP_PROVIDER_RESULT_INVALID');
+    const mcp=providerResult.mcp;
+    const observation=providerResult.observation;
+    fail(mcp&&typeof mcp==='object'&&!Array.isArray(mcp),'MCP_PROVIDER_PROTOCOL_RESULT_REQUIRED');
+
+    let verification;
+    if(!observation||typeof observation!=='object'||Array.isArray(observation)){
+      verification={
+        format:'twni.agent-action-observation-verification.v1',
+        status:'FAIL',
+        contractRoot:verifiedBinding.actionContractRoot,
+        observedEffects:[],
+        observedResources:{commands:[],filesystem:[],network:[],packages:[]},
+        violations:['SECURITY_OBSERVATION_REQUIRED'],
+        observationTrusted:false,
+        boundary:'No provider security observation was supplied; execution cannot be accepted as verified.',
+      };
+      verification.verificationRoot=rootHash(verification);
+    }else{
+      verification=verifyObservedAgentAction({
+        contract:verifiedBinding.actionContract,
+        observedEffects:observation.effects??[],
+        observedResources:observation.resources??{},
+      });
+    }
+
+    const providerResultRoot=rootHash(mcp);
+    const protocolFailed=mcp.isError===true;
+    const observedFailed=verification.status!=='PASS';
+    const status=protocolFailed?'PROVIDER_REPORTED_ERROR':(observedFailed?'QUARANTINED':'VERIFIED');
+    return sealBody({
+      format:'twni.guarded-mcp-tool-receipt.v1',
+      status,toolName,inputRoot,bindingRoot:verifiedBinding.bindingRoot,
+      contractRoot:verifiedBinding.actionContractRoot,
+      admissionRoot:admission.admissionRoot,
+      providerCalls:1,implicitRetries:0,executionMayHaveOccurred:true,
+      providerResultRoot,observationVerification:verification,
+      result:structuredClone(mcp),
+      authorityGranted:false,
+      boundary:'Gateway enforces pre-admission and checks provider-supplied observations. It is not OS/sandbox attestation and cannot detect side effects hidden from the observation adapter.',
+    });
+  }
+}
