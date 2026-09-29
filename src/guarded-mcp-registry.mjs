@@ -14,11 +14,11 @@ export class GuardedMcpRegistry{
     for(const entry of entries)this.register(entry);
   }
 
-  register({binding,providerCall,authorityScopes=[],policy={}}={}){
+  register({binding,providerCall,authorityScopes=[],policy={},receiptSink=null}={}){
     const verified=verifyOppMcpActionBinding(binding);
     const name=verified.toolName;
     fail(!this.#entries.has(name),'MCP_TOOL_DUPLICATE');
-    const gateway=new GuardedMcpToolGateway({providerCall,authorityScopes,policy});
+    const gateway=new GuardedMcpToolGateway({providerCall,authorityScopes,policy,receiptSink});
     this.#entries.set(name,{
       tool:structuredClone(verified.mcpTool),
       binding:structuredClone(verified),
