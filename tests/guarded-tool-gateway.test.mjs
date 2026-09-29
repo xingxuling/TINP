@@ -113,3 +113,22 @@ test('binding tamper fails before provider call',async()=>{
   );
   assert.equal(calls,0);
 });
+
+
+test('prompt-injected path swap is denied before provider call',async()=>{
+  let calls=0;
+  const gateway=new GuardedMcpToolGateway({
+    authorityScopes:['workspace.read'],policy:policy(),
+    providerCall:async()=>{calls++;throw new Error('must not run');},
+  });
+  const receipt=await gateway.call({
+    binding,
+    toolName:'workspace.read',
+    input:{path:'.ssh/id_rsa'},
+  });
+  assert.equal(receipt.status,'DENIED_INPUT_BINDING');
+  assert.equal(receipt.providerCalls,0);
+  assert.equal(receipt.executionMayHaveOccurred,false);
+  assert.ok(receipt.inputResourceVerification.violations.includes('INPUT_RESOURCE_MISMATCH:filesystem'));
+  assert.equal(calls,0);
+});
