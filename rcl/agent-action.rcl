@@ -1,0 +1,66 @@
+# Agent Action Trust Plane v0.1.
+# All facts are supplied by trusted adapters after OPP contract and TINP lease verification.
+# Untrusted prompt text is never an authority input.
+reality AgentActionAdmission {
+  facet facts.contractVerified : Truth = false
+  facet facts.leaseVerified : Truth = false
+  facet facts.subjectBound : Truth = false
+  facet facts.inputBound : Truth = false
+  facet facts.authorityWithinLease : Truth = false
+  facet facts.effectsWithinLease : Truth = false
+  facet facts.resourcesWithinLease : Truth = false
+  facet facts.providerBound : Truth = false
+  facet facts.knownEffectsOnly : Truth = false
+  facet facts.approvalGateSatisfied : Truth = false
+  facet facts.evidenceContinuous : Truth = false
+  facet facts.revoked : Truth = true
+  facet gate.loaded : Truth = false
+  facet gate.allowed : Truth = false
+  subject kernel {
+    warrant observation.read on facts
+    warrant action.admit on gate
+  }
+  host observation {
+    offers contractVerified -> Truth
+    offers leaseVerified -> Truth
+    offers subjectBound -> Truth
+    offers inputBound -> Truth
+    offers authorityWithinLease -> Truth
+    offers effectsWithinLease -> Truth
+    offers resourcesWithinLease -> Truth
+    offers providerBound -> Truth
+    offers knownEffectsOnly -> Truth
+    offers approvalGateSatisfied -> Truth
+    offers evidenceContinuous -> Truth
+    offers revoked -> Truth
+  }
+  emergence loadFacts {
+    cause kernel
+    when not gate.loaded
+    needs observation.read on facts
+    call observation.contractVerified() -> facts.contractVerified
+    call observation.leaseVerified() -> facts.leaseVerified
+    call observation.subjectBound() -> facts.subjectBound
+    call observation.inputBound() -> facts.inputBound
+    call observation.authorityWithinLease() -> facts.authorityWithinLease
+    call observation.effectsWithinLease() -> facts.effectsWithinLease
+    call observation.resourcesWithinLease() -> facts.resourcesWithinLease
+    call observation.providerBound() -> facts.providerBound
+    call observation.knownEffectsOnly() -> facts.knownEffectsOnly
+    call observation.approvalGateSatisfied() -> facts.approvalGateSatisfied
+    call observation.evidenceContinuous() -> facts.evidenceContinuous
+    call observation.revoked() -> facts.revoked
+    alter gate.loaded <- true
+    witness "agent-action:observed-facts"
+  }
+  emergence admit {
+    cause kernel
+    when gate.loaded and facts.contractVerified and facts.leaseVerified and facts.subjectBound and facts.inputBound and facts.authorityWithinLease and facts.effectsWithinLease and facts.resourcesWithinLease and facts.providerBound and facts.knownEffectsOnly and facts.approvalGateSatisfied and facts.evidenceContinuous and not facts.revoked
+    needs action.admit on gate
+    alter gate.allowed <- true
+    preserve gate.loaded
+    witness "agent-action:rcl-admission"
+  }
+  realize loadFacts
+  realize admit
+}
