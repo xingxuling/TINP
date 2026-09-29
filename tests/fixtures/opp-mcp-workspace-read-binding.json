@@ -1,0 +1,92 @@
+{
+  "format": "taowind.opp.mcp-action-binding.v0.1",
+  "toolName": "workspace.read",
+  "mcpToolRoot": "f27efe5ba87dcdf9c4ed35d0ffd62c45bb22de294df27f981647cedd424cb243",
+  "capabilityDeclaration": {
+    "format": "taowind.opp.reality-envelope.v0.1",
+    "protocol": "opp.rcp.v0.1",
+    "version": "0.1.0-candidate.1",
+    "kind": "capability",
+    "id": "rcp:mcp:workspace:workspace.read",
+    "status": "candidate",
+    "issuedAt": "1970-01-01T00:00:00Z",
+    "issuer": {
+      "id": "mcp:workspace",
+      "type": "service"
+    },
+    "payload": {
+      "capabilityId": "workspace.read",
+      "name": "workspace.read",
+      "domain": "surface-provider",
+      "operation": "workspace.read",
+      "inputModalities": ["json"],
+      "outputModalities": ["json"],
+      "inputSchema": {
+        "type": "object",
+        "properties": {"path": {"type": "string"}},
+        "required": ["path"],
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {"text": {"type": "string"}},
+        "required": ["text"],
+        "additionalProperties": false
+      },
+      "determinism": "unknown",
+      "statefulness": "stateless",
+      "authorityRequired": ["workspace.read"],
+      "sideEffects": [],
+      "reversibility": "reversible",
+      "availability": "candidate-only",
+      "evidence": ["f27efe5ba87dcdf9c4ed35d0ffd62c45bb22de294df27f981647cedd424cb243"],
+      "claimBoundary": "Provider declarations and semantic assertions, not authenticated facts."
+    },
+    "extensions": {
+      "session": {
+        "profile": "opp.session.v0.1",
+        "surface": {
+          "bindingId": "server:workspace",
+          "revision": "1",
+          "kind": "mcp-tool",
+          "discoveryRoot": "f27efe5ba87dcdf9c4ed35d0ffd62c45bb22de294df27f981647cedd424cb243",
+          "toolName": "workspace.read"
+        },
+        "semantics": {"input": {}, "output": {}}
+      }
+    },
+    "integrity": {
+      "algorithm": "sha256",
+      "contentRoot": "4d382b34a5edfa61ac6d610ff66b17754d65b44fa8d2145df3e0528745e510d2"
+    }
+  },
+  "capabilityRoot": "bf5c0b8a07b038dcf921265cc16f78ff30a0fea8edf725429a927d16940df15f",
+  "actionContract": {
+    "format": "taowind.opp.agent-action-contract.v0.1",
+    "actionId": "action:mcp-workspace-read",
+    "capabilityId": "workspace.read",
+    "capabilityRoot": "bf5c0b8a07b038dcf921265cc16f78ff30a0fea8edf725429a927d16940df15f",
+    "operation": "workspace.read",
+    "requiredAuthority": ["workspace.read"],
+    "declaredEffects": ["filesystem.read"],
+    "acceptedEffects": ["filesystem.read"],
+    "resources": {
+      "commands": [],
+      "filesystem": ["workspace/project/readme.md"],
+      "network": [],
+      "packages": []
+    },
+    "reversibility": "reversible",
+    "status": "accepted",
+    "reasons": [],
+    "authorityGranted": false,
+    "requiresTINP": true,
+    "boundary": "OPP describes a bounded action and its potential effects. It does not authenticate identity, grant authority, prove runtime isolation, or attest that execution matched the declaration.",
+    "contractRoot": "9df8a047efdb4f0a0ac866968f2e5e8b9fbf0a548117c88ae1273bba7301de2c"
+  },
+  "actionContractRoot": "9df8a047efdb4f0a0ac866968f2e5e8b9fbf0a548117c88ae1273bba7301de2c",
+  "authorityGranted": false,
+  "annotationsTrusted": false,
+  "boundary": "MCP tool annotations are descriptive hints only. This binding does not authenticate the server, grant authority, prove sandboxing, or prove that runtime side effects match the declaration.",
+  "bindingRoot": "2f2092cbf7a839070d4e306fb04e00cb27a6bfa7377d85bb549e861c3ea5a170"
+}
