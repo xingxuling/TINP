@@ -3,6 +3,13 @@ import {verifyOppActionContract} from './agent-action-policy.mjs';
 
 export const OPP_MCP_ACTION_BINDING_FORMAT='taowind.opp.mcp-action-binding.v0.1';
 
+export function normalizeMcpToolDescriptor(tool){
+  if(!tool||typeof tool!=='object'||Array.isArray(tool))throw new McpActionBindingError('MCP_TOOL_DESCRIPTOR_REQUIRED');
+  const value=structuredClone(tool);
+  delete value._meta;
+  return value;
+}
+
 export class McpActionBindingError extends Error{
   constructor(code){super(code);this.code=code;}
 }
@@ -38,4 +45,20 @@ export function verifyOppMcpActionBinding(binding){
   verifyOppActionContract(body.actionContract);
   fail(body.actionContract.capabilityId===body.toolName,'MCP_ACTION_BINDING_TOOL_CAPABILITY_MISMATCH');
   return structuredClone(binding);
+}
+
+
+export function verifyListedMcpToolAgainstBinding(tool,binding){
+  const verified=verifyOppMcpActionBinding(binding);
+  const normalized=normalizeMcpToolDescriptor(tool);
+  fail(rootHash(normalized)===verified.mcpToolRoot,'MCP_LISTED_TOOL_ROOT_MISMATCH');
+  fail(normalized.name===verified.toolName,'MCP_LISTED_TOOL_NAME_MISMATCH');
+  const meta=tool?._meta;
+  if(meta!==undefined){
+    fail(meta&&typeof meta==='object'&&!Array.isArray(meta),'MCP_LISTED_TOOL_META_INVALID');
+    fail(meta['taowind/bindingRoot']===verified.bindingRoot,'MCP_LISTED_BINDING_ROOT_MISMATCH');
+    fail(meta['taowind/actionContractRoot']===verified.actionContractRoot,'MCP_LISTED_CONTRACT_ROOT_MISMATCH');
+    fail(meta['taowind/authorityGranted']===false,'MCP_LISTED_AUTHORITY_BOUNDARY_INVALID');
+  }
+  return {normalizedToolRoot:verified.mcpToolRoot,bindingRoot:verified.bindingRoot};
 }
