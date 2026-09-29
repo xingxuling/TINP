@@ -39,4 +39,7 @@ export {
 export {GuardedMcpToolGateway, GuardedToolGatewayError} from '../src/guarded-tool-gateway.mjs';
 export {GuardedMcpRegistry, GuardedMcpRegistryError} from '../src/guarded-mcp-registry.mjs';
 export {createBoundedWorkspaceReadProvider, BoundedWorkspaceProviderError} from '../src/providers/bounded-workspace-read.mjs';
-export {createGuardedOfficialMcpServer, loadWorkspaceReadBinding, GuardedOfficialMcpServerError} from '../src/official-mcp-server.mjs';
+export {
+  createGuardedOfficialMcpServer, createDefaultGuardedOfficialMcpServer,
+  loadWorkspaceReadBinding, GuardedOfficialMcpServerError,
+} from '../src/official-mcp-server.mjs';
