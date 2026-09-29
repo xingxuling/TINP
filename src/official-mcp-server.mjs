@@ -15,11 +15,13 @@ export function loadWorkspaceReadBinding(file=new URL('../registry/agent-actions
   const binding=JSON.parse(fs.readFileSync(file,'utf8'));
   verifyOppMcpActionBinding(binding);
   fail(binding.toolName==='workspace.read','MCP_WORKSPACE_BINDING_TOOL_INVALID');
-  const schema=binding.mcpTool?.inputSchema;
-  fail(schema?.type==='object'&&schema.additionalProperties===false,'MCP_WORKSPACE_SCHEMA_INVALID');
-  fail(schema?.properties?.path?.type==='string','MCP_WORKSPACE_PATH_SCHEMA_INVALID');
-  fail(Array.isArray(schema.required)&&schema.required.includes('path'),'MCP_WORKSPACE_PATH_REQUIRED');
   return binding;
+}
+
+function asZodSchema(schema,code){
+  fail(schema&&typeof schema==='object'&&!Array.isArray(schema),code);
+  try{return z.fromJSONSchema(schema);}
+  catch{throw new GuardedOfficialMcpServerError(code);}
 }
 
 function toMcpResult(receipt){
@@ -36,7 +38,47 @@ function toMcpResult(receipt){
   };
 }
 
+/**
+ * Build an official MCP v2 server from already-rooted OPP bindings.
+ * Raw provider callbacks stay private inside GuardedMcpRegistry.
+ */
 export function createGuardedOfficialMcpServer({
+  entries=[],
+  name='taowind-guarded-agent-actions',
+  version='0.1.0-candidate.1',
+}={}){
+  fail(Array.isArray(entries)&&entries.length>0,'MCP_GUARDED_ENTRIES_REQUIRED');
+  const registry=new GuardedMcpRegistry({entries});
+  const server=new McpServer({name,version});
+
+  for(const tool of registry.listTools()){
+    const security=registry.securityDescriptor(tool.name);
+    const binding=entries.find(entry=>entry.binding.bindingRoot===security.bindingRoot)?.binding;
+    fail(binding,'MCP_GUARDED_BINDING_NOT_FOUND');
+
+    const inputSchema=asZodSchema(tool.inputSchema,'MCP_GUARDED_INPUT_SCHEMA_UNSUPPORTED');
+    const outputSchema=asZodSchema(tool.outputSchema,'MCP_GUARDED_OUTPUT_SCHEMA_UNSUPPORTED');
+    server.registerTool(
+      tool.name,
+      {
+        ...(tool.title?{title:tool.title}:{}),
+        ...(tool.description?{description:tool.description}:{}),
+        inputSchema,
+        outputSchema,
+        ...(tool.annotations?{annotations:tool.annotations}:{}),
+        _meta:{
+          'taowind/bindingRoot':binding.bindingRoot,
+          'taowind/actionContractRoot':binding.actionContractRoot,
+          'taowind/authorityGranted':false,
+        },
+      },
+      async args=>toMcpResult(await registry.callTool({name:tool.name,arguments:args})),
+    );
+  }
+  return {server,registry};
+}
+
+export function createDefaultGuardedOfficialMcpServer({
   workspaceRoot,
   binding=loadWorkspaceReadBinding(),
   name='taowind-guarded-agent-actions',
@@ -44,49 +86,22 @@ export function createGuardedOfficialMcpServer({
 }={}){
   fail(typeof workspaceRoot==='string'&&workspaceRoot.length>0,'MCP_WORKSPACE_ROOT_REQUIRED');
   const provider=createBoundedWorkspaceReadProvider({workspaceRoot});
-  const registry=new GuardedMcpRegistry({entries:[{
+  return {
+    ...createGuardedOfficialMcpServer({
+      name,version,
+      entries:[{
+        binding,
+        providerCall:provider,
+        authorityScopes:['workspace.read'],
+        policy:{
+          allowedEffects:['filesystem.read'],
+          filesystemPrefixes:['workspace/project'],
+          acceptedReversibility:['reversible'],
+        },
+      }],
+    }),
     binding,
-    providerCall:provider,
-    authorityScopes:['workspace.read'],
-    policy:{
-      allowedEffects:['filesystem.read'],
-      filesystemPrefixes:['workspace/project'],
-      acceptedReversibility:['reversible'],
-    },
-  }]});
-
-  const server=new McpServer({name,version});
-  server.registerTool(
-    'workspace.read',
-    {
-      title:'Guarded workspace read',
-      description:binding.mcpTool.description,
-      inputSchema:z.object({path:z.string().min(1)}).strict(),
-      outputSchema:z.object({
-        status:z.string(),
-        providerCalls:z.number().int().nonnegative(),
-        executionMayHaveOccurred:z.boolean(),
-        receiptRoot:z.string().regex(/^[a-f0-9]{64}$/),
-      }).strict(),
-      annotations:{
-        readOnlyHint:true,
-        destructiveHint:false,
-        idempotentHint:true,
-        openWorldHint:false,
-      },
-      _meta:{
-        'taowind/bindingRoot':binding.bindingRoot,
-        'taowind/actionContractRoot':binding.actionContractRoot,
-        'taowind/authorityGranted':false,
-      },
-    },
-    async ({path:resource})=>toMcpResult(await registry.callTool({
-      name:'workspace.read',
-      arguments:{path:resource},
-    })),
-  );
-
-  return {server,registry,binding};
+  };
 }
 
 export function defaultWorkspaceRoot(){
