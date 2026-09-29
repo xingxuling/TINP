@@ -1,0 +1,31 @@
+{
+  "format": "tinp.agent-action-security-evidence.v0.1",
+  "status": "LOCAL_CANDIDATE_VALIDATED",
+  "date": "2026-09-29",
+  "scope": "RCL-backed authority/effect vertical slice only",
+  "developmentModes": [
+    {"phase": 1, "mode": "WHOLE_ARTIFACT", "reason": "cross-repo OPP/TINP/RCL contract + tests + docs"},
+    {"phase": 2, "mode": "DEEP_DEVELOPMENT", "reason": "authority/effect gate became the central evidence-rich bottleneck"}
+  ],
+  "localEvidence": {
+    "oppFocusedTests": "5/5 passed",
+    "oppUploadedBaselineRegression": "46 passed, 7 subtests passed",
+    "tinpAgentActionTests": "7/7 passed against uploaded current RCL compiler/runtime",
+    "githubActionsUsed": false
+  },
+  "negativeCases": [
+    "credential.read denied when only workspace.read is leased",
+    "npm lifecycle process.spawn denied when not leased",
+    "scm.write denied when not leased",
+    "unknown authority fails closed",
+    "undeclared post-action credential.read effect rejected"
+  ],
+  "limitations": [
+    "No OS-level non-bypassability proof",
+    "No strong sandbox proof",
+    "No production key custody or trusted time",
+    "No exactly-once external write guarantee",
+    "No claim that post-action rejection rolls back completed side effects",
+    "No GitHub Actions run consumed for this change"
+  ]
+}
