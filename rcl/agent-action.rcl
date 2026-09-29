@@ -33,14 +33,14 @@ reality AgentActionAdmission {
     cause kernel
     when not gate.loaded
     needs observation.read on facts
-    call observation.contractVerified() -> facts.contractVerified
-    call observation.authorityBound() -> facts.authorityBound
-    call observation.effectsAuthorized() -> facts.effectsAuthorized
-    call observation.resourcesBounded() -> facts.resourcesBounded
-    call observation.reversibilityAccepted() -> facts.reversibilityAccepted
-    call observation.effectSetComplete() -> facts.effectSetComplete
-    call observation.approvalRequired() -> facts.approvalRequired
-    call observation.approvalVerified() -> facts.approvalVerified
+    call observation.contractVerified("contractVerified") -> facts.contractVerified
+    call observation.authorityBound("authorityBound") -> facts.authorityBound
+    call observation.effectsAuthorized("effectsAuthorized") -> facts.effectsAuthorized
+    call observation.resourcesBounded("resourcesBounded") -> facts.resourcesBounded
+    call observation.reversibilityAccepted("reversibilityAccepted") -> facts.reversibilityAccepted
+    call observation.effectSetComplete("effectSetComplete") -> facts.effectSetComplete
+    call observation.approvalRequired("approvalRequired") -> facts.approvalRequired
+    call observation.approvalVerified("approvalVerified") -> facts.approvalVerified
     alter gate.loaded <- true
     witness "agent-action:observed-facts"
   }
