@@ -4,7 +4,11 @@ import {verifyObservedAgentAction} from './agent-action-policy.mjs';
 import {verifyOppMcpActionBinding} from './mcp-action-binding.mjs';
 
 export class GuardedToolGatewayError extends Error{
-  constructor(code){super(code);this.code=code;}
+  constructor(code,{receipt=null,cause=null}={}){
+    super(code,{cause});
+    this.code=code;
+    this.receipt=receipt;
+  }
 }
 function fail(ok,code){if(!ok)throw new GuardedToolGatewayError(code);}
 function sealBody(body){return {...body,receiptRoot:rootHash(body)};}
@@ -44,12 +48,26 @@ export class GuardedMcpToolGateway{
   #providerCall;
   #authorityScopes;
   #policy;
+  #receiptSink;
 
-  constructor({providerCall,authorityScopes=[],policy={}}={}){
+  constructor({providerCall,authorityScopes=[],policy={},receiptSink=null}={}){
     fail(typeof providerCall==='function','MCP_PROVIDER_CALL_REQUIRED');
+    fail(receiptSink===null||typeof receiptSink==='function','MCP_RECEIPT_SINK_INVALID');
     this.#providerCall=providerCall;
     this.#authorityScopes=structuredClone(authorityScopes);
     this.#policy=structuredClone(policy);
+    this.#receiptSink=receiptSink;
+  }
+
+  async #finish(body){
+    const receipt=sealBody(body);
+    if(this.#receiptSink){
+      try{await this.#receiptSink(structuredClone(receipt));}
+      catch(error){
+        throw new GuardedToolGatewayError('MCP_AUDIT_SINK_FAILED',{receipt,cause:error});
+      }
+    }
+    return receipt;
   }
 
   async call({binding,toolName,input={}}={}){
@@ -59,7 +77,7 @@ export class GuardedMcpToolGateway{
     const inputRoot=rootHash(input);
     const inputResourceVerification=verifyInputResources(verifiedBinding,input);
     if(inputResourceVerification.status!=='PASS'){
-      return sealBody({
+      return this.#finish({
         format:'twni.guarded-mcp-tool-receipt.v1',
         status:'DENIED_INPUT_BINDING',
         toolName,inputRoot,bindingRoot:verifiedBinding.bindingRoot,
@@ -78,7 +96,7 @@ export class GuardedMcpToolGateway{
     });
 
     if(!admission.allowed){
-      return sealBody({
+      return this.#finish({
         format:'twni.guarded-mcp-tool-receipt.v1',
         status:'DENIED',
         toolName,inputRoot,bindingRoot:verifiedBinding.bindingRoot,
@@ -95,7 +113,7 @@ export class GuardedMcpToolGateway{
     try{
       providerResult=await this.#providerCall({name:toolName,arguments:structuredClone(input)});
     }catch(error){
-      return sealBody({
+      return this.#finish({
         format:'twni.guarded-mcp-tool-receipt.v1',
         status:'PROVIDER_ERROR',
         toolName,inputRoot,bindingRoot:verifiedBinding.bindingRoot,
@@ -139,7 +157,7 @@ export class GuardedMcpToolGateway{
     const protocolFailed=mcp.isError===true;
     const observedFailed=verification.status!=='PASS';
     const status=protocolFailed?'PROVIDER_REPORTED_ERROR':(observedFailed?'QUARANTINED':'VERIFIED');
-    return sealBody({
+    return this.#finish({
       format:'twni.guarded-mcp-tool-receipt.v1',
       status,toolName,inputRoot,bindingRoot:verifiedBinding.bindingRoot,
       contractRoot:verifiedBinding.actionContractRoot,
