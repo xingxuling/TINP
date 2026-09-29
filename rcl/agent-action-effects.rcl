@@ -1,0 +1,88 @@
+# Agent Action Effect Verification Gate v0.1
+# Observed effects may never exceed the effects declared by the accepted action contract.
+reality AgentActionEffectGate {
+  facet facts.receiptBindingVerified : Truth = false
+  facet facts.evidenceContinuous : Truth = false
+  facet facts.unknownObservedEffect : Truth = true
+
+  facet facts.observedFilesystemRead : Truth = false
+  facet facts.observedFilesystemWrite : Truth = false
+  facet facts.observedProcessSpawn : Truth = false
+  facet facts.observedNetworkEgress : Truth = false
+  facet facts.observedCredentialRead : Truth = false
+  facet facts.observedPackageInstall : Truth = false
+  facet facts.observedScmWrite : Truth = false
+
+  facet facts.declaredFilesystemRead : Truth = false
+  facet facts.declaredFilesystemWrite : Truth = false
+  facet facts.declaredProcessSpawn : Truth = false
+  facet facts.declaredNetworkEgress : Truth = false
+  facet facts.declaredCredentialRead : Truth = false
+  facet facts.declaredPackageInstall : Truth = false
+  facet facts.declaredScmWrite : Truth = false
+
+  facet gate.loaded : Truth = false
+  facet gate.accepted : Truth = false
+
+  subject kernel {
+    warrant observation.read on facts
+    warrant effect.accept on gate
+  }
+
+  host observation {
+    offers receiptBindingVerified -> Truth
+    offers evidenceContinuous -> Truth
+    offers unknownObservedEffect -> Truth
+    offers observedFilesystemRead -> Truth
+    offers observedFilesystemWrite -> Truth
+    offers observedProcessSpawn -> Truth
+    offers observedNetworkEgress -> Truth
+    offers observedCredentialRead -> Truth
+    offers observedPackageInstall -> Truth
+    offers observedScmWrite -> Truth
+    offers declaredFilesystemRead -> Truth
+    offers declaredFilesystemWrite -> Truth
+    offers declaredProcessSpawn -> Truth
+    offers declaredNetworkEgress -> Truth
+    offers declaredCredentialRead -> Truth
+    offers declaredPackageInstall -> Truth
+    offers declaredScmWrite -> Truth
+  }
+
+  emergence loadFacts {
+    cause kernel
+    when not gate.loaded
+    needs observation.read on facts
+    call observation.receiptBindingVerified() -> facts.receiptBindingVerified
+    call observation.evidenceContinuous() -> facts.evidenceContinuous
+    call observation.unknownObservedEffect() -> facts.unknownObservedEffect
+    call observation.observedFilesystemRead() -> facts.observedFilesystemRead
+    call observation.observedFilesystemWrite() -> facts.observedFilesystemWrite
+    call observation.observedProcessSpawn() -> facts.observedProcessSpawn
+    call observation.observedNetworkEgress() -> facts.observedNetworkEgress
+    call observation.observedCredentialRead() -> facts.observedCredentialRead
+    call observation.observedPackageInstall() -> facts.observedPackageInstall
+    call observation.observedScmWrite() -> facts.observedScmWrite
+    call observation.declaredFilesystemRead() -> facts.declaredFilesystemRead
+    call observation.declaredFilesystemWrite() -> facts.declaredFilesystemWrite
+    call observation.declaredProcessSpawn() -> facts.declaredProcessSpawn
+    call observation.declaredNetworkEgress() -> facts.declaredNetworkEgress
+    call observation.declaredCredentialRead() -> facts.declaredCredentialRead
+    call observation.declaredPackageInstall() -> facts.declaredPackageInstall
+    call observation.declaredScmWrite() -> facts.declaredScmWrite
+    alter gate.loaded <- true
+    witness "tinp:agent-effect-observed-facts"
+  }
+
+  emergence accept {
+    cause kernel
+    when gate.loaded and facts.receiptBindingVerified and facts.evidenceContinuous and not facts.unknownObservedEffect and (not facts.observedFilesystemRead or facts.declaredFilesystemRead) and (not facts.observedFilesystemWrite or facts.declaredFilesystemWrite) and (not facts.observedProcessSpawn or facts.declaredProcessSpawn) and (not facts.observedNetworkEgress or facts.declaredNetworkEgress) and (not facts.observedCredentialRead or facts.declaredCredentialRead) and (not facts.observedPackageInstall or facts.declaredPackageInstall) and (not facts.observedScmWrite or facts.declaredScmWrite)
+    needs effect.accept on gate
+    alter gate.accepted <- true
+    preserve gate.loaded
+    witness "tinp:agent-effect-contract-match"
+  }
+
+  realize loadFacts
+  realize accept
+}
