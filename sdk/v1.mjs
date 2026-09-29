@@ -31,3 +31,7 @@ export {
 export {
   AGENT_ACTION_EFFECTS, evaluateAgentEffectGuard,
 } from '../adapters/rcl-agent-effect-guard.mjs';
+export {
+  OPP_AGENT_ACTION_PROFILE, verifyOppAgentActionContract,
+} from '../src/opp-agent-action-acceptance.mjs';
+export {runGovernedAgentAction} from '../src/agent-action-executor.mjs';
