@@ -40,19 +40,19 @@ reality AgentActionAdmission {
     cause kernel
     when not gate.loaded
     needs observation.read on facts
-    call observation.contractVerified() -> facts.contractVerified
-    call observation.leaseVerified() -> facts.leaseVerified
-    call observation.subjectBound() -> facts.subjectBound
-    call observation.inputBound() -> facts.inputBound
-    call observation.authorityWithinLease() -> facts.authorityWithinLease
-    call observation.effectsWithinLease() -> facts.effectsWithinLease
-    call observation.resourcesWithinLease() -> facts.resourcesWithinLease
-    call observation.providerBound() -> facts.providerBound
-    call observation.knownEffectsOnly() -> facts.knownEffectsOnly
-    call observation.approvalRequired() -> facts.approvalRequired
-    call observation.operatorApprovalVerified() -> facts.operatorApprovalVerified
-    call observation.evidenceContinuous() -> facts.evidenceContinuous
-    call observation.revoked() -> facts.revoked
+    call observation.contractVerified("agent-action") -> facts.contractVerified
+    call observation.leaseVerified("agent-action") -> facts.leaseVerified
+    call observation.subjectBound("agent-action") -> facts.subjectBound
+    call observation.inputBound("agent-action") -> facts.inputBound
+    call observation.authorityWithinLease("agent-action") -> facts.authorityWithinLease
+    call observation.effectsWithinLease("agent-action") -> facts.effectsWithinLease
+    call observation.resourcesWithinLease("agent-action") -> facts.resourcesWithinLease
+    call observation.providerBound("agent-action") -> facts.providerBound
+    call observation.knownEffectsOnly("agent-action") -> facts.knownEffectsOnly
+    call observation.approvalRequired("agent-action") -> facts.approvalRequired
+    call observation.operatorApprovalVerified("agent-action") -> facts.operatorApprovalVerified
+    call observation.evidenceContinuous("agent-action") -> facts.evidenceContinuous
+    call observation.revoked("agent-action") -> facts.revoked
     alter gate.loaded <- true
     witness "agent-action:observed-facts"
   }
