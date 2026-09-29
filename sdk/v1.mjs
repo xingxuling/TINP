@@ -43,3 +43,4 @@ export {
   createGuardedOfficialMcpServer, createDefaultGuardedOfficialMcpServer,
   loadWorkspaceReadBinding, GuardedOfficialMcpServerError,
 } from '../src/official-mcp-server.mjs';
+export {GuardedMcpAuditLedger} from '../src/guarded-mcp-audit.mjs';
