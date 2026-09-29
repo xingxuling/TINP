@@ -134,6 +134,27 @@ sideEffects: false
 
 这证明的是**当前候选能够验收绑定一条 OPP-owned interop 结果**，不是“任意 OPP bridge 已经自动进入生产 TINP 网络”。
 
+## Agent Action Trust Plane candidate
+
+当前分支新增一条 OPP → TINP → RCL 的 Agent 行动治理垂直切片：
+
+- OPP Action Contract 声明 capability、authority、effect、resource、reversibility 和 action input root；
+- TINP 使用签名 lease 绑定主体、Provider、时间窗和实际权限范围；
+- 固定 RCL gate 在执行前做 ALLOW / DENY；
+- runtime effect 超出合同或 lease 时进入 QUARANTINED；
+- 执行结果不确定时进入 PENDING，默认不自动重试；
+- Prompt 文本不是 Authority，不能靠“忽略之前规则”自行扩权。
+
+运行 targeted demo：
+
+    npm run agent-action:demo
+
+运行针对性安全测试：
+
+    npm run agent-action:test
+
+完整边界见 [Agent Action Trust Plane v0.1](docs/AGENT_ACTION_TRUST_PLANE.md)。
+
 ## 我怎么接自己的 Agent / Provider？
 
 当前已经有可用的 alpha 接口，但还没有稳定的第三方 Provider SDK。
