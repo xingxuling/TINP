@@ -41,7 +41,15 @@ export {GuardedMcpRegistry, GuardedMcpRegistryError} from '../src/guarded-mcp-re
 export {createBoundedWorkspaceReadProvider, BoundedWorkspaceProviderError} from '../src/providers/bounded-workspace-read.mjs';
 export {createBoundedWorkspaceCreateProvider, BoundedWorkspaceCreateProviderError} from '../src/providers/bounded-workspace-create.mjs';
 export {
-  createGuardedOfficialMcpServer, createDefaultGuardedOfficialMcpServer,
+  createGuardedOfficialMcpServer, createDefaultGuardedOfficialMcpServer, makeExactApprovalConfig,
   loadWorkspaceReadBinding, loadWorkspaceCreateBinding, GuardedOfficialMcpServerError,
 } from '../src/official-mcp-server.mjs';
+export {
+  EXACT_ACTION_SECURITY_FIELD, EXACT_ACTION_CHALLENGE_FORMAT, ExactActionApprovalError,
+  splitExactActionInput, makeExactActionChallenge, verifyExactActionEnvelope, ExactActionReplayGuard,
+} from '../src/exact-action-approval.mjs';
+export {
+  makeAgentActionApprovalPolicy, validateAgentActionApprovalPolicy, verifyAgentActionApproval,
+  AGENT_ACTION_APPROVAL_SCOPE, AGENT_ACTION_APPROVER_ROLE,
+} from '../adapters/aaf-agent-action.mjs';
 export {GuardedMcpAuditLedger} from '../src/guarded-mcp-audit.mjs';

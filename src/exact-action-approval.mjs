@@ -73,14 +73,14 @@ export class ExactActionReplayGuard{
   #consumed=new Set();
   consume(verification){
     fail(verification&&hex(verification.approvalRoot)&&hex(verification.challengeRoot),'EXACT_ACTION_VERIFICATION_INVALID');
-    const key=`${verification.approvalRoot}:${verification.challengeRoot}`;
+    const key=verification.challengeRoot;
     fail(!this.#consumed.has(key),'EXACT_ACTION_APPROVAL_REPLAY');
     this.#consumed.add(key);
-    return {consumed:true,keyRoot:rootHash({approvalRoot:verification.approvalRoot,challengeRoot:verification.challengeRoot})};
+    return {consumed:true,keyRoot:rootHash({challengeRoot:verification.challengeRoot})};
   }
   has(verification){
     if(!verification)return false;
-    return this.#consumed.has(`${verification.approvalRoot}:${verification.challengeRoot}`);
+    return this.#consumed.has(verification.challengeRoot);
   }
   get size(){return this.#consumed.size;}
 }

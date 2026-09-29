@@ -18,7 +18,14 @@ function compactReceipt(receipt){
     observationVerificationRoot:receipt.observationVerification?.verificationRoot??null,
     observationStatus:receipt.observationVerification?.status??null,
     violations:structuredClone(receipt.observationVerification?.violations??[]),
-    boundary:'Redacted audit record: no raw input, provider result content, credentials, or full observation payload is persisted.',
+    exactApprovalRequired:receipt.exactApproval?.required??false,
+    exactApprovalStatus:receipt.exactApproval?.status??'NOT_REQUIRED',
+    exactApprovalPolicyRoot:receipt.exactApproval?.approvalPolicyRoot??null,
+    exactChallengeRoot:receipt.exactApproval?.challengeRoot??null,
+    exactApprovalRoot:receipt.exactApproval?.approvalRoot??null,
+    exactApprovalVerificationRoot:receipt.exactApproval?.verificationRoot??null,
+    exactApprovalConsumptionRoot:receipt.exactApproval?.consumptionRoot??null,
+    boundary:'Redacted audit record: no raw input, provider result content, credentials, signatures, or full observation payload is persisted.',
   };
 }
 

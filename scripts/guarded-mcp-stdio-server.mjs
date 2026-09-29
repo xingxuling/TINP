@@ -11,5 +11,13 @@ if(process.env.TAOWIND_AGENT_MCP_BOOTSTRAP_DEMO==='1'&&!fs.existsSync(defaultFil
   fs.writeFileSync(defaultFile,'TAOWIND guarded MCP stdio provider is real.','utf8');
 }
 
-void serveStdio(()=>createDefaultGuardedOfficialMcpServer({workspaceRoot,auditFile}).server);
+const approverId=process.env.TAOWIND_AGENT_APPROVER_ID??null;
+const approverKeyB64=process.env.TAOWIND_AGENT_APPROVER_PUBLIC_KEY_B64??null;
+if(Boolean(approverId)!==Boolean(approverKeyB64))throw new Error('TAOWIND_AGENT_APPROVER_CONFIG_INCOMPLETE');
+const createApproval=approverId?{
+  signerId:approverId,
+  publicKeyPem:Buffer.from(approverKeyB64,'base64').toString('utf8'),
+}:null;
+
+void serveStdio(()=>createDefaultGuardedOfficialMcpServer({workspaceRoot,auditFile,createApproval}).server);
 console.error('[taowind] guarded MCP stdio server ready');

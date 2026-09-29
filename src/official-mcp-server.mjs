@@ -7,6 +7,7 @@ import {createBoundedWorkspaceReadProvider} from './providers/bounded-workspace-
 import {createBoundedWorkspaceCreateProvider} from './providers/bounded-workspace-create.mjs';
 import {verifyOppMcpActionBinding} from './mcp-action-binding.mjs';
 import {GuardedMcpAuditLedger} from './guarded-mcp-audit.mjs';
+import {makeAgentActionApprovalPolicy} from '../adapters/aaf-agent-action.mjs';
 
 export class GuardedOfficialMcpServerError extends Error{
   constructor(code){super(code);this.code=code;}
@@ -78,6 +79,9 @@ export function createGuardedOfficialMcpServer({
         _meta:{
           'taowind/bindingRoot':binding.bindingRoot,
           'taowind/actionContractRoot':binding.actionContractRoot,
+          'taowind/policyRoot':security.policyRoot,
+          'taowind/exactApprovalRequired':security.exactApprovalRequired,
+          'taowind/exactApprovalPolicyRoot':security.exactApprovalPolicyRoot,
           'taowind/authorityGranted':false,
         },
       },
@@ -87,49 +91,60 @@ export function createGuardedOfficialMcpServer({
   return {server,registry};
 }
 
+export function makeExactApprovalConfig({signerId,publicKeyPem}={}){
+  fail(typeof signerId==='string'&&signerId.length>0,'MCP_APPROVER_ID_REQUIRED');
+  fail(typeof publicKeyPem==='string'&&publicKeyPem.length>0,'MCP_APPROVER_PUBLIC_KEY_REQUIRED');
+  const policy=makeAgentActionApprovalPolicy({signerId,publicKeyPem});
+  return {policy,keyring:{[signerId]:{publicKeyPem,revoked:false}}};
+}
+
 export function createDefaultGuardedOfficialMcpServer({
   workspaceRoot,
   auditFile=null,
   binding=loadWorkspaceReadBinding(),
   createBinding=loadWorkspaceCreateBinding(),
+  createApproval=null,
   name='taowind-guarded-agent-actions',
   version='0.1.0-candidate.1',
 }={}){
   fail(typeof workspaceRoot==='string'&&workspaceRoot.length>0,'MCP_WORKSPACE_ROOT_REQUIRED');
   const readProvider=createBoundedWorkspaceReadProvider({workspaceRoot});
-  const createProvider=createBoundedWorkspaceCreateProvider({workspaceRoot});
   const audit=auditFile?new GuardedMcpAuditLedger(auditFile):null;
-  return {
-    ...createGuardedOfficialMcpServer({
-      name,version,
-      entries:[
-        {
-          binding,
-          providerCall:readProvider,
-          receiptSink:audit?.sink()??null,
-          authorityScopes:['workspace.read'],
-          policy:{
-            allowedEffects:['filesystem.read'],
-            filesystemPrefixes:['workspace/project'],
-            acceptedReversibility:['reversible'],
-          },
-        },
-        {
-          binding:createBinding,
-          providerCall:createProvider,
-          receiptSink:audit?.sink()??null,
-          authorityScopes:['workspace.write'],
-          policy:{
-            allowedEffects:['filesystem.write'],
-            filesystemPrefixes:['workspace/project'],
-            acceptedReversibility:['compensatable'],
-          },
-        },
-      ],
-    }),
+  const entries=[{
     binding,
-    createBinding,
-    audit,
+    providerCall:readProvider,
+    receiptSink:audit?.sink()??null,
+    authorityScopes:['workspace.read'],
+    policy:{
+      allowedEffects:['filesystem.read'],
+      filesystemPrefixes:['workspace/project'],
+      acceptedReversibility:['reversible'],
+    },
+  }];
+
+  let exactApproval=null;
+  if(createApproval){
+    exactApproval=makeExactApprovalConfig(createApproval);
+    const createProvider=createBoundedWorkspaceCreateProvider({workspaceRoot});
+    entries.push({
+      binding:createBinding,
+      providerCall:createProvider,
+      receiptSink:audit?.sink()??null,
+      authorityScopes:['workspace.write'],
+      policy:{
+        allowedEffects:['filesystem.write'],
+        filesystemPrefixes:['workspace/project'],
+        acceptedReversibility:['compensatable'],
+        requireExactApproval:true,
+        approvalPolicyRoot:exactApproval.policy.policyRoot,
+      },
+      exactApproval,
+    });
+  }
+
+  return {
+    ...createGuardedOfficialMcpServer({name,version,entries}),
+    binding,createBinding,exactApprovalPolicy:exactApproval?.policy??null,audit,
   };
 }
 
