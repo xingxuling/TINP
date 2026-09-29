@@ -29,3 +29,5 @@ export {
   DEFAULT_DISCOVERY_GROUP, DEFAULT_DISCOVERY_PORT, LanPeerDiscovery,
   createLanAdvertisement, verifyLanAdvertisement, admitDiscoveredPeer,
 } from '../src/lan-discovery.mjs';
+
+export {admitAgentAction} from '../src/agent-action-admission.mjs';
