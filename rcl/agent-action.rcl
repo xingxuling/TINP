@@ -11,7 +11,8 @@ reality AgentActionAdmission {
   facet facts.resourcesWithinLease : Truth = false
   facet facts.providerBound : Truth = false
   facet facts.knownEffectsOnly : Truth = false
-  facet facts.approvalGateSatisfied : Truth = false
+  facet facts.approvalRequired : Truth = false
+  facet facts.operatorApprovalVerified : Truth = false
   facet facts.evidenceContinuous : Truth = false
   facet facts.revoked : Truth = true
   facet gate.loaded : Truth = false
@@ -30,7 +31,8 @@ reality AgentActionAdmission {
     offers resourcesWithinLease -> Truth
     offers providerBound -> Truth
     offers knownEffectsOnly -> Truth
-    offers approvalGateSatisfied -> Truth
+    offers approvalRequired -> Truth
+    offers operatorApprovalVerified -> Truth
     offers evidenceContinuous -> Truth
     offers revoked -> Truth
   }
@@ -47,20 +49,30 @@ reality AgentActionAdmission {
     call observation.resourcesWithinLease() -> facts.resourcesWithinLease
     call observation.providerBound() -> facts.providerBound
     call observation.knownEffectsOnly() -> facts.knownEffectsOnly
-    call observation.approvalGateSatisfied() -> facts.approvalGateSatisfied
+    call observation.approvalRequired() -> facts.approvalRequired
+    call observation.operatorApprovalVerified() -> facts.operatorApprovalVerified
     call observation.evidenceContinuous() -> facts.evidenceContinuous
     call observation.revoked() -> facts.revoked
     alter gate.loaded <- true
     witness "agent-action:observed-facts"
   }
-  emergence admit {
+  emergence admitWithoutApproval {
     cause kernel
-    when gate.loaded and facts.contractVerified and facts.leaseVerified and facts.subjectBound and facts.inputBound and facts.authorityWithinLease and facts.effectsWithinLease and facts.resourcesWithinLease and facts.providerBound and facts.knownEffectsOnly and facts.approvalGateSatisfied and facts.evidenceContinuous and not facts.revoked
+    when gate.loaded and facts.contractVerified and facts.leaseVerified and facts.subjectBound and facts.inputBound and facts.authorityWithinLease and facts.effectsWithinLease and facts.resourcesWithinLease and facts.providerBound and facts.knownEffectsOnly and not facts.approvalRequired and facts.evidenceContinuous and not facts.revoked
     needs action.admit on gate
     alter gate.allowed <- true
     preserve gate.loaded
-    witness "agent-action:rcl-admission"
+    witness "agent-action:rcl-admission-no-approval"
+  }
+  emergence admitWithApproval {
+    cause kernel
+    when gate.loaded and facts.contractVerified and facts.leaseVerified and facts.subjectBound and facts.inputBound and facts.authorityWithinLease and facts.effectsWithinLease and facts.resourcesWithinLease and facts.providerBound and facts.knownEffectsOnly and facts.approvalRequired and facts.operatorApprovalVerified and facts.evidenceContinuous and not facts.revoked
+    needs action.admit on gate
+    alter gate.allowed <- true
+    preserve gate.loaded
+    witness "agent-action:rcl-admission-approved"
   }
   realize loadFacts
-  realize admit
+  realize admitWithoutApproval
+  realize admitWithApproval
 }
