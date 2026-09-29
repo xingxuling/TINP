@@ -1,0 +1,98 @@
+# Agent Action Authority Gate v0.1
+# Authenticated host observations only. A request is admitted iff every requested
+# authority is present in the active lease and boundary facts remain valid.
+reality AgentActionAuthorityGate {
+  facet facts.contractVerified : Truth = false
+  facet facts.subjectVerified : Truth = false
+  facet facts.leaseActive : Truth = false
+  facet facts.unknownAuthority : Truth = true
+  facet facts.targetWithinWorkspace : Truth = false
+  facet facts.networkDestinationAllowed : Truth = false
+
+  facet facts.requestWorkspaceRead : Truth = false
+  facet facts.requestWorkspaceWrite : Truth = false
+  facet facts.requestProcessSpawn : Truth = false
+  facet facts.requestNetworkEgress : Truth = false
+  facet facts.requestCredentialRead : Truth = false
+  facet facts.requestPackageInstall : Truth = false
+  facet facts.requestScmWrite : Truth = false
+
+  facet facts.leaseWorkspaceRead : Truth = false
+  facet facts.leaseWorkspaceWrite : Truth = false
+  facet facts.leaseProcessSpawn : Truth = false
+  facet facts.leaseNetworkEgress : Truth = false
+  facet facts.leaseCredentialRead : Truth = false
+  facet facts.leasePackageInstall : Truth = false
+  facet facts.leaseScmWrite : Truth = false
+
+  facet gate.loaded : Truth = false
+  facet gate.allowed : Truth = false
+
+  subject kernel {
+    warrant observation.read on facts
+    warrant action.admit on gate
+  }
+
+  host observation {
+    offers contractVerified -> Truth
+    offers subjectVerified -> Truth
+    offers leaseActive -> Truth
+    offers unknownAuthority -> Truth
+    offers targetWithinWorkspace -> Truth
+    offers networkDestinationAllowed -> Truth
+    offers requestWorkspaceRead -> Truth
+    offers requestWorkspaceWrite -> Truth
+    offers requestProcessSpawn -> Truth
+    offers requestNetworkEgress -> Truth
+    offers requestCredentialRead -> Truth
+    offers requestPackageInstall -> Truth
+    offers requestScmWrite -> Truth
+    offers leaseWorkspaceRead -> Truth
+    offers leaseWorkspaceWrite -> Truth
+    offers leaseProcessSpawn -> Truth
+    offers leaseNetworkEgress -> Truth
+    offers leaseCredentialRead -> Truth
+    offers leasePackageInstall -> Truth
+    offers leaseScmWrite -> Truth
+  }
+
+  emergence loadFacts {
+    cause kernel
+    when not gate.loaded
+    needs observation.read on facts
+    call observation.contractVerified() -> facts.contractVerified
+    call observation.subjectVerified() -> facts.subjectVerified
+    call observation.leaseActive() -> facts.leaseActive
+    call observation.unknownAuthority() -> facts.unknownAuthority
+    call observation.targetWithinWorkspace() -> facts.targetWithinWorkspace
+    call observation.networkDestinationAllowed() -> facts.networkDestinationAllowed
+    call observation.requestWorkspaceRead() -> facts.requestWorkspaceRead
+    call observation.requestWorkspaceWrite() -> facts.requestWorkspaceWrite
+    call observation.requestProcessSpawn() -> facts.requestProcessSpawn
+    call observation.requestNetworkEgress() -> facts.requestNetworkEgress
+    call observation.requestCredentialRead() -> facts.requestCredentialRead
+    call observation.requestPackageInstall() -> facts.requestPackageInstall
+    call observation.requestScmWrite() -> facts.requestScmWrite
+    call observation.leaseWorkspaceRead() -> facts.leaseWorkspaceRead
+    call observation.leaseWorkspaceWrite() -> facts.leaseWorkspaceWrite
+    call observation.leaseProcessSpawn() -> facts.leaseProcessSpawn
+    call observation.leaseNetworkEgress() -> facts.leaseNetworkEgress
+    call observation.leaseCredentialRead() -> facts.leaseCredentialRead
+    call observation.leasePackageInstall() -> facts.leasePackageInstall
+    call observation.leaseScmWrite() -> facts.leaseScmWrite
+    alter gate.loaded <- true
+    witness "tinp:agent-action-observed-facts"
+  }
+
+  emergence admit {
+    cause kernel
+    when gate.loaded and facts.contractVerified and facts.subjectVerified and facts.leaseActive and not facts.unknownAuthority and facts.targetWithinWorkspace and facts.networkDestinationAllowed and (not facts.requestWorkspaceRead or facts.leaseWorkspaceRead) and (not facts.requestWorkspaceWrite or facts.leaseWorkspaceWrite) and (not facts.requestProcessSpawn or facts.leaseProcessSpawn) and (not facts.requestNetworkEgress or facts.leaseNetworkEgress) and (not facts.requestCredentialRead or facts.leaseCredentialRead) and (not facts.requestPackageInstall or facts.leasePackageInstall) and (not facts.requestScmWrite or facts.leaseScmWrite)
+    needs action.admit on gate
+    alter gate.allowed <- true
+    preserve gate.loaded
+    witness "tinp:agent-action-authority-admission"
+  }
+
+  realize loadFacts
+  realize admit
+}
