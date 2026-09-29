@@ -5,6 +5,7 @@ import {McpServer} from '@modelcontextprotocol/server';
 import {GuardedMcpRegistry} from './guarded-mcp-registry.mjs';
 import {createBoundedWorkspaceReadProvider} from './providers/bounded-workspace-read.mjs';
 import {verifyOppMcpActionBinding} from './mcp-action-binding.mjs';
+import {GuardedMcpAuditLedger} from './guarded-mcp-audit.mjs';
 
 export class GuardedOfficialMcpServerError extends Error{
   constructor(code){super(code);this.code=code;}
@@ -80,18 +81,21 @@ export function createGuardedOfficialMcpServer({
 
 export function createDefaultGuardedOfficialMcpServer({
   workspaceRoot,
+  auditFile=null,
   binding=loadWorkspaceReadBinding(),
   name='taowind-guarded-agent-actions',
   version='0.1.0-candidate.1',
 }={}){
   fail(typeof workspaceRoot==='string'&&workspaceRoot.length>0,'MCP_WORKSPACE_ROOT_REQUIRED');
   const provider=createBoundedWorkspaceReadProvider({workspaceRoot});
+  const audit=auditFile?new GuardedMcpAuditLedger(auditFile):null;
   return {
     ...createGuardedOfficialMcpServer({
       name,version,
       entries:[{
         binding,
         providerCall:provider,
+        receiptSink:audit?.sink()??null,
         authorityScopes:['workspace.read'],
         policy:{
           allowedEffects:['filesystem.read'],
@@ -101,6 +105,7 @@ export function createDefaultGuardedOfficialMcpServer({
       }],
     }),
     binding,
+    audit,
   };
 }
 
