@@ -131,7 +131,9 @@ export function verifyObservedAgentAction({contract,observedEffects=[],observedR
     else if(!declared.has(effect))violations.push(`UNDECLARED_EFFECT:${effect}`);
   }
 
-  if(observed.filesystem.length&&!filesystemBounded(observed.filesystem,verified.resources.filesystem))
+  // Contract resources are exact v0.1 action targets. Policy prefixes are broader
+  // pre-execution deployment constraints and must not silently widen the contract.
+  if(observed.filesystem.length&&!exactBounded(observed.filesystem,verified.resources.filesystem))
     violations.push('FILESYSTEM_RESOURCE_ESCAPE');
   if(observed.network.length&&!exactBounded(observed.network,verified.resources.network))
     violations.push('NETWORK_RESOURCE_ESCAPE');
