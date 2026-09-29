@@ -4,6 +4,7 @@ import * as z from 'zod/v4';
 import {McpServer} from '@modelcontextprotocol/server';
 import {GuardedMcpRegistry} from './guarded-mcp-registry.mjs';
 import {createBoundedWorkspaceReadProvider} from './providers/bounded-workspace-read.mjs';
+import {createBoundedWorkspaceCreateProvider} from './providers/bounded-workspace-create.mjs';
 import {verifyOppMcpActionBinding} from './mcp-action-binding.mjs';
 import {GuardedMcpAuditLedger} from './guarded-mcp-audit.mjs';
 
@@ -16,6 +17,13 @@ export function loadWorkspaceReadBinding(file=new URL('../registry/agent-actions
   const binding=JSON.parse(fs.readFileSync(file,'utf8'));
   verifyOppMcpActionBinding(binding);
   fail(binding.toolName==='workspace.read','MCP_WORKSPACE_BINDING_TOOL_INVALID');
+  return binding;
+}
+
+export function loadWorkspaceCreateBinding(file=new URL('../registry/agent-actions/workspace-create.binding.json',import.meta.url)){
+  const binding=JSON.parse(fs.readFileSync(file,'utf8'));
+  verifyOppMcpActionBinding(binding);
+  fail(binding.toolName==='workspace.create','MCP_WORKSPACE_CREATE_BINDING_TOOL_INVALID');
   return binding;
 }
 
@@ -83,28 +91,44 @@ export function createDefaultGuardedOfficialMcpServer({
   workspaceRoot,
   auditFile=null,
   binding=loadWorkspaceReadBinding(),
+  createBinding=loadWorkspaceCreateBinding(),
   name='taowind-guarded-agent-actions',
   version='0.1.0-candidate.1',
 }={}){
   fail(typeof workspaceRoot==='string'&&workspaceRoot.length>0,'MCP_WORKSPACE_ROOT_REQUIRED');
-  const provider=createBoundedWorkspaceReadProvider({workspaceRoot});
+  const readProvider=createBoundedWorkspaceReadProvider({workspaceRoot});
+  const createProvider=createBoundedWorkspaceCreateProvider({workspaceRoot});
   const audit=auditFile?new GuardedMcpAuditLedger(auditFile):null;
   return {
     ...createGuardedOfficialMcpServer({
       name,version,
-      entries:[{
-        binding,
-        providerCall:provider,
-        receiptSink:audit?.sink()??null,
-        authorityScopes:['workspace.read'],
-        policy:{
-          allowedEffects:['filesystem.read'],
-          filesystemPrefixes:['workspace/project'],
-          acceptedReversibility:['reversible'],
+      entries:[
+        {
+          binding,
+          providerCall:readProvider,
+          receiptSink:audit?.sink()??null,
+          authorityScopes:['workspace.read'],
+          policy:{
+            allowedEffects:['filesystem.read'],
+            filesystemPrefixes:['workspace/project'],
+            acceptedReversibility:['reversible'],
+          },
         },
-      }],
+        {
+          binding:createBinding,
+          providerCall:createProvider,
+          receiptSink:audit?.sink()??null,
+          authorityScopes:['workspace.write'],
+          policy:{
+            allowedEffects:['filesystem.write'],
+            filesystemPrefixes:['workspace/project'],
+            acceptedReversibility:['compensatable'],
+          },
+        },
+      ],
     }),
     binding,
+    createBinding,
     audit,
   };
 }

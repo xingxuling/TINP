@@ -88,3 +88,22 @@ v0.1 不需要判断恶意文本的语言学意图。只要 Action Contract 请�
 因此当前状态是：
 
 **EXECUTABLE SECURITY PROFILE CANDIDATE / NOT A PRODUCTION REFERENCE MONITOR**
+
+## v0.2｜第一个真实受控写副作用
+
+`workspace.create` 把原来的只读演示推进到真实 filesystem write（文件系统写入）：
+
+```text
+MCP workspace.create
+  → OPP contract: workspace.write + filesystem.write
+  → exact resource: workspace/project/generated.txt
+  → TINP policy: workspace.write / filesystem.write / compensatable
+  → RCL AgentActionAdmission
+  → bounded create-only provider
+  → observed filesystem.write
+  → VERIFIED receipt + audit ledger
+```
+
+当前 Provider 采用 **create-only（只创建、不覆盖）** 语义：目标已存在就失败，不会把重试伪装成幂等写入；路径逃逸、资源替换和越权目录在执行前或 Provider 边界 fail-closed（失败关闭）。Provider 使用临时文件 + fsync + hard-link commit（硬链接提交）避免直接覆盖既有目标。
+
+这一层证明的是“可约束、可审计的真实副作用”已经进入正式 MCP 调用链；它仍不等价于通用文件事务、OS reference monitor（引用监控器）或跨设备 exactly-once（恰好一次）保证。

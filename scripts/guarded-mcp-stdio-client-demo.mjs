@@ -20,15 +20,24 @@ try{
   await client.connect(transport);
   const listed=await client.listTools();
   const tool=listed.tools.find(item=>item.name==='workspace.read');
-  if(!tool)throw new Error('workspace.read missing from official MCP tools/list');
+  const createTool=listed.tools.find(item=>item.name==='workspace.create');
+  if(!tool||!createTool)throw new Error('guarded workspace tools missing from official MCP tools/list');
 
   const safe=await client.callTool({
     name:'workspace.read',
     arguments:{path:'workspace/project/readme.md'},
   });
+  const created=await client.callTool({
+    name:'workspace.create',
+    arguments:{path:'workspace/project/generated.txt',content:'TAOWIND guarded MCP write is real.'},
+  });
   const injected=await client.callTool({
     name:'workspace.read',
     arguments:{path:'.ssh/id_rsa'},
+  });
+  const injectedWrite=await client.callTool({
+    name:'workspace.create',
+    arguments:{path:'workspace/project/escape.txt',content:'must not be created'},
   });
 
   console.log(JSON.stringify({
@@ -46,9 +55,17 @@ try{
       isError:safe.isError??false,
       structuredContent:safe.structuredContent??null,
     },
+    guardedCreate:{
+      isError:created.isError??false,
+      structuredContent:created.structuredContent??null,
+    },
     promptInjectedPath:{
       isError:injected.isError??false,
       structuredContent:injected.structuredContent??null,
+    },
+    promptInjectedWrite:{
+      isError:injectedWrite.isError??false,
+      structuredContent:injectedWrite.structuredContent??null,
     },
   },null,2));
 }finally{

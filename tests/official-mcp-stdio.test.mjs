@@ -8,7 +8,8 @@ import {StdioClientTransport} from '@modelcontextprotocol/client/stdio';
 import {verifyLedger} from '../src/evidence.mjs';
 import {verifyListedMcpToolAgainstBinding} from '../src/mcp-action-binding.mjs';
 
-const binding=JSON.parse(await fs.readFile(new URL('../registry/agent-actions/workspace-read.binding.json',import.meta.url),'utf8'));
+const readBinding=JSON.parse(await fs.readFile(new URL('../registry/agent-actions/workspace-read.binding.json',import.meta.url),'utf8'));
+const createBinding=JSON.parse(await fs.readFile(new URL('../registry/agent-actions/workspace-create.binding.json',import.meta.url),'utf8'));
 
 async function connect(t){
   const workspace=await fs.mkdtemp(path.join(os.tmpdir(),'tinp-official-mcp-'));
@@ -33,18 +34,20 @@ async function connect(t){
   return {client,transport,workspace,auditFile};
 }
 
-test('official MCP v2 tools/list is root-bound to the OPP action binding',async t=>{
+test('official MCP v2 tools/list roots both tools to OPP action bindings',async t=>{
   const {client}=await connect(t);
   const {tools}=await client.listTools();
-  assert.equal(tools.length,1);
-  assert.equal(tools[0].name,'workspace.read');
-  const result=verifyListedMcpToolAgainstBinding(tools[0],binding);
-  assert.equal(result.bindingRoot,binding.bindingRoot);
-  assert.equal(result.normalizedToolRoot,binding.mcpToolRoot);
-  assert.equal(tools[0]._meta['taowind/authorityGranted'],false);
+  assert.deepEqual(tools.map(tool=>tool.name).sort(),['workspace.create','workspace.read']);
+  for(const [name,binding] of [['workspace.read',readBinding],['workspace.create',createBinding]]){
+    const tool=tools.find(item=>item.name===name);
+    const result=verifyListedMcpToolAgainstBinding(tool,binding);
+    assert.equal(result.bindingRoot,binding.bindingRoot);
+    assert.equal(result.normalizedToolRoot,binding.mcpToolRoot);
+    assert.equal(tool._meta['taowind/authorityGranted'],false);
+  }
 });
 
-test('official MCP client reaches the real provider through TINP and RCL',async t=>{
+test('official MCP client reaches the real read provider through TINP and RCL',async t=>{
   const {client}=await connect(t);
   const result=await client.callTool({
     name:'workspace.read',
@@ -56,7 +59,51 @@ test('official MCP client reaches the real provider through TINP and RCL',async 
   assert.equal(result.structuredContent.executionMayHaveOccurred,true);
 });
 
-test('official MCP call with prompt-injected path is denied before provider execution',async t=>{
+test('official MCP client performs one guarded filesystem create side effect',async t=>{
+  const {client,workspace}=await connect(t);
+  const result=await client.callTool({
+    name:'workspace.create',
+    arguments:{path:'workspace/project/generated.txt',content:'guarded side effect'},
+  });
+  assert.equal(result.isError??false,false);
+  assert.equal(result.structuredContent.status,'VERIFIED');
+  assert.equal(result.structuredContent.providerCalls,1);
+  assert.equal(result.structuredContent.executionMayHaveOccurred,true);
+  assert.equal(await fs.readFile(path.join(workspace,'generated.txt'),'utf8'),'guarded side effect');
+});
+
+test('prompt-injected create path is denied before the write provider runs',async t=>{
+  const {client,workspace}=await connect(t);
+  const result=await client.callTool({
+    name:'workspace.create',
+    arguments:{path:'workspace/project/other.txt',content:'should not exist'},
+  });
+  assert.equal(result.isError,true);
+  assert.equal(result.structuredContent.status,'DENIED_INPUT_BINDING');
+  assert.equal(result.structuredContent.providerCalls,0);
+  assert.equal(result.structuredContent.executionMayHaveOccurred,false);
+  await assert.rejects(()=>fs.stat(path.join(workspace,'other.txt')),error=>error.code==='ENOENT');
+});
+
+test('repeated create is ambiguous-safe: one attempt, no overwrite, no retry',async t=>{
+  const {client,workspace}=await connect(t);
+  const first=await client.callTool({
+    name:'workspace.create',
+    arguments:{path:'workspace/project/generated.txt',content:'first'},
+  });
+  assert.equal(first.structuredContent.status,'VERIFIED');
+  const second=await client.callTool({
+    name:'workspace.create',
+    arguments:{path:'workspace/project/generated.txt',content:'second'},
+  });
+  assert.equal(second.isError,true);
+  assert.equal(second.structuredContent.status,'PROVIDER_ERROR');
+  assert.equal(second.structuredContent.providerCalls,1);
+  assert.equal(second.structuredContent.executionMayHaveOccurred,true);
+  assert.equal(await fs.readFile(path.join(workspace,'generated.txt'),'utf8'),'first');
+});
+
+test('official MCP call with prompt-injected read path is denied before provider execution',async t=>{
   const {client}=await connect(t);
   const result=await client.callTool({
     name:'workspace.read',
