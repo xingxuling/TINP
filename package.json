@@ -28,9 +28,18 @@
     "authority-registry-resumable-transfer:demo": "node scripts/authority-registry-resumable-transfer-demo.mjs",
     "external:verify": "node scripts/external-verify.mjs",
     "agent-action:demo": "node scripts/agent-action-gateway-demo.mjs",
-    "agent-action:real-demo": "node scripts/agent-action-real-provider-demo.mjs"
+    "agent-action:real-demo": "node scripts/agent-action-real-provider-demo.mjs",
+    "agent-action:mcp": "node scripts/guarded-mcp-stdio-server.mjs",
+    "agent-action:mcp:verify": "node scripts/guarded-mcp-stdio-client-demo.mjs"
   },
   "engines": {
     "node": ">=22"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.2.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.2.0"
   }
 }
