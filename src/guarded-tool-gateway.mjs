@@ -8,6 +8,37 @@ export class GuardedToolGatewayError extends Error{
 }
 function fail(ok,code){if(!ok)throw new GuardedToolGatewayError(code);}
 function sealBody(body){return {...body,receiptRoot:rootHash(body)};}
+function normalizeStrings(values){
+  return [...new Set(values)].sort();
+}
+function verifyInputResources(binding,input){
+  const projected={commands:[],filesystem:[],network:[],packages:[]};
+  const violations=[];
+  for(const key of Object.keys(projected)){
+    const fields=binding.resourceBindings[key]??[];
+    for(const field of fields){
+      const value=input[field];
+      if(typeof value==='string'&&value.length)projected[key].push(value);
+      else if(Array.isArray(value)&&value.every(item=>typeof item==='string'&&item.length))
+        projected[key].push(...value);
+      else violations.push(`INPUT_RESOURCE_VALUE_INVALID:${key}:${field}`);
+    }
+    projected[key]=normalizeStrings(projected[key]);
+    const expected=normalizeStrings(binding.actionContract.resources?.[key]??[]);
+    if(JSON.stringify(projected[key])!==JSON.stringify(expected))
+      violations.push(`INPUT_RESOURCE_MISMATCH:${key}`);
+  }
+  const body={
+    format:'twni.mcp-input-resource-verification.v1',
+    status:violations.length?'FAIL':'PASS',
+    bindingRoot:binding.bindingRoot,
+    inputRoot:rootHash(input),
+    projectedResources:projected,
+    expectedResources:structuredClone(binding.actionContract.resources),
+    violations,
+  };
+  return {...body,verificationRoot:rootHash(body)};
+}
 
 export class GuardedMcpToolGateway{
   #providerCall;
@@ -26,6 +57,20 @@ export class GuardedMcpToolGateway{
     fail(toolName===verifiedBinding.toolName,'MCP_TOOL_NAME_BINDING_MISMATCH');
     fail(input&&typeof input==='object'&&!Array.isArray(input),'MCP_TOOL_INPUT_OBJECT_REQUIRED');
     const inputRoot=rootHash(input);
+    const inputResourceVerification=verifyInputResources(verifiedBinding,input);
+    if(inputResourceVerification.status!=='PASS'){
+      return sealBody({
+        format:'twni.guarded-mcp-tool-receipt.v1',
+        status:'DENIED_INPUT_BINDING',
+        toolName,inputRoot,bindingRoot:verifiedBinding.bindingRoot,
+        contractRoot:verifiedBinding.actionContractRoot,
+        admissionRoot:null,inputResourceVerification,
+        providerCalls:0,implicitRetries:0,executionMayHaveOccurred:false,
+        providerResultRoot:null,observationVerification:null,
+        authorityGranted:false,
+        boundary:'MCP call arguments did not match the resources root-bound into the OPP action contract; provider was not invoked.',
+      });
+    }
     const admission=await admitAgentAction({
       contract:verifiedBinding.actionContract,
       authorityScopes:this.#authorityScopes,
@@ -38,7 +83,7 @@ export class GuardedMcpToolGateway{
         status:'DENIED',
         toolName,inputRoot,bindingRoot:verifiedBinding.bindingRoot,
         contractRoot:verifiedBinding.actionContractRoot,
-        admissionRoot:admission.admissionRoot,
+        admissionRoot:admission.admissionRoot,inputResourceVerification,
         providerCalls:0,implicitRetries:0,executionMayHaveOccurred:false,
         providerResultRoot:null,observationVerification:null,
         authorityGranted:false,
@@ -55,7 +100,7 @@ export class GuardedMcpToolGateway{
         status:'PROVIDER_ERROR',
         toolName,inputRoot,bindingRoot:verifiedBinding.bindingRoot,
         contractRoot:verifiedBinding.actionContractRoot,
-        admissionRoot:admission.admissionRoot,
+        admissionRoot:admission.admissionRoot,inputResourceVerification,
         providerCalls:1,implicitRetries:0,executionMayHaveOccurred:true,
         providerResultRoot:null,observationVerification:null,
         providerError:String(error?.code??error?.message??error),
@@ -98,7 +143,7 @@ export class GuardedMcpToolGateway{
       format:'twni.guarded-mcp-tool-receipt.v1',
       status,toolName,inputRoot,bindingRoot:verifiedBinding.bindingRoot,
       contractRoot:verifiedBinding.actionContractRoot,
-      admissionRoot:admission.admissionRoot,
+      admissionRoot:admission.admissionRoot,inputResourceVerification,
       providerCalls:1,implicitRetries:0,executionMayHaveOccurred:true,
       providerResultRoot,observationVerification:verification,
       result:structuredClone(mcp),
