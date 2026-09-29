@@ -1,6 +1,38 @@
 {
   "format": "taowind.opp.mcp-action-binding.v0.1",
   "toolName": "workspace.read",
+  "mcpTool": {
+    "name": "workspace.read",
+    "description": "Read one bounded workspace file",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "additionalProperties": false
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "annotations": {
+      "readOnlyHint": true,
+      "openWorldHint": false
+    }
+  },
   "mcpToolRoot": "f27efe5ba87dcdf9c4ed35d0ffd62c45bb22de294df27f981647cedd424cb243",
   "capabilityDeclaration": {
     "format": "taowind.opp.reality-envelope.v0.1",
@@ -116,10 +148,6 @@
     "contractRoot": "9df8a047efdb4f0a0ac866968f2e5e8b9fbf0a548117c88ae1273bba7301de2c"
   },
   "actionContractRoot": "9df8a047efdb4f0a0ac866968f2e5e8b9fbf0a548117c88ae1273bba7301de2c",
-  "authorityGranted": false,
-  "annotationsTrusted": false,
-  "boundary": "MCP tool annotations are descriptive hints only. This binding does not authenticate the server, grant authority, prove sandboxing, or prove that runtime side effects match the declaration.",
-  "bindingRoot": "e3c8eb55d00902f40d7ce6feeaef90ab6366507608e13d0fd42d1289c57a3f16",
   "resourceBindings": {
     "commands": [],
     "filesystem": [
@@ -127,5 +155,9 @@
     ],
     "network": [],
     "packages": []
-  }
+  },
+  "authorityGranted": false,
+  "annotationsTrusted": false,
+  "boundary": "MCP tool annotations are descriptive hints only. This binding does not authenticate the server, grant authority, prove sandboxing, or prove that runtime side effects match the declaration.",
+  "bindingRoot": "f1a85e3a9a3615ea47580fa871a000cb25dc207e29b6414319d14fcc8fdfed8a"
 }
