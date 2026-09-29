@@ -19,6 +19,10 @@ export class AgentActionPolicyError extends Error{
   constructor(code){super(code);this.code=code;}
 }
 function fail(ok,code){if(!ok)throw new AgentActionPolicyError(code);}
+function rootValue(value,code){
+  fail(typeof value==='string'&&/^[a-f0-9]{64}$/.test(value),code);
+  return value;
+}
 function strings(value,code){
   fail(Array.isArray(value)&&value.every(x=>typeof x==='string'&&x.length>0),code);
   return [...new Set(value)].sort();
@@ -74,7 +78,8 @@ export function makeAgentActionAdmissionFacts({contract,authorityScopes=[],polic
   catch(error){
     return {
       contractVerified:false,authorityBound:false,effectsAuthorized:false,resourcesBounded:false,
-      reversibilityAccepted:false,effectSetComplete:false,reason:error.code??error.message,
+      reversibilityAccepted:false,effectSetComplete:false,approvalRequired:policy?.requireExactApproval===true,
+      approvalPolicyRoot:policy?.approvalPolicyRoot??null,reason:error.code??error.message,
       contractRoot:contract?.contractRoot??null,policyRoot:rootHash(policy??{}),
     };
   }
@@ -98,6 +103,10 @@ export function makeAgentActionAdmissionFacts({contract,authorityScopes=[],polic
   const network=strings(policy.network??[],'ACTION_POLICY_NETWORK_INVALID');
   const commands=strings(policy.commands??[],'ACTION_POLICY_COMMANDS_INVALID');
   const packages=strings(policy.packages??[],'ACTION_POLICY_PACKAGES_INVALID');
+  const approvalRequired=policy.requireExactApproval===true;
+  const approvalPolicyRoot=approvalRequired
+    ? rootValue(policy.approvalPolicyRoot,'ACTION_APPROVAL_POLICY_ROOT_REQUIRED')
+    : null;
 
   let resourcesBounded=true;
   if(verified.resources.filesystem.length)
@@ -111,10 +120,11 @@ export function makeAgentActionAdmissionFacts({contract,authorityScopes=[],polic
 
   return {
     contractVerified:true,authorityBound,effectsAuthorized,resourcesBounded,
-    reversibilityAccepted,effectSetComplete,reason:null,contractRoot:contract.contractRoot,
+    reversibilityAccepted,effectSetComplete,approvalRequired,approvalPolicyRoot,
+    reason:null,contractRoot:contract.contractRoot,
     policyRoot:rootHash({
       allowedEffects:[...allowedEffects].sort(),filesystemPrefixes,network,commands,packages,
-      acceptedReversibility,
+      acceptedReversibility,requireExactApproval:approvalRequired,approvalPolicyRoot,
     }),
   };
 }

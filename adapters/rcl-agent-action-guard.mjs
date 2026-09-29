@@ -5,7 +5,7 @@ import { runReality } from '../vendor/rcl/src/runtime.mjs';
 
 export const RCL_AGENT_ACTION_FIELDS=Object.freeze([
   'contractVerified','authorityBound','effectsAuthorized','resourcesBounded',
-  'reversibilityAccepted','effectSetComplete',
+  'reversibilityAccepted','effectSetComplete','approvalRequired','approvalVerified',
 ]);
 let compiled;
 let sourceSha256;

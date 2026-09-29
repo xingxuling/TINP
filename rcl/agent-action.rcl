@@ -8,6 +8,8 @@ reality AgentActionAdmission {
   facet facts.resourcesBounded : Truth = false
   facet facts.reversibilityAccepted : Truth = false
   facet facts.effectSetComplete : Truth = false
+  facet facts.approvalRequired : Truth = false
+  facet facts.approvalVerified : Truth = false
   facet gate.loaded : Truth = false
   facet gate.allowed : Truth = false
 
@@ -23,6 +25,8 @@ reality AgentActionAdmission {
     offers resourcesBounded -> Truth
     offers reversibilityAccepted -> Truth
     offers effectSetComplete -> Truth
+    offers approvalRequired -> Truth
+    offers approvalVerified -> Truth
   }
 
   emergence loadFacts {
@@ -35,13 +39,15 @@ reality AgentActionAdmission {
     call observation.resourcesBounded() -> facts.resourcesBounded
     call observation.reversibilityAccepted() -> facts.reversibilityAccepted
     call observation.effectSetComplete() -> facts.effectSetComplete
+    call observation.approvalRequired() -> facts.approvalRequired
+    call observation.approvalVerified() -> facts.approvalVerified
     alter gate.loaded <- true
     witness "agent-action:observed-facts"
   }
 
   emergence admit {
     cause kernel
-    when gate.loaded and facts.contractVerified and facts.authorityBound and facts.effectsAuthorized and facts.resourcesBounded and facts.reversibilityAccepted and facts.effectSetComplete
+    when gate.loaded and facts.contractVerified and facts.authorityBound and facts.effectsAuthorized and facts.resourcesBounded and facts.reversibilityAccepted and facts.effectSetComplete and (not facts.approvalRequired or facts.approvalVerified)
     needs action.admit on gate
     alter gate.allowed <- true
     preserve gate.loaded

@@ -5,7 +5,7 @@ import {evaluateAgentActionGuard} from '../adapters/rcl-agent-action-guard.mjs';
 /** Run the OPP -> TINP -> RCL pre-execution admission chain.
  * This function does not execute the requested action.
  */
-export async function admitAgentAction({contract,authorityScopes=[],policy={}}={}){
+export async function admitAgentAction({contract,authorityScopes=[],policy={},approvalVerified=false}={}){
   const facts=makeAgentActionAdmissionFacts({contract,authorityScopes,policy});
   const guard=await evaluateAgentActionGuard({
     contractVerified:facts.contractVerified,
@@ -14,6 +14,8 @@ export async function admitAgentAction({contract,authorityScopes=[],policy={}}={
     resourcesBounded:facts.resourcesBounded,
     reversibilityAccepted:facts.reversibilityAccepted,
     effectSetComplete:facts.effectSetComplete,
+    approvalRequired:facts.approvalRequired===true,
+    approvalVerified:approvalVerified===true,
   });
   const body={
     format:'twni.agent-action-admission.v1',
@@ -28,6 +30,9 @@ export async function admitAgentAction({contract,authorityScopes=[],policy={}}={
       resourcesBounded:facts.resourcesBounded,
       reversibilityAccepted:facts.reversibilityAccepted,
       effectSetComplete:facts.effectSetComplete,
+      approvalRequired:facts.approvalRequired===true,
+      approvalVerified:approvalVerified===true,
+      approvalPolicyRoot:facts.approvalPolicyRoot??null,
       reason:facts.reason,
     },
     rcl:{
