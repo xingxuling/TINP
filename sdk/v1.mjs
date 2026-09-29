@@ -35,3 +35,4 @@ export {admitAgentAction} from '../src/agent-action-admission.mjs';
 export {OPP_MCP_ACTION_BINDING_FORMAT, McpActionBindingError, verifyOppMcpActionBinding} from '../src/mcp-action-binding.mjs';
 export {GuardedMcpToolGateway, GuardedToolGatewayError} from '../src/guarded-tool-gateway.mjs';
 export {GuardedMcpRegistry, GuardedMcpRegistryError} from '../src/guarded-mcp-registry.mjs';
+export {createBoundedWorkspaceReadProvider, BoundedWorkspaceProviderError} from '../src/providers/bounded-workspace-read.mjs';
