@@ -2,7 +2,7 @@
   "format": "taowind.opp.agent-action-contract.v0.1",
   "actionId": "action:workspace-read",
   "capabilityId": "workspace.read",
-  "capabilityRoot": "9ddaca4d2f8018a3755bf894edb1aa09d8c2d3373f4163ae1cd5e7d8e5a8babf",
+  "capabilityRoot": "c902eb0a1c83191b6df2225edfbff2ee6e2d7187cca45af933f74bf4e22c2e91",
   "operation": "read",
   "requiredAuthority": ["workspace.read"],
   "declaredEffects": ["filesystem.read"],
@@ -19,5 +19,5 @@
   "authorityGranted": false,
   "requiresTINP": true,
   "boundary": "OPP describes a bounded action and its potential effects. It does not authenticate identity, grant authority, prove runtime isolation, or attest that execution matched the declaration.",
-  "contractRoot": "8b81037171252d93a75ede92ba7fb1e683db9943d2b1b8bab897ed8a9ba70c5f"
+  "contractRoot": "b8b33bcbb44e12b3e9dbe916ff58cc135d2cad13fced186f376bf15c8af2e3b8"
 }
