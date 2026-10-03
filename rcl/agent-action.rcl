@@ -1,0 +1,59 @@
+# Agent action admission profile.
+# OPP describes the action; authenticated TINP context supplies authority and policy facts.
+# The RCL program owns the final conjunction and fail-closed transition.
+reality AgentActionAdmission {
+  facet facts.contractVerified : Truth = false
+  facet facts.authorityBound : Truth = false
+  facet facts.effectsAuthorized : Truth = false
+  facet facts.resourcesBounded : Truth = false
+  facet facts.reversibilityAccepted : Truth = false
+  facet facts.effectSetComplete : Truth = false
+  facet facts.approvalRequired : Truth = false
+  facet facts.approvalVerified : Truth = false
+  facet gate.loaded : Truth = false
+  facet gate.allowed : Truth = false
+
+  subject kernel {
+    warrant observation.read on facts
+    warrant action.admit on gate
+  }
+
+  host observation {
+    offers contractVerified -> Truth
+    offers authorityBound -> Truth
+    offers effectsAuthorized -> Truth
+    offers resourcesBounded -> Truth
+    offers reversibilityAccepted -> Truth
+    offers effectSetComplete -> Truth
+    offers approvalRequired -> Truth
+    offers approvalVerified -> Truth
+  }
+
+  emergence loadFacts {
+    cause kernel
+    when not gate.loaded
+    needs observation.read on facts
+    call observation.contractVerified("contractVerified") -> facts.contractVerified
+    call observation.authorityBound("authorityBound") -> facts.authorityBound
+    call observation.effectsAuthorized("effectsAuthorized") -> facts.effectsAuthorized
+    call observation.resourcesBounded("resourcesBounded") -> facts.resourcesBounded
+    call observation.reversibilityAccepted("reversibilityAccepted") -> facts.reversibilityAccepted
+    call observation.effectSetComplete("effectSetComplete") -> facts.effectSetComplete
+    call observation.approvalRequired("approvalRequired") -> facts.approvalRequired
+    call observation.approvalVerified("approvalVerified") -> facts.approvalVerified
+    alter gate.loaded <- true
+    witness "agent-action:observed-facts"
+  }
+
+  emergence admit {
+    cause kernel
+    when gate.loaded and facts.contractVerified and facts.authorityBound and facts.effectsAuthorized and facts.resourcesBounded and facts.reversibilityAccepted and facts.effectSetComplete and (not facts.approvalRequired or facts.approvalVerified)
+    needs action.admit on gate
+    alter gate.allowed <- true
+    preserve gate.loaded
+    witness "agent-action:rcl-admission"
+  }
+
+  realize loadFacts
+  realize admit
+}

@@ -1,0 +1,202 @@
+{
+  "format": "taowind.opp.mcp-action-binding.v0.1",
+  "toolName": "workspace.read",
+  "mcpTool": {
+    "name": "workspace.read",
+    "title": "Guarded workspace read",
+    "description": "Read one bounded workspace file",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "path"
+      ],
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "providerCalls": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "executionMayHaveOccurred": {
+          "type": "boolean"
+        },
+        "receiptRoot": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "status",
+        "providerCalls",
+        "executionMayHaveOccurred",
+        "receiptRoot"
+      ],
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false
+    },
+    "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  },
+  "mcpToolRoot": "a9d6337bd49683807c14cbfa252e4a338edbaa6165662bd8e6db3e822945a417",
+  "capabilityDeclaration": {
+    "format": "taowind.opp.reality-envelope.v0.1",
+    "protocol": "opp.rcp.v0.1",
+    "version": "0.1.0-candidate.1",
+    "kind": "capability",
+    "id": "rcp:mcp:taowind-guarded-agent-actions:workspace.read",
+    "status": "candidate",
+    "issuedAt": "1970-01-01T00:00:00Z",
+    "issuer": {
+      "id": "mcp:taowind-guarded-agent-actions",
+      "type": "service"
+    },
+    "payload": {
+      "capabilityId": "workspace.read",
+      "name": "workspace.read",
+      "domain": "surface-provider",
+      "operation": "workspace.read",
+      "inputModalities": [
+        "json"
+      ],
+      "outputModalities": [
+        "json"
+      ],
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "providerCalls": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "executionMayHaveOccurred": {
+            "type": "boolean"
+          },
+          "receiptRoot": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "status",
+          "providerCalls",
+          "executionMayHaveOccurred",
+          "receiptRoot"
+        ],
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false
+      },
+      "determinism": "unknown",
+      "statefulness": "stateless",
+      "authorityRequired": [
+        "workspace.read"
+      ],
+      "sideEffects": [],
+      "reversibility": "reversible",
+      "availability": "candidate-only",
+      "evidence": [
+        "a9d6337bd49683807c14cbfa252e4a338edbaa6165662bd8e6db3e822945a417"
+      ],
+      "claimBoundary": "Provider declarations and semantic assertions, not authenticated facts."
+    },
+    "extensions": {
+      "session": {
+        "profile": "opp.session.v0.1",
+        "surface": {
+          "bindingId": "stdio:taowind-guarded-agent-actions",
+          "revision": "official-sdk-v2.2.0",
+          "kind": "mcp-tool",
+          "discoveryRoot": "a9d6337bd49683807c14cbfa252e4a338edbaa6165662bd8e6db3e822945a417",
+          "toolName": "workspace.read"
+        },
+        "semantics": {
+          "input": {},
+          "output": {}
+        }
+      }
+    },
+    "integrity": {
+      "algorithm": "sha256",
+      "contentRoot": "de8a8d3b273f236aea97696d5b6c740ae39d806192b4e2c698778baed80d93c7"
+    }
+  },
+  "capabilityRoot": "03043f7e15cf638f36c1beac198f49c79794bb407ce27f9a2031b73fca2582aa",
+  "actionContract": {
+    "format": "taowind.opp.agent-action-contract.v0.1",
+    "actionId": "action:mcp-workspace-read",
+    "capabilityId": "workspace.read",
+    "capabilityRoot": "03043f7e15cf638f36c1beac198f49c79794bb407ce27f9a2031b73fca2582aa",
+    "operation": "workspace.read",
+    "requiredAuthority": [
+      "workspace.read"
+    ],
+    "declaredEffects": [
+      "filesystem.read"
+    ],
+    "acceptedEffects": [
+      "filesystem.read"
+    ],
+    "resources": {
+      "commands": [],
+      "filesystem": [
+        "workspace/project/readme.md"
+      ],
+      "network": [],
+      "packages": []
+    },
+    "reversibility": "reversible",
+    "status": "accepted",
+    "reasons": [],
+    "authorityGranted": false,
+    "requiresTINP": true,
+    "boundary": "OPP describes a bounded action and its potential effects. It does not authenticate identity, grant authority, prove runtime isolation, or attest that execution matched the declaration.",
+    "contractRoot": "7e225112250534e5dbc56876ccb6e23b69bfac0557aa24b68519869b591f8fa5"
+  },
+  "actionContractRoot": "7e225112250534e5dbc56876ccb6e23b69bfac0557aa24b68519869b591f8fa5",
+  "resourceBindings": {
+    "commands": [],
+    "filesystem": [
+      "path"
+    ],
+    "network": [],
+    "packages": []
+  },
+  "authorityGranted": false,
+  "annotationsTrusted": false,
+  "boundary": "MCP tool annotations are descriptive hints only. This binding does not authenticate the server, grant authority, prove sandboxing, or prove that runtime side effects match the declaration.",
+  "bindingRoot": "a92d3f89219d60bdf12179bf60339e762baac840f2b2865fffcea4cf1547399f"
+}

@@ -1,0 +1,256 @@
+{
+  "format": "taowind.opp.mcp-action-binding.v0.1",
+  "toolName": "workspace.create",
+  "mcpTool": {
+    "name": "workspace.create",
+    "title": "Guarded workspace create",
+    "description": "Create one new bounded workspace file with exact signed action approval",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content": {
+          "type": "string",
+          "maxLength": 262144
+        },
+        "_taowind": {
+          "type": "object",
+          "properties": {
+            "requestId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            },
+            "approval": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": {}
+            }
+          },
+          "required": [
+            "requestId",
+            "approval"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "path",
+        "content",
+        "_taowind"
+      ],
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false
+    },
+    "outputSchema": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "providerCalls": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "executionMayHaveOccurred": {
+          "type": "boolean"
+        },
+        "receiptRoot": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "status",
+        "providerCalls",
+        "executionMayHaveOccurred",
+        "receiptRoot"
+      ],
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "additionalProperties": false
+    },
+    "annotations": {
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": false
+    }
+  },
+  "mcpToolRoot": "9488211e9b6f35b0693e3ac83ad5cab836b176e99d892257eb9fe9fe1c3cffa3",
+  "capabilityDeclaration": {
+    "format": "taowind.opp.reality-envelope.v0.1",
+    "protocol": "opp.rcp.v0.1",
+    "version": "0.1.0-candidate.1",
+    "kind": "capability",
+    "id": "rcp:mcp:taowind-guarded-agent-actions:workspace.create",
+    "status": "candidate",
+    "issuedAt": "1970-01-01T00:00:00Z",
+    "issuer": {
+      "id": "mcp:taowind-guarded-agent-actions",
+      "type": "service"
+    },
+    "payload": {
+      "capabilityId": "workspace.create",
+      "name": "workspace.create",
+      "domain": "surface-provider",
+      "operation": "workspace.create",
+      "inputModalities": [
+        "json"
+      ],
+      "outputModalities": [
+        "json"
+      ],
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "content": {
+            "type": "string",
+            "maxLength": 262144
+          },
+          "_taowind": {
+            "type": "object",
+            "properties": {
+              "requestId": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 256
+              },
+              "approval": {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": {}
+              }
+            },
+            "required": [
+              "requestId",
+              "approval"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "path",
+          "content",
+          "_taowind"
+        ],
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false
+      },
+      "outputSchema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "providerCalls": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "executionMayHaveOccurred": {
+            "type": "boolean"
+          },
+          "receiptRoot": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "required": [
+          "status",
+          "providerCalls",
+          "executionMayHaveOccurred",
+          "receiptRoot"
+        ],
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "additionalProperties": false
+      },
+      "determinism": "unknown",
+      "statefulness": "stateless",
+      "authorityRequired": [
+        "workspace.write"
+      ],
+      "sideEffects": [
+        "workspace.write"
+      ],
+      "reversibility": "compensatable",
+      "availability": "candidate-only",
+      "evidence": [
+        "9488211e9b6f35b0693e3ac83ad5cab836b176e99d892257eb9fe9fe1c3cffa3"
+      ],
+      "claimBoundary": "Provider declarations and semantic assertions, not authenticated facts."
+    },
+    "extensions": {
+      "session": {
+        "profile": "opp.session.v0.1",
+        "surface": {
+          "bindingId": "stdio:taowind-guarded-agent-actions",
+          "revision": "official-sdk-v2.2.0-exact-approval-v1",
+          "kind": "mcp-tool",
+          "discoveryRoot": "9488211e9b6f35b0693e3ac83ad5cab836b176e99d892257eb9fe9fe1c3cffa3",
+          "toolName": "workspace.create"
+        },
+        "semantics": {
+          "input": {},
+          "output": {}
+        }
+      }
+    },
+    "integrity": {
+      "algorithm": "sha256",
+      "contentRoot": "b277e43982367d89b224ca9b247d46678805bdcd9ed909a5e5383478f985fae0"
+    }
+  },
+  "capabilityRoot": "4f42298333a3cfa8b6c6e0a36e7f702aaac401ce6f31cf09af51bb09c905e047",
+  "actionContract": {
+    "format": "taowind.opp.agent-action-contract.v0.1",
+    "actionId": "action:mcp-workspace-create",
+    "capabilityId": "workspace.create",
+    "capabilityRoot": "4f42298333a3cfa8b6c6e0a36e7f702aaac401ce6f31cf09af51bb09c905e047",
+    "operation": "workspace.create",
+    "requiredAuthority": [
+      "workspace.write"
+    ],
+    "declaredEffects": [
+      "filesystem.write"
+    ],
+    "acceptedEffects": [
+      "filesystem.write"
+    ],
+    "resources": {
+      "commands": [],
+      "filesystem": [
+        "workspace/project/generated.txt"
+      ],
+      "network": [],
+      "packages": []
+    },
+    "reversibility": "compensatable",
+    "status": "accepted",
+    "reasons": [],
+    "authorityGranted": false,
+    "requiresTINP": true,
+    "boundary": "OPP describes a bounded action and its potential effects. It does not authenticate identity, grant authority, prove runtime isolation, or attest that execution matched the declaration.",
+    "contractRoot": "067351896ccf9efd3bf335fd232fd6026519fecfdcea2ffd02157be305de21f6"
+  },
+  "actionContractRoot": "067351896ccf9efd3bf335fd232fd6026519fecfdcea2ffd02157be305de21f6",
+  "resourceBindings": {
+    "commands": [],
+    "filesystem": [
+      "path"
+    ],
+    "network": [],
+    "packages": []
+  },
+  "authorityGranted": false,
+  "annotationsTrusted": false,
+  "boundary": "MCP tool annotations are descriptive hints only. Exact signed approval is independently verified by TINP; this binding does not grant authority or prove sandboxing.",
+  "bindingRoot": "3f6217c00618c583f7045c923c27aeb958262f1c1b31818ef9176c259f421b0e"
+}
