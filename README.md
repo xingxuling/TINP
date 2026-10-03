@@ -1,89 +1,105 @@
-# TINP
+# TINP：让受控请求在授权范围内执行，并把故障后的状态说清楚
 
-**执行前拦截不合权限的请求，执行后核对结果与回执。**
+> 文档代码基线：`codex/next-internet-v01@729113b89e6dea59033b64c2aab3dca0c28f5fc3`，远端核对时间2026-10-03 12:32 UTC。版本号仍是alpha.29，但不能据此把所有alpha.29报告归为同一源码。
 
-多个 AI 智能体和服务接起来以后，仅仅“能调用”还不够。调用者可能没有权限，权限可能已经过期；服务也可能执行完了，但结果没能传回来。
+你已经有一个 Agent 和若干服务。现在要解决三个具体问题：没有权限的请求不能到业务函数里；主服务不可用时，备用路径不能获得更多权限；结果丢失或失败时，系统不能假装成功，也不能盲目重复执行。
 
-TINP 的在线执行链先在执行节点检查身份、权限、会话和路由约束。不通过，就不运行该业务能力；通过后才执行，再由调用端核对结果与请求的对应关系。**不是先执行，再靠事后审计补做授权。**
+> 当前版本：`0.1.0-alpha.29`；状态：`VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED`
+> 对外许可与发行资格：`NOT_ADJUDICATED`，见 [许可审计](docs/LICENSE_AUDIT.md)
 
-## 为什么已经拦截了，还要复核？
+TINP 当前提供候选运行时，已有本机多进程验证，也已有本地优先 Wi-Fi/LAN 承载实现；这里的最短示例使用本机 TCP。现有代码不等于已经完成真实物理双机的生产验收。它在受控执行入口检查身份、权限、会话和路由，执行后核对结果与请求的绑定。独立 Provider SDK 尚未稳定发布，接入自己的业务仍需要源码级 PoC。
 
-两者回答的是不同问题：
+## 先跑一个只包含本地测试能力的故障演示
 
-| 环节 | 回答什么 | 检查失败时 |
-|---|---|---|
-| 执行前准入 | 这个主体现在能否执行这次请求？ | 拒绝进入业务执行 |
-| 传输与执行 | 由哪个节点处理，路径失败后如何处理？ | 按约束尝试替代路径，或明确保留未完成状态 |
-| 执行后核对 | 返回结果是否对应这次请求，回执是否有效？ | 不接受为已验证结果；不等于撤销已发生的动作 |
-
-源头预检可以提前报错，但**执行端不能只相信调用者说“我已经检查过”**。主节点和备用节点都要在执行前检查。这里的“源头禁止”，指受控业务入口上的强制准入，不是给操作系统中的任意程序套上全局拦截。
-
-TINP 也提供单独的离线回执校验工具。它只核对已有结果，不拦截此前发生的执行，更不会自动授予新权限。详细分工和测试见 [执行前约束与执行后核对](docs/ENFORCEMENT_AND_EVIDENCE.md)。
-
-> 当前版本：`0.1.0-alpha.29`  
-> 当前状态：`VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED`
-
-当前版本已经通过本机集成验证，但仍是研究/试点候选，不是生产公网，也不声称已经具备生产级密钥托管、第三方安全认证或军用安全认证。
-
-### 干净环境跑测试
-
-直接执行 `npm test`。首次运行会在仓库内创建隔离的 `.tinp-python` 虚拟环境，并按 `adapters/requirements.txt` 安装 Python 侧依赖；测试进程只使用这个虚拟环境，不再静默依赖系统 Python 已经碰巧装好 `jsonschema`。若显式设置了 `NEXT_INTERNET_PYTHON`，TINP 不会修改该解释器；缺依赖时会在测试开始前明确失败并给出安装提示。原始、不自动引导 Python 环境的旧测试入口保留为 `npm run test:raw`。
-
-> **License TL;DR：** 当前对外许可与发行资格仍是 `NOT_ADJUDICATED`。公开仓库不等于整仓已经获得统一商业再分发许可；对外打包、再分发或商业发行前，需要先完成 `vendor/` 等历史来源组件的许可裁决。详见 [`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md)。
-
-## 先看业务故障 Demo
-
-比“字符计数”更容易理解 TINP 的方式，是直接看一个企业内部 Agent 请求在故障时怎么处理。
+前置条件：Node.js 22+、可运行 OPP 依赖的 Python（OPP 要求 3.10+）。在 TINP 仓库根目录执行：
 
 ```powershell
-python -m pip install -r adapters/requirements.txt
-node scripts/business-demo.mjs
+python -m venv .venv-doc-demo
+$py = Join-Path $PWD '.venv-doc-demo/Scripts/python.exe'
+& $py -m pip install -r adapters/requirements.txt
+$env:NEXT_INTERNET_PYTHON = $py
+node scripts/business-demo.mjs --out .runs/business-demo-doc.json
 ```
 
-如果想把**这一次真实运行**保存成 JSON：
+`NEXT_INTERNET_PYTHON` 明确告诉 Node 子进程使用刚安装依赖的 Python，避免“依赖装进一个环境、适配器调用另一个环境”。macOS/Linux 使用虚拟环境的 `bin/python` 并导出同名环境变量。请使用新的输出文件名保存每次结果。
 
-```powershell
-node scripts/business-demo.mjs --out .runs/business-demo-output.json
-```
+此命令会启动三个本机节点进程，发送真实本地 TCP 请求，并人为关闭 Provider 或阻断链路。演示文字写的是客户订单请求，但实际 Provider 是确定性的 `counter`，没有连接 CRM，也没有读取真实订单。
 
-输出会记录主体、会话、实际路由、实际 Provider、服务等级、权限租约根、回执根和当前证据根。
+## 看输出中的三步，不要只看最后的 PASS
 
-当前回归套件已经固定验证了这些行为：
-
-| 场景 | 路由 | Provider | 服务等级 |
+| 步骤 | 代码施加的条件 | 应观察的执行路径 | 服务等级 |
 |---|---|---|---|
-| 正常执行 | `A -> B -> C` | `C:counter` | `Full` |
-| 主 Provider C 不可用 | `A -> B` | `B:counter` | `Essential` |
-| A-B 链路故障 | `A -> C` | `C:counter` | `Reduced` |
-| 所有 Provider 不可用 | 不执行 | 无 | `Survival`，返回 `deferred / NO_AUTHORIZED_PROVIDER` |
+| 正常 | C 可用，链路正常 | A → B → C；C:counter | Full |
+| Provider 故障 | 关闭 C 的 Provider | A → B；B:counter | Essential |
+| 链路故障 | 恢复 C，双向阻断 A-B | A → C；C:counter | Reduced |
 
-这些断言来自当前 `tests/profiles.test.mjs`。业务文本只是演示载荷，不连接真实 CRM；底层 Provider 仍使用只读、确定性的测试能力。
+这三步都应显示 `executed`。核对主体、会话和权限租约根是否保持一致，并分别保存新的回执根和证据根。会话、端口和根是运行时值，不应要求它们等于另一台电脑的常量。
 
-完整说明见 [`BUSINESS_DEMO.md`](BUSINESS_DEMO.md)。
+“所有 Provider 不可用”不在这个三步脚本里；它来自独立的 `tests/profiles.test.mjs` 测试，应明确返回不执行/延后状态，而不是写成 business-demo 已经输出的第四步。
 
-## 什么时候你会需要它？
+## 真正接入自己的业务需要什么
 
-如果你只有一个 Agent 调几个普通 API，TINP 很可能不是必需的。
+1. 定义该能力的输入、输出、版本与权限要求
+2. 提供 Provider manifest 和实际处理函数
+3. 把处理函数放在执行端检查之后，不能先执行再拿回执补验收
+4. 把结果与请求、主体、会话、租约、路由和 Provider 绑定
+5. 覆盖未授权、撤权、契约漂移、重复请求、Provider 故障、结果丢失等负例
 
-当系统开始出现下面这些问题时，TINP 才有价值：
+当前入口是 `InternetSuite.start()` / `suite.use(...)` 及内部 Provider 路径；不要把设计中的 `registerProvider` 等接口写成已经发布的 API。现有真实服务如果还有绕过受控入口的凭据或直接访问路径，TINP 不会自动阻止那个旁路。
 
-```text
-能不能调用
-    ↓
-谁能调用
-    ↓
-能调用多久
-    ↓
-由哪个节点执行
-    ↓
-失败能不能重试
-    ↓
-换节点后权限还算不算
-    ↓
-出事后怎么证明当时发生了什么
+## 执行前和执行后各自保证什么
+
+执行前检查失败：拒绝当前受控业务执行。执行后回执失败：不接受为已验证结果，但不能撤销此前已经发生的动作。节点失联或响应丢失不等于业务必然未执行；需要按对应恢复路径核对，不可把重试理解为天然安全。
+
+## OPP + TINP 目前的一条可复核组合路径
+
+`OPP 生成 native interop result → TINP 校验其结构和各层 root → 生成 acceptance binding`。
+
+在 TINP 仓库根目录运行下面的只读校验示例。它读取已有证据，不重新调用 OPP 或任何业务 Provider：
+
+```bash
+node --input-type=module -e "import fs from 'node:fs'; import {makeOppNativeInteropAcceptance,validateOppNativeInteropAcceptance} from './src/opp-native-interop.mjs'; const interopResult=JSON.parse(fs.readFileSync('evidence/OPP_NATIVE_INTEROP_2026-09-12.json','utf8')); const acceptance=makeOppNativeInteropAcceptance({interopResult}); console.log(JSON.stringify({acceptance,verified:validateOppNativeInteropAcceptance(acceptance,{interopResult})},null,2));"
 ```
 
-典型场景包括：私有 Agent 网络、企业内部自动化、边缘/本地节点协作，以及需要恢复和审计的受控执行。
+预期 `verified:true`、acceptance 的 `status:'PASS'`、`authorityGranted:false`、`sideEffects:false`。这说明该验收动作没有新增执行权限或副作用；不是说 OPP 此前绝对没有执行任何动作，也不是把任意 OPP bridge 自动接入 TINP 在线授权执行链。
+
+当前仍为 alpha.29 / 本地验证候选，不承诺生产 SLA、独立安全认证或跨设备生产部署。对外许可与发行资格仍按 `docs/LICENSE_AUDIT.md` 的 `NOT_ADJUDICATED` 状态处理。
+
+## 安装和测试要使用同一 Python
+
+`adapters/requirements.txt` 声明 `jsonschema>=4.23`。从 `729113b` 开始，`npm test` 通过 `scripts/test.mjs` 运行：未指定 `NEXT_INTERNET_PYTHON` 时创建项目内 `.tinp-python` 并安装依赖；指定时只检查该解释器，不替你修改它，缺依赖就明确失败。
+
+```powershell
+npm test
+```
+
+前面的业务demo仍显式设置自己的虚拟环境，因为自动引导属于测试入口，并不自动修改之后任意终端命令的环境。可单独运行 `npm run python:bootstrap` 建立测试环境；旧的无引导测试入口是 `npm run test:raw`。
+
+历史 alpha.29 [INTEGRATION_COURT](evidence/0.1.0-alpha.29/INTEGRATION_COURT.md) 记录209/209；新提交的 `tinp.txt` 记录223/223。这是两份不同的运行材料，不是相互替代的“当前测试总数”。`729113b` 又增加了原型链负例，必须另行运行并保存实际结果，不能从新增测试数量推导新的通过数。
+
+## 四份提交材料：观察、来源与适用范围
+
+以下材料由使用者提交用于本次评审，尚未连同其全部原始数据在本仓库归档。材料没有提供可核对的源码commit；“报告自述”与“本次静态代码核对”分开。另一项正在进行的本机基准不包含在这里，不填入其结果。
+
+| 来源与精确位置 | 材料显示什么 | 能支持到哪里 |
+|---|---|---|
+| `opp.txt` L6–134、L139–218、L219–258 | 初次先运行后安装报`ModuleNotFoundError`；安装后66项：64通过、1跳过、1个`WinError1314`；业务demo为PASS | 该终端环境里的安装、测试与固定demo；不是完整测试全部通过 |
+| `tinp.txt` L9–68、L70–71、L314–323 | alpha.29三步故障demo；旧式test入口；223项通过、0失败 | 该次本机运行；源码commit未知，不能当729113b完整复测 |
+| `OPP-TINP兼容性测试报告.pdf` p4–9 | 补依赖后TINP223/223；OPP64通过/1失败/1跳过；握手150/150、协商180/180、联合12/12；篡改检测25/26 | 报告自述的受控样本，包含负例；不是通用可靠性或独立认证 |
+| `report.md` L3–16、L42、L63–77 | 每场景1000次、25,000记录；HTTP完整链1000/1000、均值45.248ms；自述33/33复核 | Ryzen9700X/Python3.12.14、单机合成数据与本地HTTP；未随附samples/summary/manifest，未在本次重算 |
+
+PDF p4/p10 的缺依赖失败需要保留为当次观察。其“未声明依赖”的解释与已查源码中存在requirements不同：旧代码通过默认`python`调用，声明依赖并不保证该解释器安装了依赖。新TINP测试引导是后续代码变化，不能用来否认报告当时失败。
+
+性能口径也不能混用：PDF p6 的CLI进程端到端约230.0ms（n=12），p8 的TINP校验47.11µs；`report.md` 的本地HTTP全链路45.248ms（n=1000）来自另一台机器和另一条路径。它们不能组成“优化前后”的结论。恢复样本是调用者显式切换健康Provider后的重新调用，不是生产自动恢复率。
+
+## 证据读法与现有边界
+
+- 三步业务demo：证明固定本地受控能力在指定故障下的路径与证据变化，不证明真实订单系统接入
+- [执行前/执行后测试](docs/ENFORCEMENT_AND_EVIDENCE.md)：区分前置拒绝、合法执行与回执篡改，不把“全拒绝”当成正确实现
+- [OPP验收证据](evidence/0.1.0-alpha.29/opp-native-interop-acceptance.json)：证明指定结果的验收绑定，不授予执行权限
+- 数字只能描述其场景与样本；本地负例通过不能外推公网可靠性或生产安全
+
+PDF报告记录一个原型链篡改漏检。旧基线 `1164705d` 的 `exact()` 没有显式检查原型，与该观察方向一致。`729113b` 已增加递归 `assertCanonicalJsonData()`，限制对象/数组原型、属性描述符、有限数值和循环引用，并新增顶层/嵌套继承属性的负例测试。这里确认的是代码及测试定义已经新增；本次未执行第三方26个探针，因此不宣称报告中的25/26已变成26/26，也不把历史缺陷记录删除。
 
 ## 它和你已经认识的工具有什么区别？
 
@@ -100,90 +116,6 @@ TINP 不是用来取代这些工具的。
 | **OPP** | 能力是什么、两个系统能不能接 | TINP 接管身份、权限、路由、恢复和证据 |
 
 更完整的说明见 [`docs/COMPARISON.md`](docs/COMPARISON.md)。
-
-## OPP + TINP 目前已经打通到哪里？
-
-两者的分工可以先这样理解：
-
-```text
-企业现有系统 / API / Agent / MCP
-              ↓
-             OPP
-        能不能接？怎么转？
-              ↓
-             TINP
-     谁能调用？失败怎么办？
-              ↓
-       执行 + 回执 + 恢复
-```
-
-alpha.29 已经有一条真实、固定、可复核的组合证据：**TINP 对 OPP native interop receipt 做精确结构和 root 校验，再生成 acceptance binding。**
-
-```text
-OPP interop receipt root:
-77b4cdfaa0f95a9cc75a4c7d08f9d8cc3b94d40f2a9b46b87c51b2b1496f7ff2
-
-TINP acceptance root:
-0d51f4f1183294ce50137fa75f9decb4fdf5f387f9ec5846b3bce3ec42bf9bb5
-
-status: PASS
-authorityGranted: false
-sideEffects: false
-```
-
-证据文件：
-
-- [`evidence/0.1.0-alpha.29/opp-native-interop-acceptance.json`](evidence/0.1.0-alpha.29/opp-native-interop-acceptance.json)
-- [`evidence/0.1.0-alpha.29/EVIDENCE_LEDGER.json`](evidence/0.1.0-alpha.29/EVIDENCE_LEDGER.json)
-
-这证明的是**当前候选能够验收绑定一条 OPP-owned interop 结果**，不是“任意 OPP bridge 已经自动进入生产 TINP 网络”。
-
-## 我怎么接自己的 Agent / Provider？
-
-当前已经有可用的 alpha 接口，但还没有稳定的第三方 Provider SDK。
-
-现在的集成表面包括：
-
-- Caller：`InternetSuite.start()` + `suite.use(...)`；
-- OPP native interop acceptance：`src/opp-native-interop.mjs`；
-- 受策略约束的只读 HTTPS / JSON adapter；
-- 仓库内部 Provider manifest / node process 路径。
-
-如果今天要接一个新的 Provider，仍属于**源码级 PoC 集成**：需要定义 capability、Provider manifest、执行入口、签名 receipt，并补权限/故障/重放/恢复负例测试。
-
-完整步骤和当前 public surface 边界见 [`docs/INTEGRATION.md`](docs/INTEGRATION.md)。
-
-## 技术最小 Demo（3 分钟）
-
-如果想看最小执行链：
-
-```powershell
-python -m pip install -r adapters/requirements.txt
-npm run demo -- "我要使用字符计数能力完成：你好，TINP"
-```
-
-对这个固定输入，当前逻辑的稳定业务结果是：
-
-```json
-{
-  "结果": {"count": 7},
-  "状态": "Full",
-  "路径": ["A", "B", "C"],
-  "验证范围": "三个独立本机进程，真实回环传输"
-}
-```
-
-PID、端口、会话和各类 hash/root 是运行时生成值，不写成固定常量。若要看你这一次运行的完整值，直接运行命令即可。
-
-当前版本完整验证记录：
-
-```text
-209 / 209 tests passed
-0 failed
-status: VERIFIED_LOCAL_CANDIDATE
-```
-
-证据见 [`evidence/0.1.0-alpha.29/INTEGRATION_COURT.md`](evidence/0.1.0-alpha.29/INTEGRATION_COURT.md)。
 
 ## 它实际做了什么？
 
@@ -202,6 +134,10 @@ flowchart LR
 当前准入检查在 `src/node-process.mjs` 中调用 RCL 路由规则和事务规则，之后才进入业务计算。调用端的 `verifyReceipt` 则核对签名、请求、会话、租约、结果等绑定关系。
 
 回执不是“事情绝对正确”的证明：签名用于核对来源与完整性；字符计数示例还会独立核算结果。任意业务的正确性仍需要各自的验收条件。
+
+## 本地优先承载的实现与证据
+
+仓库已有 [Wi-Fi/LAN 本地优先承载](docs/LOCAL_FIRST_BEARER.md)、非loopback绑定、发现候选和RCL门控实现。发现候选不自动成为可信节点；这些代码和本机测试不代替真实双物理设备的独立验收。
 
 ## 五个常见术语，直接翻成人话
 
@@ -314,13 +250,13 @@ flowchart LR
 
 如果要对外打包、再分发或商业发行，请先完成各来源组件的许可核对与裁决。详见 [`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md)。
 
-## 外部接入候选（2026-09-12）
+## 外部接入候选（2026-09-12，仓库报告）
 
 新增 `@taowind/tinp-suite/sdk/v1.mjs`，公开现有只读 Provider 与回执入口，仍是未发布候选，非通用 Provider 注册 SDK。独立安装包实测 Open-Meteo 请求与离线复核成功；httpbingo 的 HTTP 402 作为失败保留。OPP 三个真实库的回执由 Node 复核通过，但两边仍是同一操作员。
 
 [SDK 接入](docs/PUBLIC_SDK.md) · [五项目实测](docs/EXTERNAL_ONBOARDING.md) · [ROADMAP](ROADMAP.md)。此前章节描述 alpha.29 基线，本节为当前候选增量；未解除真实双机、Authority Provider、可信时间或独立审计门。
 
-## 无设备替代验证已完成（2026-09-12）
+## 历史托管验证记录（2026-09-12，仓库报告）
 
 GitHub [远端执行 34692267549](https://github.com/xingxuling/TINP/actions/runs/34692267549) 的 Linux 生产端及 Linux / Windows 复核端全部成功。真实库运行与证据交接已离开当前电脑；仍不代表双物理设备、独立操作员或真实 Authority Provider。
 
