@@ -33,9 +33,10 @@ TINP 当前是 **VERIFIED_LOCAL_CANDIDATE / NOT_DEPLOYED**。贡献时请优先�
 - Python `jsonschema`
 
 ```powershell
-python -m pip install -r adapters/requirements.txt
 npm test
 ```
+
+`npm test` 首次运行会创建仓库内 `.tinp-python` 虚拟环境并安装 `adapters/requirements.txt`，随后通过 `NEXT_INTERNET_PYTHON` 将全部需要 Python 的测试固定到该环境。若你主动提供 `NEXT_INTERNET_PYTHON`，测试只做依赖检查，不会修改你的解释器。需要保留旧的裸测试行为时可用 `npm run test:raw`。
 
 完整本机验证：
 

@@ -41,3 +41,18 @@ test('acceptance root tampering fails closed', () => {
   acceptance.finalResultRoot = '0'.repeat(64);
   assert.throws(() => validateOppNativeInteropAcceptance(acceptance, { interopResult: fixture }), /OPP_NATIVE_INTEROP_ACCEPTANCE_INVALID|OPP_NATIVE_INTEROP_ACCEPTANCE_ROOT_INVALID/);
 });
+
+test('native interop rejects inherited top-level properties that are not hash-bound', () => {
+  const poisoned = Object.assign(Object.create({ username: 'Mallory' }), structuredClone(fixture));
+  assert.equal(Object.hasOwn(poisoned, 'username'), false);
+  assert.equal(poisoned.username, 'Mallory');
+  assert.throws(() => validateOppNativeInteropResult(poisoned), /OPP_NATIVE_INTEROP_RESULT_INVALID/);
+});
+
+test('native interop rejects inherited nested result properties that are not hash-bound', () => {
+  const poisoned = structuredClone(fixture);
+  poisoned.result = Object.assign(Object.create({ shadow: 'Mallory' }), poisoned.result);
+  assert.equal(Object.hasOwn(poisoned.result, 'shadow'), false);
+  assert.equal(poisoned.result.shadow, 'Mallory');
+  assert.throws(() => validateOppNativeInteropResult(poisoned), /OPP_NATIVE_INTEROP_RESULT_INVALID/);
+});

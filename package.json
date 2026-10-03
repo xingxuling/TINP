@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --test --test-concurrency=1 tests/*.test.mjs vendor/tinp/tests/*.test.mjs",
+    "test": "node scripts/test.mjs",
+    "test:raw": "node --test --test-concurrency=1 tests/*.test.mjs vendor/tinp/tests/*.test.mjs",
+    "python:bootstrap": "node scripts/test.mjs --bootstrap-only",
     "demo": "node scripts/demo.mjs",
     "opp-http-readonly": "node scripts/opp-http-readonly.mjs",
     "opp-http-consumer-bridge": "node scripts/opp-http-consumer-bridge.mjs",

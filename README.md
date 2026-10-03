@@ -25,6 +25,10 @@ TINP 也提供单独的离线回执校验工具。它只核对已有结果，不
 
 当前版本已经通过本机集成验证，但仍是研究/试点候选，不是生产公网，也不声称已经具备生产级密钥托管、第三方安全认证或军用安全认证。
 
+### 干净环境跑测试
+
+直接执行 `npm test`。首次运行会在仓库内创建隔离的 `.tinp-python` 虚拟环境，并按 `adapters/requirements.txt` 安装 Python 侧依赖；测试进程只使用这个虚拟环境，不再静默依赖系统 Python 已经碰巧装好 `jsonschema`。若显式设置了 `NEXT_INTERNET_PYTHON`，TINP 不会修改该解释器；缺依赖时会在测试开始前明确失败并给出安装提示。原始、不自动引导 Python 环境的旧测试入口保留为 `npm run test:raw`。
+
 > **License TL;DR：** 当前对外许可与发行资格仍是 `NOT_ADJUDICATED`。公开仓库不等于整仓已经获得统一商业再分发许可；对外打包、再分发或商业发行前，需要先完成 `vendor/` 等历史来源组件的许可裁决。详见 [`docs/LICENSE_AUDIT.md`](docs/LICENSE_AUDIT.md)。
 
 ## 先看业务故障 Demo

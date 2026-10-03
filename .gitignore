@@ -1,4 +1,5 @@
 .runs/
+.tinp-python/
 __pycache__/
 *.pyc
 *.dpapi

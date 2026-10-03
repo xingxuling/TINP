@@ -13,6 +13,39 @@ const ACCEPTANCE_KEYS = ['format', 'interopReceiptRoot', 'status', 'finalResultR
 const fail = code => { throw new ProtocolError(code); };
 const check = (ok, code) => { if (!ok) fail(code); };
 
+function assertCanonicalJsonData(value, code, seen = new Set()) {
+  if (value === null || typeof value === 'string' || typeof value === 'boolean') return;
+  if (typeof value === 'number') { check(Number.isFinite(value), code); return; }
+  check(typeof value === 'object', code);
+  check(!seen.has(value), code);
+  seen.add(value);
+  if (Array.isArray(value)) {
+    let prototype, own;
+    try { prototype = Object.getPrototypeOf(value); own = Reflect.ownKeys(value); } catch { fail(code); }
+    check(prototype === Array.prototype && own.length === value.length + 1 && own.includes('length'), code);
+    for (let index = 0; index < value.length; index++) {
+      const key = String(index);
+      let descriptor;
+      try { descriptor = Object.getOwnPropertyDescriptor(value, key); } catch { fail(code); }
+      check(descriptor && Object.hasOwn(descriptor, 'value') && descriptor.enumerable, code);
+      assertCanonicalJsonData(descriptor.value, code, seen);
+    }
+    seen.delete(value);
+    return;
+  }
+  let prototype, own;
+  try { prototype = Object.getPrototypeOf(value); own = Reflect.ownKeys(value); } catch { fail(code); }
+  check(prototype === Object.prototype || prototype === null, code);
+  for (const key of own) {
+    check(typeof key === 'string', code);
+    let descriptor;
+    try { descriptor = Object.getOwnPropertyDescriptor(value, key); } catch { fail(code); }
+    check(descriptor && Object.hasOwn(descriptor, 'value') && descriptor.enumerable, code);
+    assertCanonicalJsonData(descriptor.value, code, seen);
+  }
+  seen.delete(value);
+}
+
 function exact(value, keys, code) {
   check(value !== null && typeof value === 'object' && !Array.isArray(value), code);
   let own;
@@ -53,6 +86,7 @@ function validateInvocation(receipt) {
 }
 
 export function validateOppNativeInteropResult(result) {
+  assertCanonicalJsonData(result, 'OPP_NATIVE_INTEROP_RESULT_INVALID');
   exact(result, RESULT_KEYS, 'OPP_NATIVE_INTEROP_RESULT_INVALID');
   exact(result.receipt, RECEIPT_KEYS, 'OPP_NATIVE_INTEROP_RECEIPT_INVALID');
   const receipt = result.receipt;
@@ -106,6 +140,7 @@ export function makeOppNativeInteropAcceptance({ interopResult } = {}) {
 }
 
 export function validateOppNativeInteropAcceptance(acceptance, { interopResult } = {}) {
+  assertCanonicalJsonData(acceptance, 'OPP_NATIVE_INTEROP_ACCEPTANCE_INVALID');
   exact(acceptance, ACCEPTANCE_KEYS, 'OPP_NATIVE_INTEROP_ACCEPTANCE_INVALID');
   validateOppNativeInteropResult(interopResult);
   check(acceptance.format === OPP_NATIVE_INTEROP_ACCEPTANCE_FORMAT
