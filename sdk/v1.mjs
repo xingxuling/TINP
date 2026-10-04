@@ -17,6 +17,10 @@ export {
   validateOppNativeInteropAcceptance,
 } from '../src/opp-native-interop.mjs';
 export {
+  AGENT_ACTION_FORMAT, KNOWN_AGENT_EFFECTS, AgentActionPolicyError,
+  verifyOppActionContract, makeAgentActionAdmissionFacts, verifyObservedAgentAction,
+} from '../src/agent-action-policy.mjs';
+export {
   LOCAL_FIRST_POLICY, classifyNetworkHost, inferBearerKind, endpointPolicy,
   enumerateLocalBearers, bearerScore, selectLocalBearer, makeBearerAdmissionFacts,
 } from '../src/bearer-policy.mjs';
@@ -25,3 +29,27 @@ export {
   DEFAULT_DISCOVERY_GROUP, DEFAULT_DISCOVERY_PORT, LanPeerDiscovery,
   createLanAdvertisement, verifyLanAdvertisement, admitDiscoveredPeer,
 } from '../src/lan-discovery.mjs';
+
+export {admitAgentAction} from '../src/agent-action-admission.mjs';
+
+export {
+  OPP_MCP_ACTION_BINDING_FORMAT, McpActionBindingError,
+  normalizeMcpToolDescriptor, verifyOppMcpActionBinding, verifyListedMcpToolAgainstBinding,
+} from '../src/mcp-action-binding.mjs';
+export {GuardedMcpToolGateway, GuardedToolGatewayError} from '../src/guarded-tool-gateway.mjs';
+export {GuardedMcpRegistry, GuardedMcpRegistryError} from '../src/guarded-mcp-registry.mjs';
+export {createBoundedWorkspaceReadProvider, BoundedWorkspaceProviderError} from '../src/providers/bounded-workspace-read.mjs';
+export {createBoundedWorkspaceCreateProvider, BoundedWorkspaceCreateProviderError} from '../src/providers/bounded-workspace-create.mjs';
+export {
+  createGuardedOfficialMcpServer, createDefaultGuardedOfficialMcpServer, makeExactApprovalConfig,
+  loadWorkspaceReadBinding, loadWorkspaceCreateBinding, GuardedOfficialMcpServerError,
+} from '../src/official-mcp-server.mjs';
+export {
+  EXACT_ACTION_SECURITY_FIELD, EXACT_ACTION_CHALLENGE_FORMAT, ExactActionApprovalError,
+  splitExactActionInput, makeExactActionChallenge, verifyExactActionEnvelope, ExactActionReplayGuard,
+} from '../src/exact-action-approval.mjs';
+export {
+  makeAgentActionApprovalPolicy, validateAgentActionApprovalPolicy, verifyAgentActionApproval,
+  AGENT_ACTION_APPROVAL_SCOPE, AGENT_ACTION_APPROVER_ROLE,
+} from '../adapters/aaf-agent-action.mjs';
+export {GuardedMcpAuditLedger} from '../src/guarded-mcp-audit.mjs';
