@@ -180,3 +180,137 @@ test('live consumer offline verify CLI revalidates a saved result without networ
   assert.equal(forged.status, 1);
   assert.match(forged.stderr, /OPP_HTTP_CONSUMER_LIVE_RESULT_INVALID/);
 });
+
+async function responseBindingFixture({ failClosed = false } = {}) {
+  const policy = makeOppHttpReadonlyPolicy({
+    policyId: 'consumer-live-response-binding',
+    allowedHosts: ['api.github.com'],
+    allowedPathPrefixes: ['/repos/xingxuling/OPP'],
+    responseFields: ['full_name', 'metadata'],
+  });
+  const request = makeOppHttpReadonlyRequest({
+    policy,
+    requestId: 'consumer-live-response-binding',
+    url: 'https://api.github.com/repos/xingxuling/OPP',
+  });
+  const result = await runOppHttpConsumerLive({
+    policy,
+    request,
+    fetchImpl: async () => {
+      assert.equal(failClosed, false, 'fail-closed fixture must not fetch');
+      return new Response(JSON.stringify({
+        full_name: 'xingxuling/OPP',
+        metadata: { owner: { login: 'xingxuling', verified: false }, tags: ['read-only', 'fixture'] },
+      }), { status: 200, headers: { 'content-type': 'application/json' } });
+    },
+    environment: failClosed ? { HTTPS_PROXY: 'http://ambient.invalid' } : {},
+  });
+  assert.equal(result.status, failClosed ? 'FAIL_CLOSED' : 'PASS');
+  return { policy, request, result };
+}
+
+test('saved live consumer validates independent response copies and canonical key ordering', async () => {
+  const { policy, request, result } = await responseBindingFixture();
+  const saved = JSON.parse(JSON.stringify(result));
+  assert.notStrictEqual(saved.acceptance.response, saved.observation.response);
+  assert.notStrictEqual(saved.acceptance.response.metadata, saved.observation.response.metadata);
+  assert.equal(validateOppHttpConsumerLiveResult(saved, { policy, request }), true);
+  saved.acceptance.response = {
+    metadata: {
+      tags: ['read-only', 'fixture'],
+      owner: { verified: false, login: 'xingxuling' },
+    },
+    full_name: 'xingxuling/OPP',
+  };
+  assert.deepEqual(saved.observation, result.observation);
+  assert.deepEqual(saved.acceptance.receipt, result.acceptance.receipt);
+  assert.equal(validateOppHttpConsumerLiveResult(saved, { policy, request }), true);
+});
+
+test('saved live consumer rejects independent response tampering', async t => {
+  const { policy, request, result } = await responseBindingFixture();
+  const mutations = [
+    ['full_name changed', value => { value.acceptance.response.full_name = 'forged/OPP'; }],
+    ['nested owner changed', value => { value.acceptance.response.metadata.owner.login = 'forged'; }],
+    ['nested array changed', value => { value.acceptance.response.metadata.tags[0] = 'forged'; }],
+    ['response field missing', value => { delete value.acceptance.response.full_name; }],
+    ['nested field missing', value => { delete value.acceptance.response.metadata.owner.login; }],
+    ['response is null', value => { value.acceptance.response = null; }],
+    ['response missing', value => { delete value.acceptance.response; }],
+    ['extra response field', value => { value.acceptance.response.unbound = true; }],
+  ];
+  for (const [name, mutate] of mutations) {
+    await t.test(name, () => {
+      const saved = JSON.parse(JSON.stringify(result));
+      assert.notStrictEqual(saved.acceptance.response, saved.observation.response);
+      mutate(saved);
+      assert.deepEqual(saved.observation, result.observation);
+      assert.deepEqual(saved.acceptance.receipt, result.acceptance.receipt);
+      assert.throws(() => validateOppHttpConsumerLiveResult(saved, { policy, request }),
+        { code: 'OPP_HTTP_CONSUMER_LIVE_ACCEPTANCE_ROOT_INVALID' });
+    });
+  }
+});
+
+test('saved live consumer enforces null acceptance response for producer failure', async t => {
+  const { policy, request, result } = await responseBindingFixture({ failClosed: true });
+  const saved = JSON.parse(JSON.stringify(result));
+  assert.equal(saved.acceptance.response, null);
+  assert.equal(validateOppHttpConsumerLiveResult(saved, { policy, request }), true);
+  for (const [name, mutate] of [
+    ['nonnull response', value => { value.acceptance.response = { full_name: 'forged/OPP' }; }],
+    ['missing response', value => { delete value.acceptance.response; }],
+  ]) {
+    await t.test(name, () => {
+      const tampered = JSON.parse(JSON.stringify(saved));
+      mutate(tampered);
+      assert.deepEqual(tampered.observation, result.observation);
+      assert.deepEqual(tampered.acceptance.receipt, result.acceptance.receipt);
+      assert.throws(() => validateOppHttpConsumerLiveResult(tampered, { policy, request }),
+        { code: 'OPP_HTTP_CONSUMER_LIVE_ACCEPTANCE_ROOT_INVALID' });
+    });
+  }
+});
+
+test('saved live consumer distinguishes shared memory mutation from saved-copy mutation', async () => {
+  const { policy, request, result } = await responseBindingFixture();
+  assert.strictEqual(result.acceptance.response, result.observation.response);
+  result.acceptance.response.full_name = 'forged/OPP';
+  assert.equal(result.observation.response.full_name, 'forged/OPP');
+  assert.throws(() => validateOppHttpConsumerLiveResult(result, { policy, request }),
+    { code: 'OPP_HTTP_CONSUMER_RESPONSE_ROOT_INVALID' });
+});
+
+test('saved live consumer offline verification rejects response tampering with fresh file hashes', async () => {
+  const { policy, request, result } = await responseBindingFixture();
+  const saved = JSON.parse(JSON.stringify(result));
+  saved.acceptance.response.full_name = 'forged/OPP';
+  assert.deepEqual(saved.observation, result.observation);
+  assert.deepEqual(saved.acceptance.receipt, result.acceptance.receipt);
+  const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'tinp-live-response-binding-'));
+  try {
+    const policyFile = path.join(directory, 'policy.json');
+    const requestFile = path.join(directory, 'request.json');
+    const resultFile = path.join(directory, 'result.json');
+    const policyBytes = Buffer.from(`${JSON.stringify(policy)}\n`);
+    const requestBytes = Buffer.from(`${JSON.stringify(request)}\n`);
+    const resultBytes = Buffer.from(`${JSON.stringify(saved)}\n`);
+    fs.writeFileSync(policyFile, policyBytes);
+    fs.writeFileSync(requestFile, requestBytes);
+    fs.writeFileSync(resultFile, resultBytes);
+    const script = fileURLToPath(new URL('../scripts/opp-http-consumer-live.mjs', import.meta.url));
+    const child = spawnSync(process.execPath, [script, '--verify', policyFile, requestFile, resultFile], {
+      encoding: 'utf8',
+      env: { ...process.env, HTTPS_PROXY: 'http://ambient.invalid' },
+      windowsHide: true,
+    });
+    assert.equal(child.status, 1, child.stderr);
+    assert.equal(child.stdout, '');
+    assert.match(child.stderr, /OPP_HTTP_CONSUMER_LIVE_ACCEPTANCE_ROOT_INVALID/);
+    assert.throws(() => makeOppHttpConsumerLiveVerification({
+      policy, request, result: saved, policyBytes, requestBytes, resultBytes,
+    }), { code: 'OPP_HTTP_CONSUMER_LIVE_ACCEPTANCE_ROOT_INVALID' });
+  } finally {
+    fs.rmSync(directory, { recursive: true, force: true });
+  }
+});

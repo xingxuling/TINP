@@ -1,0 +1,90 @@
+{
+  "profile": "opp.json-binary64.v1",
+  "vectors": [
+    {
+      "name": "integer",
+      "value": {
+        "value": 20
+      },
+      "canonical": "{\"profile\":\"opp.json-binary64.v1\",\"value\":[\"object\",[[\"value\",[\"number\",\"4034000000000000\"]]]]}",
+      "root": "510d32a3405fedb25830e93fc461ab60d7ff255614c2b8bb24fbc36a7dbb159c",
+      "legacyPythonRoot": "e6c58fba679eee5ed1eb4106ccc6326427262d7964fde981e9e22779edf2c554"
+    },
+    {
+      "name": "integral-float",
+      "value": {
+        "value": 20.0
+      },
+      "canonical": "{\"profile\":\"opp.json-binary64.v1\",\"value\":[\"object\",[[\"value\",[\"number\",\"4034000000000000\"]]]]}",
+      "root": "510d32a3405fedb25830e93fc461ab60d7ff255614c2b8bb24fbc36a7dbb159c",
+      "legacyPythonRoot": "eee2f992548c7cce55a6728f94b4a5c77aa5b4e8611a2521045ce356846c8845"
+    },
+    {
+      "name": "negative-zero",
+      "value": {
+        "value": -0.0
+      },
+      "canonical": "{\"profile\":\"opp.json-binary64.v1\",\"value\":[\"object\",[[\"value\",[\"number\",\"0000000000000000\"]]]]}",
+      "root": "24e5135a4160db6aeddf1be372a665929f089cb45530aeca81002d377276b7a0",
+      "legacyPythonRoot": "c848a4efa987f46ba3bfd46242333afcb1c68c3240e0f35ae9d269b1c980648b"
+    },
+    {
+      "name": "small-float",
+      "value": {
+        "value": 1e-07
+      },
+      "canonical": "{\"profile\":\"opp.json-binary64.v1\",\"value\":[\"object\",[[\"value\",[\"number\",\"3e7ad7f29abcaf48\"]]]]}",
+      "root": "0282626b4537bd07a00f9aef094e0c4c43b2a7e1b65cac079d791dde6432e1a3",
+      "legacyPythonRoot": "aece37dfda4992947222ea73b79996bba4aa181345a1fbb7f8c2b56b3fbd6a44"
+    },
+    {
+      "name": "fractional",
+      "value": {
+        "value": 20.5
+      },
+      "canonical": "{\"profile\":\"opp.json-binary64.v1\",\"value\":[\"object\",[[\"value\",[\"number\",\"4034800000000000\"]]]]}",
+      "root": "ecc6fef6679d0e998d5cc60102e71bc3e6bc149b0bcdda2a2f93769f5a6c3cae",
+      "legacyPythonRoot": "b72a8fe1703ac8d579ac3949b0d9abaa371b38820cb6d5c7657a22153a8c461e"
+    },
+    {
+      "name": "safe-integer",
+      "value": {
+        "value": 9007199254740991
+      },
+      "canonical": "{\"profile\":\"opp.json-binary64.v1\",\"value\":[\"object\",[[\"value\",[\"number\",\"433fffffffffffff\"]]]]}",
+      "root": "4a531f9a8a5399e2c99b196279695611c63e23a3579f7e1edda009f8c9dfaaea",
+      "legacyPythonRoot": "16c63bddb910905c4ee8abf36273baa20dba53020dbaf265da5936013ded185d"
+    },
+    {
+      "name": "nested-and-types",
+      "value": {
+        "null": null,
+        "bool": true,
+        "array": [
+          20.0,
+          -0.0,
+          1e-07,
+          {
+            "number": "4034000000000000"
+          }
+        ]
+      },
+      "canonical": "{\"profile\":\"opp.json-binary64.v1\",\"value\":[\"object\",[[\"array\",[\"array\",[[\"number\",\"4034000000000000\"],[\"number\",\"0000000000000000\"],[\"number\",\"3e7ad7f29abcaf48\"],[\"object\",[[\"number\",[\"string\",\"4034000000000000\"]]]]]]],[\"bool\",[\"boolean\",true]],[\"null\",[\"null\"]]]]}",
+      "root": "b300b2cbd45a9bf97ece89d1458932ff74ba21534d418c0938b650cf2cbfc107",
+      "legacyPythonRoot": "834898a8e7a29b5ff41e1e4ebd35781eaa8f0d1037e385b6db566c8eef5d4b91"
+    },
+    {
+      "name": "unicode-and-key-order",
+      "value": {
+        "🌏": "道风",
+        "": "private-use",
+        "10": 10,
+        "2": 2,
+        "a": "\n\t\\\""
+      },
+      "canonical": "{\"profile\":\"opp.json-binary64.v1\",\"value\":[\"object\",[[\"10\",[\"number\",\"4024000000000000\"]],[\"2\",[\"number\",\"4000000000000000\"]],[\"a\",[\"string\",\"\\n\\t\\\\\\\"\"]],[\"🌏\",[\"string\",\"道风\"]],[\"\",[\"string\",\"private-use\"]]]]}",
+      "root": "d0b5d47817e81eed323fb230f2bbfc4632bb9d8b0425370bed3ecd715a61ec9f",
+      "legacyPythonRoot": "300a9496ca63ecf2dac47515e535ec63513ab32271bcd986b8b7661a8b2e3085"
+    }
+  ]
+}
