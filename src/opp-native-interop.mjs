@@ -1,6 +1,8 @@
 import { ProtocolError, rootHash } from './identity.mjs';
+import { OPP_NATIVE_BINARY64_PROFILE, rootOppNativeBinary64 } from './opp-native-canonical.mjs';
 
 export const OPP_NATIVE_INTEROP_RECEIPT_FORMAT = 'taowind.opp.interop-receipt.v0.1';
+export const OPP_NATIVE_INTEROP_RECEIPT_V02_FORMAT = 'taowind.opp.interop-receipt.v0.2';
 export const OPP_NATIVE_INTEROP_ACCEPTANCE_FORMAT = 'twni.opp-native-interop-acceptance.v1';
 export const OPP_NATIVE_INTEROP_BOUNDARY = 'TINP binds one OPP-owned candidate interop receipt; it does not copy OPP runtime semantics, grant authority or claim production interoperability';
 
@@ -58,9 +60,11 @@ function exact(value, keys, code) {
   }
 }
 
-function validateInvocation(receipt) {
-  exact(receipt, INVOCATION_KEYS, 'OPP_NATIVE_INTEROP_INVOCATION_INVALID');
-  check(receipt.format === 'taowind.opp.invocation-receipt.v0.1'
+function validateInvocation(receipt, binary64 = false) {
+  const hash = binary64 ? rootOppNativeBinary64 : rootHash;
+  exact(receipt, binary64 ? [...INVOCATION_KEYS, 'canonicalProfile'] : INVOCATION_KEYS, 'OPP_NATIVE_INTEROP_INVOCATION_INVALID');
+  check(receipt.format === `taowind.opp.invocation-receipt.v0.${binary64 ? '2' : '1'}`
+    && (!binary64 || receipt.canonicalProfile === OPP_NATIVE_BINARY64_PROFILE)
     && typeof receipt.version === 'string' && receipt.version.length > 0
     && typeof receipt.specId === 'string' && receipt.specId.length > 0
     && receipt.adapterKind === 'python-function'
@@ -85,15 +89,18 @@ function validateInvocation(receipt) {
     && HASH.test(receipt.receiptRoot), 'OPP_NATIVE_INTEROP_INVOCATION_INVALID');
   // OPP computes invocation receiptRoot from the stable core before appending durationMs.
   const { receiptRoot, durationMs, ...body } = receipt;
-  check(rootHash(body) === receiptRoot, 'OPP_NATIVE_INTEROP_INVOCATION_ROOT_INVALID');
+  check(hash(body) === receiptRoot, 'OPP_NATIVE_INTEROP_INVOCATION_ROOT_INVALID');
 }
 
 export function validateOppNativeInteropResult(result) {
   assertCanonicalJsonData(result, 'OPP_NATIVE_INTEROP_RESULT_INVALID');
   exact(result, RESULT_KEYS, 'OPP_NATIVE_INTEROP_RESULT_INVALID');
-  exact(result.receipt, RECEIPT_KEYS, 'OPP_NATIVE_INTEROP_RECEIPT_INVALID');
   const receipt = result.receipt;
-  check(receipt.format === OPP_NATIVE_INTEROP_RECEIPT_FORMAT
+  const binary64 = receipt?.format === OPP_NATIVE_INTEROP_RECEIPT_V02_FORMAT;
+  const hash = binary64 ? rootOppNativeBinary64 : rootHash;
+  exact(receipt, binary64 ? [...RECEIPT_KEYS, 'canonicalProfile'] : RECEIPT_KEYS, 'OPP_NATIVE_INTEROP_RECEIPT_INVALID');
+  check(receipt.format === (binary64 ? OPP_NATIVE_INTEROP_RECEIPT_V02_FORMAT : OPP_NATIVE_INTEROP_RECEIPT_FORMAT)
+    && (!binary64 || receipt.canonicalProfile === OPP_NATIVE_BINARY64_PROFILE)
     && typeof receipt.version === 'string' && receipt.version.length > 0
     && typeof receipt.runId === 'string' && receipt.runId.length > 0
     && receipt.status === 'PASS' && receipt.error === null
@@ -108,20 +115,20 @@ export function validateOppNativeInteropResult(result) {
     && typeof receipt.boundary === 'string' && receipt.boundary.length > 0
     && HASH.test(receipt.receiptRoot), 'OPP_NATIVE_INTEROP_RECEIPT_INVALID');
   const { receiptRoot, ...body } = receipt;
-  check(rootHash(body) === receiptRoot, 'OPP_NATIVE_INTEROP_RECEIPT_ROOT_INVALID');
+  check(hash(body) === receiptRoot, 'OPP_NATIVE_INTEROP_RECEIPT_ROOT_INVALID');
   check(result.producer?.receipt && result.consumer?.receipt, 'OPP_NATIVE_INTEROP_RESULT_INVALID');
-  validateInvocation(result.producer.receipt);
-  validateInvocation(result.consumer.receipt);
+  validateInvocation(result.producer.receipt, binary64);
+  validateInvocation(result.consumer.receipt, binary64);
   check(result.producer.receipt.receiptRoot === receipt.producerReceiptRoot
     && result.consumer.receipt.receiptRoot === receipt.consumerReceiptRoot
     && result.producer.result !== null && typeof result.producer.result === 'object'
-    && rootHash(result.producer.result) === result.producer.receipt.resultRoot
+    && hash(result.producer.result) === result.producer.receipt.resultRoot
     && result.consumer.result !== null && typeof result.consumer.result === 'object'
-    && rootHash(result.consumer.result) === result.consumer.receipt.resultRoot
+    && hash(result.consumer.result) === result.consumer.receipt.resultRoot
     && result.transformed !== null && typeof result.transformed === 'object'
-    && rootHash(result.transformed) === receipt.transformedRoot
+    && hash(result.transformed) === receipt.transformedRoot
     && result.result !== null && typeof result.result === 'object'
-    && rootHash(result.result) === receipt.finalResultRoot
+    && hash(result.result) === receipt.finalResultRoot
     && result.consumer.receipt.resultRoot === receipt.finalResultRoot,
   'OPP_NATIVE_INTEROP_RESULT_ROOT_INVALID');
   check(result.producer.receipt.status === 'PASS' && result.consumer.receipt.status === 'PASS', 'OPP_NATIVE_INTEROP_RESULT_STATUS_INVALID');
