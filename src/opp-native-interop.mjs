@@ -72,12 +72,15 @@ function validateInvocation(receipt) {
     && Number.isSafeInteger(receipt.stderrBytes) && receipt.stderrBytes >= 0
     && typeof receipt.targetStdout === 'string' && typeof receipt.targetStderr === 'string'
     && receipt.error === null && receipt.authority?.promotionPerformed === false
+    && Array.isArray(receipt.authority?.required)
+    && receipt.authority.required.every(value => typeof value === 'string')
     && receipt.authority?.inheritedFromEnvironment === false
     && receipt.executionBoundary?.explicitConsentRequired === true
     && receipt.executionBoundary?.shellUsed === false
     && receipt.executionBoundary?.environmentPolicy === 'sanitized'
     && receipt.executionBoundary?.cwdPolicy === 'ephemeral'
     && receipt.executionBoundary?.strongOsSandboxClaimed === false
+    && typeof receipt.boundary === 'string'
     && Number.isFinite(receipt.durationMs) && receipt.durationMs >= 0
     && HASH.test(receipt.receiptRoot), 'OPP_NATIVE_INTEROP_INVOCATION_INVALID');
   // OPP computes invocation receiptRoot from the stable core before appending durationMs.
