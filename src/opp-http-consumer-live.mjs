@@ -1,4 +1,4 @@
-import { ProtocolError } from './identity.mjs';
+import { ProtocolError, rootHash } from './identity.mjs';
 import { createHash } from 'node:crypto';
 import { negotiateOpp } from '../adapters/opp-bridge.mjs';
 import { makeHello } from '../vendor/tinp/src/index.mjs';
@@ -182,8 +182,10 @@ export function validateOppHttpConsumerLiveResult(result, { policy, request } = 
     observation: result.observation,
     consumerContract: result.consumerContract,
   });
+  // Bind the saved response as well as the status and receipt using canonical roots.
   check(accepted.status === result.acceptance.status
-    && accepted.receipt.acceptanceRoot === result.acceptance.receipt.acceptanceRoot,
+    && accepted.receipt.acceptanceRoot === result.acceptance.receipt.acceptanceRoot
+    && rootHash(accepted) === rootHash(result.acceptance),
   'OPP_HTTP_CONSUMER_LIVE_ACCEPTANCE_ROOT_INVALID');
   validateOppHttpConsumerBridgeReceipt(result.acceptance.receipt, result.plan, policy, rootedRequest, result.consumerContract);
   return true;
